@@ -453,33 +453,33 @@
 <h2 id="1-3、阻塞IO模型（同步）"><a href="#1-3、阻塞IO模型（同步）" class="headerlink" title="1.3、阻塞IO模型（同步）"></a>1.3、阻塞IO模型（同步）</h2><p>我们钓鱼的时候，有一种方式比较惬意，比较轻松，那就是我们坐在鱼竿面前，这个过程中我们什么也不做，双手一直把着鱼竿，就静静的等着鱼儿咬钩。一旦手上感受到鱼的力道，就把鱼钓起来放入鱼篓中。然后再钓下一条鱼。</p>
 <p>映射到Linux操作系统中，这就是一种最简单的IO模型，即阻塞IO。 阻塞 I&#x2F;O 是最简单的 I&#x2F;O 模型，一般表现为进程或线程等待某个条件，如果条件不满足，则一直等下去。直到条件满足再进行下一步操作。</p>
 <p>这种钓鱼方式相对来说比较简单，对于钓鱼的人来说，不需要什么特制的鱼竿，拿一根够长的木棍就可以悠闲的开始钓鱼了（实现简单）。缺点就是比较耗费时间，比较适合那种对鱼的需求量小的情况（并发低，时效性要求低）。</p>
-<p><img src="/imgs%5Cimage-20200927130712324.png" alt="image-20200927130712324"></p>
+<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200927130712324.png" alt="image-20200927130712324"></p>
 <p>如上图，当用户进程执行了recvfrom这个系统调用，kernel就开始了IO的第一个阶段：准备数据。对于network io来说，很多时候数据在一开始还没有到达（比如，还没有收到一个完整的UDP包），这个时候kernel就要等待足够的数据到来。而在用户进程这边，整 个进程会被阻塞。当kernel一直等到数据准备好了，它就会将数据从kernel中拷贝到用户内存，然后kernel返回结果，用户进程才解除 block的状态，重新运行起来。</p>
 <h2 id="1-4、非阻塞IO模型（同步）"><a href="#1-4、非阻塞IO模型（同步）" class="headerlink" title="1.4、非阻塞IO模型（同步）"></a>1.4、非阻塞IO模型（同步）</h2><p>我们钓鱼的时候，在等待鱼儿咬钩的过程中，我们可以做点别的事情，比如玩一把王者荣耀、看一集《延禧攻略》等等。但是，我们要时不时的去看一下鱼竿，一旦发现有鱼儿上钩了，就把鱼钓上来。</p>
 <p>映射到Linux操作系统中，这就是非阻塞的IO模型。应用进程与内核交互，目的未达到之前，不再一味的等着，而是直接返回。然后通过轮询的方式，不停的去问内核数据有没有准备好。如果某一次轮询发现数据已经准备好了，那就把数据拷贝到用户空间中。</p>
 <p>这种方式钓鱼，和阻塞IO比，所使用的工具没有什么变化，但是钓鱼的时候可以做些其他事情，增加时间的利用率。</p>
-<p><img src="/imgs%5Cimage-20200927131236060.png" alt="image-20200927131236060"></p>
+<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200927131236060.png" alt="image-20200927131236060"></p>
 <p>从上图中可以看出，当用户进程发出read操作时，如果kernel中的数据还没有准备好，那么它并不会block用户进程，而是立刻返回一个error。 从用户进程角度讲 ，它发起一个read操作后，并不需要等待，而是马上就得到了一个结果。用户进程判断结果是一个error时，它就知道数据还没有准备好，于是它可以再次 发送read操作。一旦kernel中的数据准备好了，并且又再次收到了用户进程的system call，那么它马上就将数据拷贝到了用户内存，然后返回。</p>
 <p>所以，用户进程第一个阶段不是阻塞的，需要不断的主动询问kernel数据好了没有；第二个阶段依然是阻塞的。</p>
 <h2 id="1-5、信号驱动模型（同步）"><a href="#1-5、信号驱动模型（同步）" class="headerlink" title="1.5、信号驱动模型（同步）"></a>1.5、信号驱动模型（同步）</h2><p>我们钓鱼的时候，为了避免自己一遍一遍的去查看鱼竿，我们可以给鱼竿安装一个报警器。当有鱼儿咬钩的时候立刻报警。然后我们再收到报警后，去把鱼钓起来。</p>
 <p>映射到Linux操作系统中，这就是信号驱动IO。应用进程在读取文件时通知内核，如果某个 socket 的某个事件发生时，请向我发一个信号。在收到信号后，信号对应的处理函数会进行后续处理。</p>
 <p>这种方式钓鱼，和前几种相比，所使用的工具有了一些变化，需要有一些定制（实现复杂）。但是钓鱼的人就可以在鱼儿咬钩之前彻底做别的事儿去了。等着报警器响就行了。</p>
-<p><img src="/imgs%5Cimage-20200927132311222.png" alt="image-20200927132311222"></p>
+<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200927132311222.png" alt="image-20200927132311222"></p>
 <p>据上图所示，用户进程预先向内核注册一个信号处理函数，然后用户进程返回，并且不阻塞，当内核数据准备就绪时会发送一个信号给进程，用户进程便在信号处理函数中开始把数据拷贝的用户空间中。</p>
 <h2 id="1-6、IO多路复用模型（同步）"><a href="#1-6、IO多路复用模型（同步）" class="headerlink" title="1.6、IO多路复用模型（同步）"></a>1.6、IO多路复用模型（同步）</h2><p>我们钓鱼的时候，为了保证可以最短的时间钓到最多的鱼，我们同一时间摆放多个鱼竿，同时钓鱼。然后哪个鱼竿有鱼儿咬钩了，我们就把哪个鱼竿上面的鱼钓起来。映射到Linux操作系统中，这就是IO复用模型。多个进程的IO可以注册到同一个管道上，这个管道会统一和内核进行交互。当管道中的某一个请求需要的数据准备好之后，进程再把对应的数据拷贝到用户空间中。</p>
 <p><strong>IO multiplexing（IO多路复用）就是常说的select，poll，epoll，有时也称为event driven IO</strong>。IO复用同非阻塞IO本质一样，不过利用了新的select系统调用，由内核来负责本来是请求进程该做的轮询操作。看似比非阻塞IO还多了一个系统调用开销，不过因为可以支持多路IO，才算提高了效率。</p>
 <p>这种通过 增加鱼竿 的方式，可有效提升效率。</p>
-<p><img src="/imgs%5Cimage-20200927131649129.png" alt="image-20200927131649129"></p>
+<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200927131649129.png" alt="image-20200927131649129"></p>
 <p>据上图可知，当用户进程调用了<code>select</code>，那么整个进程会被block，而同时，kernel会“监视”所有select负责的socket，当任何一个 socket中的数据准备好了，select就会返回。这个时候用户进程再调用read操作，将数据从kernel拷贝到用户进程。</p>
 <p>select&#x2F;epoll的优势并不是对于单个连接能处理得更快，而是在于能处理更多的连接。在IO multiplexing Model中，实际对于每一个socket，一般都设置成为non-blocking，但是，如上图所示，整个用户的process其实是一直被 block的。只不过process是被select这个函数block，而不是被socket IO给block。</p>
 <h2 id="1-7、异步IO模型（异步）"><a href="#1-7、异步IO模型（异步）" class="headerlink" title="1.7、异步IO模型（异步）"></a>1.7、异步IO模型（异步）</h2><p>我们钓鱼的时候，采用一种高科技钓鱼竿，即全自动钓鱼竿。可以自动感应鱼上钩，自动收竿，更厉害的可以自动把鱼放进鱼篓里。然后，通知我们鱼已经钓到了，他就继续去钓下一条鱼去了。</p>
 <p>映射到Linux操作系统中，这就是异步IO模型。应用进程把IO请求传给内核后，完全由内核去操作文件拷贝。内核完成相关操作后，会发信号告诉应用进程本次IO已经完成。</p>
-<p><img src="/imgs%5Cimage-20200927132414881.png" alt="image-20200927132414881"></p>
+<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200927132414881.png" alt="image-20200927132414881"></p>
 <p>如上图所示，用户进程发起<code>aio_read</code>操作之后，给内核传递描述符、缓冲区指针、缓冲区大小等，告诉内核当整个操作完成时，如何通知进程，然后就立刻去做其他事情了。当内核收到<code>aio_read</code>后，会立刻返回，然后内核开始等待数据准备，数据准备好以后，直接把数据拷贝到用户空间，然后再通知进程本次IO已经完成。</p>
 <p>这种钓鱼方式，最省事，只需要交给鱼竿就可以了。</p>
 <h2 id="1-8、总结"><a href="#1-8、总结" class="headerlink" title="1.8、总结"></a>1.8、总结</h2><h3 id="1-8-1、前四种都是同步IO模型"><a href="#1-8-1、前四种都是同步IO模型" class="headerlink" title="1.8.1、前四种都是同步IO模型"></a>1.8.1、前四种都是同步IO模型</h3><p>我们说阻塞IO模型、非阻塞IO模型、IO复用模型和信号驱动IO模型都是同步的IO模型。原因是因为，无论以上那种模型，真正的数据拷贝过程，都是同步进行。</p>
 <p><font color='orange'>信号驱动逻辑是：内核在数据准备好之后通知进程，然后进程通过<code>recvfrom</code>操作进行数据拷贝。可以认为数据准备阶段是异步的，数据拷贝操作是同步的。所以，整个IO过程不能认为是异步。</font></p>
-<h3 id="1-8-2、五种-IO-模型对比"><a href="#1-8-2、五种-IO-模型对比" class="headerlink" title="1.8.2、五种 IO 模型对比"></a>1.8.2、五种 IO 模型对比</h3><img src="imgs\5种IO模型对比01.png" style="zoom:100%;float:left;" />
+<h3 id="1-8-2、五种-IO-模型对比"><a href="#1-8-2、五种-IO-模型对比" class="headerlink" title="1.8.2、五种 IO 模型对比"></a>1.8.2、五种 IO 模型对比</h3><img src="\imgs\javadev\5种IO模型对比01.png" style="zoom:100%;float:left;" />
 
 <h1 id="2、IO多路复用"><a href="#2、IO多路复用" class="headerlink" title="2、IO多路复用"></a>2、IO多路复用</h1><h2 id="2-1、必知知识"><a href="#2-1、必知知识" class="headerlink" title="2.1、必知知识"></a>2.1、必知知识</h2><h3 id="2-1-1、用户空间和内核空间"><a href="#2-1-1、用户空间和内核空间" class="headerlink" title="2.1.1、用户空间和内核空间"></a>2.1.1、用户空间和内核空间</h3><p>如今的操作系统大都采用虚拟存储器，32位操作系统的寻址空间（虚拟存储空间）为4G（2的32次方）。</p>
 <p><font color='orange'>操作系统核心是内核，独立于普通应用程序，可以访问受保护的内存空间，也有访问底层硬件设备的所有权限。</font></p>
@@ -682,13 +682,13 @@
 <h2 id="2-5、kqueue"><a href="#2-5、kqueue" class="headerlink" title="2.5、kqueue"></a>2.5、kqueue</h2><h3 id="2-5-1、简介"><a href="#2-5-1、简介" class="headerlink" title="2.5.1、简介"></a>2.5.1、简介</h3><p>与 epoll 类似，仅存于 FreeBSD（一种类UNIX操作系统）。</p>
 <h2 id="2-6、总结"><a href="#2-6、总结" class="headerlink" title="2.6、总结"></a>2.6、总结</h2><h3 id="2-6-1、select、poll、epoll区别"><a href="#2-6-1、select、poll、epoll区别" class="headerlink" title="2.6.1、select、poll、epoll区别"></a>2.6.1、select、poll、epoll区别</h3><ol>
 <li><p>一个进程所能打开的最大连接数</p>
-<img src="imgs\select-poll-epoll区别_一个进程支持的最大连接数01.png" style="zoom:50%;float:left;"/>
+<img src="\imgs\javadev\select-poll-epoll区别_一个进程支持的最大连接数01.png" style="zoom:50%;float:left;"/>
 </li>
 <li><p>FD剧增后带来的IO效率问题</p>
-<img src="imgs\select-poll-epoll区别_FD剧增后带来的效率问题01.png" style="zoom:50%;float:left;" />
+<img src="\imgs\javadev\select-poll-epoll区别_FD剧增后带来的效率问题01.png" style="zoom:50%;float:left;" />
 </li>
 <li><p>消息传递方式</p>
-<img src="imgs\select-poll-epoll区别_消息传递方式01.png" style="zoom:50%;float:left;" /></li>
+<img src="\imgs\javadev\select-poll-epoll区别_消息传递方式01.png" style="zoom:50%;float:left;" /></li>
 </ol>
 <h3 id="2-6-2、场景助记"><a href="#2-6-2、场景助记" class="headerlink" title="2.6.2、场景助记"></a>2.6.2、场景助记</h3><p>一个epoll场景：一个酒吧服务员（一个线程），前面趴了一群醉汉，突然一个吼一声“倒酒”（事件），你小跑过去给他倒一杯，然后随他去吧，突然又一个要倒酒，你又过去倒上，就这样一个服务员服务好多人，有时没人喝酒，服务员处于空闲状态，可以玩玩手机。</p>
 <p>至于epoll与select，poll的区别在于后两者的场景中醉汉不说话，你要挨个问要不要酒，没时间玩手机了。I&#x2F;O多路复用大概就是指这几个醉汉共用一个服务员。</p>
@@ -774,7 +774,7 @@
 <li>事件处理器首先执行读取操作，处理读到的数据，注册新的事件，然后返还控制权。</li>
 </ol>
 <h3 id="6-x-2、写操作"><a href="#6-x-2、写操作" class="headerlink" title="6.x.2、写操作"></a>6.x.2、写操作</h3><p>写入操作类似于读取操作，只不过第一步注册的是写就绪事件。</p>
-<h3 id="6-x-3、class结构"><a href="#6-x-3、class结构" class="headerlink" title="6.x.3、class结构"></a>6.x.3、class结构</h3><p><img src="/imgs%5Cimage-20210130120424783.png" alt="image-20210130120424783"></p>
+<h3 id="6-x-3、class结构"><a href="#6-x-3、class结构" class="headerlink" title="6.x.3、class结构"></a>6.x.3、class结构</h3><p><img src="/%5Cimgs%5Cjavadev%5Cimage-20210130120424783.png" alt="image-20210130120424783"></p>
 <p>Reactor包含如下角色：</p>
 <ul>
 <li>Handle 句柄；用来标识socket连接或是打开文件；</li>
@@ -791,7 +791,7 @@
 <p><font color='orange'>“反应器”名字中”反应“的由来：“反应”即“倒置”，“控制逆转”。</font></p>
 <p>具体事件处理程序不调用反应器，而是由反应器分配一个具体事件处理程序，具体事件处理程序对某个指定的事件发生做出反应；这种控制逆转又称为“好莱坞法则”（不要调用我，让我来调用你）。</p>
 <p>业务流程时序图：</p>
-<p><img src="/imgs%5Cimage-20210130120745134.png" alt="image-20210130120745134"></p>
+<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20210130120745134.png" alt="image-20210130120745134"></p>
 <ol>
 <li>应用启动，将关注的事件handle注册到Reactor中；</li>
 <li>调用Reactor，进入无限事件循环，等待注册的事件到来；</li>
@@ -804,7 +804,7 @@
 <li>事件分离器捕获到读取完成事件后，激活应用程序注册的事件处理器，事件处理器直接从缓存区读取数据，而不需要进行实际的读取操作。</li>
 </ol>
 <h3 id="6-x-2、写操作-1"><a href="#6-x-2、写操作-1" class="headerlink" title="6.x.2、写操作"></a>6.x.2、写操作</h3><p>写操作与读操作类似。</p>
-<h3 id="6-x-3、class结构-1"><a href="#6-x-3、class结构-1" class="headerlink" title="6.x.3、class结构"></a>6.x.3、class结构</h3><p><img src="/imgs%5Cimage-20210130121111912.png" alt="image-20210130121111912"></p>
+<h3 id="6-x-3、class结构-1"><a href="#6-x-3、class结构-1" class="headerlink" title="6.x.3、class结构"></a>6.x.3、class结构</h3><p><img src="/%5Cimgs%5Cjavadev%5Cimage-20210130121111912.png" alt="image-20210130121111912"></p>
 <p><strong>Proactor主动器模式包含如下角色</strong></p>
 <ul>
 <li>Handle 句柄；用来标识socket连接或是打开文件；</li>
@@ -816,7 +816,7 @@
 <li>Concrete Completion Handler：完成事件处理逻辑；实现接口定义特定的应用处理逻辑；</li>
 </ul>
 <p>业务流程时序图：</p>
-<p><img src="/imgs%5Cimage-20210130121212731.png" alt="image-20210130121212731"></p>
+<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20210130121212731.png" alt="image-20210130121212731"></p>
 <ol>
 <li>应用程序启动，调用异步操作处理器提供的异步操作接口函数，调用之后应用程序和异步操作处理就独立运行；应用程序可以调用新的异步操作，而其它操作可以并发进行；</li>
 <li>应用程序启动Proactor主动器，进行无限的事件循环，等待完成事件到来；</li>
