@@ -454,9 +454,9 @@
 <li>asm-analysis.jar</li>
 </ol>
 <h1 id="2、类"><a href="#2、类" class="headerlink" title="2、类"></a>2、类</h1><h2 id="2-1、结构"><a href="#2-1、结构" class="headerlink" title="2.1、结构"></a>2.1、结构</h2><h3 id="2-1-3、类型描述符"><a href="#2-1-3、类型描述符" class="headerlink" title="2.1.3、类型描述符"></a>2.1.3、类型描述符</h3><p>内部名称仅用于约束为类或接口类型的类型。在所有其他情况下，例如字段类型，Java类型都在带有类型描述符的已编译类中表示：</p>
-<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200905140752294.png" alt="image-20200905140752294"></p>
+<p><img src="/imgs/javadev/image-20200905140752294.png" alt="image-20200905140752294"></p>
 <h3 id="2-1-4、方法描述符"><a href="#2-1-4、方法描述符" class="headerlink" title="2.1.4、方法描述符"></a>2.1.4、方法描述符</h3><p>方法描述符是类型描述符的列表，这些类型描述符在单个字符串中描述方法的参数类型和返回类型。方法描述符以左括号开头，然后是每个形式参数的类型描述符，然后是右括号，然后是返回类型的类型描述符，如果该方法返回void，则返回V（方法描述符不包含方法名称或参数名称）。</p>
-<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200905141030231.png" alt="image-20200905141030231"></p>
+<p><img src="/imgs/javadev/image-20200905141030231.png" alt="image-20200905141030231"></p>
 <h2 id="2-2、接口与组件"><a href="#2-2、接口与组件" class="headerlink" title="2.2、接口与组件"></a>2.2、接口与组件</h2><h3 id="2-2-1、简介"><a href="#2-2-1、简介" class="headerlink" title="2.2.1、简介"></a>2.2.1、简介</h3><p>用于生成和转换已编译类的 ASM API 基于 ClassVisitor 抽象类。此类中的每个方法都对应于同名的类文件结构部分。通过单个方法调用可以访问简单部分，该方法的参数描述其内容，并返回void。使用初始方法调用（其返回辅助访问者类）访问其内容可以具有任意长度和复杂度的节。 visitAnnotation，visitField和visitMethod方法就是这种情况，它们分别返回AnnotationVisitor，FieldVisitor和MethodVisitor。</p>
 <p>这些辅助类递归使用相同的原理。例如，FieldVisitor抽象类中的每个方法（请参见图2.5）对应于具有相同名称的类文件子结构，并且与ClassVisitor中一样，返回一个辅助AnnotationVisitor。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">ClassVisitor</span> <span class="token punctuation">&#123;</span>
@@ -742,8 +742,8 @@ cv<span class="token punctuation">.</span><span class="token function">visitEnd<
 
 <p>与TraceClassVisitor一样，您可以在生成或转换链中的任何点使用CheckClassAdapter，不仅可以在ClassWriter之前使用，还可以在链中此点检查类。</p>
 <h3 id="2-3-4、ASMifier"><a href="#2-3-4、ASMifier" class="headerlink" title="2.3.4、ASMifier"></a>2.3.4、ASMifier</h3><p>可以从命令行使用ASMifier类。例如使用：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">java</span> <span class="token parameter variable">-classpath</span> asm.jar:asm-util.jar <span class="token punctuation">\</span>
-org.objectweb.asm.util.ASMifier <span class="token punctuation">\</span>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">java</span> <span class="token parameter variable">-classpath</span> asm.jar:asm-util.jar /
+org.objectweb.asm.util.ASMifier /
 java.lang.Runnable<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>产生缩进后的代码为：</p>
@@ -804,7 +804,7 @@ java.lang.Runnable<span aria-hidden="true" class="line-numbers-rows"><span></spa
 <span class="token constant">IRETURN</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>第一条指令读取局部变量0，该局部变量在创建此方法调用的帧期间已初始化为0，并将此值压入操作数堆栈。第二条指令从堆栈中弹出此值，即this，并压入此对象的f字段，即this.f.最后一条指令从堆栈中弹出该值，并将其返回给调用方。此方法的执行帧的连续状态如下图所示：</p>
-<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200906150115558.png" alt="image-20200906150115558"></p>
+<p><img src="/imgs/javadev/image-20200906150115558.png" alt="image-20200906150115558"></p>
 <p>setter方法的字节码为：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token constant">ALOAD</span> <span class="token number">0</span>
 <span class="token constant">ILOAD</span> <span class="token number">1</span>
@@ -812,7 +812,7 @@ java.lang.Runnable<span aria-hidden="true" class="line-numbers-rows"><span></spa
 <span class="token constant">RETURN</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>第一条指令将其压入操作数堆栈。第二条指令压入局部变量1，该局部变量在创建用于此方法调用的框架期间使用f参数值初始化。第三条指令弹出这两个值，并将int值存储在所引用对象的f字段中，即在this.f中。最后一条指令在源代码中是隐式的，而在编译后的代码中是强制性的，它会破坏当前执行框架并返回给调用者。此方法的执行帧的连续状态如图3.3所示。</p>
-<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200906150426003.png" alt="image-20200906150426003"></p>
+<p><img src="/imgs/javadev/image-20200906150426003.png" alt="image-20200906150426003"></p>
 <p>现在让我们考虑一个稍微复杂一些的setter方法</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">checkAndSetF</span><span class="token punctuation">(</span><span class="token keyword">int</span> f<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">if</span> <span class="token punctuation">(</span>f <span class="token operator">>=</span> <span class="token number">0</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -863,7 +863,7 @@ end<span class="token operator">:</span>
 <span class="token punctuation">[</span>pkg<span class="token operator">/</span><span class="token class-name">Bean</span><span class="token punctuation">]</span> <span class="token punctuation">[</span><span class="token class-name">I</span><span class="token punctuation">]</span> 						  <span class="token constant">IRETURN</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>我们可以对checkAndSetF方法做同样的事情：</p>
-<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200906151656565.png" alt="image-20200906151656565"></p>
+<p><img src="/imgs/javadev/image-20200906151656565.png" alt="image-20200906151656565"></p>
 <p>为了节省更多空间，通过仅存储与前一帧的差异来压缩每个帧，并且不存储初始帧，因为它可以很容易地从方法参数类型推导出来。在使用checkAndSetF方法的情况下，必须存储的两个帧相等并且等于初始帧，因此将它们存储为F_SAME助记符指定的单字节值。这些帧可以在它们关联的字节码指令之前被表示。这给出了checkAndSetF方法的最终字节码：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token constant">ILOAD</span> <span class="token number">1</span>
 <span class="token constant">IFLT</span> label
@@ -1337,8 +1337,8 @@ sw<span class="token punctuation">.</span><span class="token function">toString<
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h3 id="4-2-3、工具"><a href="#4-2-3、工具" class="headerlink" title="4.2.3、工具"></a>4.2.3、工具</h3><p>2.3节中介绍的TraceClassVisitor，CheckClassAdapter和ASMifier类也支持注释（与方法一样，也可以使用TraceAnnotationVisitor或CheckAnnotationAdapter在单个注释级别而不是在类级别使用）。它们可以用来查看如何生成一些特定的注释。例如使用：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">java</span> <span class="token parameter variable">-classpath</span> asm.jar:asm-util.jar <span class="token punctuation">\</span>
-org.objectweb.asm.util.ASMifier <span class="token punctuation">\</span>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">java</span> <span class="token parameter variable">-classpath</span> asm.jar:asm-util.jar /
+org.objectweb.asm.util.ASMifier /
 java.lang.Deprecated<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
 
 <p>打印经过少量重构后的代码，其内容为：</p>

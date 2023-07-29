@@ -426,8 +426,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1、Netty"><a href="#1、Netty" class="headerlink" title="1、Netty"></a>1、Netty</h1><h2 id="1-1、Netty-NIO"><a href="#1-1、Netty-NIO" class="headerlink" title="1.1、Netty NIO"></a>1.1、Netty NIO</h2><h3 id="1-1-1、TCP粘包-拆包解决之道"><a href="#1-1-1、TCP粘包-拆包解决之道" class="headerlink" title="1.1.1、TCP粘包&#x2F;拆包解决之道"></a>1.1.1、TCP粘包&#x2F;拆包解决之道</h3><h4 id="TCP粘包-拆包问题"><a href="#TCP粘包-拆包问题" class="headerlink" title="TCP粘包&#x2F;拆包问题"></a>TCP粘包&#x2F;拆包问题</h4><p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200926153613957.png" alt="image-20200926153613957"></p>
-<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200926153705885.png" alt="image-20200926153705885"></p>
+                <h1 id="1、Netty"><a href="#1、Netty" class="headerlink" title="1、Netty"></a>1、Netty</h1><h2 id="1-1、Netty-NIO"><a href="#1-1、Netty-NIO" class="headerlink" title="1.1、Netty NIO"></a>1.1、Netty NIO</h2><h3 id="1-1-1、TCP粘包-拆包解决之道"><a href="#1-1-1、TCP粘包-拆包解决之道" class="headerlink" title="1.1.1、TCP粘包&#x2F;拆包解决之道"></a>1.1.1、TCP粘包&#x2F;拆包解决之道</h3><h4 id="TCP粘包-拆包问题"><a href="#TCP粘包-拆包问题" class="headerlink" title="TCP粘包&#x2F;拆包问题"></a>TCP粘包&#x2F;拆包问题</h4><p><img src="/imgs/javadev/image-20200926153613957.png" alt="image-20200926153613957"></p>
+<p><img src="/imgs/javadev/image-20200926153705885.png" alt="image-20200926153705885"></p>
 <h4 id="TCP粘包-拆包发送的原因"><a href="#TCP粘包-拆包发送的原因" class="headerlink" title="TCP粘包&#x2F;拆包发送的原因"></a>TCP粘包&#x2F;拆包发送的原因</h4><ol>
 <li>应用程序write写入的字节 大于 套接口发送缓冲区的大小。</li>
 <li>进行MSS大小的TCP分段。</li>
@@ -439,7 +439,7 @@
 <li>将消息分为消息头和消息体，消息头中包含表示消息总长度的字段，通常设计思路为消息头的第一个字段使用int32来表示消息总长度。</li>
 <li>更复杂的应用层协议。</li>
 </ol>
-<h4 id="利用LineBasedFrameDecoder解决TCP粘包问题"><a href="#利用LineBasedFrameDecoder解决TCP粘包问题" class="headerlink" title="利用LineBasedFrameDecoder解决TCP粘包问题"></a>利用LineBasedFrameDecoder解决TCP粘包问题</h4><h3 id="1-1-2、分隔符和定长解码器的应用"><a href="#1-1-2、分隔符和定长解码器的应用" class="headerlink" title="1.1.2、分隔符和定长解码器的应用"></a>1.1.2、分隔符和定长解码器的应用</h3><p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200926154906270.png" alt="image-20200926154906270"></p>
+<h4 id="利用LineBasedFrameDecoder解决TCP粘包问题"><a href="#利用LineBasedFrameDecoder解决TCP粘包问题" class="headerlink" title="利用LineBasedFrameDecoder解决TCP粘包问题"></a>利用LineBasedFrameDecoder解决TCP粘包问题</h4><h3 id="1-1-2、分隔符和定长解码器的应用"><a href="#1-1-2、分隔符和定长解码器的应用" class="headerlink" title="1.1.2、分隔符和定长解码器的应用"></a>1.1.2、分隔符和定长解码器的应用</h3><p><img src="/imgs/javadev/image-20200926154906270.png" alt="image-20200926154906270"></p>
 <h4 id="DelimiterBasedFrameDecoder应用开发"><a href="#DelimiterBasedFrameDecoder应用开发" class="headerlink" title="DelimiterBasedFrameDecoder应用开发"></a>DelimiterBasedFrameDecoder应用开发</h4><p>通过DelimiterBasedFrameDecoder的使用，可以自动完成以分隔符作为码流结束标志的消息的解码。</p>
 <h4 id="FixedLengthFrameDecoder应用开发"><a href="#FixedLengthFrameDecoder应用开发" class="headerlink" title="FixedLengthFrameDecoder应用开发"></a>FixedLengthFrameDecoder应用开发</h4><p>FixedLengthFrameDecoder是固定长度解码器，它能够按照指定长度对消息进行自动解码，开发者无需考虑TCP粘包&#x2F;拆包问题，非常实用。</p>
 <h2 id="1-2、Netty编解码技术"><a href="#1-2、Netty编解码技术" class="headerlink" title="1.2、Netty编解码技术"></a>1.2、Netty编解码技术</h2><h3 id="1-2-1、编解码技术"><a href="#1-2-1、编解码技术" class="headerlink" title="1.2.1、编解码技术"></a>1.2.1、编解码技术</h3><h4 id="Java序列化缺点"><a href="#Java序列化缺点" class="headerlink" title="Java序列化缺点"></a>Java序列化缺点</h4><ol>
@@ -487,7 +487,7 @@
 <li>HTTP消息头。</li>
 <li>HTTP请求正文。</li>
 </ol>
-<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200926145610266.png" alt="image-20200926145610266"></p>
+<p><img src="/imgs/javadev/image-20200926145610266.png" alt="image-20200926145610266"></p>
 <p>请求方法有多种，各方法作用如下：</p>
 <ol>
 <li>GET：请求获取 Request-URLI所标识的资源后附加新的提交数据；</li>
@@ -502,11 +502,11 @@
 <h3 id="1-3-3、HTTP响应消息"><a href="#1-3-3、HTTP响应消息" class="headerlink" title="1.3.3、HTTP响应消息"></a>1.3.3、HTTP响应消息</h3><p>HTTP响应由三部分组成：</p>
 <ol>
 <li><p>状态行。</p>
-<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200926150121923.png" alt="image-20200926150121923"></p>
+<p><img src="/imgs/javadev/image-20200926150121923.png" alt="image-20200926150121923"></p>
 <p>状态代码由三位数字组成：</p>
-<img src="\imgs\javadev\image-20200926150229810.png" alt="image-20200926150229810" style="zoom:90%;float:left;" />
+<img src="/imgs/javadev/image-20200926150229810.png" alt="image-20200926150229810" style="zoom:90%;float:left;" />
 
-<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200926150317627.png" alt="image-20200926150317627"></p>
+<p><img src="/imgs/javadev/image-20200926150317627.png" alt="image-20200926150317627"></p>
 </li>
 <li><p>消息报头。</p>
 </li>
@@ -529,7 +529,7 @@
 <li>服务器可以主动传递消息给客户端，不再需要客户端轮询。</li>
 </ol>
 <h4 id="WebSocket链接建立"><a href="#WebSocket链接建立" class="headerlink" title="WebSocket链接建立"></a>WebSocket链接建立</h4><p><font color='orange'>为建立一个WebSocket连接，客户端浏览器首选需要发送一个HTTP请求，该请求不同以往HTTP请求，该请求包含了一些附加头信息“Upgrade:WebSocket”，该附加头表明这是一个申请协议升级的请求。服务器解析附加头信息后，客户端和服务器就建立了连接，双方可以通过该连接通道互相传送消息，该连接会一直持续到客户端或服务端一方主动关闭连接。</font></p>
-<h4 id="WebSocket生命周期"><a href="#WebSocket生命周期" class="headerlink" title="WebSocket生命周期"></a>WebSocket生命周期</h4><p><img src="/%5Cimgs%5Cjavadev%5Cimage-20201220161719568.png" alt="image-20201220161719568"></p>
+<h4 id="WebSocket生命周期"><a href="#WebSocket生命周期" class="headerlink" title="WebSocket生命周期"></a>WebSocket生命周期</h4><p><img src="/imgs/javadev/image-20201220161719568.png" alt="image-20201220161719568"></p>
 <h4 id="WebSocket连接关闭"><a href="#WebSocket连接关闭" class="headerlink" title="WebSocket连接关闭"></a>WebSocket连接关闭</h4><p>为关闭WebSocket连接，客和服需要通过一个安全的方法关闭底层的TCP链接以及TLS会话。如果合适，丢弃任何可能已经接收的字节，必要时，可以通过任何可用的手段关闭连接。</p>
 <h3 id="1-4-3、Netty-WebSocket协议开发"><a href="#1-4-3、Netty-WebSocket协议开发" class="headerlink" title="1.4.3、Netty WebSocket协议开发"></a>1.4.3、Netty WebSocket协议开发</h3><p>Netty基于HTTP协议栈开发了WebSocket协议栈，利用Netty的WebSocket协议栈可以很方便开发出WebSocket客户端和服务端。</p>
 <h2 id="1-5、私有协议栈开发"><a href="#1-5、私有协议栈开发" class="headerlink" title="1.5、私有协议栈开发"></a>1.5、私有协议栈开发</h2><h3 id="1-5-1、Netty协议栈功能设计"><a href="#1-5-1、Netty协议栈功能设计" class="headerlink" title="1.5.1、Netty协议栈功能设计"></a>1.5.1、Netty协议栈功能设计</h3><p>Netty协议栈用于内部各模块之间的通信，它基于TCP&#x2F;IP协议栈，是一个类HTTP协议的应用层协议栈，相比传统标准协议栈，它更轻巧、灵活和实用。</p>
@@ -540,13 +540,13 @@
 <li>链路的有效性校验机制。</li>
 <li>链路的断连重连机制。</li>
 </ol>
-<h4 id="Netty协议栈通信模型"><a href="#Netty协议栈通信模型" class="headerlink" title="Netty协议栈通信模型"></a>Netty协议栈通信模型</h4><img src="\imgs\javadev\image-20200925134651980.png" alt="image-20200925134651980" style="zoom:120%;float:left" />
+<h4 id="Netty协议栈通信模型"><a href="#Netty协议栈通信模型" class="headerlink" title="Netty协议栈通信模型"></a>Netty协议栈通信模型</h4><img src="/imgs/javadev/image-20200925134651980.png" alt="image-20200925134651980" style="zoom:120%;float:left" />
 
 <h4 id="Netty协议栈消息定义包括两部分"><a href="#Netty协议栈消息定义包括两部分" class="headerlink" title="Netty协议栈消息定义包括两部分;"></a>Netty协议栈消息定义包括两部分;</h4><ol>
 <li>消息头。</li>
 <li>消息体。</li>
 </ol>
-<h4 id="Netty协议支持的字段数据类型如下图："><a href="#Netty协议支持的字段数据类型如下图：" class="headerlink" title="Netty协议支持的字段数据类型如下图："></a>Netty协议支持的字段数据类型如下图：</h4><img src="\imgs\javadev\image-20200925135153588.png" alt="image-20200925135153588"  />
+<h4 id="Netty协议支持的字段数据类型如下图："><a href="#Netty协议支持的字段数据类型如下图：" class="headerlink" title="Netty协议支持的字段数据类型如下图："></a>Netty协议支持的字段数据类型如下图：</h4><img src="/imgs/javadev/image-20200925135153588.png" alt="image-20200925135153588"  />
 
 <h4 id="链路的建立"><a href="#链路的建立" class="headerlink" title="链路的建立"></a>链路的建立</h4><p>为了安全，链路的建立需要通过基于IP地址或者号段的黑白名单安全认证机制。</p>
 <p>客户端与服务端链路建立成功后，由客户端发送握手请求消息。握手请求信息定义如下：</p>
@@ -580,7 +580,7 @@
 <h4 id="安全性设计"><a href="#安全性设计" class="headerlink" title="安全性设计"></a>安全性设计</h4><p>为了保证整个集群环境的安全，内部长连接采用基于 IP 地址的安全认证机制。服务端对握手请求消息的 IP 地址进行合法校验，如果在白名单内，则校验通过；否则，拒绝对方连接。</p>
 <h4 id="可扩展性设计"><a href="#可扩展性设计" class="headerlink" title="可扩展性设计"></a>可扩展性设计</h4><p>Netty 协议需要具备一定的扩展能力。通过Netty消息头中的可选附件 attachment 字段，业务可以方便地进行自定义扩展。</p>
 <h3 id="1-5-2、Netty协议栈开发"><a href="#1-5-2、Netty协议栈开发" class="headerlink" title="1.5.2、Netty协议栈开发"></a>1.5.2、Netty协议栈开发</h3><h4 id="数据结构定义"><a href="#数据结构定义" class="headerlink" title="数据结构定义"></a>数据结构定义</h4><h4 id="消息编解码"><a href="#消息编解码" class="headerlink" title="消息编解码"></a>消息编解码</h4><h4 id="握手和安全认证"><a href="#握手和安全认证" class="headerlink" title="握手和安全认证"></a>握手和安全认证</h4><h4 id="心跳检测机制"><a href="#心跳检测机制" class="headerlink" title="心跳检测机制"></a>心跳检测机制</h4><h4 id="断连重连"><a href="#断连重连" class="headerlink" title="断连重连"></a>断连重连</h4><h4 id="实例"><a href="#实例" class="headerlink" title="实例"></a>实例</h4><h2 id="1-6、ByteBuf和相关辅助类"><a href="#1-6、ByteBuf和相关辅助类" class="headerlink" title="1.6、ByteBuf和相关辅助类"></a>1.6、ByteBuf和相关辅助类</h2><h3 id="1-6-1、ByteBuf"><a href="#1-6-1、ByteBuf" class="headerlink" title="1.6.1、ByteBuf"></a>1.6.1、ByteBuf</h3><h4 id="ByteBuf如何工作"><a href="#ByteBuf如何工作" class="headerlink" title="ByteBuf如何工作"></a>ByteBuf如何工作</h4><p>ByteBuf 维护了两个不同的索引：一个用于读取，一个用于写入。当你从 ByteBuf 读取时，它的 readerIndex 将会被递增已经被读取的字节数。同样地，当你写入 ByteBuf 时，它的writerIndex 也会被递增。图 5-1 展示了一个空 ByteBuf 的布局结构和状态。</p>
-<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20201003133045657.png" alt="image-20201003133045657"></p>
+<p><img src="/imgs/javadev/image-20201003133045657.png" alt="image-20201003133045657"></p>
 <p>名称以 read 或者 write 开头的 ByteBuf 方法，将会推进其对应的索引，而名称以 set 或 者 get 开头的操作则不会。后面的这些方法将在作为一个参数传入的一个相对索引上执行操作。可以指定 ByteBuf 的最大容量。试图移动写索引（即 writerIndex）超过这个值将会触发一个异常。（默认的限制是 Integer.MAX_VALUE。）</p>
 <h4 id="ByteBuf使用模式"><a href="#ByteBuf使用模式" class="headerlink" title="ByteBuf使用模式"></a>ByteBuf使用模式</h4><ol>
 <li><p>堆缓冲区</p>
@@ -657,7 +657,7 @@
 </ol>
 <h3 id="1-6-2、ByteBufHolder-接口"><a href="#1-6-2、ByteBufHolder-接口" class="headerlink" title="1.6.2、ByteBufHolder 接口"></a>1.6.2、ByteBufHolder 接口</h3><p>ByteBufHolder 为 Netty 的高级特性提供了支持，如缓冲区池化，其中可以从池中借用 ByteBuf，并且在需要时自动释放。</p>
 <p>ByteBufHolder 只有几种用于访问底层数据和引用计数的方法。表 5-6 列出了它们（这里不包括它继承自 ReferenceCounted 的那些方法）。</p>
-<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20201003134433406.png" alt="image-20201003134433406"></p>
+<p><img src="/imgs/javadev/image-20201003134433406.png" alt="image-20201003134433406"></p>
 <p>如果想要实现一个将其有效负载存储在 ByteBuf 中的消息对象，那么 ByteBufHolder 将是个不错的选择。</p>
 <h3 id="1-6-3、ByteBuf分配"><a href="#1-6-3、ByteBuf分配" class="headerlink" title="1.6.3、ByteBuf分配"></a>1.6.3、ByteBuf分配</h3><h4 id="按需分配：ByteBufAllocator-接口"><a href="#按需分配：ByteBufAllocator-接口" class="headerlink" title="按需分配：ByteBufAllocator 接口"></a>按需分配：ByteBufAllocator 接口</h4><p>为了降低分配和释放内存的开销，Netty 通过 interface ByteBufAllocator 实现了（ByteBuf 的）池化，它可以用来分配我们所描述过的任意类型的 ByteBuf 实例。使用池化是特定于应用程序的决定，其并不会以任何方式改变 ByteBuf API（的语义）</p>
 <p>可以通过 Channel（每个都可以有一个不同的 ByteBufAllocator 实例）或者绑定到ChannelHandler 的 ChannelHandlerContext 获取一个到 ByteBufAllocator 的引用。</p>
@@ -815,9 +815,9 @@
 <h3 id="1-8-1、ChannelHandler"><a href="#1-8-1、ChannelHandler" class="headerlink" title="1.8.1、ChannelHandler"></a>1.8.1、ChannelHandler</h3><p>Netty 的主要组件是 ChannelHandler，它充当了所有处理入站和出站数据的应用程序逻辑的容器。因为 ChannelHandler 的方法是由网络事件触发的。</p>
 <p>ChannelHandler类似于Servlet的Filter过滤器，负责对I&#x2F;O事件或I&#x2F;O操作进行拦截和处理，它可以选择性的拦截和处理自己感兴趣的事件，也可以透传和终止事件的传递。</p>
 <h4 id="Channel生命周期"><a href="#Channel生命周期" class="headerlink" title="Channel生命周期"></a>Channel生命周期</h4><p>Channel 的正常生命周期如图 6-1 所示。当这些状态发生改变时，将会生成对应的事件。这些事件将会被转发给 ChannelPipeline 中的 ChannelHandler，其可以随后对它们做出响应。</p>
-<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20201003165119330.png" alt="image-20201003165119330"></p>
+<p><img src="/imgs/javadev/image-20201003165119330.png" alt="image-20201003165119330"></p>
 <h4 id="ChannelHandler生命周期"><a href="#ChannelHandler生命周期" class="headerlink" title="ChannelHandler生命周期"></a>ChannelHandler生命周期</h4><p>表 6-2 中列出了 interface ChannelHandler 定义的生命周期操作，在 ChannelHandler被添加到 ChannelPipeline 中或者被从 ChannelPipeline 中移除时会调用这些操作。这些方法中的每一个都接受一个 ChannelHandlerContext 参数。</p>
-<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20201003165259567.png" alt="image-20201003165259567"></p>
+<p><img src="/imgs/javadev/image-20201003165259567.png" alt="image-20201003165259567"></p>
 <p>Netty 定义了下面两个重要的 ChannelHandler 子接口： </p>
 <ol>
 <li>ChannelInboundHandler——处理入站数据以及各种状态变化； </li>
@@ -840,7 +840,7 @@ advanced leak reporting<span class="token punctuation">,</span> <span class="tok
 ResourceLeakDetector<span class="token punctuation">.</span><span class="token function">setLevel</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Netty 目前定义了 4 种泄漏检测级别，如表 6-5 所示：</p>
-<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20201003170533335.png" alt="image-20201003170533335"></p>
+<p><img src="/imgs/javadev/image-20201003170533335.png" alt="image-20201003170533335"></p>
 <p>泄露检测级别可以通过将下面的 Java 系统属性设置为表中的一个值来定义：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">java</span> <span class="token parameter variable">-Dio.netty.leakDetectionLevel</span><span class="token operator">=</span>ADVANCED<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -853,7 +853,7 @@ ResourceLeakDetector<span class="token punctuation">.</span><span class="token f
 <li>ChannelInitializer 将它自己从 ChannelPipeline 中移除。</li>
 </ol>
 <p>一个 Netty 应用程序中入站和出站数据流之间的区别：从一个客户端应用程序的角度来看，如果事件的运动方向是从客户端到服务器端，那么我们称这些事件为出站的，反之则称为入站的。</p>
-<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20201003111119360.png" alt="image-20201003111119360"></p>
+<p><img src="/imgs/javadev/image-20201003111119360.png" alt="image-20201003111119360"></p>
 <p>鉴于出站操作和入站操作是不同的，你可能会想知道如果将两个类别的 ChannelHandler都混合添加到同一个 ChannelPipeline 中会发生什么。虽然 ChannelInboundHandle 和ChannelOutboundHandle 都扩展自ChannelHandler，但是 Netty 能区分 ChannelInboundHandler 实现和 ChannelOutboundHandler 实现，并确保数据只会在具有相同定向类型的两个 ChannelHandler 之间传递。</p>
 <p>当ChannelHandler 被添加到ChannelPipeline 时，它将会被分配一个ChannelHandlerContext，其代表了 ChannelHandler 和 ChannelPipeline 之间的绑定。虽然这个对象可以被用于获取底层的 Channel，但是它主要还是被用于写出站数据。</p>
 <p>在 Netty 中，有两种发送消息的方式：</p>
@@ -874,9 +874,9 @@ ResourceLeakDetector<span class="token punctuation">.</span><span class="token f
 <li>如同我们在本节开头所解释的一样，相对于其他类的同名方法，ChannelHandler Context的方法将产生更短的事件流，应该尽可能地利用这个特性来获得最大的性能。</li>
 </ol>
 <h4 id="使用-ChannelHandlerContext"><a href="#使用-ChannelHandlerContext" class="headerlink" title="使用 ChannelHandlerContext"></a>使用 ChannelHandlerContext</h4><p>ChannelHandlerContext、Channel 和 ChannelPipeline之间的关系如下图所示：</p>
-<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20201003181432006.png" alt="image-20201003181432006"></p>
+<p><img src="/imgs/javadev/image-20201003181432006.png" alt="image-20201003181432006"></p>
 <p>通过 Channel 或者 ChannelPipeline 进行的事件传播：</p>
-<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20201003181705767.png" alt="image-20201003181705767"></p>
+<p><img src="/imgs/javadev/image-20201003181705767.png" alt="image-20201003181705767"></p>
 <p>为什么会想要从 ChannelPipeline 中的某个特定点开始传播事件呢？ </p>
 <ol>
 <li>为了减少将事件传经对它不感兴趣的 ChannelHandler 所带来的开销。</li>
@@ -971,11 +971,11 @@ future<span class="token punctuation">.</span><span class="token function">addLi
 <p>每一个 Channel 都将被分配给一个 EventLoop（以及它的 Thread）。得到的保证是每个 Channel 的 I&#x2F;O 事件都将只会被一个 Thread（用于支撑该 Channel 的 EventLoop 的那个 Thread）处理。这也是另一个 Netty 设计一致性的例子，它（这种设计上的一致性）对 Netty 的可靠性和易用性做出了巨大贡献。</p>
 </li>
 </ol>
-<h3 id="1-9-4、Netty线程模型"><a href="#1-9-4、Netty线程模型" class="headerlink" title="1.9.4、Netty线程模型"></a>1.9.4、Netty线程模型</h3><h4 id="Reactor单线程模型"><a href="#Reactor单线程模型" class="headerlink" title="Reactor单线程模型"></a>Reactor单线程模型</h4><p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200926143305077.png" alt="image-20200926143305077"></p>
-<h4 id="Reactor多线程模型"><a href="#Reactor多线程模型" class="headerlink" title="Reactor多线程模型"></a>Reactor多线程模型</h4><p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200926143349772.png" alt="image-20200926143349772"></p>
-<h4 id="主从Reactor多线程模型"><a href="#主从Reactor多线程模型" class="headerlink" title="主从Reactor多线程模型"></a>主从Reactor多线程模型</h4><p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200926143448810.png" alt="image-20200926143448810"></p>
+<h3 id="1-9-4、Netty线程模型"><a href="#1-9-4、Netty线程模型" class="headerlink" title="1.9.4、Netty线程模型"></a>1.9.4、Netty线程模型</h3><h4 id="Reactor单线程模型"><a href="#Reactor单线程模型" class="headerlink" title="Reactor单线程模型"></a>Reactor单线程模型</h4><p><img src="/imgs/javadev/image-20200926143305077.png" alt="image-20200926143305077"></p>
+<h4 id="Reactor多线程模型"><a href="#Reactor多线程模型" class="headerlink" title="Reactor多线程模型"></a>Reactor多线程模型</h4><p><img src="/imgs/javadev/image-20200926143349772.png" alt="image-20200926143349772"></p>
+<h4 id="主从Reactor多线程模型"><a href="#主从Reactor多线程模型" class="headerlink" title="主从Reactor多线程模型"></a>主从Reactor多线程模型</h4><p><img src="/imgs/javadev/image-20200926143448810.png" alt="image-20200926143448810"></p>
 <h4 id="Netty线程模型"><a href="#Netty线程模型" class="headerlink" title="Netty线程模型"></a>Netty线程模型</h4><p>Netty的线程模型并发一成不变，它实际取决于用户的启动参数配置。通过配置，Netty可以同时支持Reactor单线程模型、Reactor多线程模型、主从Reactor多线程模型。</p>
-<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200925151324727.png" alt="image-20200925151324727"></p>
+<p><img src="/imgs/javadev/image-20200925151324727.png" alt="image-20200925151324727"></p>
 <h3 id="1-9-5、NioEventLoop"><a href="#1-9-5、NioEventLoop" class="headerlink" title="1.9.5、NioEventLoop"></a>1.9.5、NioEventLoop</h3><h4 id="设计原理"><a href="#设计原理" class="headerlink" title="设计原理"></a>设计原理</h4><p>NioEventLoop并非一个纯粹的I&#x2F;O线程，它除了负责I&#x2F;O读写外，还兼顾处理如下两类任务：</p>
 <ol>
 <li>系统Task。</li>
@@ -990,14 +990,14 @@ future<span class="token punctuation">.</span><span class="token function">addLi
 <li>而另一种（ServerBootstrap）用于服务器；</li>
 </ol>
 <p>无论你的应用程序使用哪种协议或者处理哪种类型的数据，唯一决定它使用哪种引导类的是它是作为一个客户端还是作为一个服务器。</p>
-<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20201003121533517.png" alt="image-20201003121533517"></p>
+<p><img src="/imgs/javadev/image-20201003121533517.png" alt="image-20201003121533517"></p>
 <p>引导一个客户端只需要一个 EventLoopGroup，但是一个ServerBootstrap 则需要两个（也可以是同一个实例）。为什么呢？</p>
 <p>因为服务器需要两组不同的 Channel。第一组将只包含一个 ServerChannel，代表服务器自身的已绑定到某个本地端口的正在监听的套接字。而第二组将包含所有已创建的用来处理传入客户端连接（对于每个服务器已经接受的连接都有一个）的 Channel。图 3-4 说明了这个模型，并且展示了为何需要两个不同的 EventLoopGroup。</p>
-<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20201003122021907.png" alt="image-20201003122021907"></p>
+<p><img src="/imgs/javadev/image-20201003122021907.png" alt="image-20201003122021907"></p>
 <p>与 ServerChannel 相关联的 EventLoopGroup 将分配一个负责为传入连接请求创建Channel 的 EventLoop。一旦连接被接受，第二个 EventLoopGroup 就会给它的 Channel分配一个 EventLoop。</p>
 <h3 id="1-11-2、从-Channel-引导客户端"><a href="#1-11-2、从-Channel-引导客户端" class="headerlink" title="1.11.2、从 Channel 引导客户端"></a>1.11.2、从 Channel 引导客户端</h3><p>假设你的服务器正在处理一个客户端的请求，这个请求需要它充当第三方系统的客户端。当一个应用程序（如一个代理服务器）必须要和组织现有的系统（如 Web 服务或者数据库）集成时，就可能发生这种情况。在这种情况下，将需要从已经被接受的子 Channel 中引导一个客户端 Channel。</p>
 <p>一个更好的解决方案是：通过将已被接受的子 Channel 的 EventLoop 传递给 Bootstrap的 group()方法来共享该 EventLoop。因为分配给 EventLoop 的所有 Channel 都使用同一个线程，所以这避免了额外的线程创建，以及前面所提到的相关的上下文切换。这个共享的解决方案如图 8-4 所示。</p>
-<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20201004110224106.png" alt="image-20201004110224106"></p>
+<p><img src="/imgs/javadev/image-20201004110224106.png" alt="image-20201004110224106"></p>
 <h3 id="1-11-3、在引导过程中添加多个-ChannelHandler"><a href="#1-11-3、在引导过程中添加多个-ChannelHandler" class="headerlink" title="1.11.3、在引导过程中添加多个 ChannelHandler"></a>1.11.3、在引导过程中添加多个 ChannelHandler</h3><p>Netty 提供了一个特殊的 ChannelInboundHandlerAdapter 子类：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">abstract</span> <span class="token keyword">class</span> <span class="token class-name">ChannelInitializer</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">C</span> <span class="token keyword">extends</span> <span class="token class-name">Channel</span><span class="token punctuation">></span></span> <span class="token keyword">extends</span> <span class="token class-name">ChannelInboundHandlerAdapter</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -1009,16 +1009,16 @@ future<span class="token punctuation">.</span><span class="token function">addLi
 <h3 id="1-11-5、引导-DatagramChannel"><a href="#1-11-5、引导-DatagramChannel" class="headerlink" title="1.11.5、引导 DatagramChannel"></a>1.11.5、引导 DatagramChannel</h3><p>引导使用不仅可以基于 TCP 协议的 SocketChannel，也可以被用于无连接的协议。为此，Netty 提供了各种 DatagramChannel 的实现。唯一区别就是，不再调用 connect()方法，而是只调用 bind()方法，</p>
 <h3 id="1-11-6、关闭"><a href="#1-11-6、关闭" class="headerlink" title="1.11.6、关闭"></a>1.11.6、关闭</h3><p>引导使你的应用程序启动并且运行起来，但是迟早你都需要优雅地将它关闭。最重要的是，你需要关闭 EventLoopGroup，它将处理任何挂起的事件和任务，并且随后释放所有活动的线程。这就是调用 EventLoopGroup.shutdownGracefully()方法的作用。这个方法调用将会返回一个 Future，这个 Future 将在关闭完成时接收到通知。需要注意的是，shutdownGracefully()方法也是一个异步的操作，所以你需要阻塞等待直到它完成，或者向所返回的 Future 注册一个监听器以在关闭完成时获得通知。</p>
 <h1 id="2、Netty架构剖析"><a href="#2、Netty架构剖析" class="headerlink" title="2、Netty架构剖析"></a>2、Netty架构剖析</h1><h2 id="2-1、Netty逻辑架构"><a href="#2-1、Netty逻辑架构" class="headerlink" title="2.1、Netty逻辑架构"></a>2.1、Netty逻辑架构</h2><p>Netty采用三层网络架构进行设计和开发，逻辑架构如图：</p>
-<p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200925153422674.png" alt="image-20200925153422674"></p>
-<h3 id="2-1-1、Reactor通信调度层"><a href="#2-1-1、Reactor通信调度层" class="headerlink" title="2.1.1、Reactor通信调度层"></a>2.1.1、Reactor通信调度层</h3><h3 id="2-1-2、职责链ChannelPipeline"><a href="#2-1-2、职责链ChannelPipeline" class="headerlink" title="2.1.2、职责链ChannelPipeline"></a>2.1.2、职责链ChannelPipeline</h3><h3 id="2-1-3、业务逻辑编排层（Service-ChannelHandler）"><a href="#2-1-3、业务逻辑编排层（Service-ChannelHandler）" class="headerlink" title="2.1.3、业务逻辑编排层（Service ChannelHandler）"></a>2.1.3、业务逻辑编排层（Service ChannelHandler）</h3><h2 id="2-2、关键架构质量属性"><a href="#2-2、关键架构质量属性" class="headerlink" title="2.2、关键架构质量属性"></a>2.2、关键架构质量属性</h2><h3 id="2-2-1、高性能"><a href="#2-2-1、高性能" class="headerlink" title="2.2.1、高性能"></a>2.2.1、高性能</h3><p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200925153953385.png" alt="image-20200925153953385"></p>
+<p><img src="/imgs/javadev/image-20200925153422674.png" alt="image-20200925153422674"></p>
+<h3 id="2-1-1、Reactor通信调度层"><a href="#2-1-1、Reactor通信调度层" class="headerlink" title="2.1.1、Reactor通信调度层"></a>2.1.1、Reactor通信调度层</h3><h3 id="2-1-2、职责链ChannelPipeline"><a href="#2-1-2、职责链ChannelPipeline" class="headerlink" title="2.1.2、职责链ChannelPipeline"></a>2.1.2、职责链ChannelPipeline</h3><h3 id="2-1-3、业务逻辑编排层（Service-ChannelHandler）"><a href="#2-1-3、业务逻辑编排层（Service-ChannelHandler）" class="headerlink" title="2.1.3、业务逻辑编排层（Service ChannelHandler）"></a>2.1.3、业务逻辑编排层（Service ChannelHandler）</h3><h2 id="2-2、关键架构质量属性"><a href="#2-2、关键架构质量属性" class="headerlink" title="2.2、关键架构质量属性"></a>2.2、关键架构质量属性</h2><h3 id="2-2-1、高性能"><a href="#2-2-1、高性能" class="headerlink" title="2.2.1、高性能"></a>2.2.1、高性能</h3><p><img src="/imgs/javadev/image-20200925153953385.png" alt="image-20200925153953385"></p>
 <h3 id="2-2-2、可靠性"><a href="#2-2-2、可靠性" class="headerlink" title="2.2.2、可靠性"></a>2.2.2、可靠性</h3><ol>
 <li>链路有效性检测</li>
 <li>内存保护机制</li>
 <li>优雅停机</li>
 </ol>
-<h3 id="2-2-3、可定制性"><a href="#2-2-3、可定制性" class="headerlink" title="2.2.3、可定制性"></a>2.2.3、可定制性</h3><p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200925154201341.png" alt="image-20200925154201341"></p>
-<h3 id="2-2-4、可扩展性"><a href="#2-2-4、可扩展性" class="headerlink" title="2.2.4、可扩展性"></a>2.2.4、可扩展性</h3><p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200925154324225.png" alt="image-20200925154324225"></p>
-<h1 id="3、Java多线程在Netty中的应用"><a href="#3、Java多线程在Netty中的应用" class="headerlink" title="3、Java多线程在Netty中的应用"></a>3、Java多线程在Netty中的应用</h1><h2 id="3-1、Netty并发编程实践"><a href="#3-1、Netty并发编程实践" class="headerlink" title="3.1、Netty并发编程实践"></a>3.1、Netty并发编程实践</h2><h3 id="3-1-1、对共享可变数据进行正确同步"><a href="#3-1-1、对共享可变数据进行正确同步" class="headerlink" title="3.1.1、对共享可变数据进行正确同步"></a>3.1.1、对共享可变数据进行正确同步</h3><p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200925154944535.png" alt="image-20200925154944535"></p>
+<h3 id="2-2-3、可定制性"><a href="#2-2-3、可定制性" class="headerlink" title="2.2.3、可定制性"></a>2.2.3、可定制性</h3><p><img src="/imgs/javadev/image-20200925154201341.png" alt="image-20200925154201341"></p>
+<h3 id="2-2-4、可扩展性"><a href="#2-2-4、可扩展性" class="headerlink" title="2.2.4、可扩展性"></a>2.2.4、可扩展性</h3><p><img src="/imgs/javadev/image-20200925154324225.png" alt="image-20200925154324225"></p>
+<h1 id="3、Java多线程在Netty中的应用"><a href="#3、Java多线程在Netty中的应用" class="headerlink" title="3、Java多线程在Netty中的应用"></a>3、Java多线程在Netty中的应用</h1><h2 id="3-1、Netty并发编程实践"><a href="#3-1、Netty并发编程实践" class="headerlink" title="3.1、Netty并发编程实践"></a>3.1、Netty并发编程实践</h2><h3 id="3-1-1、对共享可变数据进行正确同步"><a href="#3-1-1、对共享可变数据进行正确同步" class="headerlink" title="3.1.1、对共享可变数据进行正确同步"></a>3.1.1、对共享可变数据进行正确同步</h3><p><img src="/imgs/javadev/image-20200925154944535.png" alt="image-20200925154944535"></p>
 <h3 id="3-1-2、正确使用锁"><a href="#3-1-2、正确使用锁" class="headerlink" title="3.1.2、正确使用锁"></a>3.1.2、正确使用锁</h3><p>参考ForkJoinTask源码。</p>
 <h3 id="3-1-3、正确使用volatile"><a href="#3-1-3、正确使用volatile" class="headerlink" title="3.1.3、正确使用volatile"></a>3.1.3、正确使用volatile</h3><p>参考NioEventLoop源码。</p>
 <h3 id="3-1-4、CAS指令和原子类"><a href="#3-1-4、CAS指令和原子类" class="headerlink" title="3.1.4、CAS指令和原子类"></a>3.1.4、CAS指令和原子类</h3><p>参考ChannelOutboundBuffer源码，分析如何对发送的总字节数进行计数和更新操作。</p>
@@ -1079,7 +1079,7 @@ future<span class="token punctuation">.</span><span class="token function">addLi
 <li>SO_TCPNODELAY：NAGLE算法通过将缓冲区内的小封包自动相连组成较大的封包，阻止大量小封包的发送阻塞网络，从而提高网络应用效率。但对于时延敏感的场景需要关闭该优化算法：</li>
 <li>软中断。</li>
 </ol>
-<h1 id="5、Netty参数配置表"><a href="#5、Netty参数配置表" class="headerlink" title="5、Netty参数配置表"></a>5、Netty参数配置表</h1><p><img src="/%5Cimgs%5Cjavadev%5Cimage-20200926142549088.png" alt="image-20200926142549088"></p>
+<h1 id="5、Netty参数配置表"><a href="#5、Netty参数配置表" class="headerlink" title="5、Netty参数配置表"></a>5、Netty参数配置表</h1><p><img src="/imgs/javadev/image-20200926142549088.png" alt="image-20200926142549088"></p>
 
                 
             </div>

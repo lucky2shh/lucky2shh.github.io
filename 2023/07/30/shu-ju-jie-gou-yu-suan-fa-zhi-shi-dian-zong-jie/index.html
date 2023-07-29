@@ -474,7 +474,7 @@
 </li>
 </ol>
 <h4 id="1-1-1-4、归并排序"><a href="#1-1-1-4、归并排序" class="headerlink" title="1.1.1.4、归并排序"></a>1.1.1.4、归并排序</h4><p>归并排序 基于 分治法，其思想是将待排序的元素序列分成两个相等的子序列，然后再对子序列再次分割两个子序列，一直分割到一个序列只有一个元素为止。然后比较相邻两个子序列中数据大小，将小的放左边，大的放右边，并将之合并为一个序列，以此类推，直到合并完成为止。</p>
-<img src="\imgs\javadev\image-20200921145201640.png" alt="image-20200921145201640" style="zoom:50%;" />
+<img src="/imgs/javadev/image-20200921145201640.png" alt="image-20200921145201640" style="zoom:50%;" />
 
 <h4 id="1-1-1-5、基数排序"><a href="#1-1-1-5、基数排序" class="headerlink" title="1.1.1.5、基数排序"></a>1.1.1.5、基数排序</h4><p>基数排序（radix sort）属于“分配式排序”（distribution sort），又称“桶子法”（bucket sort）或bin sort，顾名思义，它是通过键值的各个位的值，将要排序的元素分配至某些“桶”中，从而达到排序的作用，基数排序法是属于稳定性的排序。</p>
 <h3 id="1-1-2、外部排序"><a href="#1-1-2、外部排序" class="headerlink" title="1.1.2、外部排序"></a>1.1.2、外部排序</h3><h2 id="1-2、查找算法"><a href="#1-2、查找算法" class="headerlink" title="1.2、查找算法"></a>1.2、查找算法</h2><p>Java中常用的查找算法有四种。</p>
@@ -549,7 +549,7 @@
 <li>精确匹配</li>
 <li>近似匹配</li>
 </ol>
-<h4 id="部分匹配表"><a href="#部分匹配表" class="headerlink" title="部分匹配表"></a>部分匹配表</h4><img src="C:\Users\shihao\AppData\Roaming\Typora\typora-user-images\image-20200919141327620.png" alt="image-20200919141327620" style="zoom:100%;float:left;" />
+<h4 id="部分匹配表"><a href="#部分匹配表" class="headerlink" title="部分匹配表"></a>部分匹配表</h4><img src="C:/Users/shihao/AppData/Roaming/Typora/typora-user-images/image-20200919141327620.png" alt="image-20200919141327620" style="zoom:100%;float:left;" />
 
 <p>由表可得：移动位数 &#x3D; 已匹配的字符数 + 对应的部分匹配值。</p>
 <h3 id="1-3-6、贪心算法（局部最优解）"><a href="#1-3-6、贪心算法（局部最优解）" class="headerlink" title="1.3.6、贪心算法（局部最优解）"></a>1.3.6、贪心算法（局部最优解）</h3><h4 id="简介-5"><a href="#简介-5" class="headerlink" title="简介"></a>简介</h4><p><strong>贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，算法得到的是在某种意义上的局部最优解</strong>。</p>
@@ -558,13 +558,13 @@
 <p>例如，通过普里姆算法查找下图的最小生成树的步骤为：</p>
 <ol>
 <li><p>假如从顶点A出发，顶点 B、C、D 到顶点 A 的权值分别为 2、4、2，所以，对于顶点 A 来说，顶点 B 和顶点 D 到 A 的权值最小，假设先找到的顶点 B：</p>
-<p><img src="C:\Users\shihao\AppData\Roaming\Typora\typora-user-images\image-20200920084320304.png" alt="image-20200920084320304"></p>
+<p><img src="C:/Users/shihao/AppData/Roaming/Typora/typora-user-images/image-20200920084320304.png" alt="image-20200920084320304"></p>
 </li>
 <li><p>继续分析顶点 C 和 D，顶点 C 到 B 的权值为 3，到 A 的权值为 4；顶点 D 到 A 的权值为 2，到 B 的权值为无穷大（如果之间没有直接通路，设定权值为无穷大）。所以顶点 D 到 A 的权值最小：</p>
-<p><img src="C:\Users\shihao\AppData\Roaming\Typora\typora-user-images\image-20200920084352501.png" alt="image-20200920084352501"></p>
+<p><img src="C:/Users/shihao/AppData/Roaming/Typora/typora-user-images/image-20200920084352501.png" alt="image-20200920084352501"></p>
 </li>
 <li><p>最后，只剩下顶点 C，到 A 的权值为 4，到 B 的权值和到 D 的权值一样大，为 3。所以该连通图有两个最小生成树：</p>
-<p><img src="C:\Users\shihao\AppData\Roaming\Typora\typora-user-images\image-20200920084435924.png" alt="image-20200920084435924"></p>
+<p><img src="C:/Users/shihao/AppData/Roaming/Typora/typora-user-images/image-20200920084435924.png" alt="image-20200920084435924"></p>
 </li>
 </ol>
 <h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>普利姆算法求最小生成树，是从顶点方面考虑，存在两重遍历(已访问顶点集和未访问顶点集)，对应的还有一个克鲁斯卡尔算法求最小生成树，是从边的角度出发考虑的。根据各自算法特性，可以粗略的判断出，把稠密图看作边集相对于点集数量级比较大，稀疏图看作点集相对于边集较大，则普利姆算法适合于计算稠密图，克鲁斯卡尔算法适合于计算稀疏图。</p>
@@ -604,7 +604,7 @@
 <li>k次方阶O(n^k)</li>
 <li>指数阶O(2^n)</li>
 </ol>
-<p><img src="C:\Users\shihao\Desktop\图片\工作\算法数据结构\算法时间复杂度01.jpg" alt="算法时间复杂度01"></p>
+<p><img src="C:/Users/shihao/Desktop/图片/工作/算法数据结构/算法时间复杂度01.jpg" alt="算法时间复杂度01"></p>
 <h3 id="1-4-2、空间复杂度"><a href="#1-4-2、空间复杂度" class="headerlink" title="1.4.2、空间复杂度"></a>1.4.2、空间复杂度</h3><h4 id="简介-11"><a href="#简介-11" class="headerlink" title="简介"></a>简介</h4><p>类似于时间复杂度，一个算法的空间复杂度 定义为 该算法所消耗的存储空间。</p>
 <h4 id="Big-O"><a href="#Big-O" class="headerlink" title="Big O"></a>Big O</h4><ul>
 <li>时间问题（数据）规模<ol>
@@ -619,7 +619,7 @@
 </ol>
 </li>
 </ul>
-<h3 id="1-4-3、总结"><a href="#1-4-3、总结" class="headerlink" title="1.4.3、总结"></a>1.4.3、总结</h3><h4 id="排序算法-时间-空间复杂度-对比"><a href="#排序算法-时间-空间复杂度-对比" class="headerlink" title="排序算法 时间&#x2F;空间复杂度 对比"></a>排序算法 时间&#x2F;空间复杂度 对比</h4><p><img src="C:\Users\shihao\Desktop\图片\工作\算法数据结构\排序算法时间空间复杂度01.jpg" alt="排序算法时间空间复杂度01"></p>
+<h3 id="1-4-3、总结"><a href="#1-4-3、总结" class="headerlink" title="1.4.3、总结"></a>1.4.3、总结</h3><h4 id="排序算法-时间-空间复杂度-对比"><a href="#排序算法-时间-空间复杂度-对比" class="headerlink" title="排序算法 时间&#x2F;空间复杂度 对比"></a>排序算法 时间&#x2F;空间复杂度 对比</h4><p><img src="C:/Users/shihao/Desktop/图片/工作/算法数据结构/排序算法时间空间复杂度01.jpg" alt="排序算法时间空间复杂度01"></p>
 <h1 id="2、数据结构"><a href="#2、数据结构" class="headerlink" title="2、数据结构"></a>2、数据结构</h1><h2 id="2-1、简介"><a href="#2-1、简介" class="headerlink" title="2.1、简介"></a>2.1、简介</h2><p>其英文称为：Data Structure，其表示存储数据的不同方式。 </p>
 <h2 id="2-2、分类"><a href="#2-2、分类" class="headerlink" title="2.2、分类"></a>2.2、分类</h2><p>数据结构分为 <strong>线性结构 和 非线性结构</strong> 两大类。</p>
 <h3 id="2-2-1、线性结构"><a href="#2-2-1、线性结构" class="headerlink" title="2.2.1、线性结构"></a>2.2.1、线性结构</h3><p>线性结构是常用的数据结构，其特点是数据元素之间存在一对一的线性关系。</p>
