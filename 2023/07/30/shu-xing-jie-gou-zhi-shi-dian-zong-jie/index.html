@@ -1,0 +1,1358 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="数据与算法系列-树结构, 豪哥博客">
+    <meta name="description" content="豪哥个人博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>数据与算法系列-树结构 | 豪哥博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">豪哥博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">豪哥博客</div>
+        <div class="logo-desc">
+            
+            豪哥个人博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">数据与算法系列-树结构</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                <span class="chip bg-color">数据结构</span>
+                            </a>
+                        
+                            <a href="/tags/%E6%A0%91/">
+                                <span class="chip bg-color">树</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-category">
+                                数据与算法
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-07-30
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.8k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="1、二叉排序树"><a href="#1、二叉排序树" class="headerlink" title="1、二叉排序树"></a>1、二叉排序树</h1><h2 id="1-1、简介"><a href="#1-1、简介" class="headerlink" title="1.1、简介"></a>1.1、简介</h2><p><font color='orange'>二叉排序树 又称 二叉查找树、二叉搜索树。其是数据结构的一种。</font></p>
+<p>通常情况下，查询效率比链表要高。</p>
+<h2 id="1-2、定义"><a href="#1-2、定义" class="headerlink" title="1.2、定义"></a>1.2、定义</h2><p>空树，或拥有如下特点的二叉树：</p>
+<ol>
+<li>左子树上所有结点的值 均小于 根结点的值；</li>
+<li>右子树上所有结点的值 均大于 根结点的值；</li>
+<li>左、右子树也分别为二叉排序树；</li>
+<li>没有键值相等的结点。</li>
+</ol>
+<h2 id="1-3、插入删除"><a href="#1-3、插入删除" class="headerlink" title="1.3、插入删除"></a>1.3、插入删除</h2><p>与次优二叉树相对，二叉排序树 是一种 动态树表。特点是：<font color='orange'>树结构 通常 并非是一次生成，而是在查找过程中，当树中不存在关键字等于给定值的结点时再进行插入。新插入的结点一定是一个新添加的叶子结点，并且是查找不成功时查找路径上访问的最后一个结点的左孩子或右孩子结点。</font></p>
+<h2 id="1-4、性能分析"><a href="#1-4、性能分析" class="headerlink" title="1.4、性能分析"></a>1.4、性能分析</h2><p>每个结点的C(i) 就是 该结点的层次数。最坏情况下，当插入的关键字有序时，会形成单支树，树深为平均查找长度(n+1)&#x2F;2（和顺序查找相同），最好情况就是 与折半查找相同，平均查找长度和log2(n)成正比。</p>
+<blockquote>
+<p><font color='orange'>最好情况下时间复杂度为O(1)，最坏情况下时间复杂度为O(n)。</font></p>
+</blockquote>
+<h2 id="1-5、优化"><a href="#1-5、优化" class="headerlink" title="1.5、优化"></a>1.5、优化</h2><p>使用其它数据结构代替，且其查找树的高度均为O(log(n))。</p>
+<ol>
+<li>Size Balanced Tree(SBT)</li>
+<li>AVL树</li>
+<li>红黑树</li>
+<li>Treap</li>
+</ol>
+<h1 id="2、AVL树"><a href="#2、AVL树" class="headerlink" title="2、AVL树"></a>2、AVL树</h1><h2 id="2-1、简介"><a href="#2-1、简介" class="headerlink" title="2.1、简介"></a>2.1、简介</h2><p>AVL树是一种高效的自平衡二叉搜索树，它的特点在于它可以自动保持平衡。</p>
+<blockquote>
+<p><font color='orange'>windows对 进程地址空间 的管理用到了 AVL树。</font></p>
+</blockquote>
+<h2 id="2-2、特点"><a href="#2-2、特点" class="headerlink" title="2.2、特点"></a>2.2、特点</h2><p>AVL树 本质上是 二叉搜索树，其特点如下：</p>
+<ol>
+<li>是二叉搜索树。</li>
+<li>带有平衡条件：<font color='orange'>每个结点的左右子树的高度差的绝对值（平衡因子）最大为1。</font></li>
+</ol>
+<h2 id="2-3、优缺点"><a href="#2-3、优缺点" class="headerlink" title="2.3、优缺点"></a>2.3、优缺点</h2><h3 id="2-3-1、优点（严格平衡）"><a href="#2-3-1、优点（严格平衡）" class="headerlink" title="2.3.1、优点（严格平衡）"></a>2.3.1、优点（严格平衡）</h3><p><font color='orange'>AVL树 是严格的 平衡二叉树，所有节点的左右子树高度差不能超过1；</font></p>
+<h3 id="2-3-2、缺点（旋转耗时）"><a href="#2-3-2、缺点（旋转耗时）" class="headerlink" title="2.3.2、缺点（旋转耗时）"></a>2.3.2、缺点（旋转耗时）</h3><p>AVL的平衡 得益于 旋转操作：插入和删除 可能会破坏 二叉树的平衡，此时需要 旋转 。</p>
+<p>插入操作 最多需要 1次旋转（单旋转或双旋转）；删除节点 需要维护从 被删节点 到 根节点 路径上所有节点的平衡，旋转复杂度为O(log n)。</p>
+<p>因 旋转耗时，故删除数据时效率很低；删除操作较多时，维护平衡所需的代价可能高于其带来的好处，因此AVL实际使用并不广泛。</p>
+<h1 id="3、红黑树"><a href="#3、红黑树" class="headerlink" title="3、红黑树"></a>3、红黑树</h1><h2 id="3-1、简介"><a href="#3-1、简介" class="headerlink" title="3.1、简介"></a>3.1、简介</h2><p><font color='orange'>红黑树（Red Black Tree） 是一种 自平衡 二叉查找树，是常用的一种数据结构，主要用于实现【关联数组】。 </font></p>
+<p>红黑树 是一种 【特化版AVL树】，在插入、删除时 可通过 变换节点颜色 来保持 树平衡，进而 获得 较高性能。</p>
+<p>红黑树虽复杂，但最坏情况下其表现也很好。可在O(log n，n是树中元素的数量)时间内 实现 查找、插入和删除。 </p>
+<h2 id="3-2、特征"><a href="#3-2、特征" class="headerlink" title="3.2、特征"></a>3.2、特征</h2><ol>
+<li>节点不是红色就是黑色。</li>
+<li>根节点是黑色；所有NUll节点都是黑色；</li>
+<li>红色节点 的两个子节点 是 黑色；红色节点不能相邻。</li>
+<li>从根节点到任意一个叶子节点，路径中的黑色节点数量都一样。</li>
+</ol>
+<h2 id="3-3、使用场景"><a href="#3-3、使用场景" class="headerlink" title="3.3、使用场景"></a>3.3、使用场景</h2><p><font color='orange'>红黑树 多用于【内部排序】，即全放在内存中，STL的 map 和 set 的内部实现就是红黑树。</font></p>
+<h2 id="3-4、应用"><a href="#3-4、应用" class="headerlink" title="3.4、应用"></a>3.4、应用</h2><ol>
+<li><p><font color='orange'>红黑树 在 【Linux非实时任务调度中】的应用</font></p>
+<p>Linux 的稳定内核版本在 2.6.24 之后，使用了新的调度程序 CFS，所有非实时可运行进程都以虚拟运行时间为 key 值挂在一棵红黑树上，以完成更公平高效地调度所有任务。CFS 弃用 active &#x2F;expired 数组和动态计算优先级，不再跟踪任务的睡眠时间和区别是否交互任务，并且在调度中采用基于时间计算键值的红黑树来选取下一个任务，根据所有任务占用 CPU 时间的状态来确定调度任务优先级。</p>
+</li>
+<li><p><font color='orange'>红黑树 在 【Linux虚拟内存中】的应用</font></p>
+<p>32 位 Linux 内核虚拟地址空间划分 0 － 3G 为用户空间，3 － 4G 为内核空间，因此每个进程可以使用 4GB的虚拟空间。同时，Linux 定义了虚拟存储区域( VMA) 以便于更好表示进程所使用的虚拟空间，每个 VMA是某个进程的一段连续虚拟空间，其中的单元具有相同的特征，所有的虚拟区域按照地址排序由指针链接为一个链表。当发生缺页中断时搜索 VMA 到指定区域时，则需要频繁操作，因此选用了红黑树以减少查找时间。</p>
+</li>
+<li><p><font color='orange'>红黑树 在 【检测树平衡性】上的应用</font></p>
+<p>红黑树是一种自平衡二叉搜索树，它的每个节点都被“着色”为红色或者黑色，这些节点的颜色被用来检测树的平衡性。红黑树作为嵌入式数据库中的索引机制，可以获得更好的性能，对于SQLite数据库，可以采用红黑树实现索引机制的优化。</p>
+</li>
+</ol>
+<h2 id="3-5、数据结构"><a href="#3-5、数据结构" class="headerlink" title="3.5、数据结构"></a>3.5、数据结构</h2><p>红黑树 【统计性能】 要优于 平衡二叉树。目前，红黑树已广泛应用于Linux 进程管理、内存管理，设备驱动、虚拟内存跟踪 等场景中。</p>
+<h2 id="3-6、优缺点"><a href="#3-6、优缺点" class="headerlink" title="3.6、优缺点"></a>3.6、优缺点</h2><h3 id="3-6-1、优点"><a href="#3-6-1、优点" class="headerlink" title="3.6.1、优点"></a>3.6.1、优点</h3><ol>
+<li><font color='orange'>红黑树 不追求 严格平衡：只需保证 【根到叶子的最长路径长度不超过最短路径的2倍】。</font></li>
+<li><font color='orange'>红黑树删除效率较高，因O(1)次数的 【旋转及变色】 就能保证 基本平衡，无需像AVL树一样进行 O(lgn)次的旋转。</font></li>
+<li><font color='orange'>红黑树 适用于【内存操作】场景。其 统计性能 高于 AVL树。</font></li>
+</ol>
+<h3 id="3-6-2、缺点（树太高）"><a href="#3-6-2、缺点（树太高）" class="headerlink" title="3.6.2、缺点（树太高）"></a>3.6.2、缺点（树太高）</h3><ol>
+<li><p>较AVL数来说，红黑树 【查询效率差】，因为 树平衡性较差，高度更高。</p>
+</li>
+<li><p>对于磁盘等辅助存储设备中数据的操作来说（如 MySQL），红黑树并不擅长，因为【 红黑树高度太高】。</p>
+<blockquote>
+<p>当数据在磁盘中时，磁盘IO会成为最大性能瓶颈；树高度越高，IO次数也会越多，性能影响也会越严重。</p>
+</blockquote>
+</li>
+</ol>
+<h1 id="4、B树"><a href="#4、B树" class="headerlink" title="4、B树"></a>4、B树</h1><h2 id="4-1、简介"><a href="#4-1、简介" class="headerlink" title="4.1、简介"></a>4.1、简介</h2><p>B-树 查找关键字 方法是：先拿到 根结点 ，在根结点 所包含的关键字K1,…,Kn中 查找给定关键字（可用顺序查找或二分查找法）。若找到关键字就表示查找成功；否则，一定可以确定要查找的关键字在Ki与Ki+1之间，拿到 指针Pi 指向的结点 继续查找，直至找到，指针Pi为空时查找失败。（Pi为指向子树根节点的指针）</p>
+<h2 id="4-2、定义"><a href="#4-2、定义" class="headerlink" title="4.2、定义"></a>4.2、定义</h2><p><font color='orange'>1970年，R.Bayer和E.mccreight提出了一种 【平衡多叉树，称为B树（或B-树、B_树）】。</font></p>
+<p>一棵 m 阶 B树 是一棵平衡的m路搜索树。它可能是空树，也可能是如下特点的树：</p>
+<ol>
+<li><font color='orange'>根结点至少有两个子女；</font></li>
+<li>每个 非根节点 所包含的关键字个数 j 满足：┌m&#x2F;2┐ - 1 &lt;&#x3D; j &lt;&#x3D; m - 1；</li>
+<li>除根结点以外的所有结点（不包括叶子结点）的度数正好是关键字总数加1，故内部子树个数 k 满足：┌m&#x2F;2┐ &lt;&#x3D; k &lt;&#x3D; m ；</li>
+<li><font color='orange'>所有的叶子结点都位于同一层。</font></li>
+</ol>
+<p>B-树每个结点中的关键字从小到大排列，且当该结点的孩子是非叶子结点时，该k-1个关键字正好是k个孩子包含的关键字的值域的分划。</p>
+<p>因为叶子结点不包含关键字，所以可以把叶子结点看成在树里实际上并不存在外部结点，指向这些外部结点的指针为空，叶子结点的数目正好等于树中所包含的关键字总个数加1。</p>
+<p>B-树中的一个包含n个关键字，n+1个指针的结点的一般形式为：（n、P0、K1、P1、K2、P2,…,Kn、Pn）。</p>
+<p>其中，Ki为关键字，K1&lt;K2&lt;…&lt;Kn, Pi 是指向包括Ki到Ki+1之间的关键字的子树的指针。</p>
+<h2 id="4-3、性能分析"><a href="#4-3、性能分析" class="headerlink" title="4.3、性能分析"></a>4.3、性能分析</h2><p>设B-树包含N个关键字，因此有N+1个叶子结点，叶子都在第I层。因为根至少有两个孩子，因此第二层至少有两个结点。除根和叶子外，其它结点至少有┌m&#x2F;2┐个孩子，因此在第三层至少有2<em>┌m&#x2F;2┐个结点，在第四层至少有2</em>(┌m&#x2F;2┐^2)个结点，．．．，在第I层至少有2*(┌m&#x2F;2┐^(l-2) )个结点，于是有：</p>
+<p>N+1 ≥ 2*┌m&#x2F;2┐I-2</p>
+<p>考虑第L层的结点个数为N+1，那么2*(┌m&#x2F;2┐^(l-2)）≤N+1，也就是L层的最少结点数刚好达到N+1个。</p>
+<p>即： I≤ log┌m&#x2F;2┐((N+1)&#x2F;2 )+2</p>
+<p>所以，当B-树包含N个关键字时，B-树最大高度为l-1（因为计算B-树高度时，叶结点所在层不计算在内）。</p>
+<p>即：log┌m&#x2F;2┐((N+1)&#x2F;2 )+1。</p>
+<p>这个公式保证了B-树 较高 的查询率。</p>
+<h2 id="4-4、优缺点"><a href="#4-4、优缺点" class="headerlink" title="4.4、优缺点"></a>4.4、优缺点</h2><h3 id="4-4-1、优点"><a href="#4-4-1、优点" class="headerlink" title="4.4.1、优点"></a>4.4.1、优点</h3><ol>
+<li><font color='orange'>B树 适用于 磁盘等辅存设备，B树每个非叶节点可以有多个子树，进而【降低了树的高度】。</font></li>
+<li><font color='orange'>B树 提供了 局部性访问。</font>换句话说，B树缓存命中率更高。（局部性原理是指：一个数据被使用时，其附近数据有较大概率在短时间内被使用。B树会将相邻数据存储在同一节点，当访问其中某个数据时会将整个节点读到缓存中；当相邻数据被访问时，可直接从缓存中读取，无需执行磁盘IO；）</li>
+</ol>
+<h3 id="4-4-2、缺点"><a href="#4-4-2、缺点" class="headerlink" title="4.4.2、缺点"></a>4.4.2、缺点</h3><ol>
+<li>仅适用于 磁盘存储操作 场景。</li>
+<li>B树 叶子和非叶子节点 都存储数据，所以树高度还是会太高。</li>
+<li>B树 叶子节点 没有指针连接，且叶子节点中的元素是无序排列。</li>
+<li>不适合范围查询。</li>
+</ol>
+<h1 id="5、B-树"><a href="#5、B-树" class="headerlink" title="5、B+树"></a>5、B+树</h1><h2 id="5-1、简介"><a href="#5-1、简介" class="headerlink" title="5.1、简介"></a>5.1、简介</h2><p><font color='orange'>B+树 通常用于 数据库和操作系统的 【文件系统】。</font></p>
+<p>B+树 能够保持 数据稳定有序，插入、修改 拥有 稳定的 时间复杂度。B+树元素自底向上插入，这与二叉树恰好相反。</p>
+<blockquote>
+<p>B+ 树创造者 Rudolf Bayer 没有解释 B 代表什么。通常 B 代表平衡（balanced），因为所有叶子节点都在树的统一级别上。<em>B</em>也可能代表<em>Bayer</em>，或者是波音（Boeing），因为他曾经工作于波音科学研究实验室。</p>
+</blockquote>
+<p><font color='orange'>B+树 适用于 磁盘文件组织、数据索引 和 数据库索引。</font></p>
+<h2 id="5-2、定义"><a href="#5-2、定义" class="headerlink" title="5.2、定义"></a>5.2、定义</h2><p><font color='orange'>B+树 的 叶子结点 存储关键字 和 记录地址，非叶子节点作为索引使用。</font>一棵m阶的B+树定义如下: </p>
+<ol>
+<li>每个结点至多有m个子女；</li>
+<li>除根结点外，每个结点至少有[m&#x2F;2]个子女，根结点至少有两个子女； </li>
+<li>有k个子女的结点必有k个关键字。</li>
+</ol>
+<p>与B树的查找操作不同，B+树在 索引关键字与待找关键字匹配时并不停止查找，而会 沿着该关键字左边指针向下，一直找到该关键字所在的叶子结点为止。 </p>
+<h2 id="5-3、特征"><a href="#5-3、特征" class="headerlink" title="5.3、特征"></a>5.3、特征</h2><p>B+树是B树的一种变形，比B树具有更广泛的应用，m阶 B+树 有如下特征: </p>
+<ol>
+<li>每个结点的关键字个数与孩子个数相等，所有非最下层的内层结点的关键字是对应子树上的最大关键字，最下层内部结点包含了全部关键字。 [3] </li>
+<li>除根结点以外，每个内部结点有<img src="https://bkimg.cdn.bcebos.com/formula/b6d57d975fb784adc5203ddf01a692ee.svg" alt="img">到m个孩子。 </li>
+<li>所有叶结点在树结构的同一层，并且不含任何信息(可看成是外部结点或查找失败的结点)，因此，树结构总是树高平衡的。</li>
+</ol>
+<h2 id="5-4、算法"><a href="#5-4、算法" class="headerlink" title="5.4、算法"></a>5.4、算法</h2><h3 id="5-4-1、查找"><a href="#5-4-1、查找" class="headerlink" title="5.4.1、查找"></a>5.4.1、查找</h3><p>查找以典型的方式进行，类似于二叉查找树。起始于根节点，自顶向下遍历树，选择其分离值在要查找值的任意一边的子指针。在节点内部典型的使用是二分查找来确定这个位置。</p>
+<h3 id="5-4-2、插入"><a href="#5-4-2、插入" class="headerlink" title="5.4.2、插入"></a>5.4.2、插入</h3><p>节点要处于违规状态，它必须包含在可接受范围之外数目的元素。</p>
+<ol>
+<li>首先，查找要插入其中的节点的位置。接着把值插入这个节点中。</li>
+<li>如果没有节点处于违规状态则处理结束。</li>
+<li>如果某个节点有过多元素，则把它分裂为两个节点，每个都有最小数目的元素。在树上递归向上继续这个处理直到到达根节点，如果根节点被分裂，则创建一个新根节点。为了使它工作，元素的最小和最大数目典型的必须选择为使最小数不小于最大数的一半。</li>
+</ol>
+<h3 id="5-4-3、删除"><a href="#5-4-3、删除" class="headerlink" title="5.4.3、删除"></a>5.4.3、删除</h3><ol>
+<li><p>首先，查找要删除的值。接着从包含它的节点中删除这个值。</p>
+</li>
+<li><p>如果没有节点处于违规状态则处理结束。 </p>
+</li>
+<li><p>如果节点处于违规状态则有两种可能情况：</p>
+<ol>
+<li>它的兄弟节点，就是同一个父节点的子节点，可以把一个或多个它的子节点转移到当前节点，而把它返回为合法状态。如果是这样，在更改父节点和两个兄弟节点的分离值之后处理结束。</li>
+<li>它的兄弟节点由于处在低边界上而没有额外的子节点。在这种情况下把两个兄弟节点合并到一个单一的节点中，而且我们递归到父节点上，因为它被删除了一个子节点。持续这个处理直到当前节点是合法状态或者到达根节点，在其上根节点的子节点被合并而且合并后的节点成为新的根节点。</li>
+</ol>
+</li>
+</ol>
+<h2 id="5-5、优缺点"><a href="#5-5、优缺点" class="headerlink" title="5.5、优缺点"></a>5.5、优缺点</h2><h3 id="5-5-1、优点"><a href="#5-5-1、优点" class="headerlink" title="5.5.1、优点"></a>5.5.1、优点</h3><ol>
+<li><font color='orange'>B+树 只会 在叶子节点存储 键值和数据，非叶子节点只存储键值和指针，而B树叶子和非叶子节点都会存储。</font></li>
+<li><font color='orange'>B+树叶子节点通过指针连接在一起且有序，而B树没有这个特性。</font></li>
+<li><font color='orange'>IO次数更少。</font></li>
+<li><font color='orange'>适合范围查询。</font></li>
+<li><font color='orange'>查询效率稳定。</font></li>
+</ol>
+<h3 id="5-5-2、缺点"><a href="#5-5-2、缺点" class="headerlink" title="5.5.2、缺点"></a>5.5.2、缺点</h3><ol>
+<li><font color='red'>由于键会重复出现，因此会占用更多空间。</font>但是与带来的性能优势相比，空间劣势往往可以接受，因此B+树在数据库中的使用 较B树 更广泛。</li>
+</ol>
+<h2 id="5-6、使用场景"><a href="#5-6、使用场景" class="headerlink" title="5.6、使用场景"></a>5.6、使用场景</h2><p>B+树多用于磁盘存储等场景。</p>
+<h2 id="5-7、B树-VS-B-树"><a href="#5-7、B树-VS-B-树" class="headerlink" title="5.7、B树 VS B+树"></a>5.7、B树 VS B+树</h2><p>B+树是应文件系统所需而产生的一种B树的变形树。m阶B+树 和 m阶B树 的区别是：</p>
+<ol>
+<li>有n棵子树的结点中含有n个关键码；</li>
+<li>所有的叶子结点中包含了全部关键码的信息，及指向含有这些关键码记录的指针，且叶子结点本身依关键码的大小自小而大的顺序链接；</li>
+<li>所有的非终端结点可以看成是索引部分，结点中仅含有其子树根结点中最大(或最小)关键码。</li>
+</ol>
+<h2 id="5-8、知识点扩展"><a href="#5-8、知识点扩展" class="headerlink" title="5.8、知识点扩展"></a>5.8、知识点扩展</h2><h3 id="MySQL中基于B-树的表插入数据时，主键需要递增吗？"><a href="#MySQL中基于B-树的表插入数据时，主键需要递增吗？" class="headerlink" title="MySQL中基于B+树的表插入数据时，主键需要递增吗？"></a>MySQL中基于B+树的表插入数据时，主键需要递增吗？</h3><p>需要，其目的是为了 【减少&#x2F;防止 块分裂】。</p>
+<h1 id="6、Trie树（字典树）"><a href="#6、Trie树（字典树）" class="headerlink" title="6、Trie树（字典树）"></a>6、Trie树（字典树）</h1><h2 id="6-1、简介"><a href="#6-1、简介" class="headerlink" title="6.1、简介"></a>6.1、简介</h2><p>Trie树 又称 单词查找树，Trie树 是一种 树形结构，是一种 变种哈希树。通常用于统计、排序、保存大量字符串（但不仅限于字符串），所以经常被 搜索引擎 用于 文本词频统计。优点是：<font color='orange'>利用字符串的公共前缀来减少查询时间，最大限度地减少无谓的字符串比较，查询效率比哈希树高。</font></p>
+<h2 id="6-2、性质"><a href="#6-2、性质" class="headerlink" title="6.2、性质"></a>6.2、性质</h2><ol>
+<li>根节点 不包含 字符，其它节点 都只包含 一个字符；</li>
+<li>从根节点到某一节点，路径上经过的字符连接起来，为该节点对应的字符串；</li>
+<li>每个节点的所有子节点包含的字符都不相同。</li>
+</ol>
+<h2 id="6-3、基本操作"><a href="#6-3、基本操作" class="headerlink" title="6.3、基本操作"></a>6.3、基本操作</h2><p>基本操作：查找、插入和删除，当然删除操作比较少见。</p>
+<h2 id="6-4、实现方法"><a href="#6-4、实现方法" class="headerlink" title="6.4、实现方法"></a>6.4、实现方法</h2><p>搜索字典项目的方法为：</p>
+<ol>
+<li>从根结点开始一次搜索；</li>
+<li>取得要查找关键词的第一个字母，并根据该字母选择对应的子树并转到该子树继续进行检索；</li>
+<li>在相应的子树上，取得要查找关键词的第二个字母,并进一步选择对应的子树进行检索。</li>
+<li>迭代过程……</li>
+<li>在某个结点处，关键词的所有字母已被取出，则读取附在该结点上的信息，即完成查找。</li>
+</ol>
+<p>其他操作类似处理。</p>
+<h1 id="7、总结"><a href="#7、总结" class="headerlink" title="7、总结"></a>7、总结</h1><h2 id="7-1、二叉查找树-BST"><a href="#7-1、二叉查找树-BST" class="headerlink" title="7.1、二叉查找树(BST)"></a>7.1、二叉查找树(BST)</h2><p>解决了 排序 基本问题，但可能退化为链表；</p>
+<h2 id="7-2、平衡二叉树-AVL"><a href="#7-2、平衡二叉树-AVL" class="headerlink" title="7.2、平衡二叉树(AVL)"></a>7.2、平衡二叉树(AVL)</h2><p>通过旋转 解决 平衡问题，但旋转效率太低；</p>
+<h2 id="7-3、红黑树"><a href="#7-3、红黑树" class="headerlink" title="7.3、红黑树"></a>7.3、红黑树</h2><p>通过舍弃严格的平衡和引入红黑节点，解决了AVL旋转效率过低的问题，但在 磁盘IO场景 下，树仍然太高，IO次数太多；</p>
+<h2 id="7-4、B树"><a href="#7-4、B树" class="headerlink" title="7.4、B树"></a>7.4、B树</h2><p>通过将二叉树改为多路平衡查找树，解决了树过高问题；</p>
+<h2 id="7-5、B-树"><a href="#7-5、B-树" class="headerlink" title="7.5、B+树"></a>7.5、B+树</h2><p>在B树基础上，将 非叶节点 改造为 索引节点，进一步降低了树高；此外叶子节点 使用指针 连接成链表，范围查询更加高效。</p>
+<h1 id="X、知识拓展"><a href="#X、知识拓展" class="headerlink" title="X、知识拓展"></a>X、知识拓展</h1><h2 id="X-1、为什么MySQL索引使用B-树而不使用红黑树"><a href="#X-1、为什么MySQL索引使用B-树而不使用红黑树" class="headerlink" title="X.1、为什么MySQL索引使用B+树而不使用红黑树?"></a>X.1、为什么MySQL索引使用B+树而不使用红黑树?</h2><p>B+树 适用于 文件存储IO。</p>
+<p>数据库文件 通常位于 磁盘中，定位一行信息需要查找该文件所在柱面号，磁盘号，扇区号，页号等。一次请求要做一次IO，因此减少IO次数是提高性能的关键。</p>
+<p>IO次数是索引树的高度，高度越低查询次数越少。相同结点个数（个数为n）环境下，红黑树高度最高为<code>2log(n+1)</code>，B+树高度最高为<code>(log(n+1)/2)+1</code>，随着 n 增大B+树高度会更小，IO次数会更少。</p>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">豪哥</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://hshz21.gitee.io/2023/07/30/shu-xing-jie-gou-zhi-shi-dian-zong-jie/">https://hshz21.gitee.io/2023/07/30/shu-xing-jie-gou-zhi-shi-dian-zong-jie/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">豪哥</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                                    <span class="chip bg-color">数据结构</span>
+                                </a>
+                            
+                                <a href="/tags/%E6%A0%91/">
+                                    <span class="chip bg-color">树</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wxpay.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/07/30/shu-ju-jie-gou-yu-suan-fa-zhi-shi-dian-zong-jie/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="数据与算法系列-数据结构与算法">
+                        
+                        <span class="card-title">数据与算法系列-数据结构与算法</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-category">
+                                    数据与算法
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E6%95%B0%E6%8D%AE%E7%BB%93%E6%9E%84/">
+                        <span class="chip bg-color">数据结构</span>
+                    </a>
+                    
+                    <a href="/tags/%E7%AE%97%E6%B3%95/">
+                        <span class="chip bg-color">算法</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/07/30/jin-zhi-shu-ju-zhi-shi-dian-zong-jie/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="数据与算法系列-原码反码补码移码转换">
+                        
+                        <span class="card-title">数据与算法系列-原码反码补码移码转换</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%AE%97%E6%B3%95/" class="post-category">
+                                    数据与算法
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E5%8E%9F%E7%A0%81%E5%8F%8D%E7%A0%81%E8%A1%A5%E7%A0%81/">
+                        <span class="chip bg-color">原码反码补码</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">豪哥</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">豪哥</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:3577293158@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3577293158" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 3577293158" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
