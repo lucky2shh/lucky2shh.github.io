@@ -1,0 +1,1719 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="SpringBoot系列-SpringBoot原理解析, 豪哥博客">
+    <meta name="description" content="豪哥个人博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>SpringBoot系列-SpringBoot原理解析 | 豪哥博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">豪哥博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">豪哥博客</div>
+        <div class="logo-desc">
+            
+            豪哥个人博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/21.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">SpringBoot系列-SpringBoot原理解析</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/SpringBoot/">
+                                <span class="chip bg-color">SpringBoot</span>
+                            </a>
+                        
+                            <a href="/tags/SpringBoot%E5%8E%9F%E7%90%86/">
+                                <span class="chip bg-color">SpringBoot原理</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/SpringBoot/" class="post-category">
+                                SpringBoot
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-07-30
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    7.8k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="启动初始化"><a href="#启动初始化" class="headerlink" title="启动初始化"></a>启动初始化</h1><p><em><strong>SpringBoot的启动和初始化主要步骤由 SpringApplication.run(String..) 方法和AbstractApplicationContext.refresh() 方法完成</strong></em>。</p>
+<p>SpringApplication.run(String…)中会调用AbstractApplicationContext.run()方法。</p>
+<p>当然，<em><strong>最初先调用SprirngApplication(ResourceLoader, Class)构造SpringApplication对象</strong></em>，详情如下：</p>
+<p><strong>（1）初始化相关参数</strong></p>
+<p>初始化bannerModel为Console，logStartupInfo为true，addCommandLineProperties为true，addConversionService为true，headLess为true，registerShutdownHook为true，isCustomEnvironment为false，lazyInitialization为false，applicationContextFactory为DefaultApplicationContextFactory，applicationStartup为DefaultApplicationStartup。</p>
+<p><strong>（2）初始化当前应用的类型</strong></p>
+<p>如果存在DispatcherHandler，不存在DispatcherServlet和ServletContainer，那么应用类型为Reactive。</p>
+<p>如果不存在Servlet或ConfigurableWebApplicationContext，那么应用类型为None。</p>
+<p>除了上面两种情况，其它情况下都属于Servlet应用。</p>
+<p><strong>（3）初始化接口实现和确定主启动类</strong></p>
+<p>初始化集合bootstrapRegistryInitializers为接口BootstrapRegistryInitializer的所有实现，初始化initializers为接口ApplicationContextInitializer的所有实现，初始化listeners为接口ApplicationListener的所有实现，初始化mainApplicationClass为启动类Class。</p>
+<h2 id="1-1、SpringApplication-run-String…"><a href="#1-1、SpringApplication-run-String…" class="headerlink" title="1.1、SpringApplication.run(String…)"></a>1.1、SpringApplication.run(String…)</h2><h3 id="1-1-1、SpringApplication-createBootstrapContext"><a href="#1-1-1、SpringApplication-createBootstrapContext" class="headerlink" title="1.1.1、SpringApplication.createBootstrapContext()"></a>1.1.1、SpringApplication.createBootstrapContext()</h3><p>（1）创建DefaultBootstrapContext实例，实例名为bootstrapContext。</p>
+<p>（2）遍历接口BootstrapRegistryInitializer的所有实现类，并调用每个实现类的initialize(bootstrapContext)方法，将bootstrapContext作为参数传进去。</p>
+<p>（3）最终将创建的bootstrapContext实例return。</p>
+<h3 id="1-1-2、SpringApplication-configureHeadlessProperty"><a href="#1-1-2、SpringApplication-configureHeadlessProperty" class="headerlink" title="1.1.2、SpringApplication.configureHeadlessProperty()"></a>1.1.2、SpringApplication.configureHeadlessProperty()</h3><p>（1）配置Headless属性</p>
+<p>配置属性java.awt.headless，值默认为true。</p>
+<h3 id="1-1-3、SpringApplication-getRunListeners"><a href="#1-1-3、SpringApplication-getRunListeners" class="headerlink" title="1.1.3、SpringApplication.getRunListeners(.)"></a>1.1.3、SpringApplication.getRunListeners(.)</h3><p><strong>（1）SpringApplication.getSpringFactoriesInstances(…)</strong></p>
+<p>扫描<code>META-INF/spring.factories</code>文件中，获取接口SpringApplicaitonRunListener的所有实现类。如果没有自定义，那么默认有1个，就是：org.springframework.boot.context.event.EventPublishingRunListener。</p>
+<p>通过反射拿到每个实现类的构造器，调用其构造器实例化对象，然后通过集合List的默认排序方法进行排序。</p>
+<p><strong>（2）return new SpringApplicationRunListeners(…)</strong></p>
+<p>由LogAdapter.Sfl4jLocationAwareLog、上一步拿到的实现类实例、DefaultApplicationStartup作为参数来创建SpringApplicationRunListeners实例对象并return。</p>
+<h3 id="1-1-4、SpringApplicationRunListeners-starting"><a href="#1-1-4、SpringApplicationRunListeners-starting" class="headerlink" title="1.1.4、SpringApplicationRunListeners.starting(..)"></a>1.1.4、SpringApplicationRunListeners.starting(..)</h3><p><strong>（1）构造3个参数，一个是String，两个是Consumer对象</strong>。</p>
+<p>参数1：spring.boot.application.starting；参数2：DefaultBootstrapContext作为参数，调用传进来listener的starting方法；参数3：如果主类不为null，那么将字符串mainApplicationClass、字符串主类的全类名作为参数，调用传进来参数的tag方法。</p>
+<p><strong>（2）SpringApplicationRunListeners.doWithListeners(String, Consumer, Consumer)</strong></p>
+<p>调用DefaultApplicationStartup.start(“spring.boot.application.starting”)方法返回一个DefaultApplicationStartup.DefaultStartupStep实例对象。</p>
+<p>执行参数2的Consumer，也就是执行所有listener的starting方法。执行参数3的Consumer，也就是调用上面返回的DefaultApplicationStartup.DefaultStartupStep实例对象的tag方法，然后调用end方法。</p>
+<h3 id="1-1-5、new-DefaultApplicationArguments-args"><a href="#1-1-5、new-DefaultApplicationArguments-args" class="headerlink" title="1.1.5、new DefaultApplicationArguments(args)"></a>1.1.5、new DefaultApplicationArguments(args)</h3><p>初始化DefaultApplicationArguments的source变量为DefaultApplicationArguments.Source，变量source的name参数值为commandLineArgs，nonOptionArgsPropertyName参数值为nonOptionArgs。</p>
+<p>初始化DefaultApplicationArguments的args变量为空的String类型数组。</p>
+<h3 id="1-1-6、SpringApplication-prepareEnvironment-…"><a href="#1-1-6、SpringApplication-prepareEnvironment-…" class="headerlink" title="1.1.6、SpringApplication.prepareEnvironment(…)"></a>1.1.6、SpringApplication.prepareEnvironment(…)</h3><p><strong>（1）SpringApplication.getOrCreateEnvironment()</strong></p>
+<p>如果SpringApplication的变量ConfigurableEnvironment environment不为null，那么可以直接返回，不用往下执行了。</p>
+<p>调用DefaultApplicationContextFactory.getFromSpringFactories(…)方法从META-INF&#x2F;spring.factories文件中获取接口ApplicationContextFactory的所有实现，默认有2个，分别是AnnotationConfigReactiveWebServerApplicationContext.Factory和AnnotationConfigServletWebServerApplicationContext.Factory，并创建每个实现类的实例对象。</p>
+<p>将实现类对象、WebApplicationType作为参数调用ApplicationContextFactory.createEnvironment()方法，然后将该方法的返回值return，如果项目是servlet项目，那么这里返回的是ApplicationServletEnvironment，最终会再将之强转为ConfigurableEnvironment返回。</p>
+<p>如果上一步最终返回为null，那么会默认创建一个ApplicationEnvironment对象返回。</p>
+<p><strong>（2）SpringApplication.configureEnvironment(..)</strong></p>
+<p>如果允许添加转换服务，那么为当前环境对象ApplicationServletEnvironment添加一个ApplicationConversionService实例对象。</p>
+<p>配置属性源，也就是说项目会读取哪里的配置。</p>
+<p>配置Profiles，默认方法空实现。</p>
+<p><strong>（3）调用ConfigurationPropertySources.attach(.)</strong></p>
+<p>获取当前environment的属性源MutablePropertySources。默认有4个，详情如下：</p>
+<ul>
+<li>servletConfigInitParams</li>
+<li>servletContextInitParams</li>
+<li>systemProperties（67个属性）</li>
+<li>systemEnvironment（42个属性）</li>
+</ul>
+<p>将这4个属性源封装成ConfigurationPropertySourcesPropertySource，将这个封装好的属性源和上面4个组合到一起，封装好的放第一个，然后再将这5个添加进MutablePropertySources中。</p>
+<p><strong>（4）SpringApplicationRunListeners.environmentPrepared()</strong></p>
+<p>构造2个参数，一个是String，一个是Consumer对象。参数1：spring.boot.application.environement-prepared；参数2：DefaultBootstrapContext、environment作为参数，调用传进来listener的environmentPrepared方法。</p>
+<p>调用SpringApplicationRunListeners.doWithListeners(String, Consumer, Consumer)方法来处理：调用DefaultApplicationStartup.start(“spring.boot.application.environment-prepared”)方法返回一个DefaultApplicationStartup.DefaultStartupStep实例对象。执行参数2的Consumer，也就是执行所有listener的environmentPrepared方法。调用上面返回的DefaultApplicationStartup.DefaultStartupStep实例对象的end方法。</p>
+<p><strong>（5）DefaultPropertiesPropertySource.moveToEnd(.)</strong></p>
+<p>将名字为defaultProperties的属性源移动到列表最后一个。</p>
+<p><strong>（6）SpringApplication.bindToSpringApplication()</strong></p>
+<p><strong>（7）EnvironmentConverter.converEnvironmentIfNecessary()</strong></p>
+<p>如果不是自定义环境environment，那么需要使用环境转换器对当前环境进行转换。</p>
+<h3 id="1-1-7、SpringApplication-configureIgnoreBeanInfo"><a href="#1-1-7、SpringApplication-configureIgnoreBeanInfo" class="headerlink" title="1.1.7、SpringApplication.configureIgnoreBeanInfo()"></a>1.1.7、SpringApplication.configureIgnoreBeanInfo()</h3><p>设置环境属性spring.beaninfo.ignore，值为true。</p>
+<h3 id="1-1-8、SpringApplication-printBanner"><a href="#1-1-8、SpringApplication-printBanner" class="headerlink" title="1.1.8、SpringApplication.printBanner(.)"></a>1.1.8、SpringApplication.printBanner(.)</h3><p>打印Banner信息。</p>
+<h3 id="1-1-9、SpringApplication-createApplicationContext"><a href="#1-1-9、SpringApplication-createApplicationContext" class="headerlink" title="1.1.9、SpringApplication.createApplicationContext()"></a>1.1.9、SpringApplication.createApplicationContext()</h3><p>（1）构建3个参数，一个是项目类型Servlet，一个是Consumer，一个是方法引用。</p>
+<p>（2）基于这些参数尝试从META-INF&#x2F;spring.factories文件中获取接口ApplicationContextFactory的所有实现。</p>
+<h3 id="1-1-10、GenericApplicationContext-setApplicationStartup"><a href="#1-1-10、GenericApplicationContext-setApplicationStartup" class="headerlink" title="1.1.10、GenericApplicationContext.setApplicationStartup(.)"></a>1.1.10、GenericApplicationContext.setApplicationStartup(.)</h3><p>为AnnotationConfigServletWebServerApplicationContext添加一个DefaultApplicationStartup类实例。</p>
+<h3 id="1-1-11、SpringApplicationContext-prepareContext"><a href="#1-1-11、SpringApplicationContext-prepareContext" class="headerlink" title="1.1.11、SpringApplicationContext.prepareContext()"></a>1.1.11、SpringApplicationContext.prepareContext()</h3><p><strong>（1）为AnnotationConfigServletWebServerApplicationContext设置环境environment。</strong></p>
+<p><strong>（2）为AnnotationConfigServletWebServerApplicationContext中的BeanFactory设置一个转换服务ApplicationConversionService。</strong></p>
+<p><strong>（3）应用所有的初始化器。</strong></p>
+<p>默认有8个：DelegatingApplicationContextInitializer、SharedMetadataReaderFactoryContextInitializer、ContextIdApplicationContextInitializer、MyApplicationContextInitializer、ConfigurationWarningsApplicationContextInitializer、RSocketPortInfoApplicationContextInitializer、ServerPortInfoApplicationContextInitializer、ConditionEvaluationReportLoggingListener。</p>
+<p>将AnnotationConfigServletWebServerApplicationContext作为参数调用每个initialize的initialize方法。</p>
+<p><strong>（4）调用形参SpringApplicationRunListeners的contextPrepared方法。</strong></p>
+<p><strong>（5）调用形参DefaultBootstrapContext的close方法，发布BootstrapContextClosedEvent事件。</strong></p>
+<p><strong>（6）使用BeanFactory注册一个单例springApplicationArguments。</strong></p>
+<p><strong>（7）使用BeanFactory注册一个单例springBootBanner。</strong></p>
+<p><strong>（8）设置允许Bean循环应用，允许Bean定义信息被重写。</strong></p>
+<p><strong>（9）如果允许延迟实例化Bean，那么为congtext 注册一个LazyInitializationBeanFactoryPostProcessor。</strong></p>
+<p><strong>（10）加载Bean定义信息。</strong></p>
+<p>创建一个Bean定义加载器BeanDefinitionLoader，该加载器中已经初始化好了AnnotatedBeanDifinitionReader、XmlBeanDefinitionReader、ClassPathBeanDefinitionScanner。</p>
+<p>加载源souce默认只有一个，就是启动类。默认只能加载4中类型的源，分别是Class、Resouce、Package、CharSequence。调用BeanDefinitionLoader.load()方法来加载每一个源，默认是启动类。</p>
+<p>以启动类为例来分析。会调用AnnotatedBeanDefinitionReader.doRegisterBean方法来注册启动类Class。在该方法中会先将启动类包装成BeanDefinition，为该BeanDefinition设置名字为启动类名字首字母小写，设置Scope为singleton，并处理启动类上注解为Lazy、DependsOn、Role、Description等信息并做相关操作，没有就跳过。最终将该Beean定义注册到容器中。</p>
+<p><strong>（11）以字符串spring.boot.application.context-loaded为参数调用StartupStep的start和end方法，以context为参数调用SpringApplicationRunListeners的contextLoaded方法</strong>。</p>
+<h3 id="1-1-12、SpringApplication-refreshContext"><a href="#1-1-12、SpringApplication-refreshContext" class="headerlink" title="1.1.12、SpringApplication.refreshContext(.)"></a>1.1.12、SpringApplication.refreshContext(.)</h3><p>详情参考1.2章节。</p>
+<h3 id="1-1-13、SpringApplication-afterRefresh"><a href="#1-1-13、SpringApplication-afterRefresh" class="headerlink" title="1.1.13、SpringApplication.afterRefresh(..)"></a>1.1.13、SpringApplication.afterRefresh(..)</h3><p>默认空实现。</p>
+<h3 id="1-1-14、SpringApplicationRunListeners-started"><a href="#1-1-14、SpringApplicationRunListeners-started" class="headerlink" title="1.1.14、SpringApplicationRunListeners.started(..)"></a>1.1.14、SpringApplicationRunListeners.started(..)</h3><p>以字符串spring.boot.application.started为参数调用StartupStep的start和end方法，以context为参数调用SpringApplicationRunListeners为参数调用listener的started方法。</p>
+<h3 id="1-1-15、SpringApplication-callRunners"><a href="#1-1-15、SpringApplication-callRunners" class="headerlink" title="1.1.15、SpringApplication.callRunners(..)"></a>1.1.15、SpringApplication.callRunners(..)</h3><p>（1）获取接口ApplicationRunner、CommandLineRunner的所有实现类装进List集合中，然后使用List的默认排序方式进行排序。</p>
+<p>（2）遍历所有的Runner，并执行它们的run方法。先执行ApplicationRunner的实现类的run方法，再执行CommandLineRunner的实现类。</p>
+<h3 id="1-1-16、catch-Throwable"><a href="#1-1-16、catch-Throwable" class="headerlink" title="1.1.16、catch:Throwable"></a>1.1.16、catch:Throwable</h3><p>（1）SpringApplication.handleRunFailure(…)</p>
+<h3 id="1-1-17、SpringApplicationRunListeners-ready"><a href="#1-1-17、SpringApplicationRunListeners-ready" class="headerlink" title="1.1.17、SpringApplicationRunListeners.ready(..)"></a>1.1.17、SpringApplicationRunListeners.ready(..)</h3><p>以字符串spring.boot.application.ready为参数调用StartupStep的start和end方法，以context为参数调用SpringApplicationRunListeners为参数调用listener的ready方法。</p>
+<p>最终将初始化好的context实例返回，结束SpringBoot的启动和初始化。下一步就是处理HTTP请求的流程。</p>
+<h3 id="1-1-18、catch-Throwable"><a href="#1-1-18、catch-Throwable" class="headerlink" title="1.1.18、catch:Throwable"></a>1.1.18、catch:Throwable</h3><p>（1）SpringApplication.handleRunFailure(…)</p>
+<h2 id="1-2、AbstractApplicationContext-refresh"><a href="#1-2、AbstractApplicationContext-refresh" class="headerlink" title="1.2、AbstractApplicationContext.refresh()"></a>1.2、AbstractApplicationContext.refresh()</h2><h3 id="1-2-1、DefaultApplicationStartup-start-“spring-context-refresh”"><a href="#1-2-1、DefaultApplicationStartup-start-“spring-context-refresh”" class="headerlink" title="1.2.1、DefaultApplicationStartup.start(“spring.context.refresh”)"></a>1.2.1、DefaultApplicationStartup.start(“spring.context.refresh”)</h3><p>创建一个DefaultApplicationStartup.DefaultStartupStep实例。</p>
+<h3 id="1-2-2、AnnnotationConfigServletWebServerApplicationContext-prepareRefresh"><a href="#1-2-2、AnnnotationConfigServletWebServerApplicationContext-prepareRefresh" class="headerlink" title="1.2.2、AnnnotationConfigServletWebServerApplicationContext.prepareRefresh()"></a>1.2.2、AnnnotationConfigServletWebServerApplicationContext.prepareRefresh()</h3><p><strong>（1）清空缓存</strong></p>
+<p>如果Map集合metadataReaderCache属于LocalResourceCache类型，那么清空该集合。</p>
+<p>如果Map集合metadataReaderCache为null，那么初始化一个容量为256的集合LocalResourceCache。</p>
+<p><strong>（2）准备刷新</strong></p>
+<p>初始化属性源，验证Required配置。初始化Set集合earlyApplicationListeners，为集合导入13个ApplicationListener。</p>
+<h3 id="1-2-3、AbstractApplicationContext-obtainFreshBeanFactory"><a href="#1-2-3、AbstractApplicationContext-obtainFreshBeanFactory" class="headerlink" title="1.2.3、AbstractApplicationContext.obtainFreshBeanFactory()"></a>1.2.3、AbstractApplicationContext.obtainFreshBeanFactory()</h3><p>为BeanFactory设置序列化ID为字符串application，然后返回。</p>
+<h3 id="1-2-4、AbstractApplicationContext-prepareBeanFactory"><a href="#1-2-4、AbstractApplicationContext-prepareBeanFactory" class="headerlink" title="1.2.4、AbstractApplicationContext.prepareBeanFactory()"></a>1.2.4、AbstractApplicationContext.prepareBeanFactory()</h3><p><strong>（1）为BeanFactory设置Bean类加载器Launcher.AppClassLoader。</strong></p>
+<p>（2）为BeanFactory设置Bean表达式解析器StandardBeanExpressionResolver。</p>
+<p><strong>（3）为BeanFactory添加属性编辑注册器ResourceEditorRegistrar。</strong></p>
+<p><strong>（4）为BeanFactory添加Bean增强器ApplicationContextAwareProcessor。</strong></p>
+<p>（5）设置要忽略的依赖接口</p>
+<p>这些接口包括：EnvironmentAware、EmbeddedValueResolverAware、ResourceLoader、ApplicationEventPublisherAware、MessageSourceAware、ApplicationContextAware、ApplicationStartupAware。</p>
+<p><strong>（6）注册分解依赖</strong></p>
+<p>这些依赖包括：BeanFactory、ResourceLoader、ApplicationEventPublisher、ApplicationContext。</p>
+<p><strong>（7）为BeanFactory添加一个Bean增强器ApplicationListenerDetector。</strong></p>
+<p><strong>（8）如果BeanFactory中没有environment、systemProperties、systemEnvironment、applicationStartup，那么将它们注册为单例Bean。</strong></p>
+<h3 id="1-2-5、AnnotationConfigServletWebServerApplicationContext-postProcessBeanFactory"><a href="#1-2-5、AnnotationConfigServletWebServerApplicationContext-postProcessBeanFactory" class="headerlink" title="1.2.5、AnnotationConfigServletWebServerApplicationContext.postProcessBeanFactory(.)"></a>1.2.5、AnnotationConfigServletWebServerApplicationContext.postProcessBeanFactory(.)</h3><p><strong>（1）ServletWebServerApplicationContext.postProcessBeanFactory(.)</strong></p>
+<p>为当前BeanFactory添加一个Bean增强器WebApplicationContextServletContextAwareProcessor，并设置忽略依赖的接口ServletContextAware。</p>
+<p>注册Web应用的Scope。先注册现有的Scope，再注册其它的Scope：request:RequestScope、session:SessionScope、注册可解析的依赖：ServletRequest:RequestObjectFactory、ServletResponse:ResponseObjectFactory、HttpSession:SessionObjectFactory、WebRequest:WebRequestObjectFactory。如果有必要会注册门面依赖：FacesContext、ExternalContext。</p>
+<p><strong>（2）如果basePackages、annotatedClasses不为空，那么扫描这些包并注册这些注解。</strong></p>
+<h3 id="1-2-6、DefaultApplicationStartup-start-“spring-context-beans-post-process”"><a href="#1-2-6、DefaultApplicationStartup-start-“spring-context-beans-post-process”" class="headerlink" title="1.2.6、DefaultApplicationStartup.start(“spring.context.beans.post-process”)"></a>1.2.6、DefaultApplicationStartup.start(“spring.context.beans.post-process”)</h3><p>以字符串spring.context.beans.post-process为参数调用DefaultApplicationStartup.start方法创建一个DefaultApplicationStartup.DefaultStartupStep实例。</p>
+<h3 id="1-2-7、AbstractApplicationContext-invokeBeanFactoryPostProcessors"><a href="#1-2-7、AbstractApplicationContext-invokeBeanFactoryPostProcessors" class="headerlink" title="1.2.7、AbstractApplicationContext.invokeBeanFactoryPostProcessors(.)"></a>1.2.7、AbstractApplicationContext.invokeBeanFactoryPostProcessors(.)</h3><p>入口从AbstractApplicationContext.invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory)开始。</p>
+<p>该方法会做如下事情：</p>
+<ol>
+<li>执行BanFactory增强器。</li>
+<li>如果不是原生镜像，且当前beanFactory的临时类加载器为null，且beanFactory中包含名字是loadTimeWeaver的Bean，那么为当前BeanFactory添加一个Bean增强器LoadTimeWeaverAwareProcessor并设置一个临时类加载器。</li>
+</ol>
+<p>（1）<code>AbstractApplicationContext.invokeBeanFactoryPostProcessors(ConfigurableListableBeanFactory, List&lt;BeanFactoryPostProcessor&gt;)</code></p>
+<p>调用<code>PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessor(Collection&lt;BeanDefinitionRegistryPostProcessor&gt;, BeanDefinitionRegistry, ApplicationStartup)</code>方法来注册BeanDefinition信息。</p>
+<p>（2）<code>PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessor(Collection&lt;BeanDefinitionRegistryPostProcessor&gt;, BeanDefinitionRegistry, ApplicationStartup)</code></p>
+<p>遍历BeanDefinitionRegistryPostProcessor集合，默认集合只有一个ConfigurationClassPostProcessor，执行其postProcessBeanDefinitionRegistry(BeanDefinitionRegistry)方法来完成BeanDefinition的注入。</p>
+<p>（3）ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(BeanDefinitionRegistry)</p>
+<p>调用ConfigurationClassPostProcessor.processConfigBeanDefinitions(BeanDefinitionRegistry)方法来处理配置的BeanDefinition信息。</p>
+<p>（4）ConfigurationClassPostProcessor.processConfigBeanDefinitions(BeanDefinitionRegistry)</p>
+<p>调用<code>ConfiguraionClassParser.parse(Set&lt;BeanDefinitionHolder&gt;)</code>方法来解析配置类。</p>
+<p>（5）<code>ConfiguraionClassParser.parse(Set&lt;BeanDefinitionHolder&gt;)</code></p>
+<p>调用ConfigurationClassParser.DeferredImportSelectorHandler.process()方法来处理。</p>
+<p>（6）ConfigurationClassParser.DeferredImportSelectorHandler.process()</p>
+<p>调用ConfigurationClassParser.DeferredImportSelectorGroupingHandler.processGroupImports()方法来处理。</p>
+<p>（7）ConfigurationClassParser.DeferredImportSelectorGroupingHandler.processGroupImports()</p>
+<p>调用ConfigurationClassParser.DeferedImportSelectorGrouping.getImports()方法获取要导入的配置类信息。</p>
+<p>遍历所有的配置类信息，调用ConfigurationClassParser.processImports(…..)来将这些配置类导入到容器中。</p>
+<p>（8）ConfigurationClassParser.DeferedImportSelectorGrouping.getImports()</p>
+<p>调用AutoConfigurationImportSelector.AutoConfigurationGroup.process()方法来处理。</p>
+<p>调用AutoConfigurationImportSelector.AutoConfigurationGroup.selectImports()来处理。</p>
+<p>（9）AutoConfigurationImportSelector.AutoConfigurationGroup.process()</p>
+<p>调用AutoConfigurationImportSelector.getAutoConfigurationEntry()方法来获取配置类，然后将这些配置类装进Map中。</p>
+<p>（10）AutoConfigurationImportSelector.getAutoConfigurationEntry()</p>
+<p>调用AutoConfigurationImportSelector.getCandidateConfiguration()方法来读取项目META-INFO&#x2F;spring.factories文件和项目META-INFO&#x2F;spring&#x2F;org.springframework.boot.autoconfigure.AutoConfiguration.imports文件中的自动配置类信息。</p>
+<p>对扫描的配置类进行过滤，过滤掉要排除的配置类，将最终剩下的需要使用的全部配置类整体打包成AutoConfigurationEntry并返回。</p>
+<h3 id="1-2-8、AbstractApplicationContext-registerBeanPostProcessors"><a href="#1-2-8、AbstractApplicationContext-registerBeanPostProcessors" class="headerlink" title="1.2.8、AbstractApplicationContext.registerBeanPostProcessors(.)"></a>1.2.8、AbstractApplicationContext.registerBeanPostProcessors(.)</h3><p><em><strong>会调用PostProcessorRegistrationDelegate.registerBeanPostProcessors(..)方法来处理</strong></em>。</p>
+<p>获取接口BeanPostProcessor的所有实现类，默认有7个，分别是：internalAutowiredAnnotationProcessor、internalCommonAnnotationProcessor、ConfigurationPropertiesBindingPostProcessor、webServerFactoryCustomizerBeanPostProcessor、errorPageRegistrarBeanPostProcessor、internalAutoProxyCreator、persistenceExceptionTranslationPostProcessor。</p>
+<p><em><strong>为当前BeanFactory添加Bean增强器BeanPostProcessorChecker</strong></em>。</p>
+<p>遍历所有的Bean增强器，将这些Bean增强器按照实现了PriorityOrdered、实现Ordered、普通的分类装进不同的List集合中。先将实现了PriorityOrder的所有Bean增强器添加进BeanFactory中。把实现了Ordered的Bean增强器中挑选处实现了MergeBeanDefinitionPostProcessor的装进对应的集合中。然后将实现了Ordered的Bean增强器添加进BeanFactory中。从普通的Bean增强器中也挑选出MergeBeanDefinitionPostProcessor类型的装进对应的集合中，然后将普通的Bean增强器装进BeanFactory中，然后将普通的MergeBeanDefinitionPostProcessor类型的也装进去。</p>
+<p>最后再为BeanFactory添加一个Bean增强器ApplicationListenerDetector。</p>
+<h3 id="1-2-9、DefaultApplicationStartup-DefaultStartupStep-end"><a href="#1-2-9、DefaultApplicationStartup-DefaultStartupStep-end" class="headerlink" title="1.2.9、DefaultApplicationStartup.DefaultStartupStep.end()"></a>1.2.9、DefaultApplicationStartup.DefaultStartupStep.end()</h3><p>默认空实现。</p>
+<h3 id="1-2-10、AbstractApplicationContext-initMessageSource"><a href="#1-2-10、AbstractApplicationContext-initMessageSource" class="headerlink" title="1.2.10、AbstractApplicationContext.initMessageSource()"></a>1.2.10、AbstractApplicationContext.initMessageSource()</h3><p>（1）如果BeanFactory中包含名字为messageSource的Bean，且该Bean属于HierarchicalMessageSource类型，那么为该类型的Bean设置父消息源。</p>
+<p>（2）如果BeanFactory中没有名字为messageSource的Bean，那么创建一个空的DelegatingMessageSource，并初始化父消息源，然后将之赋值给this.messageSource，然后将该messageSource注册成一个单例。</p>
+<h3 id="1-2-11、AbstractApplicationContext-initApplicationEventMulticaster"><a href="#1-2-11、AbstractApplicationContext-initApplicationEventMulticaster" class="headerlink" title="1.2.11、AbstractApplicationContext.initApplicationEventMulticaster()"></a>1.2.11、AbstractApplicationContext.initApplicationEventMulticaster()</h3><p>（1）如果BeanFactory中存在一个名字为applicationEventMulticaster的Bean，那么获取该Bean并将之赋值给this.applicationEventMulticaster。</p>
+<p>（2）如果BeanFactory中没有名字为applicationEventMulticaster的Bean，那么创建一个SimpleApplicationEventMulticaster并赋值给this.applicationEventMulticaster，并将该实例以applicationEventMulticaster为名字注册为单例。</p>
+<h3 id="1-2-12、ServletWebServerApplicationContext-onRefresh"><a href="#1-2-12、ServletWebServerApplicationContext-onRefresh" class="headerlink" title="1.2.12、ServletWebServerApplicationContext.onRefresh()"></a>1.2.12、ServletWebServerApplicationContext.onRefresh()</h3><p><strong>（1）调用父类的onRefresh()方法</strong></p>
+<p>初始化主题源this.themSource为ResourceBundleThemeSource。</p>
+<p><strong>（2）调用ServletWebServerApplicationContext.createWebServer()方法创建WebServer</strong></p>
+<p>如果WebServer、ServletContext不为null，那么获取自定义初始化器，并调用其onstartup方法。</p>
+<p>如果WebServer、ServletContext为null，那么获取WebServerFactory，再通过Factory获取WebServer。</p>
+<p><strong>（3）获取WebServerFactory和WebServer</strong></p>
+<p>获取接口ServletWebServerFactory的所有实现类名字，默认会获取到一个tomcatServletWebServerFactory，然后根据该名字尝试从BeanFactory中获取。</p>
+<p>调用TomcatServletWebServerFactory.getWebServer()方法来获取WebServer，参数是一个ServletContextInitializer类型的数组，符合要求时会调用实现类的onStartup()方法。</p>
+<p>创建Tomcat类实例对象，为其设置BaseDir为&#x2F;var&#x2F;folders&#x2F;ys&#x2F;xxxxxxxx&#x2F;T&#x2F;tomcat.9001.xxxxxxxxx。如果存在接口LifecycleListener的实现类，那么将这些实现类添加进当前tomcat实例的Server中。</p>
+<p>基于Http11NioProtocol创建Connector类实例，然后将该实例添加进tomcat实例的Service中。对该Connector实例进行自定义设置，比如：设置端口号；如果connector的ProtocolHandler是AbstractProtocol类型，那么对其进行自定义配置，执行它们的customize(protocolHandler)方法；设置URIEncoding为UTF-8；设置属性bindOnInit为false；如果开启了HTTP2，那么使用Http2Protocol；如果开启了SSL，那么对其进行配置；使用TomcatConnectorCustomizer对connector进行定制；</p>
+<p>为当前tomcat实例设置定制后的connector实例，并关闭tomcat实例中Host的自动部署功能，设置tomcat实例的Engine后台处理延迟为10秒。如果当前存在连接Connector，那么为tomcat实例的Service添加connector。</p>
+<p>准备上下文Context。为context设置name为””，设置displayName为application，设置path为””，设置DocBase为&#x2F;var&#x2F;folders&#x2F;ys&#x2F;xxxxxxx&#x2F;T&#x2F;tomcat-docbase.9001.xxxxx，为context添加生命周期监听器Tomcat.FixContextListener，设置父类加载器，设置默认本地映射：en:UTF-8、fr:UTF-8、ja:UTF-8，设置创建上传目标为true，为context的StandardJarScanner设置StandardJarScanFilter。为context设置Wrapper加载器WrapperLoader，该WrapperLoader会加载TomcatEmbeddedWebappClassLoader。为context添加LifecycleListener的StaticResourceConfigurer。</p>
+<p>将当前context添加进Host中，然后再对context做一些配置。</p>
+<p>最后基于参数tomcat实例、true、名字是IMMEDIATE的Shutdown实例创建TomcatWebServer实例返回。</p>
+<p><strong>（4）注册两个Lifecycle</strong></p>
+<p>一个是名字为webServerGracefulShutdown的WebServerGracefulShuedownLifecycle。</p>
+<p>一个是名字为webServerStartStop的WebServerStartStopLifecycle。</p>
+<p><strong>（5）调用GenericWebApplicationContext.initPropertySources()方法来初始化属性源。</strong></p>
+<h3 id="1-2-13、AbstractApplicationContext-registerListeners"><a href="#1-2-13、AbstractApplicationContext-registerListeners" class="headerlink" title="1.2.13、AbstractApplicationContext.registerListeners()"></a>1.2.13、AbstractApplicationContext.registerListeners()</h3><p>（1）获取所有ApplicationListener实现类，然后将这些实现类添加进SimpleApplicationEventMulticaster中。</p>
+<p>（2）如果存在早期的ApplicationEvent，那么通过上一步获取事件多播器触发这些Event。</p>
+<h3 id="1-2-14、AbstractApplicationContext-finishBeanFactoryInitialization"><a href="#1-2-14、AbstractApplicationContext-finishBeanFactoryInitialization" class="headerlink" title="1.2.14、AbstractApplicationContext.finishBeanFactoryInitialization(.)"></a>1.2.14、AbstractApplicationContext.finishBeanFactoryInitialization(.)</h3><p>（1）如果BeanFactory中存在名字为conversionService的Bean那么为BeanFactory设置该Bean。</p>
+<p>（2）如果BeanFactory中不存在StringValueResolver，那么为之设置一个，该Resolver会调用当前environment来解析占位符。</p>
+<p>（3）如果BeanFactory中存在类型LoadTimeWeaverAware的Bean定义名字，那么实例话这个Bean并放入容器中。</p>
+<p>（4）冻结配置</p>
+<p><strong>（5）预实例化Bean。会将所有的Bean定义进行实例化并放入容器中</strong>。</p>
+<p>遍历所有的Bean定义名字，先实例化非FactoryBean类型的、抽象的、非单例的、懒加载的那些Bean，其中先处理SmartInitializingSingleton类型的Bean，并执行这些bean的afterSingletonsInstantiated()方法，然后基于bean名字获取合并的bean定义。</p>
+<p>如果当前bean属于FactoryBean类型，那么在bean名字前拼接符号&amp;来尝试获取bean，如果不属于FactoryBean类型，那么直接通过bean名字尝试获取bean。</p>
+<p>如果当前bean是FactoryBean类型</p>
+<h3 id="1-2-15、AbstractApplicationContext-finishRefresh"><a href="#1-2-15、AbstractApplicationContext-finishRefresh" class="headerlink" title="1.2.15、AbstractApplicationContext.finishRefresh()"></a>1.2.15、AbstractApplicationContext.finishRefresh()</h3><p>入口从AbstractApplicationContext.finishRefresh()方法开始。该方法会做如下事情：</p>
+<ol>
+<li>初始化生命周期处理器并调用其刷新方法完成刷新。内置Tomcat的启动在这一步实现。</li>
+<li>发布ContextRefreshedEvent事件。监听到该事件的监听器会做自己的相关操作。</li>
+</ol>
+<p><strong>（1）AbstractApplicationContext.finishRefresh()</strong></p>
+<p>调用DefaultLifecycleProcessor.onRefresh()方法来处理。</p>
+<p><strong>（2）DefaultLifecycleProcessor.onRefresh()</strong></p>
+<p>调用DefaultLifecycleProcessor.startBeans(true)方法来处理。</p>
+<p><strong>（3）DefaultLifecycleProcessor.startBeans(true)</strong></p>
+<p>调用DefaultLifecycleProcessor.start()方法来处理。</p>
+<p><strong>（4）DefaultLifecycleProcessor.start()</strong></p>
+<p>调用DefaultLifecycleProcessor.doStart()方法来处理。</p>
+<p><strong>（5）DefaultLifecycleProcessor.doStart()</strong></p>
+<p>这一步会调用实现Lifecycle接口的所有实现类的start方法。以WebServerStartStopLifecycle.start()方法为例来分析。</p>
+<p><strong>（6）WebServerStartStopLifecycle.start()</strong></p>
+<p>调用TomcatWebServer.start()方法来处理，然后设置running为true，最后发布ServletWebServerInitializedEvent事件。</p>
+<p><strong>（7）TomcatWebServer.start()</strong></p>
+<p>调用TomcatWebServer.addPreviouslyRemovedConnectorrs()方法来为所有的service添加connector。</p>
+<p><strong>（8）TomcatWebServer.addPreviouslyRemovedConnectorrs()</strong></p>
+<p>遍历所有service，通过每个service获取所有的connector，然后再调用StandardService.addConnector(Connector) 方法将这些connector添加进对应的service中。</p>
+<p><strong>（9）StandardService.addConnector(Connector)</strong> </p>
+<p>调用当前Connector的start()方法开启Tomcat初始化等操作。详情查看Tomcat原理解析章节。</p>
+<h3 id="1-2-16、catch-BeanException"><a href="#1-2-16、catch-BeanException" class="headerlink" title="1.2.16、catch:BeanException"></a>1.2.16、catch:BeanException</h3><p>（1）AbstractApplicationContext.destroyBeans()</p>
+<p>（2）AbstractApplicaitonContext.cancelRefresh(.)</p>
+<h3 id="1-2-18、finally"><a href="#1-2-18、finally" class="headerlink" title="1.2.18、finally"></a>1.2.18、finally</h3><p>（1）AbstractApplicationContext.resetCommonCaches()</p>
+<p>清理定义的方法和字段缓存，清理注册过滤器缓存，清理解析类型缓存，清理缓存操作关连的类加载器。</p>
+<p>（2）DefaultApplicationStartup.DefaultStartupStep.end()</p>
+<p>调用end方法标识执行结束。</p>
+<h1 id="Web开发"><a href="#Web开发" class="headerlink" title="Web开发"></a>Web开发</h1><h2 id="1-1、概述"><a href="#1-1、概述" class="headerlink" title="1.1、概述"></a>1.1、概述</h2><p>web开发场景下，springboot默认使用的自动配置类如下</p>
+<ul>
+<li><strong>Client</strong><ul>
+<li>RestTemplateAutoConfiguration<ul>
+<li>HttpMessageConvertersAutoConfiguration<ul>
+<li>GsonAutoConfiguration：会使用GsonProperties读取前缀为spring.gson的配置，</li>
+<li>JacksonAutoConfiguration：会使用JacksonProperties读取前缀为spring.jackson的配置。</li>
+<li>JsonbAutoConfiguration</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>Embedded</strong><ul>
+<li>EmbeddedWebServerFactoryCustomizerAutoConfiguration：会使用ServerPropertie读取前缀为server的配置。</li>
+</ul>
+</li>
+<li><strong>Servlet应用</strong><ul>
+<li>DispatcherServletAutoConfiguration：会使用WebMvcProperties读取前缀为spring.mvc的配置。</li>
+<li>ServletWebServerFactoryAutoConfiguration：会使用ServerProperties读取前缀为server的配置。</li>
+<li>ErrorMvcAutoConfiguration：会使用ServerProperties读取前缀为server的配置，使用WebMvcProperties读取前缀为spring.mvc的配置，使用WebProperties读取前缀为spring.web的配置。</li>
+<li>HttpEncodingAutoConfiguration：会使用ServerProperties读取前缀为server的配置。</li>
+<li>MultipartAutoConfiguration：会使用MultipartProperties读取前缀为spring.servlet.multipart的配置。</li>
+<li>WebMvcAutoConfiguration：会使用WebProperties读取前缀spring.web的配置，使用WebMvcProperties读取spring.mvc的配置。</li>
+</ul>
+</li>
+<li><strong>Reactive应用</strong><ul>
+<li>HttpHandlerAutoConfiguration</li>
+<li>ReactiveMultipartAutoConfiguration</li>
+<li>ReactiveWebServerFactoryAutoConfiguration</li>
+<li>WebFluxAutoConfiguration</li>
+<li>WebSessionIdResolverAutoConfiguration</li>
+<li>ErrorWebFluxAutoConfiguration</li>
+<li>ClientHttpConnectorAutoConfiguration</li>
+<li>WebClientAutoConfiguration</li>
+</ul>
+</li>
+</ul>
+<h2 id="1-2、Servlet应用"><a href="#1-2、Servlet应用" class="headerlink" title="1.2、Servlet应用"></a>1.2、Servlet应用</h2><h3 id="1-2-1、概述"><a href="#1-2-1、概述" class="headerlink" title="1.2.1、概述"></a>1.2.1、概述</h3><p><font color='red'>注意事项：当显式使用注解 @EnableWebMvc 时，WebMvcAutoConfiguration将不再有效。因为 WebMvcAutoConfiguration 生效的前提是容器中没有 WebMvcConfigurationSupport，而注解 @EnableWebMvc 会间接向容器中注入一个 WebMvcConfigurationSupport。</font></p>
+<p>自动配置加载顺序如下：</p>
+<ol>
+<li>ErrorMvcAutoConfiguration</li>
+<li>ServletWebServerFactoryAutoConfiguration</li>
+<li>DispatcherServletAutoConfiguration</li>
+<li>TaskExecutionAutoConfiguration</li>
+<li>ValidationAutoConfiguration</li>
+<li>WebMvcAutoConfiguration</li>
+<li>HttpEncodingAutoConfiguration</li>
+<li>MultipartAutoConfiguration</li>
+</ol>
+<h3 id="1-2-2、ErrorMvcAutoConfiguration"><a href="#1-2-2、ErrorMvcAutoConfiguration" class="headerlink" title="1.2.2、ErrorMvcAutoConfiguration"></a>1.2.2、ErrorMvcAutoConfiguration</h3><p>自动配置类<code>ErrorMvcAutoConfiguration</code>生效的前提条件如下：</p>
+<ol>
+<li>项目类型是servlet类型.</li>
+<li>存在class：Servlet.class、DispatcherServlet.class。</li>
+</ol>
+<p>自动配置类<code>ErrorMvcAutoConfiguration</code>会读取ServerProperties.class、WebMvcProperties.class。</p>
+<p>自动配置类<code>ErrorMvcAutoConfiguration</code>拥有如下内部类或接口：</p>
+<ul>
+<li><strong>DefaultErrorViewResolverConfiguration</strong></li>
+<li><strong>ErrorPageCustomizer</strong></li>
+<li><strong>ErrorTemplateMissingCondition</strong></li>
+<li><strong>PreserverErrorControllerTargetClassPostProcessor</strong></li>
+<li><strong>StaticView</strong></li>
+<li><strong>WhitelabelErrorViewConfiguration</strong></li>
+</ul>
+<p><strong>1. 内部类 DefaultErrorViewResolverConfiguration</strong></p>
+<p>如果存在DispatcherServlet.class，且没有ErrorViewResolver.class时，向容器中注入一个DefaulErrorViewResolver。</p>
+<p><strong>2. 内部类 ErrorPageCustomizer</strong></p>
+<p>获取错误页面的路径，如果配置了属性error.path，则以配置的为准，否则以默认路径<code>/error</code>为准。</p>
+<p>从错误路径下获取所有的错误页面，将这些错误页面添加进错误页面注册器ErrorPageRegistry中。</p>
+<p><strong>3. 内部类 ErrorTemplateMissingCondition</strong></p>
+<p>配置错误模板缺失匹配规则 ErrorTemplateMissingCondition。</p>
+<p><strong>4. 内部类 PreserverErrorControllerTargetClassPostProcessor</strong></p>
+<p>实现BeanFactoryPostProcessor的postProcessBeanFactory方法。</p>
+<p>获取类型为ErrorController.class的所有Bean的定义，为所有Bean的定义设置属性值 preserveTargetClass&#x3D;true。</p>
+<p>ErrorController.class类型的Bean默认有1个，即 BasicErrorController。</p>
+<p><em><strong>BasicErrorController会拦截请求路径为 server.error.path 或 error.path 或 &#x2F;error 的请求，且处理方式分两种</strong></em>：</p>
+<ul>
+<li><p><strong>将错误信息以JSON格式返回</strong></p>
+<p>当对响应数据的格式没有要求，会被方法error拦截，该方法会将错误信息以JSON格式返回；</p>
+</li>
+<li><p><strong>将错误信息以错误视图方式返回</strong></p>
+<p>当要求响应数据的媒体类型是<code>text/html</code>，会被方法 errorHtml 拦截，该方法会以错误视图页面的方式返回。</p>
+<p><strong>错误视图的查找匹配规则如下</strong>：</p>
+<ol>
+<li>精确匹配响应码为名字的页面，比如404.html、500.html等。如果使用了模板引擎，那么会先到路径 resources&#x2F;templates&#x2F;error&#x2F;下查找；如果没有使用模板引擎，那么会到静态资源路径下查找。</li>
+<li>匹配通用模糊错误页面，比如4xx.html、5xx.html等。如果使用了模板引擎，那么会先到路径 resources&#x2F;templates&#x2F;error&#x2F;下查找；如果没有使用模板引擎，那么会到静态资源路径下查找。</li>
+<li>如果通用模糊错误页面也没有找到，那么会直接查找名字为 error 的页面。</li>
+<li>如果名字为 error 的页面也没有找到，那么会使用spring boot的默认 error 页面，也就是白页。</li>
+</ol>
+</li>
+</ul>
+<p><strong>5. 内部类 StaticView</strong></p>
+<p>在方法 render 中进行错误视图的渲染，也就是将错误信息渲染到白页中，然后再浏览器中展示。</p>
+<p><strong>6. 内部类 WhitelabelErrorViewConfiguration</strong></p>
+<p>如果配置了属性 server.error.whitelabel.enabled，但属性值不为true，且符合内部类ErrorTemplateMissingCondition定义的规则，那么继续。</p>
+<p>如果容器中缺少名字为 error，类型是View的Bean，那么向容器中注入一个名字为 error 类型是 StaticView（白页） 的Bean。</p>
+<p>如果容器中缺少名字为 beanNameViewResolver 类型是 BeanNameViewResolver 的Bean，那么向容器中注入一个名字是 beanNameViewResolver 类型是 BeanNameViewResolver  的Bean。</p>
+<h3 id="1-2-3、ServletWebServerFactoryAutoConfiguration"><a href="#1-2-3、ServletWebServerFactoryAutoConfiguration" class="headerlink" title="1.2.3、ServletWebServerFactoryAutoConfiguration"></a>1.2.3、ServletWebServerFactoryAutoConfiguration</h3><p>自动配置类<code>ServletWebServerFactoryAutoConfiguration</code>生效的前提条件如下：</p>
+<ol>
+<li>项目类型是servlet类型.</li>
+<li>存在class：ServletRequest.class。</li>
+</ol>
+<p>自动配置类<code>ServletWebServerFactoryAutoConfiguration</code>会读取ServerProperties.class、WebMvcProperties.class。</p>
+<p>自动配置类<code>ServletWebServerFactoryAutoConfiguration</code>拥有如下内部类或接口：</p>
+<ul>
+<li><strong>BeanPostProcessorsRegistrar</strong></li>
+<li><strong>ForwardedHeaderFilterConfiguration</strong></li>
+<li><strong>ForwardedHeaderFilterCustomizer</strong></li>
+</ul>
+<p><strong>1. 自动配置类本身操作</strong></p>
+<p>会通过@Import导入如下类：</p>
+<ul>
+<li><strong>BeanPostProcessorsRegistrar</strong></li>
+<li><strong>ServletWebServerFactoryConfiguration.EmbeddedTomcat</strong></li>
+<li><strong>ServletWebServerFactoryConfiguration.EmbeddedJetty</strong></li>
+<li><strong>ServletWebServerFactoryConfiguration.EmbeddedUndertow</strong></li>
+</ul>
+<p>会向容器中注入类：</p>
+<ul>
+<li><strong>ServletWebServerFactoryCustomizer</strong></li>
+<li>如果存在org.apache.catalina.startup.Tomcat，那么导入TomcatServletWebServerFactoryCustomizer</li>
+</ul>
+<p><strong>2. 内部类BeanPostProcessorsRegistrar操作</strong></p>
+<p>实现了接口 ImportBeanDefinitionRegistrar 的 registerBeanDefinitions方法，如果缺失就注册两个bean：webServerFactoryCustomizerBeanPostProcessor、errorPageRegistrarBeanPostProcessor。</p>
+<p><strong>3. 内部类ForwardedHeaderFilterConfiguration操作</strong></p>
+<p>如果配置了属性server.forward-headers-strategy&#x3D;framework，那么配置有效。</p>
+<p>如果存在org.apache.catalina.startup.Tomcat，那么向容器中注入一个ForwardedHeaderFilterCustomizer。</p>
+<p>向容器中注入一个FilterRegistrationBean。</p>
+<h3 id="1-2-4、DispatcherServletAutoConfiguration"><a href="#1-2-4、DispatcherServletAutoConfiguration" class="headerlink" title="1.2.4、DispatcherServletAutoConfiguration"></a>1.2.4、DispatcherServletAutoConfiguration</h3><p>该自动配置类生效的前提是：</p>
+<ol>
+<li>已经加载了执行了ServletWebServerFactoryAutoConfiguration</li>
+<li>项目是servlet类型。</li>
+<li>存在class：DispatcherServlet.class。</li>
+</ol>
+<p>该自动配置类存在如下内部类：</p>
+<ul>
+<li>DispatcherServletRegistrationConfiguration</li>
+<li>DispatcherServletConfiguration</li>
+</ul>
+<p><strong>1. 静态内部类：DispatcherServletRegistrationConfiguration</strong></p>
+<p>该配置生效的前提是存在class：ServletRegistration。</p>
+<p>该配置类会导入DispatcherServletConfiguration。</p>
+<p>如果已经存在名字为dispatcherServlet的DispatcherServlet，那么创建DispatcherServletRegistrationBean，设置其名字为dispatcherServlet，并为其设置文件上传，最后放入容器。</p>
+<p><strong>2. 静态内部类：DispatcherServletConfiguration</strong></p>
+<p>该自动配置类生效的前提是存在class：ServletRegistration。</p>
+<p>该配置类会读取WebMvcProperties绑定的前缀为<code>spring.mvc</code>的配置。</p>
+<p>创建名字为 dispatcherServlet 的 DispatcherServlet，为其设置WebMvcProperties绑定的dispatchOptionsRequest、dispatchTraceRequest、异常抛出、事件发布、日志记录等配置，最后放入容器中。</p>
+<p>如果存在Bean：MultipartResolver，且缺失名字为multipartResolver的Bean，那么创建MultipartResolver并放入容器。</p>
+<h3 id="1-2-5、TaskExecutionAutoConfiguration"><a href="#1-2-5、TaskExecutionAutoConfiguration" class="headerlink" title="1.2.5、TaskExecutionAutoConfiguration"></a>1.2.5、TaskExecutionAutoConfiguration</h3><p>该自动配置生效的前提是存在class：ThreadPoolTaskExecutor。</p>
+<p>如果容器中缺少名字为 taskExecutorBuilder 的 TaskExecutorBuilder，那么创建它并放入容器中。</p>
+<p>如果缺少Bean：Executor，那么创建名为 applicationTaskExecutor 或 taskExecutor 的 ThreadPoolTaskExecutor。</p>
+<h3 id="1-2-6、ValidationAutoConfiguration"><a href="#1-2-6、ValidationAutoConfiguration" class="headerlink" title="1.2.6、ValidationAutoConfiguration"></a>1.2.6、ValidationAutoConfiguration</h3><p>该自动配置生效的前提如下：</p>
+<ul>
+<li>存在class：ExecutableValidator。</li>
+<li>存在resource：classpath:META-INF&#x2F;services&#x2F;javax.validation.spi.ValidationProvider</li>
+</ul>
+<p>该自动配置会导入PrimaryDefaultValidatorPostProcessor。</p>
+<p>如果缺少Bean：Validator，那么创建名字 defaultValidator 的 LocalValidatorFactoryBean 放入容器。</p>
+<p>如果当前查找策略缺失，那么创建名为 methodValidationPostProcessor 的 FilteredMethodValidationPostProcessor，为其设置验证器，设置proxyTargetClass的值为属性spring.aop.proxy-target-class的值，最后将之放入容器。</p>
+<h3 id="1-2-7、WebMvcAutoConfiguration"><a href="#1-2-7、WebMvcAutoConfiguration" class="headerlink" title="1.2.7、WebMvcAutoConfiguration"></a>1.2.7、WebMvcAutoConfiguration</h3><p><strong>自动配置类<code>WebMvcAutoConfiguration</code>生效的前提条件如下：</strong></p>
+<ol>
+<li>自动配置类<code>DispatcherServletAutoConfiguration、TaskExecutionAutoConfiguration、ValidationAutoConfiguration</code>已经加载配置完毕。</li>
+<li>当前项目类型必须是Servlet类型。</li>
+<li>必须存在class：<code>Servlet.class、DispatcherServlet.class、WebMvcConfigurer.class</code>。</li>
+<li>项目没有手动配置<code>WebMvcConfigurationSupport.class</code>。</li>
+</ol>
+<p><strong>自动配置类<code>WebMvcAutoConfiguration</code>内部类或接口如下：</strong></p>
+<ul>
+<li>EnableWebMvcConfiguration</li>
+<li>WebMvcAutoConfigurationAdapter</li>
+<li>OptionPathExtensionContentNegotiationStrategy</li>
+<li>ProblemDetailsErrorHandingConfiguration</li>
+<li>ReourceChainCustomizerConfiguration</li>
+<li>ResourceChainResourceHandlerRegistrationCustomizer</li>
+<li>接口 ResourceHandlerRegistrationCustomizer</li>
+<li>接口 WelcomePageHandlerMappingFactory</li>
+</ul>
+<p>**1. WebMvcAutoConfiguration本身操作 **</p>
+<p>向容器中注入两个Filter</p>
+<ul>
+<li>OrderedHiddenHttpMethodFilter：页面表单提交Rest请求（GET、POST、PUT、DELETE）。</li>
+<li>OrderedFormContentFilter：表单内容Filter，GET请求数据放地址后面，POST请求数据放请求体，PUT、DELET请求会被忽略。</li>
+</ul>
+<p><strong>2. 静态内部类：EnableWebMvcConfiguration</strong></p>
+<p>该内部类继承了 DelegatingWebMvcConfiguration，间接继承了 WebMvcConfigurationSupport。通过DelegatingWebMvcConfiguration 可以获取 WebMvcConfigurer 的所有实现类实现定制化配置，通过 WebMvcConfigurationSupport 可以为 DispatcherServlet 初始化必要的组件。</p>
+<p>创建 RequestMappingHandlerAdapter 并注入到容器中。</p>
+<p>创建 WelcomePageHandlerMapping 并注入到容器中。</p>
+<p>创建 WelcomePageNotAcceptableHandlerMapping 并注入到容器中。</p>
+<p>创建 LocaleResolver 并注入到容器中。</p>
+<p>如果不存在名字为 themeResolver 的 ThemeResolver，那么就创建一个名字为 themeResolver 的ThemeResolver。</p>
+<p>如果不存在名字为 flashMapManager的 FlashMapManager，那么就创建一个名字为 flashMapManager 的FlashMapManager。</p>
+<p>创建名字为 mvcConversionService 的 FormattingConversionService 并注入到容器中。</p>
+<p>创建名字为 nvcValidator 的 Validator 并注入到容器中。</p>
+<p>创建名字为 mvcContentNegotiationManager 的 ContentNegotiationManager 并注入到容器中。</p>
+<p><strong>3. 静态内部类：WebMvcAutoConfigurationAdapter</strong></p>
+<p>首先导入一个配置类 EnableWebMvcConfiguration.class。</p>
+<p>该内部类实现了 WebMvcConfigurer、ServletContextAware，通过 WebMvcConfigurer 可以定制化一些底层组件。</p>
+<p>如果没有 InternalResourceViewResolver，那么创建名为 defaultViewResolver 的 InternalResourceViewResolver 并注入到容器中。</p>
+<p>如果存在 View.calss，但没有 BeanNameViewResolver，那么创建名为 beanNameViewResolver 的 BeanNameViewResolver 并注入到容器中。</p>
+<p>如果存在 ViewResolver.class，但没有名字为 viewResolver 的 ContentNegotiatingViewResolver，那么就创建名字为 viewResolver 的 ContentNegotiatingViewResolver 并注入到容器中。</p>
+<p>如果没有 RequestContextListener、RequestContextFilter、RequestContextFilter，那么创建名为 requestContextFilter 的 OrderedRequestContextFilter 并注入到容器中。</p>
+<p><strong>4. 静态内部类：OptionPathExtensionContentNegotiationStrategy</strong></p>
+<p>配置内容协商策略，默认支持所有类型的内容，即MediaType.ALL。如果显式配置了协商策略，则以自定义配置的为准。</p>
+<p><strong>5. 静态内部类：ProblemDetailsErrorHandingConfiguration</strong></p>
+<p>如果配置了 spring.mvc.problemdetails.enabled : true，该配置才会生效。</p>
+<p>如果不存在 ResponseEntityExceptionHandler.class，那么创建 ProblemDetailsExceptionHandler 并注入到容器中。</p>
+<p>ProblemDetailsExceptionHandler 被注解 @ControllerAdvice 标示，且继承了 ResponseEntityExceptionHnadler，ResponseEntityExceptionHnadler中方法handlerException被注解 @ExceptionHandler 标示，该方法可以处理常见的16个异常。 该方法在处理异常时，会使用新媒体类型<code>application/problem+json</code>来返回错误信息。</p>
+<p><strong>6. 静态内部类：ReourceChainCustomizerConfiguration</strong></p>
+<p>如果开启了资源链功能，那么向容器中注入一个ResourceChainResourceHandlerRegistrationCustomizer。</p>
+<p><strong>7. 静态内部类：ResourceChainResourceHandlerRegistrationCustomizer</strong></p>
+<p>如果在配置文件中spring.web开头下配置了资源链，那么应用配置的内容。</p>
+<p><strong>8. 接口 ResourceHandlerRegistrationCustomizer</strong></p>
+<p><strong>9. 接口 WelcomePageHandlerMappingFactory</strong></p>
+<h2 id="1-3、Client应用"><a href="#1-3、Client应用" class="headerlink" title="1.3、Client应用"></a>1.3、Client应用</h2><p>自动配置加载顺序如下：</p>
+<ol>
+<li>GsonAutoConfiguration</li>
+<li>JacksonAutoConfiguration</li>
+<li>JsonbAutoConfiguration</li>
+<li>HttpMessageConvertersAutoConfiguration</li>
+<li>RestTemplateAutoConfiguration</li>
+</ol>
+<h3 id="1-3-1、GsonAutoConfiguration"><a href="#1-3-1、GsonAutoConfiguration" class="headerlink" title="1.3.1、GsonAutoConfiguration"></a>1.3.1、GsonAutoConfiguration</h3><p><em><strong>当前自动配置生效的前提是存在calss：Gson</strong></em>。</p>
+<p>如果缺失GsonBuilder，那么创建一个名为 gsonBuilder 的 GsonBuilder，使用GsonBuilderCustomizer的所有实现对该builder进行定制化，最后将该builder放入容器。</p>
+<p>如果缺失Gson，那么创建一个名为 gson 的 Gson 放入容器。</p>
+<p>创建一个名为 standardGsonBuilderCustomizer 的 StandardGsonBuilderCustomizer 放入容器。</p>
+<p><strong>1. 静态内部类：StandardGsonBuilderCustomizer</strong></p>
+<p>创建接口 GsonBuilderCustomizer 的实现 StandardGsonBuilderCustomizer，在customize方法中配置对 GsonBuilder 进行定制化处理。</p>
+<h3 id="1-3-2、JacksonAutoConfiguration"><a href="#1-3-2、JacksonAutoConfiguration" class="headerlink" title="1.3.2、JacksonAutoConfiguration"></a>1.3.2、JacksonAutoConfiguration</h3><p>自动配置生效的前提是存在class：ObjectMapper。</p>
+<p>初始化 FEATURE_DEFAULTS，设置<code>SerializationFeature.WRITE_DATES_AS_TIMESTAMPS</code>为 false，<code>SerializationFeature.WRITE_DURATIONS_AS_TIMESTAMPS</code>为false。</p>
+<p>创建一个JsonComponentModule放入容器。基于自动配置包名创建一个 JsonMixinModule 放入容器。</p>
+<p><strong>1. 静态内部类：Jackson2ObjectMapperBuilderCustomizerConfiguration</strong></p>
+<p>生效的前提是存在class：Jackson2ObjectMapperBuilder。</p>
+<p>创建StandardJackson2ObjectMapperBuilderCustomizer放入容器。</p>
+<p>创建接口 Jackson2ObjectMapperBuilderCustomizer 的实现StandardJackson2ObjectMapperBuilderCustomizer，通过customize方法对 Jackson2ObjectMapperBuilder 进行定制化处理。</p>
+<p><strong>2. 静态内部类：JacksonObjectMapperBuilderConfiguration</strong></p>
+<p>生效的前提是存在class：Jackson2ObjectMapperBuilder。</p>
+<p>创建Jackson2ObjectMapperBuilder，并基于 Jackson2ObjectMapperBuilderCustomizer 的所有实现对该 builder 进行定制化处理，最后将builder放入容器。</p>
+<p><strong>3. 静态内部类：ParameterNamesModuleConfiguration</strong></p>
+<p>生效的前提是存在class：ParameterNamesModule。</p>
+<p>如果缺失 ParameterNamesModule，那么基于默认模式创建 ParameterNamesModule 并放入容器。</p>
+<p><strong>4. 静态内部类：JacksonObjectMapperConfiguration</strong></p>
+<p>生效的前提是存在class：Jackson2ObjectMapperBuilder。</p>
+<p>如果缺失 ObjectMapper，那么创建名为 jacksonObjectMapper 的 ObjectMapper 并放入容器。</p>
+<h3 id="1-3-3、JsonbAutoConfiguration"><a href="#1-3-3、JsonbAutoConfiguration" class="headerlink" title="1.3.3、JsonbAutoConfiguration"></a>1.3.3、JsonbAutoConfiguration</h3><p>生效的前提是存在class：Jsonb，且存在resource：classpath:META-INF&#x2F;services&#x2F;javax.json.bind.spi.JsonbProvider”, “classpath:META-INF&#x2F;services&#x2F;javax.json.spi.JsonProvider。</p>
+<p>创建名为 jsonb 的 Jsonb 放入容器。</p>
+<h3 id="1-3-4、HttpMessageConvertersAutoConfiguration"><a href="#1-3-4、HttpMessageConvertersAutoConfiguration" class="headerlink" title="1.3.4、HttpMessageConvertersAutoConfiguration"></a>1.3.4、HttpMessageConvertersAutoConfiguration</h3><p>该自动配置类生效的前提：</p>
+<ul>
+<li>已经加载了配置：GsonAutoConfiguration、JacksonAutoConfiguration、JsonbAutoConfiguration。</li>
+<li>存在class：HttpMessageConverter。</li>
+<li>NotReactiveWebApplicationCondition符合要求。</li>
+</ul>
+<p>该自动配置类会导入如下配置：</p>
+<ul>
+<li>JacksonHttpMessageConvertersConfiguration</li>
+<li>GsonHttpMessageConvertersConfiguration</li>
+<li>JsonbHttpMessageConvertersConfiguration</li>
+</ul>
+<p>如果缺失 HttpMessageConverters ，那么基于基于所有的 HttpMessageConverter 创建 HttpMessageConverters并放入容器。</p>
+<p><strong>1. 静态内部类：StringHttpMessageConverterConfiguration</strong></p>
+<p>该配置生效前提是存在class：StringHttpMessageConverter。</p>
+<p>如果缺失 StringHttpMessageConverter，那么创建 StringHttpMessageConverter 并放入容器。</p>
+<h3 id="1-3-5、RestTemplateAutoConfiguration"><a href="#1-3-5、RestTemplateAutoConfiguration" class="headerlink" title="1.3.5、RestTemplateAutoConfiguration"></a>1.3.5、RestTemplateAutoConfiguration</h3><p>该配置生效的前提如下：</p>
+<ul>
+<li>已经加载配置 HttpMessageConvertersAutoConfiguration。</li>
+<li>存在class：RestTemplate。</li>
+<li>NotReactiveWebApplicationCondition符合要求。</li>
+</ul>
+<p>如果缺失 RestTemplateBuilderConfigurer，那么创建 RestTemplateBuilderConfigurer，设置为懒加载，并放入容器。</p>
+<p>如果缺失 RestTemplateBuilder，那么创建 RestTemplateBuilder，使用 RestTemplateBuilderConfigurer 对该builder进行配置，设置该builder为懒加载，并放入容器。</p>
+<h2 id="1-4、嵌入式应用"><a href="#1-4、嵌入式应用" class="headerlink" title="1.4、嵌入式应用"></a>1.4、嵌入式应用</h2><p>自动配置如下：</p>
+<ul>
+<li>EmbeddedWebServerFactoryCustomizerAutoConfiguration</li>
+</ul>
+<h3 id="1-4-1、EmbeddedWebServerFactoryCustomizerAutoConfiguration"><a href="#1-4-1、EmbeddedWebServerFactoryCustomizerAutoConfiguration" class="headerlink" title="1.4.1、EmbeddedWebServerFactoryCustomizerAutoConfiguration"></a>1.4.1、EmbeddedWebServerFactoryCustomizerAutoConfiguration</h3><p>该自动配置生效的前提：</p>
+<ul>
+<li>当前项目是web应用</li>
+<li>非传统war包部署的应用程序</li>
+</ul>
+<p><strong>1. 静态内部类：TomcatWebServerFactoryCustomizerConfiguration</strong></p>
+<p>该配置生效的前提是存在class：Tomcat、UpgradeProtocol。</p>
+<p>创建 TomcatWebServerFactoryCustomizer 放入容器。</p>
+<p><strong>2. 静态内部类：JettyWebServerFactoryCustomizerConfiguration</strong></p>
+<p>该配置生效的前提是存在class：Server、Loader、WebAppContext。</p>
+<p>创建 JettyWebServerFactoryCustomizer 放入容器。</p>
+<p><strong>3. 静态内部类：UndertowWebServerFactoryCustomizerConfiguration</strong></p>
+<p>该配置生效的前提是存在class：Undertow、SslClientAuthMode。</p>
+<p>创建 UndertowWebServerFactoryCustomizer 放入容器。</p>
+<p><strong>4. 静态内部类：NettyWebServerFactoryCustomizerConfiguration</strong></p>
+<p>该配置生效的前提是存在class：HttpServer。</p>
+<p>创建 NettyWebServerFactoryCustomizer 放入容器。</p>
+<h2 id="1-5、Reactive应用"><a href="#1-5、Reactive应用" class="headerlink" title="1.5、Reactive应用"></a>1.5、Reactive应用</h2><p>待补充。</p>
+<h1 id="AOP管理"><a href="#AOP管理" class="headerlink" title="AOP管理"></a>AOP管理</h1><h2 id="1-1、概述-1"><a href="#1-1、概述-1" class="headerlink" title="1.1、概述"></a>1.1、概述</h2><p><em><strong>对于AOP功能，springboot默认加载的自动配置为 AopAutoConfiguration</strong></em>。</p>
+<h2 id="1-2、AopAutoConfiguration"><a href="#1-2、AopAutoConfiguration" class="headerlink" title="1.2、AopAutoConfiguration"></a>1.2、AopAutoConfiguration</h2><p>该配置生效的前提是设置了属性<code>spring.aop.auto=true</code>。</p>
+<p><strong>1. 静态内部类：AspectJAutoProxyingConfiguration</strong></p>
+<p>该配置生效的前提是存在class：Advice。</p>
+<p>如果设置了属性<code>spring.aop.proxy-target-class=false</code>，开启JDK动态代理。会向容器中导入一个AspectJAutoProxyRegistrar，该类实现了 ImportBeanDefinitionRegistrar 的 registerBeanDefinitions方法，在该方法中会获取自动代理创建器的bean定义信息，为该bean定义设置属性proxyTargetClass&#x3D;true。</p>
+<p>如果设置了属性<code>spring.aop.proxy-target-class=true</code>，或没有配置该属性，那么都会开启CGLib代理。会向容器中导入一个AspectJAutoProxyRegistrar，该类实现了 ImportBeanDefinitionRegistrar 的 registerBeanDefinitions方法，在该方法中会获取自动代理创建器的bean定义信息，为该bean定义设置属性exposeProxy&#x3D;true。</p>
+<p><strong>2. 静态内部类：ClassProxyingConfiguration</strong></p>
+<p>该配置生效的前提如下：</p>
+<ul>
+<li>缺失class：org.aspectj.weaver.Advice。</li>
+<li>设置了属性 spring.aop.proxy-target-class&#x3D;true。</li>
+</ul>
+<p>创建一个BeanFactoryPostProcessor，通过该增强器向容器中放入一个代理创建器，实现最终代理对象的创建。</p>
+<h1 id="事务管理"><a href="#事务管理" class="headerlink" title="事务管理"></a>事务管理</h1><h2 id="1-1、概述-2"><a href="#1-1、概述-2" class="headerlink" title="1.1、概述"></a>1.1、概述</h2><p>对于事务管理，springboot默认自动配置如下：</p>
+<ul>
+<li><strong>TransactionAutoConfiguration</strong>：会读取TransactionProperties绑定的前缀为<code>spring.transaction</code>的配置。</li>
+<li><strong>JtaAutoConfiguration</strong>：</li>
+</ul>
+<h2 id="1-2、TransactionAutoConfiguration"><a href="#1-2、TransactionAutoConfiguration" class="headerlink" title="1.2、TransactionAutoConfiguration"></a>1.2、TransactionAutoConfiguration</h2><p>该配置生效的前提是存在class：PlatformTransactionManager。</p>
+<p>如果缺失 TransactionManagerCustomizers，那么创建 TransactionManagerCustomizers 放入容器。</p>
+<p>如果缺失 TransactionalOperator，且只存在一个ReactiveTransactionManager，那么创建 TransactionalOperator 放入容器。</p>
+<p><strong>1. 静态内部类：TransactionTemplateConfiguration</strong></p>
+<p>该配置生效的前提是容器中只有一个 PlatformTransactionManager。</p>
+<p>如果缺失 TransactionOperations，那么创建 TransactionTemplate 放入容器。</p>
+<p><strong>2. 静态内部类：EnableTransactionManagementConfiguration</strong></p>
+<p>该配置生效的前提是存在TransactionManager，且不存在 AbstractTransactionManagementConfiguration。</p>
+<p>如果设置了属性spting.aop.proxy-target-class&#x3D;false，那么使用注解@EnableTransactionManagement(proxyTargetClass &#x3D; false) 标示 JdkDynamicAutoProxyConfiguration。</p>
+<p>如果设置了属性spting.aop.proxy-target-class&#x3D;true，或没有设置，那么使用注解@EnableTransactionManagement(proxyTargetClass &#x3D; true) 标示 CglibAutoProxyConfiguration。</p>
+<h2 id="1-3、JtaAutoConfiguration"><a href="#1-3、JtaAutoConfiguration" class="headerlink" title="1.3、JtaAutoConfiguration"></a>1.3、JtaAutoConfiguration</h2><p>该配置生效的前提如下：</p>
+<ul>
+<li>存在class：javax.transaction.Transaction。</li>
+<li>设置了属性spring.jta.enabled。</li>
+</ul>
+<p>该配置会导入如下配置：</p>
+<ul>
+<li>JndiJtaConfiguration</li>
+<li>AtomikosJtaConfiguration</li>
+</ul>
+<p>该配置加载完后会加载如下配置：</p>
+<ul>
+<li>XADataSourceAutoConfiguration</li>
+<li>ActiveMQAutoConfiguration</li>
+<li>ArtemisAutoConfiguration</li>
+<li>HibernateJpaAutoConfiguration</li>
+<li>TransactionAutoConfiguration</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">豪哥</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://hshz21.gitee.io/2023/07/30/springboot-yuan-li-jie-xi/">https://hshz21.gitee.io/2023/07/30/springboot-yuan-li-jie-xi/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">豪哥</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/SpringBoot/">
+                                    <span class="chip bg-color">SpringBoot</span>
+                                </a>
+                            
+                                <a href="/tags/SpringBoot%E5%8E%9F%E7%90%86/">
+                                    <span class="chip bg-color">SpringBoot原理</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wxpay.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/07/30/shell-bian-cheng-ji-chu-pian/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Linux系列-Shell基础应用">
+                        
+                        <span class="card-title">Linux系列-Shell基础应用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Linux/" class="post-category">
+                                    Linux
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Shell/">
+                        <span class="chip bg-color">Shell</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/07/30/springaop/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Spring系列-SpringAOP">
+                        
+                        <span class="card-title">Spring系列-SpringAOP</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Spring/" class="post-category">
+                                    Spring
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Spring/">
+                        <span class="chip bg-color">Spring</span>
+                    </a>
+                    
+                    <a href="/tags/SpringAOP/">
+                        <span class="chip bg-color">SpringAOP</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">豪哥</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">豪哥</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:3577293158@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3577293158" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 3577293158" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

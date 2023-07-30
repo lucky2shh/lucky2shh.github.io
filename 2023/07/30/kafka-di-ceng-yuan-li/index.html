@@ -1,0 +1,1469 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Kafka系列-KafKa原理解析, 豪哥博客">
+    <meta name="description" content="豪哥个人博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Kafka系列-KafKa原理解析 | 豪哥博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">豪哥博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">豪哥博客</div>
+        <div class="logo-desc">
+            
+            豪哥个人博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Kafka系列-KafKa原理解析</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/KafKa/">
+                                <span class="chip bg-color">KafKa</span>
+                            </a>
+                        
+                            <a href="/tags/KafKa%E5%8E%9F%E7%90%86/">
+                                <span class="chip bg-color">KafKa原理</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/KafKa/" class="post-category">
+                                KafKa
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-07-30
+                </div>
+                
+
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    2.5k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="1、生产者"><a href="#1、生产者" class="headerlink" title="1、生产者"></a>1、生产者</h1><h2 id="1-1、生产者客户端流程"><a href="#1-1、生产者客户端流程" class="headerlink" title="1.1、生产者客户端流程"></a>1.1、生产者客户端流程</h2><ol>
+<li><strong>配置信息</strong><ul>
+<li>服务器</li>
+<li>key&#x2F;val序列化</li>
+</ul>
+</li>
+<li><strong>生产者实例</strong><ul>
+<li>KafkaProducer</li>
+</ul>
+</li>
+<li><strong>构造消息</strong><ul>
+<li>消息 ProducerRecord</li>
+<li>消息元数据 RecordMetadata</li>
+</ul>
+</li>
+<li><strong>发送消息</strong><ul>
+<li>三种方式：发后即忘、同步、异步</li>
+</ul>
+</li>
+<li><strong>关闭生产者</strong></li>
+</ol>
+<h2 id="1-2、发送消息流程分析"><a href="#1-2、发送消息流程分析" class="headerlink" title="1.2、发送消息流程分析"></a>1.2、发送消息流程分析</h2><ul>
+<li>主线程：拦截器 -&gt; 序列化器 -&gt; 分区器 -&gt; 消息累加器：分区 - 双端队列-ProducerBatch。</li>
+<li>send线程：Request -&gt; node - Request -&gt; selector -&gt; kafka cluster。</li>
+</ul>
+<h2 id="1-3、消息发送相关参数"><a href="#1-3、消息发送相关参数" class="headerlink" title="1.3、消息发送相关参数"></a>1.3、消息发送相关参数</h2><ol>
+<li><code>compression.type</code>：消息压缩方式 gzip &#x2F; snappy &#x2F; lz4</li>
+<li><code>linger.ms</code>：发送ProducerBatch前等待消息加入的时间，默认0</li>
+<li><code>max.request.size</code>：能发送消息的最大值，默认1048576</li>
+<li><code>retries</code>：发生消息异常时的重试次数，默认2147483647</li>
+<li><code>retry.backoff.ms</code>：发生异常时的重试间隔时间，默认100</li>
+<li><code>send.buffer.bytes</code>：socket发送消息缓冲区大小，默认131072，128KB</li>
+<li><code>receive.buffer.bytes</code>：socket接收消息缓冲区大小，默认65536，64KB</li>
+<li><code>request.timeout.ms</code>：等待请求响应的最长时间，默认30秒</li>
+<li><code>acks</code>：有多少分区收到消息，才会响应成功。<ul>
+<li>1：leader副本写入成功就响应。</li>
+<li>0：无需等待响应（异步）。</li>
+<li>-1&#x2F;all：ISR集合中的副本都写入成功后再响应。</li>
+</ul>
+</li>
+<li><code>connections.max.idle.ms</code>：多久后关闭限制的连接，默认9分钟</li>
+</ol>
+<h2 id="1-4、生产者发送消息流程"><a href="#1-4、生产者发送消息流程" class="headerlink" title="1.4、生产者发送消息流程"></a>1.4、生产者发送消息流程</h2><p><img src="/imgs/javadev/KafKa%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86-%E7%94%9F%E4%BA%A7%E8%80%85%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%9B%BE.png"></p>
+<h1 id="2、Broker"><a href="#2、Broker" class="headerlink" title="2、Broker"></a>2、Broker</h1><h2 id="2-1、Topic结构划分"><a href="#2-1、Topic结构划分" class="headerlink" title="2.1、Topic结构划分"></a>2.1、Topic结构划分</h2><p>topic -&gt; partition -&gt; 副本 -&gt; log -&gt; segment(.log &#x2F; .index &#x2F; .timeindex &#x2F; 其它)</p>
+<blockquote>
+<p><code>.index</code>索引文件 基于 稀疏索引实现，默认<code>.log</code>文件每记录4Kb数据 就会在<code>.index</code>文件中记录一条索引。</p>
+</blockquote>
+<h2 id="2-2、副本"><a href="#2-2、副本" class="headerlink" title="2.2、副本"></a>2.2、副本</h2><ol>
+<li>leader : follower  &#x3D;&#x3D;&#x3D; 1 : N。</li>
+<li>AR &#x3D; ISR + OSR。</li>
+<li>leader副本与follower副本间若超30秒没有交流，否则从ISR中删除。</li>
+<li>controller 第一次 随机 轮询。</li>
+<li>leader &#x2F; follower 挂了。</li>
+<li>副本分配 默认。</li>
+<li>手动分配。</li>
+<li>leader partition 负载均衡 10%。</li>
+</ol>
+<h2 id="2-3、删除数据"><a href="#2-3、删除数据" class="headerlink" title="2.3、删除数据"></a>2.3、删除数据</h2><p>数据默认保存7天，超过就会被删除。</p>
+<p>删除策略有两种：</p>
+<ul>
+<li><strong>删除</strong>：所有都过期再删除。</li>
+<li><strong>压缩</strong>：以最新val的key为准保存。</li>
+</ul>
+<h2 id="2-4、高效读写"><a href="#2-4、高效读写" class="headerlink" title="2.4、高效读写"></a>2.4、高效读写</h2><ol>
+<li>集群分区</li>
+<li>稀疏索引</li>
+<li>顺序读写 </li>
+<li>零拷贝 &#x2F; 页缓存（内核）</li>
+</ol>
+<h2 id="2-5、手动调整分区副本"><a href="#2-5、手动调整分区副本" class="headerlink" title="2.5、手动调整分区副本"></a>2.5、手动调整分区副本</h2><ol>
+<li><p>编写一个json文件(文件名为increase-replication-factor.json)，内容格式如下：</p>
+<pre class="line-numbers language-json" data-language="json"><code class="language-json"><span class="token property">"version"</span><span class="token operator">:</span><span class="token number">1</span>
+<span class="token property">"partitions"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token punctuation">&#123;</span><span class="token property">"topic"</span><span class="token operator">:</span><span class="token string">"first"</span><span class="token punctuation">,</span><span class="token property">"partition"</span><span class="token operator">:</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token property">"replicas"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+			 <span class="token punctuation">&#123;</span><span class="token property">"topic"</span><span class="token operator">:</span><span class="token string">"first"</span><span class="token punctuation">,</span><span class="token property">"partition"</span><span class="token operator">:</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token property">"replicas"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">,</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+			 <span class="token punctuation">&#123;</span><span class="token property">"topic"</span><span class="token operator">:</span><span class="token string">"first"</span><span class="token punctuation">,</span><span class="token property">"partition"</span><span class="token operator">:</span><span class="token number">2</span><span class="token punctuation">,</span><span class="token property">"replicas"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span class="token punctuation">,</span>
+			 <span class="token punctuation">&#123;</span><span class="token property">"topic"</span><span class="token operator">:</span><span class="token string">"first"</span><span class="token punctuation">,</span><span class="token property">"partition"</span><span class="token operator">:</span><span class="token number">4</span><span class="token punctuation">,</span><span class="token property">"replicas"</span><span class="token operator">:</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">&#125;</span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>执行如下命令</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">bin/kafka-reassign-partitions.sh --bootstrap-server node2:9092 --reassignment-json-file increase-replication-factor.json <span class="token parameter variable">--execute</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
+</ol>
+<h2 id="2-6、服役新节点，退役旧节点"><a href="#2-6、服役新节点，退役旧节点" class="headerlink" title="2.6、服役新节点，退役旧节点"></a>2.6、服役新节点，退役旧节点</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 第一步</span>
+bin/kafka-reassign-partitions.sh --bootstrap-server node1:9092 --topics-to-move-json-file topics-to-move.json --broker-list <span class="token string">"0,1,2,3"</span> <span class="token parameter variable">--generate</span>
+
+<span class="token comment"># 第二步</span>
+<span class="token function">vim</span> increase-replication-factor.json
+
+<span class="token comment"># 第三步</span>
+bin/kafka-reassign-partitions --bootstrap-server node1:9092 --reassignment-json-file increase-replication-factor.json <span class="token parameter variable">--execute</span>
+
+<span class="token comment"># 第四步</span>
+bin/kafka-reassign-partitions.sh --bootstrap-server node1:9092 --reassignment-json-file increase-replication-factor.json <span class="token parameter variable">--verify</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="2-7、Broker工作流程"><a href="#2-7、Broker工作流程" class="headerlink" title="2.7、Broker工作流程"></a>2.7、Broker工作流程</h2><p><img src="/imgs/javadev/KafKa%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86-Broker%E5%B7%A5%E4%BD%9C%E6%B5%81%E7%A8%8B%E5%9B%BE.png"></p>
+<h1 id="3、消费者"><a href="#3、消费者" class="headerlink" title="3、消费者"></a>3、消费者</h1><h2 id="3-1、消费者客户端流程"><a href="#3-1、消费者客户端流程" class="headerlink" title="3.1、消费者客户端流程"></a>3.1、消费者客户端流程</h2><ol>
+<li><strong>消费者配置</strong><ul>
+<li>连接服务器</li>
+<li>key&#x2F;val序列化</li>
+<li>消费组ID</li>
+</ul>
+</li>
+<li><strong>消费者实例</strong></li>
+<li><strong>订阅主题</strong></li>
+<li><strong>拉取消息并消费</strong></li>
+<li><strong>提交消费位移</strong></li>
+<li><strong>关系消费者</strong></li>
+</ol>
+<h2 id="3-2、分区分配策略"><a href="#3-2、分区分配策略" class="headerlink" title="3.2、分区分配策略"></a>3.2、分区分配策略</h2><ul>
+<li><p><strong>Range：按主题来分配。</strong></p>
+<p>消费者数量 不是 分区数量的 整数倍时，第一个消费者多消费一个分区。</p>
+<p>例如：分区为【0、1、2、3、4、5、6】，消费者为【c1、c2、c3】，那么消费者消费规则为：c1：【0、1、2】，c2：【3、4】，c3：【5、6】。该种策略会造成 数据倾斜 问题。</p>
+</li>
+<li><p><strong>RoundRobin：轮询分区策略。</strong></p>
+<p>例如：分区为【0、1、2、3、4、5、6】，消费者为【c1、c2、c3】，那么消费者消费规则为：c1：【0、3、6】，c2：【1、4】，c3：【2、5】。</p>
+</li>
+<li><p><strong>Sticky：粘性分区策略，也即随机分配。</strong></p>
+<p>例如：分区为【0、1、2、3、4、5、6】，消费者为【c1、c2、c3】，那么消费者消费规则为：c1：【0、5、6】，c2：【1、3】，c3：【2、4】。注意：第一个消费者会多消费一个，但消费者所消费的分区是随机。</p>
+</li>
+<li><p><strong>CooperativeSticky：遵循相同的 Sticky逻辑，但允许再平衡。</strong></p>
+</li>
+</ul>
+<blockquote>
+<p>默认策略为 Range + CooperativeSticky，kafka允许设置多个分配策略。</p>
+</blockquote>
+<h2 id="3-3、偏移量Offset"><a href="#3-3、偏移量Offset" class="headerlink" title="3.3、偏移量Offset"></a>3.3、偏移量Offset</h2><ol>
+<li>默认存储在系统主题。</li>
+<li>默认自动提交，提交周期5s。</li>
+<li>手动提交、同步&#x2F;异步。</li>
+<li>指定offset位置起消费，通过方法seek()实现。</li>
+<li>按照时间消费、把时间转成offset再消费。</li>
+<li>漏消费、重复消费。</li>
+</ol>
+<h2 id="3-4、事务"><a href="#3-4、事务" class="headerlink" title="3.4、事务"></a>3.4、事务</h2><p>生产端 -&gt; 集群 -&gt; 消费者 -&gt; 框架</p>
+<h2 id="3-5、数据积压"><a href="#3-5、数据积压" class="headerlink" title="3.5、数据积压"></a>3.5、数据积压</h2><ol>
+<li>增加分区 消费者。</li>
+<li>生产 -&gt; 集群，4个参数。</li>
+<li>消费端 两个参数 50m 500条。</li>
+</ol>
+<h2 id="3-6、消费者消费消息流程"><a href="#3-6、消费者消费消息流程" class="headerlink" title="3.6、消费者消费消息流程"></a>3.6、消费者消费消息流程</h2><p>消费者组 初始化 流程图：</p>
+<p><img src="/imgs/javadev/KafKa%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86-%E6%B6%88%E8%B4%B9%E8%80%85%E7%BB%84%E5%88%9D%E5%A7%8B%E5%8C%96%E6%B5%81%E7%A8%8B%E5%9B%BE.png"></p>
+<p>消费者组 消费消息 流程图：</p>
+<p><img src="/imgs/javadev/KafKa%E5%BA%95%E5%B1%82%E5%8E%9F%E7%90%86-%E6%B6%88%E8%B4%B9%E8%80%85%E7%BB%84%E6%B6%88%E8%B4%B9%E6%B6%88%E6%81%AF%E6%B5%81%E7%A8%8B%E5%9B%BE.png"></p>
+<h1 id="4、Kafka监控"><a href="#4、Kafka监控" class="headerlink" title="4、Kafka监控"></a>4、Kafka监控</h1><h2 id="4-1、安装MySQL"><a href="#4-1、安装MySQL" class="headerlink" title="4.1、安装MySQL"></a>4.1、安装MySQL</h2><p>参考博客。</p>
+<h2 id="4-2、配置Kafka"><a href="#4-2、配置Kafka" class="headerlink" title="4.2、配置Kafka"></a>4.2、配置Kafka</h2><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 1、修改kafka启动脚本(kafka-server-start.sh)，修改KAFKA_HEAP_OPTS参数项：</span>
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">KAFKA_HEAP_OPTS</span><span class="token operator">=</span>“-server <span class="token parameter variable">-Xms2G</span> <span class="token parameter variable">-Xmx2G</span> <span class="token parameter variable">-XX:PermSize</span><span class="token operator">=</span>128m 
+<span class="token parameter variable">-XX:+UserG1GC</span> <span class="token parameter variable">-XX:MaxGCPauseMillis</span><span class="token operator">=</span><span class="token number">200</span> <span class="token parameter variable">-XX:ParallelGCThreads</span><span class="token operator">=</span><span class="token number">8</span> 
+<span class="token parameter variable">-XX:ConcGCThreads</span><span class="token operator">=</span><span class="token number">5</span> <span class="token parameter variable">-XX:InitiatingHeapOccupancyPercent</span><span class="token operator">=</span><span class="token number">70</span>”
+<span class="token builtin class-name">export</span> <span class="token assign-left variable">JMX_PORT</span><span class="token operator">=</span><span class="token number">9999</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="5、Kafka硬件需求"><a href="#5、Kafka硬件需求" class="headerlink" title="5、Kafka硬件需求"></a>5、Kafka硬件需求</h1><h2 id="5-1、日流量"><a href="#5-1、日流量" class="headerlink" title="5.1、日流量"></a>5.1、日流量</h2><ul>
+<li>100G万日活 * 每人每天100条 &#x3D; 1亿条（中型公司）</li>
+<li>处理速度：1亿条 &#x2F; (24 * 3600s) &#x3D; 1150条&#x2F;秒</li>
+<li>1150条日志 * 1K&#x2F;s &#x3D; 1m&#x2F;s</li>
+<li>高峰：1m&#x2F;s * 20倍 &#x3D; 20m&#x2F;s - 40m&#x2F;s</li>
+</ul>
+<h2 id="5-2、服务器数量"><a href="#5-2、服务器数量" class="headerlink" title="5.2、服务器数量"></a>5.2、服务器数量</h2><p>参考公式：2 * (生产者峰值速率 * 副本数 &#x2F; 100) + 1 </p>
+<p>服务器数量 &#x3D; 2 * （20m&#x2F;s * 2 &#x2F; 100） + 1 &#x3D; 3台服务器。</p>
+<h2 id="5-3、硬盘选择"><a href="#5-3、硬盘选择" class="headerlink" title="5.3、硬盘选择"></a>5.3、硬盘选择</h2><ul>
+<li>1亿条数据 * 1K &#x3D; 100G。</li>
+<li>100G * 2副本 * 3天 &#x2F; 0.7 &#x3D; 1T硬盘容量。</li>
+<li>三台服务器，磁盘总大小要大于1T。</li>
+</ul>
+<h2 id="5-4、内存选择"><a href="#5-4、内存选择" class="headerlink" title="5.4、内存选择"></a>5.4、内存选择</h2><p>kafka内存 &#x3D; 堆内存 + 页缓存（服务器内存）</p>
+<ol>
+<li><p>堆内存10 - 15G。</p>
+<pre class="line-numbers language-none"><code class="language-none">jstat -gc kafka进程ID号 ls 10
+jmap -heap kafka进程号<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+</li>
+<li><p>页缓存segment（1G）  (分区数 * 1G * 25%) &#x2F; 3 &#x3D; 1G。</p>
+</li>
+<li><p>一台服务器为 10G + 1G &#x3D; 11G     大于11G即可。</p>
+</li>
+</ol>
+<h2 id="5-5、CPU"><a href="#5-5、CPU" class="headerlink" title="5.5、CPU"></a>5.5、CPU</h2><p>32核 最优。</p>
+<ul>
+<li>num.io.threads：写磁盘线程数，占总核数的50%，即12个</li>
+<li>num.replica.fetchers：副本拉取线程数，占总核数50%的三分之一，即4个</li>
+<li>num.network.threads：数据传输线程数，占总核数50%的三分之二，即8个</li>
+<li>执行其它任务线程 8个</li>
+</ul>
+<h2 id="5-6、网络"><a href="#5-6、网络" class="headerlink" title="5.6、网络"></a>5.6、网络</h2><p>网络带宽 &#x3D; 峰值吞吐量 &#x3D; 20M&#x2F;S </p>
+<p>选择 千兆网卡（125M&#x2F;s）即可。</p>
+<h1 id="6、调优"><a href="#6、调优" class="headerlink" title="6、调优"></a>6、调优</h1><h2 id="6-1、生产者优化"><a href="#6-1、生产者优化" class="headerlink" title="6.1、生产者优化"></a>6.1、生产者优化</h2><h3 id="6-1-1、提升生产者吞吐量"><a href="#6-1-1、提升生产者吞吐量" class="headerlink" title="6.1.1、提升生产者吞吐量"></a>6.1.1、提升生产者吞吐量</h3><ol>
+<li>buffer.memory：发送缓冲区大小，默认32M，可提升到64M。</li>
+<li>batch.size：默认16KB。</li>
+<li>linger.ms：默认0，一般设置5-100。</li>
+<li>compression.type：压缩方式。</li>
+</ol>
+<h3 id="6-1-2、数据可靠性"><a href="#6-1-2、数据可靠性" class="headerlink" title="6.1.2、数据可靠性"></a>6.1.2、数据可靠性</h3><ol>
+<li>acks：0 &#x2F; 1 &#x2F; -1，默认为-1。</li>
+<li>ack设为-1。</li>
+<li>分区副本数量大于等于2。</li>
+<li>ISR中应答的副本数量大于等于2。</li>
+</ol>
+<h3 id="6-1-3、数据去重"><a href="#6-1-3、数据去重" class="headerlink" title="6.1.3、数据去重"></a>6.1.3、数据去重</h3><ol>
+<li>enable.idempotence：是否开启幂等性，默认为true，表示开启。</li>
+<li>开启事务。</li>
+</ol>
+<h3 id="6-1-4、数据有序"><a href="#6-1-4、数据有序" class="headerlink" title="6.1.4、数据有序"></a>6.1.4、数据有序</h3><ol>
+<li>采用单分区，单分区内数据有序，可实现有序消费。</li>
+<li>多分区，分区间是无序的。</li>
+</ol>
+<h3 id="6-1-5、数据乱序"><a href="#6-1-5、数据乱序" class="headerlink" title="6.1.5、数据乱序"></a>6.1.5、数据乱序</h3><ol>
+<li>enable.idempotence&#x3D;true，开启幂等处理。</li>
+<li>允许没有返回的ack次数为1-5。</li>
+</ol>
+<h2 id="6-2、Broker优化"><a href="#6-2、Broker优化" class="headerlink" title="6.2、Broker优化"></a>6.2、Broker优化</h2><h3 id="6-2-1、服役退役节点"><a href="#6-2-1、服役退役节点" class="headerlink" title="6.2.1、服役退役节点"></a>6.2.1、服役退役节点</h3><h3 id="6-2-2、增加分区"><a href="#6-2-2、增加分区" class="headerlink" title="6.2.2、增加分区"></a>6.2.2、增加分区</h3><h3 id="6-2-3、增加副本因子"><a href="#6-2-3、增加副本因子" class="headerlink" title="6.2.3、增加副本因子"></a>6.2.3、增加副本因子</h3><ol>
+<li>创建副本存储计划</li>
+<li>执行副本存储计划</li>
+</ol>
+<h3 id="6-2-4、Leader分区负载平衡"><a href="#6-2-4、Leader分区负载平衡" class="headerlink" title="6.2.4、Leader分区负载平衡"></a>6.2.4、Leader分区负载平衡</h3><ol>
+<li>auto.leader-rebalance.enable：默认为true，建议关闭。</li>
+</ol>
+<h3 id="6-2-5、自动创建主题"><a href="#6-2-5、自动创建主题" class="headerlink" title="6.2.5、自动创建主题"></a>6.2.5、自动创建主题</h3><ol>
+<li>关闭 自动创建主题功能。</li>
+</ol>
+<h2 id="6-3、消费者优化"><a href="#6-3、消费者优化" class="headerlink" title="6.3、消费者优化"></a>6.3、消费者优化</h2><h3 id="6-3-1、消费者再平衡"><a href="#6-3-1、消费者再平衡" class="headerlink" title="6.3.1、消费者再平衡"></a>6.3.1、消费者再平衡</h3><ol>
+<li>消费者与coordinator心跳时间3S。</li>
+<li>消费者与coordinator连接超时45S。</li>
+<li>消费者 消息处理超时 5分钟。</li>
+<li>消费者分区分配策略，默认Range+CooperativeSticky，可同时配置多个策略。可选策略有：Range、RoundRobin、Sticky、CooperativeSticky。</li>
+</ol>
+<h3 id="6-3-2、指定Offset消费"><a href="#6-3-2、指定Offset消费" class="headerlink" title="6.3.2、指定Offset消费"></a>6.3.2、指定Offset消费</h3><h3 id="6-3-3、指定时间消费"><a href="#6-3-3、指定时间消费" class="headerlink" title="6.3.3、指定时间消费"></a>6.3.3、指定时间消费</h3><h3 id="6-3-4、消费者事务"><a href="#6-3-4、消费者事务" class="headerlink" title="6.3.4、消费者事务"></a>6.3.4、消费者事务</h3><h3 id="6-3-5、消费者提升吞吐量"><a href="#6-3-5、消费者提升吞吐量" class="headerlink" title="6.3.5、消费者提升吞吐量"></a>6.3.5、消费者提升吞吐量</h3><ol>
+<li>fetch.max.bytes：默认50M。</li>
+<li>max.poll.records：默认500条。</li>
+</ol>
+<h3 id="6-3-6、增加下游消费者处理能力"><a href="#6-3-6、增加下游消费者处理能力" class="headerlink" title="6.3.6、增加下游消费者处理能力"></a>6.3.6、增加下游消费者处理能力</h3><h2 id="6-4、整体调优"><a href="#6-4、整体调优" class="headerlink" title="6.4、整体调优"></a>6.4、整体调优</h2><h3 id="6-4-1、提升吞吐量"><a href="#6-4-1、提升吞吐量" class="headerlink" title="6.4.1、提升吞吐量"></a>6.4.1、提升吞吐量</h3><ul>
+<li>生产者<ol>
+<li>buffer.memory：发送缓冲区大小，默认32M，可提升到64M。</li>
+<li>batch.size：默认16KB。</li>
+<li>linger.ms：默认0，一般设置5-100。</li>
+<li>compression.type：压缩方式。</li>
+</ol>
+</li>
+<li>Broker<ol>
+<li>增加分区</li>
+</ol>
+</li>
+<li>消费者<ol>
+<li>fetch.max.bytes：默认50M。</li>
+<li>max.poll.records：默认500条。</li>
+</ol>
+</li>
+<li>增加下游消费者处理能力</li>
+</ul>
+<h3 id="6-4-2、数据精准一次"><a href="#6-4-2、数据精准一次" class="headerlink" title="6.4.2、数据精准一次"></a>6.4.2、数据精准一次</h3><ul>
+<li>生产者<ol>
+<li>acks设置为-1。</li>
+<li>幂等性+事务。</li>
+</ol>
+</li>
+<li>Broker<ol>
+<li>分区副本大于等于2。</li>
+<li>ISR中应答的最小副本数量大于等于2</li>
+</ol>
+</li>
+<li>消费者<ol>
+<li>事务+手动提交。</li>
+<li>消费者输出目的地必须支持事务。</li>
+</ol>
+</li>
+</ul>
+<h3 id="6-4-3、合理设置分区数"><a href="#6-4-3、合理设置分区数" class="headerlink" title="6.4.3、合理设置分区数"></a>6.4.3、合理设置分区数</h3><p>producer吞吐量&#x3D;20M&#x2F;S，consumer吞吐量&#x3D;50M&#x2F;S，期望吞吐量&#x3D;100M&#x2F;S，则：</p>
+<p>分区数量&#x3D;100&#x2F;20&#x3D;5个分区，分区数量一般设置为3-10个。</p>
+<h3 id="6-4-4、单条日志大小"><a href="#6-4-4、单条日志大小" class="headerlink" title="6.4.4、单条日志大小"></a>6.4.4、单条日志大小</h3><ol>
+<li>message.max.bytes：默认1M，broker接收每批次消息最大值。</li>
+<li>max.request.size：默认1M，broker发送每个请求的最大值，针对topic来说。</li>
+<li>replica.fetch.max.bytes：默认1M，副本同步数据每批次的最大值。</li>
+<li>fetch.max.bytes：默认50M。</li>
+</ol>
+<h3 id="6-4-5、服务器宕机"><a href="#6-4-5、服务器宕机" class="headerlink" title="6.4.5、服务器宕机"></a>6.4.5、服务器宕机</h3><p>处理方法流程</p>
+<ol>
+<li>尝试启动，若可以启动，直接解决。</li>
+<li>重启不行，增加内存，增加CPU、网络带宽。</li>
+<li>若节点被删除，但副本数量大于等于2个，可以参考服役新节点的方式重新服役一个新节点，并执行负载均衡。</li>
+</ol>
+<h3 id="6-4-6、集群压力测试"><a href="#6-4-6、集群压力测试" class="headerlink" title="6.4.6、集群压力测试"></a>6.4.6、集群压力测试</h3><ol>
+<li>使用kafka官方脚本来压测<ul>
+<li>生产者：kafka-producer-perf-test.sh</li>
+<li>消费者：kafka-consumer-perf-test.sh</li>
+</ul>
+</li>
+<li>其他方式压测</li>
+</ol>
+<h1 id="7、查看日志分段"><a href="#7、查看日志分段" class="headerlink" title="7、查看日志分段"></a>7、查看日志分段</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kafka-run-class.sh kafka.tools.DumpLogSegments <span class="token parameter variable">--files</span> 000000000000000.index/.log<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+
+
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">豪哥</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://hshz21.gitee.io/2023/07/30/kafka-di-ceng-yuan-li/">https://hshz21.gitee.io/2023/07/30/kafka-di-ceng-yuan-li/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">豪哥</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/KafKa/">
+                                    <span class="chip bg-color">KafKa</span>
+                                </a>
+                            
+                                <a href="/tags/KafKa%E5%8E%9F%E7%90%86/">
+                                    <span class="chip bg-color">KafKa原理</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wxpay.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/07/30/gateway-ji-ben-shi-yong/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Gateway系列-Gateway基础应用">
+                        
+                        <span class="card-title">Gateway系列-Gateway基础应用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Gateway/" class="post-category">
+                                    Gateway
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Gateway/">
+                        <span class="chip bg-color">Gateway</span>
+                    </a>
+                    
+                    <a href="/tags/Gateway%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">Gateway基础</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/07/30/eureka-ji-ben-shi-yong/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Eureka系列-Eureka基础应用">
+                        
+                        <span class="card-title">Eureka系列-Eureka基础应用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Eureka/" class="post-category">
+                                    Eureka
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Eureka/">
+                        <span class="chip bg-color">Eureka</span>
+                    </a>
+                    
+                    <a href="/tags/Eureka%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">Eureka基础</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">豪哥</a>
+            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">豪哥</a>
+            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:3577293158@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3577293158" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 3577293158" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
+        <i class="fas fa-rss"></i>
+    </a>
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>
