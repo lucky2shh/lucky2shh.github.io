@@ -299,26 +299,24 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/docker-zhi-nginx-huan-jing-da-jian/">
+                    <a href="/2023/07/30/docker-zhi-mysql-huan-jing-da-jian/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Docker系列-Nginx环境搭建">
+                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="Docker系列-MySQL环境搭建">
                             
-                            <span class="card-title">Docker系列-Nginx环境搭建</span>
+                            <span class="card-title">Docker系列-MySQL环境搭建</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                单例环境1.1、准备工作（1）创建本地数据卷目录
-mkdir -p /home/docker/containers/nginx/&#123;conf,html,logs&#125;
+                                单节点模式1.1、准备环境（1）创建数据挂载目录
+mkdir -p /home/docker/containers/mysql/&#123;conf,data,logs&#125;
 
-（2）拉取镜像
-docker pull nginx
-
-1
+（2）准备一个mysql配置文件
+在/home/mysq
                             
                         </div>
                         <div class="publish-info">
@@ -345,8 +343,8 @@ docker pull nginx
                             <span class="chip bg-color">Docker</span>
                         </a>
                         
-                        <a href="/tags/Nginx/">
-                            <span class="chip bg-color">Nginx</span>
+                        <a href="/tags/MySQL/">
+                            <span class="chip bg-color">MySQL</span>
                         </a>
                         
                     </div>
@@ -402,6 +400,63 @@ docker pull nacos/na
                         
                         <a href="/tags/Nacos/">
                             <span class="chip bg-color">Nacos</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/07/30/docker-zhi-nginx-huan-jing-da-jian/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Docker系列-Nginx环境搭建">
+                            
+                            <span class="card-title">Docker系列-Nginx环境搭建</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                单例环境1.1、准备工作（1）创建本地数据卷目录
+mkdir -p /home/docker/containers/nginx/&#123;conf,html,logs&#125;
+
+（2）拉取镜像
+docker pull nginx
+
+1
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Docker/" class="post-category">
+                                    Docker
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Docker/">
+                            <span class="chip bg-color">Docker</span>
+                        </a>
+                        
+                        <a href="/tags/Nginx/">
+                            <span class="chip bg-color">Nginx</span>
                         </a>
                         
                     </div>
@@ -916,61 +971,6 @@ Monitor
                         
                         <a href="/tags/Dubbo%E5%8E%9F%E7%90%86/">
                             <span class="chip bg-color">Dubbo原理</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/07/30/canal-jian-kong-mysql/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="Canal系列-Canal监听MySQL">
-                            
-                            <span class="card-title">Canal系列-Canal监听MySQL</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                1、搭建MySQL服务本实例基于Docker来安装分析。
-1.1、运行MySQL实例docker run -id \
--p 3360:3306 \
---name=mysql-node1 \
--v $PWD/conf:/etc/mysql/c
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Canal/" class="post-category">
-                                    Canal
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Canal/">
-                            <span class="chip bg-color">Canal</span>
-                        </a>
-                        
-                        <a href="/tags/%E7%9B%91%E5%90%ACMySQL/">
-                            <span class="chip bg-color">监听MySQL</span>
                         </a>
                         
                     </div>
