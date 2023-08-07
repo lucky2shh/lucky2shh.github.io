@@ -1,0 +1,2035 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="Spring系列-Spring原理解析, 豪哥博客">
+    <meta name="description" content="豪哥个人博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>Spring系列-Spring原理解析 | 豪哥博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">豪哥博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">豪哥博客</div>
+        <div class="logo-desc">
+            
+            豪哥个人博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/19.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">Spring系列-Spring原理解析</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/Spring/">
+                                <span class="chip bg-color">Spring</span>
+                            </a>
+                        
+                            <a href="/tags/Spring%E5%8E%9F%E7%90%86/">
+                                <span class="chip bg-color">Spring原理</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/Spring/" class="post-category">
+                                Spring
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-08-07
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2023-08-06
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    9.3k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="IOC（控制反转）"><a href="#IOC（控制反转）" class="headerlink" title="IOC（控制反转）"></a>IOC（控制反转）</h1><h2 id="1、refresh"><a href="#1、refresh" class="headerlink" title="1、refresh()"></a>1、refresh()</h2><h3 id="0、源码"><a href="#0、源码" class="headerlink" title="0、源码"></a>0、源码</h3><p><code>org.springframework.context.support.AbstractApplication.refresh()</code>：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Override</span>
+<span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">refresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">BeansException</span><span class="token punctuation">,</span> <span class="token class-name">IllegalStateException</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">synchronized</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>startupShutdownMonitor<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token comment">// 1、准备容器</span>
+        <span class="token function">prepareRefresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 2、告知子类刷新内部BeanFactory</span>
+        <span class="token class-name">ConfigurableListableBeanFactory</span> beanFactory <span class="token operator">=</span> <span class="token function">obtainFreshBeanFactory</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token comment">// 3、准备BeanFactory</span>
+        <span class="token function">prepareBeanFactory</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>
+            <span class="token comment">// 4、Allows post-processing of the bean factory in context subclasses.</span>
+            <span class="token function">postProcessBeanFactory</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 5、Invoke factory processors registered as beans in the context.</span>
+            <span class="token function">invokeBeanFactoryPostProcessors</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 6、Register bean processors that intercept bean creation.</span>
+            <span class="token function">registerBeanPostProcessors</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 7、Initialize message source for this context.</span>
+            <span class="token function">initMessageSource</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 8、Initialize event multicaster for this context.</span>
+            <span class="token function">initApplicationEventMulticaster</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 9、Initialize other special beans in specific context subclasses.</span>
+            <span class="token function">onRefresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 10、Check for listener beans and register them.</span>
+            <span class="token function">registerListeners</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 11、Instantiate all remaining (non-lazy-init) singletons.</span>
+            <span class="token function">finishBeanFactoryInitialization</span><span class="token punctuation">(</span>beanFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token comment">// 12、Last step: publish corresponding event.</span>
+            <span class="token function">finishRefresh</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+        <span class="token comment">// 省略部分代码，不重要 //</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="1、prepareRefresh"><a href="#1、prepareRefresh" class="headerlink" title="1、prepareRefresh()"></a>1、prepareRefresh()</h3><p>刷新前的预处理：<em><strong>初始化属性，检验属性合法性，保存容器中的事件</strong></em>。</p>
+<pre class="line-numbers language-none"><code class="language-none">1）、initPropertySources()初始化一些属性设置;子类自定义个性化的属性设置方法；
+2）、getEnvironment().validateRequiredProperties();检验属性的合法等
+3）、earlyApplicationEvents&#x3D; new LinkedHashSet&lt;ApplicationEvent&gt;();保存容器中的一些早期的事件；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="2、beanFactory-obtainFreshBeanFactory"><a href="#2、beanFactory-obtainFreshBeanFactory" class="headerlink" title="2、beanFactory &#x3D; obtainFreshBeanFactory()"></a>2、beanFactory &#x3D; obtainFreshBeanFactory()</h3><p>获取BeanFactory。</p>
+<pre class="line-numbers language-none"><code class="language-none">1）、refreshBeanFactory();
+	刷新【创建】BeanFactory（this.beanFactory &#x3D; new DefaultListableBeanFactory();）
+	设置id；
+2）、getBeanFactory();返回刚才GenericApplicationContext创建的BeanFactory对象；
+3）、将创建的BeanFactory【DefaultListableBeanFactory】返回；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3、prepareBeanFactory-beanFactory"><a href="#3、prepareBeanFactory-beanFactory" class="headerlink" title="3、prepareBeanFactory(beanFactory)"></a>3、prepareBeanFactory(beanFactory)</h3><p>BeanFactory的预准备工作（BeanFactory进行一些设置）。</p>
+<pre class="line-numbers language-none"><code class="language-none">1）、设置BeanFactory的类加载器、支持表达式解析器...
+2）、添加部分BeanPostProcessor【ApplicationContextAwareProcessor】
+3）、设置忽略的自动装配的接口EnvironmentAware、EmbeddedValueResolverAware、xxx；
+4）、注册可以解析的自动装配；我们能直接在任何组件中自动注入：
+	BeanFactory、ResourceLoader、ApplicationEventPublisher、ApplicationContext
+5）、添加BeanPostProcessor【ApplicationListenerDetector】
+6）、添加编译时的AspectJ；
+7）、给BeanFactory中注册一些能用的组件；
+	environment【ConfigurableEnvironment】、
+	systemProperties【Map&lt;String, Object&gt;】、
+	systemEnvironment【Map&lt;String, Object&gt;】<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="4、postProcessBeanFactory-beanFactory"><a href="#4、postProcessBeanFactory-beanFactory" class="headerlink" title="4、postProcessBeanFactory(beanFactory)"></a>4、postProcessBeanFactory(beanFactory)</h3><p><em><strong>BeanFactory准备完成后的后置处理工作，默认空，留给子类重写实现</strong></em>；</p>
+<pre class="line-numbers language-none"><code class="language-none">1）、子类通过重写这个方法来在BeanFactory创建并预准备完成以后做进一步的设置。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="5、invokeBeanFactoryPostProcessors-beanFactory"><a href="#5、invokeBeanFactoryPostProcessors-beanFactory" class="headerlink" title="5、invokeBeanFactoryPostProcessors(beanFactory)"></a>5、invokeBeanFactoryPostProcessors(beanFactory)</h3><p>执行BeanFactoryPostProcessor方法；</p>
+<pre class="line-numbers language-none"><code class="language-none">BeanFactoryPostProcessor：BeanFactory后置处理器在BeanFactory标准初始化之后执行；
+两个接口：BeanFactoryPostProcessor、BeanDefinitionRegistryPostProcessor
+
+1）、执行BeanFactoryPostProcessor的方法；
+先执行BeanDefinitionRegistryPostProcessor
+	1）、获取所有的BeanDefinitionRegistryPostProcessor；
+	2）、先执行实现了PriorityOrdered优先级接口的BeanDefinitionRegistryPostProcessor、
+		postProcessor.postProcessBeanDefinitionRegistry(registry)
+	3）、再执行实现了Ordered顺序接口的BeanDefinitionRegistryPostProcessor；
+		postProcessor.postProcessBeanDefinitionRegistry(registry)
+	4）、最后执行没有实现任何优先级或者是顺序接口的BeanDefinitionRegistryPostProcessors；
+		postProcessor.postProcessBeanDefinitionRegistry(registry)
+再执行BeanFactoryPostProcessor的方法
+	1）、获取所有的BeanFactoryPostProcessor
+	2）、先执行实现了PriorityOrdered优先级接口的BeanFactoryPostProcessor、
+		postProcessor.postProcessBeanFactory()
+	3）、在执行实现了Ordered顺序接口的BeanFactoryPostProcessor；
+		postProcessor.postProcessBeanFactory()
+	4）、最后执行没有实现任何优先级或者是顺序接口的BeanFactoryPostProcessor；
+		postProcessor.postProcessBeanFactory()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="6、registerBeanPostProcessors-beanFactory"><a href="#6、registerBeanPostProcessors-beanFactory" class="headerlink" title="6、registerBeanPostProcessors(beanFactory)"></a>6、registerBeanPostProcessors(beanFactory)</h3><p>注册BeanPostProcessor（Bean后置处理器）</p>
+<pre class="line-numbers language-none"><code class="language-none">不同接口类型的BeanPostProcessor；在Bean创建前后的执行时机是不一样的
+	BeanPostProcessor、
+	DestructionAwareBeanPostProcessor、
+	InstantiationAwareBeanPostProcessor、
+	SmartInstantiationAwareBeanPostProcessor、
+	MergedBeanDefinitionPostProcessor【internalPostProcessors】、
+		
+1）、获取所有的BeanPostProcessor;增强器可以通过PriorityOrdered、Ordered接口来设置执行优先级。
+2）、先注册实现PriorityOrdered接口的BeanPostProcessor，把每一个BeanPostProcessor添加到BeanFactory中。
+3）、再注册实现Ordered接口BeanPostProcessor。
+4）、最后注册没有实现任何优先级接口的BeanPostProcessor。
+5）、最终注册MergedBeanDefinitionPostProcessor；
+6）、注册一个ApplicationListenerDetector；在Bean创建完成后检查是否是ApplicationListener，如果是则将其添加到上下文中。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="7、initMessageSource"><a href="#7、initMessageSource" class="headerlink" title="7、initMessageSource()"></a>7、initMessageSource()</h3><p>初始化MessageSource组件（做国际化功能；消息绑定，消息解析）；</p>
+<pre class="line-numbers language-none"><code class="language-none">1）、获取BeanFactory
+2）、检查容器中是否有id为messageSource，类型是MessageSource的组件。
+	如果有赋值给messageSource，如果没有自己创建一个DelegatingMessageSource；
+	MessageSource：取出国际化配置文件中的某个key的值；能按照区域信息获取；
+3）、把创建好的MessageSource注册到容器中，以后获取国际化配置文件值时，可自动注入MessageSource；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="8、initApplicationEventMulticaster"><a href="#8、initApplicationEventMulticaster" class="headerlink" title="8、initApplicationEventMulticaster()"></a>8、initApplicationEventMulticaster()</h3><p>初始化事件派发器；</p>
+<pre class="line-numbers language-none"><code class="language-none">1）、获取BeanFactory
+2）、从BeanFactory中获取ApplicationEventMulticaster；
+3）、如果上一步没有配置；则会创建一个SimpleApplicationEventMulticaster
+4）、将创建的ApplicationEventMulticaster添加到BeanFactory中，以后其他组件直接自动注入<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="9、onRefresh"><a href="#9、onRefresh" class="headerlink" title="9、onRefresh()"></a>9、onRefresh()</h3><p>默认为空，留给子容器（子类）实现。</p>
+<pre class="line-numbers language-none"><code class="language-none">1、子类可重写该方法，容器刷新时可自定义逻辑；<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="10、registerListeners"><a href="#10、registerListeners" class="headerlink" title="10、registerListeners()"></a>10、registerListeners()</h3><p>把容器中所有ApplicationListener注册进来；</p>
+<pre class="line-numbers language-none"><code class="language-none">1、从容器中拿到所有的ApplicationListener
+2、将每个监听器添加到事件派发器中；
+	getApplicationEventMulticaster().addApplicationListenerBean(listenerBeanName);
+3、派发之前生成的事件；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="11、finishBeanFactoryInitialization-beanFactory"><a href="#11、finishBeanFactoryInitialization-beanFactory" class="headerlink" title="11、finishBeanFactoryInitialization(beanFactory)"></a>11、finishBeanFactoryInitialization(beanFactory)</h3><p><em><strong>初始化剩下的所有单实例 bean</strong></em>；</p>
+<pre class="line-numbers language-none"><code class="language-none">1、beanFactory.preInstantiateSingletons();初始化后剩下的单实例bean
+	1）、获取容器中的所有Bean，依次进行初始化和创建对象
+	2）、获取Bean定义信息；RootBeanDefinition
+	3）、Bean不是抽象的，是单实例的，不是懒加载；
+		1）、判断是否是FactoryBean（是否是实现FactoryBean接口的Bean）
+		2）、若不是工厂Bean，则利用getBean(beanName)创建对象
+			0、getBean(beanName)； ioc.getBean();
+			1、doGetBean(name, null, null, false);
+			2、先获取缓存中的单例Bean。若缓存中有说明先前已经创建过。
+				从singletonObjects &#x3D; new ConcurrentHashMap&lt;String, Object&gt;(256);中获取
+			3、缓存中没有，执行Bean创建流程；
+			4、标记当前bean已经被创建
+			5、获取Bean定义信息；
+			6、【获取当前Bean依赖的其他Bean;如果有按照getBean()把依赖的Bean先创建出来；】
+			7、启动单实例Bean的创建流程；
+				1）、createBean(beanName, mbd, args);
+				2）、resolveBeforeInstantiation(beanName, mbdToUse);让Bean增强器先拦截返回代理对象；
+				【InstantiationAwareBeanPostProcessor】：提前执行；
+					- 先触发：postProcessBeforeInstantiation()；看是否已经创建过Bean。
+					- 如果已经创建过Bean，那么触发postProcessAfterInitialization()；看是否需要代理，若需要代理则创建代理对象并返回，否则直接返回原始对象。
+				    - 如果没有创建过Bean，则调用3）
+				3）、Object beanInstance &#x3D; doCreateBean(beanName, mbdToUse, args);创建Bean
+					 1）、【创建Bean实例】；createBeanInstance(beanName, mbd, args);
+						利用 工厂方法 或 构造器 创建出Bean实例；
+					 2）、applyMergedBeanDefinitionPostProcessors(mbd, beanType, beanName);
+						调用MergedBeanDefinitionPostProcessor的postProcessMergedBeanDefinition(mbd, beanType, beanName);
+					 3）、【Bean属性赋值】populateBean(beanName, mbd, instanceWrapper);
+						赋值之前：
+						1）、拿到InstantiationAwareBeanPostProcessor后置处理器；
+							postProcessAfterInstantiation()；
+						2）、拿到InstantiationAwareBeanPostProcessor后置处理器；
+							postProcessPropertyValues()；
+						3）、设置Bean的属性值；利用setter方法等为属性赋值；
+							applyPropertyValues(beanName, mbd, bw, pvs);
+					 4）、【Bean初始化】initializeBean(beanName, exposedObject, mbd);
+						1）、【执行Aware接口方法】invokeAwareMethods(beanName, bean);
+							BeanNameAware\BeanClassLoaderAware\BeanFactoryAware
+						2）、【执行后置处理器的初始化之前】applyBeanPostProcessorsBeforeInitialization(wrappedBean, beanName);
+							BeanPostProcessor.postProcessBeforeInitialization（）;
+						3）、【执行初始化方法】invokeInitMethods(beanName, wrappedBean, mbd);
+							1）、是否实现了InitializingBean接口；是则执行该接口的初始化方法；
+							2）、是否自定义初始化方法；
+						4）、【执行后置处理器初始化之后】applyBeanPostProcessorsAfterInitialization
+							BeanPostProcessor.postProcessAfterInitialization()；
+					 5）、注册Bean的销毁方法；
+				4）、将创建的Bean添加到缓存中singletonObjects；
+			ioc容器就是这些Map；很多的Map里面保存了单实例Bean，环境信息。。。。；
+
+所有Bean都利用getBean创建完成以后；
+检查所有的Bean是否是SmartInitializingSingleton接口的，如果是，就执行afterSingletonsInstantiated()；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="12、finishRefresh"><a href="#12、finishRefresh" class="headerlink" title="12、finishRefresh()"></a>12、finishRefresh()</h3><p>最后一步：<em><strong>发布相应的事件</strong></em>。（完成此上下文的刷新，调用<code>LifecycleProcessor.onRefresh()</code>方法并发布org.springframework.context.event.<strong>ContextRefreshedEvent</strong> 事件）</p>
+<pre class="line-numbers language-none"><code class="language-none">1）、initLifecycleProcessor();初始化与生命周期有关的后置处理器（LifecycleProcessor）
+	默认从容器中找是否有lifecycleProcessor的组件【LifecycleProcessor】，如果没有new DefaultLifecycleProcessor()加入到容器；
+	写一个LifecycleProcessor实现类，可以在BeanFactory
+		void onRefresh();
+		void onClose();	
+2）、getLifecycleProcessor().onRefresh();
+	拿到前面定义的生命周期处理器（BeanFactory），回调onRefresh()；
+3）、publishEvent(new ContextRefreshedEvent(this));发布容器刷新完成事件；
+4）、liveBeansView.registerApplicationContext(this);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="13、总结"><a href="#13、总结" class="headerlink" title="13、总结"></a>13、总结</h3><pre class="line-numbers language-none"><code class="language-none">1）、Spring容器启动时，会先保存所有Bean定义信息；
+	1）、xml注册bean；&lt;bean&gt;
+	2）、注解注册Bean；@Service、@Component、@Bean、xxx
+2）、Spring容器会在合适时机创建Bean
+	1）、用到某个bean时，用getBean创建bean，建好以后保存在容器中；
+	2）、统一创建剩下的所有bean：inishBeanFactoryInitialization()；
+3）、后置处理器；BeanPostProcessor
+	1）、每一个bean创建完成，都会使用各种后置处理器进行处理；来增强bean的功能；
+		AutowiredAnnotationBeanPostProcessor:处理自动注入
+		AnnotationAwareAspectJAutoProxyCreator:来做AOP功能；
+		xxx....
+		增强的功能注解：
+		AsyncAnnotationBeanPostProcessor
+		....
+4）、事件驱动模型；
+	ApplicationListener；事件监听；
+	ApplicationEventMulticaster；事件派发：<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="2、BeanPostProcessor与BeanFactoryPostProcessor"><a href="#2、BeanPostProcessor与BeanFactoryPostProcessor" class="headerlink" title="2、BeanPostProcessor与BeanFactoryPostProcessor"></a>2、BeanPostProcessor与BeanFactoryPostProcessor</h2><h3 id="2-1、简介"><a href="#2-1、简介" class="headerlink" title="2.1、简介"></a>2.1、简介</h3><p><strong>BeanPostProcessor是bean后置处理器，会在bean创建过程中的初始化前后执行</strong>。</p>
+<p><strong>BeanFactoryPostProcessor是beanFactory后置处理器，会在BeanFactory标准初始化之后执行</strong>，此时所有的bean定义已经保存加载到beanFactory，但还未创建bean实例。其作用就是增强扩展BeanFactory的功能；</p>
+<h3 id="2-2、BeanFactoryPostProcessor原理"><a href="#2-2、BeanFactoryPostProcessor原理" class="headerlink" title="2.2、BeanFactoryPostProcessor原理"></a>2.2、BeanFactoryPostProcessor原理</h3><pre class="line-numbers language-none"><code class="language-none">1、BeanFactoryPostProcessor
+	1)、ioc容器创建对象
+    2)、invokeBeanFactoryPostProcessors(beanFactory);
+        找到所有的BeanFactoryPostProcessor并执行他们的方法：
+            1）、在BeanFactory中找到所有类型是BeanFactoryPostProcessor的组件，并执行他们的方法
+            2）、在 初始化创建其他组件前 执行。
+            
+2、BeanDefinitionRegistryPostProcessor extends BeanFactoryPostProcessor
+	postProcessBeanDefinitionRegistry();
+	在所有bean定义将要被加载，且bean实例还未创建时执行；
+	优先于BeanFactoryPostProcessor执行；
+	利用BeanDefinitionRegistryPostProcessor给容器中再额外添加一些组件；
+	
+原理：
+	1）、ioc创建对象
+	2）、refresh()-》invokeBeanFactoryPostProcessors(beanFactory);
+	3）、从容器中获取到所有的BeanDefinitionRegistryPostProcessor组件。
+		1、依次触发所有的postProcessBeanDefinitionRegistry()方法
+		2、再来触发postProcessBeanFactory()方法（BeanFactoryPostProcessor）；
+	4）、再来从容器中找到BeanFactoryPostProcessor组件；然后依次触发postProcessBeanFactory()方法<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="3、ApplicationListener"><a href="#3、ApplicationListener" class="headerlink" title="3、ApplicationListener"></a>3、ApplicationListener</h2><h3 id="3-1、简介"><a href="#3-1、简介" class="headerlink" title="3.1、简介"></a>3.1、简介</h3><p>监听容器中发布的事件。<code>public interface ApplicationListener&lt;E extends ApplicationEvent&gt;</code>用来<br>监听 ApplicationEvent 及其子事件；</p>
+<h3 id="3-2、开发步骤"><a href="#3-2、开发步骤" class="headerlink" title="3.2、开发步骤"></a>3.2、开发步骤</h3><pre><code>1）、写一个监听器（ApplicationListener实现类）来监听某个事件（ApplicationEvent及其子类）
+    @EventListener;
+    原理：使用EventListenerMethodProcessor处理器来解析方法上的@EventListener；
+2）、把监听器加入到容器；
+3）、只要容器中有相关事件的发布，我们就能监听到这个事件；
+    ContextRefreshedEvent：容器刷新完成（所有bean都完全创建）会发布这个事件；
+    ContextClosedEvent：关闭容器会发布这个事件；
+4）、发布一个事件：
+    applicationContext.publishEvent()；
+</code></pre>
+<h3 id="3-3、原理"><a href="#3-3、原理" class="headerlink" title="3.3、原理"></a>3.3、原理</h3><pre class="line-numbers language-none"><code class="language-none">【事件发布流程】：
+1、publishEvent(new ContextRefreshedEvent(this));
+	1）、获取事件的多播器（派发器）：getApplicationEventMulticaster()
+	2）、multicastEvent派发事件：
+		1）、获取到所有的ApplicationListener，遍历每一项。
+			for (final ApplicationListener&lt;?&gt; listener : getApplicationListeners(event, type)) 
+		2）、如果有Executor，使用Executor进行异步派发；
+			Executor executor &#x3D; getTaskExecutor();
+		3）、否则，同步执行listener方法；invokeListener(listener, event);
+			 拿到listener回调onApplicationEvent方法；
+
+【事件多播器（派发器）】
+容器创建对象：refresh();
+    1）、initApplicationEventMulticaster();初始化ApplicationEventMulticaster；
+        1）、先看容器中 是否有id&#x3D;“applicationEventMulticaster”的组件；
+        2）、如果没有则创建 this.applicationEventMulticaster &#x3D; new SimpleApplicationEventMulticaster(beanFactory);
+        3）、将之加入到容器，后期可在其他组件要派发事件时自动注入这个applicationEventMulticaster；
+
+【容器中有哪些监听器】
+容器创建对象：refresh();
+    1）、registerListeners();
+        从容器中拿到所有的监听器，把他们注册到applicationEventMulticaster中；
+        String[] listenerBeanNames &#x3D; getBeanNamesForType(ApplicationListener.class, true, false);
+        &#x2F;&#x2F;将listener注册到ApplicationEventMulticaster中
+        getApplicationEventMulticaster().addApplicationListenerBean(listenerBeanName);
+	
+SmartInitializingSingleton 原理：-&gt;afterSingletonsInstantiated();
+	1）、ioc容器创建对象并refresh()；
+	2）、finishBeanFactoryInitialization(beanFactory);初始化剩下的单实例bean；
+		1）、先创建所有的单实例bean；getBean();
+		2）、获取所有创建好的单实例bean，判断是否是SmartInitializingSingleton类型的；
+			如果是就调用afterSingletonsInstantiated();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="3、组件注入"><a href="#3、组件注入" class="headerlink" title="3、组件注入"></a>3、组件注入</h2><h3 id="3-1、注入类型"><a href="#3-1、注入类型" class="headerlink" title="3.1、注入类型"></a>3.1、注入类型</h3><h4 id="setter注入"><a href="#setter注入" class="headerlink" title="setter注入"></a>setter注入</h4><h4 id="构造注入"><a href="#构造注入" class="headerlink" title="构造注入"></a>构造注入</h4><h4 id="接口注入"><a href="#接口注入" class="headerlink" title="接口注入"></a>接口注入</h4><h4 id="注解注入"><a href="#注解注入" class="headerlink" title="注解注入"></a>注解注入</h4><ul>
+<li><p>Spring注解</p>
+<ol>
+<li><p><strong>@Autowired &#x2F; @Qualifier</strong></p>
+<p>@Autowired默认按照类型装配注入，默认情况下它要求依赖对象必须存在，如果允许为null，可以设置它的required属性为false，如果想按照名称来注入，则需要结合@Qualifier一起使用；</p>
+</li>
+<li><p><strong>@Primary</strong></p>
+<p>自动装配的时要使用的首选bean。</p>
+</li>
+<li><p><strong>@Import</strong></p>
+<p>可通过 多种方式（class） 导入 多个组件。</p>
+</li>
+<li><p><strong>@ImportResource</strong></p>
+<p>通过导入bean.xml文件来注入组件。</p>
+</li>
+</ol>
+</li>
+<li><p>Java注解</p>
+<ol>
+<li><strong>@Resource（JSR 250）</strong></li>
+</ol>
+<p>   @Resource默认按照名称注入，只有找不到与名称匹配的bean时才会按照类型来注入；</p>
+<ol start="2">
+<li><p><strong>@Inject（JSR 330）</strong></p>
+<p>需要导入javax.inject包，和Autowired的功能一样。没有required&#x3D;false的功能；</p>
+</li>
+</ol>
+</li>
+</ul>
+<h4 id="文件属性注入"><a href="#文件属性注入" class="headerlink" title="文件属性注入"></a>文件属性注入</h4><ul>
+<li><p><strong>@PropertySource(value &#x3D; {“jdbc.properties”})</strong> </p>
+<p>加载 properties文件中 配置的 以 db 开头的属性配置信息，并会自动赋值给变量。</p>
+</li>
+<li><p><strong>@ConfigurationProperties(prefix &#x3D; “db”) + @EnableConfigurationProperties(xxx.class)</strong></p>
+<p>xxx类上需要加注解@ConfigurationProperties(prefix &#x3D; “db”)，这样会将文件配置信息赋值给变量。</p>
+</li>
+</ul>
+<h3 id="3-2、Autowired注解"><a href="#3-2、Autowired注解" class="headerlink" title="3.2、Autowired注解"></a>3.2、Autowired注解</h3><p>@Autowired相关类架构如下所示：</p>
+<p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/06/image-20210320173030372.png" alt="image-20210320173030372"></p>
+<h2 id="4、循环依赖"><a href="#4、循环依赖" class="headerlink" title="4、循环依赖"></a>4、循环依赖</h2><h3 id="4-1、前言"><a href="#4-1、前言" class="headerlink" title="4.1、前言"></a>4.1、前言</h3><p>创建Spring bean本质上是创建对象，一个完整对象包含两部分：<em><strong>对象实例化和对象属性初始化</strong></em>。</p>
+<p>Spring Bean的创建分为三步：</p>
+<ol>
+<li><strong>实例化</strong>：对应方法 AbstractAutowireCapableBeanFactory中的createBeanInstance方法。</li>
+<li><strong>属性注入</strong>：对应方法 AbstractAutowireCapableBeanFactory的populateBean方法。</li>
+<li><strong>初始化</strong>：对应方法 AbstractAutowireCapableBeanFactory的initializeBean方法。</li>
+</ol>
+<p><strong>Spring Bean通过 反射 实现序列化，对象属性在 对象实例化后 设置</strong>。</p>
+<h3 id="4-2、循环依赖问题"><a href="#4-2、循环依赖问题" class="headerlink" title="4.2、循环依赖问题"></a>4.2、循环依赖问题</h3><p>循环依赖的产生可能有多种情况，例如：</p>
+<ul>
+<li>A的构造方法中依赖了B的实例对象，同时B的构造方法中依赖了A的实例对象。</li>
+<li>A的构造方法中依赖了B的实例对象，同时B的某个field或者setter需要A的实例对象，以及反之。</li>
+<li>A的某个field或者setter依赖了B的实例对象，同时B的某个field或者setter依赖了A的实例对象，以及反之。</li>
+</ul>
+<p>以 第三种为例 来 分析：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">private</span> <span class="token class-name">B</span> b<span class="token punctuation">;</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setB</span><span class="token punctuation">(</span><span class="token class-name">B</span> b<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span>b <span class="token operator">=</span> b<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+<span class="token operator">--</span><span class="token operator">-</span>
+<span class="token annotation punctuation">@Component</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">B</span> <span class="token punctuation">&#123;</span>
+  <span class="token keyword">private</span> <span class="token class-name">A</span> a<span class="token punctuation">;</span>
+  <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">setA</span><span class="token punctuation">(</span><span class="token class-name">A</span> a<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token keyword">this</span><span class="token punctuation">.</span>a <span class="token operator">=</span> a<span class="token punctuation">;</span>
+  <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p><font color='orange'>首先，Spring实例化bean是通过ApplicationContext.getBean()方法触发开启。</font></p>
+<p>如果 所需对象 依赖 另一对象，那么会先创建所需对象，然后递归调用<code>ApplicationContext.getBean()</code>来获取依赖对象，然后将依赖对象注入当前所需对象。</p>
+<p>以先初始化对象A为例，Spring执行逻辑如下：</p>
+<ol>
+<li>首先Spring尝试通过ApplicationContext.getBean()方法 获取A对象 实例，由于Spring容器中还没有A对象实例，因此会去创建一个A对象。然后发现依赖了B对象，然后通过ApplicationContext.getBean()方法获取B对象实例。但此时Spring容器中没有B对象的实例，因此会先创建一个B对象的实例。</li>
+<li>Spring创建B对象之后，发现B对象依赖了A对象实例，故调用ApplicationContext.getBean()方法获取A对象实例。因为Spring中已经有了A对象实例，虽然只是半成品（其属性b还未初始化），但也是目标bean，故会将该A对象实例返回。此时，B对象的属性a就设置进去了，然后将B对象实例返回，并设置到A对象的属性b中，最终完成对象实例化。</li>
+</ol>
+<h3 id="4-3、解决循环依赖"><a href="#4-3、解决循环依赖" class="headerlink" title="4.3、解决循环依赖"></a>4.3、解决循环依赖</h3><p><strong>单例对象在IOC容器生命周期内只有一个实例，为解决 单例 循环依赖问题，可以使用三级缓存</strong>（DefaultSingletonBeanRegistry.java中定义）。</p>
+<p>三级缓存源码定义如下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/** 一级缓存 - 存放完全实例化且属性赋值完成的Bean，直接可以使用。 */</span>
+<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> singletonObjects <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ConcurrentHashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">/** 二级缓存 - 存放早期Bean的引用，尚未属性装配的Bean。 */</span>
+<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> earlySingletonObjects <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token comment">/** 三级缓存 - 存放实例化完成的Bean工厂。 */</span>
+<span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">ObjectFactory</span><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span><span class="token punctuation">></span></span> singletonFactories <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">ObjectFactory</span><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Spring首先从一级缓存<em><strong>singletonObjects</strong></em>中获取，如果获取不到，且对象正在创建中，就会从二级缓存<em><strong>earlySingletonObjects</strong></em>中获取，如果还是获取不到且允许通过<em><strong>调用 <code>singletonFactories</code> 的 <code>getObject()</code>方法获取</strong></em>，那就从三级缓存获取，<em><strong>如果获取到了，那就放入二级缓存，并将三级缓存中的删除</strong></em>。具体逻辑如下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Nullable</span>
+<span class="token keyword">protected</span> <span class="token class-name">Object</span> <span class="token function">getSingleton</span><span class="token punctuation">(</span><span class="token class-name">String</span> beanName<span class="token punctuation">,</span> <span class="token keyword">boolean</span> allowEarlyReference<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token comment">// Quick check for existing instance without full singleton lock</span>
+    <span class="token class-name">Object</span> singletonObject <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>singletonObjects<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>beanName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">if</span> <span class="token punctuation">(</span>singletonObject <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token function">isSingletonCurrentlyInCreation</span><span class="token punctuation">(</span>beanName<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        singletonObject <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>earlySingletonObjects<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>beanName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span>singletonObject <span class="token operator">==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> allowEarlyReference<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">synchronized</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>singletonObjects<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                <span class="token comment">// Consistent creation of early reference within full singleton lock</span>
+                singletonObject <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>singletonObjects<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>beanName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                <span class="token keyword">if</span> <span class="token punctuation">(</span>singletonObject <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                    singletonObject <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>earlySingletonObjects<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>beanName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                    <span class="token keyword">if</span> <span class="token punctuation">(</span>singletonObject <span class="token operator">==</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                        <span class="token class-name">ObjectFactory</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> singletonFactory <span class="token operator">=</span> <span class="token keyword">this</span><span class="token punctuation">.</span>singletonFactories<span class="token punctuation">.</span><span class="token function">get</span><span class="token punctuation">(</span>beanName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token keyword">if</span> <span class="token punctuation">(</span>singletonFactory <span class="token operator">!=</span> <span class="token keyword">null</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+                            singletonObject <span class="token operator">=</span> singletonFactory<span class="token punctuation">.</span><span class="token function">getObject</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+                            <span class="token keyword">this</span><span class="token punctuation">.</span>earlySingletonObjects<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>beanName<span class="token punctuation">,</span> singletonObject<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                            <span class="token keyword">this</span><span class="token punctuation">.</span>singletonFactories<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>beanName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+                        <span class="token punctuation">&#125;</span>
+                    <span class="token punctuation">&#125;</span>
+                <span class="token punctuation">&#125;</span>
+            <span class="token punctuation">&#125;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+    <span class="token keyword">return</span> singletonObject<span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>Spring解决循环依赖的诀窍就在于三级缓存——singletonFactories。这个cache类型是接口ObjectFactory。这个接口在下面代码中被引用：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">addSingletonFactory</span><span class="token punctuation">(</span><span class="token class-name">String</span> beanName<span class="token punctuation">,</span> <span class="token class-name">ObjectFactory</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> singletonFactory<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+    <span class="token class-name">Assert</span><span class="token punctuation">.</span><span class="token function">notNull</span><span class="token punctuation">(</span>singletonFactory<span class="token punctuation">,</span> <span class="token string">"Singleton factory must not be null"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">synchronized</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>singletonObjects<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span><span class="token keyword">this</span><span class="token punctuation">.</span>singletonObjects<span class="token punctuation">.</span><span class="token function">containsKey</span><span class="token punctuation">(</span>beanName<span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>singletonFactories<span class="token punctuation">.</span><span class="token function">put</span><span class="token punctuation">(</span>beanName<span class="token punctuation">,</span> singletonFactory<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>earlySingletonObjects<span class="token punctuation">.</span><span class="token function">remove</span><span class="token punctuation">(</span>beanName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+            <span class="token keyword">this</span><span class="token punctuation">.</span>registeredSingletons<span class="token punctuation">.</span><span class="token function">add</span><span class="token punctuation">(</span>beanName<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token punctuation">&#125;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>上面代码是解决循环依赖的关键，这段代码发生在 createBeanInstance 之后，也就是说此时单例对象已经被创建出来(调用了构造器)，虽然还不完整，但是已经能被认出来了（根据对象引用能定位到堆中的对象），所以Spring此时将这个对象提前曝光出来让大家认识，让大家使用。</p>
+<h3 id="4-4、为何需要三级缓存"><a href="#4-4、为何需要三级缓存" class="headerlink" title="4.4、为何需要三级缓存"></a>4.4、为何需要三级缓存</h3><p>Spring处理AOP代理的规则是：<strong>通过后置处理器 <code>AnnotationAwareAspectJAutoProxyCreator</code>在Bean生命周期最后一步完成AOP代理，而并非实例化后就立马进行AOP代理</strong>。</p>
+<p>如果对A进行了AOP代理，那么意味着 B对象中注入的A将是一个A的代理对象而并非A的原始对象。</p>
+<p>所以，Spring定义一个缓存<em><strong>singletonFactories</strong></em>来存放Bean工厂对象ObjectFactory。该工厂对象的作用是<strong>延迟实例化阶段对象代理的生成，而只有真正发生循环依赖时才会生成代理对象，否则只会创建一个工厂对象并放入到三级缓存中</strong>。</p>
+<p>注意事项：</p>
+<ol>
+<li><strong>如果A被代理了，但没有发生循环依赖。那么依然会将其添加到三级缓存中。</strong></li>
+<li><strong>如果使用二级缓存，那么Bean实例化后会立即创建代理。这样做也就违背了Spring在Bean生命周期最后完成AOP代理的设计。</strong></li>
+</ol>
+<h3 id="4-5、三级缓存会提高效率吗？"><a href="#4-5、三级缓存会提高效率吗？" class="headerlink" title="4.5、三级缓存会提高效率吗？"></a>4.5、三级缓存会提高效率吗？</h3><p>不会提高，下面分两种场景来讨论。</p>
+<ul>
+<li><p>场景一：没有AOP代理的循环依赖</p>
+<p>该情况下三级缓存根本没用，所以不存在提高效率。</p>
+</li>
+<li><p>场景二：存在AOP代理的循环依赖</p>
+<ul>
+<li>如果使用三级缓存，那么只会在B依赖A时才会为A创建代理。</li>
+<li>如果不使用三级缓存，则会在A实例化后立即为A创建代理，并将代理放入二级缓存。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-6、总结"><a href="#4-6、总结" class="headerlink" title="4.6、总结"></a>4.6、总结</h3><p><strong>如果使用二级缓存解决循环依赖，意味着所有Bean在实例化后就要完成AOP代理，这样就违背了Spring设计原则</strong>。（Spring的设计规则就是通过后置处理器<code>AnnotationAwareAspectJAutoProxyCreator</code>在Bean生命周期最后一步完成AOP代理，而并非是在实例化后来执行AOP代理。）</p>
+<h1 id="AOP（切面编程）"><a href="#AOP（切面编程）" class="headerlink" title="AOP（切面编程）"></a>AOP（切面编程）</h1><h2 id="2、AOP动态代理"><a href="#2、AOP动态代理" class="headerlink" title="2、AOP动态代理"></a>2、AOP动态代理</h2><h3 id="2-1、简介-1"><a href="#2-1、简介-1" class="headerlink" title="2.1、简介"></a>2.1、简介</h3><p>切面编程是指<strong>程序运行期间在指定方法的指定位置动态植入增强逻辑的编程方式。</strong></p>
+<h3 id="2-2、代码实现"><a href="#2-2、代码实现" class="headerlink" title="2.2、代码实现"></a>2.2、代码实现</h3><ol>
+<li>导入aop模块；Spring AOP：(spring-aspects)</li>
+<li>定义一个业务逻辑类（MathCalculator）；在业务逻辑运行的时候将日志进行打印（方法之前、方法运行结束、方法出现异常，xxx）</li>
+<li>定义一个日志切面类（LogAspects）：切面类里面的方法需要动态感知MathCalculator.div运行到哪里然后执行；<ul>
+<li>前置通知(@Before)：logStart：在目标方法(div)运行之前运行</li>
+<li>后置通知(@After)：logEnd：在目标方法(div)运行结束之后运行（无论方法正常结束还是异常结束）</li>
+<li>返回通知(@AfterReturning)：logReturn：在目标方法(div)正常返回之后运行</li>
+<li>异常通知(@AfterThrowing)：logException：在目标方法(div)出现异常以后运行</li>
+<li>环绕通知(@Around)：动态代理，手动推进目标方法运行（joinPoint.procced()）</li>
+</ul>
+</li>
+<li>给切面类的目标方法标注何时何地运行（通知注解）；</li>
+<li>将切面类和业务逻辑类（目标方法所在类）都加入到容器中;</li>
+<li>必须告诉Spring哪个类是切面类（给切面类上加一个注解：@Aspect）</li>
+<li>给配置类中加 @EnableAspectJAutoProxy 【开启基于注解的aop模式】</li>
+</ol>
+<h2 id="3、AOP原理"><a href="#3、AOP原理" class="headerlink" title="3、AOP原理"></a>3、AOP原理</h2><h3 id="3-1、-EnableAspectJAutoProxy"><a href="#3-1、-EnableAspectJAutoProxy" class="headerlink" title="3.1、@EnableAspectJAutoProxy"></a>3.1、@EnableAspectJAutoProxy</h3><p>@EnableAspectJAutoProxy是什么？</p>
+<pre class="line-numbers language-none"><code class="language-none">1、@Import(AspectJAutoProxyRegistrar.class)：给容器中导入AspectJAutoProxyRegistrar
+   利用AspectJAutoProxyRegistrar自定义给容器中注册bean；BeanDefinetion
+   internalAutoProxyCreator&#x3D;AnnotationAwareAspectJAutoProxyCreator
+   给容器中注册一个AnnotationAwareAspectJAutoProxyCreator；
+2、AnnotationAwareAspectJAutoProxyCreator：
+     AnnotationAwareAspectJAutoProxyCreator
+     	-&gt;AspectJAwareAdvisorAutoProxyCreator
+     		-&gt;AbstractAdvisorAutoProxyCreator
+     			-&gt;AbstractAutoProxyCreator
+     				implements SmartInstantiationAwareBeanPostProcessor, BeanFactoryAware
+     				关注后置处理器（在bean初始化完成前后做事情）、自动装配BeanFactory
+
+AbstractAutoProxyCreator.setBeanFactory()
+AbstractAutoProxyCreator.有后置处理器的逻辑；
+AbstractAdvisorAutoProxyCreator.setBeanFactory()-》initBeanFactory()
+AnnotationAwareAspectJAutoProxyCreator.initBeanFactory()<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-2、流程"><a href="#3-2、流程" class="headerlink" title="3.2、流程"></a>3.2、流程</h3><pre class="line-numbers language-none"><code class="language-none">1）、传入配置类，创建ioc容器
+2）、注册配置类，调用refresh（）刷新容器；
+3）、registerBeanPostProcessors(beanFactory);注册bean后置处理器来拦截bean的创建；
+  	1）、先获取ioc容器已经定义了的需要创建对象的所有BeanPostProcessor
+  	2）、给容器中注册其它BeanPostProcessor。
+  	3）、优先注册实现了PriorityOrdered接口的BeanPostProcessor；
+  	4）、再注册实现了Ordered接口的BeanPostProcessor；
+  	5）、再注册没有实现任何优先级接口的BeanPostProcessor；
+  	6）、注册BeanPostProcessor，实际上就是创建BeanPostProcessor对象并注入到容器中；
+  			创建internalAutoProxyCreator的BeanPostProcessor【AnnotationAwareAspectJAutoProxyCreator】
+  			1）、创建Bean的实例
+  			2）、populateBean；给bean的各种属性赋值
+  			3）、initializeBean：初始化bean；
+  					1）、invokeAwareMethods()：处理Aware接口的方法回调
+  					2）、applyBeanPostProcessorsBeforeInitialization()：应用后置处理器的postProcessBeforeInitialization（）
+  					3）、invokeInitMethods()；执行自定义的初始化方法
+  					4）、applyBeanPostProcessorsAfterInitialization()；执行后置处理器的postProcessAfterInitialization（）；
+  			4）、BeanPostProcessor(AnnotationAwareAspectJAutoProxyCreator)创建成功；--》aspectJAdvisorsBuilder
+  	7）、把BeanPostProcessor注册到BeanFactory中；
+  		beanFactory.addBeanPostProcessor(postProcessor);
+
+&#x3D;&#x3D;&#x3D;&#x3D;&#x3D;以上是创建和注册AnnotationAwareAspectJAutoProxyCreator的过程&#x3D;&#x3D;&#x3D;&#x3D;
+
+  	   AnnotationAwareAspectJAutoProxyCreator &#x3D;&gt; InstantiationAwareBeanPostProcessor
+4）、finishBeanFactoryInitialization(beanFactory);完成BeanFactory初始化工作；创建剩下的单实例bean
+  	1）、遍历获取容器中所有的Bean，依次创建对象getBean(beanName);
+  		getBean-&gt;doGetBean()-&gt;getSingleton()-&gt;
+  	2）、执行 创建bean 逻辑
+  		【AnnotationAwareAspectJAutoProxyCreator在所有bean创建之前会有一个拦截，InstantiationAwareBeanPostProcessor会调用postProcessBeforeInstantiation()】
+  		1）、先从缓存中获取当前bean，如果能获取到，说明bean是之前被创建过的，直接使用，否则再创建；只要创建好的Bean都会被缓存起来。
+  		2）、创建bean：createBean（）
+  			AnnotationAwareAspectJAutoProxyCreator 会在任何bean创建之前先尝试返回bean的实例
+  			【BeanPostProcessor是在Bean对象创建完成后的初始化前后调用的】
+  			【InstantiationAwareBeanPostProcessor是在创建Bean实例之前先尝试用后置处理器返回对象】
+  			1）、resolveBeforeInstantiation(beanName, mbdToUse);解析BeforeInstantiation
+  				希望后置处理器在此能返回一个代理对象；如果能返回代理对象就使用，如果不能就继续
+  				1）、后置处理器先尝试返回对象；
+  					bean &#x3D; applyBeanPostProcessorsBeforeInstantiation（）：
+  					拿到所有后置处理器，如果是InstantiationAwareBeanPostProcessor;
+  					就执行postProcessBeforeInstantiation
+  					if (bean !&#x3D; null) &#123;
+						bean &#x3D; applyBeanPostProcessorsAfterInitialization(bean, beanName);
+					&#125;
+  				2）、doCreateBean(beanName, mbdToUse, args);真正的去创建一个bean实例；和3.6流程一样；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-3、AnnotationAwareAspectJAutoProxyCreator"><a href="#3-3、AnnotationAwareAspectJAutoProxyCreator" class="headerlink" title="3.3、AnnotationAwareAspectJAutoProxyCreator"></a>3.3、AnnotationAwareAspectJAutoProxyCreator</h3><p>AnnotationAwareAspectJAutoProxyCreator底层就是一个InstantiationAwareBeanPostProcessor。</p>
+<h4 id="3-3-1、bean创建前，调用postProcessBeforeInstantiation"><a href="#3-3-1、bean创建前，调用postProcessBeforeInstantiation" class="headerlink" title="3.3.1、bean创建前，调用postProcessBeforeInstantiation()"></a>3.3.1、bean创建前，调用postProcessBeforeInstantiation()</h4><pre class="line-numbers language-none"><code class="language-none">关心MathCalculator和LogAspect的创建
+1）、判断当前bean是否在advisedBeans中（保存了所有需要增强bean）
+2）、判断当前bean是否是基础类型的Advice、Pointcut、Advisor、AopInfrastructureBean，或者是否是切面（@Aspect）
+3）、是否需要跳过
+  	1）、获取候选的增强器（切面里面的通知方法）【List&lt;Advisor&gt; candidateAdvisors】
+  		每一个封装的通知方法的增强器是 InstantiationModelAwarePointcutAdvisor；
+  		判断每一个增强器是否是 AspectJPointcutAdvisor 类型的；返回true
+  	2）、永远返回false<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="3-3-2、创建对象"><a href="#3-3-2、创建对象" class="headerlink" title="3.3.2、创建对象"></a>3.3.2、创建对象</h4><pre class="line-numbers language-none"><code class="language-none">postProcessAfterInitialization；
+return wrapIfNecessary(bean, beanName, cacheKey);&#x2F;&#x2F;包装如果需要的情况下
+1）、获取当前bean的所有增强器（通知方法）  Object[]  specificInterceptors
+  	1、找到候选的所有的增强器（找哪些通知方法是需要切入当前bean方法的）
+  	2、获取到能在bean使用的增强器。
+  	3、给增强器排序
+2）、保存当前bean在advisedBeans中；
+3）、如果当前bean需要增强，创建当前bean的代理对象；
+  	1）、获取所有增强器（通知方法）
+  	2）、保存到proxyFactory
+  	3）、创建代理对象：Spring自动决定
+  		JdkDynamicAopProxy(config);jdk动态代理；
+  		ObjenesisCglibAopProxy(config);cglib的动态代理；
+4）、给容器中返回当前组件使用cglib增强了的代理对象；
+5）、以后容器中获取到的就是这个组件的代理对象，执行目标方法的时候，代理对象就会执行通知方法的流程；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h4 id="3-3-3、目标方法执行"><a href="#3-3-3、目标方法执行" class="headerlink" title="3.3.3、目标方法执行"></a>3.3.3、目标方法执行</h4><pre class="line-numbers language-none"><code class="language-none">容器中保存了组件的代理对象（cglib增强后的对象），这个对象里面保存了详细信息（比如增强器，目标对象，xxx）；
+1）、CglibAopProxy.intercept();拦截目标方法的执行
+2）、根据ProxyFactory对象获取将要执行的目标方法拦截器链；
+  	List&lt;Object&gt; chain &#x3D; this.advised.getInterceptorsAndDynamicInterceptionAdvice(method, targetClass);
+  	1）、List&lt;Object&gt; interceptorList保存所有拦截器 5
+  		一个默认的ExposeInvocationInterceptor 和 4个增强器；
+  	2）、遍历所有的增强器，将其转为Interceptor；
+  		registry.getInterceptors(advisor);
+  	3）、将增强器转为List&lt;MethodInterceptor&gt;；
+  		如果是MethodInterceptor，直接加入到集合中
+  		如果不是，使用AdvisorAdapter将增强器转为MethodInterceptor；
+  		转换完成返回MethodInterceptor数组；
+3）、如果没有拦截器链，直接执行目标方法;
+  	拦截器链（每一个通知方法又被包装为方法拦截器，利用MethodInterceptor机制）
+4）、如果有拦截器链，把需要执行的目标对象，目标方法，拦截器链等信息传入创建一个 CglibMethodInvocation 对象，
+  	并调用 Object retVal &#x3D;  cglibMehthodInvocation.proceed();
+5）、拦截器链的触发过程;
+  	1)、如果没有拦截器执行目标方法，或者拦截器的索引和拦截器数组大小一样（指定到了最后一个拦截器）执行目标方法；
+  	2)、链式获取每一个拦截器，拦截器执行invoke方法，每一个拦截器等待下一个拦截器执行完成返回以后再来执行；
+  		拦截器链的机制，保证通知方法与目标方法的执行顺序；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h3 id="3-4、总结"><a href="#3-4、总结" class="headerlink" title="3.4、总结"></a>3.4、总结</h3><pre class="line-numbers language-none"><code class="language-none">1）、@EnableAspectJAutoProxy 开启AOP功能
+2）、@EnableAspectJAutoProxy 会给容器中注册一个组件 AnnotationAwareAspectJAutoProxyCreator
+3）、AnnotationAwareAspectJAutoProxyCreator是一个后置处理器；
+4）、容器创建流程：
+  	1）、registerBeanPostProcessors（）注册后置处理器；创建AnnotationAwareAspectJAutoProxyCreator对象
+  	2）、finishBeanFactoryInitialization（）初始化剩下的单实例bean
+  		1）、创建业务逻辑组件和切面组件
+  		2）、AnnotationAwareAspectJAutoProxyCreator拦截组件的创建过程
+  		3）、组件创建完之后，判断组件是否需要增强
+  			是：切面的通知方法，包装成增强器（Advisor）;给业务逻辑组件创建一个代理对象（cglib）；
+5）、执行目标方法：
+  	1）、代理对象执行目标方法
+  	2）、CglibAopProxy.intercept()；
+  		1）、得到目标方法的拦截器链（增强器包装成拦截器MethodInterceptor）
+  		2）、利用拦截器的链式机制，依次进入每一个拦截器进行执行；
+  		3）、效果：
+  			正常执行：前置通知-》目标方法-》后置通知-》返回通知
+  			出现异常：前置通知-》目标方法-》后置通知-》异常通知<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="MVC"><a href="#MVC" class="headerlink" title="MVC"></a>MVC</h1><h2 id="1、请求匹配"><a href="#1、请求匹配" class="headerlink" title="1、请求匹配"></a>1、请求匹配</h2><ol>
+<li>拿到处理器执行器链：getHandler(HttpServletRequest)。<ul>
+<li>拿到所有HandlerMapping（默认一开始时有5个），进行遍历<ul>
+<li>拿到处理器执行器链，如果没有则返回空：mapping.getHandler(HttpServletRequest)<ul>
+<li>基于HttpServletRequest来匹配handlerMapping（RequestMappingHadnlerMapping）</li>
+<li>路径与方法的映射信息保存在RMHM.mappingRegistry.mappingLookup（LinkedHashMap）中。</li>
+<li>拿到与路径<code>/xxx</code>匹配的所有映射项，如果匹配项有多个，那么报错。否则将之保存起来候用。</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<blockquote>
+<p>默认5个HandlerMapping：</p>
+<ul>
+<li>RequestMappingHadnlerMapping</li>
+<li>WelcomePageHandlerMapping</li>
+<li>BeanNameUril xxx</li>
+<li>RouterFunction xxx</li>
+<li>SimpleUrl xxx</li>
+</ul>
+</blockquote>
+<h2 id="2、参数解析-返回结果"><a href="#2、参数解析-返回结果" class="headerlink" title="2、参数解析&#x2F;返回结果"></a>2、参数解析&#x2F;返回结果</h2><ol>
+<li><p>从处理器执行器链中找到能处理请求的Hadnler</p>
+</li>
+<li><p>通过handler拿到对应的 处理器适配器（HandlerAdapter）</p>
+<p>默认适配器有4种：RequestMappingHandlerAdapter、HandlerFunction-xxx、HttpRequest-xxx、SimpleController-xxx）</p>
+</li>
+<li><p>判断请求方式（Get&#x2F;POST&#x2F;HEAD…）</p>
+</li>
+<li><p>调用适配器的handler()方法:ha.handler(…)</p>
+<pre class="line-numbers language-none"><code class="language-none">执行目标方法：invokeHandlerMethod(request, response, HandlerMethod)
+	- 设置 参数解析器（ArgumentResover，默认26个）解析参数
+	  （找到匹配的解析器和参数时，会将之缓存起来，以后来请求就不要重复解析了。）
+	  - Map&#x2F;Model类型的参数，会返回一个BindingAwareModelMap，它既是Mode也是Map。
+		两者都可以通过mavContainer.getModel()获取到值。
+	- 设置 返回值处理器（ReturnValueHandlers，默认15个）处理返回结果
+		- 获取返回值类型
+		- 调用handlerReturnValue(...)方法 处理返回结果。
+			- 找到能处理结果的处理器（），然后处理。
+			 （比如处理@ResponseBody返回json结果的处理器是 RequestResponseBodyMethodProcessor）
+				- 利用MessageConvert（默认10个）来处理结果
+					- 拿到spring支持的返回结果类型 和 客户端浏览器支持的 接收结果类型
+					- 拿到两者匹配兼容的转换类型，然后转换。
+					- 将转换结果 封装到 OutputMessage中，并返回。
+	- 执行目标方法：invokeAndHandler(webRequest, mavContainer)
+		- invokeForRequest(...)---&gt;会跳到目标方法执行
+			- 获取 所有参数的值
+			- 通过 反射 调用目标方法
+	- 最终处理结果会放到 ModelAndViewContainer中，其中包含 页面 和 数据。<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>调用处理器执行器链的applyPostHandler()方法。</p>
+</li>
+<li><p>调用processDispatcherResult()：处理最终结果。</p>
+</li>
+<li><p>最终，将数据保存到请求域中并返回。</p>
+</li>
+</ol>
+<h2 id="3、内容协商"><a href="#3、内容协商" class="headerlink" title="3、内容协商"></a>3、内容协商</h2><ol>
+<li>判断当前响应头中是否有确定的媒体类型，MediaType。</li>
+<li>获取 客户端支持接收的内容类型（获取客户端Accepte请求头字段）。</li>
+<li>获取 spring 可以提供的 媒体类型。<ul>
+<li>遍历当前系统中所有的MessageConverter，拿到支持操作当前对象的MessageConverter。</li>
+<li>将支持的MC的媒体类型统计出来并保存。</li>
+</ul>
+</li>
+<li>进行 客户端和服务器 媒体类型 的 最佳匹配。</li>
+<li>拿到 支持当前内容转换的 具体Converter，然后进行转换。</li>
+</ol>
+<h2 id="4、异常处理"><a href="#4、异常处理" class="headerlink" title="4、异常处理"></a>4、异常处理</h2><p>ErrorMvcAutoConfiguration 自动配置异常处理规则：</p>
+<ul>
+<li>注入 DefatultErrorAttributes：定义错误页面可以包含哪些数据。 </li>
+<li>注入 BasicErrorController<ul>
+<li>处理 &#x2F;error 的请求（server.error.path&#x2F;error.path），视图响应 ModelAndView(error)</li>
+<li>组件View</li>
+<li>注入组件BeanNameViewResolver，以 返回的视图名作为ID去找View对象。</li>
+</ul>
+</li>
+<li>注入 DefaultErrorViewResolver<br>    - 发生错误时，会以HTTP状态码 作为视图地址。（error&#x2F;viewName.html）</li>
+</ul>
+<p>异常处理流程：</p>
+<ol>
+<li>目标方法执行期间，有异常会被catch，并标识当前请求为结束，并启用dispatchException。</li>
+<li>进入视图解析逻辑。</li>
+<li>执行处理器的异常并返回一个MV<ul>
+<li>遍历所有handlerExceptionResolvers，找到可以处理当前异常的resolver。</li>
+<li>遍历所有的默认异常解析器，找到可以解析当前异常的。<ul>
+<li>DefaultErrorAttributes先处理异常，把异常保存到request域，并返回空。</li>
+<li>默认没有任何组件能处理该异常，所以异常会抛出。<ul>
+<li>如果没有人处理该异常，那么会发送 &#x2F;error 请求。</li>
+<li>解析错误视图，遍历 ErrorViewResolver，找到可以解析的resolver，然后解析。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>封装错误视图，并返回。</li>
+</ul>
+</li>
+</ol>
+<h2 id="5、总结"><a href="#5、总结" class="headerlink" title="5、总结"></a>5、总结</h2><ul>
+<li><p><strong>初始化阶段</strong></p>
+<ol>
+<li>首次用到<code>DispatcherServlet</code>时，会初始化Web容器 WebApplicationContext。然后调用 onRefresh() 方法刷新 WebApplicationContext。</li>
+<li>刷新过程会初始化一些重要组件（9个）：MultipartResolver、LocaleResolver、ThemeResolver、HandlerMapping、HandlerAdapters、HandlerExceptionResolvers、RequestToViewNameTranslator、ViewResolvers、FlashMapManager。</li>
+<li>将初始化好后的组件赋值给DispatcherServlet，留待后用。</li>
+</ol>
+</li>
+<li><p><strong>匹配阶段</strong></p>
+<ol>
+<li>用户请求首先被DispatcherServlet拦截。</li>
+<li>DispatcherServlet遍历所有HandlerMapping，找到与请求匹配的处理器。<ol>
+<li><code>HandlerMapping</code>有多个，不同的<code>HandlerMapping</code>对应有不同的处理器对象。请求路径与处理器的映射在HandlerMapping初始化期间就已经被设置好。</li>
+<li><code>@RequestMapping</code>注解优先级较高会被优先匹配到，其对应的处理器是<code>HandlerMethod</code>，该处理器包含 控制器对象 和 控制器方法 等信息。</li>
+</ol>
+</li>
+<li>将<code>HandlerMethod</code>和 拦截器 封装成 处理执行器链<code>HandlerExecutionChain</code>。</li>
+<li>找到可以处理当前<code>HandlerMethod</code>的适配器对象<code>HandlerAdapter</code>，通过该 适配器对象 来处理请求。</li>
+</ol>
+</li>
+<li><p><strong>执行阶段</strong></p>
+<ol>
+<li><p>执行拦截器的<code>preHandler()</code>方法。</p>
+</li>
+<li><p>通过<code>HandlerAdapter</code>调用<code>HandlerMethod</code></p>
+<ol>
+<li><p>调用前处理请求参数</p>
+<p>提取Request中的模型数据，填充Handler入参：</p>
+<ul>
+<li>数据转换：如 String 转 Integer、Double等。</li>
+<li>数据格式化：如 将 字符串 转为 格式化数字 或 日期 等。</li>
+<li>数据验证：验证数据的有效性（长度、格式），验证结果存储到<code>BindingResult</code>或<code>Error</code>中。</li>
+</ul>
+</li>
+<li><p>开始执行Handler（Controller）方法处理请求</p>
+</li>
+<li><p>处理返回值。如果控制器标注了ResponseBody注解，那么会生成json结果，并标记ModelAndView已经处理，这样就不再走视图渲染流程。</p>
+</li>
+</ol>
+</li>
+<li><p>若返回的视图不存在，则创建保存一个默认视图，若存在则继续执行。</p>
+</li>
+<li><p>执行拦截器<code>postHandler</code>方法</p>
+</li>
+<li><p>处理返回结果</p>
+<ul>
+<li>执行流程中有异常会进入<code>HandlerExceptionResolver</code>异常处理流程。</li>
+<li>没有异常会执行下列操作：<ol>
+<li>拿到<code>ModelAndView</code>对象。</li>
+<li>通过<code>ViewResolver</code>来解析视图，根据Model和View 来渲染视图。</li>
+</ol>
+</li>
+<li>执行拦截器的<code>afterCompletion</code>方法。</li>
+</ul>
+</li>
+<li><p>将渲染结果返回给客户端。</p>
+</li>
+</ol>
+</li>
+</ul>
+<h1 id="Transaction（事务）"><a href="#Transaction（事务）" class="headerlink" title="Transaction（事务）"></a>Transaction（事务）</h1><h2 id="1、环境搭建"><a href="#1、环境搭建" class="headerlink" title="1、环境搭建"></a>1、环境搭建</h2><p>（1）导入相关依赖：数据源、数据库驱动、Spring-jdbc模块</p>
+<p>（2）配置数据源、JdbcTemplate（Spring提供的简化数据库操作的工具）操作数据</p>
+<p>（3）给方法上标注 @Transactional 表示当前方法是一个事务方法；</p>
+<p>（4）@EnableTransactionManagement 开启基于注解的事务管理功能；@EnableXXX</p>
+<p>（5）配置事务管理器来控制事务;</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Bean</span>
+<span class="token keyword">public</span> <span class="token class-name">PlatformTransactionManager</span> <span class="token function">transactionManager</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+
+<h2 id="2、原理"><a href="#2、原理" class="headerlink" title="2、原理"></a>2、原理</h2><pre class="line-numbers language-none"><code class="language-none">1）、@EnableTransactionManagement
+	利用TransactionManagementConfigurationSelector给容器中导入两个组件
+		AutoProxyRegister
+		ProxyTransactionManagementConfiguration
+
+2）、AutoProxyRegistrar：
+	给容器中注册一个 InfrastructureAdvisorAutoProxyCreator 组件；
+	InfrastructureAdvisorAutoProxyCreator：？
+	利用后置处理器机制在对象创建以后，包装对象，返回一个代理对象（增强器），代理对象执行方法利用拦截器链进行调用；
+
+3）、ProxyTransactionManagementConfiguration 做了什么？
+	1、给容器中注册事务增强器；
+		1）、事务增强器要用事务注解的信息，AnnotationTransactionAttributeSource解析事务注解
+		2）、事务拦截器：TransactionInterceptor；保存了事务属性、事务管理器信息；底层是MethodInterceptor；
+			在目标方法执行的时执行拦截器链；
+				事务拦截器：
+					1）、先获取事务相关的属性
+					2）、再获取PlatformTransactionManager，如果事先没有添加指定任何transactionmanger，最终会从容器中按照类型获取一个PlatformTransactionManager；
+					3）、执行目标方法
+						如果异常，获取到事务管理器，利用事务管理回滚操作；
+						如果正常，利用事务管理器，提交事务<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="XML配置原理解析"><a href="#XML配置原理解析" class="headerlink" title="XML配置原理解析"></a>XML配置原理解析</h1><p>以自定义标签<code>&lt;haoge:haoge-driver /&gt;</code>为例进行分析。</p>
+<p>要想使得spring配置文件中的标签生效，需要满足以下几点：</p>
+<ol>
+<li><em><strong>创建命名空间对应的xsd文件</strong></em>。比如context的xsd文件<code>org.springframework.context.config.spring-context.xsd</code></li>
+<li><em><strong>创建命名空间处理器处理指定的命名空间</strong></em>。比如<code>context</code>命名空间；</li>
+<li><em><strong>创建命名空间下各个标签的解析器，解析标签使其生效</strong></em>。比如解析<code>&lt;context:component-scan base-package=&quot;xxx&quot;/&gt;</code>标签；</li>
+</ol>
+<h2 id="1-1、创建并配置xsd文件"><a href="#1-1、创建并配置xsd文件" class="headerlink" title="1.1、创建并配置xsd文件"></a>1.1、创建并配置xsd文件</h2><p>在路径<code>resources/cn/shh/spring/haoge/config</code>下创建文件<code>spring-haoge.xsd</code>，文件内容如下：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">xsd:</span>schema</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.shihaohan.com/schema/haoge<span class="token punctuation">"</span></span>
+		<span class="token attr-name"><span class="token namespace">xmlns:</span>xsd</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema<span class="token punctuation">"</span></span>
+		<span class="token attr-name">targetNamespace</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.shihaohan.com/schema/haoge<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">xsd:</span>element</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>haoge-driver<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">xsd:</span>element</span><span class="token punctuation">></span></span>
+
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">xsd:</span>schema</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="1-2、创建spring-schemas文件"><a href="#1-2、创建spring-schemas文件" class="headerlink" title="1.2、创建spring.schemas文件"></a>1.2、创建spring.schemas文件</h2><p>在路径<code>resources/META-INF</code>下创建<code>spring.schemas</code>文件，文件内容如下：</p>
+<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token key attr-name">http\://www.shihaohan.com/schema/haoge/spring-haoge.xsd</span><span class="token punctuation">=</span><span class="token value attr-value">cn.shh.spring.haoge.config/spring-haoge.xsd</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="1-3、创建命名空间处理器"><a href="#1-3、创建命名空间处理器" class="headerlink" title="1.3、创建命名空间处理器"></a>1.3、创建命名空间处理器</h2><p>创建Java类<code>HaogeNamespaceHandler</code>来处理命令自定义空间<code>haoge</code>，详细内容如下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HaogeNamespaceHandler</span> <span class="token keyword">extends</span> <span class="token class-name">NamespaceHandlerSupport</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">init</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token keyword">this</span><span class="token punctuation">.</span><span class="token function">registerBeanDefinitionParser</span><span class="token punctuation">(</span><span class="token string">"haoge-driver"</span><span class="token punctuation">,</span> <span class="token keyword">new</span> <span class="token class-name">HaogeDriverBeanDefinitionParser</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>创建Java类<code>HaogeDriverBeanDefinitionParser</code>来解析处理标签<code>haoge-driver</code>，该标签的功能就是向容器中注入一个<code>HaogeBeanPostProcessor</code>，详细内容如下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HaogeDriverBeanDefinitionParser</span> <span class="token keyword">implements</span> <span class="token class-name">BeanDefinitionParser</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">BeanDefinition</span> <span class="token function">parse</span><span class="token punctuation">(</span><span class="token class-name">Element</span> element<span class="token punctuation">,</span> <span class="token class-name">ParserContext</span> parserContext<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+        <span class="token class-name">RootBeanDefinition</span> beanDefinition <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">RootBeanDefinition</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        beanDefinition<span class="token punctuation">.</span><span class="token function">setBeanClassName</span><span class="token punctuation">(</span><span class="token string">"cn.shh.demo.spring.ioc.customenamespace.HaogeBeanPostProcessor"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        parserContext<span class="token punctuation">.</span><span class="token function">getRegistry</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">registerBeanDefinition</span><span class="token punctuation">(</span><span class="token string">"haogeBeanPostProcessor"</span><span class="token punctuation">,</span> beanDefinition<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> beanDefinition<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">//================================</span>
+<span class="token annotation punctuation">@Slf4j</span>
+<span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">HaogeBeanPostProcessor</span> <span class="token keyword">implements</span> <span class="token class-name">BeanPostProcessor</span> <span class="token punctuation">&#123;</span>
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">postProcessBeforeInitialization</span><span class="token punctuation">(</span><span class="token class-name">Object</span> bean<span class="token punctuation">,</span> <span class="token class-name">String</span> beanName<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">BeansException</span> <span class="token punctuation">&#123;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"HaogeBeanPostProcessor.postProcessBeforeInitialization"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> bean<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+
+    <span class="token annotation punctuation">@Override</span>
+    <span class="token keyword">public</span> <span class="token class-name">Object</span> <span class="token function">postProcessAfterInitialization</span><span class="token punctuation">(</span><span class="token class-name">Object</span> bean<span class="token punctuation">,</span> <span class="token class-name">String</span> beanName<span class="token punctuation">)</span> <span class="token keyword">throws</span> <span class="token class-name">BeansException</span> <span class="token punctuation">&#123;</span>
+        log<span class="token punctuation">.</span><span class="token function">info</span><span class="token punctuation">(</span><span class="token string">"HaogeBeanPostProcessor.postProcessAfterInitialization"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token keyword">return</span> bean<span class="token punctuation">;</span>
+    <span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="1-4、创建spring-handlers文件"><a href="#1-4、创建spring-handlers文件" class="headerlink" title="1.4、创建spring.handlers文件"></a>1.4、创建spring.handlers文件</h2><p>在路径<code>resources/META-INF</code>下创建<code>spring.handlers</code>文件，文件内容如下：</p>
+<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token key attr-name">http\://www.shihaohan.com/schema/haoge</span><span class="token punctuation">=</span><span class="token value attr-value">cn.shh.demo.spring.ioc.customenamespace.HaogeNamespaceHandler</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h2 id="1-5、测试效果"><a href="#1-5、测试效果" class="headerlink" title="1.5、测试效果"></a>1.5、测试效果</h2><p>在spring配置文件中编写自定义标签：</p>
+<pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>beans</span> <span class="token attr-name">xmlns</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/beans<span class="token punctuation">"</span></span>
+	   <span class="token attr-name"><span class="token namespace">xmlns:</span>xsi</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.w3.org/2001/XMLSchema-instance<span class="token punctuation">"</span></span>
+	   <span class="token attr-name"><span class="token namespace">xmlns:</span>haoge</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.shihaohan.com/schema/haoge<span class="token punctuation">"</span></span>
+	   <span class="token attr-name"><span class="token namespace">xsi:</span>schemaLocation</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>http://www.springframework.org/schema/beans
+	                       http://www.springframework.org/schema/beans/spring-beans.xsd
+						   http://www.shihaohan.com/schema/haoge
+	                       http://www.shihaohan.com/schema/haoge/spring-haoge.xsd<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
+
+	<span class="token comment">&lt;!--扫描到该标签会向容器中注入一个HaogeBeanPostProcessor--></span>
+	<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">haoge:</span>haoge-driver</span> <span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span><span class="token namespace">haoge:</span>haoge-driver</span><span class="token punctuation">></span></span>
+<span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>beans</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>在Java的main方法中扫描spring配置文件，检测自定义标签功能是否实现。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">class</span> <span class="token class-name">App</span> <span class="token punctuation">&#123;</span>
+	<span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">void</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token class-name">String</span><span class="token punctuation">[</span><span class="token punctuation">]</span> args<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+		<span class="token class-name">ApplicationContext</span> context <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ClassPathXmlApplicationContext</span><span class="token punctuation">(</span><span class="token string">"beans.xml"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+	<span class="token punctuation">&#125;</span>
+<span class="token punctuation">&#125;</span>
+
+<span class="token comment">// 如果打印结果中出现如下信息，则表示自定义标签成功。</span>
+<span class="token class-name">HaogeBeanPostProcessor</span><span class="token punctuation">.</span>postProcessBeforeInitialization
+<span class="token class-name">HaogeBeanPostProcessor</span><span class="token punctuation">.</span>postProcessAftereforeInitialization<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="Spring整合MyBatis"><a href="#Spring整合MyBatis" class="headerlink" title="Spring整合MyBatis"></a>Spring整合MyBatis</h1><h2 id="1-1、概述"><a href="#1-1、概述" class="headerlink" title="1.1、概述"></a>1.1、概述</h2><p>Spring整合MyBatis的底层原理由以下4个类完成：</p>
+<ul>
+<li>SqlSessionFactoryBean</li>
+<li>MapperScannerConfigurer</li>
+<li>MapperFactoryBean</li>
+<li>ClassPathMapperScanner</li>
+</ul>
+<h2 id="1-2、流程分析"><a href="#1-2、流程分析" class="headerlink" title="1.2、流程分析"></a>1.2、流程分析</h2><p><strong>（1）通过<code>SqlSessionFactoryBean</code>创建<code>SqlSessionFactory</code></strong></p>
+<p><code>SqlSessionFactoryBean</code>实现了<code>InitializingBean</code>的<code>afterPropertiesSet()</code>方法，会在该方法中构建<code>SqlSessionFactory</code>。</p>
+<p><code>SqlSessionFactoryBean</code>实现了<code>FactoryBean</code>的<code>getObject()</code>方法，在该方法中获取构建好的<code>SqlSessionFactory</code>。</p>
+<p><strong>（2）通过MapperScannerConfigurer扫描Mapper，将其包装成MapperFactoryBean</strong></p>
+<p><code>MapperScannerConfigurer</code>实现了<code>BeanDefinitionRegistryPostProcessor</code>的<code>postProcessBeanDefinitionRegistry</code>方法，在该方法中通过<code>ClassPathMapperScanner</code>的<code>scan</code>方法来扫描并包装Mapper。</p>
+<p><code>ClassPathMapperScanner</code>通过调用父类<code>ClassPathBeanDefinitionScanner</code>的<code>doScan</code>方法将所有Mapper的Bean定义信息放到到容器中并返回给<code>ClassPathMapperScanner</code>。</p>
+<p><code>ClassPathMapperScanner</code>通过调用自己<code>processBeanDefinitions(beanDefinitions)</code>方法对每一个Mapper的Beean定义信息进行配置，将每一个Mapper包装成一个<code>MapperFactoryBean</code>。</p>
+<p><code>MapperFactoryBean</code>实现了<code>FactoryBean</code>的<code>getObject()</code>方法，在该方法中通过<code>SqlSession</code>获取Mapper。在获取Mapper时会通过<code>MapperProxyFactory</code>的<code>newInstance(mapperProxy)</code>方法并使用JDK代理为当前Mapper创建代理对象，所以这里获取的Mapper是代理对象，而并非是原始Mapper。</p>
+<h1 id="Spring工具类"><a href="#Spring工具类" class="headerlink" title="Spring工具类"></a>Spring工具类</h1><h2 id="1-1、PropertiesLoaderUtils"><a href="#1-1、PropertiesLoaderUtils" class="headerlink" title="1.1、PropertiesLoaderUtils"></a>1.1、PropertiesLoaderUtils</h2>
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">豪哥</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://hshz21.gitee.io/2023/08/07/spring-yuan-li-jie-xi/">https://hshz21.gitee.io/2023/08/07/spring-yuan-li-jie-xi/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">豪哥</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/Spring/">
+                                    <span class="chip bg-color">Spring</span>
+                                </a>
+                            
+                                <a href="/tags/Spring%E5%8E%9F%E7%90%86/">
+                                    <span class="chip bg-color">Spring原理</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wxpay.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/08/07/springboot-yuan-li-jie-xi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="SpringBoot系列-SpringBoot原理解析">
+                        
+                        <span class="card-title">SpringBoot系列-SpringBoot原理解析</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/SpringBoot/" class="post-category">
+                                    SpringBoot
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SpringBoot/">
+                        <span class="chip bg-color">SpringBoot</span>
+                    </a>
+                    
+                    <a href="/tags/SpringBoot%E5%8E%9F%E7%90%86/">
+                        <span class="chip bg-color">SpringBoot原理</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/08/07/spring-shi-wu/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Spring系列-Spring事务">
+                        
+                        <span class="card-title">Spring系列-Spring事务</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Spring/" class="post-category">
+                                    Spring
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Spring/">
+                        <span class="chip bg-color">Spring</span>
+                    </a>
+                    
+                    <a href="/tags/Spring%E4%BA%8B%E5%8A%A1/">
+                        <span class="chip bg-color">Spring事务</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">豪哥</a>
+            |&nbsp;Powered by&nbsp;<a href="https://github.com/lucky2shh" target="_blank">豪哥</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:3577293158@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3577293158" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 3577293158" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

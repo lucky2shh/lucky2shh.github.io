@@ -277,9 +277,7 @@
 
 
 <script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+    $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
 </script>
 
 
@@ -299,33 +297,38 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/spring-ji-chu-ying-yong/">
+                    <a href="/2023/08/07/docker-zhi-minio-huan-jing-da-jian/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="Spring系列-基础应用">
+                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Docker系列-MinIO环境搭建">
                             
-                            <span class="card-title">Spring系列-基础应用</span>
+                            <span class="card-title">Docker系列-MinIO环境搭建</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、认识Spring1.1、前言Spring框架为任何类型的部署平台上的基于Java的现代企业应用程序提供了全面的编程和配置模型。
-Spring的一个关键元素是在应用程序级别的基础架构支持：Spring专注于企业应用程序的“管道”，以便团队
+                                单例环境1.1、准备工作（1）创建本地数据卷目录
+mkdir -p /home/docker/containers/minio/&#123;conf,data&#125;
+
+（2）拉取镜像
+docker pull minio/minio
+
+
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Spring/" class="post-category">
-                                    Spring
+                                <a href="/categories/Docker/" class="post-category">
+                                    Docker
                                 </a>
                                 
                                 
@@ -336,8 +339,12 @@ Spring的一个关键元素是在应用程序级别的基础架构支持：Sprin
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Spring/">
-                            <span class="chip bg-color">Spring</span>
+                        <a href="/tags/Docker/">
+                            <span class="chip bg-color">Docker</span>
+                        </a>
+                        
+                        <a href="/tags/MinIO/">
+                            <span class="chip bg-color">MinIO</span>
                         </a>
                         
                     </div>
@@ -347,33 +354,38 @@ Spring的一个关键元素是在应用程序级别的基础架构支持：Sprin
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/springioc/">
+                    <a href="/2023/08/07/docker-zhi-kafka-huan-jing-da-jian/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Spring系列-SpringIOC">
+                            <img src="/medias/featureimages/6.jpg" class="responsive-img" alt="Docker系列-KafKa环境搭建">
                             
-                            <span class="card-title">Spring系列-SpringIOC</span>
+                            <span class="card-title">Docker系列-KafKa环境搭建</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、IOC容器1.1、概述org.springframework.beans 和 org.springframework.context 包是 Spring IOC 容器的基础。
-BeanFactory是 IOC容器的基础类，提供了框架配置
+                                单例环境1.1、准备工作（1）创建本地数据卷目录
+mkdir -p /home/docker/containers/kafka
+
+（2）拉取镜像
+docker pull bitnami/kafka:3.4.1
+
+1.2、启动容器（1）把ka
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Spring/" class="post-category">
-                                    Spring
+                                <a href="/categories/Docker/" class="post-category">
+                                    Docker
                                 </a>
                                 
                                 
@@ -384,12 +396,12 @@ BeanFactory是 IOC容器的基础类，提供了框架配置
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Spring/">
-                            <span class="chip bg-color">Spring</span>
+                        <a href="/tags/Docker/">
+                            <span class="chip bg-color">Docker</span>
                         </a>
                         
-                        <a href="/tags/SpringIOC/">
-                            <span class="chip bg-color">SpringIOC</span>
+                        <a href="/tags/KafKa/">
+                            <span class="chip bg-color">KafKa</span>
                         </a>
                         
                     </div>
@@ -399,35 +411,35 @@ BeanFactory是 IOC容器的基础类，提供了框架配置
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/springboo-zhi-shi-dian-zong-jie/">
+                    <a href="/2023/08/07/docker-zhi-es-da-jian/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="SpringBoot系列-SpringBoot基础应用">
+                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Docker系列-ES环境搭建">
                             
-                            <span class="card-title">SpringBoot系列-SpringBoot基础应用</span>
+                            <span class="card-title">Docker系列-ES环境搭建</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                0、SpringBoot启动流程SpringBoot启动流程主要分两步，创建SpringApplication对象流程 和 执行其run方法流程。
-0.1、创建SpringApplication对象流程
-初始化资源加载器，默认为null。
+                                1、安装elasticsearch1.1、部署单点es1.1.1、准备工作（1）创建数据挂载目录
+mkdir -p /home/docker/containers/es/&#123;data,plugins&#125;
 
+（2）拉取或加载本
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/SpringBoot/" class="post-category">
-                                    SpringBoot
+                                <a href="/categories/Docker/" class="post-category">
+                                    Docker
                                 </a>
                                 
                                 
@@ -438,12 +450,12 @@ BeanFactory是 IOC容器的基础类，提供了框架配置
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/SpringBoot/">
-                            <span class="chip bg-color">SpringBoot</span>
+                        <a href="/tags/Docker/">
+                            <span class="chip bg-color">Docker</span>
                         </a>
                         
-                        <a href="/tags/SpringBoot%E5%9F%BA%E7%A1%80/">
-                            <span class="chip bg-color">SpringBoot基础</span>
+                        <a href="/tags/ElasticSearch/">
+                            <span class="chip bg-color">ElasticSearch</span>
                         </a>
                         
                     </div>
@@ -453,40 +465,33 @@ BeanFactory是 IOC容器的基础类，提供了框架配置
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/shell-bian-cheng-ji-chu-pian/">
+                    <a href="/2023/08/07/docker-ji-chu-ying-yong/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="Linux系列-Shell基础应用">
+                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Docker系列-Docker基础应用">
                             
-                            <span class="card-title">Linux系列-Shell基础应用</span>
+                            <span class="card-title">Docker系列-Docker基础应用</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、Shell变量1.1、简介Linux中Shell变量分为两种：系统变量 和 自定义变量。
-
-系统变量
-例如：$HOME &#x2F; $PWD &#x2F; $SHELL &#x2F; $USER等。
-
-自定义变量
-
-
-运行shell时
+                                0、初识Docker0.1、Docker是什么Docker 是一个开源的应用容器引擎。诞生于 2013 年初，基于 Go 语言实现， dotCloud 公司出品（后改名为Docker Inc）。
+Docker 可以让开发者打包他们的应用以及
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Linux/" class="post-category">
-                                    Linux
+                                <a href="/categories/Docker/" class="post-category">
+                                    Docker
                                 </a>
                                 
                                 
@@ -497,8 +502,12 @@ BeanFactory是 IOC容器的基础类，提供了框架配置
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Shell/">
-                            <span class="chip bg-color">Shell</span>
+                        <a href="/tags/Docker/">
+                            <span class="chip bg-color">Docker</span>
+                        </a>
+                        
+                        <a href="/tags/Docker%E5%9F%BA%E7%A1%80/">
+                            <span class="chip bg-color">Docker基础</span>
                         </a>
                         
                     </div>
@@ -508,39 +517,35 @@ BeanFactory是 IOC容器的基础类，提供了框架配置
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/springaop/">
+                    <a href="/2023/08/07/docker-an-zhuang-you-hua/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Spring系列-SpringAOP">
+                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Docker系列-Docker安装优化">
                             
-                            <span class="card-title">Spring系列-SpringAOP</span>
+                            <span class="card-title">Docker系列-Docker安装优化</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                基础知识1.1、使用场景
-Authentication（权限）
-Caching（缓存）
-Context passing（内容传递）
-Error handling（错误处理）
-Lazy loading（懒加载）
-Debugging（调试）
-l
+                                1、安装1.1、yum包更新到最新yum update
+
+1.2、安装前置依赖。yum-util 提供yum-config-manager功能，另外两个是devicemapper驱动需要依赖。
+yum install -y yum-util
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Spring/" class="post-category">
-                                    Spring
+                                <a href="/categories/Docker/" class="post-category">
+                                    Docker
                                 </a>
                                 
                                 
@@ -551,12 +556,12 @@ l
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Spring/">
-                            <span class="chip bg-color">Spring</span>
+                        <a href="/tags/Docker/">
+                            <span class="chip bg-color">Docker</span>
                         </a>
                         
-                        <a href="/tags/SpringAOP/">
-                            <span class="chip bg-color">SpringAOP</span>
+                        <a href="/tags/Docker%E5%AE%89%E8%A3%85/">
+                            <span class="chip bg-color">Docker安装</span>
                         </a>
                         
                     </div>
@@ -566,33 +571,32 @@ l
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/springboot-yuan-li-jie-xi/">
+                    <a href="/2023/08/07/elasticsearch-ji-chu-ru-men/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="SpringBoot系列-SpringBoot原理解析">
+                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="ElasticSearch系列-ElasticSearch基础应用">
                             
-                            <span class="card-title">SpringBoot系列-SpringBoot原理解析</span>
+                            <span class="card-title">ElasticSearch系列-ElasticSearch基础应用</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                启动初始化SpringBoot的启动和初始化主要步骤由 SpringApplication.run(String..) 方法和AbstractApplicationContext.refresh() 方法完成。
-SpringApplicat
+                                1、ES概述1.1、何为ESElaticsearch，简称为es，es是一个开源的高扩展的分布式全文检索引擎，它可以近乎实时的存储、检索数据；本身扩展性很好，可以扩展到上百台服务器，处理PB级别数据。es也使用Java开发并使用Lucene
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/SpringBoot/" class="post-category">
-                                    SpringBoot
+                                <a href="/categories/ElasticSearch/" class="post-category">
+                                    ElasticSearch
                                 </a>
                                 
                                 
@@ -603,12 +607,12 @@ SpringApplicat
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/SpringBoot/">
-                            <span class="chip bg-color">SpringBoot</span>
+                        <a href="/tags/ElasticSearch/">
+                            <span class="chip bg-color">ElasticSearch</span>
                         </a>
                         
-                        <a href="/tags/SpringBoot%E5%8E%9F%E7%90%86/">
-                            <span class="chip bg-color">SpringBoot原理</span>
+                        <a href="/tags/ElasticSearch%E5%9F%BA%E7%A1%80/">
+                            <span class="chip bg-color">ElasticSearch基础</span>
                         </a>
                         
                     </div>
@@ -618,34 +622,33 @@ SpringApplicat
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/sentinel-ji-ben-shi-yong/">
+                    <a href="/2023/08/07/elasticsearch-huan-jing-da-jian/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Sentinel系列-Sentinel基础使用">
+                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="ElasticSearch系列-ElasticSearch环境搭建">
                             
-                            <span class="card-title">Sentinel系列-Sentinel基础使用</span>
+                            <span class="card-title">ElasticSearch系列-ElasticSearch环境搭建</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、加入依赖&lt;dependency>
-    &lt;groupId>com.alibaba.cloud&lt;/groupId>
-    &lt;artifactId>spring-cloud-starter-alibaba-sen
+                                1、ElasticSearch单节点1.1、下载ES压缩包ElasticSearch分为Linux和Window版本。
+ElasticSearch的官方地址： https://www.elastic.co/products/elastics
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Sentinel/" class="post-category">
-                                    Sentinel
+                                <a href="/categories/ElasticSearch/" class="post-category">
+                                    ElasticSearch
                                 </a>
                                 
                                 
@@ -656,12 +659,12 @@ SpringApplicat
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Sentinel/">
-                            <span class="chip bg-color">Sentinel</span>
+                        <a href="/tags/ElasticSearch/">
+                            <span class="chip bg-color">ElasticSearch</span>
                         </a>
                         
-                        <a href="/tags/Sentinel%E5%9F%BA%E7%A1%80/">
-                            <span class="chip bg-color">Sentinel基础</span>
+                        <a href="/tags/ElasticSearch%E7%8E%AF%E5%A2%83/">
+                            <span class="chip bg-color">ElasticSearch环境</span>
                         </a>
                         
                     </div>
@@ -671,36 +674,35 @@ SpringApplicat
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/seata-ji-ben-shi-yong/">
+                    <a href="/2023/08/07/apache-dubbo-ji-chu-ying-yong/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Seata系列-Seata基础应用">
+                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Dubbo系列-Dubbo基础应用">
                             
-                            <span class="card-title">Seata系列-Seata基础应用</span>
+                            <span class="card-title">Dubbo系列-Dubbo基础应用</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、服务端配置1.1、Registry.confregistry &#123;
-  # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
-  type = "nacos"
-
-  nacos &#1
+                                1、软件架构演进软件架构的发展经历了由单体架构、垂直架构、SOA架构到微服务架构的演进过程，下面我们分别了解一下这几个架构。
+1.1、单体架构
+1.1.1、架构说明全部功能集中在一个项目内（All in one）。
+1.1.2、架构优劣优点
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Seata/" class="post-category">
-                                    Seata
+                                <a href="/categories/Dubbo/" class="post-category">
+                                    Dubbo
                                 </a>
                                 
                                 
@@ -711,12 +713,12 @@ SpringApplicat
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Seata/">
-                            <span class="chip bg-color">Seata</span>
+                        <a href="/tags/Dubbo/">
+                            <span class="chip bg-color">Dubbo</span>
                         </a>
                         
-                        <a href="/tags/Seata%E5%9F%BA%E7%A1%80/">
-                            <span class="chip bg-color">Seata基础</span>
+                        <a href="/tags/Dubbo%E5%9F%BA%E7%A1%80/">
+                            <span class="chip bg-color">Dubbo基础</span>
                         </a>
                         
                     </div>
@@ -726,37 +728,56 @@ SpringApplicat
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/sentinel-di-ceng-yuan-li/">
+                    <a href="/2023/08/07/apache-dubbo-di-ceng-yuan-li/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Sentinel系列-Sentinel原理解析">
+                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Dubbo系列-Dubbo原理解析">
                             
-                            <span class="card-title">Sentinel系列-Sentinel原理解析</span>
+                            <span class="card-title">Dubbo系列-Dubbo原理解析</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、基本概念Sentinel实现限流、隔离、降级、熔断等功能，本质要做的就是两件事情：
+                                1、Dubbo底层架构1.1、官方解释Dubbo官方架构图如下：
 
-统计数据：统计某个资源的访问数据（QPS、RT等信息）。
-规则判断：判断限流规则、隔离规则、降级规则、熔断规则是否满足。
+节点角色说明：
 
-1.1、Processor
+
+
+节点
+角色名称
+
+
+
+Provider
+服务提供方
+
+
+Consumer
+服务消费方
+
+
+Registry
+注册中心
+
+
+Monitor
+监控中心（统
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Sentinel/" class="post-category">
-                                    Sentinel
+                                <a href="/categories/Dubbo/" class="post-category">
+                                    Dubbo
                                 </a>
                                 
                                 
@@ -767,12 +788,12 @@ SpringApplicat
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Sentinel/">
-                            <span class="chip bg-color">Sentinel</span>
+                        <a href="/tags/Dubbo/">
+                            <span class="chip bg-color">Dubbo</span>
                         </a>
                         
-                        <a href="/tags/Sentinel%E5%8E%9F%E7%90%86/">
-                            <span class="chip bg-color">Sentinel原理</span>
+                        <a href="/tags/Dubbo%E5%8E%9F%E7%90%86/">
+                            <span class="chip bg-color">Dubbo原理</span>
                         </a>
                         
                     </div>
@@ -782,34 +803,33 @@ SpringApplicat
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/sentinel-gui-ze-chi-jiu-hua/">
+                    <a href="/2023/08/07/apache-dubbo-chang-jian-wen-ti-ji-ying-dui/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Sentinel系列-Sentinel规则持久化">
+                            <img src="/medias/featureimages/2.jpg" class="responsive-img" alt="Dubbo系列-Dubbo常见问题">
                             
-                            <span class="card-title">Sentinel系列-Sentinel规则持久化</span>
+                            <span class="card-title">Dubbo系列-Dubbo常见问题</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、修改Sentinel源码1.1、解压sentinel源码包1.2、修改依赖&lt;dependency>
-    &lt;groupId>com.alibaba.csp&lt;/groupId>
-    &lt;artifactId>s
+                                1、 无法发布被事务代理的Service问题1.1、问题描述通过Dubbo标签配置就可以实现包扫描，被注解@Service标注的类可以作为服务。
+如果 服务提供者类 被注解@Transactional标注，就会导致 服务发布失败。原因是：事
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Sentinel/" class="post-category">
-                                    Sentinel
+                                <a href="/categories/Dubbo/" class="post-category">
+                                    Dubbo
                                 </a>
                                 
                                 
@@ -820,12 +840,12 @@ SpringApplicat
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Sentinel/">
-                            <span class="chip bg-color">Sentinel</span>
+                        <a href="/tags/Dubbo/">
+                            <span class="chip bg-color">Dubbo</span>
                         </a>
                         
-                        <a href="/tags/Sentinel%E6%8C%81%E4%B9%85%E5%8C%96/">
-                            <span class="chip bg-color">Sentinel持久化</span>
+                        <a href="/tags/Dubbo%E9%97%AE%E9%A2%98/">
+                            <span class="chip bg-color">Dubbo问题</span>
                         </a>
                         
                     </div>
@@ -835,37 +855,35 @@ SpringApplicat
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/redis-ye-wu-gong-neng/">
+                    <a href="/2023/08/07/04-yi-zhi-xing-xie-yi/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Redis系列-Redis业务场景落地">
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="微服务问题系列-一致性问题">
                             
-                            <span class="card-title">Redis系列-Redis业务场景落地</span>
+                            <span class="card-title">微服务问题系列-一致性问题</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、点赞1.1、需求
-一个用户只能点赞一次
-已点赞就高亮显式
+                                1、Raft协议1.1、简介分布式系统，3个节点 n1、n2、n3，每个节点有三种状态：跟随者、候选者、leader。
 
-1.2、解决方法SortedSet结构存储（后期做点赞排行功能），可去重，可判断是否存在。
-1.3、代码实现public Result likeBlog(Long id) &#
+最开始，三个节点都是fllower状态。
+其中一个节点先将自己变为 候选者，然后向其他节点发送拉票请求，让其他节点投票
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Redis/" class="post-category">
-                                    Redis
+                                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
+                                    微服务
                                 </a>
                                 
                                 
@@ -876,12 +894,12 @@ SpringApplicat
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Redis/">
-                            <span class="chip bg-color">Redis</span>
+                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E9%97%AE%E9%A2%98/">
+                            <span class="chip bg-color">微服务问题</span>
                         </a>
                         
-                        <a href="/tags/Redis%E4%B8%9A%E5%8A%A1%E5%9C%BA%E6%99%AF/">
-                            <span class="chip bg-color">Redis业务场景</span>
+                        <a href="/tags/%E4%B8%80%E8%87%B4%E6%80%A7%E5%8D%8F%E8%AE%AE/">
+                            <span class="chip bg-color">一致性协议</span>
                         </a>
                         
                     </div>
@@ -891,33 +909,40 @@ SpringApplicat
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/rocketmq-ji-chu-ying-yong/">
+                    <a href="/2023/08/07/03-jie-kou-mi-deng-xing/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="RocketMQ系列-RocketMQ基础应用">
+                            <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="微服务问题系列-接口幂等问题">
                             
-                            <span class="card-title">RocketMQ系列-RocketMQ基础应用</span>
+                            <span class="card-title">微服务问题系列-接口幂等问题</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、RocketMQ是啥1.1.、RocketMQ简介RocketMQ 是一个【开源分布式消息系统】，提供低延时、高可靠的消息发布与订阅服务。
-1.2、角色成员1.2.1、Message Model（消息模型）RocketMQ主要由 Pro
+                                1、幂等性简介1.1、幂等性定义针对同一个接口，调用多次与调用一次，其效果完全等同。这种情况被称为符合幂等性。
+1.2、幂等性场景
+订单付款。
+充值。
+
+2、幂等性方案2.1、token机制2.2、锁机制
+数据库悲观锁
+数据库乐观锁
+业务层
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/RocketMQ/" class="post-category">
-                                    RocketMQ
+                                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
+                                    微服务
                                 </a>
                                 
                                 
@@ -928,12 +953,12 @@ SpringApplicat
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/RocketMQ/">
-                            <span class="chip bg-color">RocketMQ</span>
+                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E9%97%AE%E9%A2%98/">
+                            <span class="chip bg-color">微服务问题</span>
                         </a>
                         
-                        <a href="/tags/RocketMQ%E5%9F%BA%E7%A1%80/">
-                            <span class="chip bg-color">RocketMQ基础</span>
+                        <a href="/tags/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89/">
+                            <span class="chip bg-color">接口幂等</span>
                         </a>
                         
                     </div>
@@ -958,7 +983,7 @@ SpringApplicat
             
         </div>
         <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">2 / 8</div>
+            <div class="center-align b-text-gray">2 / 9</div>
         </div>
         <div class="col s6 m4 l4">
             
@@ -1038,8 +1063,7 @@ SpringApplicat
             
             <span id="year">2019</span>
             <a href="/about" target="_blank">豪哥</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">豪哥</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            |&nbsp;Powered by&nbsp;<a href="https://github.com/lucky2shh" target="_blank">豪哥</a>
             <br>
             
             
@@ -1085,10 +1109,6 @@ SpringApplicat
 
 
 
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
 
 </div>
     </div>

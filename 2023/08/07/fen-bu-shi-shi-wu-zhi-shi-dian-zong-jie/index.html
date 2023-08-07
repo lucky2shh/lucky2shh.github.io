@@ -1,0 +1,1351 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="微服务系列-分布式事务, 豪哥博客">
+    <meta name="description" content="豪哥个人博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>微服务系列-分布式事务 | 豪哥博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">豪哥博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">豪哥博客</div>
+        <div class="logo-desc">
+            
+            豪哥个人博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/23.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">微服务系列-分布式事务</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/%E4%BA%8B%E5%8A%A1/">
+                                <span class="chip bg-color">事务</span>
+                            </a>
+                        
+                            <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">
+                                <span class="chip bg-color">分布式事务</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" class="post-category">
+                                分布式事务
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-08-07
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2023-08-07
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    4.6k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="1、事务概述"><a href="#1、事务概述" class="headerlink" title="1、事务概述"></a>1、事务概述</h1><h2 id="1-1、何为事务"><a href="#1-1、何为事务" class="headerlink" title="1.1、何为事务"></a>1.1、何为事务</h2><p><strong>数据库事务是指数据库执行过程中的一个逻辑单位，由一个有限的数据库操作序列构成</strong>。</p>
+<p>事务拥有以下四个特性，习惯上被称为ACID特性：</p>
+<ul>
+<li>**原子性(Atomicity)**：事务作为一个整体被执行，要么全部被执行，要么都不执行。</li>
+<li>**一致性(Consistency)**：事务执行完毕后其数据的多个副本应保证最新且一致。</li>
+<li>**隔离性(Isolation)**：一个事务的执行不能影响其它事务的执行。</li>
+<li>**持久性(Durability)**：已提交事务对数据库的修改应准确同步至数据库。</li>
+</ul>
+<h2 id="1-2、本地事务"><a href="#1-2、本地事务" class="headerlink" title="1.2、本地事务"></a>1.2、本地事务</h2><p>起初，事务 仅限于 单一数据库资源访问控制。架构服务化以后，事务的概念延伸到了服务中。若 将一个单一的服务操作作为一个事务，那么整个 服务操作 只能涉及 一个单一的数据库资源：</p>
+<p><strong>基于单个服务、单一数据库资源访问的事务，被称为本地事务（Local Transaction）</strong>。</p>
+<h2 id="1-3、分布式事务"><a href="#1-3、分布式事务" class="headerlink" title="1.3、分布式事务"></a>1.3、分布式事务</h2><p>本地事务主要限制在单个会话内，不涉及多个数据库资源。但是在基于 SOA（Service-Oriented Architecture，面向服务架构）的分布式应用环境下，需要将 多个数据库资源，多个服务访问 都纳入到同一个事务当中，分布式事务应运而生。</p>
+<h3 id="1-3-1、CAP理论"><a href="#1-3-1、CAP理论" class="headerlink" title="1.3.1、CAP理论"></a>1.3.1、CAP理论</h3><p>CAP定理规定一个分布式系统不可能同时满足以下三点特性：</p>
+<ul>
+<li><p><strong>一致性（Consistercy）</strong></p>
+<p>一致性 是指 多个数据副本 保持最新且一致（多副本可能是单机上的多副本，也可能是多实例上的副本）。在一致性需求下，执行更新操作后，应该保证系统的数据仍然处于一致状态。</p>
+</li>
+<li><p><strong>可用性（Availability）</strong></p>
+<p>每次请求都能获取到正确的响应，但是不保证获取的数据为最新数据。</p>
+</li>
+<li><p><strong>分区容错性（Partition tolerance）</strong></p>
+<p>分布式系统在遇到任何网络分区故障时，仍然能够对外提供满足一致性和可用性的服务，除非是整个网络环境都发生了故障。</p>
+</li>
+</ul>
+<p>分布式系统最多只能同时满足 CAP理论中的两项。其中P必须，故只能在CP和AP中选择，zookeeper保证CP（一致性&#x2F;分区容错），注册中心eruka保证AP（可用性&#x2F;分区容错）。</p>
+<h3 id="1-3-2、BASE理论"><a href="#1-3-2、BASE理论" class="headerlink" title="1.3.2、BASE理论"></a>1.3.2、BASE理论</h3><p><strong>BASE是 Basically Available（基本可用）、Soft-state（软状态）和 Eventually Consistent（最终一致性）三个词语的缩写</strong>。</p>
+<ul>
+<li><p><strong>基本可用</strong></p>
+<p>分布式系统出现故障时，允许损失部分可用性（服务降级、页面降级）。</p>
+</li>
+<li><p><strong>软状态</strong></p>
+<p>允许分布式系统出现中间状态。中间状态 不影响 系统可用性。中间状态 是指 不同的data replication（数据备份节点）之间的数据更新可以出现延时的最终一致性。</p>
+</li>
+<li><p><strong>最终一致性</strong></p>
+<p>data replications经过一段时间后才达到一致性。</p>
+</li>
+</ul>
+<p>BASE理论 是对 CAP中一致性和可用性 权衡的结果，核心思想：<strong>虽然无法达到强一致性，但可达到最终一致性</strong>。</p>
+<h3 id="1-3-3、分布式事务分类"><a href="#1-3-3、分布式事务分类" class="headerlink" title="1.3.3、分布式事务分类"></a>1.3.3、分布式事务分类</h3><p>分布式事务，本质上是对多个数据库的事务进行统一控制，按照控制力度可以分为：</p>
+<ol>
+<li>不控制：不控制就是不引入分布式事务；</li>
+<li>部分控制：部分控制就是各种变种的两阶段提交，包括上面提到的 消息事务+最终一致性、TCC模式；</li>
+<li>完全控制：完全实现两阶段提交；</li>
+</ol>
+<p>部分控制的好处是并发量和性能很好，缺点是数据一致性减弱了，完全控制则是牺牲了性能，保障了一致性，具体用哪种方式，最终还是取决于业务场景。</p>
+<blockquote>
+<p>技术为业务服务，根据不同业务选择合适的技术也是一种能力。</p>
+</blockquote>
+<h1 id="3、解决方案"><a href="#3、解决方案" class="headerlink" title="3、解决方案"></a>3、解决方案</h1><h2 id="3-1、XA"><a href="#3-1、XA" class="headerlink" title="3.1、XA"></a>3.1、XA</h2><p>XA是一个分布式事务协议，由Tuxedo提出。</p>
+<p>XA大致分为两部分：</p>
+<ul>
+<li><p><strong>事务管理器</strong></p>
+<p>事务管理器作为全局的调度者，负责各个本地资源的提交和回滚。</p>
+</li>
+<li><p><strong>本地资源管理器</strong></p>
+<p>本地资源管理器往往由数据库实现，比如Oracle、DB2都实现了XA接口。</p>
+</li>
+</ul>
+<h3 id="3-1-1、原理"><a href="#3-1-1、原理" class="headerlink" title="3.1.1、原理"></a>3.1.1、原理</h3><p>XA实现分布式事务的原理如下：</p>
+<p>第一阶段</p>
+<img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/07/image-20201008160639230.png" alt="image-20201008160639230" />
+
+<p>第二阶段</p>
+<img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/07/image-20201008160732023.png" alt="image-20201008160732023" />
+
+<h3 id="3-1-2、优缺点"><a href="#3-1-2、优缺点" class="headerlink" title="3.1.2、优缺点"></a>3.1.2、优缺点</h3><p>XA协议 比较简单，商业数据库实现XA协议，使用分布式事务的成本也较低。但XA有致命缺点，即 性能不理想，特别是交易场景下，XA无法满足高并发场景。</p>
+<p>XA在商业数据库中的支持较理想，在MySQL中就不大支持，MySQL 的 XA 实现，没有记录prepare阶段日志，主备切换会导致 主备库数据不一致。许多nosql也没有支持XA，这让XA的应用场景变得很少。</p>
+<h2 id="3-2、2PC"><a href="#3-2、2PC" class="headerlink" title="3.2、2PC"></a>3.2、2PC</h2><p><strong>2PC（Two-phase commit protocol），中文叫二阶段提交</strong>。 二阶段提交是一种强一致性设计，2PC 引入一个事务协调者来协调管理各参与者（可称为各本地资源）的提交和回滚。</p>
+<p>二阶段包括 <strong>准备、提交</strong> 两个阶段：</p>
+<ul>
+<li><strong>准备阶段</strong>：协调者 发送准备命令 给 参与者，准备命令 可理解为 除了提交事务，全部工作都做完了。</li>
+<li><strong>提交阶段</strong>：同步等待 所有资源响应之后 就进入第二阶段，即提交阶段（提交阶段 可以是 提交事务 或 回滚事务）。</li>
+</ul>
+<p>第二阶段提交失败咋办？有两种情况：</p>
+<ol>
+<li>第二阶段执行的是事务回滚操作：不断重试，直到 所有参与者 回滚成功，否则 第一阶段准备成功的参与者将一直阻塞。</li>
+<li>第二阶段执行的是事务提交操作：不断重试，直到 所有参与者 提交成功，实在不行就人工介入处理。</li>
+</ol>
+<blockquote>
+<p>注意：2PC 是一个同步阻塞协议。</p>
+<p>第一阶段所有参与者都响应了，协调者才会执行下一阶段操作，第一阶段协调者有超时机制，如果协调者没有收到所有参与者的响应，或超时了，那么都将判定事务失败，会向所有参与者发送回滚命令。</p>
+</blockquote>
+<p>协调者是一个单点，存在 单点故障 问题，如果协调者：</p>
+<ol>
+<li><strong>发送准备命令前</strong>挂了，则还行，等于事务还没开始。</li>
+<li><strong>发送准备命令后</strong>挂了，就不太行，有些参与者等于都执行了处于事务资源锁定的状态。不仅事务执行不下去，还会因为锁定了一些公共资源而阻塞系统其它操作。</li>
+<li><strong>发送回滚事务命令前</strong>挂了，那么事务也是执行不下去，且在第一阶段那些准备成功参与者都阻塞着。</li>
+<li><strong>发送回滚事务命令后</strong>挂了，这个还行，至少命令发出去了，很大的概率都会回滚成功，资源都会释放。但是如果出现网络分区问题，某些参与者将因为收不到命令而阻塞。</li>
+<li><strong>发送提交事务命令前</strong>挂了，这个不行，傻了！这下是所有资源都阻塞着。</li>
+<li><strong>发送提交事务命令后</strong>挂了，这个还行，至少命令发出去了，很大概率都会提交成功，然后释放资源，但是如果出现网络分区问题某些参与者将因为收不到命令而阻塞着。</li>
+</ol>
+<p>协调者故障后，会通过选举得到新协调者，但 新协调者不知道当前事务进行到了哪一阶段？（准备阶段？提交阶段？）。</p>
+<h2 id="3-3、3PC"><a href="#3-3、3PC" class="headerlink" title="3.3、3PC"></a>3.3、3PC</h2><h3 id="3-3-1、3PC简介"><a href="#3-3-1、3PC简介" class="headerlink" title="3.3.1、3PC简介"></a>3.3.1、3PC简介</h3><p><strong>为解决 2PC 中的问题，3PC出现了。3PC在参与者中也引入了超时机制，新增一个阶段使得参与者可以利用这一个阶段统一各自状态。</strong></p>
+<p><strong>3PC指<code>CanCommit、PreCommit 和 DoCommit</code> 三个阶段</strong>：</p>
+<ul>
+<li><strong>准备阶段</strong>：询问参与者自身状况，是否准备就绪。</li>
+<li><strong>预提交阶段</strong>：和 2PC 的准备阶段一样，除了事务提交外，其它都做了。</li>
+<li><strong>提交阶段</strong>：与 2PC 提交阶段一样。</li>
+</ul>
+<h3 id="3-3-2、3PC-阶段变更影响"><a href="#3-3-2、3PC-阶段变更影响" class="headerlink" title="3.3.2、3PC 阶段变更影响"></a>3.3.2、3PC 阶段变更影响</h3><p>准备阶段会先询问所有参与者是否可以接收事务操作指令。避免一来就干活而可能导致的所有参与者都被阻塞。</p>
+<p>预提交阶段 起到了统一状态的作用，在预提交阶段前所有参与者其实都未回应，在预处理阶段则表示所有参与者都已经回应了。</p>
+<blockquote>
+<p>注意：进入 预提交状态 的 参与者可以推断出来其他参与者也都进入了预提交状态。</p>
+</blockquote>
+<p>多一个阶段多一个交互，且绝大情况下明知资源可用但还要走流程，故性能会相对差一点。</p>
+<h3 id="3-3-3、参与者超时影响"><a href="#3-3-3、参与者超时影响" class="headerlink" title="3.3.3、参与者超时影响"></a>3.3.3、参与者超时影响</h3><p>如果 等待 提交命令 超时，那么 参与者会自动提交事务。如果等待预提交命令超时，那啥都不做。</p>
+<p><font color='red'>注意：超时机制也会带来数据不一致问题，参与者 等待提交命令超时后【默认执行提交操作】，但实际需要执行的可能是回滚操作。</font></p>
+<blockquote>
+<p>从维基百科上看，3PC 的引入是为了解决提交阶段 2PC 协调者和某参与者都挂了之后新选举的协调者不知道当前应该提交还是回滚的问题。</p>
+<p>新协调者来的时候发现有一个参与者处于预提交或者提交阶段，那么表明所有参与者都已经确认了，所以此时执行的就是提交命令。所以说 3PC 就是通过引入预提交阶段来使得参与者之间的状态得到统一，也就是留了一个时间让大家同步一下。</p>
+<p>但是这也只能让协调者知道该如果做，但不能保证这样做一定对，这其实和上面 2PC 分析一致，因为挂了的参与者到底有没有执行事务无法断定。所以说 3PC 通过预提交阶段可以减少故障恢复时候的复杂性，但是不能保证数据一致，除非挂了的那个参与者恢复。</p>
+</blockquote>
+<h3 id="3-3-4、3PC-VS-2PC"><a href="#3-3-4、3PC-VS-2PC" class="headerlink" title="3.3.4、3PC  VS  2PC"></a>3.3.4、3PC  VS  2PC</h3><p>3PC 引入参与者超时机制、预提交阶段，降低了故障恢复后协调者的决策复杂度。但整体交互过程变长，性能下降，且会存在数据不一致问题。所以 2PC 和 3PC 都不能保证数据100%一致，故通常都需要定时扫描补偿。</p>
+<h2 id="3-4、TCC模型"><a href="#3-4、TCC模型" class="headerlink" title="3.4、TCC模型"></a>3.4、TCC模型</h2><h3 id="3-4-1、TCC简介"><a href="#3-4-1、TCC简介" class="headerlink" title="3.4.1、TCC简介"></a>3.4.1、TCC简介</h3><p>TCC是Try、Confirm、Cancel三个词的首字母，分别对应如下三个阶段：</p>
+<ol>
+<li><strong>Try（初步操作）</strong>：完成所有业务检查，预留必须的业务资源。</li>
+<li><strong>Confirm（确认操作）</strong>：真正去执行业务逻辑，不作任何业务检查，只使用 Try 阶段预留的业务资源。因此，只要 Try 操作成功，Confirm 必能成功。且Confirm 需满足 幂等性（一个分布式事务有且只能成功一次）。</li>
+<li><strong>Cancel（取消操作）</strong>：释放 Try 阶段预留的业务资源。Cancel 操作也需要满足幂等性。</li>
+</ol>
+<p>TCC分布式事务模型不依赖资源管理器对分布式事务的支持，而是通过对业务逻辑的分解来实现分布式事务。</p>
+<p><strong>TCC 分布式事务模型包括三部分</strong>：</p>
+<ol>
+<li><strong>主业务服务</strong>：整个业务活动的发起方，服务的编排者，负责完成整个业务活动。</li>
+<li><strong>从业务服务</strong>：整个业务活动的参与方，负责提供 TCC 业务操作，实现初步操作(Try)、确认操作(Confirm)、取消操作(Cancel)三个接口，供主业务服务调用。</li>
+<li><strong>业务活动管理器</strong>：管理控制整个业务活动，包括记录维护 TCC 全局事务的事务状态和每个从业务服务的子事务状态，并在业务活动提交时调用所有从业务服务的 Confirm 操作，在业务活动取消时调用所有从业务服务的 Cancel 操作。</li>
+</ol>
+<h3 id="3-4-2、TCC流程"><a href="#3-4-2、TCC流程" class="headerlink" title="3.4.2、TCC流程"></a>3.4.2、TCC流程</h3><p>一个完整的 TCC 分布式事务流程如下：</p>
+<ol>
+<li>主业务服务 首先开启 本地事务;</li>
+<li>主业务服务 向业务活动管理器 申请启动 分布式事务主业务活动;</li>
+<li>主业务活动 先向业务活动管理器 注册 从业务活动，然后调用从业务服务的 Try 接口;</li>
+<li>当所有从业务服务的 Try 接口调用成功，主业务服务提交本地事务；若调用失败，主业务服务回滚本地事务;</li>
+<li>若主业务服务提交本地事务，则 TCC 模型分别调用所有从业务服务的 Confirm 接口；若主业务服务回滚本地事务，则分别调用 Cancel 接口;</li>
+<li>所有从业务服务的 Confirm 或 Cancel 操作完成后，全局事务结束。</li>
+</ol>
+<h3 id="3-4-3、TCC模型小结"><a href="#3-4-3、TCC模型小结" class="headerlink" title="3.4.3、TCC模型小结"></a>3.4.3、TCC模型小结</h3><p>TCC编程模式也是两阶段提交的一个变种。TCC提供了一个编程框架，将整个业务逻辑分为三块：Try、Confirm和Cancel。以在线下单为例，Try阶段会去扣库存，Confirm阶段去更新订单状态，如果更新订单失败，则进入Cancel阶段，会去恢复库存。</p>
+<p>TCC就是通过代码人为实现了两阶段提交，不同的业务场景所写的代码都不一样，复杂度也不一样，因此，这种模式并不能很好地被复用。</p>
+<h2 id="3-5、本地消息表"><a href="#3-5、本地消息表" class="headerlink" title="3.5、本地消息表"></a>3.5、本地消息表</h2><p>本地消息表其实是国外 ebay 搞出来的逻辑。</p>
+<p>大概流程逻辑如下：</p>
+<ol>
+<li>A 系统在自己本地一个事务里操作同时，插入一条数据到消息表；</li>
+<li>A 系统将这个消息发送到 MQ 中去；</li>
+<li>B 系统接收到消息之后，在一个事务里，往自己本地消息表里插入一条数据，同时执行其他的业务操作，如果这个消息已经被处理过了，那么此时这个事务会回滚，这样<strong>保证不会重复处理消息</strong>；</li>
+<li>B 系统执行成功之后，就会更新自己本地消息表的状态以及 A 系统消息表的状态；</li>
+<li>如果 B 系统处理失败了，那么就不会更新消息表状态，那么此时 A 系统会定时扫描自己的消息表，如果有未处理的消息，会再次发送到 MQ 中去，让 B 再次处理；</li>
+<li>这个方案保证了最终一致性，哪怕 B 事务失败了，但是 A 会不断重发消息，直到 B 那边成功为止。</li>
+</ol>
+<p>该方案 最大问题 在于 <font color='red'>严重依赖于数据库的消息表来管理事务</font>，如果是高并发场景咋办呢？咋扩展呢？所以一般确实很少用。</p>
+<h2 id="3-6、可靠消息最终一致性"><a href="#3-6、可靠消息最终一致性" class="headerlink" title="3.6、可靠消息最终一致性"></a>3.6、可靠消息最终一致性</h2><p>基于 MQ 实现分布式事务。RocketMQ 支持消息事务。</p>
+<p>大概流程逻辑如下：</p>
+<ol>
+<li>A 系统先发送一个 prepared 消息到 mq，如果发送失败就取消操作，如果发送成功则执行本地事务，如果本地事务执行成功就让 mq 发送确认消息，如果失败让 mq 发送回滚消息；</li>
+<li>如果A系统发送了确认消息，B系统也收到了确认消息，则B系统会执行自己的本地事务；</li>
+<li>mq 会自动定时轮询，检测prepared消息是否发送成功，本地事务是否执行成功，确认消息或回滚消息是否发送成功。</li>
+<li>如果 B系统 本地事务执行失败 则不断重试直到成功，如果实在是不行，且事务比较重要则发送警报由人工来处理。</li>
+</ol>
+<p>基于消息中间件的两阶段提交往往用在高并发场景下，将一个分布式事务拆成一个消息事务（A系统的本地操作+发消息）+ B系统的本地操作，其中B系统的操作由消息驱动，只要消息事务成功，那么A操作一定成功，消息也一定发出来了，这时候B会收到消息去执行本地操作，如果本地操作失败，消息会重投，直到B操作成功，这样就变相地实现了A与B的分布式事务。原理如下：</p>
+<p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/07/image-20201008161449305.png" alt="image-20201008161449305"></p>
+<p>上面方案能够完成A和B的操作，但A和B 并不 严格一致，而是 最终一致，牺牲一致性，换来 性能的大幅度提升。该方式 有风险，如果B一直执行不成功，那么一致性会被破坏，具体要不要玩，还是得看业务能够承担多少风险。</p>
+<h2 id="3-7、最大努力通知"><a href="#3-7、最大努力通知" class="headerlink" title="3.7、最大努力通知"></a>3.7、最大努力通知</h2><p>该方案大概流程逻辑如下：</p>
+<ol>
+<li>系统 A 本地事务执行完之后，发送消息到 MQ；</li>
+<li>最大努力通知服务会一直检测MQ中是否有消息，若存在消息则进行持久化处理，并调用系统B的接口；</li>
+<li>如果系统B 执行成功则完事，如果执行执行失败，那么“最大努力通知服务”就会定时重试调用系统B，反复 N 次，最后还是不行就放弃；</li>
+</ol>
+<h2 id="3-8、小结"><a href="#3-8、小结" class="headerlink" title="3.8、小结"></a>3.8、小结</h2><ul>
+<li>2PC&#x2F;3PC：<strong>是一种强一致性事务</strong>，不过还是有数据不一致，阻塞等风险，且只能用在数据库层面。</li>
+<li>TCC：<strong>是一种补偿性事务</strong>，适用范围更广，在业务层面实现，因此对业务的侵入性较大，每一个操作都需要实现对应的三个方法。</li>
+<li>本地消息&#x2F;事务消息&#x2F;最大努力通知：<strong>是最终一致性事务</strong>，因此适用于一些对时间不敏感的业务。</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">豪哥</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://hshz21.gitee.io/2023/08/07/fen-bu-shi-shi-wu-zhi-shi-dian-zong-jie/">https://hshz21.gitee.io/2023/08/07/fen-bu-shi-shi-wu-zhi-shi-dian-zong-jie/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">豪哥</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/%E4%BA%8B%E5%8A%A1/">
+                                    <span class="chip bg-color">事务</span>
+                                </a>
+                            
+                                <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">
+                                    <span class="chip bg-color">分布式事务</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wxpay.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/08/07/seata-ji-ben-shi-yong/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Seata系列-Seata基础应用">
+                        
+                        <span class="card-title">Seata系列-Seata基础应用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Seata/" class="post-category">
+                                    Seata
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Seata/">
+                        <span class="chip bg-color">Seata</span>
+                    </a>
+                    
+                    <a href="/tags/Seata%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">Seata基础</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/08/07/sentinel-ji-ben-shi-yong/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Sentinel系列-Sentinel基础使用">
+                        
+                        <span class="card-title">Sentinel系列-Sentinel基础使用</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/Sentinel/" class="post-category">
+                                    Sentinel
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/Sentinel/">
+                        <span class="chip bg-color">Sentinel</span>
+                    </a>
+                    
+                    <a href="/tags/Sentinel%E5%9F%BA%E7%A1%80/">
+                        <span class="chip bg-color">Sentinel基础</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">豪哥</a>
+            |&nbsp;Powered by&nbsp;<a href="https://github.com/lucky2shh" target="_blank">豪哥</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:3577293158@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3577293158" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 3577293158" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

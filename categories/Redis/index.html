@@ -276,9 +276,7 @@
 
 
 <script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+    $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
 </script>
 
 
@@ -299,10 +297,19 @@
                 
                 
                 
+                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" title="微服务: 17">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">微服务
+                        <span class="tag-length">17</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/ASM/" title="ASM: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9EBEA;">ASM
+                            style="background-color: #F5EEF8;">ASM
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -311,7 +318,7 @@
                 <a href="/categories/Dubbo/" title="Dubbo: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">Dubbo
+                            style="background-color: #D5F5E3;">Dubbo
                         <span class="tag-length">3</span>
                     </span>
                 </a>
@@ -320,7 +327,7 @@
                 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" title="计算机: 10">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D5F5E3;">计算机
+                            style="background-color: #E8F8F5;">计算机
                         <span class="tag-length">10</span>
                     </span>
                 </a>
@@ -329,7 +336,7 @@
                 <a href="/categories/Canal/" title="Canal: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">Canal
+                            style="background-color: #FEF9E7;">Canal
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -338,7 +345,7 @@
                 <a href="/categories/Consul/" title="Consul: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #FEF9E7;">Consul
+                            style="background-color: #F8F9F9;">Consul
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -347,7 +354,7 @@
                 <a href="/categories/Docker/" title="Docker: 13">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8F9F9;">Docker
+                            style="background-color: #82E0AA;">Docker
                         <span class="tag-length">13</span>
                     </span>
                 </a>
@@ -356,7 +363,7 @@
                 <a href="/categories/ElasticSearch/" title="ElasticSearch: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #82E0AA;">ElasticSearch
+                            style="background-color: #D7BDE2;">ElasticSearch
                         <span class="tag-length">2</span>
                     </span>
                 </a>
@@ -365,7 +372,7 @@
                 <a href="/categories/Eureka/" title="Eureka: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D7BDE2;">Eureka
+                            style="background-color: #A3E4D7;">Eureka
                         <span class="tag-length">2</span>
                     </span>
                 </a>
@@ -374,7 +381,7 @@
                 <a href="/categories/Feign/" title="Feign: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #A3E4D7;">Feign
+                            style="background-color: #85C1E9;">Feign
                         <span class="tag-length">2</span>
                     </span>
                 </a>
@@ -383,7 +390,7 @@
                 <a href="/categories/Gateway/" title="Gateway: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #85C1E9;">Gateway
+                            style="background-color: #F8C471;">Gateway
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -392,17 +399,8 @@
                 <a href="/categories/KafKa/" title="KafKa: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8C471;">KafKa
+                            style="background-color: #F9E79F;">KafKa
                         <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Linux/" title="Linux: 3">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9E79F;">Linux
-                        <span class="tag-length">3</span>
                     </span>
                 </a>
                 
@@ -416,6 +414,15 @@
                 </a>
                 
                 
+                <a href="/categories/Linux/" title="Linux: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">Linux
+                        <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/MyBatis/" title="MyBatis: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -425,11 +432,11 @@
                 </a>
                 
                 
-                <a href="/categories/MySQL/" title="MySQL: 5">
+                <a href="/categories/MySQL/" title="MySQL: 6">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #F9EBEA;">MySQL
-                        <span class="tag-length">5</span>
+                        <span class="tag-length">6</span>
                     </span>
                 </a>
                 
@@ -461,11 +468,11 @@
                 </a>
                 
                 
-                <a href="/categories/Redis/" title="Redis: 6">
+                <a href="/categories/Redis/" title="Redis: 7">
                     <span class="chip center-align waves-effect waves-light
                              chip-active "
                             style="background-color: #F9EBEA;">Redis
-                        <span class="tag-length">6</span>
+                        <span class="tag-length">7</span>
                     </span>
                 </a>
                 
@@ -542,15 +549,6 @@
                 </a>
                 
                 
-                <a href="/categories/Markdown/" title="Markdown: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F8F9F9;">Markdown
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/%E5%B9%B6%E5%8F%91/" title="并发: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -565,6 +563,15 @@
                              chip-default "
                             style="background-color: #85C1E9;">数据与算法
                         <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F5EEF8;">消息队列
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -591,7 +598,55 @@
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/redis-ye-wu-gong-neng/">
+                    <a href="/2023/08/07/redis-mian-shi-ti-di-yi-pian/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Redis系列-Redis模拟面试题第一篇">
+                            
+                            <span class="card-title">Redis系列-Redis模拟面试题第一篇</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                1、基础摸底1.1、何为RedisRedis 是 NoSQL 数据库，也即非关系型数据库。。
+1.2、NoSQL BASE理论BASE理论是对CAP中一致性的妥协。与 传统事务ACID 不同，BASE不追求强一致性，只要最终达到一致就行。
+
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Redis/" class="post-category">
+                                    Redis
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Redis%E9%9D%A2%E8%AF%95/">
+                            <span class="chip bg-color">Redis面试</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/08/07/redis-ye-wu-gong-neng/">
                         <div class="card-image tag-image">
                             
                             
@@ -613,7 +668,7 @@
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
@@ -646,7 +701,58 @@
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/redis-ji-qun-da-jian/">
+                    <a href="/2023/08/07/redis-wei-kuai-bu-po-de-mi-mi/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Redis系列-Redis唯快不破">
+                            
+                            <span class="card-title">Redis系列-Redis唯快不破</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                1、Redis唯快不破的秘密1.1、前言1.1.1、全景图全景图可以围绕两个维度展开，分别是：
+
+应用维度：缓存使用、集群运用、数据结构的巧妙使用；
+系统维度：可以归类为三高：
+高性能：线程模型、网络 IO 模型、数据结构、持久化机制；
+高
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/Redis/" class="post-category">
+                                    Redis
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/Redis/">
+                            <span class="chip bg-color">Redis</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/08/07/redis-ji-qun-da-jian/">
                         <div class="card-image tag-image">
                             
                             
@@ -685,7 +791,7 @@ PORT
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
@@ -718,7 +824,7 @@ PORT
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/redis-ji-chu-ru-men/">
+                    <a href="/2023/08/07/redis-ji-chu-ru-men/">
                         <div class="card-image tag-image">
                             
                             
@@ -740,7 +846,7 @@ Jedis
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
@@ -773,58 +879,7 @@ Jedis
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/redis-wei-kuai-bu-po-de-mi-mi/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Redis系列-Redis唯快不破">
-                            
-                            <span class="card-title">Redis系列-Redis唯快不破</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                1、Redis唯快不破的秘密1.1、前言1.1.1、全景图全景图可以围绕两个维度展开，分别是：
-
-应用维度：缓存使用、集群运用、数据结构的巧妙使用；
-系统维度：可以归类为三高：
-高性能：线程模型、网络 IO 模型、数据结构、持久化机制；
-高
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Redis/" class="post-category">
-                                    Redis
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Redis/">
-                            <span class="chip bg-color">Redis</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/07/30/redis-huan-cun-wen-ti/">
+                    <a href="/2023/08/07/redis-huan-cun-wen-ti/">
                         <div class="card-image tag-image">
                             
                             
@@ -844,7 +899,7 @@ Jedis
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
@@ -877,7 +932,7 @@ Jedis
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/redis-chi-jiu-hua-zhi-rdb-he-aof/">
+                    <a href="/2023/08/07/redis-chi-jiu-hua-zhi-rdb-he-aof/">
                         <div class="card-image tag-image">
                             
                             
@@ -896,7 +951,7 @@ RDB持久化工作内容：指定时间间隔内，执行指定次数的写操�
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
@@ -998,8 +1053,7 @@ RDB持久化工作内容：指定时间间隔内，执行指定次数的写操�
             
             <span id="year">2019</span>
             <a href="/about" target="_blank">豪哥</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">豪哥</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            |&nbsp;Powered by&nbsp;<a href="https://github.com/lucky2shh" target="_blank">豪哥</a>
             <br>
             
             
@@ -1045,10 +1099,6 @@ RDB持久化工作内容：指定时间间隔内，执行指定次数的写操�
 
 
 
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
 
 </div>
     </div>

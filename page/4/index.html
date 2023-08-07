@@ -277,9 +277,7 @@
 
 
 <script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+    $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
 </script>
 
 
@@ -299,7 +297,171 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/nacos-pei-zhi-zhong-xin-ji-ben-shi-yong/">
+                    <a href="/2023/08/07/03-ri-zhi-chu-li/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="微服务业务功能系列-日志处理">
+                            
+                            <span class="card-title">微服务业务功能系列-日志处理</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                1、日志简介1.1、日志级别日志级别从高到底依次为：ALL、DEBUG、INFO、WARN、ERROR、FATAL、OFF。
+1.2、默认日志SpringBoot中默认使用logback日志系统。
+2、配置在项目resources目录下创建
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
+                                    微服务
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%9A%E5%8A%A1%E5%8A%9F%E8%83%BD/">
+                            <span class="chip bg-color">微服务业务功能</span>
+                        </a>
+                        
+                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86/">
+                            <span class="chip bg-color">微服务日志处理</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/08/07/02-quan-ju-yi-chang-chu-li/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="微服务业务功能系列-全局异常">
+                            
+                            <span class="card-title">微服务业务功能系列-全局异常</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                1、自定义异常@Data
+public class SYTException extends RuntimeException&#123;
+    private Integer code;
+
+    public SYTException
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
+                                    微服务
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%9A%E5%8A%A1%E5%8A%9F%E8%83%BD/">
+                            <span class="chip bg-color">微服务业务功能</span>
+                        </a>
+                        
+                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%85%A8%E5%B1%80%E5%BC%82%E5%B8%B8/">
+                            <span class="chip bg-color">微服务全局异常</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/08/07/01-quan-ju-tong-yi-fan-hui-zhi/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="微服务业务功能系列-全局统一返回值">
+                            
+                            <span class="card-title">微服务业务功能系列-全局统一返回值</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                1、返回结果枚举类RCodeEnum.java
+@Getter
+public enum RCodeEnum &#123;
+    SUCCESS(200,"成功"),
+    FAIL(201, "失败"),
+    PARAM_ERROR
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
+                                    微服务
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%9A%E5%8A%A1%E5%8A%9F%E8%83%BD/">
+                            <span class="chip bg-color">微服务业务功能</span>
+                        </a>
+                        
+                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BB%9F%E4%B8%80%E8%BF%94%E5%9B%9E%E5%80%BC/">
+                            <span class="chip bg-color">微服务统一返回值</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/08/07/nacos-pei-zhi-zhong-xin-ji-ben-shi-yong/">
                         <div class="card-image">
                             
                             
@@ -319,7 +481,7 @@ $&#123;prefix&#125;-$&#123;spring.profiles.active&#125;.$&#1
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
@@ -352,43 +514,36 @@ $&#123;prefix&#125;-$&#123;spring.profiles.active&#125;.$&#1
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/mysql-jing-tong-diao-you/">
+                    <a href="/2023/08/07/seata-ji-ben-shi-yong/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="MySQL系列-MySQL调优">
+                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Seata系列-Seata基础应用">
                             
-                            <span class="card-title">MySQL系列-MySQL调优</span>
+                            <span class="card-title">Seata系列-Seata基础应用</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、优化概述优化分为几种类型：
+                                1、服务端配置1.1、Registry.confregistry &#123;
+  # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
+  type = "nacos"
 
-数据库级别优化；
-硬件级别优化；
-平衡便捷性和性能；
-
-1.1、数据库级别优化数据库快速运行依赖于以下几项：
-
-正确的表结构、正确的列数据类型、必须的列；
-正确优秀的索引设计；
-正确合适的存储引擎；
-表中采
+  nacos &#1
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/MySQL/" class="post-category">
-                                    MySQL
+                                <a href="/categories/Seata/" class="post-category">
+                                    Seata
                                 </a>
                                 
                                 
@@ -399,12 +554,12 @@ $&#123;prefix&#125;-$&#123;spring.profiles.active&#125;.$&#1
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/MySQL/">
-                            <span class="chip bg-color">MySQL</span>
+                        <a href="/tags/Seata/">
+                            <span class="chip bg-color">Seata</span>
                         </a>
                         
-                        <a href="/tags/MySQL%E8%B0%83%E4%BC%98/">
-                            <span class="chip bg-color">MySQL调优</span>
+                        <a href="/tags/Seata%E5%9F%BA%E7%A1%80/">
+                            <span class="chip bg-color">Seata基础</span>
                         </a>
                         
                     </div>
@@ -414,35 +569,35 @@ $&#123;prefix&#125;-$&#123;spring.profiles.active&#125;.$&#1
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/nacos-ji-ben-shi-yong/">
+                    <a href="/2023/08/07/fen-bu-shi-shi-wu-zhi-shi-dian-zong-jie/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Nacos系列-Nacos基础应用">
+                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="微服务系列-分布式事务">
                             
-                            <span class="card-title">Nacos系列-Nacos基础应用</span>
+                            <span class="card-title">微服务系列-分布式事务</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、注册中心搭建1.1、启动Nacos服务./nacos/bin/startup.sh
+                                1、事务概述1.1、何为事务数据库事务是指数据库执行过程中的一个逻辑单位，由一个有限的数据库操作序列构成。
+事务拥有以下四个特性，习惯上被称为ACID特性：
 
-2、注册服务2.1、添加依赖&lt;dependency>
-    &lt;groupId>com.alibaba.cloud&lt;/groupId
+**原子性(Atomicity)**：事务作为一个整体被执行，要么全部被执行，要
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Nacos/" class="post-category">
-                                    Nacos
+                                <a href="/categories/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/" class="post-category">
+                                    分布式事务
                                 </a>
                                 
                                 
@@ -453,12 +608,12 @@ $&#123;prefix&#125;-$&#123;spring.profiles.active&#125;.$&#1
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Nacos/">
-                            <span class="chip bg-color">Nacos</span>
+                        <a href="/tags/%E4%BA%8B%E5%8A%A1/">
+                            <span class="chip bg-color">事务</span>
                         </a>
                         
-                        <a href="/tags/Nacos%E5%9F%BA%E7%A1%80/">
-                            <span class="chip bg-color">Nacos基础</span>
+                        <a href="/tags/%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">
+                            <span class="chip bg-color">分布式事务</span>
                         </a>
                         
                     </div>
@@ -468,33 +623,34 @@ $&#123;prefix&#125;-$&#123;spring.profiles.active&#125;.$&#1
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/nacos-di-ceng-yuan-li/">
+                    <a href="/2023/08/07/sentinel-ji-ben-shi-yong/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Nacos系列-Nacos原理解析">
+                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Sentinel系列-Sentinel基础使用">
                             
-                            <span class="card-title">Nacos系列-Nacos原理解析</span>
+                            <span class="card-title">Sentinel系列-Sentinel基础使用</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、服务注册1.1、客户端- SPring启动时 加载 自动配置类 NacosServiceRegistryAutoConfiguration
-- 注入 return new NacosAutoServiceRegistration(...
+                                1、加入依赖&lt;dependency>
+    &lt;groupId>com.alibaba.cloud&lt;/groupId>
+    &lt;artifactId>spring-cloud-starter-alibaba-sen
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Nacos/" class="post-category">
-                                    Nacos
+                                <a href="/categories/Sentinel/" class="post-category">
+                                    Sentinel
                                 </a>
                                 
                                 
@@ -505,12 +661,12 @@ $&#123;prefix&#125;-$&#123;spring.profiles.active&#125;.$&#1
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Nacos/">
-                            <span class="chip bg-color">Nacos</span>
+                        <a href="/tags/Sentinel/">
+                            <span class="chip bg-color">Sentinel</span>
                         </a>
                         
-                        <a href="/tags/Nacos%E5%8E%9F%E7%90%86/">
-                            <span class="chip bg-color">Nacos原理</span>
+                        <a href="/tags/Sentinel%E5%9F%BA%E7%A1%80/">
+                            <span class="chip bg-color">Sentinel基础</span>
                         </a>
                         
                     </div>
@@ -520,33 +676,34 @@ $&#123;prefix&#125;-$&#123;spring.profiles.active&#125;.$&#1
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/mybatis-ji-chu-ying-yong-2/">
+                    <a href="/2023/08/07/sentinel-gui-ze-chi-jiu-hua/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="MyBatis系列-MyBatis基础应用（二）">
+                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Sentinel系列-Sentinel规则持久化">
                             
-                            <span class="card-title">MyBatis系列-MyBatis基础应用（二）</span>
+                            <span class="card-title">Sentinel系列-Sentinel规则持久化</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                MyBatis简介啥是MyBatisMybatis 是一个半自动 ORM（对象关系映射）框架。内部封装了 JDBC，只需自定义SQL，而无需做加载驱动、创建连接、创建 statement 等繁杂工作。
-MyBatis 可通过 xml 文件 
+                                1、修改Sentinel源码1.1、解压sentinel源码包1.2、修改依赖&lt;dependency>
+    &lt;groupId>com.alibaba.csp&lt;/groupId>
+    &lt;artifactId>s
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/MyBatis/" class="post-category">
-                                    MyBatis
+                                <a href="/categories/Sentinel/" class="post-category">
+                                    Sentinel
                                 </a>
                                 
                                 
@@ -557,12 +714,12 @@ MyBatis 可通过 xml 文件
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/MyBatis/">
-                            <span class="chip bg-color">MyBatis</span>
+                        <a href="/tags/Sentinel/">
+                            <span class="chip bg-color">Sentinel</span>
                         </a>
                         
-                        <a href="/tags/MyBatis%E5%9F%BA%E7%A1%80/">
-                            <span class="chip bg-color">MyBatis基础</span>
+                        <a href="/tags/Sentinel%E6%8C%81%E4%B9%85%E5%8C%96/">
+                            <span class="chip bg-color">Sentinel持久化</span>
                         </a>
                         
                     </div>
@@ -572,37 +729,37 @@ MyBatis 可通过 xml 文件
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/mysql-huan-jing-da-jian/">
+                    <a href="/2023/08/07/sentinel-di-ceng-yuan-li/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="MySQL系列-MySQL环境搭建">
+                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Sentinel系列-Sentinel原理解析">
                             
-                            <span class="card-title">MySQL系列-MySQL环境搭建</span>
+                            <span class="card-title">Sentinel系列-Sentinel原理解析</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、主从复制1.1、配置文件主节点配置文件：
-server-id=1
-log-bin=mysql-bin
-binlog-ignore-db=mysql
-binlog-ignore-db=information_schema
-binlog-d
+                                1、基本概念Sentinel实现限流、隔离、降级、熔断等功能，本质要做的就是两件事情：
+
+统计数据：统计某个资源的访问数据（QPS、RT等信息）。
+规则判断：判断限流规则、隔离规则、降级规则、熔断规则是否满足。
+
+1.1、Processor
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/MySQL/" class="post-category">
-                                    MySQL
+                                <a href="/categories/Sentinel/" class="post-category">
+                                    Sentinel
                                 </a>
                                 
                                 
@@ -613,12 +770,12 @@ binlog-d
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/MySQL/">
-                            <span class="chip bg-color">MySQL</span>
+                        <a href="/tags/Sentinel/">
+                            <span class="chip bg-color">Sentinel</span>
                         </a>
                         
-                        <a href="/tags/MySQL%E7%8E%AF%E5%A2%83/">
-                            <span class="chip bg-color">MySQL环境</span>
+                        <a href="/tags/Sentinel%E5%8E%9F%E7%90%86/">
+                            <span class="chip bg-color">Sentinel原理</span>
                         </a>
                         
                     </div>
@@ -628,41 +785,34 @@ binlog-d
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/mysql-ji-zhu-nei-mu/">
+                    <a href="/2023/08/07/feign-ji-ben-shi-yong/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="MySQL系列-MySQL基础应用">
+                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Feign系列-Feign基础应用">
                             
-                            <span class="card-title">MySQL系列-MySQL基础应用</span>
+                            <span class="card-title">Feign系列-Feign基础应用</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、MySQL基础1.1、MySQL体系结构MySQL体系结构如下：
-
-MySQL在系统角度就是一个进程。实例与数据库的关系相互对应。
-
-Oracle的Windows版也是单进程多线程架构。
-
-MySQL由以下几部分组成：
-
-连接池
-管理服
+                                1、加入依赖&lt;dependency>
+    &lt;groupId>org.springframework.cloud&lt;/groupId>
+    &lt;artifactId>spring-cloud-starter-ope
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/MySQL/" class="post-category">
-                                    MySQL
+                                <a href="/categories/Feign/" class="post-category">
+                                    Feign
                                 </a>
                                 
                                 
@@ -673,12 +823,12 @@ MySQL由以下几部分组成：
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/MySQL/">
-                            <span class="chip bg-color">MySQL</span>
+                        <a href="/tags/Feign/">
+                            <span class="chip bg-color">Feign</span>
                         </a>
                         
-                        <a href="/tags/MySQL%E5%9F%BA%E7%A1%80/">
-                            <span class="chip bg-color">MySQL基础</span>
+                        <a href="/tags/Feign%E5%9F%BA%E7%A1%80/">
+                            <span class="chip bg-color">Feign基础</span>
                         </a>
                         
                     </div>
@@ -688,36 +838,34 @@ MySQL由以下几部分组成：
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/mybatis-di-ceng-yuan-li/">
+                    <a href="/2023/08/07/feign-di-ceng-yuan-li/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/15.jpg" class="responsive-img" alt="MyBatis系列-MyBatis原理解析">
+                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Feign系列-Feign原理解析">
                             
-                            <span class="card-title">MyBatis系列-MyBatis原理解析</span>
+                            <span class="card-title">Feign系列-Feign原理解析</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                SqlSessionFactory获取一个SqlSessionFactory对象：
+                                1、服务调用1.1、包装请求feign调用过程中会经过多个拦截器（RequestInterceptor），拦截器会对 feign 调用进行包装与增强。
+Feign调用问题1.1、丢失请求头1.1.1、场景再现以 服务1 调用 服务2为例。
 
-创建SqlSessionFactoryBuilder对象，并调用build()方法。
-
-创建 配置构建器对象：parser &#x3D; new XMLC
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/MyBatis/" class="post-category">
-                                    MyBatis
+                                <a href="/categories/Feign/" class="post-category">
+                                    Feign
                                 </a>
                                 
                                 
@@ -728,12 +876,12 @@ MySQL由以下几部分组成：
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/MyBatis/">
-                            <span class="chip bg-color">MyBatis</span>
+                        <a href="/tags/Feign/">
+                            <span class="chip bg-color">Feign</span>
                         </a>
                         
-                        <a href="/tags/MyBatis%E5%8E%9F%E7%90%86/">
-                            <span class="chip bg-color">MyBatis原理</span>
+                        <a href="/tags/Feign%E5%8E%9F%E7%90%86/">
+                            <span class="chip bg-color">Feign原理</span>
                         </a>
                         
                     </div>
@@ -743,32 +891,34 @@ MySQL由以下几部分组成：
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/mybatis-ji-chu-ying-yong/">
+                    <a href="/2023/08/07/gateway-ji-ben-shi-yong/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="MyBatis系列-MyBatis基础应用">
+                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Gateway系列-Gateway基础应用">
                             
-                            <span class="card-title">MyBatis系列-MyBatis基础应用</span>
+                            <span class="card-title">Gateway系列-Gateway基础应用</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、什么是MyBatisMyBatis 是一个持久层框架，它支持自定义 SQL、存储过程以及高级映射。MyBatis 免除了几乎所有的 JDBC 代码以及设置参数和获取结果集的工作。MyBatis 可以通过简单的 XML 或注解来配置和映射
+                                1、加入依赖&lt;dependency>
+    &lt;groupId>org.springframework.cloud&lt;/groupId>
+    &lt;artifactId>spring-cloud-starter-gat
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/MyBatis/" class="post-category">
-                                    MyBatis
+                                <a href="/categories/Gateway/" class="post-category">
+                                    Gateway
                                 </a>
                                 
                                 
@@ -779,177 +929,12 @@ MySQL由以下几部分组成：
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/MyBatis/">
-                            <span class="chip bg-color">MyBatis</span>
+                        <a href="/tags/Gateway/">
+                            <span class="chip bg-color">Gateway</span>
                         </a>
                         
-                        <a href="/tags/MyBatis%E5%9F%BA%E7%A1%80/">
-                            <span class="chip bg-color">MyBatis基础</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/07/30/kafka-ji-chu-ru-men/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Kafka系列-KafKa基础应用">
-                            
-                            <span class="card-title">Kafka系列-KafKa基础应用</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                KafKa概述何为KafKaKafka是由Apache软件基金会开发的一个开源流处理平台，由Scala和Java编写。
-Apache Kafka是一个分布式发布 - 订阅消息系统和一个强大队列，可以处理大量数据，并使您能够将消息从一个端点传
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/KafKa/" class="post-category">
-                                    KafKa
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/KafKa/">
-                            <span class="chip bg-color">KafKa</span>
-                        </a>
-                        
-                        <a href="/tags/KafKa%E5%9F%BA%E7%A1%80/">
-                            <span class="chip bg-color">KafKa基础</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/07/30/linux-ji-chu-pian/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/10.jpg" class="responsive-img" alt="Linux系列-Linux基础篇">
-                            
-                            <span class="card-title">Linux系列-Linux基础篇</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                1、文件目录结构1.1、目录结构图
-1.2、详细解析目录详细解析：
-
-&#x2F;bin：bin 是 Binaries (二进制文件) 的缩写，该目录 存放常用命令。
-
-&#x2F;boot：存放启动 Linux 时使用的核心文件，包括一些
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Linux/" class="post-category">
-                                    Linux
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Linux/">
-                            <span class="chip bg-color">Linux</span>
-                        </a>
-                        
-                        <a href="/tags/Linux%E5%9F%BA%E7%A1%80/">
-                            <span class="chip bg-color">Linux基础</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/07/30/linux-shi-cao-pian/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Linux系列-Linux实操篇">
-                            
-                            <span class="card-title">Linux系列-Linux实操篇</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                1、开始使用1.1、登录和注销
-登录：一般使用普通用户登录，然后通过su - 用户名命令来切换到系统管理员身份。
-注销：使用命令logout，即可注销。
-
-
-logout命令 在图形运行级别无效。而在运行级别3下才有效。
-无论是关机还是重启
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Linux/" class="post-category">
-                                    Linux
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Linux/">
-                            <span class="chip bg-color">Linux</span>
-                        </a>
-                        
-                        <a href="/tags/Linux%E5%AE%9E%E6%93%8D/">
-                            <span class="chip bg-color">Linux实操</span>
+                        <a href="/tags/Gateway%E5%9F%BA%E7%A1%80/">
+                            <span class="chip bg-color">Gateway基础</span>
                         </a>
                         
                     </div>
@@ -974,7 +959,7 @@ logout命令 在图形运行级别无效。而在运行级别3下才有效。
             
         </div>
         <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">4 / 8</div>
+            <div class="center-align b-text-gray">4 / 9</div>
         </div>
         <div class="col s6 m4 l4">
             
@@ -1054,8 +1039,7 @@ logout命令 在图形运行级别无效。而在运行级别3下才有效。
             
             <span id="year">2019</span>
             <a href="/about" target="_blank">豪哥</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">豪哥</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            |&nbsp;Powered by&nbsp;<a href="https://github.com/lucky2shh" target="_blank">豪哥</a>
             <br>
             
             
@@ -1101,10 +1085,6 @@ logout命令 在图形运行级别无效。而在运行级别3下才有效。
 
 
 
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
 
 </div>
     </div>

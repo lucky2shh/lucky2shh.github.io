@@ -283,9 +283,7 @@
 
 
 <script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+    $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
 </script>
 
 
@@ -301,21 +299,21 @@
                     <div class="post-statis col l4 hide-on-med-and-down" data-aos="zoom-in-right">
                         
 <div class="statis">
-    <span class="count"><a href="/">92</a></span>
+    <span class="count"><a href="/">107</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories">31</a></span>
+    <span class="count"><a href="/categories">32</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">105</a></span>
+    <span class="count"><a href="/tags">125</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -324,28 +322,28 @@
                     <div class="col s12 m12 l4">
                         <div class="profile center-align">
                             <div class="avatar">
-                                <img src="/medias/avatar.jpg" alt="豪哥"
+                                <img src="/medias/avatar.png" alt="豪哥"
                                      class="circle responsive-img avatar-img">
                             </div>
                             <div class="author">
                                 <div class="post-statis hide-on-large-only" data-aos="zoom-in-right">
                                     
 <div class="statis">
-    <span class="count"><a href="/">92</a></span>
+    <span class="count"><a href="/">107</a></span>
     <span class="name">文章</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/categories">31</a></span>
+    <span class="count"><a href="/categories">32</a></span>
     <span class="name">分类</span>
 </div>
 
 
 
 <div class="statis">
-    <span class="count"><a href="/tags">105</a></span>
+    <span class="count"><a href="/tags">125</a></span>
     <span class="name">标签</span>
 </div>
 
@@ -377,10 +375,6 @@
 
 
 
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
-
 
                                 </div>
                             </div>
@@ -410,10 +404,6 @@
 
 
 
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
 
 
                         </div>
@@ -481,7 +471,7 @@
                 name: '文章篇数',
                 type: 'line',
                 color: ['#6772e5'],
-                data: [0,0,0,0,0,0,0,0,0,0,0,89,2],
+                data: [0,0,0,0,0,0,0,0,0,0,0,0,107],
                 markPoint: {
                     symbolSize: 45,
                     color: ['#fa755a','#3ecf8e','#82d3f4'],
@@ -523,7 +513,7 @@
                 type: 'pie',
                 radius: '50%',
                 color: ['#6772e5', '#ff9e0f', '#fa755a', '#3ecf8e', '#82d3f4', '#ab47bc', '#525f7f', '#f51c47', '#26A69A'],
-                data: [{"name":"ASM","value":1},{"name":"Dubbo","value":3},{"name":"计算机","value":10},{"name":"Canal","value":1},{"name":"Consul","value":1},{"name":"Docker","value":13},{"name":"ElasticSearch","value":2},{"name":"Eureka","value":2},{"name":"Feign","value":2},{"name":"Gateway","value":1},{"name":"KafKa","value":2},{"name":"Linux","value":3},{"name":"JVM","value":1},{"name":"MyBatis","value":3},{"name":"MySQL","value":5},{"name":"Nacos","value":3},{"name":"Nginx","value":1},{"name":"RabbitMQ","value":3},{"name":"Redis","value":6},{"name":"RocketMQ","value":2},{"name":"Seata","value":1},{"name":"Sentinel","value":3},{"name":"Spring","value":6},{"name":"SpringBoot","value":2},{"name":"Tomcat","value":3},{"name":"Zookeeper","value":1},{"name":"分布式事务","value":1},{"name":"Markdown","value":1},{"name":"并发","value":1},{"name":"数据与算法","value":3},{"name":"设计模式","value":1}],
+                data: [{"name":"微服务","value":17},{"name":"ASM","value":1},{"name":"Dubbo","value":3},{"name":"计算机","value":10},{"name":"Canal","value":1},{"name":"Consul","value":1},{"name":"Docker","value":13},{"name":"ElasticSearch","value":2},{"name":"Eureka","value":2},{"name":"Feign","value":2},{"name":"Gateway","value":1},{"name":"KafKa","value":2},{"name":"JVM","value":1},{"name":"Linux","value":3},{"name":"MyBatis","value":3},{"name":"MySQL","value":6},{"name":"Nacos","value":3},{"name":"Nginx","value":1},{"name":"RabbitMQ","value":3},{"name":"Redis","value":7},{"name":"RocketMQ","value":2},{"name":"Seata","value":1},{"name":"Sentinel","value":3},{"name":"Spring","value":6},{"name":"SpringBoot","value":2},{"name":"Tomcat","value":3},{"name":"Zookeeper","value":1},{"name":"分布式事务","value":1},{"name":"并发","value":1},{"name":"数据与算法","value":3},{"name":"消息队列","value":1},{"name":"设计模式","value":1}],
                 itemStyle: {
                     emphasis: {
                         shadowBlur: 10,
@@ -547,7 +537,7 @@
         xAxis: [
             {
                 type: 'category',
-                data: ["Docker","Redis","Spring","MySQL","Nacos","RabbitMQ","网络协议","Dubbo","ElasticSearch","KafKa"]
+                data: ["微服务业务功能","Docker","Redis","Spring","微服务问题","MySQL","Nacos","RabbitMQ","网络协议","Dubbo"]
             }
         ],
         yAxis: [
@@ -560,7 +550,7 @@
                 type: 'bar',
                 color: ['#82d3f4'],
                 barWidth : 18,
-                data: [13,7,6,4,4,4,4,3,3,3],
+                data: [13,13,7,6,4,4,4,4,4,3],
                 markPoint: {
                     symbolSize: 45,
                     data: [{
@@ -666,8 +656,7 @@
             
             <span id="year">2019</span>
             <a href="/about" target="_blank">豪哥</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">豪哥</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            |&nbsp;Powered by&nbsp;<a href="https://github.com/lucky2shh" target="_blank">豪哥</a>
             <br>
             
             
@@ -713,10 +702,6 @@
 
 
 
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
 
 </div>
     </div>

@@ -276,9 +276,7 @@
 
 
 <script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+    $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
 </script>
 
 
@@ -299,10 +297,19 @@
                 
                 
                 
+                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" title="微服务: 17">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F9EBEA;">微服务
+                        <span class="tag-length">17</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/ASM/" title="ASM: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F9EBEA;">ASM
+                            style="background-color: #F5EEF8;">ASM
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -311,7 +318,7 @@
                 <a href="/categories/Dubbo/" title="Dubbo: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F5EEF8;">Dubbo
+                            style="background-color: #D5F5E3;">Dubbo
                         <span class="tag-length">3</span>
                     </span>
                 </a>
@@ -320,7 +327,7 @@
                 <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" title="计算机: 10">
                     <span class="chip center-align waves-effect waves-light
                              chip-active "
-                            style="background-color: #D5F5E3;">计算机
+                            style="background-color: #E8F8F5;">计算机
                         <span class="tag-length">10</span>
                     </span>
                 </a>
@@ -329,7 +336,7 @@
                 <a href="/categories/Canal/" title="Canal: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #E8F8F5;">Canal
+                            style="background-color: #FEF9E7;">Canal
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -338,7 +345,7 @@
                 <a href="/categories/Consul/" title="Consul: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #FEF9E7;">Consul
+                            style="background-color: #F8F9F9;">Consul
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -347,7 +354,7 @@
                 <a href="/categories/Docker/" title="Docker: 13">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8F9F9;">Docker
+                            style="background-color: #82E0AA;">Docker
                         <span class="tag-length">13</span>
                     </span>
                 </a>
@@ -356,7 +363,7 @@
                 <a href="/categories/ElasticSearch/" title="ElasticSearch: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #82E0AA;">ElasticSearch
+                            style="background-color: #D7BDE2;">ElasticSearch
                         <span class="tag-length">2</span>
                     </span>
                 </a>
@@ -365,7 +372,7 @@
                 <a href="/categories/Eureka/" title="Eureka: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #D7BDE2;">Eureka
+                            style="background-color: #A3E4D7;">Eureka
                         <span class="tag-length">2</span>
                     </span>
                 </a>
@@ -374,7 +381,7 @@
                 <a href="/categories/Feign/" title="Feign: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #A3E4D7;">Feign
+                            style="background-color: #85C1E9;">Feign
                         <span class="tag-length">2</span>
                     </span>
                 </a>
@@ -383,7 +390,7 @@
                 <a href="/categories/Gateway/" title="Gateway: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #85C1E9;">Gateway
+                            style="background-color: #F8C471;">Gateway
                         <span class="tag-length">1</span>
                     </span>
                 </a>
@@ -392,17 +399,8 @@
                 <a href="/categories/KafKa/" title="KafKa: 2">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
-                            style="background-color: #F8C471;">KafKa
+                            style="background-color: #F9E79F;">KafKa
                         <span class="tag-length">2</span>
-                    </span>
-                </a>
-                
-                
-                <a href="/categories/Linux/" title="Linux: 3">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F9E79F;">Linux
-                        <span class="tag-length">3</span>
                     </span>
                 </a>
                 
@@ -416,6 +414,15 @@
                 </a>
                 
                 
+                <a href="/categories/Linux/" title="Linux: 3">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #E8F8F5;">Linux
+                        <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
                 <a href="/categories/MyBatis/" title="MyBatis: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -425,11 +432,11 @@
                 </a>
                 
                 
-                <a href="/categories/MySQL/" title="MySQL: 5">
+                <a href="/categories/MySQL/" title="MySQL: 6">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #F9EBEA;">MySQL
-                        <span class="tag-length">5</span>
+                        <span class="tag-length">6</span>
                     </span>
                 </a>
                 
@@ -461,11 +468,11 @@
                 </a>
                 
                 
-                <a href="/categories/Redis/" title="Redis: 6">
+                <a href="/categories/Redis/" title="Redis: 7">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #F9EBEA;">Redis
-                        <span class="tag-length">6</span>
+                        <span class="tag-length">7</span>
                     </span>
                 </a>
                 
@@ -542,15 +549,6 @@
                 </a>
                 
                 
-                <a href="/categories/Markdown/" title="Markdown: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #F8F9F9;">Markdown
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/%E5%B9%B6%E5%8F%91/" title="并发: 1">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
@@ -565,6 +563,15 @@
                              chip-default "
                             style="background-color: #85C1E9;">数据与算法
                         <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" title="消息队列: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #F5EEF8;">消息队列
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -591,7 +598,7 @@
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/zong-xian-zhi-shi-zong-jie/">
+                    <a href="/2023/08/07/zong-xian-zhi-shi-zong-jie/">
                         <div class="card-image tag-image">
                             
                             
@@ -611,7 +618,7 @@ Pentium系统结构图如下所示：
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
@@ -640,7 +647,7 @@ Pentium系统结构图如下所示：
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/tcp-ji-chu-zhi-shi/">
+                    <a href="/2023/08/07/tcp-ji-chu-zhi-shi/">
                         <div class="card-image tag-image">
                             
                             
@@ -663,7 +670,7 @@ OSI七层协议模型包括：应
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
@@ -696,7 +703,7 @@ OSI七层协议模型包括：应
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/ip-tu-biao-jie-xi/">
+                    <a href="/2023/08/07/ip-tu-biao-jie-xi/">
                         <div class="card-image tag-image">
                             
                             
@@ -708,15 +715,15 @@ OSI七层协议模型包括：应
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                IP基本认识IP作用IP 在 TCP&#x2F;IP 参考模型中处于第三层，即 ⽹络层。
+                                IP基本认识IP作用IP 在 TCP&#x2F;IP 参考模型中处于第三层，即⽹络层。
 ⽹络层主要作⽤：实现主机之间的通信，也叫点对点（end to end）通信。
 
-IP与MAC关系MAC 作⽤：实现两个直连设备间的通信；IP 实现两个
+IP与MAC关系MAC可以实现两个直连设备间的通信；IP可以实现两个无直
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
@@ -749,7 +756,7 @@ IP与MAC关系MAC 作⽤：实现两个直连设备间的通信；IP 实现两�
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/http-ji-chu-zhi-shi/">
+                    <a href="/2023/08/07/http-ji-chu-zhi-shi/">
                         <div class="card-image tag-image">
                             
                             
@@ -773,7 +780,7 @@ IP与MAC关系MAC 作⽤：实现两个直连设备间的通信；IP 实现两�
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
@@ -806,7 +813,7 @@ IP与MAC关系MAC 作⽤：实现两个直连设备间的通信；IP 实现两�
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/http-chang-jian-wen-da/">
+                    <a href="/2023/08/07/http-chang-jian-wen-da/">
                         <div class="card-image tag-image">
                             
                             
@@ -824,7 +831,7 @@ IP与MAC关系MAC 作⽤：实现两个直连设备间的通信；IP 实现两�
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
@@ -857,7 +864,7 @@ IP与MAC关系MAC 作⽤：实现两个直连设备间的通信；IP 实现两�
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/cun-chu-qi-zhi-shi-zong-jie/">
+                    <a href="/2023/08/07/cun-chu-qi-zhi-shi-zong-jie/">
                         <div class="card-image tag-image">
                             
                             
@@ -869,15 +876,16 @@ IP与MAC关系MAC 作⽤：实现两个直连设备间的通信；IP 实现两�
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、存储器简介计算机的第二个主要部件就是 存储器。
+                                1、概述计算机的第二个主要部件就是存储器。
 理想情形下，存储器应该快、大 且 便宜。但目前 无法同时满足 这三项，于是存储器系统采用一种分层结构，如下图所示。
 
-2、存储分类2.1、寄存器存储器系统顶层 一般说的是 CPU中的寄存器
+2、存储分类2.1、寄存器存储器系统顶层一般说的是CPU中的寄存器。
+寄存器使
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
@@ -910,7 +918,7 @@ IP与MAC关系MAC 作⽤：实现两个直连设备间的通信；IP 实现两�
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/ci-pan-guan-li-zhi-shi-zong-jie/">
+                    <a href="/2023/08/07/ci-pan-guan-li-zhi-shi-zong-jie/">
                         <div class="card-image tag-image">
                             
                             
@@ -932,7 +940,7 @@ IP与MAC关系MAC 作⽤：实现两个直连设备间的通信；IP 实现两�
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
@@ -965,7 +973,7 @@ IP与MAC关系MAC 作⽤：实现两个直连设备间的通信；IP 实现两�
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/netty-zhi-shi-dian-zong-jie/">
+                    <a href="/2023/08/07/netty-zhi-shi-dian-zong-jie/">
                         <div class="card-image tag-image">
                             
                             
@@ -986,7 +994,7 @@ TCP粘包&#x2F;拆包发送的原因
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
@@ -1019,7 +1027,7 @@ TCP粘包&#x2F;拆包发送的原因
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/io-zhi-shi-zong-jie/">
+                    <a href="/2023/08/07/io-zhi-shi-zong-jie/">
                         <div class="card-image tag-image">
                             
                             
@@ -1039,7 +1047,7 @@ Epoll 适用于 Linux；而 IOCP 适用
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
@@ -1068,7 +1076,7 @@ Epoll 适用于 Linux；而 IOCP 适用
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/cpu-zhi-shi-zong-jie/">
+                    <a href="/2023/08/07/cpu-zhi-shi-zong-jie/">
                         <div class="card-image tag-image">
                             
                             
@@ -1087,7 +1095,7 @@ CPU是各种功
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
@@ -1185,8 +1193,7 @@ CPU是各种功
             
             <span id="year">2019</span>
             <a href="/about" target="_blank">豪哥</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">豪哥</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            |&nbsp;Powered by&nbsp;<a href="https://github.com/lucky2shh" target="_blank">豪哥</a>
             <br>
             
             
@@ -1232,10 +1239,6 @@ CPU是各种功
 
 
 
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
 
 </div>
     </div>

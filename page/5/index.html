@@ -277,9 +277,7 @@
 
 
 <script>
-    // 每天切换 banner 图.  Switch banner image every day.
-    var bannerUrl = "/medias/banner/" + new Date().getDay() + '.jpg';
-    $('.bg-cover').css('background-image', 'url(' + bannerUrl + ')');
+    $('.bg-cover').css('background-image', 'url(/medias/banner/0.jpg)');
 </script>
 
 
@@ -299,34 +297,35 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/feign-ji-ben-shi-yong/">
+                    <a href="/2023/08/07/nacos-ji-ben-shi-yong/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="Feign系列-Feign基础应用">
+                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Nacos系列-Nacos基础应用">
                             
-                            <span class="card-title">Feign系列-Feign基础应用</span>
+                            <span class="card-title">Nacos系列-Nacos基础应用</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、加入依赖&lt;dependency>
-    &lt;groupId>org.springframework.cloud&lt;/groupId>
-    &lt;artifactId>spring-cloud-starter-ope
+                                1、注册中心搭建1.1、启动Nacos服务./nacos/bin/startup.sh
+
+2、注册服务2.1、添加依赖&lt;dependency>
+    &lt;groupId>com.alibaba.cloud&lt;/groupId
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Feign/" class="post-category">
-                                    Feign
+                                <a href="/categories/Nacos/" class="post-category">
+                                    Nacos
                                 </a>
                                 
                                 
@@ -337,12 +336,12 @@
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Feign/">
-                            <span class="chip bg-color">Feign</span>
+                        <a href="/tags/Nacos/">
+                            <span class="chip bg-color">Nacos</span>
                         </a>
                         
-                        <a href="/tags/Feign%E5%9F%BA%E7%A1%80/">
-                            <span class="chip bg-color">Feign基础</span>
+                        <a href="/tags/Nacos%E5%9F%BA%E7%A1%80/">
+                            <span class="chip bg-color">Nacos基础</span>
                         </a>
                         
                     </div>
@@ -352,34 +351,33 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/gateway-ji-ben-shi-yong/">
+                    <a href="/2023/08/07/nacos-di-ceng-yuan-li/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/7.jpg" class="responsive-img" alt="Gateway系列-Gateway基础应用">
+                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Nacos系列-Nacos原理解析">
                             
-                            <span class="card-title">Gateway系列-Gateway基础应用</span>
+                            <span class="card-title">Nacos系列-Nacos原理解析</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、加入依赖&lt;dependency>
-    &lt;groupId>org.springframework.cloud&lt;/groupId>
-    &lt;artifactId>spring-cloud-starter-gat
+                                1、服务注册1.1、客户端- SPring启动时 加载 自动配置类 NacosServiceRegistryAutoConfiguration
+- 注入 return new NacosAutoServiceRegistration(...
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Gateway/" class="post-category">
-                                    Gateway
+                                <a href="/categories/Nacos/" class="post-category">
+                                    Nacos
                                 </a>
                                 
                                 
@@ -390,79 +388,12 @@
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Gateway/">
-                            <span class="chip bg-color">Gateway</span>
+                        <a href="/tags/Nacos/">
+                            <span class="chip bg-color">Nacos</span>
                         </a>
                         
-                        <a href="/tags/Gateway%E5%9F%BA%E7%A1%80/">
-                            <span class="chip bg-color">Gateway基础</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/07/30/kafka-di-ceng-yuan-li/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/23.jpg" class="responsive-img" alt="Kafka系列-KafKa原理解析">
-                            
-                            <span class="card-title">Kafka系列-KafKa原理解析</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                1、生产者1.1、生产者客户端流程
-配置信息
-服务器
-key&#x2F;val序列化
-
-
-生产者实例
-KafkaProducer
-
-
-构造消息
-消息 ProducerRecord
-消息元数据 RecordMetadata
-
-
-发送消息
-三种
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/KafKa/" class="post-category">
-                                    KafKa
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/KafKa/">
-                            <span class="chip bg-color">KafKa</span>
-                        </a>
-                        
-                        <a href="/tags/KafKa%E5%8E%9F%E7%90%86/">
-                            <span class="chip bg-color">KafKa原理</span>
+                        <a href="/tags/Nacos%E5%8E%9F%E7%90%86/">
+                            <span class="chip bg-color">Nacos原理</span>
                         </a>
                         
                     </div>
@@ -472,7 +403,7 @@ KafkaProducer
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/eureka-ji-ben-shi-yong/">
+                    <a href="/2023/08/07/eureka-ji-ben-shi-yong/">
                         <div class="card-image">
                             
                             
@@ -492,7 +423,7 @@ KafkaProducer
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
@@ -525,7 +456,7 @@ KafkaProducer
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/eureka-di-ceng-yuan-li/">
+                    <a href="/2023/08/07/eureka-di-ceng-yuan-li/">
                         <div class="card-image">
                             
                             
@@ -548,7 +479,7 @@ KafkaProducer
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
@@ -581,34 +512,35 @@ KafkaProducer
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/feign-di-ceng-yuan-li/">
+                    <a href="/2023/08/07/consul-ji-ben-shi-yong/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Feign系列-Feign原理解析">
+                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Consul系列-Consul基础应用">
                             
-                            <span class="card-title">Feign系列-Feign原理解析</span>
+                            <span class="card-title">Consul系列-Consul基础应用</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、服务调用1.1、包装请求feign调用过程中会经过多个拦截器（RequestInterceptor），拦截器会对 feign 调用进行包装与增强。
-Feign调用问题1.1、丢失请求头1.1.1、场景再现以 服务1 调用 服务2为例。
+                                1、注册中心搭建1.1、启动Nacos服务consule/consul.exe
 
+2、注册服务2.1、添加依赖&lt;dependency>
+    &lt;groupId>org.springframework.cloud&lt;/gro
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Feign/" class="post-category">
-                                    Feign
+                                <a href="/categories/Consul/" class="post-category">
+                                    Consul
                                 </a>
                                 
                                 
@@ -619,12 +551,12 @@ Feign调用问题1.1、丢失请求头1.1.1、场景再现以 服务1 调用 服
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Feign/">
-                            <span class="chip bg-color">Feign</span>
+                        <a href="/tags/Consul/">
+                            <span class="chip bg-color">Consul</span>
                         </a>
                         
-                        <a href="/tags/Feign%E5%8E%9F%E7%90%86/">
-                            <span class="chip bg-color">Feign原理</span>
+                        <a href="/tags/Consul%E5%9F%BA%E7%A1%80/">
+                            <span class="chip bg-color">Consul基础</span>
                         </a>
                         
                     </div>
@@ -634,32 +566,32 @@ Feign调用问题1.1、丢失请求头1.1.1、场景再现以 服务1 调用 服
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/elasticsearch-ji-chu-ru-men/">
+                    <a href="/2023/08/07/zookeeper-ji-chu-ru-men/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="ElasticSearch系列-ElasticSearch基础应用">
+                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Zookeeper系列-Zookeeper基础应用">
                             
-                            <span class="card-title">ElasticSearch系列-ElasticSearch基础应用</span>
+                            <span class="card-title">Zookeeper系列-Zookeeper基础应用</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、ES概述1.1、何为ESElaticsearch，简称为es， es是一个开源的高扩展的分布式全文检索引擎，它可以近乎实时的存储、检索数据；本身扩展性很好，可以扩展到上百台服务器，处理PB级别数据。es也使用Java开发并使用Lucen
+                                1、概述1.1、何为Zookeeper官方文档解释：Zookeeper是一个分布式服务框架，是Apache Hadoop 的一个子项目，它主要是用来解决分布式应用中经常遇到的一些数据管理问题，如：统一命名服务、状态同步服务、集群管理、分布式
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/ElasticSearch/" class="post-category">
-                                    ElasticSearch
+                                <a href="/categories/Zookeeper/" class="post-category">
+                                    Zookeeper
                                 </a>
                                 
                                 
@@ -669,72 +601,15 @@ Feign调用问题1.1、丢失请求头1.1.1、场景再现以 服务1 调用 服
 
                     
                     <div class="card-action article-tags">
-                        
-                        <a href="/tags/ElasticSearch/">
-                            <span class="chip bg-color">ElasticSearch</span>
-                        </a>
-                        
-                        <a href="/tags/ElasticSearch%E5%9F%BA%E7%A1%80/">
-                            <span class="chip bg-color">ElasticSearch基础</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/07/30/docker-zhi-zookeeper-huan-jing-da-jian/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Docker系列-Zookeeper环境搭建">
-                            
-                            <span class="card-title">Docker系列-Zookeeper环境搭建</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                单例环境1.1、准备工作（1）创建本地数据卷目录
-mkdir -p /home/docker/containers/zookeeper
-
-（2）拉取镜像
-docker pull zookeeper:3.6.4
-
-1.2、启动容器（1）把zo
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Docker/" class="post-category">
-                                    Docker
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Docker/">
-                            <span class="chip bg-color">Docker</span>
-                        </a>
                         
                         <a href="/tags/Zookeeper/">
                             <span class="chip bg-color">Zookeeper</span>
                         </a>
                         
+                        <a href="/tags/Zookeeper%E5%9F%BA%E7%A1%80/">
+                            <span class="chip bg-color">Zookeeper基础</span>
+                        </a>
+                        
                     </div>
                     
                 </div>
@@ -742,33 +617,33 @@ docker pull zookeeper:3.6.4
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/elasticsearch-huan-jing-da-jian/">
+                    <a href="/2023/08/07/nginx-ji-ben-ying-yong/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="ElasticSearch系列-ElasticSearch环境搭建">
+                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="Nginx系列-Nginx基础应用">
                             
-                            <span class="card-title">ElasticSearch系列-ElasticSearch环境搭建</span>
+                            <span class="card-title">Nginx系列-Nginx基础应用</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、ElasticSearch单节点1.1、下载ES压缩包ElasticSearch分为Linux和Window版本。
-ElasticSearch的官方地址： https://www.elastic.co/products/elastics
+                                目录结构Nginx主目录有如下文件，其中 带temp后缀 的文件夹在刚安装后是没有的，主要用来存放运行过程中的临时文件。
+client_body_temp、conf、fastcgi_temp、html、logs、proxy_temp、sbi
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/ElasticSearch/" class="post-category">
-                                    ElasticSearch
+                                <a href="/categories/Nginx/" class="post-category">
+                                    Nginx
                                 </a>
                                 
                                 
@@ -779,12 +654,12 @@ ElasticSearch的官方地址： https://www.elastic.co/products/elastics
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/ElasticSearch/">
-                            <span class="chip bg-color">ElasticSearch</span>
+                        <a href="/tags/Nginx/">
+                            <span class="chip bg-color">Nginx</span>
                         </a>
                         
-                        <a href="/tags/ElasticSearch%E7%8E%AF%E5%A2%83/">
-                            <span class="chip bg-color">ElasticSearch环境</span>
+                        <a href="/tags/Nginx%E5%9F%BA%E7%A1%80/">
+                            <span class="chip bg-color">Nginx基础</span>
                         </a>
                         
                     </div>
@@ -794,36 +669,35 @@ ElasticSearch的官方地址： https://www.elastic.co/products/elastics
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/docker-zhi-rabbitmq-huan-jing-da-jian/">
+                    <a href="/2023/08/07/xiao-xi-zhong-jian-jian-dui-bi-zong-jie/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="Docker系列-RabbitMQ环境搭建">
+                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="消息队列系列-消息队列框架对比">
                             
-                            <span class="card-title">Docker系列-RabbitMQ环境搭建</span>
+                            <span class="card-title">消息队列系列-消息队列框架对比</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、单例环境1.1、准备工作（1）创建本地数据挂载目录
-mkdir -p /home/docker/containers/rabbitmq/data
+                                消息中间件使用场景削峰填谷解耦广播最终一致性消息中间件优劣总结RabbitMQRabbitMQ 发布于 2007年，基于AMQP（高级消息队列协议）设计而成的可复用企业消息系统。
+优点：
 
-（2）拉取rabbitmq-management镜像
-# docker.io/libra
+由于erlang语言的特性，mq 性能较好，支持高
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Docker/" class="post-category">
-                                    Docker
+                                <a href="/categories/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/" class="post-category">
+                                    消息队列
                                 </a>
                                 
                                 
@@ -834,14 +708,173 @@ mkdir -p /home/docker/containers/rabbitmq/data
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Docker/">
-                            <span class="chip bg-color">Docker</span>
+                        <a href="/tags/%E6%B6%88%E6%81%AF%E9%98%9F%E5%88%97/">
+                            <span class="chip bg-color">消息队列</span>
                         </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/08/07/rocketmq-ji-chu-ying-yong/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="RocketMQ系列-RocketMQ基础应用">
+                            
+                            <span class="card-title">RocketMQ系列-RocketMQ基础应用</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                1、RocketMQ是啥1.1.、RocketMQ简介RocketMQ 是一个 开源分布式消息系统，提供低延时、高可靠的消息发布与订阅服务。
+1.2、角色成员1.2.1、Message Model（消息模型）RocketMQ主要由Produ
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/RocketMQ/" class="post-category">
+                                    RocketMQ
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/RocketMQ/">
+                            <span class="chip bg-color">RocketMQ</span>
+                        </a>
+                        
+                        <a href="/tags/RocketMQ%E5%9F%BA%E7%A1%80/">
+                            <span class="chip bg-color">RocketMQ基础</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/08/07/rocketmq-di-ceng-yuan-li/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="RocketMQ系列-RocketMQ原理解析">
+                            
+                            <span class="card-title">RocketMQ系列-RocketMQ原理解析</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                1、消息存储 
+消息存储是RocketMQ中最复杂和最重要的一部分，下面将从 RocketMQ消息存储整体架构、PageCache与Mmap内存映射、RocketMQ中两种不同的刷盘方式等 三方面来展开叙述。
+1.1、消息存储架构消息存储架
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/RocketMQ/" class="post-category">
+                                    RocketMQ
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/RocketMQ/">
+                            <span class="chip bg-color">RocketMQ</span>
+                        </a>
+                        
+                        <a href="/tags/RocketMQ%E5%8E%9F%E7%90%86/">
+                            <span class="chip bg-color">RocketMQ原理</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/08/07/rabbitmq-jie-jue-fang-an/">
+                        <div class="card-image">
+                            
+                            
+                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="RabbitMQ系列-RabbitMQ常见业务问题">
+                            
+                            <span class="card-title">RabbitMQ系列-RabbitMQ常见业务问题</span>
+                        </div>
+                    </a>
+
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                1、消息丢失1.1、丢失类型及解决方案
+消息发送出去，由于网络原因 没有 送达服务器。
+做好容错（try-catch），失败后要有重试机制，可记录到数据，然后定期扫描重发。
+做好日志记录。
+做好定期重发。
+
+
+消息到达服务器后，broker
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/RabbitMQ/" class="post-category">
+                                    RabbitMQ
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
                         
                         <a href="/tags/RabbitMQ/">
                             <span class="chip bg-color">RabbitMQ</span>
                         </a>
                         
+                        <a href="/tags/RabbitMQ%E9%97%AE%E9%A2%98/">
+                            <span class="chip bg-color">RabbitMQ问题</span>
+                        </a>
+                        
                     </div>
                     
                 </div>
@@ -849,38 +882,33 @@ mkdir -p /home/docker/containers/rabbitmq/data
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/07/30/docker-zhi-redis-huan-jing-da-jian/">
+                    <a href="/2023/08/07/rabbitmq-ji-chu-ru-men/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Docker系列-Redis环境搭建">
+                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="RabbitMQ系列-RabbitMQ基础应用">
                             
-                            <span class="card-title">Docker系列-Redis环境搭建</span>
+                            <span class="card-title">RabbitMQ系列-RabbitMQ基础应用</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、单例环境1.1、准备工作（1）创建数据挂载目录
-mkdir -p /home/docker/containers/redis/&#123;data,conf&#125;
-
-（2）拉取redis镜像
-docker pull redis
-
-
+                                1、 RabbitMQ概述1.1、何为RabbitMQRabbitMQ是一种开源的消息队列软件，它实现了高级消息队列协议 AMQP 的标准。它是一种可靠、灵活和可扩展的消息队列，用于在应用程序之间进行异步消息传递。
+1.2、用户1.2.1、
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/Docker/" class="post-category">
-                                    Docker
+                                <a href="/categories/RabbitMQ/" class="post-category">
+                                    RabbitMQ
                                 </a>
                                 
                                 
@@ -891,69 +919,12 @@ docker pull redis
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/Docker/">
-                            <span class="chip bg-color">Docker</span>
+                        <a href="/tags/RabbitMQ/">
+                            <span class="chip bg-color">RabbitMQ</span>
                         </a>
                         
-                        <a href="/tags/Redis/">
-                            <span class="chip bg-color">Redis</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/07/30/docker-zhi-xxl-job-huan-jing-da-jian/">
-                        <div class="card-image">
-                            
-                            
-                            <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Docker系列-XXLJOB环境搭建">
-                            
-                            <span class="card-title">Docker系列-XXLJOB环境搭建</span>
-                        </div>
-                    </a>
-
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                单例环境1.1、准备工作（1）创建本地数据卷目录
-mkdir -p /home/docker/containers/xxljob/data
-
-（2）拉取镜像
-docker pull xxl-job-admin
-
-1.2、启动容器（1）启动容
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-30
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/Docker/" class="post-category">
-                                    Docker
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/Docker/">
-                            <span class="chip bg-color">Docker</span>
-                        </a>
-                        
-                        <a href="/tags/XXLJOB/">
-                            <span class="chip bg-color">XXLJOB</span>
+                        <a href="/tags/RabbitMQ%E5%9F%BA%E7%A1%80/">
+                            <span class="chip bg-color">RabbitMQ基础</span>
                         </a>
                         
                     </div>
@@ -978,7 +949,7 @@ docker pull xxl-job-admin
             
         </div>
         <div class="page-info col m4 l4 hide-on-small-only">
-            <div class="center-align b-text-gray">5 / 8</div>
+            <div class="center-align b-text-gray">5 / 9</div>
         </div>
         <div class="col s6 m4 l4">
             
@@ -1058,8 +1029,7 @@ docker pull xxl-job-admin
             
             <span id="year">2019</span>
             <a href="/about" target="_blank">豪哥</a>
-            |&nbsp;Powered by&nbsp;<a href="https://hexo.io/" target="_blank">豪哥</a>
-            |&nbsp;Theme&nbsp;<a href="https://github.com/blinkfox/hexo-theme-matery" target="_blank">Matery</a>
+            |&nbsp;Powered by&nbsp;<a href="https://github.com/lucky2shh" target="_blank">豪哥</a>
             <br>
             
             
@@ -1105,10 +1075,6 @@ docker pull xxl-job-admin
 
 
 
-
-    <a href="/atom.xml" class="tooltipped" target="_blank" data-tooltip="RSS 订阅" data-position="top" data-delay="50">
-        <i class="fas fa-rss"></i>
-    </a>
 
 </div>
     </div>
