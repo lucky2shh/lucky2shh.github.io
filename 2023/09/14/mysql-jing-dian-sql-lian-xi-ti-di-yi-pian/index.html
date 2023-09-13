@@ -1,0 +1,2591 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="MySQL系列-MySQL经典SQL练习题第一篇, 豪哥博客">
+    <meta name="description" content="豪哥个人博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>MySQL系列-MySQL经典SQL练习题第一篇 | 豪哥博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">豪哥博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">豪哥博客</div>
+        <div class="logo-desc">
+            
+            豪哥个人博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/14.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">MySQL系列-MySQL经典SQL练习题第一篇</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/SQL%E7%BB%83%E4%B9%A0/">
+                                <span class="chip bg-color">SQL练习</span>
+                            </a>
+                        
+                            <a href="/tags/MySQL%E7%BB%83%E4%B9%A0/">
+                                <span class="chip bg-color">MySQL练习</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/MySQL/" class="post-category">
+                                MySQL
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-09-14
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2023-07-31
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    7.2k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="1、准备环境"><a href="#1、准备环境" class="headerlink" title="1、准备环境"></a>1、准备环境</h1><h2 id="1-1、建表"><a href="#1-1、建表" class="headerlink" title="1.1、建表"></a>1.1、建表</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">CREATE TABLE &#96;s1_student&#96; (
+  &#96;sid&#96; int(11) NOT NULL COMMENT &#39;学生ID&#39;,
+  &#96;sname&#96; varchar(255) COLLATE utf8mb4_general_ci NOT NULL COMMENT &#39;学生名字&#39;,
+  &#96;age&#96; tinyint(4) DEFAULT NULL COMMENT &#39;学生年龄&#39;,
+  &#96;sex&#96; char(2) COLLATE utf8mb4_general_ci DEFAULT NULL COMMENT &#39;学生性别&#39;
+) ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;utf8mb4 COLLATE&#x3D;utf8mb4_general_ci;
+
+CREATE TABLE &#96;s1_teacher&#96; (
+  &#96;tid&#96; int(11) NOT NULL COMMENT &#39;教师ID&#39;,
+  &#96;tname&#96; varchar(255) COLLATE utf8mb4_general_ci NOT NULL COMMENT &#39;教师名字&#39;,
+  PRIMARY KEY (&#96;tid&#96;)
+) ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;utf8mb4 COLLATE&#x3D;utf8mb4_general_ci;
+
+CREATE TABLE &#96;s1_course&#96; (
+  &#96;cid&#96; int(11) NOT NULL COMMENT &#39;课程ID&#39;,
+  &#96;cname&#96; varchar(255) COLLATE utf8mb4_general_ci NOT NULL COMMENT &#39;课程名字&#39;,
+  &#96;tid&#96; int(11) NOT NULL COMMENT &#39;教师ID&#39;,
+  PRIMARY KEY (&#96;cid&#96;)
+) ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;utf8mb4 COLLATE&#x3D;utf8mb4_general_ci;
+
+CREATE TABLE &#96;s1_score&#96; (
+  &#96;sid&#96; int(11) NOT NULL COMMENT &#39;学生ID&#39;,
+  &#96;cid&#96; int(11) NOT NULL COMMENT &#39;课程ID&#39;,
+  &#96;score&#96; smallint(6) NOT NULL COMMENT &#39;成绩&#39;,
+  PRIMARY KEY (&#96;sid&#96;)
+) ENGINE&#x3D;InnoDB DEFAULT CHARSET&#x3D;utf8mb4 COLLATE&#x3D;utf8mb4_general_ci;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="1-2、插入数据"><a href="#1-2、插入数据" class="headerlink" title="1.2、插入数据"></a>1.2、插入数据</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">insert into s1_student values(1 , &#39;赵雷&#39; , 18 , &#39;男&#39;),
+(2 , &#39;钱电&#39; , 18 , &#39;男&#39;),
+(3 , &#39;孙风&#39; , 18 , &#39;男&#39;), 
+(4 , &#39;李云&#39; , 18 , &#39;男&#39;), 
+(5 , &#39;周梅&#39; , 19 , &#39;女&#39;), 
+(6 , &#39;吴兰&#39; , 19 , &#39;女&#39;), 
+(7 , &#39;郑竹&#39; , 19 , &#39;女&#39;), 
+(8 , &#39;张三&#39; , 21 , &#39;女&#39;), 
+(9 , &#39;李四&#39; , 21 , &#39;女&#39;), 
+(10 , &#39;李四&#39; , 22 , &#39;女&#39;), 
+(12 , &#39;赵六&#39; , 23 , &#39;女&#39;), 
+(13 , &#39;孙七&#39; , 25 , &#39;女&#39;); 
+
+insert into s1_teacher values(1, &#39;张三&#39;),
+(2, &#39;李四&#39;),
+(3, &#39;王五&#39;); 
+
+insert into s1_course values(1 , &#39;语文&#39; , 2),
+(2 , &#39;数学&#39;, 1),
+(3 , &#39;英语&#39;, 3);
+
+insert into s1_score values(1, 1, 80),
+(1, 2, 90),
+(1, 3, 99), 
+(2, 1, 70), 
+(2, 2, 60),
+(2, 3, 80), 
+(3, 1, 80), 
+(3, 2, 80), 
+(3, 3, 80), 
+(4, 1, 50), 
+(4, 2, 30), 
+(4, 3, 20), 
+(5, 1, 76), 
+(5, 2, 87), 
+(6, 1, 31), 
+(6, 3, 34), 
+(7, 2, 89), 
+(7, 3, 98);<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="1-3、检查表数据是否插入成功"><a href="#1-3、检查表数据是否插入成功" class="headerlink" title="1.3、检查表数据是否插入成功"></a>1.3、检查表数据是否插入成功</h2><p>select * from s1_student;</p>
+<p>select * from s1_teacher;</p>
+<p>select * from s1_course;</p>
+<p>select * from s1_score;</p>
+<h1 id="2、SQL练习"><a href="#2、SQL练习" class="headerlink" title="2、SQL练习"></a>2、SQL练习</h1><h2 id="2-1、查询-课程1比课程2成绩高的学生信息及课程分数"><a href="#2-1、查询-课程1比课程2成绩高的学生信息及课程分数" class="headerlink" title="2.1、查询 课程1比课程2成绩高的学生信息及课程分数"></a>2.1、查询 课程1比课程2成绩高的学生信息及课程分数</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select ss1.sid, st.sname, s.cid, s.score
+from(
+	select s1.sid, s1.cid, s1.score as &#39;语文&#39;, s2.score as &#39;数学&#39;
+	from (
+		select sid, cid, score from s1_score s where s.cid &#x3D; 1
+	) s1
+	left join (
+		select sid, cid, score from s1_score s where s.cid &#x3D; 2
+	) s2
+	on s1.sid &#x3D; s2.sid
+	where s1.score &gt; s2.score
+) ss1
+join s1_student st on ss1.sid &#x3D; st.sid
+join s1_score s on ss1.sid &#x3D; s.sid; 
+
+
+# 解法2
+select 
+	st.*,
+	oo1.c1_score as &quot;课程1成绩&quot;,
+	oo1.c2_score as &quot;课程2成绩&quot;
+from s1_student as st
+join(
+	select 
+		o1.sid, 
+		o1.score as &quot;c1_score&quot;,
+		o2.score as &quot;c2_score&quot;
+	from (
+		select s.sid, s.cid, s.score
+		from s1_score as s
+		where s.cid &#x3D; 1
+	) as o1
+	left join (
+		select s.sid, s.cid, s.score
+		from s1_score as s
+		where s.cid &#x3D; 2
+	) as o2 on o1.sid &#x3D; o2.sid
+	where o1.score &gt; o2.score
+) as oo1 on st.sid &#x3D; oo1.sid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-2、查询-课程1和课程2都学习的学生信息"><a href="#2-2、查询-课程1和课程2都学习的学生信息" class="headerlink" title="2.2、查询 课程1和课程2都学习的学生信息"></a>2.2、查询 课程1和课程2都学习的学生信息</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select st.sid, st.sname
+from(
+	select ss1.sid
+	from(
+		select s.sid from s1_score s where s.cid &#x3D; 1
+	) as ss1
+	join(
+		select s.sid from s1_score s where s.cid &#x3D; 2
+	) as ss2
+	on ss1.sid &#x3D; ss2.sid
+) as r
+join s1_student st on r.sid &#x3D; st.sid
+
+# 解法2
+select st.*
+from (
+	select o1.sid
+	from (
+		select *
+		from s1_score as s
+		where s.cid &#x3D; 1 or s.cid &#x3D; 2
+	) as o1
+	group by o1.sid
+	having count(o1.cid) &#x3D; 2
+) as oo1
+join s1_student as st on oo1.sid &#x3D; st.sid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-3、查询-只学课程1不学课程2的情况，不存在显示null"><a href="#2-3、查询-只学课程1不学课程2的情况，不存在显示null" class="headerlink" title="2.3、查询 只学课程1不学课程2的情况，不存在显示null"></a>2.3、查询 只学课程1不学课程2的情况，不存在显示null</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select ss1.sid, ss1.cid, ss1.score, ss2.cid as &#39;v2cid&#39;, ss2.score as &#39;v2score&#39;
+from(
+	select s.sid, s.cid, s.score from s1_score s where s.cid &#x3D; 1
+) as ss1
+left join(
+	select s.sid, s.cid, s.score from s1_score s where s.cid &#x3D; 2
+) as ss2
+on ss1.sid &#x3D; ss2.sid;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-4、查询-不存在课程1，但存在课程2的情况"><a href="#2-4、查询-不存在课程1，但存在课程2的情况" class="headerlink" title="2.4、查询 不存在课程1，但存在课程2的情况"></a>2.4、查询 不存在课程1，但存在课程2的情况</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select ss1.sid, ss1.cid, ss1.score, ss2.cid as &#39;v2cid&#39;, ss2.score as &#39;v2score&#39;
+from(
+	select s.sid, s.cid, s.score from s1_score s where s.cid &#x3D; 1
+) as ss1
+right join(
+	select s.sid, s.cid, s.score from s1_score s where s.cid &#x3D; 2
+) as ss2
+on ss1.sid &#x3D; ss2.sid;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-5、查询-平均成绩等于60分的学生编号、学生姓名、平均成绩"><a href="#2-5、查询-平均成绩等于60分的学生编号、学生姓名、平均成绩" class="headerlink" title="2.5、查询 平均成绩等于60分的学生编号、学生姓名、平均成绩"></a>2.5、查询 平均成绩等于60分的学生编号、学生姓名、平均成绩</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select s1_student.sid, s1_student.sname, ss2.avg_score
+from s1_student
+right join(
+	select * from(
+		select sid, avg(score) as &#39;avg_score&#39; from s1_score group by sid
+	) as ss1 
+	where ss1.avg_score &gt;&#x3D; 60
+) as ss2
+on s1_student.sid &#x3D; ss2.sid
+
+# 解法2
+select
+	st.sid,
+	st.sname,
+	o1.score_avg as &quot;平均成绩&quot;
+from s1_student as st
+join (
+	select s.sid, avg(score) as &quot;score_avg&quot;
+	from s1_score as s
+	group by s.sid 
+	having avg(s.score) &gt;&#x3D; 60
+) as o1
+where st.sid &#x3D; o1.sid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-6、查询-在表s1-score有成绩数据的学生信息"><a href="#2-6、查询-在表s1-score有成绩数据的学生信息" class="headerlink" title="2.6、查询 在表s1_score有成绩数据的学生信息"></a>2.6、查询 在表s1_score有成绩数据的学生信息</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select s1.sid, st.sname
+from(
+	select DISTINCT sid from s1_score
+)as s1 
+join s1_student st on s1.sid &#x3D; st.sid;
+
+# 解法2
+select
+	st.*
+from s1_student as st
+join (
+	select distinct s.sid
+	from s1_score as s
+) as o1 on st.sid &#x3D; o1.sid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-7、查询-所有同学的学生编号、学生姓名、选课总数、所有课程总成绩，没成绩显示为null"><a href="#2-7、查询-所有同学的学生编号、学生姓名、选课总数、所有课程总成绩，没成绩显示为null" class="headerlink" title="2.7、查询 所有同学的学生编号、学生姓名、选课总数、所有课程总成绩，没成绩显示为null"></a>2.7、查询 所有同学的学生编号、学生姓名、选课总数、所有课程总成绩，没成绩显示为null</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select st.sid, st.sname, ss1.cnum as &#39;选课数量&#39;, ss1.ssum as &#39;总成绩&#39;
+from(
+	select sid, count(cid) as &#39;cnum&#39;, sum(score) as &#39;ssum&#39; 
+	from s1_score 
+	group by sid
+)as ss1 
+right join s1_student st on ss1.sid &#x3D; st.sid
+
+# 解法2
+select
+	st.sid,
+	st.sname,
+	o1.c_count as &quot;课程数量&quot;,
+	o1.score_sum as &quot;总成绩&quot;
+from s1_student as st
+left join (
+	select 
+		s.sid,
+		count(s.cid) as &quot;c_count&quot;,
+		sum(s.score) as &quot;score_sum&quot;
+	from s1_score as s
+	group by s.sid
+)as o1 on st.sid &#x3D; o1.sid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-8、查询-李姓老师的数量"><a href="#2-8、查询-李姓老师的数量" class="headerlink" title="2.8、查询 李姓老师的数量"></a>2.8、查询 李姓老师的数量</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select count(*) as &#39;李姓老师数量&#39;
+from s1_teacher t
+where t.tname like &#39;李%&#39;
+
+# 解法2
+select 
+	count(t.tid) as &quot;李姓老师数量&quot;
+from s1_teacher as t
+where t.tname like &quot;李%&quot;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-9、查询-学过张三老师课程的学生信息"><a href="#2-9、查询-学过张三老师课程的学生信息" class="headerlink" title="2.9、查询 学过张三老师课程的学生信息"></a>2.9、查询 学过张三老师课程的学生信息</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select ss2.sid, ss2.sname
+from(
+	select s.sid from s1_score s where s.cid &#x3D; (
+		select c.cid from s1_course c where c.tid &#x3D; (
+			select t.tid from s1_teacher t where t.tname&#x3D;&#39;张三&#39;
+		)
+	)
+) as ss1
+join s1_student ss2 on ss1.sid &#x3D; ss2.sid
+
+# 解法2
+select st.*
+from s1_student as st
+where st.sid in (
+	select s.sid
+	from s1_score as s
+	where s.cid in (
+		select c.cid
+		from s1_course as c
+		where c.tid &#x3D; (
+			select t.tid
+			from s1_teacher as t
+			where t.tname &#x3D; &quot;张三&quot;
+		)
+	)
+)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-10、查询-没有学完所有课程的学生信息"><a href="#2-10、查询-没有学完所有课程的学生信息" class="headerlink" title="2.10、查询 没有学完所有课程的学生信息"></a>2.10、查询 没有学完所有课程的学生信息</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 解法1
+select ss1.sid, ss1.sname, count(ss1.cid) as cnum
+from(
+	select s.sid, s.cid, st.sname
+	from s1_score s 
+	join s1_student st on s.sid &#x3D; st.sid
+)as ss1 
+group by ss1.sid, ss1.sname
+having cnum &lt; (select count(*) from s1_course)
+
+# 解法2
+select st.sid, st.sname
+from s1_student st
+join(
+	select s.sid, count(*) as &#39;cnum&#39;
+	from s1_score s 
+	group by s.sid 
+	having cnum &lt; (select count(*) from s1_course)
+)as ss1 on st.sid &#x3D; ss1.sid
+
+# 解法3
+select st.*
+from s1_student as st
+join (
+	select s.sid
+	from s1_score as s
+	group by s.sid
+	having count(s.cid) &lt; (
+		select count(*) from s1_course
+	)
+)as o1 on st.sid &#x3D; o1.sid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-11、查询-至少有一门与学生ID为1的学生学习的课程相同的学生信息"><a href="#2-11、查询-至少有一门与学生ID为1的学生学习的课程相同的学生信息" class="headerlink" title="2.11、查询 至少有一门与学生ID为1的学生学习的课程相同的学生信息"></a>2.11、查询 至少有一门与学生ID为1的学生学习的课程相同的学生信息</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select st.sid, st.sname
+from s1_student st
+join(
+	select DISTINCT s1.sid
+	from s1_score s1
+	where s1.sid !&#x3D; 1 and s1.cid in(
+		select s.cid
+		from s1_score s
+		where s.sid &#x3D; 1
+	)
+)as ss1 on st.sid &#x3D; ss1.sid
+
+# 解法2
+select st.*
+from s1_student as st
+join (
+	select distinct s.sid
+	from s1_score as s
+	where s.cid in (
+		select s.cid
+		from s1_score as s
+		where s.sid &#x3D; 1
+	) and s.sid !&#x3D; 1
+) as o1 on st.sid &#x3D; o1.sid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-12、查询-与学生ID为1的学生所学课程完全相同的学生信息"><a href="#2-12、查询-与学生ID为1的学生所学课程完全相同的学生信息" class="headerlink" title="2.12、查询 与学生ID为1的学生所学课程完全相同的学生信息"></a>2.12、查询 与学生ID为1的学生所学课程完全相同的学生信息</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select st.*
+from s1_student st
+where st.sid in(
+	select ss1.sid
+	from(
+		select os.sid, os.cid
+		from s1_score os
+		where os.sid in(
+			select s.sid
+			from s1_score s
+			where s.sid !&#x3D; 1
+			group by s.sid
+			having count(*) &#x3D; (select count(*) from s1_score where sid &#x3D; 1)
+		)
+	) as ss1
+	group by ss1.sid
+	having sum(ss1.cid) &#x3D; (
+		select sum(cid)
+		from s1_score
+		where sid &#x3D; 1
+	)
+)
+
+# 解法2
+select st.*
+from s1_student as st
+join (
+	select s.sid
+	from s1_score as s
+	join (
+		select cid
+		from s1_score
+		where sid &#x3D; 1
+	) as o1 on s.cid &#x3D; o1.cid and s.sid !&#x3D; 1
+	group by s.sid
+	having count(o1.cid) &#x3D; (
+		select count(cid) from s1_score where sid &#x3D; 1 group by sid 
+	)
+) as o1 on st.sid &#x3D; o1.sid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-13、查询没学过”张三”老师课程的学生姓名"><a href="#2-13、查询没学过”张三”老师课程的学生姓名" class="headerlink" title="2.13、查询没学过”张三”老师课程的学生姓名"></a>2.13、查询没学过”张三”老师课程的学生姓名</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select st.sid, st.sname
+from s1_student st
+where st.sid not in(
+	select s.sid
+	from s1_score as s
+	where s.cid &#x3D; (
+		select c.cid
+		from s1_course as c
+		where c.tid &#x3D; (select tid from s1_teacher where tname &#x3D; &#39;张三&#39;)
+	)
+)
+
+# 解法2
+select st.*
+from s1_student as st
+where st.sid not in (
+	select s.sid
+	from s1_score as s
+	where s.cid in (
+		select c.cid
+		from s1_course as c
+		where c.tid &#x3D; (
+			select t.tid
+			from s1_teacher as t
+			where t.tname &#x3D; &quot;张三&quot;
+		)
+	)
+)<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-14、查询有两门及以上课程不及格的同学学号，姓名及其平均成绩"><a href="#2-14、查询有两门及以上课程不及格的同学学号，姓名及其平均成绩" class="headerlink" title="2.14、查询有两门及以上课程不及格的同学学号，姓名及其平均成绩"></a>2.14、查询有两门及以上课程不及格的同学学号，姓名及其平均成绩</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select ost.sid, ost.sname, ss1.avg_score 
+from s1_student ost
+join(
+	select os.sid, avg(os.score) as avg_score
+	from s1_score os
+	where os.sid in(
+		select s.sid
+		from s1_score as s
+		where s.score &lt; 60
+		group by s.sid
+		having count(s.sid) &gt;&#x3D; 2
+	)
+	group by os.sid
+) as ss1 on ost.sid &#x3D; ss1.sid
+
+# 解法2
+select
+	st.*,
+	o2.score_avg as &quot;平均成绩&quot;
+from s1_student as st
+join (
+	select s2.sid, avg(s2.score) as &quot;score_avg&quot;
+	from s1_score as s2
+	where s2.sid in (
+		select o1.sid
+		from (
+			select *
+			from s1_score as s
+			where s.score &lt; 60 
+		) as o1
+		group by o1.sid
+		having count(o1.cid) &gt;&#x3D; 2
+	)
+	group by s2.sid
+) as o2 on st.sid &#x3D; o2.sid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-15、检索”-01-“课程分数小于-60，按分数降序排列的学生信息"><a href="#2-15、检索”-01-“课程分数小于-60，按分数降序排列的学生信息" class="headerlink" title="2.15、检索” 01 “课程分数小于 60，按分数降序排列的学生信息"></a>2.15、检索” 01 “课程分数小于 60，按分数降序排列的学生信息</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select st.*, ss1.cid, ss1.score
+from s1_student st
+	join(
+		select s.sid, s.cid, s.score
+		from s1_score as s
+		where s.cid &#x3D; 1 and s.score &lt; 60
+		order by s.score desc
+	) as ss1 on st.sid &#x3D; ss1.sid
+order by ss1.score desc
+
+# 解法2
+select s.*
+from s1_score as s
+where s.cid &#x3D; 1 and s.score &lt; 60
+order by s.score desc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-16、按照平均成绩从高到低展示所有学生的所有课程的成绩以及平均成绩"><a href="#2-16、按照平均成绩从高到低展示所有学生的所有课程的成绩以及平均成绩" class="headerlink" title="2.16、按照平均成绩从高到低展示所有学生的所有课程的成绩以及平均成绩"></a>2.16、按照平均成绩从高到低展示所有学生的所有课程的成绩以及平均成绩</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select st.*, c.cname, s.score, ss1.avg_score
+from s1_student as st
+	left join(
+		select sid, avg(score) as avg_score
+		from s1_score
+		group by sid
+	) as ss1 on st.sid &#x3D; ss1.sid
+	left join s1_score as s on ss1.sid &#x3D; s.sid
+	left join s1_course c on s.cid &#x3D; c.cid
+order by ss1.avg_score desc
+
+# 解法2
+select 
+	st.*,
+	s2.cid,
+	s2.score,
+	o1.score_avg as &quot;平均成绩&quot;
+from s1_student as st
+left join (
+	select s.sid, avg(s.score) as &quot;score_avg&quot;
+	from s1_score as s
+	group by s.sid 
+) as o1 on st.sid &#x3D; o1.sid 
+join s1_score as s2 on o1.sid &#x3D; s2.sid
+join s1_course as c on s2.cid &#x3D; c.cid
+order by o1.score_avg desc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-17、查询各科成绩最高分、最低分和平均分：-以如下形式显示：课程-ID，课程-name，最分，最低分，平均分，及格率，中等率，优良率，优秀率-及格为-60，中等为：70-80，优良为：80-90，优秀为：-90要求输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按课程号升序排列"><a href="#2-17、查询各科成绩最高分、最低分和平均分：-以如下形式显示：课程-ID，课程-name，最分，最低分，平均分，及格率，中等率，优良率，优秀率-及格为-60，中等为：70-80，优良为：80-90，优秀为：-90要求输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按课程号升序排列" class="headerlink" title="2.17、查询各科成绩最高分、最低分和平均分： 以如下形式显示：课程 ID，课程 name，最分，最低分，平均分，及格率，中等率，优良率，优秀率 及格为&gt;&#x3D;60，中等为：70-80，优良为：80-90，优秀为：&gt;&#x3D;90要求输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按课程号升序排列"></a>2.17、查询各科成绩最高分、最低分和平均分： 以如下形式显示：课程 ID，课程 name，最分，最低分，平均分，及格率，中等率，优良率，优秀率 及格为&gt;&#x3D;60，中等为：70-80，优良为：80-90，优秀为：&gt;&#x3D;90要求输出课程号和选修人数，查询结果按人数降序排列，若人数相同，按课程号升序排列</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select s.cid, c.cname,
+			max(s.score) as &#39;最高分&#39;,
+			min(s.score) as &#39;最低分&#39;,
+			avg(s.score) as &#39;平均分&#39;,
+			concat(round(sum(if(s.score &gt;&#x3D; 60, 1, 0)) * 100 &#x2F; count(s.score), 2), &quot;%&quot;) as &#39;及格率&#39;,
+			concat(round(sum(if(s.score &gt;&#x3D; 70, 1, 0)) * 100 &#x2F; count(s.score), 2), &quot;%&quot;) as &#39;中等率&#39;,
+			concat(round(sum(if(s.score &gt;&#x3D; 80, 1, 0)) * 100 &#x2F; count(s.score), 2), &quot;%&quot;) as &#39;优良率&#39;,
+			concat(round(sum(if(s.score &gt;&#x3D; 90, 1, 0)) * 100 &#x2F; count(s.score), 2), &quot;%&quot;) as &#39;优秀率&#39;,
+			count(s.score) as &#39;人数&#39;
+from s1_score as s
+join s1_course c on s.cid &#x3D; c.cid
+group by s.cid, c.cname
+
+# 解法2
+select
+	s.cid,
+	c.cname,
+	max(s.score) as &quot;最高分&quot;,
+	min(s.score) as &quot;最低分&quot;,
+	avg(s.score) as &quot;平均分&quot;,
+	CONCAT(ROUND(SUM(IF(s.score &gt;&#x3D; 60, 1, 0)) * 100 &#x2F; COUNT(s.score), 2), &quot;%&quot;) as &quot;及格率&quot;,
+	CONCAT(ROUND(SUM(IF(s.score &gt;&#x3D; 70 and s.score &lt; 80, 1, 0)) * 100 &#x2F; COUNT(s.score), 2), &quot;%&quot;) as &quot;中等率&quot;,
+	CONCAT(ROUND(SUM(IF(s.score &gt;&#x3D; 80 and s.score &lt; 90, 1, 0)) * 100 &#x2F; COUNT(s.score), 2), &quot;%&quot;) as &quot;优良率&quot;,
+	CONCAT(ROUND(SUM(IF(s.score &gt;&#x3D; 90, 1, 0)) * 100 &#x2F; COUNT(s.score), 2), &quot;%&quot;) as &quot;优秀率&quot;,
+	count(s.sid) as &quot;人数&quot;
+from s1_score as s
+join s1_course as c on s.cid &#x3D; c.cid
+group by s.cid, c.cname
+order by &quot;人数&quot; desc, s.cid asc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-18、按各科平均成绩进行排序，并显示排名"><a href="#2-18、按各科平均成绩进行排序，并显示排名" class="headerlink" title="2.18、按各科平均成绩进行排序，并显示排名"></a>2.18、按各科平均成绩进行排序，并显示排名</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">set @i:&#x3D;0;
+select ss1.cid, ss1.avg_score, @i:&#x3D;@i + 1 as &#39;名次&#39;
+from (
+	select s.cid, avg(s.score) as avg_score
+	from s1_score s
+	group by s.cid
+	order by avg_score desc
+) as ss1
+
+# 解法2
+set @i:&#x3D;0;
+select 
+	o1.cid,
+	o1.score_avg as &quot;平均成绩&quot;,
+	@i :&#x3D; @i + 1 as &quot;排名&quot;
+from (
+	select s.cid, avg(s.score) as &quot;score_avg&quot;
+	from s1_score as s
+	group by s.cid
+	order by score_avg desc
+) as o1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="2-19、按各科平均成绩进行排序，并显示排名，重复时不保留名次空缺"><a href="#2-19、按各科平均成绩进行排序，并显示排名，重复时不保留名次空缺" class="headerlink" title="2.19、按各科平均成绩进行排序，并显示排名，重复时不保留名次空缺"></a>2.19、按各科平均成绩进行排序，并显示排名，重复时不保留名次空缺</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">set @a:&#x3D;0;
+select ss1.cid, ss1.avg_score, @a:&#x3D;@a+1 as &#39;排名&#39;
+from (
+	select s.cid, avg(s.score) as avg_score
+	from s1_score as s
+	group by s.cid
+) as ss1
+
+# rank函数：1、2、3、3、5、6
+select 
+	rank() over (order by s.score desc) as s_rank,
+	s.sid,
+	s.cid,
+	s.score
+from s1_score s
+
+# dense_rank函数：1、2、3、3、4、5
+select 
+	dense_rank() over (order by s.score desc) as s_dense_rank,
+	s.sid,
+	s.cid,
+	s.score
+from s1_score s
+
+# row_numver函数：1、2、3、4、5、6
+select 
+	row_number() over (order by s.score desc) as s_row_number,
+	s.sid,
+	s.cid,
+	s.score
+from s1_score s<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-20、查询学生的总成绩，并进行排名，总分重复时保留名次空缺"><a href="#2-20、查询学生的总成绩，并进行排名，总分重复时保留名次空缺" class="headerlink" title="2.20、查询学生的总成绩，并进行排名，总分重复时保留名次空缺"></a>2.20、查询学生的总成绩，并进行排名，总分重复时保留名次空缺</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">set @i :&#x3D; 0;
+set @j :&#x3D; 0;
+set @p :&#x3D; 0;
+set @q :&#x3D; 0;
+select 
+	ss1.sid,
+	ss1.sum_score as &#39;总分&#39;,
+	@j :&#x3D; @j + 1,
+	@p :&#x3D; ss1.sum_score,
+	if(@p &#x3D; @q, @j, @i :&#x3D; @j) as &#39;排名&#39;,
+	@q :&#x3D; @p
+from (
+	select sid, sum(score) as sum_score
+	from s1_score
+	group by sid
+	order by sum_score desc
+) as ss1
+
+
+# 解法2
+select 
+	dense_rank() over(order by ss1.sum_score desc) as &#39;排名&#39;,
+	ss1.sid,
+	ss1.sum_score
+from (
+	select s.sid, sum(s.score) as sum_score
+	from s1_score as s
+	group by s.sid
+) as ss1
+
+
+# 解法3
+set @p:&#x3D;0;
+set @q:&#x3D;0;
+set @i:&#x3D;0;
+select
+	o1.sid, 
+	o1.score_sum,
+	@p:&#x3D;o1.score_sum,
+	IF(@p&#x3D;@q, @i, @i:&#x3D;@i+1) as &quot;名次&quot;,
+	@q:&#x3D;@p
+from (
+	select
+		s.sid,
+		sum(s.score) as &quot;score_sum&quot;
+	from s1_score as s
+	group by s.sid
+	order by score_sum desc
+) as o1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-21、查询学生的总成绩，并进行排名，总分重复时不保留名次空缺"><a href="#2-21、查询学生的总成绩，并进行排名，总分重复时不保留名次空缺" class="headerlink" title="2.21、查询学生的总成绩，并进行排名，总分重复时不保留名次空缺"></a>2.21、查询学生的总成绩，并进行排名，总分重复时不保留名次空缺</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">set @p:&#x3D;0;
+set @q:&#x3D;0;
+set @i:&#x3D;0;
+select
+	o1.sid, 
+	o1.score_sum,
+	@p:&#x3D;o1.score_sum,
+	IF(@p&#x3D;@q, @i, @i:&#x3D;@i+1) as &quot;名次&quot;,
+	@q:&#x3D;@p
+from (
+	select
+		s.sid,
+		sum(s.score) as &quot;score_sum&quot;
+	from s1_score as s
+	group by s.sid
+	order by score_sum desc
+) as o1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-22、统计各科成绩各分数段人数：课程编号，课程名称，-100-85），-85-70），-70-60），-60-0）及所占百分。"><a href="#2-22、统计各科成绩各分数段人数：课程编号，课程名称，-100-85），-85-70），-70-60），-60-0）及所占百分。" class="headerlink" title="2.22、统计各科成绩各分数段人数：课程编号，课程名称，[100-85），[85-70），[70-60），[60-0）及所占百分。"></a>2.22、统计各科成绩各分数段人数：课程编号，课程名称，[100-85），[85-70），[70-60），[60-0）及所占百分。</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select 
+	s.cid,
+	c.cname,
+	CONCAT(ROUND(SUM(IF(score &lt;&#x3D; 100 and score &gt; 85, 1, 0)) * 100 &#x2F; COUNT(s.sid), 2), &quot;%&quot;) as &quot;[100, 85)&quot;,
+	CONCAT(ROUND(SUM(IF(score &lt;&#x3D; 85 and score &gt; 70, 1, 0)) * 100 &#x2F; COUNT(s.sid), 2), &quot;%&quot;) as &quot;[85, 70)&quot;,
+	CONCAT(ROUND(SUM(IF(score &lt;&#x3D; 70 and score &gt; 60, 1, 0)) * 100 &#x2F; COUNT(s.sid), 2), &quot;%&quot;) as &quot;[70, 60)&quot;,
+	CONCAT(ROUND(SUM(IF(score &lt;&#x3D; 60 and score &gt; 0, 1, 0)) * 100 &#x2F; COUNT(s.sid), 2), &quot;%&quot;) as &quot;[60, 0)&quot;
+from s1_score as s
+join s1_course as c on s.cid &#x3D; c.cid
+group by s.cid, c.cname<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-23、查询各科成绩前三名的记录"><a href="#2-23、查询各科成绩前三名的记录" class="headerlink" title="2.23、查询各科成绩前三名的记录"></a>2.23、查询各科成绩前三名的记录</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">set @i :&#x3D; 0;
+set @p :&#x3D; 0;
+set @q :&#x3D; 0;
+select
+	o2.sid,
+	st.sname,
+	o2.cid,
+	o2.score,
+	o2.rn
+from (
+	select
+		o1.sid,
+		o1.cid,
+		o1.score,
+		@p :&#x3D; o1.cid,
+		IF(@p &#x3D; @q, @i :&#x3D; @i + 1, @i :&#x3D; 1) as rn,
+		@q :&#x3D; @p
+	from (
+		select s.sid, s.cid, s.score
+		from s1_score s
+		order by s.cid asc, s.score desc
+	) as o1
+) as o2 
+	join s1_student st on o2.sid &#x3D; st.sid and o2.rn &lt;&#x3D;3
+order by cid, rn
+
+
+# 解法2
+set @p:&#x3D;0;
+set @q:&#x3D;0;
+set @i:&#x3D;0;
+select
+	o1.sid,
+	o1.cid,
+	o1.score,
+	o1.score_level as &quot;名次&quot;
+from (
+	select
+		s.*,
+		@p:&#x3D;s.cid,
+		IF(@p&#x3D;@q, @i:&#x3D;@i+1, @i:&#x3D;1) as &quot;score_level&quot;,
+		@q:&#x3D;@p
+	from s1_score as s
+	order by s.cid asc, s.score desc
+) as o1
+where o1.score_level &lt; 4<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-24、查询每门课程被选修的学生数"><a href="#2-24、查询每门课程被选修的学生数" class="headerlink" title="2.24、查询每门课程被选修的学生数"></a>2.24、查询每门课程被选修的学生数</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select c.cid, c.cname, o1.count_st as &quot;学生数量&quot;
+from s1_course c
+join (
+	select
+		s.cid,
+		count(s.sid) as count_st
+	from s1_score s
+	group by s.cid
+) as o1 on c.cid &#x3D; o1.cid
+
+# 解法2
+select
+	c.cname,
+	o1.s_count as &quot;人数&quot;
+from s1_course as c
+join (
+	select
+		s.cid,
+		count(s.sid) as &quot;s_count&quot;
+	from s1_score as s
+	group by s.cid
+) as o1 on c.cid &#x3D; o1.cid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-25、查询出只选修两门课程的学生学号和姓名"><a href="#2-25、查询出只选修两门课程的学生学号和姓名" class="headerlink" title="2.25、查询出只选修两门课程的学生学号和姓名"></a>2.25、查询出只选修两门课程的学生学号和姓名</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select st.sid, st.sname
+from s1_student as st
+	join (
+		select s.sid, count(s.cid) as count_cid
+		from s1_score s
+		group by s.sid
+		having count_cid &#x3D; 2
+	) as o1 on st.sid &#x3D; o1.sid
+
+# 解法2
+select
+	st.sid,
+	st.sname
+from s1_student as st
+join (
+	select s.sid, count(s.cid) as &quot;c_count&quot;
+	from s1_score as s
+	group by s.sid
+	having c_count &#x3D; 2
+) as o1 on st.sid &#x3D; o1.sid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-26、查询男生、女生人数"><a href="#2-26、查询男生、女生人数" class="headerlink" title="2.26、查询男生、女生人数"></a>2.26、查询男生、女生人数</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select st.sex, count(st.sid) as &quot;人数&quot;
+from s1_student st
+group by st.sex
+
+# 解法2
+select
+	st.sex,
+	count(st.sid) as &quot;人数&quot;
+from s1_student as st
+group by st.sex<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-27、查询名字中含有「风」字的学生信息"><a href="#2-27、查询名字中含有「风」字的学生信息" class="headerlink" title="2.27、查询名字中含有「风」字的学生信息"></a>2.27、查询名字中含有「风」字的学生信息</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select st.*
+from s1_student as st
+where st.sname like &quot;%风%&quot;;
+
+# 解法2
+select st.*
+from s1_student as st
+where st.sname like &quot;%风%&quot;;<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-28、查询同名同性学生名单，并统计同名同性人数"><a href="#2-28、查询同名同性学生名单，并统计同名同性人数" class="headerlink" title="2.28、查询同名同性学生名单，并统计同名同性人数"></a>2.28、查询同名同性学生名单，并统计同名同性人数</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select st.sname, st.sex, count(st.sid) as count_sid
+from s1_student as st
+group by st.sname, st.sex
+having count_sid &gt; 1
+
+# 解法2
+select
+	st.sname,
+	count(st.sid) as &quot;s_count&quot;
+from s1_student as st
+group by st.sname
+having s_count &gt; 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-29、查询-1990-年出生的学生名单"><a href="#2-29、查询-1990-年出生的学生名单" class="headerlink" title="2.29、查询 1990 年出生的学生名单"></a>2.29、查询 1990 年出生的学生名单</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">set @c :&#x3D; 0;
+select 
+	o1.sid,
+	o1.sname,
+	o1.age,
+	o1.sex
+from (
+	select 
+		st.sid,
+		st.sname,
+		st.age,
+		st.sex,
+		@c :&#x3D; st.age,
+		IF(@c &#x3D; (2023 - 1990), 1, 0) as is90
+	from s1_student as st
+) as o1
+where o1.is90 &#x3D; 1
+
+# 解法2
+select st.*
+from s1_student as st
+where st.birth like &quot;1990%&quot;
+
+# 解法3
+select st.*
+from s1_student as st
+where EXTRACT(year from st.birth) &#x3D; 1990<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-30、查询每门课程的平均成绩，结果按平均成绩降序排列，平均成绩相同时，按课程编号升序排列"><a href="#2-30、查询每门课程的平均成绩，结果按平均成绩降序排列，平均成绩相同时，按课程编号升序排列" class="headerlink" title="2.30、查询每门课程的平均成绩，结果按平均成绩降序排列，平均成绩相同时，按课程编号升序排列"></a>2.30、查询每门课程的平均成绩，结果按平均成绩降序排列，平均成绩相同时，按课程编号升序排列</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select s.cid, avg(s.score) as avg_score
+from s1_score s
+group by s.cid
+order by avg_score desc, cid asc
+
+# 解法2
+select
+	s.cid,
+	avg(s.score) as &quot;score_avg&quot;
+from s1_score as s
+group by s.cid
+order by score_avg desc, s.cid asc<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-31、查询平均成绩大于等于-85-的所有学生的学号、姓名和平均成绩"><a href="#2-31、查询平均成绩大于等于-85-的所有学生的学号、姓名和平均成绩" class="headerlink" title="2.31、查询平均成绩大于等于 85 的所有学生的学号、姓名和平均成绩"></a>2.31、查询平均成绩大于等于 85 的所有学生的学号、姓名和平均成绩</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select st.sid, st.sname, o1.avg_score as &quot;平均成绩&quot;
+from s1_student as st
+join (
+	select s.sid, avg(s.score) as avg_score
+	from s1_score as s
+	group by s.sid
+	having avg_score &gt;&#x3D; 85
+) as o1 on st.sid &#x3D; o1.sid
+
+# 解法2
+select
+	st.sid,
+	st.sname,
+	o1.score_avg as &quot;平均成绩&quot;
+from s1_student as st
+join (
+	select
+		s.sid,
+		avg(s.score) as score_avg
+	from s1_score as s
+	group by s.sid
+	having score_avg &gt;&#x3D; 85
+) as o1 on st.sid &#x3D; o1.sid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-32、查询课程名称为「数学」，且分数低于-60-的学生姓名和分数"><a href="#2-32、查询课程名称为「数学」，且分数低于-60-的学生姓名和分数" class="headerlink" title="2.32、查询课程名称为「数学」，且分数低于 60 的学生姓名和分数"></a>2.32、查询课程名称为「数学」，且分数低于 60 的学生姓名和分数</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select st.sname, c.cname, s.score
+from s1_course as c
+join s1_score as s on c.cid &#x3D; s.cid
+join s1_student as st on s.sid &#x3D; st.sid
+where c.cname &#x3D; &quot;数学&quot; and s.score &lt; 60
+
+# 解法2
+select
+	st.sname,
+	o1.score
+from s1_student as st
+join (
+	select s.sid, s.score
+	from s1_score as s
+	where s.score &lt; 60 and s.cid &#x3D; (
+		select cid from s1_course where cname &#x3D; &quot;数学&quot;
+	)
+) as o1 on st.sid &#x3D; o1.sid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-33、查询所有学生的课程及分数情况（存在学生没成绩，没选课的情况）"><a href="#2-33、查询所有学生的课程及分数情况（存在学生没成绩，没选课的情况）" class="headerlink" title="2.33、查询所有学生的课程及分数情况（存在学生没成绩，没选课的情况）"></a>2.33、查询所有学生的课程及分数情况（存在学生没成绩，没选课的情况）</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select 
+	st.sname,
+	o1.语文成绩, 
+	o1.数学成绩,
+	o1.英语成绩 
+from s1_student as st
+left join (
+	select 
+		s.sid,
+		SUM(CASE s.cid when 1 then s.score else 0 end) as &quot;数学成绩&quot;,
+		SUM(CASE s.cid when 2 then s.score else 0 end) as &quot;语文成绩&quot;,
+		SUM(CASE s.cid when 3 then s.score else 0 end) as &quot;英语成绩&quot;
+	from s1_score as s
+	group by s.sid
+) as o1 on st.sid &#x3D; o1.sid
+
+# 解法2
+select
+	st.sid,
+	st.sname,
+	o1.语文成绩,
+	o1.数学成绩,
+	o1.英语成绩
+from s1_student as st
+left join (
+	select
+		s.sid,
+		SUM(case s.cid when 2 then score else 0 end) as &quot;语文成绩&quot;,
+		SUM(case s.cid when 1 then score else 0 end) as &quot;数学成绩&quot;,
+		SUM(case s.cid when 3 then score else 0 end) as &quot;英语成绩&quot;
+	from s1_score as s
+	group by s.sid
+) as o1 on st.sid &#x3D; o1.sid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-34、查询任何一门课程成绩在-70-分以上的姓名、课程名称和分数"><a href="#2-34、查询任何一门课程成绩在-70-分以上的姓名、课程名称和分数" class="headerlink" title="2.34、查询任何一门课程成绩在 70 分以上的姓名、课程名称和分数"></a>2.34、查询任何一门课程成绩在 70 分以上的姓名、课程名称和分数</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select 
+	o1.sid,
+	SUM(case s.cid when 2 then s.score else 0 end) as &quot;语文成绩&quot;,
+	SUM(case s.cid when 1 then s.score else 0 end) as &quot;数学成绩&quot;,
+	SUM(case s.cid when 3 then s.score else 0 end) as &quot;英语成绩&quot;
+from (
+	select o1.sid
+	from (
+		select s.*
+		from s1_score as s
+		where s.score &gt; 70
+	) as o1
+	group by o1.sid
+	having count(o1.cid) &#x3D; (select count(cid) from s1_course)
+) as o1 
+	join s1_student as st on o1.sid &#x3D; st.sid
+	join s1_score as s on st.sid &#x3D; s.sid
+	join s1_course as c on s.cid &#x3D; c.cid
+group by o1.sid
+
+# 解法2
+select st.sname, c.cname, o1.score
+from (
+	select s.sid, s.cid, s.score
+	from s1_score as s
+	where s.score &gt; 70
+) as o1 
+	join s1_student as st on o1.sid &#x3D; st.sid
+	join s1_course as c on o1.cid &#x3D; c.cid
+
+# 解法3
+select
+	st.sname,
+	c.cname,
+	o1.score
+from s1_course as c
+join (
+	select s.sid, s.cid, s.score
+	from s1_score as s
+	where s.score &gt; 70
+) as o1 on c.cid &#x3D; o1.cid
+join s1_student as st on o1.sid &#x3D; st.sid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-35、查询不及格的课程"><a href="#2-35、查询不及格的课程" class="headerlink" title="2.35、查询不及格的课程"></a>2.35、查询不及格的课程</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select
+	st.sname,
+	c.cname,
+	o1.score
+from (
+	select s.sid, s.cid, s.score
+	from s1_score as s
+	where s.score &lt; 60
+)as o1
+	join s1_student as st on o1.sid &#x3D; st.sid
+	join s1_course as c on o1.cid &#x3D; c.cid
+
+# 解法2
+select
+	o1.sid,
+	c.cname,
+	o1.score
+from s1_course as c
+join (
+	select s.*
+	from s1_score as s
+	where s.score &lt; 60
+) as o1 on c.cid &#x3D; o1.cid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-36、查询课程编号为-01-且课程成绩在-80-分以上的学生的学号和姓名"><a href="#2-36、查询课程编号为-01-且课程成绩在-80-分以上的学生的学号和姓名" class="headerlink" title="2.36、查询课程编号为 01 且课程成绩在 80 分以上的学生的学号和姓名"></a>2.36、查询课程编号为 01 且课程成绩在 80 分以上的学生的学号和姓名</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select st.sid, st.sname
+from s1_student as st
+	join (
+		select s.sid
+		from s1_score as s
+		where s.cid &#x3D; 1 and s.score &gt;&#x3D; 80
+	) as o1 on st.sid &#x3D; o1.sid
+
+# 解法2
+select
+	st.sid,
+	st.sname,
+	o1.score
+from s1_student as st
+join (
+	select s.sid, s.score
+	from s1_score as s
+	where s.cid &#x3D; 1 and s.score &gt; 80
+) as o1 on st.sid &#x3D; o1.sid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-37、求每门课程的学生人数"><a href="#2-37、求每门课程的学生人数" class="headerlink" title="2.37、求每门课程的学生人数"></a>2.37、求每门课程的学生人数</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select s.cid, count(s.sid) as &quot;人数&quot;
+from s1_score as s
+group by s.cid
+
+# 解法2
+select
+	c.cname,
+	o1.s_count as &quot;人数&quot;
+from s1_course as c
+join (
+	select
+		s.cid,
+		count(s.sid) as &quot;s_count&quot;
+	from s1_score as s
+	group by s.cid 
+) as o1 on c.cid &#x3D; o1.cid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-38、成绩不重复，查询选修「张三」老师所授课程的学生中，成绩最高的学生信息及其成绩"><a href="#2-38、成绩不重复，查询选修「张三」老师所授课程的学生中，成绩最高的学生信息及其成绩" class="headerlink" title="2.38、成绩不重复，查询选修「张三」老师所授课程的学生中，成绩最高的学生信息及其成绩"></a>2.38、成绩不重复，查询选修「张三」老师所授课程的学生中，成绩最高的学生信息及其成绩</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select 
+	st.sid,
+	st.sname, 
+	o1.score
+from (
+	select s.sid, s.cid, s.score
+	from s1_score as s
+	where s.cid in (
+		select c.cid
+		from s1_course as c 
+		where c.tid &#x3D; (
+			select t.tid from s1_teacher as t where t.tname &#x3D; &quot;张三&quot;
+		)
+	)
+	order by s.score desc
+	limit 1
+) as o1 
+	join s1_student as st on o1.sid &#x3D; st.sid
+
+# 解法2
+select
+	st.*,
+	o2.score
+from s1_student as st
+join (
+	select o1.*
+	from (
+		select s.*
+		from s1_score as s
+		where s.cid in (
+			select c.cid
+			from s1_course as c
+			where c.tid &#x3D; (
+				select t.tid
+				from s1_teacher as t
+				where t.tname &#x3D; &quot;张三&quot;
+			)
+		)
+	) as o1
+	order by o1.score desc
+	limit 0, 1
+) as o2 on st.sid &#x3D; o2.sid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-39、成绩有重复的情况下，查询选修「张三」老师所授课程的学生中，成绩最高的学生信息及其成绩"><a href="#2-39、成绩有重复的情况下，查询选修「张三」老师所授课程的学生中，成绩最高的学生信息及其成绩" class="headerlink" title="2.39、成绩有重复的情况下，查询选修「张三」老师所授课程的学生中，成绩最高的学生信息及其成绩"></a>2.39、成绩有重复的情况下，查询选修「张三」老师所授课程的学生中，成绩最高的学生信息及其成绩</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">set @i :&#x3D; 0;
+set @p :&#x3D; 0;
+set @q :&#x3D; 0;
+select 
+	st.sname,
+	o2.sid,
+	o2.cid,
+	o2.score
+from (
+	select 
+		o1.sid,
+		o1.cid,
+		o1.score,
+		@p :&#x3D; o1.score,
+		IF(@p &#x3D; @q, @i, @i :&#x3D;@i + 1) as paix,
+		@q :&#x3D; @p
+	from (
+		select s.sid, s.cid, s.score
+		from s1_score as s 
+		where s.cid in (
+			select c.cid
+			from s1_course as c
+			where c.tid &#x3D; (
+				select t.tid
+				from s1_teacher as t 
+				where t.tname &#x3D; &quot;张三&quot;
+			)
+		)
+		order by s.score desc
+	) as o1
+) as o2
+join s1_student as st on o2.sid &#x3D; st.sid and o2.paix &#x3D; 1
+
+
+# 解法2
+set @p:&#x3D;0;
+set @q:&#x3D;0;
+set @i:&#x3D;0;
+select
+	st.*,
+	o3.score
+from s1_student as st
+join (
+	select o2.*
+	from (
+		select
+			o1.sid,
+			o1.score,
+			@p:&#x3D;o1.score,
+			IF(@p&#x3D;@q, @i, @i:&#x3D;@i+1) as &quot;score_level&quot;,
+			@q&#x3D;@p
+		from (
+			select s.*
+			from s1_score as s
+			where s.cid in (
+				select c.cid
+				from s1_course as c
+				where c.tid &#x3D; (
+					select t.tid
+					from s1_teacher as t
+					where t.tname &#x3D; &quot;张三&quot;
+				)
+			)
+			order by s.score desc
+		) as o1
+	) as o2 
+	where o2.score_level &#x3D; 1
+) as o3 on st .sid &#x3D; o3.sid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-40、查询不同课程成绩相同的学生的学生编号、课程编号、学生成绩"><a href="#2-40、查询不同课程成绩相同的学生的学生编号、课程编号、学生成绩" class="headerlink" title="2.40、查询不同课程成绩相同的学生的学生编号、课程编号、学生成绩"></a>2.40、查询不同课程成绩相同的学生的学生编号、课程编号、学生成绩</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select 
+	st.sname,
+	s.cid,
+	s.score
+from s1_score as s
+	join s1_score as s2 on s.score &#x3D; s2.score and s.cid !&#x3D; s2.cid
+	join s1_student as st on s2.sid &#x3D; st.sid
+
+# 解法2
+select distinct
+	s.sid,
+	s.cid,
+	s.score
+from s1_score as s
+join (
+	select * from s1_score
+) as o1 on s.score &#x3D; o1.score and s.cid !&#x3D; o1.cid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-41、查询每门课程成绩最好的前两名"><a href="#2-41、查询每门课程成绩最好的前两名" class="headerlink" title="2.41、查询每门课程成绩最好的前两名"></a>2.41、查询每门课程成绩最好的前两名</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">set @p :&#x3D; 0;
+set @q :&#x3D; 0;
+set @i :&#x3D; 0;
+select 
+	o1.sid,
+	st.sname,
+	o1.cid,
+	o1.score
+from (
+	select 
+		s.sid,
+		s.cid,
+		s.score,
+		@p :&#x3D; s.cid,
+		IF(@p &#x3D; @q, @i :&#x3D; @i + 1, @i :&#x3D; 1) as px,
+		@q:&#x3D;@p
+	from s1_score as s
+	order by s.cid asc, s.score desc
+) as o1
+	join s1_student as st on o1.sid &#x3D; st.sid and o1.px &lt; 3
+order by o1.cid, o1.px
+
+# 解法2
+select
+	o2.sid,
+	o2.cid,
+	o2.score,
+	o2.score_level as &quot;名次&quot;
+from (
+	select
+		o1.sid,
+		o1.cid,
+		o1.score,
+		@p:&#x3D;o1.cid,
+		IF(@p&#x3D;@q, @i:&#x3D;@i+1, @i:&#x3D;1) as &quot;score_level&quot;,
+		@q:&#x3D;@p
+	from (
+		select *
+		from s1_score
+		order by cid asc, score desc
+	) as o1
+) as o2
+where o2.score_level &lt; 3<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-42、统计每门课程的学生选修人数（超过-5-人的课程才统计）。"><a href="#2-42、统计每门课程的学生选修人数（超过-5-人的课程才统计）。" class="headerlink" title="2.42、统计每门课程的学生选修人数（超过 5 人的课程才统计）。"></a>2.42、统计每门课程的学生选修人数（超过 5 人的课程才统计）。</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select 
+	s.cid,
+	count(s.sid) as count_st
+from s1_score as s
+group by s.cid
+
+# 解法2
+select
+	s.cid,
+	count(s.sid) as s_count 
+from s1_score as s
+group by s.cid
+having s_count &gt; 5<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-43、检索至少选修两门课程的学生学号"><a href="#2-43、检索至少选修两门课程的学生学号" class="headerlink" title="2.43、检索至少选修两门课程的学生学号"></a>2.43、检索至少选修两门课程的学生学号</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select 
+	s.sid
+from s1_score as s
+group by s.sid
+having count(s.cid) &gt;&#x3D; 2
+
+# 解法2
+select
+	s.sid,
+	count(s.cid) as &quot;c_count&quot;
+from s1_score as s
+group by s.sid
+having c_count &gt; 1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-44、查询选修了全部课程的学生信息"><a href="#2-44、查询选修了全部课程的学生信息" class="headerlink" title="2.44、查询选修了全部课程的学生信息"></a>2.44、查询选修了全部课程的学生信息</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select 
+	st.sid,
+	st.sname,
+	st.age,
+	st.sex
+from (
+	select s.sid
+	from s1_score as s
+	group by s.sid
+	having count(s.cid) &#x3D; (
+		select count(cid) from s1_course 
+	)
+)as o1
+	join s1_student as st on o1.sid &#x3D; st.sid
+
+# 解法2
+select
+	st.*
+from s1_student as st
+join (
+	select s.sid
+	from s1_score as s
+	group by s.sid
+	having count(s.cid) &#x3D; (
+		select count(cid) from s1_course
+	)
+) as o1 on st.sid &#x3D; o1.sid<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-45、查询各学生的年龄，只按年份来算"><a href="#2-45、查询各学生的年龄，只按年份来算" class="headerlink" title="2.45、查询各学生的年龄，只按年份来算"></a>2.45、查询各学生的年龄，只按年份来算</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select
+	st.sname,
+	DATE_FORMAT(st.birth, &#39;%Y&#39;) as &#39;出生年&#39;,
+	YEAR(NOW()) as &#39;当前年&#39;,
+	YEAR(NOW()) - DATE_FORMAT(st.birth, &#39;%Y&#39;) as age
+from s1_student as st
+
+# 解法2
+select
+	st.sid,
+	st.sname,
+	st.age,
+	st.birth,
+	ABS(2023 - EXTRACT(year from st.birth)) as &quot;年龄&quot;
+from s1_student as st<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-46、按照出生日期来算，当前月日-出生年月的月日，则年龄减一"><a href="#2-46、按照出生日期来算，当前月日-出生年月的月日，则年龄减一" class="headerlink" title="2.46、按照出生日期来算，当前月日 &lt; 出生年月的月日，则年龄减一"></a>2.46、按照出生日期来算，当前月日 &lt; 出生年月的月日，则年龄减一</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select
+	o1.sid,
+	o1.sname,
+	o1.age,
+	CASE WHEN o1.currday &lt; o1.mounth 
+	THEN o1.age - 1 
+	ELSE o1.age 
+	END as newage
+from (
+	select 
+		st.sid,
+		st.sname,
+		YEAR(NOW()) - DATE_FORMAT(st.birth, &#39;%Y&#39;) as age,
+		DATE_FORMAT(st.birth, &#39;%m-%d&#39;) as mounth,
+		DATE_FORMAT(NOW(), &#39;%m-%d&#39;) as currday
+	from s1_student as st
+)as o1
+
+
+# 解法2
+select
+	o1.sid,
+	o1.sname,
+	o1.birth,
+	IF(EXTRACT(month from NOW()) &lt; o1.m and EXTRACT(day from NOW()) &lt; o1.d, 
+	ABS(EXTRACT(year from NOW()) - o1.y) - 1,
+	ABS(EXTRACT(year from NOW()) - o1.y) + 1) as &quot;年龄&quot;
+from (
+	select
+		st.sid,
+		st.sname,
+		st.birth,
+		EXTRACT(year from st.birth) as &quot;y&quot;,
+		EXTRACT(month from st.birth) as &quot;m&quot;,
+		EXTRACT(day from st.birth) as &quot;d&quot;
+	from s1_student as st
+) as o1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-47、查询本周过生日的学生"><a href="#2-47、查询本周过生日的学生" class="headerlink" title="2.47、查询本周过生日的学生"></a>2.47、查询本周过生日的学生</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select 
+	st.sid,
+	st.sname,
+	WEEK(st.birth) as &#39;出生周&#39;,
+	WEEK(NOW()) as &#39;当前周&#39;
+from s1_student as st
+where WEEK(st.birth) &#x3D; WEEK(NOW())
+
+# 解法2
+select
+	st.*
+from s1_student as st
+where EXTRACT(week from st.birth) &#x3D; EXTRACT(week from NOW())<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-48、查询下周过生日的学生"><a href="#2-48、查询下周过生日的学生" class="headerlink" title="2.48、查询下周过生日的学生"></a>2.48、查询下周过生日的学生</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select 
+	st.sid,
+	st.sname,
+	st.birth,
+	WEEK(st.birth) as &#39;出生周&#39;,
+	WEEK(DATE_ADD(NOW(),INTERVAL 1 WEEK)) as &#39;下周&#39;
+from s1_student as st
+where WEEK(st.birth) &#x3D; WEEK(DATE_ADD(NOW(),INTERVAL 1 WEEK))
+
+# 解法2
+select
+	st.*
+from s1_student as st
+where EXTRACT(week from DATE_ADD(st.birth, INTERVAL 1 week)) &#x3D; EXTRACT(week from NOW())<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-49、查询本月过生日的学生"><a href="#2-49、查询本月过生日的学生" class="headerlink" title="2.49、查询本月过生日的学生"></a>2.49、查询本月过生日的学生</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select 
+	st.sname,
+	st.birth,
+	MONTH(st.birth) as &quot;出生月&quot;,
+	MONTH(NOW()) as &quot;当前月&quot;
+from s1_student as st
+where MONTH(st.birth) &#x3D; MONTH(NOW())
+
+# 解法2
+select st.*
+from s1_student as st
+where EXTRACT(month from st.birth) &#x3D; EXTRACT(month from NOW())<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+<h2 id="2-50、查询下月过生日的学生"><a href="#2-50、查询下月过生日的学生" class="headerlink" title="2.50、查询下月过生日的学生"></a>2.50、查询下月过生日的学生</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql">select 
+	sid,
+	sname,
+	birth,
+	MONTH(birth) as &#39;出生月&#39;,
+	MONTH(DATE_ADD(NOW(), INTERVAL 1 MONTH)) as &#39;下月&#39;
+from s1_student
+where MONTH(birth) &#x3D; MONTH(DATE_ADD(NOW(), INTERVAL 1 MONTH))
+
+# 解法2
+select st.*
+from s1_student as st
+where EXTRACT(month from st.birth) &#x3D; EXTRACT(month from DATE_ADD(NOW(), INTERVAL 1 month))<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h1 id="3、函数扩展"><a href="#3、函数扩展" class="headerlink" title="3、函数扩展"></a>3、函数扩展</h1><h2 id="3-1、字符串函数"><a href="#3-1、字符串函数" class="headerlink" title="3.1、字符串函数"></a>3.1、字符串函数</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># SQL Runoob Gooogle Facebook
+SELECT CONCAT(&quot;SQL &quot;, &quot;Runoob &quot;, &quot;Gooogle &quot;, &quot;Facebook&quot;) AS ConcatenatedString;
+
+# SQL-Tutorial-is-fun!
+SELECT CONCAT_WS(&quot;-&quot;, &quot;SQL&quot;, &quot;Tutorial&quot;, &quot;is&quot;, &quot;fun!&quot;)AS ConcatenatedString;
+
+# 小写转大写
+SELECT UCASE(&quot;runoob&quot;); -- RUNOOB
+SELECT UPPER(&quot;runoob&quot;); -- RUNOOB<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="3-2、数字函数"><a href="#3-2、数字函数" class="headerlink" title="3.2、数字函数"></a>3.2、数字函数</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 绝对值
+SELECT ABS(-1) -- 返回1
+
+# 大于或等于当前值的最小整数
+SELECT CEIL(1.5) -- 返回2
+SELECT CEILING(1.5); -- 返回2
+
+# 小于或等于当前值的最大整数
+SELECT FLOOR(1.5) -- 返回1<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<h2 id="3-3、日期函数"><a href="#3-3、日期函数" class="headerlink" title="3.3、日期函数"></a>3.3、日期函数</h2><pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 指定日期加上n天后的日期
+SELECT ADDDATE(&quot;2017-06-15&quot;, INTERVAL 10 DAY); -- 2017-06-25
+
+# 指定日期时间加上指定年月日
+SELECT ADDTIME(&quot;2020-06-15 09:34:21&quot;, &quot;2:10:5&quot;); -- 2020-06-15 11:44:26
+
+# 返回当前日期
+SELECT CURRENT_DATE(); -- 2018-09-19
+
+# 返回当前时间
+SELECT CURRENT_TIME(); -- 19:59:02
+
+# 返回当前日期和时间
+SELECT CURRENT_TIMESTAMP();	-- 2018-09-19 20:57:43
+
+# 连个日期之间天数
+SELECT DATEDIFF(&#39;2001-01-01&#39;,&#39;2001-02-02&#39;);	-- -32
+
+# 指定日期加上一个时间段
+SELECT DATE_ADD(&quot;2017-06-15&quot;, INTERVAL 10 DAY);    -- 2017-06-25
+SELECT DATE_ADD(&quot;2017-06-15 09:34:21&quot;, INTERVAL 15 MINUTE);	-- 2017-06-15 09:49:21
+SELECT DATE_ADD(&quot;2017-06-15 09:34:21&quot;, INTERVAL -3 HOUR);	-- 2017-06-15 06:34:21
+SELECT DATE_ADD(&quot;2017-06-15 09:34:21&quot;, INTERVAL -3 MONTH);	-- 2017-04-15
+
+# 返回指定日期中的日
+SELECT DAY(&quot;2017-06-15&quot;);  -- 15<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">豪哥</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://hshz21.gitee.io/2023/09/14/mysql-jing-dian-sql-lian-xi-ti-di-yi-pian/">https://hshz21.gitee.io/2023/09/14/mysql-jing-dian-sql-lian-xi-ti-di-yi-pian/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">豪哥</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/SQL%E7%BB%83%E4%B9%A0/">
+                                    <span class="chip bg-color">SQL练习</span>
+                                </a>
+                            
+                                <a href="/tags/MySQL%E7%BB%83%E4%B9%A0/">
+                                    <span class="chip bg-color">MySQL练习</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wxpay.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/09/14/mysql-jing-dian-sql-lian-xi-ti-di-er-pian/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="MySQL系列-MySQL经典SQL练习题第二篇">
+                        
+                        <span class="card-title">MySQL系列-MySQL经典SQL练习题第二篇</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/MySQL/" class="post-category">
+                                    MySQL
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SQL%E7%BB%83%E4%B9%A0/">
+                        <span class="chip bg-color">SQL练习</span>
+                    </a>
+                    
+                    <a href="/tags/MySQL%E7%BB%83%E4%B9%A0/">
+                        <span class="chip bg-color">MySQL练习</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/09/14/mysql-jing-dian-sql-lian-xi-ti-zhi-leetcode-pian-yi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="MySQL系列-MySQL经典SQL练习题之Leetcode篇（一）">
+                        
+                        <span class="card-title">MySQL系列-MySQL经典SQL练习题之Leetcode篇（一）</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/MySQL/" class="post-category">
+                                    MySQL
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/SQL%E7%BB%83%E4%B9%A0/">
+                        <span class="chip bg-color">SQL练习</span>
+                    </a>
+                    
+                    <a href="/tags/MySQL%E7%BB%83%E4%B9%A0/">
+                        <span class="chip bg-color">MySQL练习</span>
+                    </a>
+                    
+                    <a href="/tags/LeetcodeSQL/">
+                        <span class="chip bg-color">LeetcodeSQL</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">豪哥</a>
+            |&nbsp;Powered by&nbsp;<a href="https://github.com/lucky2shh" target="_blank">豪哥</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:3577293158@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3577293158" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 3577293158" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

@@ -1,0 +1,1615 @@
+<!DOCTYPE HTML>
+<html lang="zh-CN">
+
+
+<head>
+    <meta charset="utf-8">
+    <meta name="keywords" content="计算机系列-IO, 豪哥博客">
+    <meta name="description" content="豪哥个人博客">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+    <meta name="renderer" content="webkit|ie-stand|ie-comp">
+    <meta name="mobile-web-app-capable" content="yes">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+
+
+    <title>计算机系列-IO | 豪哥博客</title>
+    <link rel="icon" type="image/png" href="/favicon.png">
+
+    <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.css">
+    <link rel="stylesheet" type="text/css" href="/libs/materialize/materialize.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/aos/aos.css">
+    <link rel="stylesheet" type="text/css" href="/libs/animate/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="/libs/lightGallery/css/lightgallery.min.css">
+    <link rel="stylesheet" type="text/css" href="/css/matery.css">
+    <link rel="stylesheet" type="text/css" href="/css/my.css">
+
+    <script src="/libs/jquery/jquery.min.js"></script>
+
+<meta name="generator" content="Hexo 6.3.0"></head>
+
+
+
+
+<body>
+    <header class="navbar-fixed">
+    <nav id="headNav" class="bg-color nav-transparent">
+        <div id="navContainer" class="nav-wrapper container">
+            <div class="brand-logo">
+                <a href="/" class="waves-effect waves-light">
+                    
+                    <img src="/medias/logo.png" class="logo-img" alt="LOGO">
+                    
+                    <span class="logo-span">豪哥博客</span>
+                </a>
+            </div>
+            
+
+<a href="#" data-target="mobile-nav" class="sidenav-trigger button-collapse"><i class="fas fa-bars"></i></a>
+<ul class="right nav-menu">
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/" class="waves-effect waves-light">
+      
+      <i class="fas fa-home" style="zoom: 0.6;"></i>
+      
+      <span>首页</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/tags" class="waves-effect waves-light">
+      
+      <i class="fas fa-tags" style="zoom: 0.6;"></i>
+      
+      <span>标签</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/categories" class="waves-effect waves-light">
+      
+      <i class="fas fa-bookmark" style="zoom: 0.6;"></i>
+      
+      <span>分类</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/archives" class="waves-effect waves-light">
+      
+      <i class="fas fa-archive" style="zoom: 0.6;"></i>
+      
+      <span>归档</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/about" class="waves-effect waves-light">
+      
+      <i class="fas fa-user-circle" style="zoom: 0.6;"></i>
+      
+      <span>关于</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/contact" class="waves-effect waves-light">
+      
+      <i class="fas fa-comments" style="zoom: 0.6;"></i>
+      
+      <span>留言板</span>
+    </a>
+    
+  </li>
+  
+  <li class="hide-on-med-and-down nav-item">
+    
+    <a href="/friends" class="waves-effect waves-light">
+      
+      <i class="fas fa-address-book" style="zoom: 0.6;"></i>
+      
+      <span>友情链接</span>
+    </a>
+    
+  </li>
+  
+  <li>
+    <a href="#searchModal" class="modal-trigger waves-effect waves-light">
+      <i id="searchIcon" class="fas fa-search" title="搜索" style="zoom: 0.85;"></i>
+    </a>
+  </li>
+</ul>
+
+
+<div id="mobile-nav" class="side-nav sidenav">
+
+    <div class="mobile-head bg-color">
+        
+        <img src="/medias/logo.png" class="logo-img circle responsive-img">
+        
+        <div class="logo-name">豪哥博客</div>
+        <div class="logo-desc">
+            
+            豪哥个人博客
+            
+        </div>
+    </div>
+
+    
+
+    <ul class="menu-list mobile-menu-list">
+        
+        <li class="m-nav-item">
+	  
+		<a href="/" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-home"></i>
+			
+			首页
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/tags" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-tags"></i>
+			
+			标签
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/categories" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-bookmark"></i>
+			
+			分类
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/archives" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-archive"></i>
+			
+			归档
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/about" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-user-circle"></i>
+			
+			关于
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/contact" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-comments"></i>
+			
+			留言板
+		</a>
+          
+        </li>
+        
+        <li class="m-nav-item">
+	  
+		<a href="/friends" class="waves-effect waves-light">
+			
+			    <i class="fa-fw fas fa-address-book"></i>
+			
+			友情链接
+		</a>
+          
+        </li>
+        
+        
+    </ul>
+</div>
+
+
+        </div>
+
+        
+    </nav>
+
+</header>
+
+    
+
+
+
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
+    <div class="container" style="right: 0px;left: 0px;">
+        <div class="row">
+            <div class="col s12 m12 l12">
+                <div class="brand">
+                    <h1 class="description center-align post-title">计算机系列-IO</h1>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<main class="post-container content">
+
+    
+    <link rel="stylesheet" href="/libs/tocbot/tocbot.css">
+<style>
+    #articleContent h1::before,
+    #articleContent h2::before,
+    #articleContent h3::before,
+    #articleContent h4::before,
+    #articleContent h5::before,
+    #articleContent h6::before {
+        display: block;
+        content: " ";
+        height: 100px;
+        margin-top: -100px;
+        visibility: hidden;
+    }
+
+    #articleContent :focus {
+        outline: none;
+    }
+
+    .toc-fixed {
+        position: fixed;
+        top: 64px;
+    }
+
+    .toc-widget {
+        width: 345px;
+        padding-left: 20px;
+    }
+
+    .toc-widget .toc-title {
+        padding: 35px 0 15px 17px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        line-height: 1.5rem;
+    }
+
+    .toc-widget ol {
+        padding: 0;
+        list-style: none;
+    }
+
+    #toc-content {
+        padding-bottom: 30px;
+        overflow: auto;
+    }
+
+    #toc-content ol {
+        padding-left: 10px;
+    }
+
+    #toc-content ol li {
+        padding-left: 10px;
+    }
+
+    #toc-content .toc-link:hover {
+        color: #42b983;
+        font-weight: 700;
+        text-decoration: underline;
+    }
+
+    #toc-content .toc-link::before {
+        background-color: transparent;
+        max-height: 25px;
+
+        position: absolute;
+        right: 23.5vw;
+        display: block;
+    }
+
+    #toc-content .is-active-link {
+        color: #42b983;
+    }
+
+    #floating-toc-btn {
+        position: fixed;
+        right: 15px;
+        bottom: 76px;
+        padding-top: 15px;
+        margin-bottom: 0;
+        z-index: 998;
+    }
+
+    #floating-toc-btn .btn-floating {
+        width: 48px;
+        height: 48px;
+    }
+
+    #floating-toc-btn .btn-floating i {
+        line-height: 48px;
+        font-size: 1.4rem;
+    }
+</style>
+<div class="row">
+    <div id="main-content" class="col s12 m12 l9">
+        <!-- 文章内容详情 -->
+<div id="artDetail">
+    <div class="card">
+        <div class="card-content article-info">
+            <div class="row tag-cate">
+                <div class="col s7">
+                    
+                    <div class="article-tag">
+                        
+                            <a href="/tags/IO/">
+                                <span class="chip bg-color">IO</span>
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+                <div class="col s5 right-align">
+                    
+                    <div class="post-cate">
+                        <i class="fas fa-bookmark fa-fw icon-category"></i>
+                        
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="post-category">
+                                计算机
+                            </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+
+            <div class="post-info">
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
+                    2023-09-14
+                </div>
+                
+
+                
+                <div class="post-date info-break-policy">
+                    <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
+                    2023-08-05
+                </div>
+                
+
+                
+                <div class="info-break-policy">
+                    <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
+                    11.3k
+                </div>
+                
+
+                
+
+                
+            </div>
+        </div>
+        <hr class="clearfix">
+
+        
+        <!-- 是否加载使用自带的 prismjs. -->
+        <link rel="stylesheet" href="/libs/prism/prism.css">
+        
+
+        
+
+        <div class="card-content article-card-content">
+            <div id="articleContent">
+                <h1 id="1、IO简介"><a href="#1、IO简介" class="headerlink" title="1、IO简介"></a>1、IO简介</h1><h2 id="1-1、前言"><a href="#1-1、前言" class="headerlink" title="1.1、前言"></a>1.1、前言</h2><p>Linux 2.6以后，Java中NIO和AIO都是通过epoll来实现，而在Windows上，AIO是通过IOCP来实现。</p>
+<p>Epoll 与 IOCP 区别如下：</p>
+<ol>
+<li>Epoll 适用于 Linux；而 IOCP 适用于 Windows；</li>
+<li>Epoll 会在事件资源满足时 发出可处理的通知消息；而 IOCP 会在 事件完成时 发出完成通知消息；</li>
+<li>从应用程序的角度来看， Epoll 本质上是同步非阻塞，IOCP 本质上则是异步操作；</li>
+</ol>
+<p><font color='orange'>Java中的BIO、NIO和AIO就是对操作系统中各种IO模型的封装。程序员在使用相关API时，无需关心系统底层知识，也无需编写不同的代码，而直接使用Java提供的API即可。</font></p>
+<p><font color='orange'>Linux(UNIX)操作系统共有五种IO模型：阻塞IO模型、非阻塞IO模型、IO复用模型、信号驱动IO模型、异步IO模型。</font></p>
+<h2 id="1-2、到底什么是IO"><a href="#1-2、到底什么是IO" class="headerlink" title="1.2、到底什么是IO"></a>1.2、到底什么是IO</h2><p><font color='orange'>常说的IO通常指的是文件的输入和输出</font>，而在操作系统层面又是如何定义IO的呢？</p>
+<p><font color='orange'>拿一次磁盘文件读取为例，IO就是把数据从硬件（硬盘）中读取到用户空间中的一个过程。</font></p>
+<p>其实真正的文件读取还涉及到缓存等细节，这里不再展开。关于用户空间、内核空间以及硬件等的关系如果不理解的话，可以通过钓鱼的例子来帮助理解。</p>
+<p>钓鱼过程：我们通过鱼竿将鱼从鱼塘中钓上来并放入鱼篓中。</p>
+<p>其中的鱼塘就可以看成是磁盘，鱼钩可以映射成内核空间，鱼篓可以映射成用户空间。一次完整的钓鱼（IO）操作，是鱼（文件）从鱼塘（硬盘）中转移（拷贝）到鱼篓（用户空间）的过程。</p>
+<p>对于一个network IO (以read举例)，它会涉及到两个系统对象：一个是调用IO的进程，另一个就是系统内核(kernel)。</p>
+<p>对于一次IO访问（以read举例），数据先拷贝至系统内核的缓冲区中，然后再拷贝到应用程序的地址空间。所以，一个read操作会经历两个阶段：</p>
+<ul>
+<li><font color='orange'>阶段1：等待数据准备 (Waiting for the data to be ready)。</font></li>
+<li><font color='orange'>阶段2： 将数据 从内核 拷贝到 进程中 (Copying the data from the kernel to the process)。</font></li>
+</ul>
+<p>因为这两个阶段，linux系统生成了五种网络模式：</p>
+<ul>
+<li>阻塞 I&#x2F;O（blocking IO）</li>
+<li>非阻塞 I&#x2F;O（nonblocking IO）</li>
+<li>信号驱动 I&#x2F;O（ signal driven IO）</li>
+<li>I&#x2F;O 多路复用（ IO multiplexing）</li>
+<li>异步 I&#x2F;O（asynchronous IO）</li>
+</ul>
+<h2 id="1-3、阻塞IO模型（同步）"><a href="#1-3、阻塞IO模型（同步）" class="headerlink" title="1.3、阻塞IO模型（同步）"></a>1.3、阻塞IO模型（同步）</h2><p>我们钓鱼的时候，有一种方式比较惬意，比较轻松，那就是我们坐在鱼竿面前，这个过程中我们什么也不做，双手一直把着鱼竿，就静静的等着鱼儿咬钩。一旦手上感受到鱼的力道，就把鱼钓起来放入鱼篓中。然后再钓下一条鱼。</p>
+<p>映射到Linux操作系统中，这就是一种最简单的IO模型，即阻塞IO。 阻塞 I&#x2F;O 是最简单的 I&#x2F;O 模型，一般表现为进程或线程等待某个条件，如果条件不满足，则一直等下去。直到条件满足再进行下一步操作。</p>
+<p>这种钓鱼方式相对来说比较简单，对于钓鱼的人来说，不需要什么特制的鱼竿，拿一根够长的木棍就可以悠闲的开始钓鱼了（实现简单）。缺点就是比较耗费时间，比较适合那种对鱼的需求量小的情况（并发低，时效性要求低）。</p>
+<p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20200927130712324.png?token=AIGEF3OVLUK27RBL6SLEFTLEZZV3U" alt="image-20200927130712324"></p>
+<p>如上图，当用户进程执行了recvfrom这个系统调用，kernel就开始了IO的第一个阶段：准备数据。对于network io来说，很多时候数据在一开始还没有到达（比如，还没有收到一个完整的UDP包），这个时候kernel就要等待足够的数据到来。而在用户进程这边，整 个进程会被阻塞。当kernel一直等到数据准备好了，它就会将数据从kernel中拷贝到用户内存，然后kernel返回结果，用户进程才解除 block的状态，重新运行起来。</p>
+<h2 id="1-4、非阻塞IO模型（同步）"><a href="#1-4、非阻塞IO模型（同步）" class="headerlink" title="1.4、非阻塞IO模型（同步）"></a>1.4、非阻塞IO模型（同步）</h2><p>我们钓鱼的时候，在等待鱼儿咬钩的过程中，我们可以做点别的事情，比如玩一把王者荣耀、看一集《延禧攻略》等等。但是，我们要时不时的去看一下鱼竿，一旦发现有鱼儿上钩了，就把鱼钓上来。</p>
+<p>映射到Linux操作系统中，这就是非阻塞的IO模型。应用进程与内核交互，目的未达到之前，不再一味的等着，而是直接返回。然后通过轮询的方式，不停的去问内核数据有没有准备好。如果某一次轮询发现数据已经准备好了，那就把数据拷贝到用户空间中。</p>
+<p>这种方式钓鱼，和阻塞IO比，所使用的工具没有什么变化，但是钓鱼的时候可以做些其他事情，增加时间的利用率。</p>
+<p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20200927131236060.png?token=AIGEF3JJN3JOM6PIKPPGUA3EZZV4U" alt="image-20200927131236060"></p>
+<p>从上图中可以看出，当用户进程发出read操作时，如果kernel中的数据还没有准备好，那么它并不会block用户进程，而是立刻返回一个error。 从用户进程角度讲 ，它发起一个read操作后，并不需要等待，而是马上就得到了一个结果。用户进程判断结果是一个error时，它就知道数据还没有准备好，于是它可以再次 发送read操作。一旦kernel中的数据准备好了，并且又再次收到了用户进程的system call，那么它马上就将数据拷贝到了用户内存，然后返回。</p>
+<p>所以，用户进程第一个阶段不是阻塞的，需要不断的主动询问kernel数据好了没有；第二个阶段依然是阻塞的。</p>
+<h2 id="1-5、信号驱动模型（同步）"><a href="#1-5、信号驱动模型（同步）" class="headerlink" title="1.5、信号驱动模型（同步）"></a>1.5、信号驱动模型（同步）</h2><p>我们钓鱼的时候，为了避免自己一遍一遍的去查看鱼竿，我们可以给鱼竿安装一个报警器。当有鱼儿咬钩的时候立刻报警。然后我们再收到报警后，去把鱼钓起来。</p>
+<p>映射到Linux操作系统中，这就是信号驱动IO。应用进程在读取文件时通知内核，如果某个 socket 的某个事件发生时，请向我发一个信号。在收到信号后，信号对应的处理函数会进行后续处理。</p>
+<p>这种方式钓鱼，和前几种相比，所使用的工具有了一些变化，需要有一些定制（实现复杂）。但是钓鱼的人就可以在鱼儿咬钩之前彻底做别的事儿去了。等着报警器响就行了。</p>
+<p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20200927132311222.png?token=AIGEF3NL6VRYEYFRUKUQF6TEZZV5Y" alt="image-20200927132311222"></p>
+<p>据上图所示，用户进程预先向内核注册一个信号处理函数，然后用户进程返回，并且不阻塞，当内核数据准备就绪时会发送一个信号给进程，用户进程便在信号处理函数中开始把数据拷贝的用户空间中。</p>
+<h2 id="1-6、IO多路复用模型（同步）"><a href="#1-6、IO多路复用模型（同步）" class="headerlink" title="1.6、IO多路复用模型（同步）"></a>1.6、IO多路复用模型（同步）</h2><p>我们钓鱼的时候，为了保证可以最短的时间钓到最多的鱼，我们同一时间摆放多个鱼竿，同时钓鱼。然后哪个鱼竿有鱼儿咬钩了，我们就把哪个鱼竿上面的鱼钓起来。映射到Linux操作系统中，这就是IO复用模型。多个进程的IO可以注册到同一个管道上，这个管道会统一和内核进行交互。当管道中的某一个请求需要的数据准备好之后，进程再把对应的数据拷贝到用户空间中。</p>
+<p><strong>IO multiplexing（IO多路复用）就是常说的select，poll，epoll，有时也称为event driven IO</strong>。IO复用同非阻塞IO本质一样，不过利用了新的select系统调用，由内核来负责本来是请求进程该做的轮询操作。看似比非阻塞IO还多了一个系统调用开销，不过因为可以支持多路IO，才算提高了效率。</p>
+<p>这种通过 增加鱼竿 的方式，可有效提升效率。</p>
+<p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20200927131649129.png?token=AIGEF3OTZ73LT4QN6AP7KWLEZZV62" alt="image-20200927131649129"></p>
+<p>据上图可知，当用户进程调用了<code>select</code>，那么整个进程会被block，而同时，kernel会“监视”所有select负责的socket，当任何一个 socket中的数据准备好了，select就会返回。这个时候用户进程再调用read操作，将数据从kernel拷贝到用户进程。</p>
+<p>select&#x2F;epoll的优势并不是对于单个连接能处理得更快，而是在于能处理更多的连接。在IO multiplexing Model中，实际对于每一个socket，一般都设置成为non-blocking，但是，如上图所示，整个用户的process其实是一直被 block的。只不过process是被select这个函数block，而不是被socket IO给block。</p>
+<h2 id="1-7、异步IO模型（异步）"><a href="#1-7、异步IO模型（异步）" class="headerlink" title="1.7、异步IO模型（异步）"></a>1.7、异步IO模型（异步）</h2><p>我们钓鱼的时候，采用一种高科技钓鱼竿，即全自动钓鱼竿。可以自动感应鱼上钩，自动收竿，更厉害的可以自动把鱼放进鱼篓里。然后，通知我们鱼已经钓到了，他就继续去钓下一条鱼去了。</p>
+<p>映射到Linux操作系统中，这就是异步IO模型。应用进程把IO请求传给内核后，完全由内核去操作文件拷贝。内核完成相关操作后，会发信号告诉应用进程本次IO已经完成。</p>
+<p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20200927132414881.png?token=AIGEF3LT4XPCFNCIGXH63A3EZZV7Y" alt="image-20200927132414881"></p>
+<p>如上图所示，用户进程发起<code>aio_read</code>操作之后，给内核传递描述符、缓冲区指针、缓冲区大小等，告诉内核当整个操作完成时，如何通知进程，然后就立刻去做其他事情了。当内核收到<code>aio_read</code>后，会立刻返回，然后内核开始等待数据准备，数据准备好以后，直接把数据拷贝到用户空间，然后再通知进程本次IO已经完成。</p>
+<p>这种钓鱼方式，最省事，只需要交给鱼竿就可以了。</p>
+<h2 id="1-8、总结"><a href="#1-8、总结" class="headerlink" title="1.8、总结"></a>1.8、总结</h2><h3 id="1-8-1、前四种都是同步IO模型"><a href="#1-8-1、前四种都是同步IO模型" class="headerlink" title="1.8.1、前四种都是同步IO模型"></a>1.8.1、前四种都是同步IO模型</h3><p>我们说阻塞IO模型、非阻塞IO模型、IO复用模型和信号驱动IO模型都是同步的IO模型。原因是因为，无论以上那种模型，真正的数据拷贝过程，都是同步进行。</p>
+<p><font color='orange'>信号驱动逻辑是：内核在数据准备好之后通知进程，然后进程通过<code>recvfrom</code>操作进行数据拷贝。可以认为数据准备阶段是异步的，数据拷贝操作是同步的。所以，整个IO过程不能认为是异步。</font></p>
+<h3 id="1-8-2、五种-IO-模型对比"><a href="#1-8-2、五种-IO-模型对比" class="headerlink" title="1.8.2、五种 IO 模型对比"></a>1.8.2、五种 IO 模型对比</h3><p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/5%E7%A7%8DIO%E6%A8%A1%E5%9E%8B%E5%AF%B9%E6%AF%9401.png?token=AIGEF3K7SADXDY2FIQ5EAUTEZZWBY" alt="5种IO模型对比01"></p>
+<h1 id="2、IO多路复用"><a href="#2、IO多路复用" class="headerlink" title="2、IO多路复用"></a>2、IO多路复用</h1><h2 id="2-1、必知知识"><a href="#2-1、必知知识" class="headerlink" title="2.1、必知知识"></a>2.1、必知知识</h2><h3 id="2-1-1、用户空间和内核空间"><a href="#2-1-1、用户空间和内核空间" class="headerlink" title="2.1.1、用户空间和内核空间"></a>2.1.1、用户空间和内核空间</h3><p>如今的操作系统大都采用虚拟存储器，32位操作系统的寻址空间（虚拟存储空间）为4G（2的32次方）。</p>
+<p><font color='orange'>操作系统核心是内核，独立于普通应用程序，可以访问受保护的内存空间，也有访问底层硬件设备的所有权限。</font></p>
+<p><font color='orange'>为了限制进程直接操作内核（kernel），保证内核安全，操作系统将虚拟空间划分为两部分：</font></p>
+<ul>
+<li><p><font color='orange'>内核空间</font></p>
+<p>针对linux操作系统而言，将最高的1G字节（从虚拟地址0xC0000000到0xFFFFFFFF）供内核使用，称为内核空间。</p>
+</li>
+<li><p><font color='orange'>用户空间</font></p>
+<p>将较低的3G字节（从虚拟地址0x00000000到0xBFFFFFFF）供进程使用，称为用户空间。</p>
+</li>
+</ul>
+<h3 id="2-1-2、进程切换"><a href="#2-1-2、进程切换" class="headerlink" title="2.1.2、进程切换"></a>2.1.2、进程切换</h3><p><font color='orange'>为了控制进程执行，内核必须有能力挂起正在CPU上运行的进程和恢复被挂起的某个进程，这种行为被称为进程切换。可以说，任何进程的运行都依赖于操作系统内核的支持。</font></p>
+<p><font color='orange'>从一个进程的运行转到另一个进程上运行，其过程变化如下：</font></p>
+<ol>
+<li>保存处理机上下文，包括程序计数器和其他寄存器。</li>
+<li>更新PCB信息。</li>
+<li>把进程的PCB移入相应的队列，如就绪、在某事件阻塞等队列。</li>
+<li>选择另一个进程执行，并更新其PCB。</li>
+<li>更新内存管理的数据结构。</li>
+<li>恢复处理机上下文。</li>
+</ol>
+<p>注：总而言之就是很耗资源，具体可参考这篇文章：<a target="_blank" rel="noopener" href="http://guojing.me/linux-kernel-architecture/posts/process-switch/">进程切换</a></p>
+<h3 id="2-1-3、进程阻塞"><a href="#2-1-3、进程阻塞" class="headerlink" title="2.1.3、进程阻塞"></a>2.1.3、进程阻塞</h3><p><font color='orange'>正在执行的进程，若期待的某些事件未发生，则系统自动执行阻塞原语(Block)，使自己由运行状态变为阻塞状态。</font></p>
+<p><font color='orange'>进程的阻塞是进程自身的一种主动行为，因此只有处于运行态的进程（获得CPU），才可能将其转为阻塞状态。当进程进入阻塞状态时不会占用CPU资源。</font></p>
+<h3 id="2-1-4、文件描述符FD"><a href="#2-1-4、文件描述符FD" class="headerlink" title="2.1.4、文件描述符FD"></a>2.1.4、文件描述符FD</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p><font color='orange'>文件描述符（File descriptor）是计算机科学中的一个术语，是一个表述 指向文件的引用抽象化概念。</font></p>
+<p><font color='orange'>文件描述符在形式上是一个非负整数。实际上，它是一个索引值，指向内核为每一个进程所维护的该进程打开文件的记录表。当程序打开一个现有文件或者创建一个新文件时，内核会向进程返回一个文件描述符。</font></p>
+<p><font color='red'>注意：在程序设计中，一些涉及底层的程序编写往往会围绕着文件描述符展开。但是文件描述符这一概念往往只适用于UNIX、Linux这样的操作系统。</font></p>
+<h4 id="文件描述符原理"><a href="#文件描述符原理" class="headerlink" title="文件描述符原理"></a>文件描述符原理</h4><p>系统为了维护文件描述符建立了3张表：</p>
+<ul>
+<li><p><font color='orange'>进程级文件描述符表</font></p>
+<p>主要记录了以下两项内容：</p>
+<ol>
+<li>文件描述符标志。</li>
+<li>文件指针（open file handle）。</li>
+</ol>
+</li>
+<li><p><font color='orange'>系统级文件描述符表</font></p>
+<p>记录内容如下：</p>
+<ol>
+<li>当前文件偏移量。</li>
+<li>状态标识。</li>
+<li>文件访问模式（读、写、读和写）。</li>
+<li>对该文件i-nod对象的引用。</li>
+<li>文件类型（常规文件、套接字、FIFO….）。</li>
+<li>访问权限。</li>
+<li>一个指向该文件所持有的索引表的指针。</li>
+<li>文件的各种属性。</li>
+<li>与信号驱动相关设置。</li>
+</ol>
+</li>
+<li><p><font color='orange'>文件系统i-node表</font></p>
+<p>记录内容如下：</p>
+<ol>
+<li>文件类型。</li>
+<li>文件锁。</li>
+</ol>
+</li>
+</ul>
+<h4 id="文件描述符限制"><a href="#文件描述符限制" class="headerlink" title="文件描述符限制"></a>文件描述符限制</h4><p><font color='orange'>文件描述符是一个重要的系统资源，理论上，可以打开多少个文件描述符取决于系统内存的大小，但内核会有系统级限制，以及用户级限制（不让某一个应用程序进程消耗掉所有的文件资源，可以使用ulimit -n 查看）。</font></p>
+<p><strong>用户级限制</strong></p>
+<ul>
+<li><p>查看</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">ulimit</span> <span class="token parameter variable">-n</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+</li>
+<li><p>修改</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 重启后失效</span>
+<span class="token builtin class-name">ulimit</span> <span class="token parameter variable">-SHn</span> <span class="token number">65535</span>
+<span class="token comment"># 永久生效</span>
+修改配置文件/etc/security/limits.conf，在最后一行加入：* - nofile <span class="token number">65535</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<p><strong>系统级限制</strong></p>
+<ul>
+<li><p>查看</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">sysctl</span> <span class="token parameter variable">-a</span> <span class="token operator">|</span> <span class="token function">grep</span> <span class="token parameter variable">-i</span> file-max --color<span class="token punctuation">;</span>
+---
+<span class="token function">cat</span> /proc/sys/fs/file-max<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+</li>
+<li><p>修改</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 重启后失效</span>
+<span class="token function">sysctl</span> <span class="token parameter variable">-w</span> fs.file-max<span class="token operator">=</span><span class="token number">65535</span><span class="token punctuation">;</span>
+---
+<span class="token builtin class-name">echo</span> <span class="token number">65535</span> <span class="token operator">></span> /proc/sys/fs/file-max
+
+<span class="token comment">#永久生效</span>
+修改配置文件/etc/sysctl.conf，在最后一行加入fs.file-max<span class="token operator">=</span><span class="token number">65535</span>。
+执行访问，触发生效。
+<span class="token function">sysctl</span> <span class="token parameter variable">-p</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre></li>
+</ul>
+<h3 id="2-1-5、缓存I-O"><a href="#2-1-5、缓存I-O" class="headerlink" title="2.1.5、缓存I&#x2F;O"></a>2.1.5、缓存I&#x2F;O</h3><p><font color='orange'>缓存 I&#x2F;O 又被 称作 标准 I&#x2F;O，大多数文件系统的默认 I&#x2F;O 都是缓存 I&#x2F;O。</font></p>
+<p>Linux 缓存 I&#x2F;O 机制中，操作系统会将 I&#x2F;O 的数据缓存在文件系统的页缓存（ page cache ）中，也就是说，数据先被拷贝至系统内核的缓冲区中，然后再拷贝到应用程序的地址空间。</p>
+<h3 id="2-1-6、IO多路复用简介"><a href="#2-1-6、IO多路复用简介" class="headerlink" title="2.1.6、IO多路复用简介"></a>2.1.6、IO多路复用简介</h3><p><font color='orange'>IO多路复用是指：内核一旦发现进程指定的一个或者多个IO条件符合要求时就会通知该进程。</font></p>
+<p>与多进程和多线程技术相比，I&#x2F;O多路复用的最大优势就是系统开销小，系统不必创建进程&#x2F;线程，也不必维护这些进程&#x2F;线程，从而大大减小了系统的开销。</p>
+<p>目前支持I&#x2F;O多路复用的系统调用有 <code>select、pselect、poll、epoll</code>，I&#x2F;O多路复用就是通过一种机制来实现一个进程监视多个描述符，一旦某个描述符就绪（一般是读就绪或者写就绪），能够通知程序进行相应的读写操作<code>。</code></p>
+<p><code>select、pselect、poll、epoll</code>本质上都是同步I&#x2F;O，需要在读写事件就绪后自己负责进行读写，这个读写过程是阻塞的，而异步I&#x2F;O无需自己读写，其实现会自动把数据从内核拷贝到用户空间。</p>
+<p><code>epoll</code>跟<code>select</code>都能提供I&#x2F;O多路复用的解决方案。现在的Linux内核都能支持，其中<code>epoll</code>是Linux所特有，而<code>select</code>则是<code>POSIX</code>所规定，一般操作系统均有实现。</p>
+<p><font color='orange'>select，poll，epoll都是I&#x2F;O多路复用的具体实现，他们的出现有先后顺序。</font></p>
+<h2 id="2-2、select（1983）"><a href="#2-2、select（1983）" class="headerlink" title="2.2、select（1983）"></a>2.2、select（1983）</h2><p>I&#x2F;O多路复用 被提出来后，select是第一个实现 (1983 左右在BSD里实现)。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">int</span> select <span class="token punctuation">(</span><span class="token keyword">int</span> n<span class="token punctuation">,</span> fd_set <span class="token operator">*</span>readfds<span class="token punctuation">,</span> fd_set <span class="token operator">*</span>writefds<span class="token punctuation">,</span> fd_set <span class="token operator">*</span>exceptfds<span class="token punctuation">,</span> struct timeval <span class="token operator">*</span>timeout<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="2-2-1、原理"><a href="#2-2-1、原理" class="headerlink" title="2.2.1、原理"></a>2.2.1、原理</h3><p><code>select</code>函数监视的文件描述符 分3类，分别是<code>writefds、readfds、exceptfds</code>。调用select函数后会阻塞，直到有描述符就绪（有数据 可读、可写、或者有except），或者超时（<code>timeout</code>指定等待时间，如果立即返回设为<code>null</code>即可）后函数才返回。当select函数返回后，只能通过遍历<code>fdset</code>，来找到就绪的描述符。</p>
+<h3 id="2-2-2、优缺点"><a href="#2-2-2、优缺点" class="headerlink" title="2.2.2、优缺点"></a>2.2.2、优缺点</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p><font color='orange'><code>select</code>目前几乎在所有的平台上都支持，其良好跨平台支持也是它的一个优点。</font></p>
+<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li><font color='orange'>select 会修改传入的参数数组。</font>这个对于一个需要调用很多次的函数，是非常不友好的。</li>
+<li>select 中的任何一个sock(I&#x2F;O stream)出现了数据，<font color='orange'>select 仅仅会返回，但并不告诉你哪个sock上有数据，</font>于是只能遍历一遍才能找到，这开销可想而知。</li>
+<li><font color='orange'>select 只能监视1024个链接。</font>这个和草榴没啥关系，linux 定义在头文件中的，参见<em>FD_SETSIZE。</em></li>
+<li><font color='orange'>select 线程不安全。</font>如果你把一个sock加入到select，然后突然另外一个线程发现，尼玛，这个sock不用，要收回。对不起，这个select不支持的，如果你丧心病狂的竟然关掉这个sock，select的标准行为是。呃。不可预测的，这个可是写在文档中的哦。</li>
+</ol>
+<h2 id="2-3、poll（1997）"><a href="#2-3、poll（1997）" class="headerlink" title="2.3、poll（1997）"></a>2.3、poll（1997）</h2><p>1997年实现了poll。</p>
+<p>与select使用三个位图来表示三个<code>fdset</code>的方式不同，poll使用一个<code>pollfd</code>指针实现。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">struct pollfd <span class="token punctuation">&#123;</span>
+    <span class="token keyword">int</span> fd<span class="token punctuation">;</span> <span class="token comment">/* file descriptor */</span>
+    <span class="token keyword">short</span> events<span class="token punctuation">;</span> <span class="token comment">/* requested events to watch */</span>
+    <span class="token keyword">short</span> revents<span class="token punctuation">;</span> <span class="token comment">/* returned events witnessed */</span>
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>pollfd结构包含了要监视的 event 和发生的 event，不再使用 select的 “参数-值”传递方式。</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">int</span> poll <span class="token punctuation">(</span>struct pollfd <span class="token operator">*</span>fds<span class="token punctuation">,</span> unsigned <span class="token keyword">int</span> nfds<span class="token punctuation">,</span> <span class="token keyword">int</span> timeout<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
+<h3 id="2-3-1、原理"><a href="#2-3-1、原理" class="headerlink" title="2.3.1、原理"></a>2.3.1、原理</h3><p><font color='orange'><code>poll</code>本质上和<code>select</code>没有区别，它将用户传入的数组拷贝到内核空间，然后查询每个fd对应的设备状态，如果设备就绪则在设备等待队列中加入一项并继续遍历。如果遍历完所有fd后没有发现就绪设备，则挂起当前进程，直到设备就绪或者主动超时。挂起的线程被唤醒后会再次遍历fd。这个过程经历了多次无意义的遍历。</font></p>
+<h3 id="2-3-2、优缺点"><a href="#2-3-2、优缺点" class="headerlink" title="2.3.2、优缺点"></a>2.3.2、优缺点</h3><h4 id="优点-1"><a href="#优点-1" class="headerlink" title="优点"></a>优点</h4><ol>
+<li><font color='orange'>没有最大连接数的限制，因为是基于链表来存储。</font></li>
+<li><font color='orange'>不再修改传入数组，不过这个要看平台了，所以小心为妙。</font></li>
+</ol>
+<h4 id="缺点-1"><a href="#缺点-1" class="headerlink" title="缺点"></a>缺点</h4><ol>
+<li><font color='orange'>大量的fd的数组被整体复制于用户态和内核地址空间之间，而不管这样的复制是不是有意义。</font></li>
+<li><font color='orange'><code>poll</code>有一个特点是“水平触发。如果报告了fd后，没有被处理，那么下次poll时会再次报告该fd。</font></li>
+<li><font color='orange'>线程非安全。</font></li>
+</ol>
+<h4 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h4><p><font color='orange'>从上面看，<code>select</code>和<code>poll</code>都需要在返回后，通过遍历文件描述符来获取已经就绪的<code>socket</code>。事实上，同时连接的大量客户端可能只有很少数处于就绪状态，因此随着监视的描述符数量的增长，其效率也会线性下降。</font></p>
+<h2 id="2-4、epoll（2002）"><a href="#2-4、epoll（2002）" class="headerlink" title="2.4、epoll（2002）"></a>2.4、epoll（2002）</h2><h3 id="2-4-1、简介"><a href="#2-4-1、简介" class="headerlink" title="2.4.1、简介"></a>2.4.1、简介</h3><p>2002，大神 Davide Libenzi 实现了epoll，在内核2.6中提出。</p>
+<p>epoll 是 select 和 poll 的增强版本。相对于select和poll来说，epoll更加灵活，没有描述符限制。<font color='orange'>epoll使用一个文件描述符管理多个描述符，将用户关系的文件描述符的事件存放到内核的一个事件表中，这样在用户空间和内核空间的copy只需一次。</font></p>
+<h3 id="2-4-2、原理"><a href="#2-4-2、原理" class="headerlink" title="2.4.2、原理"></a>2.4.2、原理</h3><p><font color='orange'><code>epoll</code>支持水平触发和边缘触发。最大特点在于边缘触发，它只告诉进程哪些fd刚刚变为就绪态，并且只会通知一次。</font>还有一个特点是<code>epoll</code>使用“事件”就绪通知的方式，通过<code>epoll_ctl</code>注册fd，一旦该fd就绪，内核就会采用类似callback的回调机制来激活该fd，epoll_wait便可以收到通知。</p>
+<h3 id="2-4-3、工作过程"><a href="#2-4-3、工作过程" class="headerlink" title="2.4.3、工作过程"></a>2.4.3、工作过程</h3><p>epoll操作过程需要三个接口，分别如下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">int</span> <span class="token function">epoll_create</span><span class="token punctuation">(</span><span class="token keyword">int</span> size<span class="token punctuation">)</span>；<span class="token comment">// 创建一个epoll的句柄，size用来告诉内核这个监听的数目一共有多大</span>
+<span class="token keyword">int</span> <span class="token function">epoll_ctl</span><span class="token punctuation">(</span><span class="token keyword">int</span> epfd<span class="token punctuation">,</span> <span class="token keyword">int</span> op<span class="token punctuation">,</span> <span class="token keyword">int</span> fd<span class="token punctuation">,</span> struct epoll_event <span class="token operator">*</span>event<span class="token punctuation">)</span>；
+<span class="token keyword">int</span> <span class="token function">epoll_wait</span><span class="token punctuation">(</span><span class="token keyword">int</span> epfd<span class="token punctuation">,</span> struct epoll_event <span class="token operator">*</span> events<span class="token punctuation">,</span> <span class="token keyword">int</span> maxevents<span class="token punctuation">,</span> <span class="token keyword">int</span> timeout<span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+
+<ul>
+<li><p><font color='orange'>epoll_create(int size)</font></p>
+<p>创建一个epoll的句柄，size用来告诉内核这个监听的数目一共有多大，这个参数不同于select()中的第一个参数，给出最大监听的fd+1的值，参数size并不是限制了epoll所能监听的描述符最大个数，只是对内核初始分配内部数据结构的一个建议。 当创建好epoll句柄后，它就会占用一个fd值，在linux下如果查看&#x2F;proc&#x2F;进程id&#x2F;fd&#x2F;，是能够看到这个fd的，所以在使用完epoll后，必须调用close()关闭，否则可能导致fd被耗尽。</p>
+</li>
+<li><p><font color='orange'>epoll_ctl(int epfd, int op, int fd, struct epoll_event *event)</font></p>
+<ul>
+<li><p>epfd：是epoll_create()的返回值。</p>
+</li>
+<li><p>op：表示op操作，用三个宏来表示：添加EPOLL_CTL_ADD，删除EPOLL_CTL_DEL，修改EPOLL_CTL_MOD。分别添加、删除和修改对fd的监听事件。</p>
+</li>
+<li><p>fd：是需要监听的fd（文件描述符）</p>
+</li>
+<li><p>epoll_event：是告诉内核需要监听什么事，struct epoll_event结构如下：</p>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java">struct epoll_event <span class="token punctuation">&#123;</span>
+    __uint32_t events<span class="token punctuation">;</span> 
+    <span class="token comment">/* Epoll events / epoll_data_t data; / User data variable */</span> 
+<span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
+
+<p>events可以是以下几个宏的集合： </p>
+<ol>
+<li><font color='orange'>EPOLLIN </font>：表示对应的文件描述符可以读（包括对端SOCKET正常关闭）；</li>
+<li><font color='orange'>EPOLLOUT</font>：表示对应的文件描述符可以写； </li>
+<li><font color='orange'>EPOLLPRI</font>：表示对应的文件描述符有紧急的数据可读（这里应该表示有带外数据到来）； </li>
+<li><font color='orange'>EPOLLERR</font>：表示对应的文件描述符发生错误；</li>
+<li><font color='orange'>EPOLLHUP</font>：表示对应的文件描述符被挂断； </li>
+<li><font color='orange'>EPOLLET</font>： 将EPOLL设为边缘触发(Edge Triggered)模式，这是相对于水平触发(Level Triggered)来说的。 </li>
+<li><font color='orange'>EPOLLONESHOT</font>：只监听一次事件，当监听完这次事件之后，如果还需要继续监听这个socket的话，需要再次把这个socket加入到EPOLL队列里。</li>
+</ol>
+</li>
+</ul>
+</li>
+<li><p><font color='orange'>epoll_wait(int epfd, struct epoll_event * events, int maxevents, int timeout)</font></p>
+<p>等待epfd上的io事件，最多返回maxevents个事件。 参数events用来从内核得到事件的集合，maxevents告之内核这个events有多大，这个maxevents的值不能大于创建epoll_create()时的size，参数timeout是超时时间（毫秒，0会立即返回，-1将不确定，也有说法说是永久阻塞）。该函数返回需要处理的事件数目，如返回0表示已超时。</p>
+</li>
+</ul>
+<h3 id="2-4-4、优缺点"><a href="#2-4-4、优缺点" class="headerlink" title="2.4.4、优缺点"></a>2.4.4、优缺点</h3><ul>
+<li><p>优点</p>
+<ol>
+<li>没有最大并发连接的限制，能打开的FD上限远大于1024（1G的内存上能监听约10万个端口）。</li>
+<li>线程安全。</li>
+<li>效率提升，它并不采用轮询的方式，不会随着FD数目的增加而效率下降。只有活跃可用的FD才会调用callback函数；即Epoll最大的优点就在于它只管你“活跃”的连接，而跟连接总数无关，因此在实际的网络环境中，Epoll的效率就会远远高于select和poll。</li>
+<li>内存拷贝，利用mmap()文件映射内存加速与内核空间的消息传递；即epoll使用mmap减少复制开销。</li>
+</ol>
+</li>
+<li><p>缺点</p>
+<p>epoll 有个致命缺点。只有linux支持。比如BSD上面对应的实现是kqueue。</p>
+</li>
+</ul>
+<h3 id="2-4-5、工作模式"><a href="#2-4-5、工作模式" class="headerlink" title="2.4.5、工作模式"></a>2.4.5、工作模式</h3><p><font color='orange'>epoll对文件描述符的操作有两种模式：LT（level trigger，水平触发，默认）和 ET（edge trigger，边缘触发）。</font>两者的区别如下：</p>
+<ul>
+<li><p><font color='orange'>LT模式（事件发生就通知你，你不管，那就一直通知你。）</font></p>
+<p>当epoll_wait检测到描述符事件发生并将此事件通知应用程序，应用程序可以不立即处理该事件。下次调用epoll_wait时，会再次响应应用程序并通知此事件。</p>
+<p><code>LT(level triggered)</code>是默认的工作方式，并且同时支持<code>block和no-block socket</code>。在这种做法中，内核告诉你一个文件描述符是否就绪了，然后你可以对这个就绪的fd进行IO操作。如果你不作任何操作，内核还是会继续通知你的&#96;。</p>
+</li>
+<li><p><font color='orange'>ET模式（事件发生就通知你，你不管，那不好意思，只会通知一次。）</font></p>
+<p>当epoll_wait检测到描述符事件发生并将此事件通知应用程序，应用程序必须立即处理该事件。如果不处理，下次调用epoll_wait时，不会再次响应应用程序并通知此事件。</p>
+<p><code>ET(edge-triggered)</code>是高速工作方式，只支持no-block socket。在这种模式下，当描述符从未就绪变为就绪时，内核通过epoll告诉你。然后它会假设你知道文件描述符已经就绪，并且不会再为那个文件描述符发送更多的就绪通知，直到你做了某些操作导致那个文件描述符不再为就绪状态了(比如，你在发送，接收或者接收请求，或者发送接收的数据少于一定量时导致了一个EWOULDBLOCK 错误）。但是请注意，如果一直不对这个fd作IO操作(从而导致它再次变成未就绪)，内核不会发送更多的通知(only once)。</p>
+<p>ET模式在很大程度上减少了epoll事件被重复触发的次数，因此效率要比LT模式高。epoll工作在ET模式的时候，必须使用非阻塞套接口，以避免由于一个文件句柄的阻塞读&#x2F;阻塞写操作把处理多个文件描述符的任务饿死。</p>
+</li>
+</ul>
+<p>如果存在大量活跃连接，select&#x2F;poll效率会较高一点，但如果活跃连接数量较少，就会发现epoll的效率高于select&#x2F;poll。</p>
+<h2 id="2-5、kqueue"><a href="#2-5、kqueue" class="headerlink" title="2.5、kqueue"></a>2.5、kqueue</h2><h3 id="2-5-1、简介"><a href="#2-5-1、简介" class="headerlink" title="2.5.1、简介"></a>2.5.1、简介</h3><p>与 epoll 类似，仅存于 FreeBSD（一种类UNIX操作系统）。</p>
+<h2 id="2-6、总结"><a href="#2-6、总结" class="headerlink" title="2.6、总结"></a>2.6、总结</h2><h3 id="2-6-1、select、poll、epoll区别"><a href="#2-6-1、select、poll、epoll区别" class="headerlink" title="2.6.1、select、poll、epoll区别"></a>2.6.1、select、poll、epoll区别</h3><ol>
+<li><p>一个进程所能打开的最大连接数</p>
+<p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/select-poll-epoll%E5%8C%BA%E5%88%AB_%E4%B8%80%E4%B8%AA%E8%BF%9B%E7%A8%8B%E6%94%AF%E6%8C%81%E7%9A%84%E6%9C%80%E5%A4%A7%E8%BF%9E%E6%8E%A5%E6%95%B001.png?token=AIGEF3L5JFBKQGWZRDVHKEDEZZWE2" alt="select-poll-epoll区别_一个进程支持的最大连接数01"></p>
+</li>
+<li><p>FD剧增后带来的IO效率问题</p>
+<p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/select-poll-epoll%E5%8C%BA%E5%88%AB_FD%E5%89%A7%E5%A2%9E%E5%90%8E%E5%B8%A6%E6%9D%A5%E7%9A%84%E6%95%88%E7%8E%87%E9%97%AE%E9%A2%9801.png?token=AIGEF3IBWIKHFGDH77RBSP3EZZWGO" alt="select-poll-epoll区别_FD剧增后带来的效率问题01"></p>
+</li>
+<li><p>消息传递方式</p>
+<p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/select-poll-epoll%E5%8C%BA%E5%88%AB_%E6%B6%88%E6%81%AF%E4%BC%A0%E9%80%92%E6%96%B9%E5%BC%8F01.png?token=AIGEF3P4I6JR72ZXBU2H6Z3EZZWIK" alt="select-poll-epoll区别_消息传递方式01"></p>
+</li>
+</ol>
+<h3 id="2-6-2、场景助记"><a href="#2-6-2、场景助记" class="headerlink" title="2.6.2、场景助记"></a>2.6.2、场景助记</h3><p>一个epoll场景：一个酒吧服务员（一个线程），前面趴了一群醉汉，突然一个吼一声“倒酒”（事件），你小跑过去给他倒一杯，然后随他去吧，突然又一个要倒酒，你又过去倒上，就这样一个服务员服务好多人，有时没人喝酒，服务员处于空闲状态，可以玩玩手机。</p>
+<p>至于epoll与select，poll的区别在于后两者的场景中醉汉不说话，你要挨个问要不要酒，没时间玩手机了。I&#x2F;O多路复用大概就是指这几个醉汉共用一个服务员。</p>
+<h3 id="2-6-3、三者如何选择"><a href="#2-6-3、三者如何选择" class="headerlink" title="2.6.3、三者如何选择"></a>2.6.3、三者如何选择</h3><ol>
+<li><font color='orange'>通常认为<code>epoll</code>性能最好，但在连接数少且连接都十分活跃的情况下，<code>select</code>和<code>poll</code>的性能可能要比<code>epoll</code>更好，毕竟<code>epoll</code>的通知机制需要很多函数回调。</font></li>
+<li><font color='orange'><code>select</code>低效是因为每次它都需要轮询。但低效也是相对的，视情况而定，也可通过良好的设计进行改善。</font></li>
+</ol>
+<h1 id="3、BIO（Blocking-Input-Output）"><a href="#3、BIO（Blocking-Input-Output）" class="headerlink" title="3、BIO（Blocking Input&#x2F;Output）"></a>3、BIO（Blocking Input&#x2F;Output）</h1><h2 id="3-1、简介"><a href="#3-1、简介" class="headerlink" title="3.1、简介"></a>3.1、简介</h2><p><font color='orange'>BIO是一个同步阻塞IO。同步阻塞I&#x2F;O模式下，数据的读取写入必须阻塞在一个线程内等待其完成。</font></p>
+<p>通过经典的烧开水例子来帮助理解，这里假设一个烧开水的场景，有一排水壶在烧开水，BIO的工作模式就是， 叫一个线程停留在一个水壶那，直到这个水壶烧开，才去处理下一个水壶。但是实际上线程在等待水壶烧开的时间段什么都没有做。</p>
+<h2 id="3-2、特点"><a href="#3-2、特点" class="headerlink" title="3.2、特点"></a>3.2、特点</h2><ol>
+<li><font color='orange'>一个线程对应一个请求。每进来一个请求就会创建一个线程。</font></li>
+</ol>
+<h2 id="3-3、阻塞方法"><a href="#3-3、阻塞方法" class="headerlink" title="3.3、阻塞方法"></a>3.3、阻塞方法</h2><ol>
+<li>InputStream.read()</li>
+<li>OutputStream.write()</li>
+<li>ServerSocket.accept()</li>
+</ol>
+<h2 id="3-4、优缺点"><a href="#3-4、优缺点" class="headerlink" title="3.4、优缺点"></a>3.4、优缺点</h2><ul>
+<li><p><font color='orange'>优点：（同步、使用复杂。）</font></p>
+<p>BIO模型程序开发起来较为简单，易于把握。（因为这是最基本与简单的I&#x2F;O操作方式，其根本特性是做完一件事再去做另一件事，一件事一定要等前一件事做完，这很符合程序员传统的顺序开发思想。）</p>
+</li>
+<li><p><font color='orange'>缺点：（阻塞、同步，三次握手耗时。）</font></p>
+<p>BIO模型下的线程阻塞会导致线程的频繁切换，进而影响整个系统性能。因为BIO模型下，一个线程同时只能做一个工作，如果线程在执行过程中依赖于需要等待的资源，那么该线程会长期处于阻塞状态，我们知道在整个操作系统中，线程是系统执行的基本单位。</p>
+</li>
+</ul>
+<h2 id="3-5、使用场景"><a href="#3-5、使用场景" class="headerlink" title="3.5、使用场景"></a>3.5、使用场景</h2><p><font color='orange'>BIO方式适用于连接数量少且固定的架构，这种方式对服务器资源要求比较高，并发局限于应用中，JDK1.4以前的唯一选择，但程序直观简单易理解。</font></p>
+<h2 id="3-6、注意事项"><a href="#3-6、注意事项" class="headerlink" title="3.6、注意事项"></a>3.6、注意事项</h2><p><font color='orange'>系统开发中，线程的生命周期一定要准确控制，对于大并发的场景，尽量使用线程池来确保线程的创建数量在一个合理范围之内，切勿编写代码来限制线程创建上限。</font></p>
+<h1 id="4、NIO（New-Input-Output）"><a href="#4、NIO（New-Input-Output）" class="headerlink" title="4、NIO（New Input&#x2F;Output）"></a>4、NIO（New Input&#x2F;Output）</h1><h2 id="4-1、简介"><a href="#4-1、简介" class="headerlink" title="4.1、简介"></a>4.1、简介</h2><p><font color='orange'>NIO是一种同步非阻塞的I&#x2F;O模型，Java 1.4 中引入了 NIO 框架，对应 java.nio 包，提供了 Channel , Selector，Buffer等抽象。</font></p>
+<p>NIO中的N可以理解为Non-blocking，而不单纯是New。它支持面向缓冲的，基于通道的I&#x2F;O操作方法。 NIO提供了与传统BIO模型中的 <code>Socket</code> 和 <code>ServerSocket</code> 相对应的 <code>SocketChannel</code> 和 <code>ServerSocketChannel</code> 两种套接字通道实现，两种通道都支持阻塞和非阻塞两种模式。</p>
+<p>阻塞模式比较简单，但性能和可靠性都不好；非阻塞模式正好与之相反。对于低负载、低并发的应用程序，可以使用同步阻塞I&#x2F;O来提升开发速率和更好的维护性；对于高负载、高并发的（网络）应用，应使用 NIO 非阻塞模式来应对。</p>
+<p><font color='orange'>NIO编程中，需要理解3个对象：Channel、Buffer和Selector。</font></p>
+<h2 id="4-2、Channel"><a href="#4-2、Channel" class="headerlink" title="4.2、Channel"></a>4.2、Channel</h2><p>Channel和IO中的Stream(流)是差不多一个等级。只不过Stream是单向的，譬如：InputStream, OutputStream。而Channel是双向的，既可以用来进行读操作，又可以用来进行写操作，NIO中的Channel实现有：</p>
+<ol>
+<li>FileChannel——文件IO</li>
+<li>DatagramChannel——UDP</li>
+<li>SocketChannel——TCP Client</li>
+<li>ServerSocketChannel——TCP Server</li>
+</ol>
+<h2 id="4-3、Buffer"><a href="#4-3、Buffer" class="headerlink" title="4.3、Buffer"></a>4.3、Buffer</h2><p>NIO中的Buffer实现有：ByteBuffer、CharBuffer、DoubleBuffer、 FloatBuffer、IntBuffer、 LongBuffer、ShortBuffer，分别对应基本数据类型: byte、char、double、 float、int、 long、 short。当然NIO中还有MappedByteBuffer、HeapByteBuffer、DirectByteBuffer等。</p>
+<h3 id="4-3-1、DirectByteBuffer-VS-HeapByteBuffer"><a href="#4-3-1、DirectByteBuffer-VS-HeapByteBuffer" class="headerlink" title="4.3.1、DirectByteBuffer VS HeapByteBuffer"></a>4.3.1、DirectByteBuffer VS HeapByteBuffer</h3><p>它们是ByteBuffer分配内存的两种方式。</p>
+<ol>
+<li>HeapByteBuffer内存空间在JVM堆上分配，可以看做是jdk对于byte[]数组的封装；而DirectByteBuffer则直接利用了系统接口进行内存申请，其内存分配在C的heap中，这样就减少了内存之间的拷贝操作，如此一来，在使用 DirectByteBuffer 时，系统就可以直接从内存将数据写入到Channel中，而无需进行Java堆的内存申请，复制等操作，提高了性能。</li>
+<li>DirectByteBuffer使用起来相对于完全托管于Java内存管理的HeapByteBuffer来说更复杂一些，如果用不好可能会引起OOM。因为DirectByteBuffer通过FGC来回收内存，且会自己检测情况是否调用system.gc()。如果参数中使用了DisableExplicitGC那么就无法回收该快内存了，-XX:+DisableExplicitGC标志会让System.gc()方法失效，失效后如果还想回收就需要我们手动来回收内存了。</li>
+<li>DirectByteBuffer的内存大小受 -XX:MaxDirectMemorySize JVM参数控制（默认大小64M），在 DirectByteBuffer申请内存空间达到该设置大小后，会触发FGC。</li>
+</ol>
+<h2 id="4-4、Selector"><a href="#4-4、Selector" class="headerlink" title="4.4、Selector"></a>4.4、Selector</h2><h3 id="4-4-1、简介"><a href="#4-4-1、简介" class="headerlink" title="4.4.1、简介"></a>4.4.1、简介</h3><p><font color='orange'>Selector通过单线程处理多个Channel，如果你的应用打开了多个通道，且每个连接的流量都很低，那么Selector就是绝配。</font></p>
+<h3 id="4-4-2、优缺点"><a href="#4-4-2、优缺点" class="headerlink" title="4.4.2、优缺点"></a>4.4.2、优缺点</h3><h3 id="4-4-3、使用场景"><a href="#4-4-3、使用场景" class="headerlink" title="4.4.3、使用场景"></a>4.4.3、使用场景</h3><p><font color='orange'>NIO方式适用于连接数目多且连接比较短（轻操作）的架构，比如聊天服务器，并发局限于应用中，编程比较复杂，JDK1.4开始支持。</font></p>
+<h2 id="4-5、总结"><a href="#4-5、总结" class="headerlink" title="4.5、总结"></a>4.5、总结</h2><h3 id="4-5-1、NIO特性-NIO与IO的区别"><a href="#4-5-1、NIO特性-NIO与IO的区别" class="headerlink" title="4.5.1、NIO特性&#x2F;NIO与IO的区别"></a>4.5.1、NIO特性&#x2F;NIO与IO的区别</h3><ul>
+<li><p><font color='orange'>Non-Blocking IO</font></p>
+<p>IO流是阻塞的，NIO流不阻塞。</p>
+</li>
+<li><p><font color='orange'>Buffer（缓冲区）</font></p>
+<p>IO 面向流(Stream oriented)，而 NIO 面向缓冲区(Buffer oriented)。</p>
+<p>Buffer是一个对象，它包含一些要写入或者要读出的数据。在NIO类库中加入Buffer对象，体现了新库与原I&#x2F;O的一个重要区别。在面向流的I&#x2F;O中·可以将数据直接写入或者将数据直接读到 Stream 对象中。虽然 Stream 中也有 Buffer 开头的扩展类，但只是流的包装类，还是从流读到缓冲区，而 NIO 却是直接读到 Buffer 中进行操作。</p>
+</li>
+<li><p><font color='orange'>Channel（通道）</font></p>
+<p>NIO 基于通道进行读写。通道是双向的，可读也可写，而流的读写是单向的。无论读写，通道只能和Buffer交互，故可以异步地读写。</p>
+</li>
+<li><p><font color='orange'>Selector（选择器）</font></p>
+<p>NIO有选择器，而IO没有。</p>
+<p>选择器用于使用单个线程处理多个通道。因此，它需要较少的线程来处理这些通道。线程之间的切换对于操作系统来说是昂贵的。 因此，为了提高系统效率选择器是有用的。</p>
+</li>
+</ul>
+<h3 id="4-5-2、NIO-VS-BIO"><a href="#4-5-2、NIO-VS-BIO" class="headerlink" title="4.5.2、NIO VS BIO"></a>4.5.2、NIO VS BIO</h3><ol>
+<li><font color='orange'>BIO是以流的方式处理数据，而NIO以块的方式处理数据。块IO的效率要比流IO高。</font></li>
+<li><font color='orange'>BIO是阻塞的，而NIO非阻塞。</font></li>
+<li><font color='orange'>BIO基于字节流和字符流进行操作，而NIO基于Channel和Buffer进行操作，数据既可以从Channel读到Buffer中，也可以从Buffer写入Channel中，Selector用于监听多个通道，故单个线程就可以监听多个客户端。</font></li>
+</ol>
+<h1 id="5、AIO（Asynchronous-Input-Output）"><a href="#5、AIO（Asynchronous-Input-Output）" class="headerlink" title="5、AIO（Asynchronous Input&#x2F;Output）"></a>5、AIO（Asynchronous Input&#x2F;Output）</h1><h2 id="5-1、简介"><a href="#5-1、简介" class="headerlink" title="5.1、简介"></a>5.1、简介</h2><p>AIO 也就是 NIO 2。在 Java 7 中引入了 NIO 的改进版 NIO 2，它是异步非阻塞的IO模型。异步 IO 是基于事件和回调机制实现的，也就是应用操作之后会直接返回，不会堵塞在那里，当后台处理完成，操作系统会通知相应的线程进行后续的操作。</p>
+<p>AIO 是异步IO的缩写，虽然 NIO 在网络操作中，提供了非阻塞的方法，但是 NIO 的 IO 行为还是同步的。对于 NIO 来说，我们的业务线程是在 IO 操作准备好时，得到通知，接着就由这个线程自行进行 IO 操作，IO操作本身是同步的。（除了 AIO 其他的 IO 类型都是同步的，这一点可以从底层IO线程模型解释。</p>
+<h2 id="5-2、特点"><a href="#5-2、特点" class="headerlink" title="5.2、特点"></a>5.2、特点</h2><p>在进行IO操作时，不需要阻塞等待操作完成，期间可以执行其它操作，一旦操作完成会直接返回结果给你。</p>
+<h2 id="5-3、优缺点"><a href="#5-3、优缺点" class="headerlink" title="5.3、优缺点"></a>5.3、优缺点</h2><p>优点：提升IO操作的效率和系统的并发性能。</p>
+<p>缺点：系统对其的支持不够完善，且实现较为复杂，只适用于大数据量的IO操作场景。</p>
+<h2 id="5-4、使用场景"><a href="#5-4、使用场景" class="headerlink" title="5.4、使用场景"></a>5.4、使用场景</h2><p><font color='orange'>AIO方式适用于连接数目多且连接较长（重操作）的架构，比如相册服务器，充分调用OS参与并发操作，编程比较复杂，JDK7开始支持。</font></p>
+<h1 id="6、IO多路复用模式"><a href="#6、IO多路复用模式" class="headerlink" title="6、IO多路复用模式"></a>6、IO多路复用模式</h1><p><font color='orange'>一般地，I&#x2F;O多路复用机制都依赖于一个事件多路分离器(Event Demultiplexer)。分离器对象可将 来自事件源 的I&#x2F;O事件分离出来，然后分发到对应的read&#x2F;write事件处理器(Event Handler)。开发人员预先注册需要处理的事件及其事件处理器（或回调函数）；事件分离器负责将请求事件传递给事件处理器。</font></p>
+<p>两个与事件分离器有关的模式是Reactor和Proactor。Reactor模式采用同步IO，而Proactor采用异步IO。</p>
+<p>在Reactor中，事件分离器负责 等待 文件描述符或socket为读写操作 准备就绪，然后将就绪事件传递给对应的处理器，最后由处理器负责完成实际的读写工作。</p>
+<p>在Proactor中，处理器或兼任处理器的事件分离器，只负责发起异步读写操作。IO操作本身由操作系统来完成。传递给操作系统的参数需要包含用户定义的数据缓冲区地址和数据大小，操作系统才能从中得到写出操作所需数据，或写入从socket读到的数据。事件分离器捕获IO操作完成事件，然后将事件传递给对应事件处理器。比如，在windows上，处理器发起一个异步IO操作，再由事件分离器等待IOCompletion事件。典型的异步模式实现，都建立在操作系统支持异步API的基础之上，我们将这种实现称为“系统级”异步或“真”异步，因为应用程序完全依赖操作系统执行真正的IO工作。</p>
+<h2 id="6-1、Reactor模式"><a href="#6-1、Reactor模式" class="headerlink" title="6.1、Reactor模式"></a>6.1、Reactor模式</h2><h3 id="6-x-1、读操作"><a href="#6-x-1、读操作" class="headerlink" title="6.x.1、读操作"></a>6.x.1、读操作</h3><ol>
+<li>注册读就绪事件和相关的事件处理器。</li>
+<li>事件分离器等待事件发生。</li>
+<li>当读就绪事件发生时，事件分离器调用第一步中的事件处理器。</li>
+<li>事件处理器首先执行读取操作，处理读到的数据，注册新的事件，然后返还控制权。</li>
+</ol>
+<h3 id="6-x-2、写操作"><a href="#6-x-2、写操作" class="headerlink" title="6.x.2、写操作"></a>6.x.2、写操作</h3><p>写入操作类似于读取操作，只不过第一步注册的是写就绪事件。</p>
+<h3 id="6-x-3、class结构"><a href="#6-x-3、class结构" class="headerlink" title="6.x.3、class结构"></a>6.x.3、class结构</h3><p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20210130120424783.png?token=AIGEF3LVAGFSNH77T3MR2Z3EZZWKI" alt="image-20210130120424783"></p>
+<p>Reactor包含如下角色：</p>
+<ul>
+<li>Handle 句柄；用来标识socket连接或是打开文件；</li>
+<li>Synchronous Event Demultiplexer：同步事件多路分解器：由操作系统内核实现的一个函数；用于阻塞等待发生在句柄集合上的一个或多个事件；（如select&#x2F;epoll；）</li>
+<li>Event Handler：事件处理接口</li>
+<li>Concrete Event HandlerA：实现应用程序所提供的特定事件处理逻辑；</li>
+<li>Reactor：反应器，定义一个接口，实现以下功能：<ol>
+<li>供应用程序注册和删除关注的事件句柄；</li>
+<li>运行事件循环；</li>
+<li>有就绪事件到来时，分发事件到之前注册的回调函数上处理；</li>
+</ol>
+</li>
+</ul>
+<p><font color='orange'>“反应器”名字中”反应“的由来：“反应”即“倒置”，“控制逆转”。</font></p>
+<p>具体事件处理程序不调用反应器，而是由反应器分配一个具体事件处理程序，具体事件处理程序对某个指定的事件发生做出反应；这种控制逆转又称为“好莱坞法则”（不要调用我，让我来调用你）。</p>
+<p>业务流程时序图：</p>
+<p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20210130120745134.png?token=AIGEF3NURLY36AQHY2JQLJDEZZWLK" alt="image-20210130120745134"></p>
+<ol>
+<li>应用启动，将关注的事件handle注册到Reactor中；</li>
+<li>调用Reactor，进入无限事件循环，等待注册的事件到来；</li>
+<li>事件到来，select返回，Reactor将事件分发到之前注册的回调函数中处理；</li>
+</ol>
+<h2 id="6-2、Proactor模式"><a href="#6-2、Proactor模式" class="headerlink" title="6.2、Proactor模式"></a>6.2、Proactor模式</h2><h3 id="6-x-1、读操作-1"><a href="#6-x-1、读操作-1" class="headerlink" title="6.x.1、读操作"></a>6.x.1、读操作</h3><ol>
+<li>应用程序初始化一个异步读取操作，然后注册事件处理器，此时事件处理器不关注读取就绪事件，而是关注读取完成事件，这是区别于Reactor的关键。 </li>
+<li>事件分离器等待读取操作完成事件。</li>
+<li>在事件分离器等待读取操作完成的时候，操作系统调用内核线程完成读取操作（异步IO都是操作系统负责将数据读写到应用传递进来的缓冲区供应用程序操作，操作系统扮演了重要角色），并将读取的内容放入用户传递过来的缓存区中。Proactor中，应用程序需要传递缓存区，这也是区别于Reactor的一点。 </li>
+<li>事件分离器捕获到读取完成事件后，激活应用程序注册的事件处理器，事件处理器直接从缓存区读取数据，而不需要进行实际的读取操作。</li>
+</ol>
+<h3 id="6-x-2、写操作-1"><a href="#6-x-2、写操作-1" class="headerlink" title="6.x.2、写操作"></a>6.x.2、写操作</h3><p>写操作与读操作类似。</p>
+<h3 id="6-x-3、class结构-1"><a href="#6-x-3、class结构-1" class="headerlink" title="6.x.3、class结构"></a>6.x.3、class结构</h3><p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20210130121111912.png?token=AIGEF3P7PCE73Q4G6GRF7C3EZZWMM" alt="image-20210130121111912"></p>
+<p><strong>Proactor主动器模式包含如下角色</strong></p>
+<ul>
+<li>Handle 句柄；用来标识socket连接或是打开文件；</li>
+<li>Asynchronous Operation Processor：异步操作处理器；负责执行异步操作，一般由操作系统内核实现；</li>
+<li>Asynchronous Operation：异步操作;</li>
+<li>Completion Event Queue：完成事件队列；异步操作完成的结果放到队列中等待后续使用;</li>
+<li>Proactor：主动器；为应用程序进程提供事件循环；从完成事件队列中取出异步操作的结果，分发调用相应的后续处理逻辑；</li>
+<li>Completion Handler：完成事件接口；一般是由回调函数组成的接口；</li>
+<li>Concrete Completion Handler：完成事件处理逻辑；实现接口定义特定的应用处理逻辑；</li>
+</ul>
+<p>业务流程时序图：</p>
+<p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20210130121212731.png?token=AIGEF3J26FNDQI3N67MR2ZTEZZWNQ" alt="image-20210130121212731"></p>
+<ol>
+<li>应用程序启动，调用异步操作处理器提供的异步操作接口函数，调用之后应用程序和异步操作处理就独立运行；应用程序可以调用新的异步操作，而其它操作可以并发进行；</li>
+<li>应用程序启动Proactor主动器，进行无限的事件循环，等待完成事件到来；</li>
+<li>异步操作处理器执行异步操作，完成后将结果放入到完成事件队列；</li>
+<li>主动器从完成事件队列中取出结果，分发到相应的完成事件回调函数处理逻辑中；</li>
+</ol>
+<h2 id="6-3、总结"><a href="#6-3、总结" class="headerlink" title="6.3、总结"></a>6.3、总结</h2><h3 id="6-3-1、主动与被动"><a href="#6-3-1、主动与被动" class="headerlink" title="6.3.1、主动与被动"></a>6.3.1、主动与被动</h3><p>以主动写为例：</p>
+<ul>
+<li><font color='orange'>Reactor将handle放到select()，等待可写就绪，然后调用write()写入数据；写完后 处理后续逻辑；</font></li>
+<li><font color='orange'>Proactor调用aoi_write后立刻返回，由内核负责写操作，写完后调用相应的回调函数处理后续逻辑；</font></li>
+</ul>
+<h3 id="6-3-2、实现"><a href="#6-3-2、实现" class="headerlink" title="6.3.2、实现"></a>6.3.2、实现</h3><p><font color='orange'>Reactor实现了一个被动的事件分离和分发模型，服务等待请求事件的到来，再通过不受间断的同步处理事件，从而做出反应。</font></p>
+<p><font color='orange'>Proactor实现了一个主动的事件分离和分发模型；这种设计允许多个任务并发执行，从而提高吞吐量；并可执行耗时长的任务（各个任务间互不影响）。</font></p>
+<h3 id="6-3-3、优劣"><a href="#6-3-3、优劣" class="headerlink" title="6.3.3、优劣"></a>6.3.3、优劣</h3><h4 id="优点-2"><a href="#优点-2" class="headerlink" title="优点"></a>优点</h4><ul>
+<li>Reactor<ol>
+<li><font color='orange'>Reactor实现相对简单，对于耗时短的处理场景处理高效；</font></li>
+<li><font color='orange'>操作系统可以在多个事件源上等待，并且避免了多线程编程相关的性能开销和编程复杂性；</font></li>
+<li><font color='orange'>事件的串行化对应用是透明的，可以顺序的同步执行而不需要加锁；</font></li>
+<li><font color='orange'>事务分离：将与应用无关的多路分解、分配机制 和 与应用相关的回调函数 分离开来。</font></li>
+</ol>
+</li>
+<li>Proactor<ol>
+<li><font color='orange'>Proactor性能更高，能够处理耗时长的并发场景；</font></li>
+</ol>
+</li>
+</ul>
+<h4 id="缺点-2"><a href="#缺点-2" class="headerlink" title="缺点"></a>缺点</h4><ul>
+<li><p>Reactor</p>
+<p><font color='orange'>Reactor处理耗时长的操作会造成事件分发的阻塞，影响到后续事件的处理；</font></p>
+</li>
+<li><p>Proactor</p>
+<ol>
+<li><font color='orange'>Proactor实现逻辑复杂；</font></li>
+<li><font color='orange'>依赖操作系统对异步的支持；</font>（目前纯异步的操作系统较少，但有优秀实现如windows IOCP，但由于windows系统用于服务器的局限性，目前应用范围较小；）</li>
+<li><font color='orange'>Unix&#x2F;Linux系统对纯异步支持有限，应用事件驱动的主流还是通过select&#x2F;epoll来实现；</font></li>
+</ol>
+</li>
+</ul>
+<h3 id="6-3-4、适用场景"><a href="#6-3-4、适用场景" class="headerlink" title="6.3.4、适用场景"></a>6.3.4、适用场景</h3><ul>
+<li><p>Reactor</p>
+<p><font color='orange'>同时接收多个服务请求，且依次同步处理它们的事件驱动程序；</font></p>
+</li>
+<li><p>Proactor</p>
+<p><font color='orange'>异步接收和同时处理多个服务请求的事件驱动程序；</font></p>
+</li>
+</ul>
+
+                
+            </div>
+            <hr/>
+
+            
+
+    <div class="reprint" id="reprint-statement">
+        
+            <div class="reprint__author">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-user">
+                        文章作者:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="/about" rel="external nofollow noreferrer">豪哥</a>
+                </span>
+            </div>
+            <div class="reprint__type">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-link">
+                        文章链接:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    <a href="https://hshz21.gitee.io/2023/09/14/io-zhi-shi-zong-jie/">https://hshz21.gitee.io/2023/09/14/io-zhi-shi-zong-jie/</a>
+                </span>
+            </div>
+            <div class="reprint__notice">
+                <span class="reprint-meta" style="font-weight: bold;">
+                    <i class="fas fa-copyright">
+                        版权声明:
+                    </i>
+                </span>
+                <span class="reprint-info">
+                    本博客所有文章除特別声明外，均采用
+                    <a href="https://creativecommons.org/licenses/by/4.0/deed.zh" rel="external nofollow noreferrer" target="_blank">CC BY 4.0</a>
+                    许可协议。转载请注明来源
+                    <a href="/about" target="_blank">豪哥</a>
+                    !
+                </span>
+            </div>
+        
+    </div>
+
+    <script async defer>
+      document.addEventListener("copy", function (e) {
+        let toastHTML = '<span>复制成功，请遵循本文的转载规则</span><button class="btn-flat toast-action" onclick="navToReprintStatement()" style="font-size: smaller">查看</a>';
+        M.toast({html: toastHTML})
+      });
+
+      function navToReprintStatement() {
+        $("html, body").animate({scrollTop: $("#reprint-statement").offset().top - 80}, 800);
+      }
+    </script>
+
+
+
+            <div class="tag_share" style="display: block;">
+                <div class="post-meta__tag-list" style="display: inline-block;">
+                    
+                        <div class="article-tag">
+                            
+                                <a href="/tags/IO/">
+                                    <span class="chip bg-color">IO</span>
+                                </a>
+                            
+                        </div>
+                    
+                </div>
+                <div class="post_share" style="zoom: 80%; width: fit-content; display: inline-block; float: right; margin: -0.15rem 0;">
+                    <link rel="stylesheet" type="text/css" href="/libs/share/css/share.min.css">
+<div id="article-share">
+
+    
+    <div class="social-share" data-sites="twitter,facebook,google,qq,qzone,wechat,weibo,douban,linkedin" data-wechat-qrcode-helper="<p>微信扫一扫即可分享！</p>"></div>
+    <script src="/libs/share/js/social-share.min.js"></script>
+    
+
+    
+
+</div>
+
+                </div>
+            </div>
+            
+                <style>
+    #reward {
+        margin: 40px 0;
+        text-align: center;
+    }
+
+    #reward .reward-link {
+        font-size: 1.4rem;
+        line-height: 38px;
+    }
+
+    #reward .btn-floating:hover {
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2), 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+
+    #rewardModal {
+        width: 320px;
+        height: 350px;
+    }
+
+    #rewardModal .reward-title {
+        margin: 15px auto;
+        padding-bottom: 5px;
+    }
+
+    #rewardModal .modal-content {
+        padding: 10px;
+    }
+
+    #rewardModal .close {
+        position: absolute;
+        right: 15px;
+        top: 15px;
+        color: rgba(0, 0, 0, 0.5);
+        font-size: 1.3rem;
+        line-height: 20px;
+        cursor: pointer;
+    }
+
+    #rewardModal .close:hover {
+        color: #ef5350;
+        transform: scale(1.3);
+        -moz-transform:scale(1.3);
+        -webkit-transform:scale(1.3);
+        -o-transform:scale(1.3);
+    }
+
+    #rewardModal .reward-tabs {
+        margin: 0 auto;
+        width: 210px;
+    }
+
+    .reward-tabs .tabs {
+        height: 38px;
+        margin: 10px auto;
+        padding-left: 0;
+    }
+
+    .reward-content ul {
+        padding-left: 0 !important;
+    }
+
+    .reward-tabs .tabs .tab {
+        height: 38px;
+        line-height: 38px;
+    }
+
+    .reward-tabs .tab a {
+        color: #fff;
+        background-color: #ccc;
+    }
+
+    .reward-tabs .tab a:hover {
+        background-color: #ccc;
+        color: #fff;
+    }
+
+    .reward-tabs .wechat-tab .active {
+        color: #fff !important;
+        background-color: #22AB38 !important;
+    }
+
+    .reward-tabs .alipay-tab .active {
+        color: #fff !important;
+        background-color: #019FE8 !important;
+    }
+
+    .reward-tabs .reward-img {
+        width: 210px;
+        height: 210px;
+    }
+</style>
+
+<div id="reward">
+    <a href="#rewardModal" class="reward-link modal-trigger btn-floating btn-medium waves-effect waves-light red">赏</a>
+
+    <!-- Modal Structure -->
+    <div id="rewardModal" class="modal">
+        <div class="modal-content">
+            <a class="close modal-close"><i class="fas fa-times"></i></a>
+            <h4 class="reward-title">你的赏识是我前进的动力</h4>
+            <div class="reward-content">
+                <div class="reward-tabs">
+                    <ul class="tabs row">
+                        <li class="tab col s6 alipay-tab waves-effect waves-light"><a href="#alipay">支付宝</a></li>
+                        <li class="tab col s6 wechat-tab waves-effect waves-light"><a href="#wechat">微 信</a></li>
+                    </ul>
+                    <div id="alipay">
+                        <img src="/medias/reward/alipay.png" class="reward-img" alt="支付宝打赏二维码">
+                    </div>
+                    <div id="wechat">
+                        <img src="/medias/reward/wxpay.png" class="reward-img" alt="微信打赏二维码">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    $(function () {
+        $('.tabs').tabs();
+    });
+</script>
+
+            
+        </div>
+    </div>
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+
+<article id="prenext-posts" class="prev-next articles">
+    <div class="row article-row">
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge left-badge text-color">
+                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+            <div class="card">
+                <a href="/2023/09/14/ip-tu-biao-jie-xi/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="计算机系列-IP图表分析">
+                        
+                        <span class="card-title">计算机系列-IP图表分析</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                        <span class="publish-date">
+                            <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
+                        </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="post-category">
+                                    计算机
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">
+                        <span class="chip bg-color">网络协议</span>
+                    </a>
+                    
+                    <a href="/tags/IP/">
+                        <span class="chip bg-color">IP</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+        
+        <div class="article col s12 m6" data-aos="fade-up">
+            <div class="article-badge right-badge text-color">
+                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+            </div>
+            <div class="card">
+                <a href="/2023/09/14/http-chang-jian-wen-da/">
+                    <div class="card-image">
+                        
+                        
+                        <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="计算机系列-HTTP常见问题">
+                        
+                        <span class="card-title">计算机系列-HTTP常见问题</span>
+                    </div>
+                </a>
+                <div class="card-content article-content">
+                    <div class="summary block-with-text">
+                        
+                            
+                        
+                    </div>
+                    <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
+                            </span>
+                        <span class="publish-author">
+                            
+                            <i class="fas fa-bookmark fa-fw icon-category"></i>
+                            
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="post-category">
+                                    计算机
+                                </a>
+                            
+                            
+                        </span>
+                    </div>
+                </div>
+                
+                <div class="card-action article-tags">
+                    
+                    <a href="/tags/%E7%BD%91%E7%BB%9C%E5%8D%8F%E8%AE%AE/">
+                        <span class="chip bg-color">网络协议</span>
+                    </a>
+                    
+                    <a href="/tags/HTTP/">
+                        <span class="chip bg-color">HTTP</span>
+                    </a>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+</article>
+
+</div>
+
+
+
+<!-- 代码块功能依赖 -->
+<script type="text/javascript" src="/libs/codeBlock/codeBlockFuction.js"></script>
+
+<!-- 代码语言 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeLang.js"></script>
+
+
+<!-- 代码块复制 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeCopy.js"></script>
+
+
+<!-- 代码块收缩 -->
+
+<script type="text/javascript" src="/libs/codeBlock/codeShrink.js"></script>
+
+
+    </div>
+    <div id="toc-aside" class="expanded col l3 hide-on-med-and-down">
+        <div class="toc-widget card" style="background-color: white;">
+            <div class="toc-title"><i class="far fa-list-alt"></i>&nbsp;&nbsp;目录</div>
+            <div id="toc-content"></div>
+        </div>
+    </div>
+</div>
+
+<!-- TOC 悬浮按钮. -->
+
+<div id="floating-toc-btn" class="hide-on-med-and-down">
+    <a class="btn-floating btn-large bg-color">
+        <i class="fas fa-list-ul"></i>
+    </a>
+</div>
+
+
+<script src="/libs/tocbot/tocbot.min.js"></script>
+<script>
+    $(function () {
+        tocbot.init({
+            tocSelector: '#toc-content',
+            contentSelector: '#articleContent',
+            headingsOffset: -($(window).height() * 0.4 - 45),
+            collapseDepth: Number('0'),
+            headingSelector: 'h2, h3, h4'
+        });
+
+        // modify the toc link href to support Chinese.
+        let i = 0;
+        let tocHeading = 'toc-heading-';
+        $('#toc-content a').each(function () {
+            $(this).attr('href', '#' + tocHeading + (++i));
+        });
+
+        // modify the heading title id to support Chinese.
+        i = 0;
+        $('#articleContent').children('h2, h3, h4').each(function () {
+            $(this).attr('id', tocHeading + (++i));
+        });
+
+        // Set scroll toc fixed.
+        let tocHeight = parseInt($(window).height() * 0.4 - 64);
+        let $tocWidget = $('.toc-widget');
+        $(window).scroll(function () {
+            let scroll = $(window).scrollTop();
+            /* add post toc fixed. */
+            if (scroll > tocHeight) {
+                $tocWidget.addClass('toc-fixed');
+            } else {
+                $tocWidget.removeClass('toc-fixed');
+            }
+        });
+
+        
+        /* 修复文章卡片 div 的宽度. */
+        let fixPostCardWidth = function (srcId, targetId) {
+            let srcDiv = $('#' + srcId);
+            if (srcDiv.length === 0) {
+                return;
+            }
+
+            let w = srcDiv.width();
+            if (w >= 450) {
+                w = w + 21;
+            } else if (w >= 350 && w < 450) {
+                w = w + 18;
+            } else if (w >= 300 && w < 350) {
+                w = w + 16;
+            } else {
+                w = w + 14;
+            }
+            $('#' + targetId).width(w);
+        };
+
+        // 切换TOC目录展开收缩的相关操作.
+        const expandedClass = 'expanded';
+        let $tocAside = $('#toc-aside');
+        let $mainContent = $('#main-content');
+        $('#floating-toc-btn .btn-floating').click(function () {
+            if ($tocAside.hasClass(expandedClass)) {
+                $tocAside.removeClass(expandedClass).hide();
+                $mainContent.removeClass('l9');
+            } else {
+                $tocAside.addClass(expandedClass).show();
+                $mainContent.addClass('l9');
+            }
+            fixPostCardWidth('artDetail', 'prenext-posts');
+        });
+        
+    });
+</script>
+
+    
+
+</main>
+
+
+
+
+    <footer class="page-footer bg-color">
+    
+        <link rel="stylesheet" href="/libs/aplayer/APlayer.min.css">
+<style>
+    .aplayer .aplayer-lrc p {
+        
+        display: none;
+        
+        font-size: 12px;
+        font-weight: 700;
+        line-height: 16px !important;
+    }
+
+    .aplayer .aplayer-lrc p.aplayer-lrc-current {
+        
+        display: none;
+        
+        font-size: 15px;
+        color: #42b983;
+    }
+
+    
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body {
+        left: -66px !important;
+    }
+
+    .aplayer.aplayer-fixed.aplayer-narrow .aplayer-body:hover {
+        left: 0px !important;
+    }
+
+    
+</style>
+<div class="">
+    
+    <div class="row">
+        <meting-js class="col l8 offset-l2 m10 offset-m1 s12"
+                   server="netease"
+                   type="playlist"
+                   id="503838841"
+                   fixed='true'
+                   autoplay='false'
+                   theme='#42b983'
+                   loop='all'
+                   order='random'
+                   preload='auto'
+                   volume='0.7'
+                   list-folded='true'
+        >
+        </meting-js>
+    </div>
+</div>
+
+<script src="/libs/aplayer/APlayer.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/meting@2/dist/Meting.min.js"></script>
+
+    
+    <div class="container row center-align" style="margin-bottom: 0px !important;">
+        <div class="col s12 m8 l8 copy-right">
+            Copyright&nbsp;&copy;
+            
+                <span id="year">2019-2023</span>
+            
+            <span id="year">2019</span>
+            <a href="/about" target="_blank">豪哥</a>
+            |&nbsp;Powered by&nbsp;<a href="https://github.com/lucky2shh" target="_blank">豪哥</a>
+            <br>
+            
+            
+            
+            
+            
+            
+            <span id="busuanzi_container_site_pv">
+                |&nbsp;<i class="far fa-eye"></i>&nbsp;总访问量:&nbsp;<span id="busuanzi_value_site_pv"
+                    class="white-color"></span>&nbsp;次
+            </span>
+            
+            
+            <span id="busuanzi_container_site_uv">
+                |&nbsp;<i class="fas fa-users"></i>&nbsp;总访问人数:&nbsp;<span id="busuanzi_value_site_uv"
+                    class="white-color"></span>&nbsp;人
+            </span>
+            
+            <br>
+            
+            <br>
+            
+        </div>
+        <div class="col s12 m4 l4 social-link social-statis">
+
+
+    <a href="mailto:3577293158@qq.com" class="tooltipped" target="_blank" data-tooltip="邮件联系我" data-position="top" data-delay="50">
+        <i class="fas fa-envelope-open"></i>
+    </a>
+
+
+
+
+
+
+
+    <a href="tencent://AddContact/?fromId=50&fromSubId=1&subcmd=all&uin=3577293158" class="tooltipped" target="_blank" data-tooltip="QQ联系我: 3577293158" data-position="top" data-delay="50">
+        <i class="fab fa-qq"></i>
+    </a>
+
+
+
+
+
+
+
+</div>
+    </div>
+</footer>
+
+<div class="progress-bar"></div>
+
+
+    <!-- 搜索遮罩框 -->
+<div id="searchModal" class="modal">
+    <div class="modal-content">
+        <div class="search-header">
+            <span class="title"><i class="fas fa-search"></i>&nbsp;&nbsp;搜索</span>
+            <input type="search" id="searchInput" name="s" placeholder="请输入搜索的关键字"
+                   class="search-input">
+        </div>
+        <div id="searchResult"></div>
+    </div>
+</div>
+
+<script type="text/javascript">
+$(function () {
+    var searchFunc = function (path, search_id, content_id) {
+        'use strict';
+        $.ajax({
+            url: path,
+            dataType: "xml",
+            success: function (xmlResponse) {
+                // get the contents from search data
+                var datas = $("entry", xmlResponse).map(function () {
+                    return {
+                        title: $("title", this).text(),
+                        content: $("content", this).text(),
+                        url: $("url", this).text()
+                    };
+                }).get();
+                var $input = document.getElementById(search_id);
+                var $resultContent = document.getElementById(content_id);
+                $input.addEventListener('input', function () {
+                    var str = '<ul class=\"search-result-list\">';
+                    var keywords = this.value.trim().toLowerCase().split(/[\s\-]+/);
+                    $resultContent.innerHTML = "";
+                    if (this.value.trim().length <= 0) {
+                        return;
+                    }
+                    // perform local searching
+                    datas.forEach(function (data) {
+                        var isMatch = true;
+                        var data_title = data.title.trim().toLowerCase();
+                        var data_content = data.content.trim().replace(/<[^>]+>/g, "").toLowerCase();
+                        var data_url = data.url;
+                        data_url = data_url.indexOf('/') === 0 ? data.url : '/' + data_url;
+                        var index_title = -1;
+                        var index_content = -1;
+                        var first_occur = -1;
+                        // only match artiles with not empty titles and contents
+                        if (data_title !== '' && data_content !== '') {
+                            keywords.forEach(function (keyword, i) {
+                                index_title = data_title.indexOf(keyword);
+                                index_content = data_content.indexOf(keyword);
+                                if (index_title < 0 && index_content < 0) {
+                                    isMatch = false;
+                                } else {
+                                    if (index_content < 0) {
+                                        index_content = 0;
+                                    }
+                                    if (i === 0) {
+                                        first_occur = index_content;
+                                    }
+                                }
+                            });
+                        }
+                        // show search results
+                        if (isMatch) {
+                            str += "<li><a href='" + data_url + "' class='search-result-title'>" + data_title + "</a>";
+                            var content = data.content.trim().replace(/<[^>]+>/g, "");
+                            if (first_occur >= 0) {
+                                // cut out 100 characters
+                                var start = first_occur - 20;
+                                var end = first_occur + 80;
+                                if (start < 0) {
+                                    start = 0;
+                                }
+                                if (start === 0) {
+                                    end = 100;
+                                }
+                                if (end > content.length) {
+                                    end = content.length;
+                                }
+                                var match_content = content.substr(start, end);
+                                // highlight all keywords
+                                keywords.forEach(function (keyword) {
+                                    var regS = new RegExp(keyword, "gi");
+                                    match_content = match_content.replace(regS, "<em class=\"search-keyword\">" + keyword + "</em>");
+                                });
+
+                                str += "<p class=\"search-result\">" + match_content + "...</p>"
+                            }
+                            str += "</li>";
+                        }
+                    });
+                    str += "</ul>";
+                    $resultContent.innerHTML = str;
+                });
+            }
+        });
+    };
+
+    searchFunc('/search.xml', 'searchInput', 'searchResult');
+});
+</script>
+
+    <!-- 回到顶部按钮 -->
+<div id="backTop" class="top-scroll">
+    <a class="btn-floating btn-large waves-effect waves-light" href="#!">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+</div>
+
+
+    <script src="/libs/materialize/materialize.min.js"></script>
+    <script src="/libs/masonry/masonry.pkgd.min.js"></script>
+    <script src="/libs/aos/aos.js"></script>
+    <script src="/libs/scrollprogress/scrollProgress.min.js"></script>
+    <script src="/libs/lightGallery/js/lightgallery-all.min.js"></script>
+    <script src="/js/matery.js"></script>
+
+    <!-- Baidu Analytics -->
+
+    <!-- Baidu Push -->
+
+<script>
+    (function () {
+        var bp = document.createElement('script');
+        var curProtocol = window.location.protocol.split(':')[0];
+        if (curProtocol === 'https') {
+            bp.src = 'https://zz.bdstatic.com/linksubmit/push.js';
+        } else {
+            bp.src = 'http://push.zhanzhang.baidu.com/push.js';
+        }
+        var s = document.getElementsByTagName("script")[0];
+        s.parentNode.insertBefore(bp, s);
+    })();
+</script>
+
+    
+    <script src="/libs/others/clicklove.js" async="async"></script>
+    
+    
+    <script async src="/libs/others/busuanzi.pure.mini.js"></script>
+    
+
+    
+
+    
+
+	
+    
+
+    
+
+    
+
+    
+    <script src="/libs/instantpage/instantpage.js" type="module"></script>
+    
+
+</body>
+
+</html>

@@ -297,41 +297,34 @@
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/08/07/02-session-gong-xiang-wen-ti/">
+                    <a href="/2023/09/14/sentinel-gui-ze-chi-jiu-hua/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="微服务问题系列-Session共享问题">
+                            <img src="/medias/featureimages/12.jpg" class="responsive-img" alt="Sentinel系列-Sentinel规则持久化">
                             
-                            <span class="card-title">微服务问题系列-Session共享问题</span>
+                            <span class="card-title">Sentinel系列-Sentinel规则持久化</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、Session共享方案特点session替代方案需满足：
-
-数据共享
-内存存储
-key&#x2F;value结构
-
-2、Session共享方案2.1、Tomcat
-tomcat通过配置实现session互相拷贝
-浪费内存空间，成本高。
-
+                                1、修改Sentinel源码1.1、解压sentinel源码包1.2、修改依赖&lt;dependency>
+    &lt;groupId>com.alibaba.csp&lt;/groupId>
+    &lt;artifactId>s
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
-                                    微服务
+                                <a href="/categories/Sentinel/" class="post-category">
+                                    Sentinel
                                 </a>
                                 
                                 
@@ -342,12 +335,12 @@ tomcat通过配置实现session互相拷贝
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E9%97%AE%E9%A2%98/">
-                            <span class="chip bg-color">微服务问题</span>
+                        <a href="/tags/Sentinel/">
+                            <span class="chip bg-color">Sentinel</span>
                         </a>
                         
-                        <a href="/tags/Session%E5%85%B1%E4%BA%AB/">
-                            <span class="chip bg-color">Session共享</span>
+                        <a href="/tags/Sentinel%E6%8C%81%E4%B9%85%E5%8C%96/">
+                            <span class="chip bg-color">Sentinel持久化</span>
                         </a>
                         
                     </div>
@@ -357,34 +350,37 @@ tomcat通过配置实现session互相拷贝
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/08/07/01-kua-yu-wen-ti-chu-li/">
+                    <a href="/2023/09/14/sentinel-di-ceng-yuan-li/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="微服务问题系列-处理跨域">
+                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="Sentinel系列-Sentinel原理解析">
                             
-                            <span class="card-title">微服务问题系列-处理跨域</span>
+                            <span class="card-title">Sentinel系列-Sentinel原理解析</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、跨域问题只要 访问协议、访问地址、端口号 三个地方有一个不一样就会出现跨域问题。
-2、跨域解决方案2.1、注解可以在Controller控制器上加上注解@CrossOrigin即可，不过这种方案生产中不推荐，仅在开发测试阶段来使用。
-2
+                                1、基本概念Sentinel实现限流、隔离、降级、熔断等功能，本质要做的就是两件事情：
+
+统计数据：统计某个资源的访问数据（QPS、RT等信息）。
+规则判断：判断限流规则、隔离规则、降级规则、熔断规则是否满足。
+
+1.1、Processor
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
-                                    微服务
+                                <a href="/categories/Sentinel/" class="post-category">
+                                    Sentinel
                                 </a>
                                 
                                 
@@ -395,12 +391,12 @@ tomcat通过配置实现session互相拷贝
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E9%97%AE%E9%A2%98/">
-                            <span class="chip bg-color">微服务问题</span>
+                        <a href="/tags/Sentinel/">
+                            <span class="chip bg-color">Sentinel</span>
                         </a>
                         
-                        <a href="/tags/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F/">
-                            <span class="chip bg-color">解决跨域</span>
+                        <a href="/tags/Sentinel%E5%8E%9F%E7%90%86/">
+                            <span class="chip bg-color">Sentinel原理</span>
                         </a>
                         
                     </div>
@@ -410,32 +406,34 @@ tomcat通过配置实现session互相拷贝
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/08/07/13-miao-sha-ye-wu/">
+                    <a href="/2023/09/14/sentinel-ji-ben-shi-yong/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="微服务业务功能系列-秒杀">
+                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Sentinel系列-Sentinel基础使用">
                             
-                            <span class="card-title">微服务业务功能系列-秒杀</span>
+                            <span class="card-title">Sentinel系列-Sentinel基础使用</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、秒杀系统注意事项1.1、服务单一1.2、动静分离1.3、库存预热1.4、秒杀链接加密1.5、恶意请求拦截1.6、流量削峰1.7、队列削峰1.8、限流&#x2F;熔断&#x2F;降级2、秒杀资格判断2.1、库存和一人一单将商品及库存存放在
+                                1、加入依赖&lt;dependency>
+    &lt;groupId>com.alibaba.cloud&lt;/groupId>
+    &lt;artifactId>spring-cloud-starter-alibaba-sen
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
-                                    微服务
+                                <a href="/categories/Sentinel/" class="post-category">
+                                    Sentinel
                                 </a>
                                 
                                 
@@ -446,12 +444,12 @@ tomcat通过配置实现session互相拷贝
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%9A%E5%8A%A1%E5%8A%9F%E8%83%BD/">
-                            <span class="chip bg-color">微服务业务功能</span>
+                        <a href="/tags/Sentinel/">
+                            <span class="chip bg-color">Sentinel</span>
                         </a>
                         
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%A7%92%E6%9D%80%E5%8A%9F%E8%83%BD/">
-                            <span class="chip bg-color">微服务秒杀功能</span>
+                        <a href="/tags/Sentinel%E5%9F%BA%E7%A1%80/">
+                            <span class="chip bg-color">Sentinel基础</span>
                         </a>
                         
                     </div>
@@ -461,35 +459,36 @@ tomcat通过配置实现session互相拷贝
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/08/07/12-fen-bu-shi-shi-wu/">
+                    <a href="/2023/09/14/seata-ji-ben-shi-yong/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/14.jpg" class="responsive-img" alt="微服务业务功能系列-分布式事务">
+                            <img src="/medias/featureimages/9.jpg" class="responsive-img" alt="Seata系列-Seata基础应用">
                             
-                            <span class="card-title">微服务业务功能系列-分布式事务</span>
+                            <span class="card-title">Seata系列-Seata基础应用</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                Seata1.1、加入依赖1.2、配置1.2.1、seata服务器配置在register.conf文件中编写如下配置：
-# 注册中心
-registry &#123;
-  # file 、nacos 、eureka、redis、zk、cons
+                                1、服务端配置1.1、Registry.confregistry &#123;
+  # file 、nacos 、eureka、redis、zk、consul、etcd3、sofa
+  type = "nacos"
+
+  nacos &#1
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
-                                    微服务
+                                <a href="/categories/Seata/" class="post-category">
+                                    Seata
                                 </a>
                                 
                                 
@@ -500,12 +499,12 @@ registry &#123;
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%9A%E5%8A%A1%E5%8A%9F%E8%83%BD/">
-                            <span class="chip bg-color">微服务业务功能</span>
+                        <a href="/tags/Seata/">
+                            <span class="chip bg-color">Seata</span>
                         </a>
                         
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%88%86%E5%B8%83%E5%BC%8F%E4%BA%8B%E5%8A%A1/">
-                            <span class="chip bg-color">微服务分布式事务</span>
+                        <a href="/tags/Seata%E5%9F%BA%E7%A1%80/">
+                            <span class="chip bg-color">Seata基础</span>
                         </a>
                         
                     </div>
@@ -515,42 +514,34 @@ registry &#123;
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/08/07/11-ding-dan-mo-kuai/">
+                    <a href="/2023/09/14/rocketmq-di-ceng-yuan-li/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="微服务业务功能系列-订单">
+                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="RocketMQ系列-RocketMQ原理解析">
                             
-                            <span class="card-title">微服务业务功能系列-订单</span>
+                            <span class="card-title">RocketMQ系列-RocketMQ原理解析</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                订单确认执行流程
-远程查询所有收货地址信息。
-远程查询订单中选中的商品信息。
-查询用户积分。
-其它数据，自动计算。
-
-提交订单执行流程
-验证令牌。
-令牌验证失败，设置错误码为1。
-令牌验证成功，创建订单。
-创建订单：createOrder(
+                                1、消息存储 
+消息存储是RocketMQ中最复杂和最重要的一部分，下面将从 RocketMQ消息存储整体架构、PageCache与Mmap内存映射、RocketMQ中两种不同的刷盘方式等 三方面来展开叙述。
+1.1、消息存储架构消息存储架
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
-                                    微服务
+                                <a href="/categories/RocketMQ/" class="post-category">
+                                    RocketMQ
                                 </a>
                                 
                                 
@@ -561,12 +552,12 @@ registry &#123;
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%9A%E5%8A%A1%E5%8A%9F%E8%83%BD/">
-                            <span class="chip bg-color">微服务业务功能</span>
+                        <a href="/tags/RocketMQ/">
+                            <span class="chip bg-color">RocketMQ</span>
                         </a>
                         
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E8%AE%A2%E5%8D%95%E5%8A%9F%E8%83%BD/">
-                            <span class="chip bg-color">微服务订单功能</span>
+                        <a href="/tags/RocketMQ%E5%8E%9F%E7%90%86/">
+                            <span class="chip bg-color">RocketMQ原理</span>
                         </a>
                         
                     </div>
@@ -576,36 +567,33 @@ registry &#123;
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/08/07/10-gou-wu-che/">
+                    <a href="/2023/09/14/rocketmq-ji-chu-ying-yong/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="微服务业务功能系列-购物车">
+                            <img src="/medias/featureimages/3.jpg" class="responsive-img" alt="RocketMQ系列-RocketMQ基础应用">
                             
-                            <span class="card-title">微服务业务功能系列-购物车</span>
+                            <span class="card-title">RocketMQ系列-RocketMQ基础应用</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、添加商品1.1、需求
-无需登录，可直接添加商品到购物车。
-首次使用购物车 会为当前客户端分配一个user_key并设置到cookie中，商品信息也会保存到cookie中。cookie过期时间为一个月。
-
-浏览器重启后，购物车商品信息不会
+                                1、RocketMQ是啥1.1.、RocketMQ简介RocketMQ 是一个 开源分布式消息系统，提供低延时、高可靠的消息发布与订阅服务。
+1.2、角色成员1.2.1、Message Model（消息模型）RocketMQ主要由Produ
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
-                                    微服务
+                                <a href="/categories/RocketMQ/" class="post-category">
+                                    RocketMQ
                                 </a>
                                 
                                 
@@ -616,12 +604,12 @@ registry &#123;
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%9A%E5%8A%A1%E5%8A%9F%E8%83%BD/">
-                            <span class="chip bg-color">微服务业务功能</span>
+                        <a href="/tags/RocketMQ/">
+                            <span class="chip bg-color">RocketMQ</span>
                         </a>
                         
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E8%B4%AD%E7%89%A9%E8%BD%A6%E5%8A%9F%E8%83%BD/">
-                            <span class="chip bg-color">微服务购物车功能</span>
+                        <a href="/tags/RocketMQ%E5%9F%BA%E7%A1%80/">
+                            <span class="chip bg-color">RocketMQ基础</span>
                         </a>
                         
                     </div>
@@ -631,36 +619,34 @@ registry &#123;
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/08/07/09-deng-lu/">
+                    <a href="/2023/09/14/redis-mian-shi-ti-di-yi-pian/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="微服务业务功能系列-登录">
+                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="Redis系列-Redis模拟面试题第一篇">
                             
-                            <span class="card-title">微服务业务功能系列-登录</span>
+                            <span class="card-title">Redis系列-Redis模拟面试题第一篇</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、验证码1.1、依赖1.2、配置1.2.1、配置文件spring:
-  cloud:
-    alicloud:
-      sms:
-        host: https://smsmsgs.market.alicloudapi.co
+                                1、基础摸底1.1、何为RedisRedis 是 NoSQL 数据库，也即非关系型数据库。。
+1.2、NoSQL BASE理论BASE理论是对CAP中一致性的妥协。与 传统事务ACID 不同，BASE不追求强一致性，只要最终达到一致就行。
+
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
-                                    微服务
+                                <a href="/categories/Redis/" class="post-category">
+                                    Redis
                                 </a>
                                 
                                 
@@ -671,12 +657,8 @@ registry &#123;
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%9A%E5%8A%A1%E5%8A%9F%E8%83%BD/">
-                            <span class="chip bg-color">微服务业务功能</span>
-                        </a>
-                        
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%99%BB%E5%BD%95%E5%8A%9F%E8%83%BD/">
-                            <span class="chip bg-color">微服务登录功能</span>
+                        <a href="/tags/Redis%E9%9D%A2%E8%AF%95/">
+                            <span class="chip bg-color">Redis面试</span>
                         </a>
                         
                     </div>
@@ -686,34 +668,54 @@ registry &#123;
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/08/07/08-fen-bu-shi-suo/">
+                    <a href="/2023/09/14/redis-ji-qun-da-jian/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="微服务业务功能系列-分布式锁">
+                            <img src="/medias/featureimages/0.jpg" class="responsive-img" alt="Redis系列-Redis集群搭建">
                             
-                            <span class="card-title">微服务业务功能系列-分布式锁</span>
+                            <span class="card-title">Redis系列-Redis集群搭建</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、Redis分布式锁1.1、基于LUA脚本1.1.1、实现示例编写lua脚本文件unlock.lua，添加如下内容：
--- 比较线程标示与锁中的标示是否一致
-if(redis.call('get', KEYS[1]) ==  ARGV[1
+                                1、Redis主从集群本集群模式为一主二从。
+1.1、准备3台服务器三台服务器信息如下：
+
+
+
+IP
+PORT
+
+
+
+192.168.2.23
+6379
+
+
+192.168.2.24
+6379
+
+
+192.168.2.25
+6379
+
+
+1
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
-                                    微服务
+                                <a href="/categories/Redis/" class="post-category">
+                                    Redis
                                 </a>
                                 
                                 
@@ -724,12 +726,12 @@ if(redis.call('get', KEYS[1]) ==  ARGV[1
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%9A%E5%8A%A1%E5%8A%9F%E8%83%BD/">
-                            <span class="chip bg-color">微服务业务功能</span>
+                        <a href="/tags/Redis/">
+                            <span class="chip bg-color">Redis</span>
                         </a>
                         
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/">
-                            <span class="chip bg-color">微服务分布式锁</span>
+                        <a href="/tags/Redis%E9%9B%86%E7%BE%A4/">
+                            <span class="chip bg-color">Redis集群</span>
                         </a>
                         
                     </div>
@@ -739,34 +741,35 @@ if(redis.call('get', KEYS[1]) ==  ARGV[1
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/08/07/07-dui-xiang-cun-chu-fu-wu/">
+                    <a href="/2023/09/14/redis-huan-cun-wen-ti/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="微服务业务功能系列-对象存储服务OSS">
+                            <img src="/medias/featureimages/4.jpg" class="responsive-img" alt="Redis系列-Redis缓存问题">
                             
-                            <span class="card-title">微服务业务功能系列-对象存储服务OSS</span>
+                            <span class="card-title">Redis系列-Redis缓存问题</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、阿里云OSS对象存储1.1、准备工作1.1.1、加入Maven依赖&lt;dependency>
-    &lt;groupId>com.aliyun.oss&lt;/groupId>
-    &lt;artifactId>aliyun
+                                问题总结1.1、缓存穿透1.1.1、定义请求的 key 数据在缓存中不存在，那么会将请求发至后端 DB，后端 DB 因受到巨大压力可能导致宕机。
+1.1.2、解决方案
+采用布隆过滤器
+布隆过滤器的思想是：将所有可能存在的数据哈希到一个足够大
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
-                                    微服务
+                                <a href="/categories/Redis/" class="post-category">
+                                    Redis
                                 </a>
                                 
                                 
@@ -777,12 +780,12 @@ if(redis.call('get', KEYS[1]) ==  ARGV[1
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%9A%E5%8A%A1%E5%8A%9F%E8%83%BD/">
-                            <span class="chip bg-color">微服务业务功能</span>
+                        <a href="/tags/Redis/">
+                            <span class="chip bg-color">Redis</span>
                         </a>
                         
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%AF%B9%E8%B1%A1%E5%AD%98%E5%82%A8OSS/">
-                            <span class="chip bg-color">微服务对象存储OSS</span>
+                        <a href="/tags/Redis%E7%BC%93%E5%AD%98/">
+                            <span class="chip bg-color">Redis缓存</span>
                         </a>
                         
                     </div>
@@ -792,46 +795,34 @@ if(redis.call('get', KEYS[1]) ==  ARGV[1
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/08/07/06-quan-ju-wei-yi-id/">
+                    <a href="/2023/09/14/redis-chi-jiu-hua-zhi-rdb-he-aof/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="微服务业务功能系列-全局唯一ID">
+                            <img src="/medias/featureimages/21.jpg" class="responsive-img" alt="Redis系列-Redis持久化">
                             
-                            <span class="card-title">微服务业务功能系列-全局唯一ID</span>
+                            <span class="card-title">Redis系列-Redis持久化</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、全局唯一ID简介全局唯一ID需满足的特点：
-
-唯一
-高可用
-高性能
-递增
-安全（无明显规律性）
-
-2、唯一ID生成策略
-UUID（无序）
-Redis自增（可选）
-snowflake算法（可选）
-数据库自增（可选，但效率较差）
-
-3、实现
+                                1、RDB持久化1.1、RDB简介RDB 是默认持久化方案。
+RDB持久化工作内容：指定时间间隔内，执行指定次数的写操作就会触发持久化，在指定目录下生成一个dump.rdb文件。Redis 重启时通过加载dump.rdb文件恢复数据。
+1.
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
-                                    微服务
+                                <a href="/categories/Redis/" class="post-category">
+                                    Redis
                                 </a>
                                 
                                 
@@ -842,12 +833,12 @@ snowflake算法（可选）
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%9A%E5%8A%A1%E5%8A%9F%E8%83%BD/">
-                            <span class="chip bg-color">微服务业务功能</span>
+                        <a href="/tags/Redis/">
+                            <span class="chip bg-color">Redis</span>
                         </a>
                         
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E5%85%A8%E5%B1%80%E5%94%AF%E4%B8%80ID/">
-                            <span class="chip bg-color">微服务全局唯一ID</span>
+                        <a href="/tags/Redis%E6%8C%81%E4%B9%85%E5%8C%96/">
+                            <span class="chip bg-color">Redis持久化</span>
                         </a>
                         
                     </div>
@@ -857,51 +848,37 @@ snowflake算法（可选）
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/08/07/05-huan-cun/">
+                    <a href="/2023/09/14/redis-ji-chu-ru-men/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="微服务业务功能系列-缓存">
+                            <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="Redis系列-Redis基础应用">
                             
-                            <span class="card-title">微服务业务功能系列-缓存</span>
+                            <span class="card-title">Redis系列-Redis基础应用</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、缓存更新1.1、缓存策略1.1.1、更新策略
-内存淘汰
-一致性：差
-维护成本：无
+                                1、Redis概述2、常用命令3、Redis的Java客户端3.1、客户端对比Redis比较常用的Java客户端有如下几个：
+
+Jedis
+以Redis命令作为方法名称，学习成本低。Jedis实例线程不安全，多线程环境下需要使用线程池。
 
 
-超时剔除
-一致性：一般
-维护成本：低
-
-
-主动更新（推荐）
-一致性：好
-维护成本：高
-
-
-
-1.1.2、主动更新类型
-自己写代码控制。（推荐）
-缓存与
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
-                                    微服务
+                                <a href="/categories/Redis/" class="post-category">
+                                    Redis
                                 </a>
                                 
                                 
@@ -912,12 +889,12 @@ snowflake算法（可选）
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%9A%E5%8A%A1%E5%8A%9F%E8%83%BD/">
-                            <span class="chip bg-color">微服务业务功能</span>
+                        <a href="/tags/Redis/">
+                            <span class="chip bg-color">Redis</span>
                         </a>
                         
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BC%93%E5%AD%98%E5%8A%9F%E8%83%BD/">
-                            <span class="chip bg-color">微服务缓存功能</span>
+                        <a href="/tags/Redis%E5%9F%BA%E7%A1%80/">
+                            <span class="chip bg-color">Redis基础</span>
                         </a>
                         
                     </div>
@@ -927,35 +904,37 @@ snowflake算法（可选）
             
             <div class="article col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/08/07/04-zhi-fu/">
+                    <a href="/2023/09/14/redis-wei-kuai-bu-po-de-mi-mi/">
                         <div class="card-image">
                             
                             
-                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="微服务业务功能系列-支付">
+                            <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Redis系列-Redis唯快不破">
                             
-                            <span class="card-title">微服务业务功能系列-支付</span>
+                            <span class="card-title">Redis系列-Redis唯快不破</span>
                         </div>
                     </a>
 
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、微信支付微信支付依赖如下：
-&lt;dependency>
-    &lt;groupId>com.github.wxpay&lt;/groupId>
-    &lt;artifactId>wxpay-sdk&lt;/artifactI
+                                1、Redis唯快不破的秘密1.1、前言1.1.1、全景图全景图可以围绕两个维度展开，分别是：
+
+应用维度：缓存使用、集群运用、数据结构的巧妙使用；
+系统维度：可以归类为三高：
+高性能：线程模型、网络 IO 模型、数据结构、持久化机制；
+高
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
                             </span>
                             <span class="publish-author">
                                 
                                 <i class="fas fa-bookmark fa-fw icon-category"></i>
                                 
-                                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
-                                    微服务
+                                <a href="/categories/Redis/" class="post-category">
+                                    Redis
                                 </a>
                                 
                                 
@@ -966,16 +945,8 @@ snowflake算法（可选）
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%9A%E5%8A%A1%E5%8A%9F%E8%83%BD/">
-                            <span class="chip bg-color">微服务业务功能</span>
-                        </a>
-                        
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%94%AF%E4%BB%98%E4%B8%9A%E5%8A%A1/">
-                            <span class="chip bg-color">微服务支付业务</span>
-                        </a>
-                        
-                        <a href="/tags/%E6%94%AF%E4%BB%98%E5%8A%9F%E8%83%BD/">
-                            <span class="chip bg-color">支付功能</span>
+                        <a href="/tags/Redis/">
+                            <span class="chip bg-color">Redis</span>
                         </a>
                         
                     </div>

@@ -549,20 +549,20 @@
                 </a>
                 
                 
-                <a href="/categories/%E5%B9%B6%E5%8F%91/" title="并发: 1">
-                    <span class="chip center-align waves-effect waves-light
-                             chip-default "
-                            style="background-color: #FEF9E7;">并发
-                        <span class="tag-length">1</span>
-                    </span>
-                </a>
-                
-                
                 <a href="/categories/%E6%95%B0%E6%8D%AE%E4%B8%8E%E7%AE%97%E6%B3%95/" title="数据与算法: 3">
                     <span class="chip center-align waves-effect waves-light
                              chip-default "
                             style="background-color: #85C1E9;">数据与算法
                         <span class="tag-length">3</span>
+                    </span>
+                </a>
+                
+                
+                <a href="/categories/%E5%B9%B6%E5%8F%91/" title="并发: 1">
+                    <span class="chip center-align waves-effect waves-light
+                             chip-default "
+                            style="background-color: #FEF9E7;">并发
+                        <span class="tag-length">1</span>
                     </span>
                 </a>
                 
@@ -598,43 +598,32 @@
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/08/07/05-huan-cun/">
+                    <a href="/2023/09/14/03-jie-kou-mi-deng-xing/">
                         <div class="card-image tag-image">
                             
                             
-                            <img src="/medias/featureimages/17.jpg" class="responsive-img" alt="微服务业务功能系列-缓存">
+                            <img src="/medias/featureimages/20.jpg" class="responsive-img" alt="微服务问题系列-接口幂等问题">
                             
-                            <span class="card-title">微服务业务功能系列-缓存</span>
+                            <span class="card-title">微服务问题系列-接口幂等问题</span>
                         </div>
                     </a>
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、缓存更新1.1、缓存策略1.1.1、更新策略
-内存淘汰
-一致性：差
-维护成本：无
+                                1、幂等性简介1.1、幂等性定义针对同一个接口，调用多次与调用一次，其效果完全等同。这种情况被称为符合幂等性。
+1.2、幂等性场景
+订单付款。
+充值。
 
-
-超时剔除
-一致性：一般
-维护成本：低
-
-
-主动更新（推荐）
-一致性：好
-维护成本：高
-
-
-
-1.1.2、主动更新类型
-自己写代码控制。（推荐）
-缓存与
+2、幂等性方案2.1、token机制2.2、锁机制
+数据库悲观锁
+数据库乐观锁
+业务层
                             
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
                             </span>
                             <span class="publish-author">
                                 
@@ -652,69 +641,12 @@
                     
                     <div class="card-action article-tags">
                         
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%9A%E5%8A%A1%E5%8A%9F%E8%83%BD/">
-                            <span class="chip bg-color">微服务业务功能</span>
+                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E9%97%AE%E9%A2%98/">
+                            <span class="chip bg-color">微服务问题</span>
                         </a>
                         
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BC%93%E5%AD%98%E5%8A%9F%E8%83%BD/">
-                            <span class="chip bg-color">微服务缓存功能</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/08/07/04-zhi-fu/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/5.jpg" class="responsive-img" alt="微服务业务功能系列-支付">
-                            
-                            <span class="card-title">微服务业务功能系列-支付</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                1、微信支付微信支付依赖如下：
-&lt;dependency>
-    &lt;groupId>com.github.wxpay&lt;/groupId>
-    &lt;artifactId>wxpay-sdk&lt;/artifactI
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
-                                    微服务
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%9A%E5%8A%A1%E5%8A%9F%E8%83%BD/">
-                            <span class="chip bg-color">微服务业务功能</span>
-                        </a>
-                        
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%94%AF%E4%BB%98%E4%B8%9A%E5%8A%A1/">
-                            <span class="chip bg-color">微服务支付业务</span>
-                        </a>
-                        
-                        <a href="/tags/%E6%94%AF%E4%BB%98%E5%8A%9F%E8%83%BD/">
-                            <span class="chip bg-color">支付功能</span>
+                        <a href="/tags/%E6%8E%A5%E5%8F%A3%E5%B9%82%E7%AD%89/">
+                            <span class="chip bg-color">接口幂等</span>
                         </a>
                         
                     </div>
@@ -724,59 +656,7 @@
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/08/07/03-ri-zhi-chu-li/">
-                        <div class="card-image tag-image">
-                            
-                            
-                            <img src="/medias/featureimages/22.jpg" class="responsive-img" alt="微服务业务功能系列-日志处理">
-                            
-                            <span class="card-title">微服务业务功能系列-日志处理</span>
-                        </div>
-                    </a>
-                    <div class="card-content article-content">
-                        <div class="summary block-with-text">
-                            
-                                1、日志简介1.1、日志级别日志级别从高到底依次为：ALL、DEBUG、INFO、WARN、ERROR、FATAL、OFF。
-1.2、默认日志SpringBoot中默认使用logback日志系统。
-2、配置在项目resources目录下创建
-                            
-                        </div>
-                        <div class="publish-info">
-                            <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
-                            </span>
-                            <span class="publish-author">
-                                
-                                <i class="fas fa-bookmark fa-fw icon-category"></i>
-                                
-                                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
-                                    微服务
-                                </a>
-                                
-                                
-                            </span>
-                        </div>
-                    </div>
-
-                    
-                    <div class="card-action article-tags">
-                        
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%9A%E5%8A%A1%E5%8A%9F%E8%83%BD/">
-                            <span class="chip bg-color">微服务业务功能</span>
-                        </a>
-                        
-                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%97%A5%E5%BF%97%E5%A4%84%E7%90%86/">
-                            <span class="chip bg-color">微服务日志处理</span>
-                        </a>
-                        
-                    </div>
-                    
-                </div>
-            </div>
-            
-            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
-                <div class="card">
-                    <a href="/2023/08/07/02-quan-ju-yi-chang-chu-li/">
+                    <a href="/2023/09/14/02-quan-ju-yi-chang-chu-li/">
                         <div class="card-image tag-image">
                             
                             
@@ -797,7 +677,7 @@ public class SYTException extends RuntimeException&#123;
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
                             </span>
                             <span class="publish-author">
                                 
@@ -830,7 +710,118 @@ public class SYTException extends RuntimeException&#123;
             
             <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
                 <div class="card">
-                    <a href="/2023/08/07/01-quan-ju-tong-yi-fan-hui-zhi/">
+                    <a href="/2023/09/14/02-session-gong-xiang-wen-ti/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/13.jpg" class="responsive-img" alt="微服务问题系列-Session共享问题">
+                            
+                            <span class="card-title">微服务问题系列-Session共享问题</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                1、Session共享方案特点session替代方案需满足：
+
+数据共享
+内存存储
+key&#x2F;value结构
+
+2、Session共享方案2.1、Tomcat
+tomcat通过配置实现session互相拷贝
+浪费内存空间，成本高。
+
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
+                                    微服务
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E9%97%AE%E9%A2%98/">
+                            <span class="chip bg-color">微服务问题</span>
+                        </a>
+                        
+                        <a href="/tags/Session%E5%85%B1%E4%BA%AB/">
+                            <span class="chip bg-color">Session共享</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/09/14/01-kua-yu-wen-ti-chu-li/">
+                        <div class="card-image tag-image">
+                            
+                            
+                            <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="微服务问题系列-处理跨域">
+                            
+                            <span class="card-title">微服务问题系列-处理跨域</span>
+                        </div>
+                    </a>
+                    <div class="card-content article-content">
+                        <div class="summary block-with-text">
+                            
+                                1、跨域问题只要 访问协议、访问地址、端口号 三个地方有一个不一样就会出现跨域问题。
+2、跨域解决方案2.1、注解可以在Controller控制器上加上注解@CrossOrigin即可，不过这种方案生产中不推荐，仅在开发测试阶段来使用。
+2
+                            
+                        </div>
+                        <div class="publish-info">
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
+                            </span>
+                            <span class="publish-author">
+                                
+                                <i class="fas fa-bookmark fa-fw icon-category"></i>
+                                
+                                <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
+                                    微服务
+                                </a>
+                                
+                                
+                            </span>
+                        </div>
+                    </div>
+
+                    
+                    <div class="card-action article-tags">
+                        
+                        <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E9%97%AE%E9%A2%98/">
+                            <span class="chip bg-color">微服务问题</span>
+                        </a>
+                        
+                        <a href="/tags/%E8%A7%A3%E5%86%B3%E8%B7%A8%E5%9F%9F/">
+                            <span class="chip bg-color">解决跨域</span>
+                        </a>
+                        
+                    </div>
+                    
+                </div>
+            </div>
+            
+            <div class="article tag-post col s12 m6 l4" data-aos="zoom-in">
+                <div class="card">
+                    <a href="/2023/09/14/01-quan-ju-tong-yi-fan-hui-zhi/">
                         <div class="card-image tag-image">
                             
                             
@@ -852,7 +843,7 @@ public enum RCodeEnum &#123;
                         </div>
                         <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-08-07
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
                             </span>
                             <span class="publish-author">
                                 
