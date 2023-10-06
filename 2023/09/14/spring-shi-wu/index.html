@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-06
+                    2023-10-04
                 </div>
                 
 
@@ -431,11 +431,11 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="1-1、事务定义"><a href="#1-1、事务定义" class="headerlink" title="1.1、事务定义"></a>1.1、事务定义</h2><p>事务指的是 <strong>通过一系列操作来完成某个功能，这些操作要么全成功，要么全失败。这个保证正确完成某个功能的规则称为事务</strong>。</p>
+                <h1 id="基础知识"><a href="#基础知识" class="headerlink" title="基础知识"></a>基础知识</h1><h2 id="1-1、事务定义"><a href="#1-1、事务定义" class="headerlink" title="1.1、事务定义"></a>1.1、事务定义</h2><p>事务指的是 <strong>通过一系列操作来完成某个功能，这些操作要么全成功要么全失败。这个保证正确完成某个功能的规则称为事务</strong>。</p>
 <h2 id="1-2、事务控制方式"><a href="#1-2、事务控制方式" class="headerlink" title="1.2、事务控制方式"></a>1.2、事务控制方式</h2><p>Spring事务提供了两种事务控制方式：</p>
 <ul>
 <li><p><strong>编程式事务</strong></p>
-<p>使用<strong>事务代码控制业务代码</strong> 的正确执行，事务代码和业务代码耦合在一起。这种方式<strong>不常用</strong>。</p>
+<p>使用<strong>事务代码控制业务代码</strong>的正确执行，事务代码和业务代码耦合在一起。这种方式<strong>不常用</strong>。</p>
 </li>
 <li><p><strong>声明式事务</strong></p>
 <p>Spring将事务代码进行封装，并通过注解来完成事务控制，实现了事务代码与业务代码的解耦。推荐这种方式。</p>
@@ -458,7 +458,7 @@
 <li><strong>隔离性（isolation）</strong>：一个事务执行过程中，不应该受到其他事务的干扰。</li>
 <li><strong>持久性（durability）</strong>：事务一旦结束，数据就持久到数据库。</li>
 </ul>
-<h2 id="1-5、事务传播行为（propagation）"><a href="#1-5、事务传播行为（propagation）" class="headerlink" title="1.5、事务传播行为（propagation）"></a>1.5、事务传播行为（propagation）</h2><p><font color='orange'>PROPAGATION_*（REQUIRED、SUPPORTS…）</font></p>
+<h2 id="1-5、事务传播行为（propagation）"><a href="#1-5、事务传播行为（propagation）" class="headerlink" title="1.5、事务传播行为（propagation）"></a>1.5、事务传播行为（propagation）</h2><p>*<em>PROPAGATION_<em>（REQUIRED、SUPPORTS…）</em></em></p>
 <ol>
 <li><strong>REQUIRED（默认）</strong>：A调用B，B需要事务，如果A有事务，那么B就加入到A的事务，否则B单独创建一个事务。 </li>
 <li><strong>REQUIRES_NEW</strong>：A调用B，B需要一个新事务，如果A有事务那么就挂起，B单独创建一个新事务。 </li>
@@ -484,13 +484,13 @@
 </ol>
 <blockquote>
 <p>MySQL支持全部4种隔离级别，默认隔离级别是<em><strong>可重复读</strong></em>。</p>
-<p>Oracle仅支持读<em><strong>已提交、串行化</strong></em> 两种隔离级别，默认是读<em><strong>已提交</strong></em>。</p>
+<p>Oracle仅支持 <strong>读已提交、串行化</strong> 两种隔离级别，默认是<strong>读已提交</strong>。</p>
 </blockquote>
 <h2 id="1-7、其它属性"><a href="#1-7、其它属性" class="headerlink" title="1.7、其它属性"></a>1.7、其它属性</h2><ul>
 <li><strong>read-only</strong>：是否只读；</li>
 <li><strong>timeout</strong>：超时时间；</li>
 </ul>
-<h1 id="使用事务"><a href="#使用事务" class="headerlink" title="使用事务"></a>使用事务</h1><h2 id="2-1、环境准备"><a href="#2-1、环境准备" class="headerlink" title="2.1、环境准备"></a>2.1、环境准备</h2><p>要使用Spring的事务，需要导入<code>spring-jdbc</code>依赖。其它依赖可根据实际开发环境自行选择。</p>
+<h1 id="使用事务"><a href="#使用事务" class="headerlink" title="使用事务"></a>使用事务</h1><h2 id="2-1、环境准备"><a href="#2-1、环境准备" class="headerlink" title="2.1、环境准备"></a>2.1、环境准备</h2><p>要使用Spring事务，可选择导入<code>spring-jdbc</code>依赖。其它依赖可根据实际开发环境自行选择。</p>
 <h2 id="2-2、XML声明式事务"><a href="#2-2、XML声明式事务" class="headerlink" title="2.2、XML声明式事务"></a>2.2、XML声明式事务</h2><p>xml配置文件：</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>bean</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>transactionManager<span class="token punctuation">"</span></span> <span class="token attr-name">class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>org.springframework.jdbc.datasource.DataSourceTransactionManager<span class="token punctuation">"</span></span><span class="token punctuation">></span></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>property</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dataSource<span class="token punctuation">"</span></span> <span class="token attr-name">ref</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dataSource<span class="token punctuation">"</span></span><span class="token punctuation">></span></span><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>property</span><span class="token punctuation">></span></span>

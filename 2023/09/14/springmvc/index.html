@@ -404,14 +404,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-06
+                    2023-10-04
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    6.2k
+                    6.1k
                 </div>
                 
 
@@ -433,11 +433,11 @@
             <div id="articleContent">
                 <h1 id="1、前言"><a href="#1、前言" class="headerlink" title="1、前言"></a>1、前言</h1><h2 id="1-1、Java-Web组件"><a href="#1-1、Java-Web组件" class="headerlink" title="1.1、Java Web组件"></a>1.1、Java Web组件</h2><p>Java中的web框架都是基于Java Web基础组件来实现。这些基础组件如下：</p>
 <ul>
-<li><p><strong>Servlet</strong>：服务端小程序，负责接收请求并响应。</p>
+<li><p><strong>Servlet</strong>：服务端小程序，负责<strong>接收请求并响应</strong>。</p>
 </li>
-<li><p><strong>Filter</strong>：过滤器，负责对请求进行过滤操作。</p>
+<li><p><strong>Filter</strong>：过滤器，负责<strong>对请求进行过滤</strong>。</p>
 </li>
-<li><p><strong>Listener</strong>：监听器，负责监听域对象的创建、属性变化。</p>
+<li><p><strong>Listener</strong>：监听器，负责<strong>监听域对象的创建、属性变化</strong>。</p>
 </li>
 </ul>
 <h2 id="1-2、Servlet四大作用域"><a href="#1-2、Servlet四大作用域" class="headerlink" title="1.2、Servlet四大作用域"></a>1.2、Servlet四大作用域</h2><table>
@@ -457,26 +457,26 @@
 </tr>
 <tr>
 <td align="center"><strong>session</strong></td>
-<td align="center">在第一次调用 request.getSession() 方法时，服务器会检查是否已经有对应的session,如果没有就在内存 中创建一个session并返回。</td>
+<td align="center">第一次调用request.getSession()方法时，服务器会检查是否已经有对应的session，如果没有则在内存中创建一个session并返回。</td>
 <td align="center">一次会话。</td>
-<td align="center">保存登录的用户信息、购物车信息等。</td>
+<td align="center">保存登录用户、购物车等信息。</td>
 </tr>
 <tr>
 <td align="center"><strong>request</strong></td>
-<td align="center">在service 方法调用前由服务器创建，传入service方法。整个请求结束，request生命结束。</td>
+<td align="center">service方法调用前由服务器创建，传入service方法。整个请求结束，request生命结束。</td>
 <td align="center">整个请求URL中。</td>
-<td align="center">在整个请求url中共享数据。参数就可以放置在Request域中带过去。</td>
+<td align="center">整个请求url中共享数据。参数可以放在Request域中带过去。</td>
 </tr>
 <tr>
 <td align="center"><strong>pageContext</strong></td>
-<td align="center">当请求时开始，当响应结束时销毁。</td>
+<td align="center">请求时开始，响应结束时销毁。</td>
 <td align="center">整个页面，四大作用域中最小的一个。</td>
 <td align="center"></td>
 </tr>
 </tbody></table>
-<h1 id="2、基础知识"><a href="#2、基础知识" class="headerlink" title="2、基础知识"></a>2、基础知识</h1><h2 id="2-1、SpringMVC定义"><a href="#2-1、SpringMVC定义" class="headerlink" title="2.1、SpringMVC定义"></a>2.1、SpringMVC定义</h2><p><strong>SpringMVC 是 Spring 3.0 发布的一个基于Spring的MVC轻量级框架。使用DispatcherServlet作为前端控制器，其内部提供了处理器映射器、处理器适配器、视图解析器等组件，可以简化一系列开发。</strong></p>
-<h2 id="2-2、DispatcherServlet"><a href="#2-2、DispatcherServlet" class="headerlink" title="2.2、DispatcherServlet"></a>2.2、DispatcherServlet</h2><p><strong>DispatcherServlet 是 SpringMVC 的入口。其本质是一个Servlet，配置了load-on-startup时，会在服务器启动时完成创建和初始化操作，其每次请求都会执行service方法</strong>。</p>
-<p>DispacherServlet 初始化主要做了两件事：<strong>创建一个Spring MVC容器、注册了 SpringMVC 九大组件</strong>。</p>
+<h1 id="2、基础知识"><a href="#2、基础知识" class="headerlink" title="2、基础知识"></a>2、基础知识</h1><h2 id="2-1、SpringMVC定义"><a href="#2-1、SpringMVC定义" class="headerlink" title="2.1、SpringMVC定义"></a>2.1、SpringMVC定义</h2><p><strong>SpringMVC 是 Spring 3.0 发布的一个基于Spring的MVC轻量级框架。使用DispatcherServlet作为前端控制器，其内部提供了处理器映射器、处理器适配器、视图解析器等组件，可以简化开发。</strong></p>
+<h2 id="2-2、DispatcherServlet"><a href="#2-2、DispatcherServlet" class="headerlink" title="2.2、DispatcherServlet"></a>2.2、DispatcherServlet</h2><p><strong>DispatcherServlet 是 SpringMVC 的入口，本质是一个Servlet，配置了load-on-startup时，会在服务器启动时完成创建和初始化操作，每次请求都会执行service方法</strong>。</p>
+<p>DispatcherServlet 初始化主要做了两件事：<strong>创建一个Spring MVC容器、注册了 SpringMVC 九大组件</strong>。</p>
 <h2 id="2-3、转发和重定向"><a href="#2-3、转发和重定向" class="headerlink" title="2.3、转发和重定向"></a>2.3、转发和重定向</h2><h3 id="2-3-1、语法特点"><a href="#2-3-1、语法特点" class="headerlink" title="2.3.1、语法特点"></a>2.3.1、语法特点</h3><p><strong>（1）转发</strong></p>
 <p>转发语法：<code>return &quot;forward:/index.jsp&quot;;</code>；</p>
 <p>特点：浏览器中的请求地址不会变。</p>
@@ -559,10 +559,10 @@
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>到这里就实现了由最初加载配置文件到加载配置类的转变，但有一点需要注意，目前web.xml文件还没有舍弃，依然存在。</p>
+<p>如上配置实现了从加载配置文件到加载配置类的转变，但有一点要注意，那就是web.xml文件还没有舍弃，依然存在。</p>
 <p>要想舍弃web.xml文件，做到彻底的全注解开发，这需要Sevlet 3.0技术的支持。</p>
 <p><strong>（3）借助 Servlet 3.0 来舍弃 web.xml 文件</strong></p>
-<p>servlet 3.0中提供了一个接口<code>javax.servlet.ServletContainerInitialize</code>，实现该接口，并在类加载路径的META-INF&#x2F;services目录下创建一个名为<code>javax.servlet.ServletContainerInitializer</code>的文件，文件内容就是该接口实现类的全类名。这样，web容器启动时就会执行这个初始化器来做一些初始化工作。</p>
+<p>servlet 3.0中提供了一个接口<code>javax.servlet.ServletContainerInitialize</code>，实现该接口，并在类加载路径的<code>META-INF/services</code>目录下创建一个名为<code>javax.servlet.ServletContainerInitializer</code>的文件，文件内容就是该接口实现类的全类名。这样，web容器启动时就会执行这个初始化器来做一些初始化工作。</p>
 <p>基于该接口，Spring提供了一个该接口的实现<code>SpringServletContainerInitializer</code>，该实现会查找<code>WebApplicationInitializer</code>的实现类，而Spring提供了一个<code>WebApplicationInitializer</code>的基础实现类<code>AbstractAnnotationConfigDispatcherServletInitializer</code>，我们可以通过继承该基础实现类，来指定Spring和SpringMVC配置的入口，进而实现全注解开发。</p>
 <h3 id="3-3-2、代码实现"><a href="#3-3-2、代码实现" class="headerlink" title="3.3.2、代码实现"></a>3.3.2、代码实现</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Import</span><span class="token punctuation">(</span><span class="token punctuation">&#123;</span><span class="token class-name">JDBCConfig</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">,</span> <span class="token class-name">MyBatisConfig</span><span class="token punctuation">.</span><span class="token keyword">class</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
 <span class="token annotation punctuation">@ComponentScan</span><span class="token punctuation">(</span>basePackages <span class="token operator">=</span> <span class="token punctuation">&#123;</span><span class="token string">"cn.shh.ssm.template.service"</span><span class="token punctuation">&#125;</span><span class="token punctuation">)</span>
@@ -683,7 +683,8 @@ mav<span class="token punctuation">.</span><span class="token function">setViewN
 
 <h4 id="1-1-2-3、Model"><a href="#1-1-2-3、Model" class="headerlink" title="1.1.2.3、Model"></a>1.1.2.3、Model</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">testModel</span><span class="token punctuation">(</span><span class="token class-name">Model</span> model<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     model<span class="token punctuation">.</span><span class="token function">addAttribute</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"Model"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
+    <span class="token keyword">return</span> <span class="token string">"index"</span><span class="token punctuation">;</span>
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h4 id="1-1-2-4、ModelMap"><a href="#1-1-2-4、ModelMap" class="headerlink" title="1.1.2.4、ModelMap"></a>1.1.2.4、ModelMap</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">String</span> <span class="token function">testModelMap</span><span class="token punctuation">(</span><span class="token class-name">ModelMap</span> modelMap<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     modelMap<span class="token punctuation">.</span><span class="token function">addAttribute</span><span class="token punctuation">(</span><span class="token string">"name"</span><span class="token punctuation">,</span> <span class="token string">"ModelMap"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>

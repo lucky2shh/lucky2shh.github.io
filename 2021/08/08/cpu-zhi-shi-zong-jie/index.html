@@ -393,14 +393,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-09-14
+                    2021-08-08
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-05
+                    2023-10-06
                 </div>
                 
 
@@ -427,29 +427,26 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1、CPU"><a href="#1、CPU" class="headerlink" title="1、CPU"></a>1、CPU</h1><h2 id="1-1、认识CPU"><a href="#1-1、认识CPU" class="headerlink" title="1.1、认识CPU"></a>1.1、认识CPU</h2><h3 id="1-1-1、CPU简介"><a href="#1-1-1、CPU简介" class="headerlink" title="1.1.1、CPU简介"></a>1.1.1、CPU简介</h3><p><font color='orange'>CPU 是英文 Central Processing Unit 的首字母缩写，中文意为 中央处理器。</font></p>
-<p><font color='orange'>CPU相当于计算机的大脑，其内部 由 数百万 至 数亿 个晶体管 组成。</font></p>
-<p><font color='orange'>CPU是各种功能寄存器的集合体。</font></p>
-<h3 id="1-1-2、CPU周期"><a href="#1-1-2、CPU周期" class="headerlink" title="1.1.2、CPU周期"></a>1.1.2、CPU周期</h3><p>CPU周期可描述为：<font color='orange'>首先从内存中取出指令，解码以确定其类型和操作数，接着执行之，然后取指、解码并执行下一条指令。</font>按照该方式，程序被执行完成。</p>
-<h3 id="1-1-3、CPU指令集"><a href="#1-1-3、CPU指令集" class="headerlink" title="1.1.3、CPU指令集"></a>1.1.3、CPU指令集</h3><p><font color='orange'>每个CPU都有一套可执行的 专属指令集。</font>所以，Pentium不能执行SPARC程序，而SPARC也不能执行Pentium程序。</p>
-<p>由于用来访问内存以得到指令或数据的时间要比执行指令花费的时间长得多，因此，<font color='orange'>所有的CPU内都有一些用来保存关键变量和临时数据的寄存器。</font></p>
+                <h1 id="1、CPU"><a href="#1、CPU" class="headerlink" title="1、CPU"></a>1、CPU</h1><h2 id="1-1、认识CPU"><a href="#1-1、认识CPU" class="headerlink" title="1.1、认识CPU"></a>1.1、认识CPU</h2><h3 id="1-1-1、CPU简介"><a href="#1-1-1、CPU简介" class="headerlink" title="1.1.1、CPU简介"></a>1.1.1、CPU简介</h3><p><strong>CPU 是英文 Central Processing Unit 的首字母缩写，意为中央处理器。</strong></p>
+<p>CPU相当于计算机的大脑，其内部由 数百万 至 数亿 个晶体管组成。<strong>CPU是各种功能寄存器的集合体。</strong></p>
+<h3 id="1-1-2、CPU周期"><a href="#1-1-2、CPU周期" class="headerlink" title="1.1.2、CPU周期"></a>1.1.2、CPU周期</h3><p>CPU周期可描述为：<strong>首先从内存中取出指令，解码以确定其类型和操作数，接着执行，然后取指令、解码并执行下一条指令。</strong>按照该方式，程序被执行完成。</p>
+<h3 id="1-1-3、CPU指令集"><a href="#1-1-3、CPU指令集" class="headerlink" title="1.1.3、CPU指令集"></a>1.1.3、CPU指令集</h3><p><strong>每个CPU都有一套可执行的专属指令集。</strong>所以，Pentium不能执行SPARC程序，而SPARC也不能执行Pentium程序。</p>
+<p>由于用来访问内存以得到指令或数据的时间要比执行指令花费的时间长得多，因此，<strong>所有的CPU内都有一些用来保存关键变量和临时数据的寄存器。</strong></p>
 <h3 id="1-1-4、CPU流水线"><a href="#1-1-4、CPU流水线" class="headerlink" title="1.1.4、CPU流水线"></a>1.1.4、CPU流水线</h3><p>一个CPU可以有分开的取指单元、解码单元和执行单元，当它执行指令n时，它还可以对指令n+1解码，并且读取指令n+2。这样一种机制称为流水线(pipeline)。</p>
 <p>对于多数流水线来说，一旦一条指令被 放入 流水线中，它就必须被执行完毕，即便前一条指令是条件转移，它也必须被执行完毕。</p>
-<p><font color='orange'>比流水线更先进的设计是一种 超标量CPU。</font></p>
+<p><strong>比流水线更先进的设计是一种 超标量CPU。</strong></p>
 <p>超标量CPU 中有 多个执行单元，两个或更多的指令被同时取出、解码并装入一个保持缓冲区中，直至它们执行完毕。只要有一个执行单元空闲，就检查保持缓冲区中是否还有可处理的指令，如果有，就把指令从缓冲区中移出并执行之。</p>
-<p>这种设计存在一种隐含的作用，即<font color='orange'>程序指令经常不按顺序执行。</font>在多数情况下，硬件负责保证这种运算的结果与顺序执行指令时的结果相同，但是，仍然有部分令人烦恼的复杂情形被强加给操作系统处理</p>
-<h3 id="1-1-5、用户态与内核态"><a href="#1-1-5、用户态与内核态" class="headerlink" title="1.1.5、用户态与内核态"></a>1.1.5、用户态与内核态</h3><p><font color='orange'>多数CPU都有 用户态 和 内核态 两种模式。程序状态字(Program Status Word，PSW)寄存器中有一个 二进制位 控制这两种模式。</font></p>
-<p>用户态 和 内核态 的权限也不同，区别分析如下：</p>
+<p>这种设计存在一种隐含的作用，即<strong>程序指令经常不按顺序执行。</strong>在多数情况下，硬件负责保证这种运算的结果与顺序执行指令时的结果相同，但是，仍然有部分令人烦恼的复杂情形被强加给操作系统处理</p>
+<h3 id="1-1-5、用户态与内核态"><a href="#1-1-5、用户态与内核态" class="headerlink" title="1.1.5、用户态与内核态"></a>1.1.5、用户态与内核态</h3><p><strong>多数CPU都有 用户态 和 内核态 两种模式。程序状态字(Program Status Word，PSW)寄存器中有一个二进制位控制这两种模式。</strong></p>
+<p>用户态和内核态的权限也不同，区别分析如下：</p>
 <ul>
-<li><p><font color='orange'>内核态</font></p>
-<p>当在内核态运行时，CPU可以执行指令集中的每一条指令，并且使用硬件的每种功能。</p>
+<li><p><strong>内核态</strong>：当在内核态运行时，CPU可以执行指令集中的每一条指令，并且使用硬件的每种功能。</p>
 </li>
-<li><p><font color='orange'>用户态</font></p>
-<p>在用户态下运行时，仅允许执行整个指令集的一个子集和访问所有功能的一个子集。</p>
+<li><p><strong>用户态</strong>：在用户态下运行时，仅允许执行整个指令集的一个子集和访问所有功能的一个子集。</p>
 </li>
 </ul>
-<h2 id="1-2、CPU内部组成"><a href="#1-2、CPU内部组成" class="headerlink" title="1.2、CPU内部组成"></a>1.2、CPU内部组成</h2><p>CPU和内存 是由 许多晶体管组成的【电子部件】，通常称为 IC(Integrated Circuit，集成电路)。从功能上来说，CPU内部由【寄存器、控制器、运算器、时钟】四个部分构成，各部分之间通过 电流信号 相互连通。</p>
-<h3 id="1-2-1、寄存器"><a href="#1-2-1、寄存器" class="headerlink" title="1.2.1、寄存器"></a>1.2.1、寄存器</h3><h4 id="1-2-1-1、寄存器简介"><a href="#1-2-1-1、寄存器简介" class="headerlink" title="1.2.1.1、寄存器简介"></a>1.2.1.1、寄存器简介</h4><p><font color='orange'>寄存器 中存储的是 指令 和 数据。数据分为 用于运算的数值 和 表示内存地址的数值 两种。</font></p>
+<h2 id="1-2、CPU内部组成"><a href="#1-2、CPU内部组成" class="headerlink" title="1.2、CPU内部组成"></a>1.2、CPU内部组成</h2><p>CPU和内存是由许多晶体管组成的<strong>电子部件</strong>，通常称为 IC(Integrated Circuit，集成电路)。从功能上来说，<strong>CPU内部由寄存器、控制器、运算器、时钟四个部分构成，各部分之间通过电流信号相互连通</strong>。</p>
+<h3 id="1-2-1、寄存器"><a href="#1-2-1、寄存器" class="headerlink" title="1.2.1、寄存器"></a>1.2.1、寄存器</h3><h4 id="1-2-1-1、寄存器简介"><a href="#1-2-1-1、寄存器简介" class="headerlink" title="1.2.1.1、寄存器简介"></a>1.2.1.1、寄存器简介</h4><p><strong>寄存器中存储的是 指令 和 数据。数据分为用于运算的数值和表示内存地址的数值两种。</strong></p>
 <p>寄存器特点如下：</p>
 <ol>
 <li>不同类型的CPU，其内部寄存器的数量、种类 以及 寄存器存储的数值范围 都不相同。</li>
@@ -458,44 +455,44 @@
 </ol>
 <h4 id="1-2-1-2、寄存器分类"><a href="#1-2-1-2、寄存器分类" class="headerlink" title="1.2.1.2、寄存器分类"></a>1.2.1.2、寄存器分类</h4><p>根据功能不同，寄存器可大致分为以下八种：</p>
 <ol>
-<li><font color='orange'>累加寄存器(accumulator register)</font>：存储 运算数据 和 运算后数据。</li>
-<li><font color='orange'>标志寄存器(flag register)</font>：存储 运算处理后的 CPU状态。</li>
-<li><font color='orange'>程序计数器(program counter)</font>：存储 下一条指令所在内存的 地址。</li>
-<li><font color='orange'>基址寄存器(base register)</font>：存储 数据内存的 起始地址。</li>
-<li><font color='orange'>变址寄存器(index register)</font>：存储 基址寄存器的 相对地址。</li>
-<li><font color='orange'>通用寄存器(general purpose register)</font>：存储 任意数据。</li>
-<li><font color='orange'>指令寄存器(instruction register)</font>：存储 指令。CPU内部使用，程序员无法干预。</li>
-<li><font color='orange'>栈寄存器(stack register)</font>：存储 栈区域的 起始地址。</li>
+<li>**累加寄存器(accumulator register)**：存储 运算数据 和 运算后数据。</li>
+<li>**标志寄存器(flag register)**：存储 运算处理后的 CPU状态。</li>
+<li>**程序计数器(program counter)**：存储 下一条指令所在内存的 地址。</li>
+<li>**基址寄存器(base register)**：存储 数据内存的 起始地址。</li>
+<li>**变址寄存器(index register)**：存储 基址寄存器的 相对地址。</li>
+<li>**通用寄存器(general purpose register)**：存储 任意数据。</li>
+<li>**指令寄存器(instruction register)**：存储 指令。CPU内部使用，程序员无法干预。</li>
+<li>**栈寄存器(stack register)**：存储 栈区域的 起始地址。</li>
 </ol>
-<p><font color='orange'>每一种寄存器允许存在的数量也有限制</font>，分析如下：</p>
+<p><strong>每一种寄存器允许存在的数量也有限制</strong>，分析如下：</p>
 <ul>
 <li>允许一个：累加寄存器、标志寄存器、程序计数器、指令寄存器、栈寄存器；</li>
 <li>允许多个：基址寄存器、变址寄存器、通用寄存器。</li>
 </ul>
-<p>除了以上寄存器外，还有一个 <font color='orange'>程序状态字（Program Status Word，PSW）寄存器。该寄存器包含了条件码位（由比较指令设置）、CPU优先级、模式（用户态或内核态），以及各种其他控制位。用户程序通常读入整个PSW，但是，只对其中的少量字段写入。在系统调用和I&#x2F;O中，PSW的作用很重要。</font></p>
+<p>除了以上寄存器外，还有一个 <strong>程序状态字（Program Status Word，PSW）寄存器。该寄存器包含了条件码位（由比较指令设置）、CPU优先级、模式（用户态或内核态），以及各种其他控制位。用户程序通常读入整个PSW，但只对其中的少量字段写入。在系统调用和I&#x2F;O中，PSW的作用很重要。</strong></p>
 <h3 id="1-2-2、控制器"><a href="#1-2-2、控制器" class="headerlink" title="1.2.2、控制器"></a>1.2.2、控制器</h3><p>控制器使命：把内存中的指令、数据等读入寄存器，并根据指令结果来控制整个计算机。</p>
-<h3 id="1-2-3、运算器"><a href="#1-2-3、运算器" class="headerlink" title="1.2.3、运算器"></a>1.2.3、运算器</h3><p>运算器使命：运算 从内存 读入寄存器 的数据。</p>
-<h3 id="1-2-4、时钟"><a href="#1-2-4、时钟" class="headerlink" title="1.2.4、时钟"></a>1.2.4、时钟</h3><p>时钟使命：负责 发出 CPU开始计时的 时钟信号。</p>
+<h3 id="1-2-3、运算器"><a href="#1-2-3、运算器" class="headerlink" title="1.2.3、运算器"></a>1.2.3、运算器</h3><p>运算器使命：运算从内存读入寄存器的数据。</p>
+<h3 id="1-2-4、时钟"><a href="#1-2-4、时钟" class="headerlink" title="1.2.4、时钟"></a>1.2.4、时钟</h3><p>时钟使命：负责发出CPU开始计时的时钟信号。</p>
 <blockquote>
 <p>时钟信号 英文叫做 clock puzzle。Pentium 2GHz 表示 时钟信号的频率为 2GHz（1GHz &#x3D; 10亿次&#x2F;秒）。也就是说，时钟信号的频率越高，CPU运行速度越快。</p>
 </blockquote>
 <p><font color='red'>注意：有些计算机的时钟 位于 CPU外部。</font></p>
 <h3 id="1-2-5、总结"><a href="#1-2-5、总结" class="headerlink" title="1.2.5、总结"></a>1.2.5、总结</h3><p>寄存器、控制器、运算器和时钟之间的工作方式和关系 可描述如下：</p>
-<p><font color='orange'>程序启动后，控制器 会根据 时钟信号 从内存中 读取 指令和数据。通过 对这些 指令加以 解释和运行，运算器 会 运算这些数据，控制器 根据 运算结果 来控制计算机。</font></p>
+<p><strong>程序启动后，控制器 会根据 时钟信号 从内存中 读取 指令和数据。通过 对这些 指令加以 解释和运行，运算器 会 运算这些数据，控制器 根据 运算结果 来控制计算机。</strong></p>
 <blockquote>
 <p>控制 指的是 数据运算外的处理（主要是 数据输入输出的 时机控制）。</p>
 </blockquote>
-<h2 id="1-3、内存"><a href="#1-3、内存" class="headerlink" title="1.3、内存"></a>1.3、内存</h2><h3 id="1-3-1、简介"><a href="#1-3-1、简介" class="headerlink" title="1.3.1、简介"></a>1.3.1、简介</h3><p><font color='orange'>通常所说的 内存 指的是 计算机主存储器(main memory)，简称 主存。主存 通过 控制芯片 与 CPU 相连，主要负责 存储 指令和数据。</font></p>
+<h2 id="1-3、内存"><a href="#1-3、内存" class="headerlink" title="1.3、内存"></a>1.3、内存</h2><h3 id="1-3-1、简介"><a href="#1-3-1、简介" class="headerlink" title="1.3.1、简介"></a>1.3.1、简介</h3><p><strong>通常所说的内存指的是计算机主存储器(main memory)，简称 主存。主存通过控制芯片与CPU 相连，主要负责存储指令和数据。</strong></p>
 <p>主存 由 可读写的元素 构成，每个字节都带有一个地址编号。CPU可以通过 该地址 读取主存中的指令和数据 和 写入数据。</p>
 <p><font color='red'>注意：主存中存储的 指令和数据 会随着计算机的 关机 而 自动清除。</font></p>
 <h2 id="1-4、CPU是寄存器集合体"><a href="#1-4、CPU是寄存器集合体" class="headerlink" title="1.4、CPU是寄存器集合体"></a>1.4、CPU是寄存器集合体</h2><h3 id="1-4-1、简介"><a href="#1-4-1、简介" class="headerlink" title="1.4.1、简介"></a>1.4.1、简介</h3><p>CPU四个组成部分中，需要重点了解 寄存器，其余三个可不用太过关注。因为 程序是把寄存器 作为对象 来描述的。</p>
-<h3 id="1-4-2、汇编与反汇编"><a href="#1-4-2、汇编与反汇编" class="headerlink" title="1.4.2、汇编与反汇编"></a>1.4.2、汇编与反汇编</h3><p><font color='orange'>汇编语言 采用 助记符(memonic) 来编写程序，每一个原本是 电器信号 的机器语言指令 都会有一个 与其相应的 助记符，助记符通常是 指令功能的英语单词的简写。</font>例如 mov 和 add 分别是数据的 存储(move) 和 相加(addition) 的简写。</p>
+<h3 id="1-4-2、汇编与反汇编"><a href="#1-4-2、汇编与反汇编" class="headerlink" title="1.4.2、汇编与反汇编"></a>1.4.2、汇编与反汇编</h3><p><strong>汇编语言采用 助记符(memonic) 来编写程序，每一个原本是电信号的机器语言指令 都会有一个相应的 助记符，助记符通常是 指令功能的英语单词的简写。</strong>例如 mov 和 add 分别是数据的 存储(move) 和 相加(addition) 的简写。</p>
 <p>汇编语言 和 机器语言 基本上是 一一对应。</p>
 <ul>
-<li><font color='orange'>汇编</font>：将 汇编语言编写的程序 转化成 机器语言 的过程 称为 汇编。</li>
-<li><font color='orange'>反汇编</font>：将 机器语言程序 转化成 汇编语言程序 的过程 称为 反汇编。</li>
+<li><strong>汇编</strong>：将 汇编语言编写的程序 转化成 机器语言 的过程 称为 汇编。</li>
+<li><strong>反汇编</strong>：将 机器语言程序 转化成 汇编语言程序 的过程 称为 反汇编。</li>
 </ul>
-<p><font color='red'>注意：汇编语言 是 80386以上的CPU 所使用的语言。</font></p>
+<p><font color='red'>注意：汇编语言是80386以上的CPU所使用的语言。</font></p>
 <p>汇编示例程序如下所示：</p>
 <pre class="line-numbers language-assembly" data-language="assembly"><code class="language-assembly">mov eax, dword ptr [ebp-8]     ; 把 数值 从内存 复制到 eax
 add eax, dword ptr [ebp-0Ch]   ; exa的数值 和 内存数值 相加
@@ -503,41 +500,41 @@ mov dword ptr [ebp-4], eax     ; 把 eax的数值（上一步计算结果）存�
 
 <p>示例代码解析如下：</p>
 <ul>
-<li><font color='orange'>eax</font>：表示 累加寄存器。</li>
-<li><font color='orange'>ebp</font>：表示 基址寄存器。</li>
+<li><strong>eax</strong>：表示 累加寄存器。</li>
+<li><strong>ebp</strong>：表示 基址寄存器。</li>
 </ul>
 <h3 id="1-4-3、程序计数器"><a href="#1-4-3、程序计数器" class="headerlink" title="1.4.3、程序计数器"></a>1.4.3、程序计数器</h3><p>对于 123 和 456 两个数值相加，内存内容模型如下图所示：</p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20210808233333149.png?token=AIGEF3PSMSQDORNYKQSVDTTEZZVZM" alt="image-20210808233333149"></p>
-<p><font color='orange'>存储 指令和数据 的内存 是通过 地址 来划分。</font>一个命令和数据 通常被存储于 多个地址上，但为了便于说明，上图中把 指令、数据 分配到了一个地址中。</p>
+<p><strong>存储 指令和数据 的内存是通过 地址 来划分。</strong>一个命令和数据 通常被存储于 多个地址上，但为了便于说明，上图中把 指令、数据 分配到了一个地址中。</p>
 <p>程序执行过程中，内存内容变化描述如下：</p>
-<p><font color='orange'>地址0100 是程序运行的开始位置。Windows等操作系统 把 程序 从硬盘复制到内存后，会将 程序计数器 设定为0100，然后程序开始运行。CPU每执行一个指令，程序计数器的值 就会自动加 1。</font></p>
-<h3 id="1-4-4、条件分支和循环机制"><a href="#1-4-4、条件分支和循环机制" class="headerlink" title="1.4.4、条件分支和循环机制"></a>1.4.4、条件分支和循环机制</h3><p><font color='orange'>程序的流程分为 顺序执行、条件分支和循环 三种。</font></p>
+<p><strong>地址0100 是程序运行的开始位置。Windows等操作系统 把 程序 从硬盘复制到内存后，会将 程序计数器 设定为0100，然后程序开始运行。CPU每执行一个指令，程序计数器的值 就会自动加 1。</strong></p>
+<h3 id="1-4-4、条件分支和循环机制"><a href="#1-4-4、条件分支和循环机制" class="headerlink" title="1.4.4、条件分支和循环机制"></a>1.4.4、条件分支和循环机制</h3><p><strong>程序的流程分为顺序执行、条件分支和循环 三种。</strong></p>
 <ul>
-<li><font color='orange'>顺序执行</font>：按照 地址内容的顺序 执行指令。</li>
-<li><font color='orange'>条件分支</font>：根据条件 执行 任意地址的 指令。</li>
-<li><font color='orange'>循环</font>：重复执行同一地址的指令。</li>
+<li><strong>顺序执行</strong>：按照 地址内容的顺序 执行指令。</li>
+<li><strong>条件分支</strong>：根据条件 执行 任意地址的 指令。</li>
+<li><strong>循环</strong>：重复执行同一地址的指令。</li>
 </ul>
-<p><font color='orange'>条件分支 和 循环 中使用的跳转指令，会参照 当前执行的运算结果 来判断是否跳转。</font></p>
-<p><font color='orange'>无论当前 累加寄存器运算结果 是负数、零还是正数，标志寄存器都会将其保存。</font></p>
-<p><font color='orange'>CPU运算时，标志寄存器 的数值 会根据 运算结果 自动设定。条件分支 在跳转指令前 会进行 比较运算。是否跳转指令，则由CPU 参考 寄存器数值 后进行判断。运行结果的正、零、负三种状态由标志寄存器的三个位来表示。</font></p>
+<p><strong>条件分支 和 循环 中使用的跳转指令，会参照当前执行的运算结果来判断是否跳转。</strong></p>
+<p><strong>无论当前累加寄存器运算结果是负数、零还是正数，标志寄存器都会将其保存。</strong></p>
+<p><strong>CPU运算时，标志寄存器 的数值 会根据 运算结果 自动设定。条件分支 在跳转指令前 会进行 比较运算。是否跳转指令，则由CPU 参考 寄存器数值 后进行判断。运行结果的正、零、负三种状态由标志寄存器的三个位来表示。</strong></p>
 <ol>
 <li>第一字节位为1时，表示 正数。</li>
 <li>第二字节位为1时，表示 零。</li>
 <li>第三字节位为1时，表示 负数。</li>
 </ol>
-<h3 id="1-4-5、函数调用"><a href="#1-4-5、函数调用" class="headerlink" title="1.4.5、函数调用"></a>1.4.5、函数调用</h3><h4 id="1-4-5-1、简介"><a href="#1-4-5-1、简介" class="headerlink" title="1.4.5.1、简介"></a>1.4.5.1、简介</h4><p><font color='orange'>函数调用 一般是通过 把程序计数器的值 设定成 函数的存储地址 来实现。</font></p>
-<p><font color='orange'>函数调用 需要 在完成函数内部处理后，使得处理流程再返回到函数调用点。</font></p>
-<p><font color='orange'>函数的 调用原点 和 被调用函数地址 之间的数据传递，可以通过 内存 或 寄存器 来实现。</font></p>
-<h4 id="1-4-5-2、调用指令"><a href="#1-4-5-2、调用指令" class="headerlink" title="1.4.5.2、调用指令"></a>1.4.5.2、调用指令</h4><p><font color='orange'>函数调用使用的是 call指令，而不是 跳转指令。</font></p>
+<h3 id="1-4-5、函数调用"><a href="#1-4-5、函数调用" class="headerlink" title="1.4.5、函数调用"></a>1.4.5、函数调用</h3><h4 id="1-4-5-1、简介"><a href="#1-4-5-1、简介" class="headerlink" title="1.4.5.1、简介"></a>1.4.5.1、简介</h4><p><strong>函数调用一般是通过 把程序计数器的值设定成函数存储地址来实现。</strong></p>
+<p><strong>函数调用需要在完成函数内部处理后，使得处理流程再返回到函数调用点。</strong></p>
+<p><strong>函数调用原点 和 被调用函数地址 之间的数据传递可通过 内存 或 寄存器 来实现。</strong></p>
+<h4 id="1-4-5-2、调用指令"><a href="#1-4-5-2、调用指令" class="headerlink" title="1.4.5.2、调用指令"></a>1.4.5.2、调用指令</h4><p><strong>函数调用使用的是call指令，而不是跳转指令。</strong></p>
 <p>在将 函数入口地址 设定到 程序计数器 之前，call指令 会把 调用函数后要执行的 指令地址 存储在 名为栈的主内存。函数处理完毕后，再通过 函数出口 来执行 return命令。return命令 功能是 把保存在栈中的地址 设定到 程序计数器中。</p>
-<h3 id="1-4-6、CPU可执行的指令"><a href="#1-4-6、CPU可执行的指令" class="headerlink" title="1.4.6、CPU可执行的指令"></a>1.4.6、CPU可执行的指令</h3><p>按照功能划分，可将CPU能执行的机器语言指令 分为以下几种：</p>
+<h3 id="1-4-6、CPU可执行的指令"><a href="#1-4-6、CPU可执行的指令" class="headerlink" title="1.4.6、CPU可执行的指令"></a>1.4.6、CPU可执行的指令</h3><p>按照功能划分，可将CPU能执行的机器语言指令分以下几种：</p>
 <ul>
-<li><font color='orange'>数据转送指令</font>：寄存器和内存、内存和内存、寄存器和外围设备 之间的 数据读写操作。</li>
-<li><font color='orange'>运算指令</font>：使用 累加寄存器 执行算术运算、逻辑运算、比较运算 和 移位运算。</li>
-<li><font color='orange'>跳转指令</font>：实现 条件分支、循环、强制跳转。</li>
-<li><font color='orange'>call&#x2F;return指令</font>：函数调用 &#x2F; 返回调用前的地址。</li>
+<li><strong>数据转送指令</strong>：寄存器和内存、内存和内存、寄存器和外围设备 之间的 数据读写操作。</li>
+<li><strong>运算指令</strong>：使用 累加寄存器 执行算术运算、逻辑运算、比较运算 和 移位运算。</li>
+<li><strong>跳转指令</strong>：实现 条件分支、循环、强制跳转。</li>
+<li><strong>call&#x2F;return指令</strong>：函数调用 &#x2F; 返回调用前的地址。</li>
 </ul>
-<p>CPU可以执行的 指令 非常少。虽然编写的程序看起来非常复杂，但CPU实际处理很简单。</p>
+<p>CPU可以执行的指令非常少。虽然编写的程序看起来非常复杂，但CPU实际处理很简单。</p>
 
                 
             </div>
@@ -564,7 +561,7 @@ mov dword ptr [ebp-4], eax     ; 把 eax的数值（上一步计算结果）存�
                     </i>
                 </span>
                 <span class="reprint-info">
-                    <a href="https://hshz21.gitee.io/2023/09/14/cpu-zhi-shi-zong-jie/">https://hshz21.gitee.io/2023/09/14/cpu-zhi-shi-zong-jie/</a>
+                    <a href="https://hshz21.gitee.io/2021/08/08/cpu-zhi-shi-zong-jie/">https://hshz21.gitee.io/2021/08/08/cpu-zhi-shi-zong-jie/</a>
                 </span>
             </div>
             <div class="reprint__notice">
@@ -777,13 +774,13 @@ mov dword ptr [ebp-4], eax     ; 把 eax的数值（上一步计算结果）存�
             <div class="article-badge left-badge text-color">
                 <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
             <div class="card">
-                <a href="/2023/09/14/docker-zhi-es-da-jian/">
+                <a href="/2023/09/14/01-quan-ju-tong-yi-fan-hui-zhi/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/16.jpg" class="responsive-img" alt="Docker系列-ES环境搭建">
+                        <img src="/medias/featureimages/1.jpg" class="responsive-img" alt="微服务业务功能系列-全局统一返回值">
                         
-                        <span class="card-title">Docker系列-ES环境搭建</span>
+                        <span class="card-title">微服务业务功能系列-全局统一返回值</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -800,8 +797,8 @@ mov dword ptr [ebp-4], eax     ; 把 eax的数值（上一步计算结果）存�
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Docker/" class="post-category">
-                                    Docker
+                            <a href="/categories/%E5%BE%AE%E6%9C%8D%E5%8A%A1/" class="post-category">
+                                    微服务
                                 </a>
                             
                             
@@ -811,12 +808,12 @@ mov dword ptr [ebp-4], eax     ; 把 eax的数值（上一步计算结果）存�
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Docker/">
-                        <span class="chip bg-color">Docker</span>
+                    <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E4%B8%9A%E5%8A%A1%E5%8A%9F%E8%83%BD/">
+                        <span class="chip bg-color">微服务业务功能</span>
                     </a>
                     
-                    <a href="/tags/ElasticSearch/">
-                        <span class="chip bg-color">ElasticSearch</span>
+                    <a href="/tags/%E5%BE%AE%E6%9C%8D%E5%8A%A1%E7%BB%9F%E4%B8%80%E8%BF%94%E5%9B%9E%E5%80%BC/">
+                        <span class="chip bg-color">微服务统一返回值</span>
                     </a>
                     
                 </div>
@@ -827,16 +824,16 @@ mov dword ptr [ebp-4], eax     ; 把 eax的数值（上一步计算结果）存�
         
         <div class="article col s12 m6" data-aos="fade-up">
             <div class="article-badge right-badge text-color">
-                下一篇&nbsp;<i class="fas fa-chevron-right"></i>
+                本篇&nbsp;<i class="far fa-dot-circle"></i>
             </div>
             <div class="card">
-                <a href="/2023/09/14/consul-ji-ben-shi-yong/">
+                <a href="/2021/08/08/cpu-zhi-shi-zong-jie/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="Consul系列-Consul基础应用">
+                        <img src="/medias/featureimages/19.jpg" class="responsive-img" alt="计算机系列-CPU">
                         
-                        <span class="card-title">Consul系列-Consul基础应用</span>
+                        <span class="card-title">计算机系列-CPU</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
@@ -847,29 +844,26 @@ mov dword ptr [ebp-4], eax     ; 把 eax的数值（上一步计算结果）存�
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-09-14
+                                <i class="far fa-clock fa-fw icon-date"></i>2021-08-08
                             </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
                             
-                            <a href="/categories/Consul/" class="post-category">
-                                    Consul
+                            <a href="/categories/%E8%AE%A1%E7%AE%97%E6%9C%BA/" class="post-category">
+                                    计算机
                                 </a>
                             
                             
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
-                    <a href="/tags/Consul/">
-                        <span class="chip bg-color">Consul</span>
-                    </a>
-                    
-                    <a href="/tags/Consul%E5%9F%BA%E7%A1%80/">
-                        <span class="chip bg-color">Consul基础</span>
+                    <a href="/tags/CPU/">
+                        <span class="chip bg-color">CPU</span>
                     </a>
                     
                 </div>

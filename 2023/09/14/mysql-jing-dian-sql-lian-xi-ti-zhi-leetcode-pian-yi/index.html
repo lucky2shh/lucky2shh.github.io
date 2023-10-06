@@ -408,7 +408,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-04
+                    2023-09-01
                 </div>
                 
 
@@ -922,7 +922,8 @@ Person 表:
 <span class="token comment"># 解法2：</span>
 <span class="token keyword">delete</span> p1<span class="token punctuation">.</span><span class="token operator">*</span>
 <span class="token keyword">from</span> s3_person <span class="token keyword">as</span> p1 
-<span class="token keyword">join</span> s3_person <span class="token keyword">as</span> p2 <span class="token keyword">on</span> p1<span class="token punctuation">.</span>email <span class="token operator">=</span> p2<span class="token punctuation">.</span>email <span class="token operator">and</span> p1<span class="token punctuation">.</span>id <span class="token operator">></span> p2<span class="token punctuation">.</span>id<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">join</span> s3_person <span class="token keyword">as</span> p2 
+<span class="token keyword">on</span> p1<span class="token punctuation">.</span>email <span class="token operator">=</span> p2<span class="token punctuation">.</span>email <span class="token operator">and</span> p1<span class="token punctuation">.</span>id <span class="token operator">></span> p2<span class="token punctuation">.</span>id<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="1-12、-197-上升的温度"><a href="#1-12、-197-上升的温度" class="headerlink" title="1.12、(197)上升的温度"></a>1.12、(197)上升的温度</h2><p>编写一个 SQL 查询，来查找与之前（昨天的）日期相比温度更高的所有日期的 <code>id</code> 。</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">Weather 表：
@@ -1026,7 +1027,7 @@ Users 表：
 <span class="token keyword">from</span> trips <span class="token keyword">as</span> t
 <span class="token keyword">where</span> t<span class="token punctuation">.</span>client_id <span class="token operator">not</span> <span class="token operator">in</span><span class="token punctuation">(</span>
 	<span class="token keyword">select</span> users_id <span class="token keyword">from</span> users <span class="token keyword">where</span> banned <span class="token operator">=</span> <span class="token string">"yes"</span>
-<span class="token punctuation">)</span>	<span class="token operator">and</span> t<span class="token punctuation">.</span>driver_id <span class="token operator">not</span> <span class="token operator">in</span><span class="token punctuation">(</span>
+<span class="token punctuation">)</span> <span class="token operator">and</span> t<span class="token punctuation">.</span>driver_id <span class="token operator">not</span> <span class="token operator">in</span><span class="token punctuation">(</span>
 	<span class="token keyword">select</span> users_id <span class="token keyword">from</span> users <span class="token keyword">where</span> banned <span class="token operator">=</span> <span class="token string">"yes"</span>
 <span class="token punctuation">)</span> <span class="token operator">and</span> t<span class="token punctuation">.</span>request_at <span class="token operator">BETWEEN</span> <span class="token string">"2013-10-01"</span> <span class="token operator">and</span> <span class="token string">"2013-10-03"</span>
 <span class="token keyword">group</span> <span class="token keyword">by</span> t<span class="token punctuation">.</span>request_at
@@ -1225,8 +1226,7 @@ Bonus 表单
 <span class="token keyword">select</span> <span class="token function">SUM</span><span class="token punctuation">(</span>i<span class="token punctuation">.</span>tiv_2016<span class="token punctuation">)</span> <span class="token keyword">as</span> <span class="token string">"tiv_2016"</span>
 <span class="token keyword">from</span> s3_insurance <span class="token keyword">as</span> i
 <span class="token keyword">join</span> <span class="token punctuation">(</span>
-	<span class="token keyword">select</span> <span class="token keyword">DISTINCT</span> pid
-	<span class="token keyword">from</span> s3_insurance
+	<span class="token keyword">select</span> <span class="token keyword">DISTINCT</span> pid <span class="token keyword">from</span> s3_insurance
 <span class="token punctuation">)</span> <span class="token keyword">as</span> o1 <span class="token keyword">on</span> i<span class="token punctuation">.</span>pid <span class="token operator">=</span> o1<span class="token punctuation">.</span>pid
 <span class="token keyword">where</span> i<span class="token punctuation">.</span>tiv_2015 <span class="token operator">in</span> <span class="token punctuation">(</span>
 	<span class="token keyword">select</span> i<span class="token punctuation">.</span>tiv_2015
@@ -1246,7 +1246,7 @@ Bonus 表单
 	<span class="token punctuation">)</span> <span class="token keyword">as</span> o1 <span class="token keyword">on</span> i2<span class="token punctuation">.</span>pid <span class="token operator">=</span> o1<span class="token punctuation">.</span>pid
 	<span class="token keyword">group</span> <span class="token keyword">by</span> i2<span class="token punctuation">.</span>lat<span class="token punctuation">,</span> i2<span class="token punctuation">.</span>lon
 	<span class="token keyword">having</span> <span class="token function">count</span><span class="token punctuation">(</span>i2<span class="token punctuation">.</span>pid<span class="token punctuation">)</span> <span class="token operator">=</span> <span class="token number">1</span>
-<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="1-20、-586-订单最多的客户"><a href="#1-20、-586-订单最多的客户" class="headerlink" title="1.20、(586)订单最多的客户"></a>1.20、(586)订单最多的客户</h2><p>查找下了 <strong>最多订单</strong> 的客户的 <code>customer_number</code> 。</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">Orders 表:
@@ -1283,7 +1283,7 @@ Bonus 表单
 <li>面积至少为 300 万平方公里（即，3000000 km2）</li>
 <li>人口至少为 2500 万（即 25000000）</li>
 </ul>
-<p>编写解决方案找出 大国 的国家名称、人口和面积。</p>
+<p>编写SQL找出 大国 的国家名称、人口和面积。</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">World 表：
 <span class="token operator">+</span><span class="token comment">-------------+-----------+---------+------------+--------------+</span>
 <span class="token operator">|</span> name        <span class="token operator">|</span> continent <span class="token operator">|</span> area    <span class="token operator">|</span> population <span class="token operator">|</span> gdp          <span class="token operator">|</span>
@@ -1469,12 +1469,10 @@ Bonus 表单
 <span class="token keyword">with</span> t1 <span class="token keyword">as</span> <span class="token punctuation">(</span>
 	<span class="token keyword">select</span> <span class="token operator">*</span>
 	<span class="token keyword">from</span> <span class="token punctuation">(</span>
-		<span class="token keyword">select</span> 
-			ra<span class="token punctuation">.</span>requester_id
+		<span class="token keyword">select</span> ra<span class="token punctuation">.</span>requester_id
 		<span class="token keyword">from</span> s3_requestaccepted <span class="token keyword">as</span> ra
 		<span class="token keyword">union</span> <span class="token keyword">all</span>
-		<span class="token keyword">select</span>
-			ra2<span class="token punctuation">.</span>accepter_id
+		<span class="token keyword">select</span> ra2<span class="token punctuation">.</span>accepter_id
 		<span class="token keyword">from</span> s3_requestaccepted <span class="token keyword">as</span> ra2
 	<span class="token punctuation">)</span> <span class="token keyword">as</span> alldata
 <span class="token punctuation">)</span>
@@ -1484,7 +1482,7 @@ Bonus 表单
 <span class="token keyword">from</span> t1
 <span class="token keyword">group</span> <span class="token keyword">by</span> requester_id
 <span class="token keyword">order</span> <span class="token keyword">by</span> cn <span class="token keyword">desc</span>
-<span class="token keyword">limit</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token keyword">limit</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="1-25、-607-销售员"><a href="#1-25、-607-销售员" class="headerlink" title="1.25、(607)销售员"></a>1.25、(607)销售员</h2><p>查询没有任何与名为 “RED” 的公司相关的订单的所有销售人员的姓名。</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">SalesPerson 表:
@@ -1536,7 +1534,6 @@ Orders 表:
 		<span class="token keyword">where</span> c<span class="token punctuation">.</span>name <span class="token operator">=</span> <span class="token string">"RED"</span>
 	<span class="token punctuation">)</span>
 <span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 
 
                 

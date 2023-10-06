@@ -404,14 +404,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-06
+                    2023-10-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    732
+                    716
                 </div>
                 
 
@@ -465,13 +465,13 @@ daemon<span class="token punctuation">.</span><span class="token function">start
 <li><strong>org.apache.coyote.http11.Http11Nio2Protocol</strong>：NIO2</li>
 <li><strong>org.apache.coyote.http11.Http11AprProtocol</strong>：APR</li>
 </ul>
-<p><strong>如果没有指定 protocol，默认使用 HTTP&#x2F;1.1。Tomcat7 中会选择优先使用APR，没有APR才使用 BIO。Tomcat8中会选择优先使用 APR，没有 APR 才使用 NIO</strong>。</p>
+<p><strong>如果没有指定 protocol，默认使用 HTTP&#x2F;1.1。Tomcat7 会优先使用APR，没有APR才用 BIO。Tomcat8会优先使用 APR，没有 APR 才用 NIO</strong>。</p>
 <h2 id="1-2、请求处理流程"><a href="#1-2、请求处理流程" class="headerlink" title="1.2、请求处理流程"></a>1.2、请求处理流程</h2><h3 id="1-2-1、请求处理流程堆栈"><a href="#1-2-1、请求处理流程堆栈" class="headerlink" title="1.2.1、请求处理流程堆栈"></a>1.2.1、请求处理流程堆栈</h3><p>堆栈信息如下图所示：</p>
 <img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/06/1.2.1.2-Tomcat-%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86-HTTP%E8%AF%B7%E6%B1%82-%E8%AF%B7%E6%B1%82%E5%A4%84%E7%90%86%E6%B5%81%E7%A8%8B%E5%A0%86%E6%A0%88.jpg" style="zoom:150%;" />
 
-<h3 id="1-2-2、流程分析"><a href="#1-2-2、流程分析" class="headerlink" title="1.2.2、流程分析"></a>1.2.2、流程分析</h3><p>无论是BIO，还是NIO，Connector处理请求的流程基本一样。</p>
-<p>Accept 队列中接收连接（当客户端向服务器发送请求时，如果客户端与OS完成三次握手建立了连接，OS会将该连接放入accept队列）；在连接中获取请求数据，生成request；调用 servlet 容器处理请求并返回 response。首先明确连接与请求的关系：连接是TCP层面的（传输层），对应socket；请求是HTTP层面（应用层），必须依赖于TCP的连接实现；一个TCP连接中可能传输多个HTTP请求。</p>
-<p>BIO实现的Connector中，处理请求的主要实体是 JIoEndpoint 对象。JIoEndpoint 维护了 Acceptor 和 Worker。Acceptor接收socket，然后从Worker线程池中找出空闲线程处理socket，如果worker线程池没有空闲线程，则Acceptor将阻塞。其中Worker是Tomcat自己的额线程池，如果通过<code>&lt;Executor&gt;</code>配置了其他线程池，原理与Worker类似。</p>
+<h3 id="1-2-2、流程分析"><a href="#1-2-2、流程分析" class="headerlink" title="1.2.2、流程分析"></a>1.2.2、流程分析</h3><p><strong>无论是BIO，还是NIO，Connector处理请求的流程基本一样</strong>。</p>
+<p>Accept 队列中接收连接（当客户端向服务器发送请求时，如果客户端与OS完成三次握手建立了连接，OS会将该连接放入accept队列）；在连接中获取请求数据，生成request；调用 servlet 容器处理请求并返回 response。首先明确连接与请求的关系：<strong>连接是TCP层面的（传输层），对应socket；请求是HTTP层面（应用层），依赖于TCP；一个TCP连接中可能传输多个HTTP请求</strong>。</p>
+<p>BIO实现的Connector中，处理请求的主要实体是 JIoEndpoint 对象。JIoEndpoint 维护了 Acceptor 和 Worker。<strong>Acceptor接收socket，然后从Worker线程池中找出空闲线程处理socket，如果worker线程池没有空闲线程，则Acceptor将阻塞</strong>。其中Worker是Tomcat自己的线程池，如果通过<code>&lt;Executor&gt;</code>配置了其他线程池，原理与Worker类似。</p>
 
                 
             </div>

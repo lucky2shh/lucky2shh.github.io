@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-07-30
+                    2023-10-03
                 </div>
                 
 
@@ -448,24 +448,24 @@
 </ol>
 <h2 id="1-2、硬件级别优化"><a href="#1-2、硬件级别优化" class="headerlink" title="1.2、硬件级别优化"></a>1.2、硬件级别优化</h2><p>系统瓶颈通常有以下来源：</p>
 <ol>
-<li><p><font color='orange'>磁盘搜索</font></p>
+<li><p>磁盘搜索</p>
 <p>磁盘查找数据需要花费时间。对于现代磁盘，此操作的平均时间通常小于10毫秒，因此理论上我们可以执行约100秒钟的搜索。这段时间随着新磁盘的使用而缓慢改善，并且很难为单个表进行优化。优化寻道时间的方法是将数据分发到多个磁盘上。</p>
 </li>
-<li><p><font color='orange'>磁盘读写</font></p>
+<li><p>磁盘读写</p>
 <p>当磁盘位于正确的位置时，我们需要读取或写入数据。对于现代磁盘，一个磁盘至少可提供10–20MB &#x2F; s的吞吐量。与查找相比，优化起来更容易，因为您可以从多个磁盘并行读取。</p>
 </li>
-<li><p><font color='orange'>CPU周期</font></p>
+<li><p>CPU周期</p>
 <p>当数据位于主存储器中时，我们必须对其进行处理以获得结果。与内存量相比，拥有较大的表是最常见的限制因素。但是对于小表，速度通常不是问题。</p>
 </li>
-<li><p><font color='orange'>内存带宽</font></p>
+<li><p>内存带宽</p>
 <p>当CPU需要的数据超出CPU缓存的容量时，主内存带宽将成为瓶颈。对于大多数系统来说，这是一个不常见的瓶颈，但是要意识到这一点。</p>
 </li>
 </ol>
 <h2 id="1-3、平衡便捷性和性能"><a href="#1-3、平衡便捷性和性能" class="headerlink" title="1.3、平衡便捷性和性能"></a>1.3、平衡便捷性和性能</h2><p>MySQL Server支持三种注释样式：</p>
 <ul>
-<li><font color='orange'>从<code>#</code>字符到行尾</font></li>
-<li><font color='orange'>从<code>-- </code>序列到行尾。在MySQL中，<code>-- </code>（双破折号）注释样式要求第二个破折号后必须至少包含一个空格或控制字符（例如空格，制表符，换行符等）。此语法与标准SQL注释语法略有不同。</font></li>
-<li><font color='orange'>从一个<code>/*</code>序列到以下 <code>*/</code>序列。此语法使注释可以扩展到多行，因为开始和结束序列不必在同一行上。</font></li>
+<li>从<code>#</code>字符到行尾</li>
+<li>从<code>-- </code>序列到行尾。在MySQL中，<code>-- </code>（双破折号）注释样式要求第二个破折号后必须至少包含一个空格或控制字符（例如空格，制表符，换行符等）。此语法与标准SQL注释语法略有不同。</li>
+<li>从一个<code>/*</code>序列到以下 <code>*/</code>序列。此语法使注释可以扩展到多行，因为开始和结束序列不必在同一行上。</li>
 </ul>
 <p>下面演示了三种注释样式：</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">mysql<span class="token operator">></span> <span class="token keyword">SELECT</span> <span class="token number">1</span><span class="token operator">+</span><span class="token number">1</span><span class="token punctuation">;</span>     <span class="token comment"># This comment continues to the end of line</span>

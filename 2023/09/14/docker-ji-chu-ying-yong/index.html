@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-07
+                    2023-09-30
                 </div>
                 
 
@@ -433,7 +433,7 @@
             <div id="articleContent">
                 <h1 id="0、初识Docker"><a href="#0、初识Docker" class="headerlink" title="0、初识Docker"></a>0、初识Docker</h1><h2 id="0-1、Docker是什么"><a href="#0-1、Docker是什么" class="headerlink" title="0.1、Docker是什么"></a>0.1、Docker是什么</h2><p><strong>Docker 是一个开源的应用容器引擎</strong>。诞生于 2013 年初，基于 Go 语言实现， dotCloud 公司出品（后改名为Docker Inc）。</p>
 <p>Docker 可以让开发者打包他们的应用以及依赖包到一个轻量级、可移植的容器中，然后发布到任何流行的 Linux 机器上。容器是完全使用沙箱机制，相互隔离容器性能开销极低。</p>
-<p>Docker 从 17.03 版本之后分为 CE（Community Edition: 社区版） 和 EE（Enterprise Edition: 企业版）。</p>
+<p><strong>Docker 从 17.03 版本之后分为 CE（Community Edition: 社区版） 和 EE（Enterprise Edition: 企业版）</strong>。</p>
 <h2 id="0-2、Docker架构"><a href="#0-2、Docker架构" class="headerlink" title="0.2、Docker架构"></a>0.2、Docker架构</h2><ul>
 <li><strong>镜像（Image）</strong>：相当于一个 root 文件系统。</li>
 <li><strong>容器（Container）</strong>：镜像 和 容器 关系，如同 类和对象，镜像是静态定义，容器是镜像运行时的实体。</li>
@@ -447,7 +447,7 @@
 </ol>
 <h3 id="0-3-2、两者的异同"><a href="#0-3-2、两者的异同" class="headerlink" title="0.3.2、两者的异同"></a>0.3.2、两者的异同</h3><ul>
 <li><p>相同</p>
-<p>容器和虚拟机具有相似的资源隔离和分配优势。</p>
+<p>容器和虚拟机具有相似的<strong>资源隔离和分配优势</strong>。</p>
 </li>
 <li><p>不同：</p>
 <ol>
@@ -662,8 +662,8 @@ nginx<span aria-hidden="true" class="line-numbers-rows"><span></span><span></spa
 <li>第二层是 root文件系统rootfs，称为base image。</li>
 <li>往上 可叠加 其它镜像文件。</li>
 <li>统一文件系统（Union File System）技术能够将不同层整合成一个文件系统，对外提供统一视角，用户角度看只是一个文件系统。 </li>
-<li>一个镜像可以放在另一镜像上面。位于下面的镜像称为父镜像，最底部镜像称为基础镜像。</li>
-<li>当从一个镜像启动容器时，Docker会在最顶层加载一个读写文件系统作为容器。</li>
+<li>一个镜像可以放在另一镜像上面。位于<strong>下面的镜像称为父镜像，最底部镜像称为基础镜像</strong>。</li>
+<li><strong>当从一个镜像启动容器时，Docker会在最顶层加载一个读写文件系统作为容器</strong>。</li>
 </ol>
 <h2 id="2-2、Docker镜像制作"><a href="#2-2、Docker镜像制作" class="headerlink" title="2.2、Docker镜像制作"></a>2.2、Docker镜像制作</h2><h3 id="2-2-1、容器转镜像"><a href="#2-2-1、容器转镜像" class="headerlink" title="2.2.1、容器转镜像"></a>2.2.1、容器转镜像</h3><pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token key attr-name">docker</span> <span class="token value attr-value">commit 容器id 镜像名称:版本号</span>
 <span class="token key attr-name">docker</span> <span class="token value attr-value">save -o 压缩文件名称 镜像名称:版本号</span>
@@ -1087,7 +1087,6 @@ registry.aliyuncs.com/acs/agent     <span class="token number">0.7</span>-dfb681
 <span class="token parameter variable">-v</span> /tmp/docker/run/docker.sock:/var/run/docker.sock <span class="token punctuation">\</span>
 <span class="token parameter variable">-v</span> /tmp/docker/data:/data <span class="token punctuation">\</span>
 portainer/portainer-ce:latest<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 
 
                 

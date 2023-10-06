@@ -404,14 +404,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-07
+                    2023-09-30
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    14.3k
+                    14.2k
                 </div>
                 
 
@@ -436,7 +436,7 @@
 <li><strong>注销</strong>：使用命令<code>logout</code>，即可注销。</li>
 </ul>
 <blockquote>
-<p>logout命令 在图形运行级别下无效。而在运行级别3下才有效。</p>
+<p>logout命令在图形运行级别下无效，只在运行级别3下才有效。</p>
 <p>无论是关机还是重启，建议先运行<code>sync</code>命令将内存中的数据写到磁盘。</p>
 </blockquote>
 <h2 id="1-2、重启"><a href="#1-2、重启" class="headerlink" title="1.2、重启"></a>1.2、重启</h2><ul>
@@ -450,14 +450,14 @@
 <li><strong>sync</strong>：内存数据同步到磁盘。</li>
 </ul>
 <h2 id="1-4、远程登录"><a href="#1-4、远程登录" class="headerlink" title="1.4、远程登录"></a>1.4、远程登录</h2><p>Linux 一般作为服务器使用，而服务器一般放在机房，需要远程登录到Linux服务器来管理维护系统。</p>
-<p>Linux 系统中是<strong>通过SSH服务实现的远程登录功能，默认ssh服务端口号为 22</strong>。</p>
-<p>Window 系统存在远程登 Linux 的录客户端有XShell、SecureCRT、Putty、SSH Secure Shell 等。</p>
+<p>Linux 系统中是<strong>通过SSH服务实现远程登录功能，默认ssh服务端口号为 22</strong>。</p>
+<p>Window中可以远程登录 Linux 的客户端有XShell、SecureCRT、Putty、SSH Secure Shell 等。</p>
 <blockquote>
 <p>远程登录Lunux服务器需要SSH协议和22端口。若Linux服务器没有满足该条件，请进行相关设置，以满足条件。</p>
 </blockquote>
 <h2 id="1-5、文件传输"><a href="#1-5、文件传输" class="headerlink" title="1.5、文件传输"></a>1.5、文件传输</h2><p>远程文件传输需要 Linux服务器开启<strong>SSHD服务</strong>。如需使用文件传输，请先开启该服务。</p>
 <h1 id="2、vi-vim编辑器"><a href="#2、vi-vim编辑器" class="headerlink" title="2、vi&#x2F;vim编辑器"></a>2、vi&#x2F;vim编辑器</h1><h2 id="2-1、概述"><a href="#2-1、概述" class="headerlink" title="2.1、概述"></a>2.1、概述</h2><p>Unix Like 系统都会内建 vi 编辑器，目前使用较多的是 vim 编辑器。</p>
-<p><strong>vim 从 vi 发展而来</strong>。代码补完、编译及错误跳转等，具有丰富的编程功能。</p>
+<p><strong>vim 从 vi 发展而来</strong>。具备代码补全、编译、错误跳转等编程功能。</p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/07/image-20210918194511730.png" alt="image-20210918194511730"></p>
 <h2 id="2-3、三种模式"><a href="#2-3、三种模式" class="headerlink" title="2.3、三种模式"></a>2.3、三种模式</h2><p>vi &#x2F; vim 分三种模式，分别是<strong>命令模式（Command mode），输入模式（Insert mode）和底线命令模式（Last line mode）</strong>。</p>
 <h3 id="2-3-1、命令模式"><a href="#2-3-1、命令模式" class="headerlink" title="2.3.1、命令模式"></a>2.3.1、命令模式</h3><p><strong>用户启动 vi&#x2F;vim 时会直接进入 命令模式。</strong></p>
@@ -465,10 +465,10 @@
 <ul>
 <li>输入英文字母<code>i</code>会 切换到 输入模式。</li>
 <li>输入英文字母<code>x</code>会 删除 当前光标所在处字符。</li>
-<li>输入英文标点符号字符<code>:</code>会 切换到 底线命令模式，然后可在最下面一行输入命令。</li>
+<li>输入英文标点符号字符<code>:</code>会切换到底线命令模式，然后可在最下面一行输入命令。</li>
 </ul>
 <blockquote>
-<p>命令模式下的命令数量有限，但可通过 底线命令模式 输入更多命令。</p>
+<p>命令模式下的命令数量有限，但可通过 <strong>底线命令模式</strong> 输入更多命令。</p>
 </blockquote>
 <h3 id="2-3-2、输入模式"><a href="#2-3-2、输入模式" class="headerlink" title="2.3.2、输入模式"></a>2.3.2、输入模式</h3><p><strong>输入英文字母<code>i</code>会切换到输入模式。</strong></p>
 <p>输入模式下可使用以下命令：</p>
@@ -482,11 +482,10 @@
 <li><strong>ESC</strong>，退出输入模式，切换到命令模式。</li>
 </ul>
 <h3 id="2-3-3、底线命令模式"><a href="#2-3-3、底线命令模式" class="headerlink" title="2.3.3、底线命令模式"></a>2.3.3、底线命令模式</h3><p><strong>命令模式下输入英文标点符号<code>:</code>会切换到底线命令模式</strong>。</p>
-<p>底线命令模式 可输入单个或多个字符命令，可用命令数量非常多。</p>
-<p>底线命令模式下常用命令有（省略了冒号）：</p>
+<p>底线命令模式可输入单个或多个字符命令，命令数量较多。底线命令模式下常用命令有（省略了冒号）：</p>
 <ul>
-<li>q 退出程序。</li>
-<li>w 保存文件。</li>
+<li>q：退出程序。</li>
+<li>w：保存文件。</li>
 </ul>
 <p><strong>按ESC键可退出底线命令模式。</strong></p>
 <h1 id="3、用户管理"><a href="#3、用户管理" class="headerlink" title="3、用户管理"></a>3、用户管理</h1><h2 id="3-1、概述"><a href="#3-1、概述" class="headerlink" title="3.1、概述"></a>3.1、概述</h2><p><strong>Linux系统是一个多用户多任务分时操作系统</strong>，要使用系统资源，就必须申请一个账号，然后通过该账户进行访问。</p>
@@ -621,7 +620,7 @@
 <p>为虚拟机添加硬盘。</p>
 <p><strong>（2）硬盘分区</strong></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">fdisk</span> /dev/sdb
-<span class="token comment"># 后续依次输入：m / n / 1 / w</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token comment"># 后续依次输入：m / n / e / 1 / w</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p><strong>（3）格式化分区</strong></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">mkfs</span> <span class="token parameter variable">-t</span> xfs /dev/sdb1<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -769,12 +768,12 @@ dr-xr-xr-x   <span class="token number">4</span> root root <span class="token nu
 <li><code>d</code>：表示目录</li>
 <li><code>-</code>：表示文件；</li>
 <li><code>l</code>：表示 链接文档(link file)；</li>
-<li><code>b</code>：表示 装置文件中 可供储存的接口设备(可随机存取装置)；</li>
-<li><code>c</code>：表示 装置文件中 的串行端口设备，例如键盘、鼠标(一次性读取装置)。</li>
+<li><code>b</code>：表示 装置文件中 可供储存的<strong>接口设备</strong>(可随机存取装置)；</li>
+<li><code>c</code>：表示 装置文件中 的<strong>串行端口设备</strong>，例如键盘、鼠标(一次性读取装置)。</li>
 </ul>
-<p>第一个字符后面的Owner表示当前文件的所有者（用户）有什么权限。</p>
-<p>第一个字符后面的Group表示当前文件的所属组（用户组）有什么权限。</p>
-<p>第一个字符后面的OtherUsers表示其它用户对当前文件有什么权限。</p>
+<p>第一个字符后面的Owner表示<strong>当前文件的所有者（用户）有什么权限</strong>。</p>
+<p>第一个字符后面的Group表示<strong>当前文件的所属组（用户组）有什么权限</strong>。</p>
+<p>第一个字符后面的OtherUsers表示<strong>其它用户对当前文件有什么权限</strong>。</p>
 <blockquote>
 <p>权限由 <code>r、w、x</code>三个参数组合。<code>r</code>表示 可读(read)、 <code>w</code>表示 可写(write)、 <code>x</code>表示 可执行(execute)。 三个权限的位置不会改变，如果没有权限则由字符<code>-</code>表示。</p>
 </blockquote>
@@ -1035,7 +1034,7 @@ dr-xr-xr-x   <span class="token number">4</span> root root <span class="token nu
 <li>-n：设置显示头部内容的行数。</li>
 </ul>
 <p>使用示例：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 命令1：查看文件info.txt中内存的前3行</span>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 命令1：查看文件info.txt内容的前3行</span>
 <span class="token function">head</span> <span class="token parameter variable">-n</span> <span class="token number">3</span> info.txt<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <h4 id="4-4-2-5、tail命令"><a href="#4-4-2-5、tail命令" class="headerlink" title="4.4.2.5、tail命令"></a>4.4.2.5、tail命令</h4><p><strong>tail命令用于输出文件尾部内容，默认只显示文件尾部后10行内容。</strong></p>
@@ -1096,9 +1095,9 @@ gunzip 文件.gz<span aria-hidden="true" class="line-numbers-rows"><span></span>
 
 <p>注意事项：</p>
 <ul>
-<li>只能压缩文件，不能压缩目录。</li>
-<li>不保留原来的文件。</li>
-<li>同时多个文件会产生多个压缩包。</li>
+<li><strong>只能压缩文件，不能压缩目录</strong>。</li>
+<li><strong>不保留原来的文件</strong>。</li>
+<li><strong>同时多个文件会产生多个压缩包</strong>。</li>
 </ul>
 <p>使用示例：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 命令1：压缩文件hello.txt</span>
@@ -1126,7 +1125,7 @@ gunzip hello.txt.gz<span aria-hidden="true" class="line-numbers-rows"><span></sp
 </ul>
 <p>注意事项：</p>
 <ul>
-<li>zip命令在 win&#x2F;linux 上都通用，可以压缩目录且保留源文件。</li>
+<li><strong>zip命令在 win&#x2F;linux 上都通用，可以压缩目录且保留源文件</strong>。</li>
 </ul>
 <p>使用示例：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 命令1：压缩目录/root，然后再解压缩到/tmp目录下</span>
@@ -1168,10 +1167,8 @@ gunzip hello.txt.gz<span aria-hidden="true" class="line-numbers-rows"><span></sp
 </ul>
 <h3 id="4-6-2、cal命令"><a href="#4-6-2、cal命令" class="headerlink" title="4.6.2、cal命令"></a>4.6.2、cal命令</h3><h1 id="5、网络管理"><a href="#5、网络管理" class="headerlink" title="5、网络管理"></a>5、网络管理</h1><h2 id="5-1、查看网络IP和网关"><a href="#5-1、查看网络IP和网关" class="headerlink" title="5.1、查看网络IP和网关"></a>5.1、查看网络IP和网关</h2><p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/07/image-20210919111446177.png" alt="image-20210919111446177"></p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/07/image-20210919111853400.png" alt="image-20210919111853400"></p>
-<h2 id="5-2、网络环境配置"><a href="#5-2、网络环境配置" class="headerlink" title="5.2、网络环境配置"></a>5.2、网络环境配置</h2><h3 id="5-2-1、自动获取"><a href="#5-2-1、自动获取" class="headerlink" title="5.2.1、自动获取"></a>5.2.1、自动获取</h3><p>通过界面设置自动获取。</p>
-<h3 id="5-2-2、配置固定IP"><a href="#5-2-2、配置固定IP" class="headerlink" title="5.2.2、配置固定IP"></a>5.2.2、配置固定IP</h3><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># 第一步：编辑 /etc/sysconfig/network-scripts/ifcfg-eth0 文件，添加如下配置：</span>
-<span class="token comment"># 静态获取方式</span>
-<span class="token assign-left variable">NAME</span><span class="token operator">=</span>ens33
+<h2 id="5-2、网络环境配置"><a href="#5-2、网络环境配置" class="headerlink" title="5.2、网络环境配置"></a>5.2、网络环境配置</h2><h3 id="5-2-1、配置静态IP"><a href="#5-2-1、配置静态IP" class="headerlink" title="5.2.1、配置静态IP"></a>5.2.1、配置静态IP</h3><p>编辑<code>/etc/sysconfig/network-scripts/ifcfg-eth0</code>文件，添加如下配置：</p>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">NAME</span><span class="token operator">=</span>ens33
 <span class="token assign-left variable">TYPE</span><span class="token operator">=</span>Ethernet
 <span class="token assign-left variable">UUID</span><span class="token operator">=</span>647650b9-b648-4848-b2b5-469f6840a621
 <span class="token assign-left variable">DEVICE</span><span class="token operator">=</span>ens33
@@ -1184,27 +1181,27 @@ gunzip hello.txt.gz<span aria-hidden="true" class="line-numbers-rows"><span></sp
 <span class="token assign-left variable">IPADDR</span><span class="token operator">=</span><span class="token number">192.168</span>.93.129
 <span class="token assign-left variable">GATEWAY</span><span class="token operator">=</span><span class="token number">192.168</span>.93.2
 <span class="token assign-left variable">DNS1</span><span class="token operator">=</span><span class="token number">192.168</span>.93.2
-<span class="token assign-left variable">PREFIX</span><span class="token operator">=</span><span class="token number">24</span>
+<span class="token assign-left variable">PREFIX</span><span class="token operator">=</span><span class="token number">24</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token comment"># 动态获取方式</span>
-<span class="token assign-left variable">NAME</span><span class="token operator">=</span>ens33
-<span class="token assign-left variable">DEVICE</span><span class="token operator">=</span>ens33
-<span class="token assign-left variable">TYPE</span><span class="token operator">=</span>Ethernet
-<span class="token assign-left variable">UUID</span><span class="token operator">=</span>647650b9-b648-4848-b2b5-469f6840a621
-<span class="token assign-left variable">ONBOOT</span><span class="token operator">=</span>yes
-<span class="token assign-left variable">PROXY_METHOD</span><span class="token operator">=</span>none
-<span class="token assign-left variable">BROWSER_ONLY</span><span class="token operator">=</span>no
-<span class="token assign-left variable">BOOTPROTO</span><span class="token operator">=</span>dhcp
-<span class="token assign-left variable">DEFROUTE</span><span class="token operator">=</span>yes
-<span class="token assign-left variable">IPV4_FAILURE_FATAL</span><span class="token operator">=</span>no
-<span class="token assign-left variable">IPV6INIT</span><span class="token operator">=</span>yes
-<span class="token assign-left variable">IPV6_AUTOCONF</span><span class="token operator">=</span>yes
-<span class="token assign-left variable">IPV6_DEFROUTE</span><span class="token operator">=</span>yes
-<span class="token assign-left variable">IPV6_FAILURE_FATAL</span><span class="token operator">=</span>no
-<span class="token assign-left variable">IPV6_ADDR_GEN_MODE</span><span class="token operator">=</span>stable-privacy
+<p>注意：配置完毕后需要重启系统。</p>
+<h3 id="5-2-2、配置动态IP"><a href="#5-2-2、配置动态IP" class="headerlink" title="5.2.2、配置动态IP"></a>5.2.2、配置动态IP</h3><p>编辑<code>/etc/sysconfig/network-scripts/ifcfg-eth0</code>文件，添加如下配置：</p>
+<pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token key attr-name">NAME</span><span class="token punctuation">=</span><span class="token value attr-value">ens33</span>
+<span class="token key attr-name">DEVICE</span><span class="token punctuation">=</span><span class="token value attr-value">ens33</span>
+<span class="token key attr-name">TYPE</span><span class="token punctuation">=</span><span class="token value attr-value">Ethernet</span>
+<span class="token key attr-name">UUID</span><span class="token punctuation">=</span><span class="token value attr-value">647650b9-b648-4848-b2b5-469f6840a621</span>
+<span class="token key attr-name">ONBOOT</span><span class="token punctuation">=</span><span class="token value attr-value">yes</span>
+<span class="token key attr-name">PROXY_METHOD</span><span class="token punctuation">=</span><span class="token value attr-value">none</span>
+<span class="token key attr-name">BROWSER_ONLY</span><span class="token punctuation">=</span><span class="token value attr-value">no</span>
+<span class="token key attr-name">BOOTPROTO</span><span class="token punctuation">=</span><span class="token value attr-value">dhcp</span>
+<span class="token key attr-name">DEFROUTE</span><span class="token punctuation">=</span><span class="token value attr-value">yes</span>
+<span class="token key attr-name">IPV4_FAILURE_FATAL</span><span class="token punctuation">=</span><span class="token value attr-value">no</span>
+<span class="token key attr-name">IPV6INIT</span><span class="token punctuation">=</span><span class="token value attr-value">yes</span>
+<span class="token key attr-name">IPV6_AUTOCONF</span><span class="token punctuation">=</span><span class="token value attr-value">yes</span>
+<span class="token key attr-name">IPV6_DEFROUTE</span><span class="token punctuation">=</span><span class="token value attr-value">yes</span>
+<span class="token key attr-name">IPV6_FAILURE_FATAL</span><span class="token punctuation">=</span><span class="token value attr-value">no</span>
+<span class="token key attr-name">IPV6_ADDR_GEN_MODE</span><span class="token punctuation">=</span><span class="token value attr-value">stable-privacy</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<span class="token comment"># 第二步：重启系统</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<p>注意：配置完毕后需要重启系统。</p>
 <h2 id="5-3、netstat指令"><a href="#5-3、netstat指令" class="headerlink" title="5.3、netstat指令"></a>5.3、netstat指令</h2><p>简介：<strong>netstat 命令用于显示网络状态。利用 netstat 指令可查看系统网络情况。</strong></p>
 <p>语法：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">netstat</span> <span class="token punctuation">[</span>-acCeFghilMnNoprstuvVwx<span class="token punctuation">]</span><span class="token punctuation">[</span>-A<span class="token operator">&lt;</span>网络类型<span class="token operator">></span><span class="token punctuation">]</span><span class="token punctuation">[</span>--ip<span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -1236,8 +1233,7 @@ gunzip hello.txt.gz<span aria-hidden="true" class="line-numbers-rows"><span></sp
 <li>-x或–unix 此参数的效果和指定”-A unix”参数相同。</li>
 <li>–ip或–inet 此参数的效果和指定”-A inet”参数相同。</li>
 </ul>
-<h1 id="6、进程管理"><a href="#6、进程管理" class="headerlink" title="6、进程管理"></a>6、进程管理</h1><h2 id="6-1、简介"><a href="#6-1、简介" class="headerlink" title="6.1、简介"></a>6.1、简介</h2><p><strong>Linux中的每个执行程序都是 一个进程，每个进程都有一个ID号</strong>。</p>
-<p><strong>系统服务通常以 后台进程 方式存在，直到系统关机。</strong></p>
+<h1 id="6、进程管理"><a href="#6、进程管理" class="headerlink" title="6、进程管理"></a>6、进程管理</h1><h2 id="6-1、简介"><a href="#6-1、简介" class="headerlink" title="6.1、简介"></a>6.1、简介</h2><p><strong>Linux中的每个执行程序都是 一个进程，每个进程都有一个ID号。系统服务通常以 后台进程 方式存在，直到系统关机。</strong></p>
 <h2 id="6-2、查看系统进程"><a href="#6-2、查看系统进程" class="headerlink" title="6.2、查看系统进程"></a>6.2、查看系统进程</h2><h3 id="6-2-1、ps命令"><a href="#6-2-1、ps命令" class="headerlink" title="6.2.1、ps命令"></a>6.2.1、ps命令</h3><p>语法：<code>ps [options] [--help]</code></p>
 <p>参数：</p>
 <ul>
@@ -1285,7 +1281,7 @@ pstree <span class="token parameter variable">-V</span><span aria-hidden="true" 
 <li>-c 如果有重覆的行程名, 则分开列出（预设值是会在前面加上 *）。</li>
 </ul>
 <h2 id="6-3、终止进程"><a href="#6-3、终止进程" class="headerlink" title="6.3、终止进程"></a>6.3、终止进程</h2><h3 id="6-3-1、简介"><a href="#6-3-1、简介" class="headerlink" title="6.3.1、简介"></a>6.3.1、简介</h3><p>**终止进程可以采用命令 <code>kill、killall、pkill</code>**。</p>
-<h3 id="6-3-2、kill命令"><a href="#6-3-2、kill命令" class="headerlink" title="6.3.2、kill命令"></a>6.3.2、kill命令</h3><p>简介：<strong>kill 命令用于删除执行中的程序或工作。</strong></p>
+<h3 id="6-3-2、kill命令"><a href="#6-3-2、kill命令" class="headerlink" title="6.3.2、kill命令"></a>6.3.2、kill命令</h3><p>简介：<strong>kill 命令可以通过指定进程PID来杀死或删除程序。</strong></p>
 <p>语法：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">kill</span> <span class="token punctuation">[</span>-s <span class="token operator">&lt;</span>信息名称或编号<span class="token operator">></span><span class="token punctuation">]</span><span class="token punctuation">[</span>程序<span class="token punctuation">]</span>　或　<span class="token function">kill</span> <span class="token punctuation">[</span>-l <span class="token operator">&lt;</span>信息编号<span class="token operator">></span><span class="token punctuation">]</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -1301,7 +1297,7 @@ pstree <span class="token parameter variable">-V</span><span aria-hidden="true" 
 <li>9 (KILL)：杀死一个进程。</li>
 <li>15 (TERM)：正常停止一个进程。</li>
 </ul>
-<h3 id="6-3-3、killall命令"><a href="#6-3-3、killall命令" class="headerlink" title="6.3.3、killall命令"></a>6.3.3、killall命令</h3><p>简介：<strong>killall 用于杀死一个进程，与 kill 不同的是会杀死指定名字的所有进程。</strong>kill 命令杀死指定进程 PID，需要配合 ps 使用，而 killall 直接通过进程名字操作，更加方便。</p>
+<h3 id="6-3-3、killall命令"><a href="#6-3-3、killall命令" class="headerlink" title="6.3.3、killall命令"></a>6.3.3、killall命令</h3><p>简介：<strong>killall 可以通过指定进程名字来杀死进程，与 kill 不同的是会杀死指定名字的所有进程。</strong></p>
 <p>语法：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">killall</span> <span class="token punctuation">[</span>选项<span class="token punctuation">]</span>  name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -1325,7 +1321,7 @@ pstree <span class="token parameter variable">-V</span><span aria-hidden="true" 
 <li>-V |–version ：显示版本信息。</li>
 <li>–help ：显示帮助信息。</li>
 </ul>
-<h3 id="6-3-4、pkill命令"><a href="#6-3-4、pkill命令" class="headerlink" title="6.3.4、pkill命令"></a>6.3.4、pkill命令</h3><p>简介：<strong>pkill 用于杀死一个进程，与 kill 不同的是它会杀死指定名字的所有进程，类似于 killall命令。</strong>kill 命令通过进程PID杀死进程，需配合ps使用。pkill 通过名字操作，更加方便。</p>
+<h3 id="6-3-4、pkill命令"><a href="#6-3-4、pkill命令" class="headerlink" title="6.3.4、pkill命令"></a>6.3.4、pkill命令</h3><p>简介：<strong>pkill 用于杀死一个进程，与 kill 不同的是它会杀死指定名字的所有进程，类似于 killall命令。</strong></p>
 <p>语法：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">pkill</span> <span class="token punctuation">[</span>选项<span class="token punctuation">]</span>  name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
@@ -1413,7 +1409,7 @@ systemctl start network<span aria-hidden="true" class="line-numbers-rows"><span>
 <li><strong>个人执行工作</strong>：某个用户定期要做的工作。</li>
 </ul>
 <p>每个用户都有自己的cron配置文件，通过命令<code>crontab -e</code>就可以编辑。</p>
-<p>一般情况下我们编辑好用户的cron配置文件保存退出后,系统会自动就存放于&#x2F;var&#x2F;spool&#x2F;cron&#x2F;目录中,文件以用户名命名.linux的cron服务是每隔一分钟去读取一次&#x2F;var&#x2F;spool&#x2F;cron、&#x2F;etc&#x2F;crontab、&#x2F;etc&#x2F;cron.d下面所有的内容。</p>
+<p>一般情况下我们编辑好用户的cron配置文件保存退出后会自动存放于&#x2F;var&#x2F;spool&#x2F;cron&#x2F;目录中，文件以用户名命名，linux的cron服务是每隔一分钟去读取一次&#x2F;var&#x2F;spool&#x2F;cron、&#x2F;etc&#x2F;crontab、&#x2F;etc&#x2F;cron.d下面所有的内容。</p>
 <h3 id="8-1-2、语法参数介绍"><a href="#8-1-2、语法参数介绍" class="headerlink" title="8.1.2、语法参数介绍"></a>8.1.2、语法参数介绍</h3><p>语法：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">crontab</span> <span class="token punctuation">[</span> <span class="token parameter variable">-u</span> user <span class="token punctuation">]</span> <span class="token function">file</span>
 <span class="token comment"># or</span>
@@ -1432,7 +1428,7 @@ systemctl start network<span aria-hidden="true" class="line-numbers-rows"><span>
 <pre class="line-numbers language-none"><code class="language-none">f1 f2 f3 f4 f5 program<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
-<li>其中 f1 是表示分钟，f2 表示小时，f3 表示一个月份中的第几日，f4 表示月份，f5 表示一个星期中的第几天。program 表示要执行的程序。</li>
+<li>f1 表示<strong>分钟</strong>，f2 表示<strong>小时</strong>，f3 表示一个月份中的第几<strong>日</strong>，f4 表示<strong>月</strong>份，f5 表示一个星期中的第几<strong>天</strong>。program 表示要执行的程序。</li>
 <li>当 f1 为 * 时表示每分钟都要执行 program，f2 为 * 时表示每小时都要执行程序，其馀类推</li>
 <li>当 f1 为 a-b 时表示从第 a 分钟到第 b 分钟这段时间内要执行，f2 为 a-b 时表示从第 a 到第 b 小时都要执行，其馀类推</li>
 <li>当 f1 为 *&#x2F;n 时表示每 n 分钟个时间间隔执行一次，f2 为 *&#x2F;n 表示每 n 小时个时间间隔执行一次，其馀类推</li>
@@ -1650,7 +1646,6 @@ yum search <span class="token operator">&lt;</span>keyword<span class="token ope
 
 <span class="token comment"># 命令3：将passwd文件中的用户id增加1并输出</span>
 <span class="token function">awk</span> <span class="token parameter variable">-v</span> <span class="token assign-left variable">i</span><span class="token operator">=</span><span class="token number">1</span> <span class="token parameter variable">-F</span> <span class="token builtin class-name">:</span> <span class="token string">'&#123;print $3+i&#125;'</span> <span class="token function">passwd</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 
 
                 

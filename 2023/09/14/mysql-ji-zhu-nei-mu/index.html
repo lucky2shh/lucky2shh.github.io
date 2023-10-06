@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-06
+                    2023-10-03
                 </div>
                 
 
@@ -542,7 +542,7 @@ ALTER TABLE 表名 MODIFY 列名 字符串类型 [CHARACTER SET 字符集名称]
 </tr>
 </tbody></table>
 <h3 id="1-2-4、字符集设置"><a href="#1-2-4、字符集设置" class="headerlink" title="1.2.4、字符集设置"></a>1.2.4、字符集设置</h3><p><strong>MySQL 5.7 默认的客户端和服务器都用了 latin1 ，不支持中文</strong>。</p>
-<p><strong>MySQL 8.0 前默认字符集为<code>latin1</code>，utf8字符集指向<code>utf8mb3</code>。MySQL 8.0及之后默认编码为<code>utf8mb4***</code>。</strong></p>
+<p><strong>MySQL 8.0 前默认字符集为<code>latin1</code>，utf8字符集指向<code>utf8mb3</code>。MySQL 8.0及之后默认编码为<code>utf8mb4</code>。</strong></p>
 <h4 id="查看字符集"><a href="#查看字符集" class="headerlink" title="查看字符集"></a>查看字符集</h4><ol>
 <li>使用 SHOW CREATE TABLE 语句；</li>
 <li>使用 DESCRIBE 语句；</li>
@@ -660,7 +660,7 @@ SHOW COLLATION LIKE &#39;latin1%&#39;;<span aria-hidden="true" class="line-numbe
 <p>MySQL中<strong>单精度值使用4字节，双精度值使用 8字节</strong>。</p>
 <ul>
 <li>MySQL允许使用非标准语法：FLOAT(M, D)、DOUBLE(M, D)，其中M称为精度（整数位+小数位），D称为标度（小数位）。精度与标度取值范围：D &lt;&#x3D; M &lt;&#x3D;255，0 &lt;&#x3D;D &lt;&#x3D; 30。</li>
-<li>FLOAT 和 DOUBLE 不指定(M,D)时，默认按实际精度来显示。</li>
+<li><strong>FLOAT 和 DOUBLE 不指定(M,D)时，默认按实际精度来显示</strong>。</li>
 <li><strong>浮点类型可以加UNSIGNED，但不会改变数值范围</strong>。</li>
 <li>无论设置精度与否，MySQL处理规则如下：<ul>
 <li>以 二进制 形式存储，因小数对应的二进制有时不能准确表示，会进行四舍五入，导致不精准。</li>
@@ -836,7 +836,7 @@ SHOW COLLATION LIKE &#39;latin1%&#39;;<span aria-hidden="true" class="line-numbe
 <li><strong>InnoDB</strong>：<ul>
 <li>支持行锁、表锁、外键、事务。</li>
 <li>5.5.8及之后版本，默认采用InnoDB引擎 。</li>
-<li>InnoDB是MySQL的默认事务型引擎 。</li>
+<li>InnoDB是目前MySQL的默认事务型引擎 。</li>
 <li>InnoDB是处理巨大数据量的最大性能设计 。</li>
 <li>InnoDB写处理效率差一些。</li>
 <li>InnoDB不仅缓存索引还要缓存真实数据， 对内存要求较高 ，而且内存大小对性能有决定性影响；MyISAM只缓存索引，不缓存真实数据；</li>
@@ -856,7 +856,7 @@ SHOW COLLATION LIKE &#39;latin1%&#39;;<span aria-hidden="true" class="line-numbe
 <li><strong>CSV</strong>：将数据以CSV格式存储在文件中，适合存储大量数据且不需要索引的场景。</li>
 </ul>
 <h3 id="引擎比较"><a href="#引擎比较" class="headerlink" title="引擎比较"></a>引擎比较</h3><ul>
-<li><strong>InnoDB</strong>：支持行锁、外键、事务、非锁定读，5.5.8版本开始被设定为默认引擎。<ul>
+<li><strong>InnoDB</strong>：支持行锁、外键、事务、非锁定读，5.5.8版本开始为默认引擎。<ul>
 <li>MySQL 5.7：字符集+排序规则等信息保存在<strong>db.opt</strong>文件中。<ul>
 <li>独立表空间：**.frm**文件（表结构） &#x2F; <strong>.ibd</strong>文件（索引+数据）。</li>
 <li>系统表空间：<strong>ibdata1</strong>，默认12M。</li>
@@ -948,8 +948,8 @@ show variables like &#39;profiling&#39;;<span aria-hidden="true" class="line-num
 </ol>
 <h3 id="1-5-4、SQL语法顺序"><a href="#1-5-4、SQL语法顺序" class="headerlink" title="1.5.4、SQL语法顺序"></a>1.5.4、SQL语法顺序</h3><p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/06/image-20220410154740134.png" alt="image-20220410154740134"></p>
 <h2 id="1-6、增删改查"><a href="#1-6、增删改查" class="headerlink" title="1.6、增删改查"></a>1.6、增删改查</h2><h3 id="1-6-1、增"><a href="#1-6-1、增" class="headerlink" title="1.6.1、增"></a>1.6.1、增</h3><h3 id="1-6-4、查"><a href="#1-6-4、查" class="headerlink" title="1.6.4、查"></a>1.6.4、查</h3><h4 id="1-6-4-1、子查询"><a href="#1-6-4-1、子查询" class="headerlink" title="1.6.4.1、子查询"></a>1.6.4.1、子查询</h4><h5 id="子查询分类"><a href="#子查询分类" class="headerlink" title="子查询分类"></a>子查询分类</h5><ul>
-<li>根据内查询返回结果的条目数量来说，分为 单行子查询 和 多行子查询。</li>
-<li>根据内查询是否被执行多次来说，分为：相关子查询 和 不相关子查询。</li>
+<li>根据内查询返回结果的条目数量来说，<strong>分为 单行子查询 和 多行子查询</strong>。</li>
+<li>根据内查询是否被执行多次来说，<strong>分为：相关子查询 和 不相关子查询</strong>。</li>
 </ul>
 <h3 id="1-6-3、改"><a href="#1-6-3、改" class="headerlink" title="1.6.3、改"></a>1.6.3、改</h3><h3 id="1-6-2、删"><a href="#1-6-2、删" class="headerlink" title="1.6.2、删"></a>1.6.2、删</h3><h1 id="2、InnoDB存储引擎"><a href="#2、InnoDB存储引擎" class="headerlink" title="2、InnoDB存储引擎"></a>2、InnoDB存储引擎</h1><h2 id="2-1、InnoDB体系架构"><a href="#2-1、InnoDB体系架构" class="headerlink" title="2.1、InnoDB体系架构"></a>2.1、InnoDB体系架构</h2><h3 id="2-1-1、后台线程"><a href="#2-1-1、后台线程" class="headerlink" title="2.1.1、后台线程"></a>2.1.1、后台线程</h3><ol>
 <li><p><strong>Master Thread</strong></p>
@@ -1073,7 +1073,7 @@ show variables like &#39;profiling&#39;;<span aria-hidden="true" class="line-num
 </ol>
 <h3 id="2-3-3、自适应哈希索引"><a href="#2-3-3、自适应哈希索引" class="headerlink" title="2.3.3、自适应哈希索引"></a>2.3.3、自适应哈希索引</h3><p><strong>该索引查找时间复杂度一般为O(1)。InnoDB引擎会监控对表上各索引页的查询，如果发现建立哈希索引会有速度提升，那么会自动建立哈希索引，称之为自适应哈希索引（Adaptive Hash Index，AHI），这个判断并创建的过程用户无法干预</strong>。</p>
 <p>AHI 通过缓冲池的 B+ 树页构造而来，因此建立速度非常快，且不需要对整张表构建哈希索引。InnoDB引擎会根据访问的频率和模式自动建立哈希索引。</p>
-<p>AHI要求：对页的连续访问模式必须是一样的；以该模式访问了100次。<font color='orange'>页通过该模式被访问了N次，其中N &#x3D; (页中记录数量&#x2F;16)。</font></p>
+<p>AHI要求：对页的连续访问模式必须是一样的；以该模式访问了100次。**页通过该模式被访问了N次，其中N &#x3D; (页中记录数量&#x2F;16)**。</p>
 <blockquote>
 <p>访问模式是指：查询条件一样，若交替执行两种查询，且次数也达到了100次，那么也不会构建AHI。</p>
 </blockquote>
@@ -1184,9 +1184,8 @@ show variables like &#39;profiling&#39;;<span aria-hidden="true" class="line-num
 <p>可以通过二进制日志中的信息来进行审计，判断是否有对数据库进行注入的攻击行为。</p>
 </li>
 </ol>
-<h4 id="底层实现"><a href="#底层实现" class="headerlink" title="底层实现"></a>底层实现</h4><h5 id="binlog-cache"><a href="#binlog-cache" class="headerlink" title="binlog cache"></a>binlog cache</h5><p><strong>事务执行过程中，先把日志写到<code>binlog cache</code> ，事务提交时再把<code>binlog cache</code>中的数据写入<code>binlog</code>文件</strong>。因为一个事务的<code>binlog</code>不能被拆开，无论这个事务多大也要确保一 次性写入，所以系统会给每个线程分配一个块内存作为<code>binlog cache</code>。</p>
-<h5 id="write-fsync"><a href="#write-fsync" class="headerlink" title="write&#x2F;fsync"></a>write&#x2F;fsync</h5><p>write 和 fsync 的执行时间由参数<code>sync_binlog</code>控制，默认0。参数值为0表示每次提交事务仅仅执行write，后面则由系统自行判断何时执行fsync。虽然性能得到了提升，但机器宕机会导致丢失 page cache 中的 binglog。</p>
-<p><strong>建议将参数值设置为 1 ，表示每次提交事务都会执行fsync</strong>。 此外还可以设置为N（N&gt;1），表示每次提交事务都执行write，但累积N个事务后才执行fsync。</p>
+<h4 id="底层实现"><a href="#底层实现" class="headerlink" title="底层实现"></a>底层实现</h4><h5 id="binlog-cache"><a href="#binlog-cache" class="headerlink" title="binlog cache"></a>binlog cache</h5><p><strong>事务执行过程中，先把日志写到<code>binlog cache</code> ，事务提交时再把<code>binlog cache</code>中的数据写入<code>binlog</code>文件</strong>。因为一个事务的<code>binlog</code>不能被拆开，无论这个事务多大也要确保一次性写入，所以系统会给每个线程分配一个块内存作为<code>binlog cache</code>。</p>
+<h5 id="write-fsync"><a href="#write-fsync" class="headerlink" title="write&#x2F;fsync"></a>write&#x2F;fsync</h5><p>write 和 fsync 的执行时间由参数<code>sync_binlog</code>控制，默认0。参数值为0表示每次提交事务仅仅执行write，后面则由系统自行判断何时执行fsync。<strong>参数值设置为1表示每次提交事务都会执行fsync</strong>。参数值设为N（N&gt;1）表示每次提交事务都执行write，但累积N个事务后才执行fsync。</p>
 <p><strong>将<code>sync_binlog</code>设置为一个较大值可提升性能。但如果机器宕机，也会丢失最近N个事务的binlog日志</strong>。</p>
 <h5 id="两阶段提交"><a href="#两阶段提交" class="headerlink" title="两阶段提交"></a>两阶段提交</h5><p>执行更新语句的过程中会记录 redo log 与 bin log 两块日志，以基本的事务为单位，redo log在事务执行过程中可以不断写入，而binlog只有在提交事务时才写入，所以 redo log 与 bin log 写入时机不一样。</p>
 <p><strong>redo log 与 binlog 逻辑不一致会出现问题，为解决该问题使用了两阶段提交方案</strong>。</p>
@@ -1380,7 +1379,7 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <h1 id="4、表"><a href="#4、表" class="headerlink" title="4、表"></a>4、表</h1><h2 id="4-1、索引组织表"><a href="#4-1、索引组织表" class="headerlink" title="4.1、索引组织表"></a>4.1、索引组织表</h2><p><strong>InnoDB引擎中表是根据主键顺序组织存放，该种组织方式的表被称为索引组织表</strong>。InnoDB引擎中的每张表都有主键，如果创建表时没有主动创建主键，则InnoDB会按如下方式创建一个主键：</p>
 <ol>
 <li>判断表中是否存在非空的唯一索引（Unique NOT NULL），若有，则该列即为主键。</li>
-<li>若不符合1中的条件，则自动创建一个6字节row_id列作为主键。</li>
+<li>若不符合1中的条件，则自动创建一个6字节的row_id列作为主键。</li>
 </ol>
 <p>若表中有多个非空唯一索引，则会选择第一个非空唯一索引作为主键。主键的选择根据的是定义索引的顺序，而不是建表时列的顺序。</p>
 <h2 id="4-2、InnoDB逻辑存储结构"><a href="#4-2、InnoDB逻辑存储结构" class="headerlink" title="4.2、InnoDB逻辑存储结构"></a>4.2、InnoDB逻辑存储结构</h2><p>所有数据逻辑存放在表空间。表空间又由段、区、页组成。InnnoDB逻辑存储结构大致如图所示（page页有时也被称为块block）：</p>
@@ -1455,33 +1454,29 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <h3 id="4-3-5、CHAR行结构存储"><a href="#4-3-5、CHAR行结构存储" class="headerlink" title="4.3.5、CHAR行结构存储"></a>4.3.5、CHAR行结构存储</h3><p>MySQL 4.1开始，CHAR(N)中的N指 字符长度，而不是字节长度。在不同字符集下，CHAR类型列内部存储的可能不是定长数据。</p>
 <h2 id="4-4、InnoDB数据页结构"><a href="#4-4、InnoDB数据页结构" class="headerlink" title="4.4、InnoDB数据页结构"></a>4.4、InnoDB数据页结构</h2><p>InnoDB数据页由7个部分组成：</p>
 <ol>
-<li><p><font color='orange'>File Header</font></p>
-<p>固定38字节。记录页的头信息。</p>
+<li><p>File Header：固定38字节。记录页的头信息。</p>
 </li>
-<li><p><font color='orange'>Page Header</font></p>
-<p>固定56字节。记录数据页的状态信息，由14个部分组成。</p>
+<li><p>Page Header：固定56字节。记录数据页的状态信息，由14个部分组成。</p>
 </li>
-<li><p><font color='orange'>Infimun 和 Supremum Records</font></p>
-<p>InnoDB引擎中，每个数据页有两个虚拟的行记录，用来限定记录的边界。Infimum记录是比该页中任何主键值都要小的值，Supremum记录的是比任何大的值都要大的值。这两个值在页创建时被建立，且不会被删除。在Compact行格式和Redundant行记录格式下，两者占用的字节数各不相同。</p>
+<li><p>Infimun 和 Supremum Records</p>
+<p>InnoDB引擎中，每个数据页有两个虚拟的行记录，用来限定记录的边界。Infimum记录是当前页中最小的值，Supremum记录是最大的值。这两个值在页创建时被建立，且不会被删除。在Compact行格式和Redundant行记录格式下，两者占用的字节数各不相同。</p>
 </li>
-<li><p><font color='orange'>User Records</font></p>
-<p>动态大小，实际存储行记录的内容。</p>
+<li><p>User Records：动态大小，实际存储行记录的内容。</p>
 </li>
-<li><p><font color='orange'>Free Space</font></p>
-<p>动态大小，指的是空闲空间，是个链表数据结构。在一条记录被删除后，该空间会被加入到空闲链表中。</p>
+<li><p>Free Space：动态大小，指的是空闲空间，是个链表结构。在一条记录被删除后，该空间会被加入到空闲链表中。</p>
 </li>
-<li><p><font color='orange'>Page Directory</font></p>
+<li><p>Page Directory</p>
 <p>动态大小，存放了记录的相对位置（页相对位置，而不是偏移量），有时候这些记录指针被称为Slots（槽）或目录槽。InnoDB的槽中可能包含多个记录。伪记录Infimum的n_owned值总是1，记录Supremum的n_owned的取值范围为[1, 8]，其它用户记录n_owned的取值范围为[4, 8]。当记录被插入或删除时需要对槽进行分裂或平衡操作。</p>
 <p>Slots中记录按照索引键值顺序存放，这样可以利用二叉查找迅速找到记录的指针。</p>
 <p>要牢记，B+树索引本身并不能找到具体的一条记录，能找到的只是该记录所在的页。数据库把页载入到内存，然后通过Page Directory在进行二叉查找。</p>
 </li>
-<li><p><font color='orange'>File Trailer</font></p>
+<li><p>File Trailer</p>
 <p>固定8字节。该部分是为了检测页是否完整地写入磁盘。File Trailer只有一个FIL_PAGE_END_LSN部分，占用8字节，前4字节代表该页的checksum值，后4字节和File Header中的FIL_PAGE_LSN一样。将这两个值与File Header中的FIL_PAGE_SPACE_OR_CHKSUM 和 FIL_PAGE_LSN值进行比较，看是否一致，以此确保页的完整性。</p>
 <p>默认InnoDB引擎每次从磁盘读取一个页就会检查其完整性，检查有一定的开销，可通过参数<code>innodb_checksums</code>来开启或关闭这个检查功能。</p>
 <p>MySQL 5.6.6开始新增参数 <code>innodb_checksum_algorithm</code>，该参数用来控制检测checksum函数的算法，默认crc32，可选值有：innodb、crc32、none、strict_innodb、strict_crc32、strict_none。</p>
 </li>
 </ol>
-<p><font color='orange'>7个部分的大小总和就是Page Size的值，3和4合称为行记录。</font></p>
+<p><strong>7个部分的大小总和就是Page Size的值，3和4合称为行记录。</strong></p>
 <h2 id="4-5、Named-File-Formats机制"><a href="#4-5、Named-File-Formats机制" class="headerlink" title="4.5、Named File Formats机制"></a>4.5、Named File Formats机制</h2><p><strong>从InnoDB 1.0.x开始，InnoDB通过Named File Formats机制来解决不同版本页结构兼容性问题</strong>。</p>
 <p>未来版本的InnoDB引擎还将引入新文件格式，此文件格式的名称取自动物名字。</p>
 <p>参数<code>innodb_file_format</code>用来指定文件格式。参数<code>innodb_file_format_check</code>表示是否开启检测当前InnoDB引擎文件格式的支持度，默认为ON。</p>
@@ -1510,19 +1505,15 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <h3 id="4-6-5、ENUM-和-SET约束"><a href="#4-6-5、ENUM-和-SET约束" class="headerlink" title="4.6.5、ENUM 和 SET约束"></a>4.6.5、ENUM 和 SET约束</h3><p>MySQL不支持传统的CHECK约束，但通过ENUM和SET可以解决部分这样的需求。有时还需要配合参数 <code>sql_mode</code>。</p>
 <h3 id="4-6-6、触发器约束"><a href="#4-6-6、触发器约束" class="headerlink" title="4.6.6、触发器约束"></a>4.6.6、触发器约束</h3><p>最多可以为一个表创建6个触发器，即INSERT、UPDATE、DELETE的BEFORE和AFTER各定义一个。</p>
 <h3 id="4-6-7、外键约束"><a href="#4-6-7、外键约束" class="headerlink" title="4.6.7、外键约束"></a>4.6.7、外键约束</h3><p>外键用来保证参照完整性。MyISAM引擎不支持外键，而InnoDB引擎完全支持。</p>
-<p><font color='orange'>一般来说，被引用表称为父表，引用表称为子表。外键定义时的 ON DELETE 和 ON UPDATE 表示在对父表执行 DELETE 和 UPDATE 操作时，子表应被如何对待，可选操作有：</font></p>
+<p><strong>一般来说，被引用表称为父表，引用表称为子表。外键定义时的 ON DELETE 和 ON UPDATE 表示在对父表执行 DELETE 和 UPDATE 操作时，子表应被如何对待</strong>，可选操作有：</p>
 <ol>
-<li><p><strong>CASCADE</strong></p>
-<p>父表被怎么操作，子表就被怎么操作。</p>
+<li><p><strong>CASCADE</strong>：父表被怎么操作，子表就被怎么操作。</p>
 </li>
-<li><p><strong>SET NULL</strong></p>
-<p>父表被操作时，子表中相对应的数据被更新为NULL值（列必须允许NULL值）。</p>
+<li><p><strong>SET NULL</strong>：父表被操作时，子表中相对应的数据被更新为NULL值（列必须允许NULL值）。</p>
 </li>
-<li><p><strong>NO ACTION</strong></p>
-<p>父表被操作时，抛出错误，不允许这类操作发生。</p>
+<li><p><strong>NO ACTION</strong>：父表被操作时，抛出错误，不允许这类操作发生。</p>
 </li>
-<li><p><strong>RESTRICT</strong></p>
-<p>父表被操作时，抛出错误，不允许这类操作发生。</p>
+<li><p><strong>RESTRICT</strong>：父表被操作时，抛出错误，不允许这类操作发生。</p>
 </li>
 </ol>
 <p><font color='red'>注意：如果定义外键时没有指定ON DELETE 或 ON UPDATE，那么默认是RESTRICT。</font></p>
@@ -1551,7 +1542,7 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <li><p><strong>NEVER</strong>：不进行任何刷新。</p>
 </li>
 </ol>
-<p><font color='red'>注意：MySQL本身不支持物化视图，但可以通过【定时把数据导入到一张表】来实现。</font></p>
+<p><font color='red'>注意：MySQL本身不支持物化视图，但可通过定时把数据导入到一张表来实现。</font></p>
 <h2 id="4-8、分区表"><a href="#4-8、分区表" class="headerlink" title="4.8、分区表"></a>4.8、分区表</h2><h3 id="4-8-1、简介"><a href="#4-8-1、简介" class="headerlink" title="4.8.1、简介"></a>4.8.1、简介</h3><p><strong>MySQL 5.1 开始支持分区，分区指：将一个表或索引分解为多个更小、更可管理的部分</strong>。</p>
 <p>局部分区索引指：一个分区中既存放数据又存放索引。全局分区指：数据存放在各个分区中，数据的索引放在一个对象中。</p>
 <p><font color='red'>注意：MySQL仅支持水平分区，并不支持垂直分区。MySQL仅支持局部分区，还不支持全局分区。</font></p>
@@ -1662,7 +1653,7 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <h3 id="5-3-3、B-树索引分类"><a href="#5-3-3、B-树索引分类" class="headerlink" title="5.3.3、B+树索引分类"></a>5.3.3、B+树索引分类</h3><h4 id="聚簇索引"><a href="#聚簇索引" class="headerlink" title="聚簇索引"></a>聚簇索引</h4><p>聚簇索引 是根据表中主键 构造的B+树，叶子节点中存放的就是表数据，也将聚簇索引的叶子节点称为数据页，每个数据页通过一个双向链表来进行链接。由于实际的数据页只能按照一颗B+树来进行排序，因此一张表只能拥有一个聚簇索引。</p>
 <p>聚簇索引不仅包含索引的键值，还包含所有表数据。聚集索引中的记录根据键值顺序存放，这个顺序指逻辑顺序。</p>
 <h4 id="辅助索引"><a href="#辅助索引" class="headerlink" title="辅助索引"></a>辅助索引</h4><p>辅助索引 又称为 二级索引 或 非聚簇索引。其结构也为B+树。辅助索引的叶子节点并不保存表的全部数据，叶子节点除了包含键值外，每个叶子节点的索引行中还包含了一个书签，这个书签就是相应行数据的聚集索引键。</p>
-<p><font color='orange'>辅助索引叶子节点保存的是&lt;键值, (记录)地址&gt;。</font>记录地址可以存在两种形式：</p>
+<p>**辅助索引叶子节点保存的是&lt;键值, (记录)地址&gt;**。</font>记录地址可以存在两种形式：</p>
 <ol>
 <li>记录的物理地址，页号：槽号：偏移量。（MyISAM引擎B+树存储方式）</li>
 <li>记录的主键值。（InnoDB引擎下的存储方式）InnoDB引擎是索引组织表，所有记录都放在聚集索引中，辅助索引中记录地址存放的是主键的键值。</li>
@@ -1714,10 +1705,10 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> t <span class="token keyword">where</span> a <span class="token operator">=</span> xxx <span class="token keyword">order</span> <span class="token keyword">by</span> c<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h5 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h5><ol>
-<li><font color='orange'>对于两个列的查询可以使用联合索引，单个列的查询也可以使用联合索引。</font></li>
-<li><font color='orange'>已经对第二个键值进行了排序处理。</font></li>
+<li><strong>对于两个列的查询可以使用联合索引，单个列的查询也可以使用联合索引</strong>。</li>
+<li><strong>已经对第二个键值进行了排序处理</strong>。</li>
 </ol>
-<h4 id="覆盖索引-1"><a href="#覆盖索引-1" class="headerlink" title="覆盖索引"></a>覆盖索引</h4><p><strong>InnoDB引擎支持覆盖索引（covering index），即从辅助索引中就可以得到查询结果，而不需要回表查询。辅助索引不包含整行全部记录，故大小要小于聚集索引，可以减少大量IO操作</strong>。</p>
+<h4 id="覆盖索引-1"><a href="#覆盖索引-1" class="headerlink" title="覆盖索引"></a>覆盖索引</h4><p>InnoDB引擎支持覆盖索引（covering index），即<strong>从辅助索引中就可以得到查询结果，而不需要回表查询</strong>。通常辅助索引不包含整行全部记录，故大小要小于聚集索引，可以减少大量IO操作。</p>
 <p>创建一个测试表 buy_log：</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">create</span> <span class="token keyword">table</span> buy_log<span class="token punctuation">(</span>
   userid <span class="token keyword">int</span> <span class="token keyword">unsigned</span> <span class="token operator">not</span> <span class="token boolean">null</span><span class="token punctuation">,</span>
@@ -1733,9 +1724,9 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <p>对于如上查询，如果表中有辅助索引的话，InnoDB引擎不会选择通过聚集索引来统计，因为选择辅助索引可以减少IO操作。</p>
 <p>通常情况下，诸如 (a, b) 的联合索引，一般是不可以选择列 b 中所谓的查询条件。但如果是对于统计操作，且是覆盖索引的，则优化器会选择这个索引。如下列 SQL：</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token function">count</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">from</span> buy_log 
-<span class="token keyword">where</span> buy_date <span class="token operator">>=</span> <span class="token string">'2011-01-01'</span> adn buy_date <span class="token operator">&lt;</span> <span class="token string">'2011-02-01'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
+<span class="token keyword">where</span> buy_date <span class="token operator">>=</span> <span class="token string">'2011-01-01'</span> <span class="token operator">and</span> buy_date <span class="token operator">&lt;</span> <span class="token string">'2011-02-01'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p><font color='orange'>表 buy_log 有 (userid, buy_date) 联合索引，只对 b 列进行条件查询，一般不走联合索引，但这个 SQL 是统计操作，且可使用到覆盖索引信息，因此优化器会选择该联合索引。</font></p>
+<p><strong>表 buy_log 有 (userid, buy_date) 联合索引，只对 b 列进行条件查询一般不走联合索引，但这个 SQL 是统计操作且可使用到覆盖索引信息，因此优化器会选择该联合索引</strong>。</p>
 <h4 id="索引提示"><a href="#索引提示" class="headerlink" title="索引提示"></a>索引提示</h4><p><strong>MySQL支持索引提示（INDEX HINT），显式告诉优化器使用哪个索引</strong>。需要用到索引提示的情况如下：</p>
 <ol>
 <li>MySQL优化器错误地选择了某个索引。</li>
@@ -1782,9 +1773,9 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <h5 id="如何启用"><a href="#如何启用" class="headerlink" title="如何启用"></a>如何启用</h5><p>是否启用 MRR 优化可以通过参数 <code>optimizer_switch</code>中的标记来控制。当 mrr 为 on 时，表示启用 MRR 优化。<code>mrr_cost_based</code> 标记表示是否通过 cost based 的方式来选择是否启用 mrr。若将 mrr 设为 on，mrr_cost_based 设为 off，则表示总是启用 MRR 优化。如下命令可以将 MRR 优化设为一直开启状态：</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">set</span> @<span class="token variable">@optimizer_switch</span><span class="token operator">=</span><span class="token string">'mrr=on,mrr_cost_based=off'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><font color='orange'>参数 <code>read_rnd_buffer_size</code>用来控制 键值缓冲区大小，默认值为256KB。当大于该值时，则执行器对已经缓存的数据将通过 RowID 进行排序并取得行数据。</font></p>
-<h4 id="ICP"><a href="#ICP" class="headerlink" title="ICP"></a>ICP</h4><h5 id="简介-7"><a href="#简介-7" class="headerlink" title="简介"></a>简介</h5><p>ICP是 Index Condition Pushdown 的首字母，意为索引下推。</p>
-<p><font color='orange'>MySQL 5.6开始支持一种基于索引进行查询的优化。不支持该优化时，会先通过索引查找记录，然后根据 WHERE 进行过滤。开启该优化后，会在基于索引查找记录的同时就判断是否可以进行Where过滤，也就是将WHERE过滤放到了存储引擎层。对于某些查询，该方式可大大减少上层SQL层对记录的索取，进而提高数据库的整体性能。</font></p>
+<p><strong>参数 <code>read_rnd_buffer_size</code>用来控制键值缓冲区大小，默认值为256KB。当大于该值时执行器会将已经缓存的数据通过 RowID 进行排序并取得行数据。</strong></p>
+<h4 id="ICP"><a href="#ICP" class="headerlink" title="ICP"></a>ICP</h4><h5 id="简介-7"><a href="#简介-7" class="headerlink" title="简介"></a>简介</h5><p><strong>ICP是 Index Condition Pushdown 的首字母，意为索引下推</strong>。</p>
+<p><strong>MySQL 5.6开始支持一种基于索引进行查询的优化</strong>。不支持该优化时，会先通过索引查找记录，然后根据 WHERE 进行过滤。<strong>开启该优化后，会在基于索引查找记录的同时就判断是否可以进行Where过滤，也就是将WHERE过滤放到了存储引擎层</strong>。对于某些查询，该方式可大大减少上层SQL层对记录的索取，进而提高数据库的整体性能。</p>
 <p>ICP优化支持range、ref、eq_ref、ref_or_null类型的查询，且支持MyISAM和InnoDB引擎。当优化器选择 ICP 优化时，可以在执行计划的列 Extra 看到 Using index condition提示。</p>
 <p>若支持ICP优化，则会在通过索引取出记录时就进行WHERE过滤，然后再回表查询。当然Where过滤的条件是该索引可以覆盖的范围。</p>
 <h5 id="实现原理-1"><a href="#实现原理-1" class="headerlink" title="实现原理"></a>实现原理</h5><p>假设某张表有联合索引 (zip_code, last_name, first_name)，且查询 SQL 如下：</p>
@@ -1794,7 +1785,7 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <span class="token operator">and</span> address <span class="token operator">like</span> <span class="token string">'Main Street'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>对于上述 SQL，可以通过索引定位 zipcode 等于 95054 的记录，但是索引对于 where 的后两个过滤条件没有任何帮助。若不支持 ICP 优化，则数据需要先通过索引取出所有 zipcode 等于 95054 的记录，然后再过滤 where 之后的两个条件。若支持 ICP 优化，则在索引取出时，就会进行 where 条件过滤，然后再去获取记录。这将极大提高查询的效率。当然，where 可以过滤的条件是要该索引可以覆盖到的范围。</p>
-<h5 id="如何启用-1"><a href="#如何启用-1" class="headerlink" title="如何启用"></a>如何启用</h5><p><strong>ICP优化默认情况下是开启状态</strong>，当然也可通过下列命令开启或关闭：</p>
+<h5 id="如何启用-1"><a href="#如何启用-1" class="headerlink" title="如何启用"></a>如何启用</h5><p><strong>ICP优化默认是开启状态</strong>，当然也可通过下列命令开启或关闭：</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">set</span> @<span class="token variable">@optimizer_switch</span><span class="token operator">=</span><span class="token string">'index_condition_pushdown=on'</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>ICP 优化可以将查询效率在原有MySQL 5.5版本技术上提高 23%左右。而再同时开启 MRR 优化，性能还能有 400% 的提升。</p>
@@ -1802,12 +1793,12 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <p>InnoDB引擎会<strong>对创建辅助索引的表加上一个S锁。创建过程中无需重建表</strong>，因此速度较之前提高很多，且数据库可用性也得到提高。</p>
 <p>删除辅助索引更简单，InnoDB引擎只需更新内部视图，并将辅助索引的空间标为可用，同时删除MySQL内部视图上对该表的索引定义即可。</p>
 <blockquote>
-<p>注意，临时表的创建路径是通过参数 <code>tmpdir</code>进行设置，用户必须保证tmpdir有足够的空间可以存放临时表，否则会导致创建索引失败。</p>
+<p>注意，临时表的创建路径是通过参数 <code>tmpdir</code>进行设置，用户必须保证参数tmpdir设定的位置有足够的空间可以存放临时表，否则会导致创建索引失败。</p>
 <p>FIC方式只限定于辅助索引，对于主键的创建和删除同样需要重建一张表。</p>
 </blockquote>
-<h4 id="Online-Schema-Change"><a href="#Online-Schema-Change" class="headerlink" title="Online Schema Change"></a>Online Schema Change</h4><p><font color='orange'>Online Schema Change（简称OSC）最早由FaceBook实现的一种在线 DDL 的方式，并广泛应用于 Facebook 的MySQL数据库。所谓在线是指：事务创建过程中，允许执行读写事务，该种方式极大提高了MySQL并发能力。</font></p>
+<h4 id="Online-Schema-Change"><a href="#Online-Schema-Change" class="headerlink" title="Online Schema Change"></a>Online Schema Change</h4><p>Online Schema Change（简称OSC）最早由FaceBook实现的一种在线 DDL 的方式，并广泛应用于 Facebook 的MySQL数据库。所谓<strong>在线说的是事务创建过程中，允许执行读写事务</strong>，该种方式极大提高了MySQL并发能力。</p>
 <p><font color='red'>注意：Facebook采用 PHP 脚本来实现 OSC，而并非是修改 InnoDB源码来实现。</font></p>
-<h4 id="Online-DDL"><a href="#Online-DDL" class="headerlink" title="Online DDL"></a>Online DDL</h4><p>FIC可以避免InnoDB创建临时表，但索引创建时会阻塞表上的DML操作。OSC虽然解决了上述的部分问题，但还是有很大局限性。<font color='orange'>MySQL 5.6开始支持 Online DDL（在线数据定义）操作，其允许辅助索引创建的同时，还允许其它诸如：insert、update、delete等操作，极大提高了MySQL性能和可用性。</font></p>
+<h4 id="Online-DDL"><a href="#Online-DDL" class="headerlink" title="Online DDL"></a>Online DDL</h4><p>FIC可以避免InnoDB创建临时表，但索引创建时会阻塞表上的DML操作。OSC虽然解决了上述的部分问题，但还是有很大局限性。<strong>MySQL 5.6开始支持 Online DDL（在线数据定义）操作，允许创建辅助索引的同时可以执行insert、update、delete等操作</strong>，极大提高了MySQL性能和可用性。</p>
 <p>不仅是辅助索引，以下几类DDL操作都可以通过”在线“方式进行操作：</p>
 <ol>
 <li><strong>辅助索引的创建与删除</strong></li>
@@ -1822,7 +1813,7 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <span class="token keyword">ALGORITHM</span> <span class="token punctuation">[</span><span class="token operator">=</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token keyword">DEFAULT</span> <span class="token operator">|</span> INPLACE <span class="token operator">|</span> COPY<span class="token punctuation">)</span>
 <span class="token keyword">LOCK</span> <span class="token punctuation">[</span><span class="token operator">=</span><span class="token punctuation">]</span> <span class="token punctuation">(</span><span class="token keyword">DEFAULT</span> <span class="token operator">|</span> NONE <span class="token operator">|</span> SHARED <span class="token operator">|</span> EXCLUSIVE<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><font color='orange'>ALGORITHM指定了创建或删除索引的算法</font>，可选值有：</p>
+<p><strong>ALGORITHM指定了创建或删除索引的算法</strong>，可选值有：</p>
 <ol>
 <li><p><strong>DEFAULT</strong></p>
 <p>根据参数 old_alter_table（默认为OFF，采用INPLACE） 来判断是通过 INPLACE 还是 COPY。</p>
@@ -1849,7 +1840,7 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <p>会先判断当前操作是否可以使用NONE模式，若不能，则判断是否可以使用SHARE模式，最后判断是否可以使用EXCLUSIVE模式。</p>
 </li>
 </ol>
-<p><font color='orange'>InnoDB实现Online DDL的原理是：在执行创建或者删除的同时，先将这些操作放入缓存中。待完成索引创建后再将之应用到表上，以此达到数据一致性。这个缓存大小由参数 <code>innodb_online_alter_log_max_size</code> 控制，默认大小为128M。如果存放的内容大小超过这个值，会抛出错误。</font></p>
+<p>InnoDB实现Online DDL的原理是：<strong>执行创建或删除操作时先将这些操作放入缓存中，待完成索引创建后再将之应用到表上</strong>，以此达到数据一致性。缓存大小取决于参数<code>innodb_online_alter_log_max_size</code> 的设置，默认大小为128M。如果存放的内容大小超过参数设定的值会抛出错误。</p>
 <blockquote>
 <p>索引创建过程中，SQL优化器不会选择正在创建中的索引。</p>
 </blockquote>
@@ -1883,8 +1874,8 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <h2 id="5-5、Cardinality值"><a href="#5-5、Cardinality值" class="headerlink" title="5.5、Cardinality值"></a>5.5、Cardinality值</h2><h3 id="5-5-1、什么是Cardinality"><a href="#5-5-1、什么是Cardinality" class="headerlink" title="5.5.1、什么是Cardinality"></a>5.5.1、什么是Cardinality</h3><p><strong>Cardinality值非常关键，表示索引中不重复记录的数量预估值。</strong>实际中 <code>Cardinality / n_rows_in_table</code> 应尽可能接近1，如果非常小，就不适合创建这个索引。故在访问高选择性属性的字段并从表中取出很少一部分数据时，对这个字段添加B+树索引 会变得 非常必要。</p>
 <h3 id="5-5-2、InnoDB中Cardinality统计"><a href="#5-5-2、InnoDB中Cardinality统计" class="headerlink" title="5.5.2、InnoDB中Cardinality统计"></a>5.5.2、InnoDB中Cardinality统计</h3><p>InnoDB更新Cardinality信息的策略为：</p>
 <ol>
-<li><font color='orange'>表中 1&#x2F;16 的数据已发生过变化。</font></li>
-<li><font color='orange'>stat_modified_counter &gt; 2 000 000 000。（stat_modified_counter代表行数据变化的次数）</font></li>
+<li>表中 1&#x2F;16 的数据已发生过变化。</li>
+<li>stat_modified_counter &gt; 2 000 000 000。（stat_modified_counter代表行数据变化的次数）</li>
 </ol>
 <p><strong>InnoDB引擎对Cardinality信息的统计和更新是通过 采样方法 实现。</strong>默认InnoDB对8个叶子节点进行采样。采样过程如下：</p>
 <ol>
@@ -1929,11 +1920,11 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <li>inverted file index。其表现形式为<code>&#123;单词, 单词所在文档的ID&#125;</code></li>
 <li>full inverted index。其变现形式为<code>&#123;单词, (单词所在文档的ID， 在具体文档中的位置)&#125;</code></li>
 </ol>
-<h3 id="5-7-2、InnoDB全文检索"><a href="#5-7-2、InnoDB全文检索" class="headerlink" title="5.7.2、InnoDB全文检索"></a>5.7.2、InnoDB全文检索</h3><p><strong>InnoDB引擎采用【full inverted index】方式。InnoDB引擎中，将（DocumentID, Position）视为一个“ilist”，因此在全文检索表中有两个列，word字段 和 ilist字段，且word字段上设有索引。此外由于InnoDB引擎在ilist字段中存放了Position信息，故可以进行Proximity Search，而MyISAM不支持该特性。</strong></p>
+<h3 id="5-7-2、InnoDB全文检索"><a href="#5-7-2、InnoDB全文检索" class="headerlink" title="5.7.2、InnoDB全文检索"></a>5.7.2、InnoDB全文检索</h3><p><strong>InnoDB引擎采用full inverted index方式。InnoDB引擎中，将（DocumentID, Position）视为一个“ilist”，因此在全文检索表中有两个列，word字段 和 ilist字段，且word字段上设有索引。此外由于InnoDB引擎在ilist字段中存放了Position信息，故可以进行Proximity Search，而MyISAM不支持该特性。</strong></p>
 <p>倒排索引需要将word存放到 Auxiliary Table（辅助表）中，它是持久表，存放于磁盘上。此外还有一个重要概念 FTS Index Cache（全文检索索引缓存），用来提高全文检索的性能。</p>
 <p>FTS Index Cache是一个红黑树结构，根据（word, ilist）进行排序。InnoDB引擎会批量对 Auxiliary Table进行更新，而不是每次插入后就更新。当对全文检索进行查询时，AT首先会将FTS Index Cache中对应的word字段合并到AT中，然年再进行查询。</p>
 <p><strong>可通过参数<code>innodb_ft_aux_table</code>来观察倒排索引的 Auxiliary Table。</strong></p>
-<p><strong>参数<code>innodb_ft_cache_size</code>用来控制FTS Index Cache的大小，默认为32M。 存满后会将其中的（word, ilist）分词信息同步到磁盘的AT中。</strong></p>
+<p><strong>参数<code>innodb_ft_cache_size</code>用来控制FTS Index Cache的大小，默认32M。 存满后会将其中的（word, ilist）分词信息同步到磁盘的AT中。</strong></p>
 <p>要想InnoDB支持全文检索，必须有一个列与word进行映射，这个列命名为 FTS_DOC_ID，其类型必须是 BIGINT UNSIGNED NOT NULL，且InnoDB引擎会自动在该列上加入一个命名为FTS_DOC_ID_INDEX 的 Unique Index。</p>
 <p>InnnoDB全文检索存在以下控制：</p>
 <ol>
@@ -1943,13 +1934,13 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 </ol>
 <h3 id="5-7-3、全文检索实现"><a href="#5-7-3、全文检索实现" class="headerlink" title="5.7.3、全文检索实现"></a>5.7.3、全文检索实现</h3><p>MySQL通过 MATCH() … AGAINST() 语法支持全文检索的查询，MATCH指需要被查询的列，AGAINST指定了使用何种方法进行查询。可查询模式如下 ：</p>
 <ol>
-<li><p><font color='orange'>Natural Language</font></p>
+<li><p>Natural Language</p>
 <p>全文检索通过MATCH函数进行查询，默认采用 Natural Language模式，表示查询带有指定word的文档。</p>
 </li>
-<li><p><font color='orange'>Boolean</font></p>
+<li><p>Boolean</p>
 <p>使用 IN BOOLEAN MODE修饰符进行全文检索，使用该修饰符时，查询字符串的前后字符会有特殊的含义。+ 和 - 代表这个单词必须出现，或一定不出现。</p>
 </li>
-<li><p><font color='orange'>Query Expansion</font></p>
+<li><p>Query Expansion</p>
 <p>全文检索的扩展查询，该种查询通常在查询的关键词太短，用户需要implied knowledge（隐含知识）时进行。</p>
 <p>通过在查询短语中添加 WITH QUERY EXPANSION 或 IN NATURAL LANGUAGE MODE WITH QUERY EXPANSION 可以开启 blind query expansion（又称为automatic relevance feedback）。该查询分为两个阶段：</p>
 <ol>
@@ -1995,7 +1986,7 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <li>InnoDB: 最多1017列，最多64个二级索引，单个索引最多包含16列，索引最大长度767字节(其实行格式为REDUNDANT，COMPACT最高为767字节，但行格式为DYNAMIC，COMPRESSED最高可达为3072字节)，行大小最大65536字节。</li>
 <li>MyISAM: 最多4096列，最多64个二级索引，单个索引最多包含16列，索引最大长度1000字节，行大小最大65536字节。</li>
 </ul>
-<h3 id="5-8-5、Explain关键字"><a href="#5-8-5、Explain关键字" class="headerlink" title="5.8.5、Explain关键字"></a>5.8.5、Explain关键字</h3><h4 id="简介-8"><a href="#简介-8" class="headerlink" title="简介"></a>简介</h4><p><strong>通过 慢查询日志 可定位查询较慢的SQL，通过explain命令查看该SQL的执行计划</strong>。</p>
+<h3 id="5-8-5、Explain关键字"><a href="#5-8-5、Explain关键字" class="headerlink" title="5.8.5、Explain关键字"></a>5.8.5、Explain关键字</h3><h4 id="简介-8"><a href="#简介-8" class="headerlink" title="简介"></a>简介</h4><p><strong>通过 慢查询日志 可定位查询较慢的SQL，通过explain命令课查看该SQL的执行计划</strong>。</p>
 <p>expain命令执行结果有12列，按顺序分别是<code>id、select_type、table、PARTITIONS、type、possible_keys、key、key_len、ref、rows、FILTERED、Extra</code>。每项定义如下：</p>
 <ol>
 <li>id：查询标识符，同一条查询语句id相同。</li>
@@ -2012,7 +2003,7 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <li>Extra：执行情况的描述和说明。</li>
 </ol>
 <h4 id="详解12列"><a href="#详解12列" class="headerlink" title="详解12列"></a>详解12列</h4><ul>
-<li><p><font color='orange'>ID</font></p>
+<li><p><strong>ID</strong></p>
 <p>SELECT识别符。这是SELECT的查询序列号。SQL从大到小的执行：</p>
 <ol>
 <li><p>id相同时，执行顺序由上至下。</p>
@@ -2023,7 +2014,7 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 </li>
 </ol>
 </li>
-<li><p><font color='orange'>SELECT_TYPE</font></p>
+<li><p><strong>SELECT_TYPE</strong></p>
 <p>查询中每个select子句的类型，可选值有：</p>
 <ol>
 <li>SIMPLE（简单SELECT，不使用UNION或子查询等）。</li>
@@ -2037,14 +2028,14 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <li>UNCACHEABLE SUBQUERY（一个子查询的结果不能被缓存，必须重新评估外链接的第一行）。</li>
 </ol>
 </li>
-<li><p><font color='orange'>TABLE</font></p>
-<p>显示这一步所访问数据库中表名称（显示这一行的数据是关于哪张表的），有时不是真实的表名字，可能是简称，例如可能是e，d，也可能是第几步执行的结果的简称。</p>
+<li><p><strong>TABLE</strong></p>
+<p>使用到的表的名称（显示这一行的数据是关于哪张表的），有时不是真实的表名字，可能是简称，例如可能是e，d，也可能是第几步执行的结果的简称。</p>
 </li>
-<li><p><font color='orange'>PARTITIONS</font></p>
+<li><p><strong>PARTITIONS</strong></p>
 <p>官方定义为The matching partitions（匹配的分区），该字段应该是看table所在分区。值为NULL表示表未被分区。</p>
 </li>
-<li><p><font color='orange'>TYPE</font></p>
-<p>索取数据方式，又称“访问类型”。常用类型有： Null、system、const、eq_ref、ref、range、index、all（从左到右，性能从好到差），各项定义如下：</p>
+<li><p><strong>TYPE</strong></p>
+<p><strong>索取数据方式，又称“访问类型”</strong>。常用类型有： <strong>Null、system、const、eq_ref、ref、range、index、all</strong>（从左到右，性能从好到差），各项定义如下：</p>
 <ol>
 <li><p>NULL</p>
 <p>MySQL优化过程中分解语句，执行时甚至不用访问表或索引，例如从一个索引列里选取最小值可以通过单独索引查找完成。</p>
@@ -2073,25 +2064,25 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 </li>
 </ol>
 </li>
-<li><p><font color='orange'>POSSIBLE_KEYS</font></p>
-<p>显示可能应用在表中的索引，可能一个或多个。查询涉及到的字段若存在索引，则该索引将被列出，但不一定被查询实际使用。</p>
+<li><p><strong>POSSIBLE_KEYS</strong></p>
+<p>可以使用的索引的列表，可能一个或多个。查询涉及到的字段若存在索引，则该索引将被列出，但不一定被查询实际使用。</p>
 </li>
-<li><p><font color='orange'>KEY</font></p>
-<p>实际中使用的索引，如为NULL，则表示未使用索引。若查询中使用了覆盖索引，则该索引和查询的select字段重叠。</p>
+<li><p><strong>KEY</strong></p>
+<p>实际使用的索引，如为NULL，则表示未使用索引。若查询中使用了覆盖索引，则该索引和查询的select字段重叠。</p>
 </li>
-<li><p><font color='orange'>KEY_LEN</font></p>
+<li><p><strong>KEY_LEN</strong></p>
 <p>表示索引中所使用的字节数，可通过该列计算查询中使用的索引长度。在不损失精确性的情况下，长度越短越好。key_len显示的值为索引字段的最大可能长度，并非实际使用长度，即key_len是根据表定义计算而得，并不是通过表内检索出的。</p>
 </li>
-<li><p><font color='orange'>REF</font></p>
+<li><p><strong>REF</strong></p>
 <p>显示关联的字段。如果使用常数等值查询，则显示const，如果是连接查询，则会显示关联的字段。</p>
 </li>
-<li><p><font color='orange'>ROWS</font></p>
+<li><p><strong>ROWS</strong></p>
 <p>根据表统计信息及索引选用情况大致估算出找到所需记录所要读取的行数。当然该值越小越好。</p>
 </li>
-<li><p><font color='orange'>FILTERED</font></p>
-<p>百分比值，表示存储引擎返回的数据经过滤后，剩下多少满足查询条件记录数量的比例。</p>
+<li><p><strong>FILTERED</strong></p>
+<p>百分比值，表示存储引擎返回的数据过滤后，满足查询条件的记录所占的比例。</p>
 </li>
-<li><p><font color='orange'>EXTRA</font></p>
+<li><p><strong>EXTRA</strong></p>
 <p>额外信息。取值范围如下：</p>
 <ol>
 <li><p><strong>Using filesort</strong>：使用外部索引排序，并没有走表索引。需要优化。</p>
@@ -2100,13 +2091,13 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 </li>
 <li><p><strong>Using where</strong>：存储引擎层返回行数据后，服务器层再通过WHERE条件进行过滤。需要优化。</p>
 </li>
-<li><p>Using index</p>
+<li><p><strong>Using index</strong></p>
 <p>使用了覆盖索引。</p>
 <p>如果同时出现了Using where，表明索引被用来执行索引键值的查找。（where deptid&#x3D;1）。</p>
 <p>如果没有同时出现Using where，表明索引用来读取数据而非执行查找动作。</p>
 </li>
 <li><p>Using join buffer</p>
-<p>表示在获取连接条件时没有使用索引，并且需要连接缓冲区来存储中间结果。如果出现了这个值，那应该注意，根据查询的具体情况可能需要添加索引来改进。</p>
+<p>在获取连接条件时没有使用索引，并且需要连接缓冲区来存储中间结果。如果出现了这个值，那应该注意，根据查询的具体情况可能需要添加索引来改进。</p>
 </li>
 <li><p>Impossible where</p>
 <p>where没有匹配到任何数据。</p>
@@ -2134,7 +2125,7 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <h3 id="6-1-2、InnoDB锁结构"><a href="#6-1-2、InnoDB锁结构" class="headerlink" title="6.1.2、InnoDB锁结构"></a>6.1.2、InnoDB锁结构</h3><p>InnoDB锁结构图如下：</p>
 <img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/06/InnoDB%E9%94%81%E7%BB%93%E6%9E%84%E5%9B%BE.png" style="zoom: 60%;" />
 
-<h4 id="锁所在的事务信息"><a href="#锁所在的事务信息" class="headerlink" title="锁所在的事务信息"></a>锁所在的事务信息</h4><p>不论是 表锁 还是 行锁 ，都是在事务执行过程中生成的，哪个事务生成了这个 锁结构 ，这里就记录这个 事务的信息。 此 锁所在的事务信息 在内存结构中只是一个指针，通过指针可以找到内存中关于该事务的更多信息，比方说事务id等。</p>
+<h4 id="锁所在的事务信息"><a href="#锁所在的事务信息" class="headerlink" title="锁所在的事务信息"></a>锁所在的事务信息</h4><p>不论是 表锁 还是 行锁，都是在事务执行过程中生成的，哪个事务生成了这个锁结构 ，就记录这个事务的信息。 此锁所在的事务信息在内存结构中只是一个指针，通过指针可以找到内存中关于该事务的更多信息，比方说事务id等。</p>
 <h4 id="索引信息"><a href="#索引信息" class="headerlink" title="索引信息"></a>索引信息</h4><p>对于 行锁 来说，需要记录一下加锁的记录属于哪个索引。这里也是一个指针。 </p>
 <h4 id="表锁行锁信息"><a href="#表锁行锁信息" class="headerlink" title="表锁行锁信息"></a>表锁行锁信息</h4><p>表锁结构 和 行锁结构 在这个位置的内容是不同的： </p>
 <ul>
@@ -2211,7 +2202,7 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 </ul>
 </li>
 </ul>
-<h4 id="InnoDB锁"><a href="#InnoDB锁" class="headerlink" title="InnoDB锁"></a>InnoDB锁</h4><p>InnoDB引擎支持【表锁、行锁、页锁】。</p>
+<h4 id="InnoDB锁"><a href="#InnoDB锁" class="headerlink" title="InnoDB锁"></a>InnoDB锁</h4><p><strong>InnoDB引擎支持表锁、行锁、页锁</strong>。</p>
 <ul>
 <li>行锁<ol>
 <li>共享锁，允许事务读一行数据。</li>
@@ -2231,7 +2222,7 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 </blockquote>
 <h4 id="MyISAM锁"><a href="#MyISAM锁" class="headerlink" title="MyISAM锁"></a>MyISAM锁</h4><p><strong>MyISAM引擎支持表锁</strong>。</p>
 <h3 id="6-2-2、表锁"><a href="#6-2-2、表锁" class="headerlink" title="6.2.2、表锁"></a>6.2.2、表锁</h3><h4 id="简介-9"><a href="#简介-9" class="headerlink" title="简介"></a>简介</h4><p>表锁会锁定整张表，它是MySQL锁的基本策略，不依赖于存储引擎。表锁可以避免死锁问题，但同时降低了并发。</p>
-<h4 id="表级S锁-X锁"><a href="#表级S锁-X锁" class="headerlink" title="表级S锁&#x2F;X锁"></a>表级S锁&#x2F;X锁</h4><p>表级别的S锁、X锁一般不会使用，只会在 崩溃恢复 等特殊场景中使用。</p>
+<h4 id="表级S锁-X锁"><a href="#表级S锁-X锁" class="headerlink" title="表级S锁&#x2F;X锁"></a>表级S锁&#x2F;X锁</h4><p><strong>表级别的S锁、X锁一般不会使用，只会在 崩溃恢复 等特殊场景中使用</strong>。</p>
 <p>对于InnoDB引擎来说，表级别的S锁和X锁不仅不会提供保护，反而会降低并发能力。</p>
 <p>表级别S锁&#x2F;X锁使用方式如下：</p>
 <ul>
@@ -2340,18 +2331,16 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 </ol>
 <h4 id="一致性锁定读"><a href="#一致性锁定读" class="headerlink" title="一致性锁定读"></a>一致性锁定读</h4><p>InnoDB对于SELECT语句支持两种一致性锁定读操作：</p>
 <ol>
-<li><p><font color='orange'>SELECT … FOR UPDATE</font></p>
-<p>对读取的行加一个X锁，同时其它事务不能加任何锁。</p>
+<li><p>SELECT … FOR UPDATE：对读取的行加一个X锁，同时其它事务不能加任何锁。</p>
 </li>
-<li><p><font color='orange'>SELECT … LOCK IN SHARE MODE</font></p>
-<p>对读取的行加一个S锁，同时其它事务可以加S锁，但不能加X锁。</p>
+<li><p>SELECT … LOCK IN SHARE MODE：对读取的行加一个S锁，同时其它事务可以加S锁，但不能加X锁。</p>
 </li>
 </ol>
 <p><font color='red'>注意：以上两种操作必须在一个事务中，当事务提交了，锁也就释放了。因此在使用以上两种操作时，务必加上BEGIN、START TRANSACTION 或 SET AUTOCOMMIT &#x3D; 0。</font></p>
 <h3 id="6-2-8、外键和锁"><a href="#6-2-8、外键和锁" class="headerlink" title="6.2.8、外键和锁"></a>6.2.8、外键和锁</h3><p>对于一个外键列，如果没有加索引，InnoDB会自动为其添加一个索引，这样可以避免表锁。</p>
 <p>对外键插入或更新时，会先查询父表记录，且会使用SELECT … LOCK IN SHARE MODE 为父表加S锁。</p>
-<h3 id="6-2-9、lock与latch"><a href="#6-2-9、lock与latch" class="headerlink" title="6.2.9、lock与latch"></a>6.2.9、lock与latch</h3><p>数据库中lock与latch都可以称为“锁”，但两者有着截然不同的含义。</p>
-<h4 id="Latch"><a href="#Latch" class="headerlink" title="Latch"></a>Latch</h4><p>latch称为闩锁（轻量级锁），因要求锁定时间要短，若时间长则会降低应用性能。InnoDB中，latch又分为mutex（互斥量）和rwlock（读写锁），其目的是用来保证并发线程操作临界资源的正确性，且通常没有死锁检测机制。</p>
+<h3 id="6-2-9、lock与latch"><a href="#6-2-9、lock与latch" class="headerlink" title="6.2.9、lock与latch"></a>6.2.9、lock与latch</h3><p><strong>数据库中lock与latch都可以称为“锁”，但两者有着截然不同的含义</strong>。</p>
+<h4 id="Latch"><a href="#Latch" class="headerlink" title="Latch"></a>Latch</h4><p>latch称为闩锁（轻量级锁），因要求锁定时间短，若时间长则会降低应用性能。InnoDB中，latch又分为mutex（互斥量）和rwlock（读写锁），其目的是用来保证并发线程操作临界资源的正确性，且通常没有死锁检测机制。</p>
 <p>InnoDB中可以通过参数 <code>SHOW ENGINE INNODB MUTEX</code>来查看latch状况。输出结果说明如下：</p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/06/image-20201214164811212.png" alt="image-20201214164811212"></p>
 <h4 id="Lock"><a href="#Lock" class="headerlink" title="Lock"></a>Lock</h4><p><strong>lock的对象是事务，且lock的对象仅在事务commit或rollback后释放。此外，lock没有死锁机制</strong>。</p>
@@ -2427,9 +2416,9 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 </li>
 </ol>
 <h2 id="7-2、事务实现"><a href="#7-2、事务实现" class="headerlink" title="7.2、事务实现"></a>7.2、事务实现</h2><p>原子性、一致性、持久性通过数据库的<code>redo log</code>和<code>undo log</code>来完成。</p>
-<p><font color='orange'><code>redo log</code>称为重做日志，是物理日志。保证了事务的原子性和持久性。</font></p>
-<p><font color='orange'><code>undo log</code>称为回滚日志，是逻辑日志。保证了事务的一致性。实现了事务回滚 和 MVCC功能。</font></p>
-<h3 id="7-2-1、redo"><a href="#7-2-1、redo" class="headerlink" title="7.2.1、redo"></a>7.2.1、redo</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p><font color='orange'>重做日志 用来实现 事务持久性。其由两部分组成：</font></p>
+<p><strong><code>redo log</code>称为重做日志，是物理日志。保证了事务的持久性</strong>。</p>
+<p><strong><code>undo log</code>称为回滚日志，是逻辑日志。保证了事务的一致性。实现了事务回滚 和 MVCC功能</strong>。</p>
+<h3 id="7-2-1、redo"><a href="#7-2-1、redo" class="headerlink" title="7.2.1、redo"></a>7.2.1、redo</h3><h4 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h4><p><strong>重做日志 用来实现 事务持久性</strong>。其由两部分组成：</p>
 <ol>
 <li>内存中的重做日志缓冲，是易失的。</li>
 <li>重做日志文件（redo log file），是持久的。</li>
@@ -2448,17 +2437,13 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <li><p><strong>日志块头（12字节）</strong></p>
 <p>日志块头由4部分组成：</p>
 <ol>
-<li><p><font color='orange'>LOG_BLOCK_HDR_NO（4字节）：</font></p>
-<p>log buffer由log block组成，log buffer内部好似一个数组，因此该选项用来标记log block在数组中的位置。</p>
+<li><p>LOG_BLOCK_HDR_NO（4字节）：log buffer由log block组成，log buffer内部好似一个数组，因此该选项用来标记log block在数组中的位置。</p>
 </li>
-<li><p><font color='orange'>LOG_BLOCK_HDR_DATA_LEN（2字节）：</font></p>
-<p>表示log block所占用的大小。</p>
+<li><p>LOG_BLOCK_HDR_DATA_LEN（2字节）：表示log block所占用的大小。</p>
 </li>
-<li><p><font color='orange'>LOG_BLOCK_FIRST_REC_GROUP（2字节）：</font></p>
-<p>表示 log block 中第一个日志所在的偏移量，如果和2标题相同，表示当前 log block 不包含新的日志。</p>
+<li><p>LOG_BLOCK_FIRST_REC_GROUP（2字节）：表示 log block 中第一个日志所在的偏移量，如果和2标题相同，表示当前 log block 不包含新的日志。</p>
 </li>
-<li><p><font color='orange'>LOG_BLOCK_CHECKPOINT_NO（4字节）：</font></p>
-<p>表示 log block 最后被写入时的检查点第 4 字节的值。</p>
+<li><p>LOG_BLOCK_CHECKPOINT_NO（4字节）：表示 log block 最后被写入时的检查点第 4 字节的值。</p>
 </li>
 </ol>
 </li>
@@ -2506,7 +2491,7 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <p><strong>Log sequence number 表示当前的LSN，Log flushed up to 表示刷新到重做日志文件的LSN，Last checkpoint at 表示刷新到磁盘的LSN</strong>。</p>
 <h4 id="恢复"><a href="#恢复" class="headerlink" title="恢复"></a>恢复</h4><p><strong>InnoDB在启动时会尝试进行恢复操作。因为重做日志是物理日志，因此恢复的速度比逻辑日志要快。与此同时InnoDB自身也对此进行了优化，如顺序读取及并行应用重做日志</strong>。</p>
 <p>由于 checkpoint 表示已经刷新到磁盘页上的LSN，因此恢复时只需恢复LSN开始的日志部分。</p>
-<h3 id="7-2-2、undo"><a href="#7-2-2、undo" class="headerlink" title="7.2.2、undo"></a>7.2.2、undo</h3><h4 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h4><p><font color='orange'>undo日志为事务回滚提供服务。</font></p>
+<h3 id="7-2-2、undo"><a href="#7-2-2、undo" class="headerlink" title="7.2.2、undo"></a>7.2.2、undo</h3><h4 id="基本概念-1"><a href="#基本概念-1" class="headerlink" title="基本概念"></a>基本概念</h4><p><strong>undo日志为事务回滚提供服务</strong>。</p>
 <p><strong>redo存放于日志文件中，undo存放在数据库内部一个段中，这个段称为 undo段。undo段位于共享表空间中</strong>。</p>
 <p>InnoDB回滚时，实际上做的是与先前相反的工作。每个INSERT，会有一个DELETE；每个DELETE，会有一个INSERT；对于UPDATE，会执行一个相反的UPDATE，将修改前的行放回去。</p>
 <p><strong>除了回滚，undo另一个作用是MVCC。undo log会产生redo log，undo log也需要持久性保护</strong>。</p>
@@ -2558,17 +2543,14 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/06/image-20201215201507990.png" alt="image-20201215201507990"></p>
 <p>purge执行过程中，InnoDB会先从 history list 中找到第一个需要被清理的记录，这里为 trx1，清理后InnoDB会在 trx1 的 undo log 所在的页中继续寻找是否存在其它可以被清理的记录，这里会找到事务 trx3，接着找到 trx5，但发现 trx5 被其他事务所引用而不能清理，故会再次去 history list 中按顺序继续查找，发现了 trx2，接着找到 trx2所在的页，然后再把事务trx6、trx4的记录进行处理。由于 undo page2 中所有的页都被清理了，因此该 undo page 可以被重用。</p>
 <h4 id="purge相关参数"><a href="#purge相关参数" class="headerlink" title="purge相关参数"></a>purge相关参数</h4><ol>
-<li><p><font color='orange'>innodb_purge_batch_size</font></p>
-<p>全局动态参数，用来设置每次 purge 操作清理的 undo  page 数量。InnoDB 1.2之前，默认值为20。从 1.2 开始，默认值为300（MySQL5.7.33）。</p>
+<li><p><code>innodb_purge_batch_size</code>：全局动态参数，用来设置每次 purge 操作清理的 undo  page 数量。InnoDB 1.2之前，默认值为20。从 1.2 开始，默认值为300（MySQL5.7.33）。</p>
 </li>
-<li><p><font color='orange'>innodb_max_purge_lag</font></p>
-<p>该参数用来控制 history list 的长度，若实际长度超过该值，会“延缓”DML操作。默认值为0，表示不对 history list 做任何限制，当大于0时，就会延缓 DML操作，延缓算法如下：</p>
+<li><p><code>innodb_max_purge_lag</code>：该参数用来控制 history list 的长度，若实际长度超过该值，会“延缓”DML操作。默认值为0，表示不对 history list 做任何限制，当大于0时，就会延缓 DML操作，延缓算法如下：</p>
 <pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token key attr-name">delay(毫秒)</span> <span class="token punctuation">=</span> <span class="token value attr-value">((length(history_list) - innodb_max_purge_lag) * 10) - 5</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<p><font color='orange'>delay对象是行，而并非是一个DML操作。delay的统计会在每一次 purge 操作完成后，重新进行计算。</font></p>
+<p><strong>delay对象是行，而并非是一个DML操作。delay的统计会在每一次 purge 操作完成后，重新进行计算</strong>。</p>
 </li>
-<li><p><font color='orange'>innodb_max_purge_lag_delay</font></p>
-<p>InnoDB 1.2 新增该参数，用来控制 delay 的最大毫秒数。当小标题2中的公式计算后的delay值大于该参数值时，以该参数值为准。进而避免 由于 purge 操作缓慢导致其它 SQL 线程出现无限制的等待。</p>
+<li><p><code>innodb_max_purge_lag_delay</code>：InnoDB 1.2 新增该参数，用来控制 delay 的最大毫秒数。当2中的公式计算后的delay值大于该参数值时以该参数值为准。进而避免由于 purge 操作缓慢导致其它 SQL 线程出现无限制的等待。</p>
 </li>
 </ol>
 <h3 id="7-2-4、group-commit"><a href="#7-2-4、group-commit" class="headerlink" title="7.2.4、group commit"></a>7.2.4、group commit</h3><h4 id="group-commit定义"><a href="#group-commit定义" class="headerlink" title="group commit定义"></a>group commit定义</h4><p><strong>若事务是非只读事务，则每次事务提交时需要执行一次fsync操作，来保证重做日志准确写入磁盘。fsync性能有限，为提高磁盘fsync性能，提供了group commit功能，即一次fsync可以刷新多个日志至文件</strong>。</p>
@@ -2578,7 +2560,7 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <li>调用fsync将确保日志都从重做日志缓冲写入磁盘。</li>
 </ol>
 <p>第二步较第一步是一个更慢的过程，因为该过程需要与磁盘打交道。当事务A执行第二步时事务B可以同时继续执行第一步，事务B执行完第一步后，事务A和事务B的重做日志就可以通过一次fsync操作即可全部刷新到磁盘，大大提高了数据库整体的性能。</p>
-<h4 id="group-commit问题"><a href="#group-commit问题" class="headerlink" title="group commit问题"></a>group commit问题</h4><p><font color='orange'>注意：InnoDB 1.2之前，开启二进制日志会使group commit功能失效。原因是：为了保证存储引擎层事务和二进制日志的一致性，二者之间使用了两阶段事务，</font>其步骤如下：</p>
+<h4 id="group-commit问题"><a href="#group-commit问题" class="headerlink" title="group commit问题"></a>group commit问题</h4><p><font color='red'>注意：InnoDB 1.2之前，开启二进制日志会使group commit功能失效。原因是：为了保证存储引擎层事务和二进制日志的一致性，二者之间使用了两阶段事务，</font>其步骤如下：</p>
 <ol>
 <li>当事务提交时，InnoDB进行prepare操作。</li>
 <li>MySQL上层写入二进制日志。</li>
@@ -2594,9 +2576,9 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <p><strong>最终解决方法为 Binary Log Group Commit。</strong></p>
 <p><strong>MySQL数据库上层进行提交时按顺序将其放入一个队列中，队列中第一个事务是leader，其它事务是follower，leader控制其它follower的行为。</strong>BLGC的步骤分为三步：</p>
 <ol>
-<li><font color='orange'>Flush阶段</font>：将每个事务的二进制日志写入内存中的队列中。</li>
-<li><font color='orange'>Sync阶段</font>：将队列中的二进制日志刷新到磁盘，若队列中有多个事务，则一次fsync操作就可以完成所有二进制日志的写入，这就是BLGC。</li>
-<li><font color='orange'>Commit阶段</font>：从leader开始根据顺序调用存储引擎层事务的提交，InnoDB本身就支持GroupCommit，因此修复了之前GroupCommit失效的问题。</li>
+<li><strong>Flush阶段</strong>：将每个事务的二进制日志写入内存中的队列中。</li>
+<li><strong>Sync阶段</strong>：将队列中的二进制日志刷新到磁盘，若队列中有多个事务，则一次fsync操作就可以完成所有二进制日志的写入，这就是BLGC。</li>
+<li><strong>Commit阶段</strong>：从leader开始根据顺序调用存储引擎层事务的提交，InnoDB本身就支持GroupCommit，因此修复了之前GroupCommit失效的问题。</li>
 </ol>
 <h4 id="group-commit参数"><a href="#group-commit参数" class="headerlink" title="group commit参数"></a>group commit参数</h4><p>group commit 效果 依赖于 队列中的事务数量，队列事务数量多，效果就会好。参数 <code>binlog_max_flush_queue_time</code>用来控制 Flush 阶段 事务等待的时间，即事务完成提交后不会立即进入 Sync阶段，而是等待 事务数量增多后一同处理。参数默认为0，推荐为0，除非数据中有大量连接，且不断进行事务的写入或更新。</p>
 <h2 id="7-3、事务隔离级别"><a href="#7-3、事务隔离级别" class="headerlink" title="7.3、事务隔离级别"></a>7.3、事务隔离级别</h2><h3 id="7-3-1、简介"><a href="#7-3-1、简介" class="headerlink" title="7.3.1、简介"></a>7.3.1、简介</h3><p>SQL标准定义的四个隔离级别为：</p>
@@ -2614,7 +2596,7 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 </li>
 </ul>
 <blockquote>
-<p><font color='red'>Oracle并不支持<code>读未提交</code>和<code>可重复读</code>隔离级别。</font></p>
+<p>Oracle并不支持读未提交和可重复读隔离级别。</p>
 </blockquote>
 <h3 id="7-3-2、配置隔离级别"><a href="#7-3-2、配置隔离级别" class="headerlink" title="7.3.2、配置隔离级别"></a>7.3.2、配置隔离级别</h3><p>在InnoDB中，可以使用以下命令来设置当前会话或全局的事务隔离级别：</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SET</span> <span class="token punctuation">[</span><span class="token keyword">GLOBAL</span> <span class="token operator">|</span> <span class="token keyword">SESSION</span><span class="token punctuation">]</span> <span class="token keyword">TRANSACTION</span> <span class="token keyword">ISOLATION</span> <span class="token keyword">LEVEL</span>
@@ -2631,7 +2613,7 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <span class="token comment"># 配置全局隔离级别</span>
 <span class="token keyword">set</span> <span class="token keyword">global</span> <span class="token keyword">transaction</span> <span class="token keyword">isolation</span> <span class="token keyword">level</span> <span class="token keyword">read</span> <span class="token keyword">committed</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><font color='orange'>如果想在 MySQL启动时就设置事务的隔离级别，则需要修改MySQL配置文件，</font>加入如下内容：</p>
+<p><strong>如果想在 MySQL启动时就设置事务的隔离级别，则需要修改MySQL配置文件</strong>，加入如下内容：</p>
 <pre class="line-numbers language-properties" data-language="properties"><code class="language-properties">[mysqld]
 <span class="token key attr-name">transaction-isolation</span> <span class="token punctuation">=</span> <span class="token value attr-value">READ-COMMITTED</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
@@ -2644,7 +2626,7 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> @<span class="token variable">@global.transaction_isolation</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h2 id="7-4、分布式事务"><a href="#7-4、分布式事务" class="headerlink" title="7.4、分布式事务"></a>7.4、分布式事务</h2><h3 id="7-4-1、MySQL分布式事务"><a href="#7-4-1、MySQL分布式事务" class="headerlink" title="7.4.1、MySQL分布式事务"></a>7.4.1、MySQL分布式事务</h3><p>InnoDB引擎提供了对XA事务的支持，并通过XA事务来支持分布式事务的实现。分布式事务指的是允许多个独立的事务资源参与到一个安全的事务中。事务资源通常是关系型数据库系统，但也可以是其他类型的资源。全局事务要求在其中的所有事务要么都提交，要么都回滚，这对于事务原有的ACID要求又有了提高。另外，在使用分布式事务时，InnoDB引擎的事务隔离级别必须设置为SERIALIZABLE。</p>
-<p><font color='orange'>XA事务由一个或多个资源管理器、一个事务管理器以及一个应用程序组成。</font></p>
+<p>XA事务由一个或多个资源管理器、一个事务管理器以及一个应用程序组成。</p>
 <ol>
 <li>资源管理器：提供访问事务资源的方法，通常一个数据库就是一个资源管理器。</li>
 <li>事务管理器：协调参与全局事务中的各个事务。需要和参与全局事务的所有资源管理器进行通信。</li>
@@ -2658,12 +2640,12 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <h3 id="7-6-2、快照读与当前读"><a href="#7-6-2、快照读与当前读" class="headerlink" title="7.6.2、快照读与当前读"></a>7.6.2、快照读与当前读</h3><p>InnoDB引擎下，MVCC较好的处理了读写冲突，提高了数据库并发性能。即使存在读写冲突也无需加锁，还可以非阻塞并发读 ，这里的读指的是【快照读】。当前读需要加锁，是悲观锁的一种体现。MVCC本质是乐观锁的一种体现。</p>
 <h4 id="快照读"><a href="#快照读" class="headerlink" title="快照读"></a>快照读</h4><p>快照读又叫一致性读，读取的是快照数据。不加锁的 SELECT 都属于快照读，即不加锁的非阻塞读。</p>
 <p>快照读基于MVCC实现，避免加锁，降低了开销。 </p>
-<p>快照读的前提是不能设置隔离级别为串行级别，串行级别下的快照读会退化成当前读。</p>
-<h4 id="当前读"><a href="#当前读" class="headerlink" title="当前读"></a>当前读</h4><p>当前读读取的是最新数据，且会对记录加锁，加锁的SELECT及普通的增删改都会执行当前读。</p>
+<p><strong>快照读的前提是不能设置隔离级别为串行级别，串行级别下的快照读会退化成当前读</strong>。</p>
+<h4 id="当前读"><a href="#当前读" class="headerlink" title="当前读"></a>当前读</h4><p><strong>当前读读取的是最新数据，且会对记录加锁，加锁的SELECT及普通的增删改都会执行当前读</strong>。</p>
 <h3 id="7-6-3、隐藏字段"><a href="#7-6-3、隐藏字段" class="headerlink" title="7.6.3、隐藏字段"></a>7.6.3、隐藏字段</h3><p>InnoDB 引擎的聚簇索引中包含两个必要的隐藏列。</p>
 <ul>
-<li><font color='orange'>trx_id</font>：每次一个事务对某条聚簇索引记录进行改动时，都会把该事务的 事务id 赋值给trx_id 隐藏列。 </li>
-<li><font color='orange'>roll_pointer</font>：每次对某条聚簇索引记录进行改动时，都会把旧的版本写入到 undo日志中，然后这个隐藏列就相当于一个指针，可以通过它来找到该记录修改前的信息。</li>
+<li>trx_id：每次一个事务对某条聚簇索引记录进行改动时，都会把该事务的 事务id 赋值给trx_id 隐藏列。 </li>
+<li>roll_pointer：每次对某条聚簇索引记录进行改动时，都会把旧的版本写入到 undo日志中，然后这个隐藏列就相当于一个指针，可以通过它来找到该记录修改前的信息。</li>
 </ul>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/06/undo%E6%97%A5%E5%BF%97-%E7%89%88%E6%9C%AC%E9%93%BE%E5%9B%BE1.png"></p>
 <blockquote>
@@ -2724,15 +2706,15 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/06/undo%E6%97%A5%E5%BF%97-%E7%89%88%E6%9C%AC%E9%93%BE%E5%9B%BE2.png"></p>
 <p>对该记录每次更新后，都会将旧值放到一条 undo日志中，就算是该记录的一个旧版本，随着更新次数 的增多，所有的版本都会被 roll_pointer 属性连接成一个链表，这个链表称为【版本链】 ，版 本链的头节点就是当前记录最新的值。</p>
 <p>每个版本中还包含生成该版本时对应的 事务id 。</p>
-<h3 id="7-6-5、实现原理"><a href="#7-6-5、实现原理" class="headerlink" title="7.6.5、实现原理"></a>7.6.5、实现原理</h3><p><font color='orange'>MVCC 的实现依赖于：隐藏字段、Undo Log、Read View。</font></p>
+<h3 id="7-6-5、实现原理"><a href="#7-6-5、实现原理" class="headerlink" title="7.6.5、实现原理"></a>7.6.5、实现原理</h3><p><strong>MVCC 的实现依赖于：隐藏字段、Undo Log、Read View</strong>。</p>
 <h4 id="Read-View简介"><a href="#Read-View简介" class="headerlink" title="Read View简介"></a>Read View简介</h4><p>READ UNCOMMITTED 隔离级别的事务可以读取最新数据。SERIALIZABLE 隔离级别的事务，InnoDB规定使用加锁的方式来访问记录。READ COMMITTED 和 REPEATABLE READ 隔离级别的事务可以读到 已提交 的最新数据。</p>
-<p><font color='orange'>undo日志版本链中，哪个版本当前事务可见，哪个版本当前事务不可见。这些问题都由ReadView来解决。</font></p>
+<p><strong>undo日志版本链中，哪个版本当前事务可见，哪个版本当前事务不可见。这些问题都由ReadView来解决</strong>。</p>
 <p>ReadView中主要包含4个重要内容：</p>
 <ul>
-<li><font color='orange'>creator_trx_id </font>：创建这个 Read View 的事务 ID。</li>
-<li><font color='orange'>trx_ids</font>：生成ReadView时当前系统中活跃的读写事务的事务id列表 。</li>
-<li><font color='orange'>up_limit_id</font>：活跃事务中最小事务 ID。</li>
-<li><font color='orange'>low_limit_id</font>：表示生成ReadView时系统中应该分配给下一个事务的 id 值。low_limit_id 是系统最大的事务id值，这里要注意是系统中的事务id，需要区别于正在活跃的事务ID。</li>
+<li><strong>creator_trx_id</strong>：创建这个 Read View 的事务 ID。</li>
+<li><strong>trx_ids</strong>：生成ReadView时当前系统中活跃的读写事务的事务id列表 。</li>
+<li><strong>up_limit_id</strong>：活跃事务中最小事务 ID。</li>
+<li><strong>low_limit_id</strong>：表示生成ReadView时系统中应该分配给下一个事务的 id 值。low_limit_id 是系统最大的事务id值，这里要注意是系统中的事务id，需要区别于正在活跃的事务ID。</li>
 </ul>
 <blockquote>
 <p>注意：low_limit_id并不是trx_ids中的最大值，事务id是递增分配的。比如，现在有id为1， 2，3这三个事务，之后id为3的事务提交了。那么一个新的读事务在生成ReadView时， trx_ids就包括1和2，up_limit_id的值就是1，low_limit_id的值就是4。</p>
@@ -2743,8 +2725,8 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <li>如果被访问版本的trx_id属性值小于ReadView中的 up_limit_id 值，表明生成该版本的事务在当前事务生成ReadView前已经提交，所以该版本【可以】被当前事务访问。</li>
 <li>如果被访问版本的trx_id属性值大于或等于ReadView中的 low_limit_id 值，表明生成该版本的事务在当前事务生成ReadView后才开启，所以该版本【不可以】被当前事务访问。</li>
 <li>如果被访问版本的trx_id属性值在ReadView的 up_limit_id 和 low_limit_id 之间，那就需要判断一下trx_id属性值是不是在 trx_ids 列表中。<ul>
-<li>如果在，说明创建ReadView时生成该版本的事务还是活跃的，该版本【不可以】被访问。</li>
-<li>如果不在，说明创建ReadView时生成该版本的事务已经被提交，该版本【可以】被访问。</li>
+<li>如果在，说明创建ReadView时生成该版本的事务还是活跃的，该版本不可以被访问。</li>
+<li>如果不在，说明创建ReadView时生成该版本的事务已经被提交，该版本可以被访问。</li>
 </ul>
 </li>
 </ol>
@@ -2797,28 +2779,27 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <p>mysqldump语法如下：</p>
 <pre class="line-numbers language-latex" data-language="latex"><code class="language-latex">mysqldump <span class="token punctuation">[</span>arguments<span class="token punctuation">]</span> > file_name<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><ol>
-<li><p>仅导出结构，不导出数据</p>
+<h5 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h5><p>（1）仅导出结构，不导出数据</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">mysqldump <span class="token operator">-</span>uroot <span class="token operator">-</span>p <span class="token comment">--opt -d 数据库名 > xxx-schema.sql　　</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>仅导出数据，不导出结构</p>
+
+<p>（2）仅导出数据，不导出结构</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">mysqldump <span class="token operator">-</span>uroot <span class="token operator">-</span>p <span class="token operator">-</span>t 数据库名 <span class="token operator">></span> xxx<span class="token operator">-</span><span class="token keyword">data</span><span class="token punctuation">.</span><span class="token keyword">sql</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>导出表结构和数据</p>
+
+<p>（3）导出表结构和数据</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">mysqldump <span class="token operator">-</span>uroot <span class="token operator">-</span>p 数据库名 <span class="token operator">></span> xxx<span class="token operator">-</span><span class="token keyword">all</span><span class="token punctuation">.</span><span class="token keyword">sql</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>导出某个表的表结构</p>
+
+<p>（4）导出某个表的表结构</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">mysqldump <span class="token operator">-</span>uroot <span class="token operator">-</span>p <span class="token operator">-</span>B 数据库名 <span class="token comment">--table 表名 > xxx-table-schema.sql</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>导出指定的数据库</p>
+
+<p>（5）导出指定的数据库</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">mysqldump <span class="token comment">--databases db1 db2 db3 > dump.sql</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>导出所有数据库</p>
+
+<p>(6）导出所有数据库</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">mysqldump <span class="token comment">--all-databases > dump.sql</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
-</li>
-<li><p>对 test 这个架构进行备份</p>
-<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">mysqldump <span class="token comment">--single-transaction test > test_backup.sql</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
-</ol>
+
+<p>（7）对 test 这个架构进行备份</p>
+<pre class="line-numbers language-sql" data-language="sql"><code class="language-sql">mysqldump <span class="token comment">--single-transaction test > test_backup.sql</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 <h4 id="select…into-outfile"><a href="#select…into-outfile" class="headerlink" title="select…into outfile"></a>select…into outfile</h4><h5 id="简介-17"><a href="#简介-17" class="headerlink" title="简介"></a>简介</h5><p>SELECT…INTO语句也是一种逻辑备份的方法，准确的说是导出一张表中的数据。</p>
 <h5 id="使用示例"><a href="#使用示例" class="headerlink" title="使用示例"></a>使用示例</h5><p>select into outfile 用法如下：</p>
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">SELECT</span> <span class="token punctuation">.</span><span class="token punctuation">.</span><span class="token punctuation">.</span> <span class="token keyword">FROM</span> TABLE_A
@@ -2851,7 +2832,7 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <li>执行导入操作：…………….</li>
 <li>导入后恢复：set @@foreign_key_checks&#x3D;1;</li>
 </ol>
-<h2 id="8-3、二进制日志备份与恢复"><a href="#8-3、二进制日志备份与恢复" class="headerlink" title="8.3、二进制日志备份与恢复"></a>8.3、二进制日志备份与恢复</h2><h3 id="8-3-1、二进制日志备份"><a href="#8-3-1、二进制日志备份" class="headerlink" title="8.3.1、二进制日志备份"></a>8.3.1、二进制日志备份</h3><p><strong>二进制日志非常关键，用户可以通过它完成 point-in-time 恢复工作</strong>。MySQL replication 同样需要二进制日志。</p>
+<h2 id="8-3、二进制日志备份与恢复"><a href="#8-3、二进制日志备份与恢复" class="headerlink" title="8.3、二进制日志备份与恢复"></a>8.3、二进制日志备份与恢复</h2><h3 id="8-3-1、二进制日志备份"><a href="#8-3-1、二进制日志备份" class="headerlink" title="8.3.1、二进制日志备份"></a>8.3.1、二进制日志备份</h3><p><strong>二进制日志非常关键，用户可以通过它完成 point-in-time 恢复工作</strong>。MySQL replication同样需要二进制日志。</p>
 <p>如需使用二进制日志，则必须开启并配置：</p>
 <pre class="line-numbers language-properties" data-language="properties"><code class="language-properties">[mysqld]
 <span class="token key attr-name">log-bin</span> <span class="token punctuation">=</span> <span class="token value attr-value">mysql-bin</span>
@@ -2910,10 +2891,10 @@ PURGE &#123;MASTER | BINARY&#125; LOGS BEFORE &#39;指定日期&#39;<span aria-h
 <li>首选完成一个全备，并记录下此时检查点的LSN。</li>
 <li>在进行增量备份时，比较表空间中每个页的LSN是否大于上次备份时的LSN，如果是，则备份该页，同时记录当前检查点的LSN。</li>
 </ol>
-<h2 id="8-5、快照备份"><a href="#8-5、快照备份" class="headerlink" title="8.5、快照备份"></a>8.5、快照备份</h2><h3 id="8-5-1、简介"><a href="#8-5-1、简介" class="headerlink" title="8.5.1、简介"></a>8.5.1、简介</h3><p><strong>MySQL不支持快照功能，因此快照备份指：通过 文件系统支持的快照功能 对数据库进行备份</strong>。</p>
+<h2 id="8-5、快照备份"><a href="#8-5、快照备份" class="headerlink" title="8.5、快照备份"></a>8.5、快照备份</h2><h3 id="8-5-1、简介"><a href="#8-5-1、简介" class="headerlink" title="8.5.1、简介"></a>8.5.1、简介</h3><p><strong>MySQL不支持快照功能，因此快照备份说的是通过 文件系统支持的快照功能 对数据库进行备份</strong>。</p>
 <h3 id="8-5-2、备份方法"><a href="#8-5-2、备份方法" class="headerlink" title="8.5.2、备份方法"></a>8.5.2、备份方法</h3><p>备份前提是将所有数据库文件放在同一文件分区中，然后对该分区进行快照操作。</p>
 <blockquote>
-<p><font color='orange'>LVM是Linux系统下对磁盘分区进行管理的一种机制。LVM使用 写时复制技术 来创建快照。</font></p>
+<p>LVM是Linux系统下对磁盘分区进行管理的一种机制。LVM使用 写时复制技术 来创建快照。</p>
 </blockquote>
 <h2 id="8-6、复制"><a href="#8-6、复制" class="headerlink" title="8.6、复制"></a>8.6、复制</h2><h3 id="8-6-1、复制工作原理"><a href="#8-6-1、复制工作原理" class="headerlink" title="8.6.1、复制工作原理"></a>8.6.1、复制工作原理</h3><p><strong>复制是MySQL数据库提供的一种高可用解决方案，一般用来建立大型应用</strong>。replication工作过程分3个步骤：</p>
 <ol>

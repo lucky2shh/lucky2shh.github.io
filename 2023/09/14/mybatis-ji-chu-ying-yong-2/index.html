@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-06
+                    2023-10-03
                 </div>
                 
 
@@ -431,8 +431,8 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="MyBatis简介"><a href="#MyBatis简介" class="headerlink" title="MyBatis简介"></a>MyBatis简介</h1><h2 id="啥是MyBatis"><a href="#啥是MyBatis" class="headerlink" title="啥是MyBatis"></a>啥是MyBatis</h2><p><em><strong>Mybatis 是一个半自动 ORM（对象关系映射）框架</strong></em>。内部封装了 JDBC，只需自定义SQL，而无需做加载驱动、创建连接、创建 statement 等繁杂工作。</p>
-<p><em><strong>MyBatis可通过 xml文件 或 注解 将待执行 statement 配置起来，并通过 java对象 和 statement中SQL的动态参数进行映射生成待执行 SQL，最后执行SQL将结果映射为 Java 对象后返回</strong></em>。</p>
+                <h1 id="MyBatis简介"><a href="#MyBatis简介" class="headerlink" title="MyBatis简介"></a>MyBatis简介</h1><h2 id="啥是MyBatis"><a href="#啥是MyBatis" class="headerlink" title="啥是MyBatis"></a>啥是MyBatis</h2><p><strong>Mybatis 是一个半自动 ORM（对象关系映射）框架</strong>。内部封装了 JDBC，只需自定义SQL，而无需做加载驱动、创建连接、创建 statement 等繁杂工作。</p>
+<p><strong>MyBatis可通过 xml文件 或 注解 将待执行 statement 配置起来，并通过 java对象 和 statement中SQL的动态参数进行映射生成待执行 SQL，最后执行SQL将结果映射为 Java 对象后返回</strong>。</p>
 <h2 id="为啥MyBatis是半自动ORM"><a href="#为啥MyBatis是半自动ORM" class="headerlink" title="为啥MyBatis是半自动ORM"></a>为啥MyBatis是半自动ORM</h2><p><strong>Mybatis持久化要手动编写SQL来实现，所以称之为半自动 ORM 映射工具。</strong></p>
 <h2 id="MyBatis使用场景"><a href="#MyBatis使用场景" class="headerlink" title="MyBatis使用场景"></a>MyBatis使用场景</h2><ol>
 <li>MyBatis 专注于 SQL 本身，是一个足够灵活的持久层框架。</li>
@@ -475,9 +475,9 @@
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;/</span>select</span><span class="token punctuation">></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="查询操作"><a href="#查询操作" class="headerlink" title="查询操作"></a>查询操作</h2><h3 id="MyBatis分页"><a href="#MyBatis分页" class="headerlink" title="MyBatis分页"></a>MyBatis分页</h3><h4 id="如何分页"><a href="#如何分页" class="headerlink" title="如何分页"></a>如何分页</h4><p><strong>Mybatis通过 RowBounds 对象进行分页，通过操作 ResultSet 结果集实现内存分页，而非物理分页</strong>。</p>
-<p>注意：可编写分页SQL 完成 物理分页功能，也可使用分页插件来完成物理分页。</p>
-<h4 id="分页插件原理"><a href="#分页插件原理" class="headerlink" title="分页插件原理"></a>分页插件原理</h4><p>基本原理是 <em><strong>通过Mybatis插件接口实现自定义插件，插件会拦截待执行SQL，并重写SQL来实现分页</strong></em>。</p>
-<h4 id="获取自增长键值"><a href="#获取自增长键值" class="headerlink" title="获取自增长键值"></a>获取自增长键值</h4><p><em><strong>insert 方法总是返回一个 int 值，该值表示插入行数</strong></em>。</p>
+<p>注意：可编写分页SQL完成物理分页功能，也可使用分页插件来完成物理分页。</p>
+<h4 id="分页插件原理"><a href="#分页插件原理" class="headerlink" title="分页插件原理"></a>分页插件原理</h4><p>基本原理是 <strong>通过Mybatis插件接口实现自定义插件，插件会拦截待执行SQL，并重写SQL来实现分页</strong>。</p>
+<h4 id="获取自增长键值"><a href="#获取自增长键值" class="headerlink" title="获取自增长键值"></a>获取自增长键值</h4><p><strong>insert 方法总是返回一个 int 值，该值表示插入行数</strong>。</p>
 <p>如果采用自增长策略，自动生成的键值在 insert 方法执行完后会被设置到传入的参数对象中。</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>insert</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>”insertname”</span> <span class="token attr-name">usegeneratedkeys</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>”true”</span> <span class="token attr-name">keyproperty</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>”id”</span><span class="token punctuation">></span></span>
     insert into users (name) values (#&#123;name&#125;)
@@ -504,7 +504,7 @@ system<span class="token punctuation">.</span>out<span class="token punctuation"
 
 <pre class="line-numbers language-sql" data-language="sql"><code class="language-sql"><span class="token keyword">select</span> <span class="token operator">*</span> <span class="token keyword">from</span> foo <span class="token keyword">where</span> bar <span class="token operator">like</span> <span class="token comment">#&#123;value&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
-<p><font color='red'>注意：在SQL语句中拼接通配符会引起SQL注入，故不推荐该种方式。</font></p>
+<p><font color='red'>注意：在SQL语句中拼接通配符会引起SQL注入，不推荐该种方式。</font></p>
 <h2 id="插入操作"><a href="#插入操作" class="headerlink" title="插入操作"></a>插入操作</h2><h3 id="批量插入"><a href="#批量插入" class="headerlink" title="批量插入"></a>批量插入</h3><p>首先创建一个简单的 insert 语句：</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>insert</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span>”insertname”</span><span class="token punctuation">></span></span>
     insert into names(name) values(#&#123;value&#125;)
@@ -523,7 +523,7 @@ nameMapper mapper <span class="token operator">=</span> sqlsession<span class="t
 <p>有了 列名 与 属性名 的映射，<em><strong>MyBatis 通过反射创建对象，然后初始化对象属性，无映射关系的属性无法完成初始化</strong></em>。</p>
 </blockquote>
 <h1 id="Mapper接口"><a href="#Mapper接口" class="headerlink" title="Mapper接口"></a>Mapper接口</h1><h2 id="Mapper接口原理"><a href="#Mapper接口原理" class="headerlink" title="Mapper接口原理"></a>Mapper接口原理</h2><p>namespace 是 接口全限名；MapperStatement  id 是 接口方法名；传递给 sql 的参数是 接口方法参数。</p>
-<p>【接口全限名+方法名】作为 key 可定位一个MapperStatement。Mybatis 中的<code>&lt;select&gt;</code>、<code>&lt;insert&gt;</code>、<code>&lt;update&gt;</code>、<code>&lt;delete&gt;</code>标签都会被解析成一个<code>MapperStatement</code>对象。</p>
+<p>把 接口全限名+方法名 作为 key可定位一个MapperStatement。Mybatis 中的<code>&lt;select&gt;</code>、<code>&lt;insert&gt;</code>、<code>&lt;update&gt;</code>、<code>&lt;delete&gt;</code>标签都会被解析成一个<code>MapperStatement</code>对象。</p>
 <p><strong>MyBatis 使用JDK动态代理为 Mapper接口生成代理对象，代理对象会拦截对接口方法的调用，转而执行 MapperStatement 中的SQL，最后将 SQL 执行结果返回</strong>。</p>
 <h2 id="Mapper接口方法可以重载吗？"><a href="#Mapper接口方法可以重载吗？" class="headerlink" title="Mapper接口方法可以重载吗？"></a>Mapper接口方法可以重载吗？</h2><p>不能重载，因为底层使用<em><strong>全限名+方法名</strong></em>的保存和寻找策略。</p>
 <h2 id="Mapper中如何传递多参数"><a href="#Mapper中如何传递多参数" class="headerlink" title="Mapper中如何传递多参数"></a>Mapper中如何传递多参数</h2><h3 id="使用数字下标"><a href="#使用数字下标" class="headerlink" title="使用数字下标"></a>使用数字下标</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token class-name">UserselectUser</span><span class="token punctuation">(</span><span class="token class-name">String</span> name<span class="token punctuation">,</span> <span class="token class-name">String</span> area<span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -666,14 +666,11 @@ map<span class="token punctuation">.</span><span class="token function">put</spa
 <li>WEAK：弱引用。</li>
 </ul>
 </li>
-<li><p><strong>flushInterval属性</strong>：刷新间隔，单位毫秒。</p>
-<p>默认没有配置该参数，缓存仅在调用语句时刷新。</p>
+<li><p><strong>flushInterval属性</strong>：刷新间隔，单位毫秒。默认没有配置该参数，缓存仅在调用语句时刷新。</p>
 </li>
-<li><p><strong>size属性</strong>：引用数量，正整数。</p>
-<p>表示缓存最多可以存储对象的数量，太大会导致内存溢出。</p>
+<li><p><strong>size属性</strong>：引用数量，正整数。表示缓存最多可以存储对象的数量，太大会导致内存溢出。</p>
 </li>
-<li><p><strong>readOnly属性</strong>：只读，可选值有true&#x2F;false，默认值为false。</p>
-<p>值为true表示只读缓存。值为false表示读写缓存。</p>
+<li><p><strong>readOnly属性</strong>：只读，可选值有true&#x2F;false，默认值为false。值为true表示只读缓存。值为false表示读写缓存。</p>
 </li>
 </ul>
 <h2 id="查询缓存顺序"><a href="#查询缓存顺序" class="headerlink" title="查询缓存顺序"></a>查询缓存顺序</h2><ol>
@@ -778,7 +775,7 @@ map<span class="token punctuation">.</span><span class="token function">put</spa
 <h3 id="DTO"><a href="#DTO" class="headerlink" title="DTO"></a>DTO</h3><p><strong>DTO是数据传输对象（Data Transfer Object）的简称，用于在不同层或服务之间传输数据，用于解耦不同层之间的数据传输。</strong></p>
 <p>DTO特点如下：</p>
 <ul>
-<li>轻量级的数据对象，仅包含所需的数据字段，不包含业务逻辑或复杂的方法。</li>
+<li>轻量级的数据对象，<strong>仅包含所需的数据字段，不包含业务逻辑或复杂的方法</strong>。</li>
 <li>可以在不同的系统或服务之间进行序列化和传输。</li>
 <li>可以通过映射与实体对象进行相互转换。</li>
 </ul>

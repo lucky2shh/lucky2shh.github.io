@@ -404,14 +404,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-06
+                    2023-10-04
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    9.3k
+                    9.4k
                 </div>
                 
 
@@ -465,7 +465,7 @@
     <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="1、prepareRefresh"><a href="#1、prepareRefresh" class="headerlink" title="1、prepareRefresh()"></a>1、prepareRefresh()</h3><p>刷新前的预处理：<em><strong>初始化属性，检验属性合法性，保存容器中的事件</strong></em>。</p>
+<h3 id="1、prepareRefresh"><a href="#1、prepareRefresh" class="headerlink" title="1、prepareRefresh()"></a>1、prepareRefresh()</h3><p>刷新前的预处理：<strong>初始化属性，检验属性合法性，保存容器中的事件</strong>。</p>
 <pre class="line-numbers language-none"><code class="language-none">1）、initPropertySources()初始化一些属性设置;子类自定义个性化的属性设置方法；
 2）、getEnvironment().validateRequiredProperties();检验属性的合法等
 3）、earlyApplicationEvents&#x3D; new LinkedHashSet&lt;ApplicationEvent&gt;();保存容器中的一些早期的事件；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -490,7 +490,7 @@
 	systemProperties【Map&lt;String, Object&gt;】、
 	systemEnvironment【Map&lt;String, Object&gt;】<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="4、postProcessBeanFactory-beanFactory"><a href="#4、postProcessBeanFactory-beanFactory" class="headerlink" title="4、postProcessBeanFactory(beanFactory)"></a>4、postProcessBeanFactory(beanFactory)</h3><p><em><strong>BeanFactory准备完成后的后置处理工作，默认空，留给子类重写实现</strong></em>；</p>
+<h3 id="4、postProcessBeanFactory-beanFactory"><a href="#4、postProcessBeanFactory-beanFactory" class="headerlink" title="4、postProcessBeanFactory(beanFactory)"></a>4、postProcessBeanFactory(beanFactory)</h3><p><strong>BeanFactory准备完成后的后置处理工作，默认空，留给子类重写实现</strong>；</p>
 <pre class="line-numbers language-none"><code class="language-none">1）、子类通过重写这个方法来在BeanFactory创建并预准备完成以后做进一步的设置。<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <h3 id="5、invokeBeanFactoryPostProcessors-beanFactory"><a href="#5、invokeBeanFactoryPostProcessors-beanFactory" class="headerlink" title="5、invokeBeanFactoryPostProcessors(beanFactory)"></a>5、invokeBeanFactoryPostProcessors(beanFactory)</h3><p>执行BeanFactoryPostProcessor方法；</p>
@@ -552,7 +552,7 @@
 	getApplicationEventMulticaster().addApplicationListenerBean(listenerBeanName);
 3、派发之前生成的事件；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="11、finishBeanFactoryInitialization-beanFactory"><a href="#11、finishBeanFactoryInitialization-beanFactory" class="headerlink" title="11、finishBeanFactoryInitialization(beanFactory)"></a>11、finishBeanFactoryInitialization(beanFactory)</h3><p><em><strong>初始化剩下的所有单实例 bean</strong></em>；</p>
+<h3 id="11、finishBeanFactoryInitialization-beanFactory"><a href="#11、finishBeanFactoryInitialization-beanFactory" class="headerlink" title="11、finishBeanFactoryInitialization(beanFactory)"></a>11、finishBeanFactoryInitialization(beanFactory)</h3><p><strong>初始化剩下的所有单实例 bean</strong>；</p>
 <pre class="line-numbers language-none"><code class="language-none">1、beanFactory.preInstantiateSingletons();初始化后剩下的单实例bean
 	1）、获取容器中的所有Bean，依次进行初始化和创建对象
 	2）、获取Bean定义信息；RootBeanDefinition
@@ -604,7 +604,7 @@
 所有Bean都利用getBean创建完成以后；
 检查所有的Bean是否是SmartInitializingSingleton接口的，如果是，就执行afterSingletonsInstantiated()；<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="12、finishRefresh"><a href="#12、finishRefresh" class="headerlink" title="12、finishRefresh()"></a>12、finishRefresh()</h3><p>最后一步：<em><strong>发布相应的事件</strong></em>。（完成此上下文的刷新，调用<code>LifecycleProcessor.onRefresh()</code>方法并发布org.springframework.context.event.<strong>ContextRefreshedEvent</strong> 事件）</p>
+<h3 id="12、finishRefresh"><a href="#12、finishRefresh" class="headerlink" title="12、finishRefresh()"></a>12、finishRefresh()</h3><p>最后一步：<strong>发布相应的事件</strong>。（完成此上下文的刷新，调用<code>LifecycleProcessor.onRefresh()</code>方法并发布org.springframework.context.event.ContextRefreshedEvent 事件）</p>
 <pre class="line-numbers language-none"><code class="language-none">1）、initLifecycleProcessor();初始化与生命周期有关的后置处理器（LifecycleProcessor）
 	默认从容器中找是否有lifecycleProcessor的组件【LifecycleProcessor】，如果没有new DefaultLifecycleProcessor()加入到容器；
 	写一个LifecycleProcessor实现类，可以在BeanFactory
@@ -700,24 +700,22 @@ SmartInitializingSingleton 原理：-&gt;afterSingletonsInstantiated();
 		2）、获取所有创建好的单实例bean，判断是否是SmartInitializingSingleton类型的；
 			如果是就调用afterSingletonsInstantiated();<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h2 id="3、组件注入"><a href="#3、组件注入" class="headerlink" title="3、组件注入"></a>3、组件注入</h2><h3 id="3-1、注入类型"><a href="#3-1、注入类型" class="headerlink" title="3.1、注入类型"></a>3.1、注入类型</h3><h4 id="setter注入"><a href="#setter注入" class="headerlink" title="setter注入"></a>setter注入</h4><h4 id="构造注入"><a href="#构造注入" class="headerlink" title="构造注入"></a>构造注入</h4><h4 id="接口注入"><a href="#接口注入" class="headerlink" title="接口注入"></a>接口注入</h4><h4 id="注解注入"><a href="#注解注入" class="headerlink" title="注解注入"></a>注解注入</h4><ul>
-<li><p>Spring注解</p>
+<h2 id="3、组件注入"><a href="#3、组件注入" class="headerlink" title="3、组件注入"></a>3、组件注入</h2><h3 id="3-1、注入类型"><a href="#3-1、注入类型" class="headerlink" title="3.1、注入类型"></a>3.1、注入类型</h3><h4 id="setter注入"><a href="#setter注入" class="headerlink" title="setter注入"></a>setter注入</h4><h4 id="构造注入"><a href="#构造注入" class="headerlink" title="构造注入"></a>构造注入</h4><h4 id="接口注入"><a href="#接口注入" class="headerlink" title="接口注入"></a>接口注入</h4><h4 id="注解注入"><a href="#注解注入" class="headerlink" title="注解注入"></a>注解注入</h4><p>（1）Spring注解</p>
 <ol>
 <li><p><strong>@Autowired &#x2F; @Qualifier</strong></p>
 <p>@Autowired默认按照类型装配注入，默认情况下它要求依赖对象必须存在，如果允许为null，可以设置它的required属性为false，如果想按照名称来注入，则需要结合@Qualifier一起使用；</p>
 </li>
 <li><p><strong>@Primary</strong></p>
-<p>自动装配的时要使用的首选bean。</p>
+<p>自动装配时要使用的首选bean。</p>
 </li>
 <li><p><strong>@Import</strong></p>
-<p>可通过 多种方式（class） 导入 多个组件。</p>
+<p>可通过多种方式（class）导入多个组件。</p>
 </li>
 <li><p><strong>@ImportResource</strong></p>
 <p>通过导入bean.xml文件来注入组件。</p>
 </li>
 </ol>
-</li>
-<li><p>Java注解</p>
+<p>（2）Java注解</p>
 <ol>
 <li><strong>@Resource（JSR 250）</strong></li>
 </ol>
@@ -727,19 +725,17 @@ SmartInitializingSingleton 原理：-&gt;afterSingletonsInstantiated();
 <p>需要导入javax.inject包，和Autowired的功能一样。没有required&#x3D;false的功能；</p>
 </li>
 </ol>
-</li>
-</ul>
 <h4 id="文件属性注入"><a href="#文件属性注入" class="headerlink" title="文件属性注入"></a>文件属性注入</h4><ul>
 <li><p><strong>@PropertySource(value &#x3D; {“jdbc.properties”})</strong> </p>
-<p>加载 properties文件中 配置的 以 db 开头的属性配置信息，并会自动赋值给变量。</p>
+<p>加载properties文件中配置的以 db 开头的属性配置信息，并会自动赋值给变量。</p>
 </li>
 <li><p><strong>@ConfigurationProperties(prefix &#x3D; “db”) + @EnableConfigurationProperties(xxx.class)</strong></p>
-<p>xxx类上需要加注解@ConfigurationProperties(prefix &#x3D; “db”)，这样会将文件配置信息赋值给变量。</p>
+<p>xxx类上需要加注解<code>@ConfigurationProperties(prefix = &quot;db&quot;)</code>，然后在配置类中加注解<code>@EnableConfigurationProperties(xxx.class)</code>来开启属性填充配置。这样会将文件配置信息赋值给变量。</p>
 </li>
 </ul>
 <h3 id="3-2、Autowired注解"><a href="#3-2、Autowired注解" class="headerlink" title="3.2、Autowired注解"></a>3.2、Autowired注解</h3><p>@Autowired相关类架构如下所示：</p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/06/image-20210320173030372.png" alt="image-20210320173030372"></p>
-<h2 id="4、循环依赖"><a href="#4、循环依赖" class="headerlink" title="4、循环依赖"></a>4、循环依赖</h2><h3 id="4-1、前言"><a href="#4-1、前言" class="headerlink" title="4.1、前言"></a>4.1、前言</h3><p>创建Spring bean本质上是创建对象，一个完整对象包含两部分：<em><strong>对象实例化和对象属性初始化</strong></em>。</p>
+<h2 id="4、循环依赖"><a href="#4、循环依赖" class="headerlink" title="4、循环依赖"></a>4、循环依赖</h2><h3 id="4-1、前言"><a href="#4-1、前言" class="headerlink" title="4.1、前言"></a>4.1、前言</h3><p>创建Spring bean本质上是创建对象，一个完整对象包含两部分：<strong>对象实例化和对象属性初始化</strong>。</p>
 <p>Spring Bean的创建分为三步：</p>
 <ol>
 <li><strong>实例化</strong>：对应方法 AbstractAutowireCapableBeanFactory中的createBeanInstance方法。</li>
@@ -770,23 +766,23 @@ SmartInitializingSingleton 原理：-&gt;afterSingletonsInstantiated();
   <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><font color='orange'>首先，Spring实例化bean是通过ApplicationContext.getBean()方法触发开启。</font></p>
+<p><strong>首先，Spring实例化bean是通过ApplicationContext.getBean()方法触发开启</strong>。</p>
 <p>如果 所需对象 依赖 另一对象，那么会先创建所需对象，然后递归调用<code>ApplicationContext.getBean()</code>来获取依赖对象，然后将依赖对象注入当前所需对象。</p>
 <p>以先初始化对象A为例，Spring执行逻辑如下：</p>
 <ol>
-<li>首先Spring尝试通过ApplicationContext.getBean()方法 获取A对象 实例，由于Spring容器中还没有A对象实例，因此会去创建一个A对象。然后发现依赖了B对象，然后通过ApplicationContext.getBean()方法获取B对象实例。但此时Spring容器中没有B对象的实例，因此会先创建一个B对象的实例。</li>
-<li>Spring创建B对象之后，发现B对象依赖了A对象实例，故调用ApplicationContext.getBean()方法获取A对象实例。因为Spring中已经有了A对象实例，虽然只是半成品（其属性b还未初始化），但也是目标bean，故会将该A对象实例返回。此时，B对象的属性a就设置进去了，然后将B对象实例返回，并设置到A对象的属性b中，最终完成对象实例化。</li>
+<li>首先Spring尝试通过ApplicationContext.getBean()方法 获取A对象实例，由于Spring容器中还没有A对象实例，因此会去创建一个A对象。创建A对象的过程中发现依赖了B对象，然后通过ApplicationContext.getBean()方法获取B对象实例。但此时Spring容器中没有B对象实例，因此会先创建一个B对象的实例。</li>
+<li>Spring创建B对象之后，发现B对象依赖了A对象实例，故调用ApplicationContext.getBean()方法获取A对象实例。因为Spring中已经有了A对象实例，虽然只是半成品（其属性b还未初始化），但也是目标bean，故会将该A对象实例返回。此时，B对象的属性a就设置进去了，然后将B对象实例返回，并设置到A对象的属性b中，最终完成对象A和对象B的实例化。</li>
 </ol>
 <h3 id="4-3、解决循环依赖"><a href="#4-3、解决循环依赖" class="headerlink" title="4.3、解决循环依赖"></a>4.3、解决循环依赖</h3><p><strong>单例对象在IOC容器生命周期内只有一个实例，为解决 单例 循环依赖问题，可以使用三级缓存</strong>（DefaultSingletonBeanRegistry.java中定义）。</p>
 <p>三级缓存源码定义如下：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/** 一级缓存 - 存放完全实例化且属性赋值完成的Bean，直接可以使用。 */</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">/** 一级缓存 - 存放完整的Bean，直接可以使用。 */</span>
 <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> singletonObjects <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ConcurrentHashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token number">256</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
-<span class="token comment">/** 二级缓存 - 存放早期Bean的引用，尚未属性装配的Bean。 */</span>
+<span class="token comment">/** 二级缓存 - 存放早期Bean的引用，Bean的属性还没有初始化。 */</span>
 <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span> earlySingletonObjects <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">Object</span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token comment">/** 三级缓存 - 存放实例化完成的Bean工厂。 */</span>
 <span class="token keyword">private</span> <span class="token keyword">final</span> <span class="token class-name">Map</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">ObjectFactory</span><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span><span class="token punctuation">></span></span> singletonFactories <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">HashMap</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">String</span><span class="token punctuation">,</span> <span class="token class-name">ObjectFactory</span><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span><span class="token punctuation">></span></span><span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>Spring首先从一级缓存<em><strong>singletonObjects</strong></em>中获取，如果获取不到，且对象正在创建中，就会从二级缓存<em><strong>earlySingletonObjects</strong></em>中获取，如果还是获取不到且允许通过<em><strong>调用 <code>singletonFactories</code> 的 <code>getObject()</code>方法获取</strong></em>，那就从三级缓存获取，<em><strong>如果获取到了，那就放入二级缓存，并将三级缓存中的删除</strong></em>。具体逻辑如下：</p>
+<p>Spring首先从一级缓存<strong>singletonObjects</strong>中获取，如果获取不到，且对象正在创建中，就会从二级缓存<strong>earlySingletonObjects</strong>中获取，如果还是获取不到且允许通过<strong>调用 <code>singletonFactories</code> 的 <code>getObject()</code>方法获取</strong>，那就从三级缓存获取，<strong>如果获取到了，那就放入二级缓存，并将三级缓存中的删除</strong>。具体逻辑如下：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Nullable</span>
 <span class="token keyword">protected</span> <span class="token class-name">Object</span> <span class="token function">getSingleton</span><span class="token punctuation">(</span><span class="token class-name">String</span> beanName<span class="token punctuation">,</span> <span class="token keyword">boolean</span> allowEarlyReference<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token comment">// Quick check for existing instance without full singleton lock</span>
@@ -814,7 +810,7 @@ SmartInitializingSingleton 原理：-&gt;afterSingletonsInstantiated();
     <span class="token keyword">return</span> singletonObject<span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p>Spring解决循环依赖的诀窍就在于三级缓存——singletonFactories。这个cache类型是接口ObjectFactory。这个接口在下面代码中被引用：</p>
+<p><strong>Spring解决循环依赖的诀窍就在于三级缓存——singletonFactories。这个cache类型是接口ObjectFactory。</strong>这个接口在下面代码中被引用：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">protected</span> <span class="token keyword">void</span> <span class="token function">addSingletonFactory</span><span class="token punctuation">(</span><span class="token class-name">String</span> beanName<span class="token punctuation">,</span> <span class="token class-name">ObjectFactory</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token operator">?</span><span class="token punctuation">></span></span> singletonFactory<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token class-name">Assert</span><span class="token punctuation">.</span><span class="token function">notNull</span><span class="token punctuation">(</span>singletonFactory<span class="token punctuation">,</span> <span class="token string">"Singleton factory must not be null"</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token keyword">synchronized</span> <span class="token punctuation">(</span><span class="token keyword">this</span><span class="token punctuation">.</span>singletonObjects<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
@@ -829,7 +825,7 @@ SmartInitializingSingleton 原理：-&gt;afterSingletonsInstantiated();
 <p>上面代码是解决循环依赖的关键，这段代码发生在 createBeanInstance 之后，也就是说此时单例对象已经被创建出来(调用了构造器)，虽然还不完整，但是已经能被认出来了（根据对象引用能定位到堆中的对象），所以Spring此时将这个对象提前曝光出来让大家认识，让大家使用。</p>
 <h3 id="4-4、为何需要三级缓存"><a href="#4-4、为何需要三级缓存" class="headerlink" title="4.4、为何需要三级缓存"></a>4.4、为何需要三级缓存</h3><p>Spring处理AOP代理的规则是：<strong>通过后置处理器 <code>AnnotationAwareAspectJAutoProxyCreator</code>在Bean生命周期最后一步完成AOP代理，而并非实例化后就立马进行AOP代理</strong>。</p>
 <p>如果对A进行了AOP代理，那么意味着 B对象中注入的A将是一个A的代理对象而并非A的原始对象。</p>
-<p>所以，Spring定义一个缓存<em><strong>singletonFactories</strong></em>来存放Bean工厂对象ObjectFactory。该工厂对象的作用是<strong>延迟实例化阶段对象代理的生成，而只有真正发生循环依赖时才会生成代理对象，否则只会创建一个工厂对象并放入到三级缓存中</strong>。</p>
+<p>所以，Spring定义一个缓存 <strong>singletonFactories</strong> 来存放Bean工厂对象ObjectFactory。该工厂对象的作用是<strong>延迟实例化阶段对象代理的生成，而只有真正发生循环依赖时才会生成代理对象，否则只会创建一个工厂对象并放入到三级缓存中</strong>。</p>
 <p>注意事项：</p>
 <ol>
 <li><strong>如果A被代理了，但没有发生循环依赖。那么依然会将其添加到三级缓存中。</strong></li>
@@ -984,7 +980,7 @@ return wrapIfNecessary(bean, beanName, cacheKey);&#x2F;&#x2F;包装如果需要�
   		1）、创建业务逻辑组件和切面组件
   		2）、AnnotationAwareAspectJAutoProxyCreator拦截组件的创建过程
   		3）、组件创建完之后，判断组件是否需要增强
-  			是：切面的通知方法，包装成增强器（Advisor）;给业务逻辑组件创建一个代理对象（cglib）；
+  			是：切面的通知方法，包装成增强器（Advisor）；给业务逻辑组件创建一个代理对象（cglib）；
 5）、执行目标方法：
   	1）、代理对象执行目标方法
   	2）、CglibAopProxy.intercept()；
@@ -1009,14 +1005,7 @@ return wrapIfNecessary(bean, beanName, cacheKey);&#x2F;&#x2F;包装如果需要�
 </li>
 </ol>
 <blockquote>
-<p>默认5个HandlerMapping：</p>
-<ul>
-<li>RequestMappingHadnlerMapping</li>
-<li>WelcomePageHandlerMapping</li>
-<li>BeanNameUril xxx</li>
-<li>RouterFunction xxx</li>
-<li>SimpleUrl xxx</li>
-</ul>
+<p><strong>默认5个HandlerMapping</strong>：RequestMappingHadnlerMapping、WelcomePageHandlerMapping、BeanNameUril xxx、RouterFunction xxx、SimpleUrl xxx</p>
 </blockquote>
 <h2 id="2、参数解析-返回结果"><a href="#2、参数解析-返回结果" class="headerlink" title="2、参数解析&#x2F;返回结果"></a>2、参数解析&#x2F;返回结果</h2><ol>
 <li><p>从处理器执行器链中找到能处理请求的Hadnler</p>
@@ -1078,7 +1067,7 @@ return wrapIfNecessary(bean, beanName, cacheKey);&#x2F;&#x2F;包装如果需要�
 </ul>
 <p>异常处理流程：</p>
 <ol>
-<li>目标方法执行期间，有异常会被catch，并标识当前请求为结束，并启用dispatchException。</li>
+<li>目标方法执行期间，有异常时会被catch，并标记当前请求已结束，然后启用dispatchException。</li>
 <li>进入视图解析逻辑。</li>
 <li>执行处理器的异常并返回一个MV<ul>
 <li>遍历所有handlerExceptionResolvers，找到可以处理当前异常的resolver。</li>
@@ -1095,16 +1084,12 @@ return wrapIfNecessary(bean, beanName, cacheKey);&#x2F;&#x2F;包装如果需要�
 </ul>
 </li>
 </ol>
-<h2 id="5、总结"><a href="#5、总结" class="headerlink" title="5、总结"></a>5、总结</h2><ul>
-<li><p><strong>初始化阶段</strong></p>
-<ol>
+<h2 id="5、总结"><a href="#5、总结" class="headerlink" title="5、总结"></a>5、总结</h2><h3 id="5-1、初始化阶段"><a href="#5-1、初始化阶段" class="headerlink" title="5.1、初始化阶段"></a>5.1、初始化阶段</h3><ol>
 <li>首次用到<code>DispatcherServlet</code>时，会初始化Web容器 WebApplicationContext。然后调用 onRefresh() 方法刷新 WebApplicationContext。</li>
 <li>刷新过程会初始化一些重要组件（9个）：MultipartResolver、LocaleResolver、ThemeResolver、HandlerMapping、HandlerAdapters、HandlerExceptionResolvers、RequestToViewNameTranslator、ViewResolvers、FlashMapManager。</li>
 <li>将初始化好后的组件赋值给DispatcherServlet，留待后用。</li>
 </ol>
-</li>
-<li><p><strong>匹配阶段</strong></p>
-<ol>
+<h3 id="5-2、匹配阶段"><a href="#5-2、匹配阶段" class="headerlink" title="5.2、匹配阶段"></a>5.2、匹配阶段</h3><ol>
 <li>用户请求首先被DispatcherServlet拦截。</li>
 <li>DispatcherServlet遍历所有HandlerMapping，找到与请求匹配的处理器。<ol>
 <li><code>HandlerMapping</code>有多个，不同的<code>HandlerMapping</code>对应有不同的处理器对象。请求路径与处理器的映射在HandlerMapping初始化期间就已经被设置好。</li>
@@ -1114,9 +1099,7 @@ return wrapIfNecessary(bean, beanName, cacheKey);&#x2F;&#x2F;包装如果需要�
 <li>将<code>HandlerMethod</code>和 拦截器 封装成 处理执行器链<code>HandlerExecutionChain</code>。</li>
 <li>找到可以处理当前<code>HandlerMethod</code>的适配器对象<code>HandlerAdapter</code>，通过该 适配器对象 来处理请求。</li>
 </ol>
-</li>
-<li><p><strong>执行阶段</strong></p>
-<ol>
+<h3 id="5-3、执行阶段"><a href="#5-3、执行阶段" class="headerlink" title="5.3、执行阶段"></a>5.3、执行阶段</h3><ol>
 <li><p>执行拦截器的<code>preHandler()</code>方法。</p>
 </li>
 <li><p>通过<code>HandlerAdapter</code>调用<code>HandlerMethod</code></p>
@@ -1153,8 +1136,6 @@ return wrapIfNecessary(bean, beanName, cacheKey);&#x2F;&#x2F;包装如果需要�
 <li><p>将渲染结果返回给客户端。</p>
 </li>
 </ol>
-</li>
-</ul>
 <h1 id="Transaction（事务）"><a href="#Transaction（事务）" class="headerlink" title="Transaction（事务）"></a>Transaction（事务）</h1><h2 id="1、环境搭建"><a href="#1、环境搭建" class="headerlink" title="1、环境搭建"></a>1、环境搭建</h2><p>（1）导入相关依赖：数据源、数据库驱动、Spring-jdbc模块</p>
 <p>（2）配置数据源、JdbcTemplate（Spring提供的简化数据库操作的工具）操作数据</p>
 <p>（3）给方法上标注 @Transactional 表示当前方法是一个事务方法；</p>
@@ -1188,9 +1169,9 @@ return wrapIfNecessary(bean, beanName, cacheKey);&#x2F;&#x2F;包装如果需要�
 <h1 id="XML配置原理解析"><a href="#XML配置原理解析" class="headerlink" title="XML配置原理解析"></a>XML配置原理解析</h1><p>以自定义标签<code>&lt;haoge:haoge-driver /&gt;</code>为例进行分析。</p>
 <p>要想使得spring配置文件中的标签生效，需要满足以下几点：</p>
 <ol>
-<li><em><strong>创建命名空间对应的xsd文件</strong></em>。比如context的xsd文件<code>org.springframework.context.config.spring-context.xsd</code></li>
-<li><em><strong>创建命名空间处理器处理指定的命名空间</strong></em>。比如<code>context</code>命名空间；</li>
-<li><em><strong>创建命名空间下各个标签的解析器，解析标签使其生效</strong></em>。比如解析<code>&lt;context:component-scan base-package=&quot;xxx&quot;/&gt;</code>标签；</li>
+<li><strong>创建命名空间对应的xsd文件</strong>。比如context的xsd文件<code>org.springframework.context.config.spring-context.xsd</code></li>
+<li><strong>创建命名空间处理器处理指定的命名空间</strong>。比如<code>context</code>命名空间；</li>
+<li><strong>创建命名空间下各个标签的解析器，解析标签使其生效</strong>。比如解析<code>&lt;context:component-scan base-package=&quot;xxx&quot;/&gt;</code>标签；</li>
 </ol>
 <h2 id="1-1、创建并配置xsd文件"><a href="#1-1、创建并配置xsd文件" class="headerlink" title="1.1、创建并配置xsd文件"></a>1.1、创建并配置xsd文件</h2><p>在路径<code>resources/cn/shh/spring/haoge/config</code>下创建文件<code>spring-haoge.xsd</code>，文件内容如下：</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token prolog">&lt;?xml version="1.0" encoding="UTF-8"?></span>
@@ -1281,9 +1262,9 @@ return wrapIfNecessary(bean, beanName, cacheKey);&#x2F;&#x2F;包装如果需要�
 <p><code>SqlSessionFactoryBean</code>实现了<code>FactoryBean</code>的<code>getObject()</code>方法，在该方法中获取构建好的<code>SqlSessionFactory</code>。</p>
 <p><strong>（2）通过MapperScannerConfigurer扫描Mapper，将其包装成MapperFactoryBean</strong></p>
 <p><code>MapperScannerConfigurer</code>实现了<code>BeanDefinitionRegistryPostProcessor</code>的<code>postProcessBeanDefinitionRegistry</code>方法，在该方法中通过<code>ClassPathMapperScanner</code>的<code>scan</code>方法来扫描并包装Mapper。</p>
-<p><code>ClassPathMapperScanner</code>通过调用父类<code>ClassPathBeanDefinitionScanner</code>的<code>doScan</code>方法将所有Mapper的Bean定义信息放到到容器中并返回给<code>ClassPathMapperScanner</code>。</p>
+<p><code>ClassPathMapperScanner</code>通过调用父类<code>ClassPathBeanDefinitionScanner</code>的<code>doScan</code>方法将所有Mapper的Bean定义信息放到容器中并返回给<code>ClassPathMapperScanner</code>。</p>
 <p><code>ClassPathMapperScanner</code>通过调用自己<code>processBeanDefinitions(beanDefinitions)</code>方法对每一个Mapper的Beean定义信息进行配置，将每一个Mapper包装成一个<code>MapperFactoryBean</code>。</p>
-<p><code>MapperFactoryBean</code>实现了<code>FactoryBean</code>的<code>getObject()</code>方法，在该方法中通过<code>SqlSession</code>获取Mapper。在获取Mapper时会通过<code>MapperProxyFactory</code>的<code>newInstance(mapperProxy)</code>方法并使用JDK代理为当前Mapper创建代理对象，所以这里获取的Mapper是代理对象，而并非是原始Mapper。</p>
+<p><code>MapperFactoryBean</code>实现了<code>FactoryBean</code>的<code>getObject()</code>方法，在该方法中通过<code>SqlSession</code>获取Mapper。在获取Mapper时会通过<code>MapperProxyFactory</code>的<code>newInstance(mapperProxy)</code>方法并<strong>使用JDK代理</strong>为当前Mapper创建代理对象，所以这里获取的Mapper是代理对象，而并非是原始Mapper。</p>
 <h1 id="Spring工具类"><a href="#Spring工具类" class="headerlink" title="Spring工具类"></a>Spring工具类</h1><h2 id="1-1、PropertiesLoaderUtils"><a href="#1-1、PropertiesLoaderUtils" class="headerlink" title="1.1、PropertiesLoaderUtils"></a>1.1、PropertiesLoaderUtils</h2>
                 
             </div>

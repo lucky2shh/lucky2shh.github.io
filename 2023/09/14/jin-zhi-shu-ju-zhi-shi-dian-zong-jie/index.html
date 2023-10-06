@@ -400,14 +400,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-05
+                    2023-10-06
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    384
+                    396
                 </div>
                 
 
@@ -427,23 +427,23 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="原码-反码-补码-移码"><a href="#原码-反码-补码-移码" class="headerlink" title="原码&#x2F;反码&#x2F;补码&#x2F;移码"></a>原码&#x2F;反码&#x2F;补码&#x2F;移码</h1><h2 id="原码"><a href="#原码" class="headerlink" title="原码"></a>原码</h2><p>是最简单的机器数表示法。用最高位表示符号位，‘1’表示负号，‘0’表示正号。其它位存放该数的二进制的绝对值。</p>
+                <h1 id="原码-反码-补码-移码"><a href="#原码-反码-补码-移码" class="headerlink" title="原码&#x2F;反码&#x2F;补码&#x2F;移码"></a>原码&#x2F;反码&#x2F;补码&#x2F;移码</h1><h2 id="原码"><a href="#原码" class="headerlink" title="原码"></a>原码</h2><p>原码是最简单机器数表示法。用最高位表示符号位，‘1’表示负号，‘0’表示正号。其它位存放该数的二进制的绝对值。</p>
 <p>注意： </p>
 <ol>
 <li>数0的原码有两种形式： [+0]原&#x3D;00000000B [-0]原&#x3D;10000000B。</li>
 <li>8位二进制原码的表示范围：-127～+127。</li>
 </ol>
-<h2 id="反码"><a href="#反码" class="headerlink" title="反码"></a>反码</h2><p>符号位0表示正，1表示负。正数的反码等于原码。负数的反码等于原码按位数取反，（绝对值按位求反）。</p>
+<h2 id="反码"><a href="#反码" class="headerlink" title="反码"></a>反码</h2><p><strong>符号位0表示正，1表示负</strong>。正数的原码、反码、补码都一样。负数的反码等于原码按位数取反，（绝对值按位求反）。</p>
 <p>步骤：先将这个负数化为原码，再根据原码取反。比如该负数原码是：00000001，那么它取反就是0 1111110。</p>
-<h2 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h2><p>符号位0表示正，1表示负，正数的补码等于原码。负数的补码等于反码末位加1，</p>
+<h2 id="补码"><a href="#补码" class="headerlink" title="补码"></a>补码</h2><p><strong>符号位0表示正，1表示负</strong>。正数的原码、反码、补码都一样。负数的补码等于反码末位加1，</p>
 <p>步骤：先将这个负数化为原码再化为反码，末位加1。比如该负数的反码是11111110，那么它末位加1就是11111111。</p>
-<h2 id="移码"><a href="#移码" class="headerlink" title="移码"></a>移码</h2><p>等于补码的符号（第一位数字）位取反。</p>
+<h2 id="移码"><a href="#移码" class="headerlink" title="移码"></a>移码</h2><p>负数的移码等于补码的符号（第一位数字）位取反。</p>
 <p>步骤：先把这个数化为补码，然后再根据补码的第一位数字取反即可。（移码和补码的关系：同一数值的移码与补码符号位相反，其它各位相同。）</p>
 <h2 id="小总结"><a href="#小总结" class="headerlink" title="小总结"></a>小总结</h2><ol>
-<li><font color='orange'>正数的原码、反码、补码都相同；</font></li>
-<li><font color='orange'>负数的反码 就是 原码的各个位取反。</font></li>
-<li><font color='orange'>负数的补码 就是 反码末位加1。</font></li>
-<li><font color='orange'>负数的移码 就是 补码的符号位（第一位数字）取反。</font></li>
+<li>正数的原码、反码、补码都相同；</li>
+<li>负数的反码 就是 原码的各个位取反。</li>
+<li>负数的补码 就是 反码末位加1。</li>
+<li>负数的移码 就是 补码的符号位（第一位数字）取反。</li>
 </ol>
 
                 

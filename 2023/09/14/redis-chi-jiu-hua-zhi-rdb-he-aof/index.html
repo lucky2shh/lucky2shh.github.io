@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-07
+                    2023-10-02
                 </div>
                 
 
@@ -505,7 +505,7 @@
 <p>注意：混合持久化AOF文件中 RDB内容的最后会使用一个<font color='orange'><code>RDB_OPCODE_EOF</code></font>结束标记来区分。读取混合AOF文件时，会<strong>通过函数<code>rdbLoadRio</code>读取其中的RDB内容，通过函数<code>loadAppendOnlyFile</code>读取其中的AOF内容</strong>。</p>
 <h3 id="3-3-2、数据恢复"><a href="#3-3-2、数据恢复" class="headerlink" title="3.3.2、数据恢复"></a>3.3.2、数据恢复</h3><p>混合持久化AOF日志的优点：重启Redis后恢复数据会很快。</p>
 <h1 id="5、相关问题"><a href="#5、相关问题" class="headerlink" title="5、相关问题"></a>5、相关问题</h1><h2 id="5-1、RDB快照"><a href="#5-1、RDB快照" class="headerlink" title="5.1、RDB快照"></a>5.1、RDB快照</h2><h3 id="5-1-1、save命令"><a href="#5-1-1、save命令" class="headerlink" title="5.1.1、save命令"></a>5.1.1、save命令</h3><p><strong>redis内存数据高达几十G，上百G时建议用 save</strong>。</p>
-<p>save命令 虽然会阻塞redis直到快照生成完毕，但不用创建子进程，所以save创建快照的速度会比 bgsave 要快。</p>
+<p>save命令虽然会阻塞redis直到快照生成完毕，但不用创建子进程，所以save创建快照的速度会比 bgsave 要快。</p>
 <h3 id="5-1-2、保存快照时数据能否修改？"><a href="#5-1-2、保存快照时数据能否修改？" class="headerlink" title="5.1.2、保存快照时数据能否修改？"></a>5.1.2、保存快照时数据能否修改？</h3><p><strong>得益于写时复制技术，bgsava命令运行中可继续处理其它请求</strong>。</p>
 <p>bgsava 命令会通过<code>fork()</code>创建子进程，子进程和父进程 共享 同一片内存数据，子进程会复制父进程页表，但页表指向的物理内存还是同一个。</p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/07/%E6%8C%81%E4%B9%85%E5%8C%96-image-20210629221033289.png" alt="image-20210629221033289"></p>

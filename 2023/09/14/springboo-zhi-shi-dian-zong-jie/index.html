@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-07-30
+                    2023-10-03
                 </div>
                 
 
@@ -434,7 +434,7 @@
                 <h1 id="0、SpringBoot启动流程"><a href="#0、SpringBoot启动流程" class="headerlink" title="0、SpringBoot启动流程"></a>0、SpringBoot启动流程</h1><p>SpringBoot启动流程主要分两步，创建SpringApplication对象流程 和 执行其run方法流程。</p>
 <h2 id="0-1、创建SpringApplication对象流程"><a href="#0-1、创建SpringApplication对象流程" class="headerlink" title="0.1、创建SpringApplication对象流程"></a>0.1、创建SpringApplication对象流程</h2><ol>
 <li>初始化资源加载器，默认为null。</li>
-<li>断言判断参数是否为不为空。</li>
+<li>断言判断参数是否不为空。</li>
 <li>初始化参数源。（封装参数为LinkedHashSet）</li>
 <li>初始化当前应用类型（非Web类型、Servlet类型、Reactive类型）</li>
 <li>获取系统配置引导信息。</li>

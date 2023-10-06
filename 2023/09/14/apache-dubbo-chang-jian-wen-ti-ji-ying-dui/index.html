@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-07
+                    2023-10-02
                 </div>
                 
 
@@ -433,7 +433,7 @@
             <div id="articleContent">
                 <h1 id="1、-无法发布被事务代理的Service问题"><a href="#1、-无法发布被事务代理的Service问题" class="headerlink" title="1、 无法发布被事务代理的Service问题"></a>1、 无法发布被事务代理的Service问题</h1><h2 id="1-1、问题描述"><a href="#1-1、问题描述" class="headerlink" title="1.1、问题描述"></a>1.1、问题描述</h2><p><strong>通过Dubbo标签配置就可以实现包扫描，被注解@Service标注的类可以作为服务。</strong></p>
 <p>如果 服务提供者类 被注解@Transactional标注，就会导致 服务发布失败。原因是：事务控制的底层原理是为服务提供者类创建代理对象，而默认情况下Spring是基于JDK动态代理方式创建代理对象，而此代理对象的完整类名为com.sun.proxy.$Proxy42（最后两位数字不是固定的），导致Dubbo在发布服务前进行包匹配时无法完成匹配，进而无法实现 服务发布。</p>
-<h2 id="1-2、解决方案"><a href="#1-2、解决方案" class="headerlink" title="1.2、解决方案"></a>1.2、解决方案</h2><p>问题分析：Spring基于JDK动态代理 为服务提供者创建代理对象的完整类名为com.sun.proxy.$Proxy35，发布服务时扫描的包为com.itheima.service，所以发布服务的代码没有执行。</p>
+<h2 id="1-2、解决方案"><a href="#1-2、解决方案" class="headerlink" title="1.2、解决方案"></a>1.2、解决方案</h2><p>问题分析：Spring基于JDK动态代理 为服务提供者创建代理对象的完整类名为com.sun.proxy.$Proxy35，发布服务时扫描的包为其它包，所以发布服务的代码没有执行。</p>
 <h3 id="1-2-1、设置-属性proxy-target-class的值为true"><a href="#1-2-1、设置-属性proxy-target-class的值为true" class="headerlink" title="1.2.1、设置 属性proxy-target-class的值为true"></a>1.2.1、设置 属性proxy-target-class的值为true</h3><p>修改applicationContext-service.xml配置文件，开启事务控制注解时指定proxy-target-class属性值为true，作用是通过cglib代理为Service类创建代理对象。</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token comment">&lt;!--开启事务控制的注解支持--></span>
 <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">tx:</span>annotation-driven</span> <span class="token attr-name">transaction-manager</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>transactionManager<span class="token punctuation">"</span></span> <span class="token attr-name">proxy-target-class</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>true<span class="token punctuation">"</span></span><span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>

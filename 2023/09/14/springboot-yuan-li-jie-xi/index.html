@@ -404,14 +404,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-06
+                    2023-10-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    7.8k
+                    7.7k
                 </div>
                 
 
@@ -433,13 +433,13 @@
             <div id="articleContent">
                 <h1 id="启动初始化"><a href="#启动初始化" class="headerlink" title="启动初始化"></a>启动初始化</h1><p><strong>SpringBoot的启动和初始化步骤主要由 SpringApplication.run(String..) 方法和AbstractApplicationContext.refresh() 方法完成</strong>。</p>
 <p>SpringApplication.run(String…)中会调用AbstractApplicationContext.run()方法。</p>
-<p>当然，<em><strong>最初先调用SprirngApplication(ResourceLoader, Class)构造SpringApplication对象</strong></em>，详情如下：</p>
+<p>当然，<em><strong>最初先调用SprirngApplication(ResourceLoader, Class)来构造SpringApplication对象</strong></em>，详情如下：</p>
 <p><strong>（1）初始化相关参数</strong></p>
 <p>初始化bannerModel为Console，logStartupInfo为true，addCommandLineProperties为true，addConversionService为true，headLess为true，registerShutdownHook为true，isCustomEnvironment为false，lazyInitialization为false，applicationContextFactory为DefaultApplicationContextFactory，applicationStartup为DefaultApplicationStartup。</p>
 <p><strong>（2）初始化当前应用的类型</strong></p>
-<p>如果存在DispatcherHandler，不存在DispatcherServlet和ServletContainer，那么应用类型为Reactive。</p>
-<p>如果不存在Servlet或ConfigurableWebApplicationContext，那么应用类型为None。</p>
-<p>除了上面两种情况，其它情况下都属于Servlet应用。</p>
+<p><strong>如果存在DispatcherHandler，不存在DispatcherServlet和ServletContainer，那么应用类型为Reactive</strong>。</p>
+<p><strong>如果不存在Servlet或ConfigurableWebApplicationContext，那么应用类型为None</strong>。</p>
+<p><strong>除了上面两种情况，其它情况都属于Servlet应用</strong>。</p>
 <p><strong>（3）初始化接口实现和确定主启动类</strong></p>
 <p>初始化集合bootstrapRegistryInitializers为接口BootstrapRegistryInitializer的所有实现，初始化initializers为接口ApplicationContextInitializer的所有实现，初始化listeners为接口ApplicationListener的所有实现，初始化mainApplicationClass为启动类Class。</p>
 <h2 id="1-1、SpringApplication-run-String…"><a href="#1-1、SpringApplication-run-String…" class="headerlink" title="1.1、SpringApplication.run(String…)"></a>1.1、SpringApplication.run(String…)</h2><h3 id="1-1-1、SpringApplication-createBootstrapContext"><a href="#1-1-1、SpringApplication-createBootstrapContext" class="headerlink" title="1.1.1、SpringApplication.createBootstrapContext()"></a>1.1.1、SpringApplication.createBootstrapContext()</h3><p>（1）创建DefaultBootstrapContext实例，实例名为bootstrapContext。</p>
@@ -500,10 +500,10 @@
 <p><strong>（6）使用BeanFactory注册一个单例springApplicationArguments。</strong></p>
 <p><strong>（7）使用BeanFactory注册一个单例springBootBanner。</strong></p>
 <p><strong>（8）设置允许Bean循环应用，允许Bean定义信息被重写。</strong></p>
-<p><strong>（9）如果允许延迟实例化Bean，那么为congtext 注册一个LazyInitializationBeanFactoryPostProcessor。</strong></p>
+<p><strong>（9）如果允许延迟实例化Bean，那么为context 注册一个LazyInitializationBeanFactoryPostProcessor。</strong></p>
 <p><strong>（10）加载Bean定义信息。</strong></p>
 <p>创建一个Bean定义加载器BeanDefinitionLoader，该加载器中已经初始化好了AnnotatedBeanDifinitionReader、XmlBeanDefinitionReader、ClassPathBeanDefinitionScanner。</p>
-<p>加载源souce默认只有一个，就是启动类。默认只能加载4中类型的源，分别是Class、Resouce、Package、CharSequence。调用BeanDefinitionLoader.load()方法来加载每一个源，默认是启动类。</p>
+<p>加载源souce默认只有一个，就是启动类。默认只能加载4种类型的源，分别是Class、Resouce、Package、CharSequence。调用BeanDefinitionLoader.load()方法来加载每一个源，默认是启动类。</p>
 <p>以启动类为例来分析。会调用AnnotatedBeanDefinitionReader.doRegisterBean方法来注册启动类Class。在该方法中会先将启动类包装成BeanDefinition，为该BeanDefinition设置名字为启动类名字首字母小写，设置Scope为singleton，并处理启动类上注解为Lazy、DependsOn、Role、Description等信息并做相关操作，没有就跳过。最终将该Beean定义注册到容器中。</p>
 <p><strong>（11）以字符串spring.boot.application.context-loaded为参数调用StartupStep的start和end方法，以context为参数调用SpringApplicationRunListeners的contextLoaded方法</strong>。</p>
 <h3 id="1-1-12、SpringApplication-refreshContext"><a href="#1-1-12、SpringApplication-refreshContext" class="headerlink" title="1.1.12、SpringApplication.refreshContext(.)"></a>1.1.12、SpringApplication.refreshContext(.)</h3><p>详情参考1.2章节。</p>
@@ -819,16 +819,10 @@
 <li>OrderedFormContentFilter：表单内容Filter，GET请求数据放地址后面，POST请求数据放请求体，PUT、DELET请求会被忽略。</li>
 </ul>
 <p><strong>2. 静态内部类：EnableWebMvcConfiguration</strong></p>
-<p>该内部类继承了 DelegatingWebMvcConfiguration，间接继承了 WebMvcConfigurationSupport。通过DelegatingWebMvcConfiguration 可以获取 WebMvcConfigurer 的所有实现类实现定制化配置，通过 WebMvcConfigurationSupport 可以为 DispatcherServlet 初始化必要的组件。</p>
-<p>创建 RequestMappingHandlerAdapter 并注入到容器中。</p>
-<p>创建 WelcomePageHandlerMapping 并注入到容器中。</p>
-<p>创建 WelcomePageNotAcceptableHandlerMapping 并注入到容器中。</p>
-<p>创建 LocaleResolver 并注入到容器中。</p>
-<p>如果不存在名字为 themeResolver 的 ThemeResolver，那么就创建一个名字为 themeResolver 的ThemeResolver。</p>
-<p>如果不存在名字为 flashMapManager的 FlashMapManager，那么就创建一个名字为 flashMapManager 的FlashMapManager。</p>
-<p>创建名字为 mvcConversionService 的 FormattingConversionService 并注入到容器中。</p>
-<p>创建名字为 nvcValidator 的 Validator 并注入到容器中。</p>
-<p>创建名字为 mvcContentNegotiationManager 的 ContentNegotiationManager 并注入到容器中。</p>
+<p>该内部类继承了 DelegatingWebMvcConfiguration，间接继承了 WebMvcConfigurationSupport。<strong>通过DelegatingWebMvcConfiguration 可以获取 WebMvcConfigurer 的所有实现类实现定制化配置，通过 WebMvcConfigurationSupport 可以为 DispatcherServlet 初始化必要的组件</strong>。</p>
+<p>创建 RequestMappingHandlerAdapter、WelcomePageHandlerMapping、WelcomePageNotAcceptableHandlerMapping、LocaleResolver并注入到容器中。</p>
+<p>如果不存在名字为 themeResolver 的 ThemeResolver，那么就创建一个名字为 themeResolver 的ThemeResolver。如果不存在名字为 flashMapManager的 FlashMapManager，那么就创建一个名字为 flashMapManager 的FlashMapManager。</p>
+<p>创建名字为 mvcConversionService 的 FormattingConversionService 并注入到容器中。创建名字为 nvcValidator 的 Validator 并注入到容器中。创建名字为 mvcContentNegotiationManager 的 ContentNegotiationManager 并注入到容器中。</p>
 <p><strong>3. 静态内部类：WebMvcAutoConfigurationAdapter</strong></p>
 <p>首先导入一个配置类 EnableWebMvcConfiguration.class。</p>
 <p>该内部类实现了 WebMvcConfigurer、ServletContextAware，通过 WebMvcConfigurer 可以定制化一些底层组件。</p>
@@ -856,7 +850,7 @@
 <li>HttpMessageConvertersAutoConfiguration</li>
 <li>RestTemplateAutoConfiguration</li>
 </ol>
-<h3 id="1-3-1、GsonAutoConfiguration"><a href="#1-3-1、GsonAutoConfiguration" class="headerlink" title="1.3.1、GsonAutoConfiguration"></a>1.3.1、GsonAutoConfiguration</h3><p><em><strong>当前自动配置生效的前提是存在calss：Gson</strong></em>。</p>
+<h3 id="1-3-1、GsonAutoConfiguration"><a href="#1-3-1、GsonAutoConfiguration" class="headerlink" title="1.3.1、GsonAutoConfiguration"></a>1.3.1、GsonAutoConfiguration</h3><p><strong>当前自动配置生效的前提是存在calss：Gson</strong>。</p>
 <p>如果缺失GsonBuilder，那么创建一个名为 gsonBuilder 的 GsonBuilder，使用GsonBuilderCustomizer的所有实现对该builder进行定制化，最后将该builder放入容器。</p>
 <p>如果缺失Gson，那么创建一个名为 gson 的 Gson 放入容器。</p>
 <p>创建一个名为 standardGsonBuilderCustomizer 的 StandardGsonBuilderCustomizer 放入容器。</p>
@@ -926,7 +920,7 @@
 <p>该配置生效的前提是存在class：HttpServer。</p>
 <p>创建 NettyWebServerFactoryCustomizer 放入容器。</p>
 <h2 id="1-5、Reactive应用"><a href="#1-5、Reactive应用" class="headerlink" title="1.5、Reactive应用"></a>1.5、Reactive应用</h2><p>待补充。</p>
-<h1 id="AOP管理"><a href="#AOP管理" class="headerlink" title="AOP管理"></a>AOP管理</h1><h2 id="1-1、概述-1"><a href="#1-1、概述-1" class="headerlink" title="1.1、概述"></a>1.1、概述</h2><p><em><strong>对于AOP功能，springboot默认加载的自动配置为 AopAutoConfiguration</strong></em>。</p>
+<h1 id="AOP管理"><a href="#AOP管理" class="headerlink" title="AOP管理"></a>AOP管理</h1><h2 id="1-1、概述-1"><a href="#1-1、概述-1" class="headerlink" title="1.1、概述"></a>1.1、概述</h2><p><strong>对于AOP功能，springboot默认加载的自动配置为 AopAutoConfiguration</strong>。</p>
 <h2 id="1-2、AopAutoConfiguration"><a href="#1-2、AopAutoConfiguration" class="headerlink" title="1.2、AopAutoConfiguration"></a>1.2、AopAutoConfiguration</h2><p>该配置生效的前提是设置了属性<code>spring.aop.auto=true</code>。</p>
 <p><strong>1. 静态内部类：AspectJAutoProxyingConfiguration</strong></p>
 <p>该配置生效的前提是存在class：Advice。</p>

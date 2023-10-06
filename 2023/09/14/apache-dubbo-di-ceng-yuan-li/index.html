@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-07
+                    2023-10-02
                 </div>
                 
 
@@ -499,11 +499,11 @@
 </ol>
 <h2 id="2-1、dubbo协议"><a href="#2-1、dubbo协议" class="headerlink" title="2.1、dubbo协议"></a>2.1、dubbo协议</h2><h3 id="特点"><a href="#特点" class="headerlink" title="特点"></a>特点</h3><p>缺省协议，使用基于mina1.1.7+hessian3.2.1的tbremoting交互。</p>
 <ul>
-<li>连接个数：<font color='orange'>单连接</font></li>
-<li>连接方式：<font color='orange'>长连接</font></li>
-<li>传输协议：<font color='orange'>TCP</font></li>
-<li>传输方式：<font color='orange'>NIO异步传输</font></li>
-<li>序列化：<font color='orange'>Hessian 二进制序列化</font></li>
+<li>连接个数：<strong>单连接</strong></li>
+<li>连接方式：<strong>长连接</strong></li>
+<li>传输协议：<strong>TCP</strong></li>
+<li>传输方式：NIO异步传输</li>
+<li>序列化：<strong>Hessian 二进制序列化</strong></li>
 <li>适用范围：传入传出参数数据包较小（建议小于100K），消费者比提供者数量多，单一消费者无法压满提供者，尽量不要用dubbo协议传输大文件或超大字符串。</li>
 <li>适用场景：常规远程服务方法调用</li>
 </ul>
@@ -538,7 +538,7 @@
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">dubbo:</span>protocol</span> <span class="token attr-name">name</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>dubbo<span class="token punctuation">"</span></span> <span class="token attr-name">accepts</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>1000<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ol>
 <blockquote>
-<p>**为什么要消费者比提供者个数多？ **<br>因dubbo协议采用单一长连接，假设网络为千兆网卡(1024Mbit&#x3D;128MByte)，根据测试经验数据每条连接最多只能压满7MByte(不同的环境可能不一样，供参考)，理论上1个服务提供者需要20个服务消费者才能压满网卡</p>
+<p>**为什么消费者比提供者数量多？ **<br>因dubbo协议采用单一长连接，假设网络为千兆网卡(1024Mbit&#x3D;128MByte)，根据测试经验数据每条连接最多只能压满7MByte(不同的环境可能不一样，供参考)，理论上1个服务提供者需要20个服务消费者才能压满网卡</p>
 <p><strong>为什么不能传大包？</strong><br>因dubbo协议采用单一长连接，如果每次请求的数据包大小为500KByte，假设网络为千兆网卡(1024Mbit&#x3D;128MByte)，每条连接最大7MByte(不同的环境可能不一样，供参考)，单个服务提供者的TPS(每秒处理事务数)最大为：128MByte &#x2F; 500KByte &#x3D; 262。单个消费者调用单个服务提供者的TPS(每秒处理事务数)最大为：7MByte &#x2F; 500KByte &#x3D; 14。如果能接受，可以考虑使用，否则网络将成为瓶颈。</p>
 <p><strong>为什么采用异步单一长连接？</strong><br>因为服务的现状大都是服务提供者少，通常只有几台机器，而服务的消费者多，可能整个网站都在访问该服务。比如Morgan的提供者只有6个，但却有上百个消费者，每天1.5亿次调用，如果采用常规的hessian服务，服务提供者很容易就被压跨，通过单一连接，保证单一消费者不会压死提供者，长连接，减少连接握手验证等，并使用异步IO，复用线程池，防止C10K问题。</p>
 <p>接口增加方法，对客户端无影响，如果该方法不是客户端需要的，客户端不需要重新部署； 输入参数和结果集中增加属性，对客户端无影响，如果客户端并不需要新属性，不用重新部署；</p>
@@ -548,11 +548,11 @@
 </blockquote>
 <h2 id="2-2、rmi协议"><a href="#2-2、rmi协议" class="headerlink" title="2.2、rmi协议"></a>2.2、rmi协议</h2><h3 id="特点-1"><a href="#特点-1" class="headerlink" title="特点"></a>特点</h3><p>Java标准的远程调用协议。</p>
 <ul>
-<li>连接个数：<font color='orange'>多连接</font></li>
-<li>连接方式：<font color='orange'>短连接</font></li>
-<li>传输协议：<font color='orange'>TCP</font></li>
-<li>传输方式：<font color='orange'>同步传输</font></li>
-<li>序列化：<font color='orange'>Java标准二进制序列化</font></li>
+<li>连接个数：多连接</li>
+<li>连接方式：短连接</li>
+<li>传输协议：TCP</li>
+<li>传输方式：同步传输</li>
+<li>序列化：Java标准二进制序列化</li>
 <li>适用范围：传入传出参数数据包大小混合，消费者与提供者个数差不多，可传文件。</li>
 <li>适用场景：常规远程服务方法调用，与原生RMI服务互操作</li>
 </ul>
@@ -579,11 +579,11 @@
 
 <h2 id="2-3、hessian协议"><a href="#2-3、hessian协议" class="headerlink" title="2.3、hessian协议"></a>2.3、hessian协议</h2><h3 id="特点-2"><a href="#特点-2" class="headerlink" title="特点"></a>特点</h3><p>基于Hessian的远程调用协议。Hessian 协议用于集成 Hessian 服务，Hessian 底层采用 Http 通讯，采用Servlet 暴露服务，Dubbo 内嵌 Jetty 作为服务器并实现基于 Hessian 的远程调用协议。</p>
 <ul>
-<li>连接个数：<font color='orange'>多连接</font></li>
-<li>连接方式：<font color='orange'>短连接</font></li>
-<li>传输协议：<font color='orange'>HTTP</font></li>
-<li>传输方式：<font color='orange'>同步传输</font></li>
-<li>序列化：<font color='orange'>表单序列化</font></li>
+<li>连接个数：多连接</li>
+<li>连接方式：短连接</li>
+<li>传输协议：HTTP</li>
+<li>传输方式：同步传输</li>
+<li>序列化：表单序列化</li>
 <li>适用范围：传入传出参数数据包大小混合，提供者比消费者个数多，可用浏览器查看，可用表单或URL传入参数，暂不支持传文件。</li>
 <li>适用场景：需同时给应用程序和浏览器JS使用的服务。</li>
 </ul>
@@ -635,11 +635,11 @@
 <p><font color='red'>注意：使用servlet派发请求协议的端口必须与servlet容器的端口相同， 协议的上下文路径必须与servlet应用的上下文路径相同。</font></p>
 <h2 id="2-4、http协议"><a href="#2-4、http协议" class="headerlink" title="2.4、http协议"></a>2.4、http协议</h2><h3 id="特点-3"><a href="#特点-3" class="headerlink" title="特点"></a>特点</h3><p>基于http表单的远程调用协议。</p>
 <ul>
-<li>连接个数：<font color='orange'>多连接</font></li>
-<li>连接方式：<font color='orange'>短连接</font></li>
-<li>传输协议：<font color='orange'>HTTP</font></li>
-<li>传输方式：<font color='orange'>同步传输</font></li>
-<li>序列化：<font color='orange'>表单序列化</font></li>
+<li>连接个数：多连接</li>
+<li>连接方式：短连接</li>
+<li>传输协议：HTTP</li>
+<li>传输方式：同步传输</li>
+<li>序列化：表单序列化</li>
 <li>适用范围：传入传出参数数据包大小混合，提供者比消费者个数多，可用浏览器查看，可用表单或URL传入参数，暂不支持传文件。</li>
 <li>适用场景：需同时给应用程序和浏览器JS使用的服务。</li>
 </ul>
@@ -664,11 +664,11 @@
 <p><font color='red'>注意：如果使用 servlet 派发请求 协议的端口<code>&lt;dubbo:protocol port=&quot;8080&quot; /&gt;</code>必须与servlet容器的端口相同， 协议的上下文路径<code>&lt;dubbo:protocol contextpath=&quot;foo&quot; /&gt;</code>必须与servlet应用的上下文路径相同。</font></p>
 <h2 id="2-5、webservice协议"><a href="#2-5、webservice协议" class="headerlink" title="2.5、webservice协议"></a>2.5、webservice协议</h2><h3 id="特点-4"><a href="#特点-4" class="headerlink" title="特点"></a>特点</h3><p>基于WebService的远程调用协议</p>
 <ul>
-<li>连接个数：<font color='orange'>多连接</font></li>
-<li>连接方式：<font color='orange'>短连接</font></li>
-<li>传输协议：<font color='orange'>HTTP</font></li>
-<li>传输方式：<font color='orange'>同步传输</font></li>
-<li>序列化：<font color='orange'>SOAP文本序列化</font></li>
+<li>连接个数：多连接</li>
+<li>连接方式：短连接&lt;</li>
+<li>传输协议：HTTP</li>
+<li>传输方式：同步传输</li>
+<li>序列化：SOAP文本序列化</li>
 <li>适用场景：系统集成，跨语言调用</li>
 </ul>
 <h3 id="总结-4"><a href="#总结-4" class="headerlink" title="总结"></a>总结</h3><ol>
@@ -753,7 +753,7 @@ registry.register<span class="token punctuation">(</span>URL.valueOf<span class=
 <p>方法名建议和memcached的标准方法名相同，即：get(key), set(key, value), delete(key)。<br>如果方法名和memcached的标准方法名不相同，则需要配置映射关系：(其中”p:xxx”为spring的标准p标签)</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span><span class="token namespace">dubbo:</span>reference</span> <span class="token attr-name">id</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>cache<span class="token punctuation">"</span></span> <span class="token attr-name">interface</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>com.foo.CacheService<span class="token punctuation">"</span></span> <span class="token attr-name">url</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>memcached://10.20.153.10:11211<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">p:</span>set</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>putFoo<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">p:</span>get</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>getFoo<span class="token punctuation">"</span></span> <span class="token attr-name"><span class="token namespace">p:</span>delete</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>removeFoo<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="2-8、redis协议"><a href="#2-8、redis协议" class="headerlink" title="2.8、redis协议"></a>2.8、redis协议</h2><p>可以通过脚本或监控中心手工填写表单注册redis服务的地址：</p>
+<h2 id="2-8、redis协议"><a href="#2-8、redis协议" class="headerlink" title="2.8、redis协议"></a>2.8、redis协议</h2><p>可通过脚本或监控中心手工填写表单注册redis服务地址：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">RegistryFactory registryFactory <span class="token operator">=</span> ExtensionLoader.getExtensionLoader<span class="token punctuation">(</span>RegistryFactory.class<span class="token punctuation">)</span>.getAdaptiveExtension<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 Registry registry <span class="token operator">=</span> registryFactory.getRegistry<span class="token punctuation">(</span>URL.valueOf<span class="token punctuation">(</span><span class="token string">"zookeeper://10.20.153.10:2181"</span><span class="token punctuation">))</span><span class="token punctuation">;</span>
 registry.register<span class="token punctuation">(</span>URL.valueOf<span class="token punctuation">(</span><span class="token string">"redis://10.20.153.11/com.foo.BarService?category=providers&amp;dynamic=false&amp;application=foo&amp;group=member&amp;loadbalance=consistenthash"</span><span class="token punctuation">))</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span></span></code></pre>
@@ -1090,10 +1090,10 @@ wrapperClass<span class="token punctuation">.</span><span class="token function"
 <p><strong>运行时根据方法参数动态决定使用何种拓展方式就叫 扩展点自适应实例。</strong>其实就是一个扩展点代理，将扩展的选择时机从Dubbo启动时延迟到RPC调用时。Dubbo中每一个扩展点都有一个自适应类，如果没有显式提供，Dubbo会自动为我们创建一个，默认使用Javaassist。</p>
 <p>自适应拓展机制 实现逻辑 如下：</p>
 <ol>
-<li><font color='orange'>首先Dubbo 会为拓展接口生成具有代理功能的代码；</font></li>
-<li><font color='orange'>通过Javassist 或JDK编译这段代码，得到Class 类；</font></li>
-<li><font color='orange'>通过反射创建代理类；</font></li>
-<li><font color='orange'>在代理类中，通过URL对象的参数来确定到底调用哪个实现类；</font></li>
+<li>首先Dubbo 会为拓展接口生成具有代理功能的代码；</li>
+<li>通过Javassist 或JDK编译这段代码，得到Class 类；</li>
+<li>通过反射创建代理类；</li>
+<li>在代理类中，通过URL对象的参数来确定到底调用哪个实现类；</li>
 </ol>
 <h2 id="6-1、Javassist"><a href="#6-1、Javassist" class="headerlink" title="6.1、Javassist"></a>6.1、Javassist</h2><p><strong>Javassist是一个开源的分析、编辑和创建Java字节码的类库。是由东京工业大学的数学和计算机科学系的Shigeru Chiba （千叶滋）创建。</strong></p>
 <p>Javassist是Jboss的一个子项目，其主要优点是简单、快速。直接通过Java编码而不需要了解虚拟机指令就能动态改变类的结构，或者动态生成类。</p>
@@ -1592,7 +1592,7 @@ wrapperClass<span class="token punctuation">.</span><span class="token function"
     <span class="token punctuation">&#125;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><font color='orange'>上面代码要重点关注ZookeeperTransporter 的 connect方法的调用，该方法用于创建 Zookeeper 客户端。创建好Zookeeper 客户端，意味着注册中心的创建过程就结束了。</font></p>
+<p>上面代码要重点关注ZookeeperTransporter 的 connect方法的调用，该方法用于创建 Zookeeper 客户端。创建好Zookeeper 客户端意味着注册中心的创建过程就结束了。</p>
 <p>搞懂了服务注册的本质，接下来就可以去阅读服务注册的代码了。</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">doRegister</span><span class="token punctuation">(</span><span class="token class-name">URL</span> url<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token keyword">try</span> <span class="token punctuation">&#123;</span>

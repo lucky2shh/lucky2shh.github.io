@@ -400,7 +400,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-05
+                    2023-10-06
                 </div>
                 
 
@@ -427,41 +427,41 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1、认识总线"><a href="#1、认识总线" class="headerlink" title="1、认识总线"></a>1、认识总线</h1><h2 id="1-1、总线简介"><a href="#1-1、总线简介" class="headerlink" title="1.1、总线简介"></a>1.1、总线简介</h2><p><font color='orange'>随着处理器和存储器速度越来越快，单总线（当然还有IBM PC总线）很难处理总线交通流量，故新一代总线出现了。</font></p>
+                <h1 id="1、认识总线"><a href="#1、认识总线" class="headerlink" title="1、认识总线"></a>1、认识总线</h1><h2 id="1-1、总线简介"><a href="#1-1、总线简介" class="headerlink" title="1.1、总线简介"></a>1.1、总线简介</h2><p><strong>随着处理器和存储器速度越来越快，单总线（当然还有IBM PC总线）很难处理总线交通流量，故新一代总线出现了</strong>。</p>
 <p>Pentium系统结构图如下所示：</p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/%E5%A4%A7%E5%9E%8BPentium%E7%B3%BB%E7%BB%9F%E7%BB%93%E6%9E%84%E5%9B%BE01.png?token=AIGEF3JXIXM7SQPAGRBS33DEZZVW4" alt="大型Pentium系统结构图01"></p>
-<p><font color='orange'>图中系统有8个总线（高速缓存、局部、内存、PCI、SCSI、USB、IDE和ISA），每个总线传输速度和功能都不同。</font>操作系统必须了解所有总线的配置和管理。有两个主要总线，即早期的IBM PC ISA（Industry Standard Architecture）总线和它的后继者PCI（Peripheral Component Interconnect）总线。</p>
-<h2 id="1-2、ISA-PCI总线"><a href="#1-2、ISA-PCI总线" class="headerlink" title="1.2、ISA&#x2F;PCI总线"></a>1.2、ISA&#x2F;PCI总线</h2><h3 id="1-2-1、ISA总线"><a href="#1-2-1、ISA总线" class="headerlink" title="1.2.1、ISA总线"></a>1.2.1、ISA总线</h3><p><font color='orange'>ISA总线就是原先的IBM PC&#x2F;AT总线，以8.33MHz频率运行，可并行传送2字节，最大速率为16.67MB&#x2F;s。它还可与老式的慢速I&#x2F;O卡向后兼容。</font></p>
-<h3 id="1-2-2、PCI总线"><a href="#1-2-2、PCI总线" class="headerlink" title="1.2.2、PCI总线"></a>1.2.2、PCI总线</h3><p><font color='orange'>PCI总线 作为 ISA总线 的后继者 由Intel公司发布。它可在66MHz频率运行，可并行传送8字节，数据速率为528MB&#x2F;s。</font></p>
+<p><strong>图中系统有8个总线（高速缓存、局部、内存、PCI、SCSI、USB、IDE和ISA），每个总线传输速度和功能都不同</strong>。操作系统必须了解所有总线的配置和管理。有两个主要总线，即早期的IBM PC ISA（Industry Standard Architecture）总线和它的后继者PCI（Peripheral Component Interconnect）总线。</p>
+<h2 id="1-2、ISA-PCI总线"><a href="#1-2、ISA-PCI总线" class="headerlink" title="1.2、ISA&#x2F;PCI总线"></a>1.2、ISA&#x2F;PCI总线</h2><h3 id="1-2-1、ISA总线"><a href="#1-2-1、ISA总线" class="headerlink" title="1.2.1、ISA总线"></a>1.2.1、ISA总线</h3><p><strong>ISA总线就是原先的IBM PC&#x2F;AT总线，以8.33MHz频率运行，可并行传送2字节，最大速率为16.67MB&#x2F;s。它还可与老式的慢速I&#x2F;O卡向后兼容。</strong></p>
+<h3 id="1-2-2、PCI总线"><a href="#1-2-2、PCI总线" class="headerlink" title="1.2.2、PCI总线"></a>1.2.2、PCI总线</h3><p><strong>PCI总线作为ISA总线后继者由Intel公司发布。它可在66MHz频率运行，可并行传送8字节，数据速率为528MB&#x2F;s。</strong></p>
 <blockquote>
 <p>目前多数高速I&#x2F;O设备采用PCI总线。由于有大量I&#x2F;O卡采用PCI总线，甚至许多非Intel计算机也使用PCI总线。现在，使用称为PCI Express的PCI总线升级版的新计算机已经出现。</p>
 </blockquote>
 <p>在这种配置中，CPU通过局部总线与PCI桥芯片对话，而PCI桥芯片通过专门的存储总线与存储器对话，一般速率为100MHz。</p>
 <p>Pentium系统在芯片上有1级高速缓存，在芯片外有一个非常大的2级高速缓存，它通过高速缓存总线与CPU连接。</p>
 <h2 id="1-3、IDE-USB-SCSI总线"><a href="#1-3、IDE-USB-SCSI总线" class="headerlink" title="1.3、IDE&#x2F;USB&#x2F;SCSI总线"></a>1.3、IDE&#x2F;USB&#x2F;SCSI总线</h2><p>系统中有三个专门的总线：IDE、USB和SCSI。</p>
-<h3 id="1-3-1、IDE总线"><a href="#1-3-1、IDE总线" class="headerlink" title="1.3.1、IDE总线"></a>1.3.1、IDE总线</h3><p><font color='orange'>IDE总线 将诸如 磁盘 和 CD-ROM 类的外部设备与系统相连接。IDE总线 是PC&#x2F;AT的 磁盘控制器接口的副产品，现在几乎成了所有基于Pentium系统的硬盘标准，对于CD-ROM也经常是这样。</font></p>
-<h3 id="1-3-2、USB总线"><a href="#1-3-2、USB总线" class="headerlink" title="1.3.2、USB总线"></a>1.3.2、USB总线</h3><h4 id="1-3-2-1、USB总线简介"><a href="#1-3-2-1、USB总线简介" class="headerlink" title="1.3.2.1、USB总线简介"></a>1.3.2.1、USB总线简介</h4><p><font color='orange'>通用串行总线（Universal Serial Bus，USB）是用来 将所有慢速I&#x2F;O设备，诸如键盘和鼠标，与计算机连接。</font></p>
+<h3 id="1-3-1、IDE总线"><a href="#1-3-1、IDE总线" class="headerlink" title="1.3.1、IDE总线"></a>1.3.1、IDE总线</h3><p><strong>IDE总线 将诸如 磁盘 和 CD-ROM 类的外部设备与系统相连接。IDE总线 是PC&#x2F;AT的 磁盘控制器接口的副产品，现在几乎成了所有基于Pentium系统的硬盘标准，对于CD-ROM也经常是这样。</strong></p>
+<h3 id="1-3-2、USB总线"><a href="#1-3-2、USB总线" class="headerlink" title="1.3.2、USB总线"></a>1.3.2、USB总线</h3><h4 id="1-3-2-1、USB总线简介"><a href="#1-3-2-1、USB总线简介" class="headerlink" title="1.3.2.1、USB总线简介"></a>1.3.2.1、USB总线简介</h4><p><strong>通用串行总线（Universal Serial Bus，USB）是用来将所有慢速I&#x2F;O设备，诸如键盘和鼠标，与计算机连接。</strong></p>
 <p>USB总线采用一种小型四针连接器，其中两针为USB设备提供电源。</p>
-<h4 id="1-3-2-2、USB总线特点"><a href="#1-3-2-2、USB总线特点" class="headerlink" title="1.3.2.2、USB总线特点"></a>1.3.2.2、USB总线特点</h4><p><font color='orange'>USB是一种集中式总线，其 根设备 每1ms轮询一次I&#x2F;O设备，看是否有信息收发。</font></p>
+<h4 id="1-3-2-2、USB总线特点"><a href="#1-3-2-2、USB总线特点" class="headerlink" title="1.3.2.2、USB总线特点"></a>1.3.2.2、USB总线特点</h4><p><strong>USB是一种集中式总线，其根设备每1ms轮询一次I&#x2F;O设备，看是否有信息收发。</strong></p>
 <blockquote>
 <p>USB1.0可以处理总计为1.5MB&#x2F;s的负载，而较新的USB2.0总线可以有60MB&#x2F;s的速率。</p>
 <p>所有USB设备共享一个USB设备驱动器，所以无须重新启动就可以给计算机添加USB设备。</p>
 </blockquote>
-<h3 id="1-3-3、SCSI总线"><a href="#1-3-3、SCSI总线" class="headerlink" title="1.3.3、SCSI总线"></a>1.3.3、SCSI总线</h3><p><font color='orange'>SCSI（Small Computer System Interface）总线是一种高速总线，用在高速硬盘、扫描仪和其他需要较大带宽的设备上。它最高可达320MB&#x2F;s。</font></p>
+<h3 id="1-3-3、SCSI总线"><a href="#1-3-3、SCSI总线" class="headerlink" title="1.3.3、SCSI总线"></a>1.3.3、SCSI总线</h3><p><strong>SCSI（Small Computer System Interface）总线是一种高速总线，用在高速硬盘、扫描仪和其他需要较大带宽的设备上。它最高可达320MB&#x2F;s。</strong></p>
 <p>自从其发布以来，SCSI总线一直用在Macintosh系统上，在UNIX和一些基于Intel的系统中也很流行。</p>
-<h3 id="1-3-4、IEEE-1394总线"><a href="#1-3-4、IEEE-1394总线" class="headerlink" title="1.3.4、IEEE 1394总线"></a>1.3.4、IEEE 1394总线</h3><p><font color='orange'>EEE 1394 称为 火线（FireWire），严格来说，火线是苹果公司具体实现1394的名称。</font></p>
-<p><font color='orange'>与USB一样，IEEE 1394 是位串行总线，设计用于最快可达100MB&#x2F;s的包传送中，它适合于将数码相机和类似的多媒体设备连接到计算机上。</font></p>
+<h3 id="1-3-4、IEEE-1394总线"><a href="#1-3-4、IEEE-1394总线" class="headerlink" title="1.3.4、IEEE 1394总线"></a>1.3.4、IEEE 1394总线</h3><p><strong>EEE1394称为火线（FireWire），严格来说，火线是苹果公司具体实现1394的名称。</strong></p>
+<p><strong>与USB一样，IEEE1394是串行总线，设计用于最快可达100MB&#x2F;s的包传送中，它适合于将数码相机和类似的多媒体设备连接到计算机上。</strong></p>
 <p>IEEE 1394与USB不同，不需要集中式控制器。</p>
-<h3 id="1-3-5、总结"><a href="#1-3-5、总结" class="headerlink" title="1.3.5、总结"></a>1.3.5、总结</h3><p><font color='orange'>要想使总线工作起来，则须让 操作系统知道 连接到计算机的外部设备有哪些，并对它们进行配置。</font></p>
+<h3 id="1-3-5、总结"><a href="#1-3-5、总结" class="headerlink" title="1.3.5、总结"></a>1.3.5、总结</h3><p><strong>要想使总线工作起来，需要让操作系统知道连接到计算机的外部设备有哪些，并对它们进行配置。</strong></p>
 <p>这个特点 导致 Intel 和 微软 设计了一种名为 即插即用 的I&#x2F;O系统。</p>
 <blockquote>
 <p>在即插即用之前，每块I&#x2F;O卡有一个固定的中断请求级别和用于其I&#x2F;O寄存器的固定地址，例如，键盘的中断级别是1，并使用0x60至0x64的I&#x2F;O地址，软盘控制器是中断6级并使用0x3F0至0x3F7的I&#x2F;O地址，而打印机是中断7级并使用0x378至0x37A的I&#x2F;O地址等。</p>
 <p>比如，用户买了一块声卡和调制解调卡，并且它们都是可以使用中断4的，但此时，问题发生了，两块卡互相冲突，结果不能在一起工作。解决方案是在每块I&#x2F;O卡上提供DIP开关或跳接器，并指导用户对其进行设置以选择中断级别和I&#x2F;O地址，使其不会与用户系统的任何其他部件冲突。</p>
 </blockquote>
-<p><font color='orange'>即插即用所做的工作是，系统自动地收集有关I&#x2F;O设备的信息，集中赋予中断级别和I&#x2F;O地址，然后通知每块卡所使用的数值。</font>这项工作与计算机的启动密切相关。</p>
-<h2 id="1-4、启动计算机"><a href="#1-4、启动计算机" class="headerlink" title="1.4、启动计算机"></a>1.4、启动计算机</h2><p><font color='orange'>环境描述如下</font>：</p>
+<p><strong>即插即用所做的工作是，系统自动地收集有关I&#x2F;O设备的信息，集中赋予中断级别和I&#x2F;O地址，然后通知每块卡所使用的数值。</strong>这项工作与计算机的启动密切相关。</p>
+<h2 id="1-4、启动计算机"><a href="#1-4、启动计算机" class="headerlink" title="1.4、启动计算机"></a>1.4、启动计算机</h2><p><strong>环境描述如下</strong>：</p>
 <p>在每个Pentium上有一块双亲板（在政治上的纠正影响到计算机产业之前，它们曾称为“母板”）。在双亲板上有一个称为基本输入输出系统（Basic Input Output System，BIOS）的程序。在BIOS内有底层I&#x2F;O软件，包括读键盘、写屏幕、进行磁盘I&#x2F;O以及其他过程。现在这个程序存放在一块闪速RAM中，它是非可易失性的，但是在发现BIOS中有错时可以通过操作系统对它进行更新。</p>
-<p><font color='orange'>Pentium启动过程可简单描述如下</font>：</p>
+<p><strong>Pentium启动过程可简单描述如下</strong>：</p>
 <ol>
 <li><p>计算机启动，BIOS开始运行。</p>
 <ol>
@@ -469,10 +469,10 @@
 <li>扫描ISA和PCI总线并找出连在上面的所有设备。其中有些是遗留设备，且有固定的中断级别和I&#x2F;O地址。即插即用设备也被记录下来。如果现有设备 与 系统上一次启动时的设备不同，则配置新设备。</li>
 </ol>
 </li>
-<li><p>BIOS尝试 在CMOS存储器中的设备清单中 来决定启动设备。</p>
+<li><p>BIOS尝试在CMOS存储器中的设备清单中来决定启动设备。</p>
 <p>用户可以在系统刚启动之后进入一个BIOS配置程序，对设备清单进行修改。典型地，如果存在软盘，则系统试图从软盘启动。如果失败则试用CD-ROM，看看是否有可启动CD-ROM存在。如果软盘和CD-ROM都没有，系统从硬盘启动。启动设备上的第一个扇区被读入内存并执行。这个扇面中包含一个对保存在启动扇面末尾的分区表检查的程序，以确定哪个分区是活动的。然后，从该分区读入第二个启动装载模块。来自活动分区的这个装载模块被读入操作系统，并启动之。</p>
 </li>
-<li><p>操作系统询问BIOS，获得配置信息。</p>
+<li><p>操作系统询问BIOS获得配置信息。</p>
 <p>对于每种设备，系统检查对应的设备驱动程序是否存在。如果没有，系统要求用户插入含有该设备驱动程序的CD-ROM（由设备供应商提供）。一旦有了全部的设备驱动程序，操作系统就将它们调入内核。然后初始化有关表格，创建需要的任何背景进程，并在每个终端上启动登录程序或GUI。</p>
 </li>
 </ol>

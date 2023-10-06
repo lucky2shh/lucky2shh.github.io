@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-06
+                    2023-10-05
                 </div>
                 
 
@@ -431,19 +431,19 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1、并发编程基础"><a href="#1、并发编程基础" class="headerlink" title="1、并发编程基础"></a>1、并发编程基础</h1><h2 id="1-1、线程简介"><a href="#1-1、线程简介" class="headerlink" title="1.1、线程简介"></a>1.1、线程简介</h2><h3 id="1-1-1、重要概念"><a href="#1-1-1、重要概念" class="headerlink" title="1.1.1、重要概念"></a>1.1.1、重要概念</h3><h4 id="1-1-1-1、进程"><a href="#1-1-1-1、进程" class="headerlink" title="1.1.1.1、进程"></a>1.1.1.1、进程</h4><p><font color='orange'>系统资源分配的基本单位。</font></p>
-<p>若要实现多程序并发执行，操作系统需要一个 结构来抽象和表示程序的运行。</p>
+                <h1 id="1、并发编程基础"><a href="#1、并发编程基础" class="headerlink" title="1、并发编程基础"></a>1、并发编程基础</h1><h2 id="1-1、线程简介"><a href="#1-1、线程简介" class="headerlink" title="1.1、线程简介"></a>1.1、线程简介</h2><h3 id="1-1-1、重要概念"><a href="#1-1-1、重要概念" class="headerlink" title="1.1.1、重要概念"></a>1.1.1、重要概念</h3><h4 id="1-1-1-1、进程"><a href="#1-1-1-1、进程" class="headerlink" title="1.1.1.1、进程"></a>1.1.1.1、进程</h4><p><strong>系统资源分配的基本单位</strong>。</p>
+<p>若要实现多程序并发执行，操作系统需要一个结构来抽象和表示程序的运行。</p>
 <ul>
-<li>进程 是 操作系统 对正在运行程序的一种 抽象。</li>
-<li>进程 是 由一组机器指令、数据和堆栈等组成的能独立运行的 活动实体。</li>
+<li>进程 是 操作系统 对正在运行程序的一种抽象。</li>
+<li>进程 是 由一组机器指令、数据和堆栈等组成的能独立运行的活动实体。</li>
 <li>操作系统 可以 同时运行多个进程，多个进程可并发执行和交换信息。</li>
-<li>进程 在运行时 需要资源，如CPU、存储空间和I&#x2F;O设备等。</li>
+<li>进程 在运行时需要资源，如CPU、存储空间和I&#x2F;O设备等。</li>
 </ul>
 <blockquote>
 <p>并发：同一时刻 只有一个进程或线程 在运行，但因 切换较快 而带给人的感觉像同时在运行。</p>
 <p>并行：同一时刻 有多个进程或线程 在运行。</p>
 </blockquote>
-<h4 id="1-1-1-2、线程"><a href="#1-1-1-2、线程" class="headerlink" title="1.1.1.2、线程"></a>1.1.1.2、线程</h4><p><font color='orange'>CPU调度的基本单位。</font></p>
+<h4 id="1-1-1-2、线程"><a href="#1-1-1-2、线程" class="headerlink" title="1.1.1.2、线程"></a>1.1.1.2、线程</h4><p><strong>CPU调度的基本单位</strong>。</p>
 <p>进程调度成本较高（存储空间，CPU，I&#x2F;O资源等，进程现场保护）并发切换效率较低。为提高调度效率，提出了比进程更轻量的线程。</p>
 <ul>
 <li>线程较进程更轻量。</li>
@@ -452,7 +452,7 @@
 <li>线程能并发执行，进一步提高系统并发性。</li>
 <li>同一个进程的多个线程可以共享进程资源。</li>
 </ul>
-<h4 id="1-1-1-3、协程（coroutine）"><a href="#1-1-1-3、协程（coroutine）" class="headerlink" title="1.1.1.3、协程（coroutine）"></a>1.1.1.3、协程（coroutine）</h4><h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p><font color='orange'>最初多数用户线程被设计成协同式调度 （Cooperative Scheduling），故起名为协程（Coroutine）。</font>由于协程会做调用栈保护、恢复工作，故又称为【有栈协程（Stackfull Coroutine）】，相反也有【无栈协程（Stackless Coroutine）】。</p>
+<h4 id="1-1-1-3、协程（coroutine）"><a href="#1-1-1-3、协程（coroutine）" class="headerlink" title="1.1.1.3、协程（coroutine）"></a>1.1.1.3、协程（coroutine）</h4><h5 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h5><p><strong>最初多数用户线程被设计成协同式调度 （Cooperative Scheduling），故起名为协程（Coroutine）</strong>。由于协程会做调用栈保护、恢复工作，故又称为【有栈协程（Stackfull Coroutine）】，相反也有【无栈协程（Stackless Coroutine）】。</p>
 <p>无栈协程的典型应用是各种语言中的await、async、yield等关键字。无栈协程本质上是一种有限状态机，状态保存在闭包里，比有栈协程恢复调用栈要轻量，但功能也相对有限。</p>
 <p>协程主要优势是轻量，无论是有栈协程还是无栈协程，都要比传统内核线程要轻量得多。</p>
 <blockquote>
@@ -470,11 +470,11 @@
 </ul>
 <p>协程主要一个线程执行，与多线程比，协程有如下优势：</p>
 <ul>
-<li><font color='orange'>执行效率极高</font>：子程序切换由程序控制，【没有线程切换】。</li>
-<li><font color='orange'>无需多线程锁机制</font>：因为只有一个线程，也不存在同时写变量冲突。协程中操作共享资源无需加锁，只判断状态即可，故 执行效率 较 多线程 要高。</li>
+<li>执行效率极高：子程序切换由程序控制，【没有线程切换】。</li>
+<li>无需多线程锁机制：因为只有一个线程，也不存在同时写变量冲突。协程中操作共享资源无需加锁，只判断状态即可，故 执行效率 较 多线程 要高。</li>
 </ul>
 <h4 id="1-1-1-4、仟程（fiber）"><a href="#1-1-1-4、仟程（fiber）" class="headerlink" title="1.1.1.4、仟程（fiber）"></a>1.1.1.4、仟程（fiber）</h4><p>代码移植性一直是平台间交互考虑的重点，将应用程序从Unix移植到Windows的过程中会存在一系列问题，增加了移植难度和成本。</p>
-<p><font color='orange'>为了更正确地将代码移植到Windows，Microsoft 在操作系统中增加了纤程（Fiber）。</font>纤程与线程对比，有如下特性：</p>
+<p><strong>为了更正确地将代码移植到Windows，Microsoft 在操作系统中增加了纤程（Fiber）</strong>。纤程与线程对比，有如下特性：</p>
 <ul>
 <li>线程在Windows内核中实现，操作系统会根据系统的调度算法对线程进行调度；纤程在用户模式下实现，内核对纤程一无所知。</li>
 <li>纤程是【轻量级线程】，一个线程可包含一个或多个纤程。</li>
@@ -485,44 +485,44 @@
 </ul>
 <h4 id="1-1-1-5、管程"><a href="#1-1-1-5、管程" class="headerlink" title="1.1.1.5、管程"></a>1.1.1.5、管程</h4><p>临界资源 定义如下：</p>
 <ul>
-<li><font color='orange'>一次只允许一个进程访问的资源；</font></li>
-<li><font color='orange'>多个进程只能互斥访问的资源；</font></li>
+<li>一次只允许一个进程访问的资源；</li>
+<li>多个进程只能互斥访问的资源；</li>
 </ul>
-<p>访问 临界资源 需要 同步，比如 信号量 就是一种 进程同步机制。信号量 要求 每个访问临界资源的进程都具有wait和signal操作。这样使大量的同步操作分散在各个进程中，不仅给系统管理带来了麻烦，且会因同步操作使用不当而导致死锁。为了解决这些问题，管程出现了。</p>
+<p>访问临界资源需要同步，比如 信号量 就是一种 进程同步机制。信号量要求每个访问临界资源的进程都具有wait和signal操作。这样使大量的同步操作分散在各个进程中，不仅给系统管理带来了麻烦，且会因同步操作使用不当而导致死锁。为了解决这些问题，管程出现了。</p>
 <blockquote>
 <p>操作系统中管理的各种软件和硬件资源，均可用 数据结构 抽象地描述其资源特性。利用共享数据结构抽象地表示系统中的共享资源。而把对共享数据结构实施的操作定义为一组过程，如资源的请求和释放过程request和release。进程对共享资源的申请、释放和其他操作，都是通过这组过程来实现，这组过程还可以根据资源情况来选择接受或阻塞进程的访问，确保每次仅有一个进程使用该共享资源，实现临界资源互斥访问。</p>
 </blockquote>
 <p>管程 就是 共享资源的数据结构 和 对该共享数据结构实施的操作 两者组成的 【资源管理程序】。管程 由 【请求和释放临界资源的进程】 所调用。</p>
-<p><font color='orange'>管程 定义了一个 数据结构 和 管理该数据结构的一组操作。</font></p>
-<h3 id="1-1-2、超线程"><a href="#1-1-2、超线程" class="headerlink" title="1.1.2、超线程"></a>1.1.2、超线程</h3><p><font color='orange'>超线程是Intel CPU设计上的一种技术。一个ALU + 两组Registers + PC。</font></p>
-<p>一个CPU物理核同时只能执行一个线程，而线程的切换会消耗大量时间，效率还低。超线程是一个CPU物理核在同一时间几乎可以执行两个线程的技术。</p>
-<h3 id="1-1-3、线程优先级"><a href="#1-1-3、线程优先级" class="headerlink" title="1.1.3、线程优先级"></a>1.1.3、线程优先级</h3><p>如今的操作系统 基本采用【时间片规则】来调度运行线程，操作系统会分出一个个时间片，然后分配给每个线程，当线程的时间片用完了就会发生线程调度，并等待着下次分配。线程得到时间片的多少就决定了线程能使用处理器资源的多少，而线程优先级就可以一定程度上决定线程得到时间片的多少。</p>
-<p><font color='orange'>Java线程可以通过整型变量<code>priority</code>来控制优先级，优先级范围从1至10。创建线程时可通过方法<code>setPriority(int)</code>来设置优先级，默认优先级为5，优先级高的线程得到时间片的数量要多于优先级低的线程。</font></p>
+<p><strong>管程定义了一个数据结构和管理该数据结构的一组操作</strong>。</p>
+<h3 id="1-1-2、超线程"><a href="#1-1-2、超线程" class="headerlink" title="1.1.2、超线程"></a>1.1.2、超线程</h3><p><strong>超线程（Hyper-Threading，简写HT）是Intel公司为CPU设计的一项技术，旨在提高每个处理器核心的性能</strong>。超线程技术允许单个物理核心模拟多个逻辑核心，从而能够并行处理多个线程。</p>
+<p>背景：传统单核CPU中，当一个线程等待数据时核心会处于闲置状态。超线程的出现就是为了利用这种等待时间，使得CPU可以处理另一个线程，提高CPU的利用率。</p>
+<p>工作原理：</p>
+<ol>
+<li>超线程技术允许CPU具有多于一个的线程执行单元，使得单个物理核心可以执行多个线程。</li>
+<li>当一个线程因等待数据或其它原因被阻塞时，另一个线程可以使用该核心的资源，增加了核心利用率。</li>
+<li>通过超线程技术进一步提升了处理器的工作效率和吞吐量。</li>
+</ol>
+<h3 id="1-1-3、线程优先级"><a href="#1-1-3、线程优先级" class="headerlink" title="1.1.3、线程优先级"></a>1.1.3、线程优先级</h3><p>如今的操作系统基本<strong>采用时间片规则来调度运行线程</strong>，操作系统会分出一个个时间片，然后分配给每个线程，当线程的时间片用完了就会发生线程调度，并等待着下次分配。线程得到时间片的多少就决定了线程能使用处理器资源的多少，而线程优先级就可以一定程度上决定线程得到时间片的多少。</p>
+<p><strong>Java线程可通过变量<code>priority</code>来控制优先级，优先级范围从1至10。创建线程时可通过方法<code>setPriority(int)</code>来设置优先级，默认优先级为5，优先级高的线程得到时间片的数量要多于优先级低的线程</strong>。</p>
 <p>针对频繁阻塞（休眠或I&#x2F;O操作）的线程需要设置较高的优先级，而偏重计算（需要较多CPU时间）的线程则可以设置较低的优先级，确保处理器不会被独占。</p>
 <p><font color="red">注意：线程优先级的设定并非一定起作用，因为操作系统不一定会重视。</font></p>
 <h3 id="1-1-4、线程状态"><a href="#1-1-4、线程状态" class="headerlink" title="1.1.4、线程状态"></a>1.1.4、线程状态</h3><p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20210426211305027.png?token=AIGEF3PT62JG3PZWEBS73BLEZZXC4" alt="image-20210426211305027"></p>
 <p>Java线程在整个生命周期中有6种不同的状态，某一个时间， 线程只能处于其中的一个状态。</p>
 <ol>
-<li><p><font color='orange'>NEW（初始状态）</font></p>
-<p>线程被构建，但没有调用start方法。</p>
+<li><p><strong>NEW（初始状态）</strong>：线程被构建，但没有调用start方法。</p>
 </li>
-<li><p><font color='orange'>RUNNABLE（运行状态）</font></p>
-<p>Java线程将就绪和运行两种状态统称为“运行中”。</p>
+<li><p><strong>RUNNABLE（运行状态）</strong>：Java线程将就绪和运行两种状态统称为“运行中”。</p>
 </li>
-<li><p><font color='orange'>BLOCKED（阻塞状态）</font></p>
-<p>表示线程阻塞于锁。</p>
+<li><p><strong>BLOCKED（阻塞状态）</strong>：表示线程阻塞于锁。</p>
 </li>
-<li><p><font color='orange'>WAITING（等待状态）</font></p>
-<p>表示当前线程 需要等待 其它线程做出一些特定操作（通知或中断）。</p>
+<li><p><strong>WAITING（等待状态）</strong>：表示当前线程需要等待其它线程做出一些特定操作（通知或中断）。</p>
 </li>
-<li><p><font color='orange'>TIME_WAITING（超时等待状态）</font></p>
-<p>该状态不同于WAITING，它可以在指定时间内自动返回。</p>
+<li><p><strong>TIME_WAITING（超时等待状态）</strong>：该状态不同于WAITING，它可以在指定时间内自动返回。</p>
 </li>
-<li><p><font color='orange'>TERMINATED（终止状态）</font></p>
-<p>表示当前线程已经执行完毕。</p>
+<li><p><strong>TERMINATED（终止状态）</strong>：表示当前线程已经执行完毕。</p>
 </li>
 </ol>
-<h3 id="1-1-5、daemon线程"><a href="#1-1-5、daemon线程" class="headerlink" title="1.1.5、daemon线程"></a>1.1.5、daemon线程</h3><p>Daemon（守护）线程是一种支持型线程，因为它主要被用于 程序后台调度及支持性工作。当一个Java虚拟机中不存在非Daemon线程时，Java虚拟机将会退出。可以通过调用<code>Thread.setDaemon(true)</code>将线程设置为Daemon线程。</p>
+<h3 id="1-1-5、daemon线程"><a href="#1-1-5、daemon线程" class="headerlink" title="1.1.5、daemon线程"></a>1.1.5、daemon线程</h3><p>Daemon（守护）线程是一种支持型线程，主要被用于程序后台调度及支持性工作。当Java虚拟机中不存在非Daemon线程时，Java虚拟机将会退出。可通过调用<code>Thread.setDaemon(true)</code>将线程设置为Daemon线程。</p>
 <p><font color='red'>注意：Daemon属性需要在线程启动之前设置。且Java虚拟机退出时Daemon线程中的finally块并不一定会执行。</font></p>
 <h2 id="1-2、启动终止线程"><a href="#1-2、启动终止线程" class="headerlink" title="1.2、启动终止线程"></a>1.2、启动终止线程</h2><h3 id="1-2-1、启动线程"><a href="#1-2-1、启动线程" class="headerlink" title="1.2.1、启动线程"></a>1.2.1、启动线程</h3><h4 id="1-2-1-1、启动线程的方式"><a href="#1-2-1-1、启动线程的方式" class="headerlink" title="1.2.1.1、启动线程的方式"></a>1.2.1.1、启动线程的方式</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>concurrent<span class="token punctuation">.</span></span><span class="token class-name">Callable</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">java<span class="token punctuation">.</span>util<span class="token punctuation">.</span>concurrent<span class="token punctuation">.</span></span><span class="token class-name">ExecutorService</span></span><span class="token punctuation">;</span>
@@ -605,11 +605,11 @@
 <p>线程通过检查自身是否被中断来进行响应，方法<code>isInterrupted()</code>返回线程是否被中断，静态方法<code>Thread.interrupted()</code>返回当前中断状态，并将中断标识设为false。</p>
 <p><font color='red'>注意：终结状态下的线程，即使曾经被中断过，那么方法 isInterrupted() 依旧会返回false。</font></p>
 <h3 id="1-2-3、过期方法"><a href="#1-2-3、过期方法" class="headerlink" title="1.2.3、过期方法"></a>1.2.3、过期方法</h3><p>suspend()、resume() 和 stop()方法可以实现线程的暂停、恢复和终止。但这些API已经过期，不建议使用。</p>
-<p>不推荐原因：<font color='red'>调用方法suspend()后，线程不会释放已经占有的资源（比如锁），而会占有着资源进入睡眠状态，这样易引发死锁问题。stop()方法在终结 一个线程时 不能保证 正常释放线程资源。</font></p>
+<p>不推荐原因：<font color='red'>调用方法suspend()后线程会占用资源进入睡眠状态，易引发死锁问题。stop()方法在终结线程时不能保证正常释放线程资源。</font></p>
 <blockquote>
 <p>暂停和恢复操作可以用 等待&#x2F;通知 机制来替代。</p>
 </blockquote>
-<h3 id="1-2-4、安全终止线程"><a href="#1-2-4、安全终止线程" class="headerlink" title="1.2.4、安全终止线程"></a>1.2.4、安全终止线程</h3><p><font color='orange'>通过 标识位或中断操作  可以实现线程终止时有机会 清理资源，而非立即停止。这种方法更加安全和优雅。</font> </p>
+<h3 id="1-2-4、安全终止线程"><a href="#1-2-4、安全终止线程" class="headerlink" title="1.2.4、安全终止线程"></a>1.2.4、安全终止线程</h3><p><strong>通过 标识位或中断操作  可以实现线程终止时有机会清理资源，而非立即停止。这种方法更加安全和优雅</strong>。</p>
 <h3 id="1-2-5、小结"><a href="#1-2-5、小结" class="headerlink" title="1.2.5、小结"></a>1.2.5、小结</h3><p>可中断的场景如下：</p>
 <ol>
 <li>Lock</li>
@@ -621,14 +621,14 @@
 <li>synchronized锁</li>
 </ol>
 <h2 id="1-3、线程间通信"><a href="#1-3、线程间通信" class="headerlink" title="1.3、线程间通信"></a>1.3、线程间通信</h2><h3 id="1-3-1、volatile-synchronized"><a href="#1-3-1、volatile-synchronized" class="headerlink" title="1.3.1、volatile &#x2F; synchronized"></a>1.3.1、volatile &#x2F; synchronized</h3><ul>
-<li><p><font color='orange'>volatile</font></p>
-<p>关键字volatile 可修饰字段，其作用是 访问该变量时 需要 从共享内存中获取，而对该变量的修改必须同步刷新至共享内存，它能保证所有线程对变量访问的【可见性】。</p>
+<li><p>volatile</p>
+<p>关键字volatile 可修饰字段，访问该变量时需要从共享内存中获取，对该变量的修改必须同步刷新至共享内存，它能保证所有线程对变量访问的可见性。</p>
 </li>
-<li><p><font color='orange'>synchronized</font></p>
-<p>关键字synchronized可修饰方法 或 以同步块形式使用，可以保证 多个线程在同一时刻，只能有一个线程处于方法或者同步块中，它保证了线程对变量访问的【可见性和排他性】。</p>
+<li><p>synchronized</p>
+<p>关键字synchronized可修饰方法 或 以同步块形式使用，可保证多个线程在同一时刻只能有一个线程处于方法或者同步块中，它保证了线程对变量访问的可见性和排他性。</p>
 </li>
 </ul>
-<h3 id="1-3-2、等待-通知机制及范式"><a href="#1-3-2、等待-通知机制及范式" class="headerlink" title="1.3.2、等待&#x2F;通知机制及范式"></a>1.3.2、等待&#x2F;通知机制及范式</h3><h4 id="1-3-2-1、等待通知机制"><a href="#1-3-2-1、等待通知机制" class="headerlink" title="1.3.2.1、等待通知机制"></a>1.3.2.1、等待通知机制</h4><p>等待&#x2F;通知机制是指：<font color='orange'>线程A调用对象O的wait()方法后会进入等待状态，线程B调用对象O的notify()或notifyAll()方法后会通知线程A从对象O的wait()方法返回，进而执行后续操作。</font></p>
+<h3 id="1-3-2、等待-通知机制及范式"><a href="#1-3-2、等待-通知机制及范式" class="headerlink" title="1.3.2、等待&#x2F;通知机制及范式"></a>1.3.2、等待&#x2F;通知机制及范式</h3><h4 id="1-3-2-1、等待通知机制"><a href="#1-3-2-1、等待通知机制" class="headerlink" title="1.3.2.1、等待通知机制"></a>1.3.2.1、等待通知机制</h4><p>等待&#x2F;通知机制是指：<strong>线程A调用对象O的wait()方法后会进入等待状态，线程B调用对象O的notify()或notifyAll()方法后会通知线程A结束等待继续执行</strong>。</p>
 <p>调用wait()、notify()、notifyAll()时的注意事项如下：</p>
 <ol>
 <li>使用 wait()、notify() 和 notifyAll() 时需要先对调用对象加锁。</li>
@@ -637,33 +637,31 @@
 <li>notify()方法会将等待队列中的一个等待线程移到同步队列中，而notifyAll() 方法会作用于全部线程，被移动线程的状态会由WAITING变为 BLOCKED。</li>
 <li>获得调用对象的锁后才能从wait()方法返回。</li>
 </ol>
-<h4 id="1-3-2-2、等待通知范式"><a href="#1-3-2-2、等待通知范式" class="headerlink" title="1.3.2.2、等待通知范式"></a>1.3.2.2、等待通知范式</h4><p><font color='orange'>范式分为两部分：等待方（消费者）、通知方（生产者）。</font></p>
-<ul>
-<li>等待方<ol>
+<h4 id="1-3-2-2、等待通知范式"><a href="#1-3-2-2、等待通知范式" class="headerlink" title="1.3.2.2、等待通知范式"></a>1.3.2.2、等待通知范式</h4><p><strong>范式分为两部分：等待方（消费者）、通知方（生产者）</strong>。</p>
+<p>（1）等待方</p>
+<ol>
 <li>获取对象的锁；</li>
 <li>如果条件不满足，那么调用对象的wait方法，被通知后仍要检查条件；</li>
 <li>条件满足则执行对应的逻辑；</li>
 </ol>
-</li>
-<li>通知方<ol>
+<p>（2）通知方</p>
+<ol>
 <li>获得对象的锁；</li>
 <li>改变条件；</li>
 <li>通知所有等待在对象上的线程；</li>
 </ol>
-</li>
-</ul>
-<h3 id="1-3-3、管道输入-输出流"><a href="#1-3-3、管道输入-输出流" class="headerlink" title="1.3.3、管道输入&#x2F;输出流"></a>1.3.3、管道输入&#x2F;输出流</h3><p><font color='orange'>管道输入&#x2F;输出流和普通的文件输入&#x2F;输出流或者网络输入&#x2F;输出流的不同之处在于，它主要用于线程之间的数据传输，而传输的媒介为内存。</font></p>
+<h3 id="1-3-3、管道输入-输出流"><a href="#1-3-3、管道输入-输出流" class="headerlink" title="1.3.3、管道输入&#x2F;输出流"></a>1.3.3、管道输入&#x2F;输出流</h3><p><strong>管道输入&#x2F;输出流和普通的文件输入&#x2F;输出流或者网络输入&#x2F;输出流的不同之处在于，基于内存实现线程间的数据传输</strong>。</p>
 <p>管道输入&#x2F;输出流主要包括了4种具体实现：</p>
 <ul>
 <li>面向字节：PipedInputStream、PipedOutputStream；</li>
 <li>面向字符：PipedReader、PipedWriter；</li>
 </ul>
-<h3 id="1-3-4、Thread-join"><a href="#1-3-4、Thread-join" class="headerlink" title="1.3.4、Thread.join"></a>1.3.4、Thread.join</h3><p><font color='orange'>线程A执行thread.join()方法表示：线程A等待thread线程终止之后才从thread.join()返回。</font></p>
+<h3 id="1-3-4、Thread-join"><a href="#1-3-4、Thread-join" class="headerlink" title="1.3.4、Thread.join"></a>1.3.4、Thread.join</h3><p><strong>线程A执行thread.join()方法表示：线程A等待thread线程终止之后才从thread.join()返回</strong>。</p>
 <p>除了<code>join()</code>方法外，还提供了<code>join(long millis)</code>和<code>join(long millis, int nanos)</code>两个超时方法。两个超时方法作用：如果线程在给定的超时时间内没有终止，那么会直接返回。</p>
 <h3 id="1-3-5、ThreadLocal"><a href="#1-3-5、ThreadLocal" class="headerlink" title="1.3.5、ThreadLocal"></a>1.3.5、ThreadLocal</h3><p>ThreadLocal是一个以ThreadLocal对象为键、任意对象为值的存储结构。该结构存在于线程上，故一个线程可以根据一个ThreadLocal对象来查询绑定在该线程上的数据。</p>
 <p>对于线程A，可以通过A.set(T)方法来设置一个值，然后通过A.get()方法获取到原先设置的值。</p>
-<h1 id="2、CPU"><a href="#2、CPU" class="headerlink" title="2、CPU"></a>2、CPU</h1><h2 id="2-1、缓存行"><a href="#2-1、缓存行" class="headerlink" title="2.1、缓存行"></a>2.1、缓存行</h2><h3 id="2-1-1、概述"><a href="#2-1-1、概述" class="headerlink" title="2.1.1、概述"></a>2.1.1、概述</h3><p><font color="orange">CPU缓存行是计算机体系架构中的一个概念，用于描述主存储器和CPU缓存之间的数据传输单位。</font>缓存行是CPU缓存中最小的可寻址单位，也是一次从主存储器中读取数据块的大小。</p>
-<p><strong>缓存行的大小是固定的，通常为32字节或64字节，具体取决于CPU的设计。缓存行是按连续的内存地址来分割主存储器的，且在CPU缓存中以相同的方式进行组织。</strong></p>
+<h1 id="2、CPU"><a href="#2、CPU" class="headerlink" title="2、CPU"></a>2、CPU</h1><h2 id="2-1、缓存行"><a href="#2-1、缓存行" class="headerlink" title="2.1、缓存行"></a>2.1、缓存行</h2><h3 id="2-1-1、概述"><a href="#2-1-1、概述" class="headerlink" title="2.1.1、概述"></a>2.1.1、概述</h3><p><strong>CPU缓存行是计算机体系架构中的一个概念，用于描述主存储器和CPU缓存之间的数据传输单位</strong>。缓存行是CPU缓存中最小的可寻址单位，也是一次从主存储器中读取数据块的大小。</p>
+<p><strong>缓存行的大小是固定的，通常为32字节或64字节，具体取决于CPU设计。缓存行是按连续的内存地址来分割主存储器，且在CPU缓存中以相同方式进行组织。</strong></p>
 <blockquote>
 <p>为何CPU缓存行大小通常为64字节？原因分析有以下几点：</p>
 <ul>
@@ -683,20 +681,16 @@
 <h3 id="2-2-2、ring-0-1-2-3"><a href="#2-2-2、ring-0-1-2-3" class="headerlink" title="2.2.2、ring 0  1  2  3"></a>2.2.2、ring 0  1  2  3</h3><p><strong>CPU Ring 0、1、2、3是一种权限级别划分，这种划分通常用于X86体系结构中的操作系统和处理器。</strong></p>
 <p>X86体系结构中，特权级别使用4个环（Ring）来表示，每个环对应一种特权级别，这些环被称为Ring0、1、2、3，也被称为内核态、系统态、用户态、应用态。</p>
 <ul>
-<li><p>Ring 0（内核态）</p>
-<p>Ring 0 是操作系统内核运行的特权级别，拥有最高的特权和访问权限。系统内核可以执行所有指令，访问系统的所有资源和硬件设备。</p>
+<li><p><strong>Ring 0（内核态）</strong>：是操作系统内核运行的特权级别，拥有最高的特权和访问权限。系统内核可以执行所有指令，访问系统的所有资源和硬件设备。</p>
 </li>
-<li><p>Ring 1（系统态）</p>
-<p>Rng 1 是保留给操作系统的第二特权级别，拥有较高的特权和访问权限。系统可以执行受限的指令集和访问部分授权的资源。</p>
+<li><p><strong>Ring 1（系统态）</strong>：是保留给操作系统的第二特权级别，拥有较高的特权和访问权限。系统可以执行受限的指令集和访问部分授权的资源。</p>
 </li>
-<li><p>Ring 2（用户态）</p>
-<p>Rng 1 是保留给操作系统的第三特权级别，比Ring 3有更高的特权。系统可以执行受限的指令集和访问部分授权的资源。</p>
+<li><p><strong>Ring 2（用户态）</strong>：是保留给操作系统的第三特权级别，比Ring 3有更高的特权。系统可以执行受限的指令集和访问部分授权的资源。</p>
 </li>
-<li><p>Ring 3（应用态）</p>
-<p>Ring 3 是用户程序运行的特权级别，拥有最低的特权和访问权限。程序只能执行授权的指令集，访问有限的资源和执行授权动作。</p>
+<li><p><strong>Ring 3（应用态）</strong>：是用户程序运行的特权级别，拥有最低的特权和访问权限。程序只能执行授权的指令集，访问有限的资源和执行授权动作。</p>
 </li>
 </ul>
-<p>CPU运行级别会在 Ring3 和 Ring0 间的进行切换称为<strong>用户态和内核态的切换</strong>。   </p>
+<p><strong>CPU运行级别在 Ring3 和 Ring0 间的切换称为用户态和内核态的切换</strong>。   </p>
 <h3 id="2-2-3、上下文切换"><a href="#2-2-3、上下文切换" class="headerlink" title="2.2.3、上下文切换"></a>2.2.3、上下文切换</h3><h4 id="2-2-3-1、简介"><a href="#2-2-3-1、简介" class="headerlink" title="2.2.3.1、简介"></a>2.2.3.1、简介</h4><p>CPU通过时间片分配算法来循环执行任务，当前任务执行一个时间片后会切换到下一个 任务。在切换前会保存上一个任务的状态，以便下次切换回这个任务时，可以再加载这个任务的状态。所以<strong>任务从保存到再加载的过程就是一次上下文切换。</strong></p>
 <p>上下文切换 会影响 多线程执行速度。</p>
 <h4 id="2-2-3-2、测试上下文切换"><a href="#2-2-3-2、测试上下文切换" class="headerlink" title="2.2.3.2、测试上下文切换"></a>2.2.3.2、测试上下文切换</h4><p>使用<code>Lmbench3</code>可以测量上下文切换时长。使用<code>vmstat</code>可以测量上下文切换次数。</p>
@@ -716,53 +710,47 @@
 <li><p>重新启动服务并测试查看效果。</p>
 </li>
 </ol>
-<h2 id="2-3、缓存一致性协议"><a href="#2-3、缓存一致性协议" class="headerlink" title="2.3、缓存一致性协议"></a>2.3、缓存一致性协议</h2><h3 id="2-3-1、种类"><a href="#2-3-1、种类" class="headerlink" title="2.3.1、种类"></a>2.3.1、种类</h3><p>协议类型主要有：MSI、MESI、MOSI、Synapse Firefly Dragon。intel CPU 使用的是MESI协议。</p>
+<h2 id="2-3、缓存一致性协议"><a href="#2-3、缓存一致性协议" class="headerlink" title="2.3、缓存一致性协议"></a>2.3、缓存一致性协议</h2><h3 id="2-3-1、种类"><a href="#2-3-1、种类" class="headerlink" title="2.3.1、种类"></a>2.3.1、种类</h3><p>协议类型主要有：MSI、MESI、MOSI、Synapse Firefly Dragon。<strong>intel CPU 使用的是MESI协议</strong>。</p>
 <h3 id="2-3-2、MESI"><a href="#2-3-2、MESI" class="headerlink" title="2.3.2、MESI"></a>2.3.2、MESI</h3><p>M、E、S、I 标记 高速缓存行 四种独占状态（使用两个附加位编码）：</p>
 <ol>
-<li><font color='orange'>修改（M）</font>：高速缓存行仅存在于当前高速缓存中，并且是脏的 - 它已从主存储器中的值修改（M状态）。在允许对（不再有效）主存储器状态的任何其他读取之前，需要高速缓存在将来的某个时间将数据写回主存储器。回写将该行更改为共享状态（S）。</li>
-<li><font color='orange'>独占（E）</font>：缓存行仅存在于当前缓存中，但是干净 - 它与主内存匹配。它可以随时更改为共享状态，以响应读取请求。或者，可以在写入时将其改变为修改状态。</li>
-<li><font color='orange'>共享（S）</font>：表示此高速缓存行可能存储在计算机的其他高速缓存中并且是干净的 - 它与主存储器匹配。可以随时丢弃该行（更改为无效状态）。</li>
-<li><font color='orange'>无效（I）</font>：表示此缓存行无效（未使用）。</li>
+<li><strong>修改（M）</strong>：高速缓存行仅存在于当前高速缓存中，并且是脏的 - 它已从主存储器中的值修改（M状态）。在允许对（不再有效）主存储器状态的任何其他读取之前，需要高速缓存在将来的某个时间将数据写回主存储器。回写将该行更改为共享状态（S）。</li>
+<li><strong>独占（E）</strong>：缓存行仅存在于当前缓存中，但是干净 - 它与主内存匹配。它可以随时更改为共享状态，以响应读取请求。或者，可以在写入时将其改变为修改状态。</li>
+<li><strong>共享（S）</strong>：表示此高速缓存行可能存储在计算机的其他高速缓存中并且是干净的 - 它与主存储器匹配。可以随时丢弃该行（更改为无效状态）。</li>
+<li><strong>无效（I）</strong>：表示此缓存行无效（未使用）。</li>
 </ol>
 <p>对于任何给定的高速缓存对，给定高速缓存行的允许状态如图：</p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20201008205937219.png?token=AIGEF3IXUJ63WEXUW5FGKLDEZZXHC" alt="image-20201008205937219"></p>
-<p><font color='orange'>当块被标记为M（已修改）时，其他高速缓存中关于该块的副本将会被标记为I（无效）。</font></p>
+<p><strong>当块被标记为M（已修改）时，其他高速缓存中关于该块的副本将会被标记为I（无效）</strong>。</p>
 <h3 id="2-3-3、优缺点"><a href="#2-3-3、优缺点" class="headerlink" title="2.3.3、优缺点"></a>2.3.3、优缺点</h3><h4 id="优点"><a href="#优点" class="headerlink" title="优点"></a>优点</h4><p>MESI多了一个E——“独占”状态。独占状态有许多优点。</p>
 <p>加入独占状态的缘由：</p>
 <ol>
 <li>对于“某个处理器需要读取其他处理器没有的块然后写入它”这种情况，会导致 MSI 下发生的两个总线事务（首先是BusRd请求，然后是BusRdX请求）中的第二个请求事务失效。而 MESI 通过添加Exclusive状态解决了这个问题。</li>
-<li>MSI不适用于顺序执行的应用程序，而MESI适用于高度并行的应用程序。</li>
+<li>MSI不适用于顺序执行的应用程序，MESI适用于高度并行的应用程序。</li>
 </ol>
 <h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p><font color='red'>如果由特定块上的各种高速缓存执行 连续读取和写入 操作，则必须每次都将数据刷新到总线上。MOESI协议克服了这一问题。</font></p>
 <h2 id="2-4、内存屏障"><a href="#2-4、内存屏障" class="headerlink" title="2.4、内存屏障"></a>2.4、内存屏障</h2><h3 id="2-4-1、硬件屏障"><a href="#2-4-1、硬件屏障" class="headerlink" title="2.4.1、硬件屏障"></a>2.4.1、硬件屏障</h3><ul>
-<li><font color='orange'>sfence</font>：sava，sfence指令前写 先于 sfence指令后写。</li>
-<li><font color='orange'>lfence</font>：load，lfence指令前读 先于 lfence指令后读。</li>
-<li><font color='orange'>mfence</font>：modify&#x2F;mix，mfence指令前读写 先于 mfence指令后读写。</li>
+<li>sfence：sava，sfence指令前写 先于 sfence指令后写。</li>
+<li>lfence：load，lfence指令前读 先于 lfence指令后读。</li>
+<li>mfence：modify&#x2F;mix，mfence指令前读写 先于 mfence指令后读写。</li>
 </ul>
 <h3 id="2-4-2、JVM内存屏障"><a href="#2-4-2、JVM内存屏障" class="headerlink" title="2.4.2、JVM内存屏障"></a>2.4.2、JVM内存屏障</h3><p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20200902211143739.png?token=AIGEF3JUF3VDP2K4ZX3FWR3EZZXII" alt="image-20200902211143739"></p>
 <h1 id="3、JAVA对象"><a href="#3、JAVA对象" class="headerlink" title="3、JAVA对象"></a>3、JAVA对象</h1><h2 id="3-1、JAVA对象组成"><a href="#3-1、JAVA对象组成" class="headerlink" title="3.1、JAVA对象组成"></a>3.1、JAVA对象组成</h2><h3 id="3-1-1、对象结构"><a href="#3-1-1、对象结构" class="headerlink" title="3.1.1、对象结构"></a>3.1.1、对象结构</h3><p>Java对象保存在内存中时，由以下三部分组成：</p>
-<ol>
-<li><p><font color='orange'>对象头</font></p>
+<p><strong>（1）对象头</strong></p>
 <ul>
 <li>普通对象头：无压缩16字节，压缩后12字节；</li>
 <li>数组对象头：无压缩24字节，压缩后16字节；</li>
 </ul>
-</li>
-<li><p><font color='orange'>实例数据</font></p>
+<p><strong>（2）实例数据</strong></p>
 <p>HotSpot中，对象的实例数据会在对象头后分配空间。</p>
 <p>字段的分配顺序受源码声明顺序以及HotSpot分配策略的影响。无论哪种分配策略，宽度相同的字段总是相邻分配的；不同宽度间的字段可能存在对其填充；</p>
 <p>笼统说，基类声明的实例字段会出现在派生类声明的实例字段之前。但开启指针压缩后，派生类的较窄字段可能会插入到基类实例字段之间的对其填充部分。</p>
 <p>相关参数：FieldsAllocationStyle CompactFields。</p>
-</li>
-<li><p><font color='orange'>对齐填充（使得最终对象大小是8的倍数）</font></p>
+<p><strong>（3）对齐填充（使得最终对象大小是8的倍数）</strong></p>
 <p>HotSpot中，GC堆上的对象要求在8字节边界上分配；也就是说对象的起始地址必须是8的倍数，对象占用的空间也必须是8的倍数。</p>
 <p>若对象时机需要的大小不足8的倍数，则用0填充不足的部分，直到8字节边界为止。</p>
 <p>对齐填充可能出现在不同宽度的字段之间，也可能出现在对象的末尾；或者当不存在未对齐的数据时则不会出现对齐填充。</p>
-</li>
-</ol>
 <p>Java对象头由三部分组成：</p>
-<ol>
-<li><p><font color='orange'>Mark Word（普通对象头无压缩为8字节，压缩后不变；数组对象头为8字节；）</font></p>
+<p><strong>（1）Mark Word（普通对象头无压缩为8字节，压缩后不变；数组对象头为8字节；）</strong></p>
 <p>HotSpot中，GC堆上的对象需要维持一些状态信息，如：</p>
 <ul>
 <li>身份哈希码（identity hash code）</li>
@@ -773,15 +761,11 @@
 <li>…….</li>
 </ul>
 <p>该部分会根据对象当前状态有选择性的记录其中一部分。</p>
-</li>
-<li><p><font color='orange'>Klass Point（普通对象头无压缩为8字节，压缩后4字节；数组对象头4字节）</font></p>
+<p><strong>（2）Klass Point（普通对象头无压缩为8字节，压缩后4字节；数组对象头4字节）</strong></p>
 <p>开启压缩功能参数：<code>-XX:+UseCompressedClassPointers</code>。</p>
 <p>HotSpot中，堆中的对象从C++角度看都是oopDesc子类的实例。每个对象都有一个_klass字段，指向一个描述自身的元数据的对象。</p>
 <p>Java对象与数组的Klass并不是Java语言级的java.lang.class。Klass用于运行，而java.lang.class用于Java的反射API；前者中有_java_mirror字段指向后者。</p>
-</li>
-<li><p><font color='orange'>数组长度（数组对象才会存在该项）（数组对象长度占用4字节）</font></p>
-</li>
-</ol>
+<p><strong>（3）数组长度（数组对象才会存在该项）（数组对象长度占用4字节）</strong></p>
 <h3 id="3-1-2、Mark-Word"><a href="#3-1-2、Mark-Word" class="headerlink" title="3.1.2、Mark Word"></a>3.1.2、Mark Word</h3><p>64位如下：</p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20230805145739393.png?token=AIGEF3L3JWHMKR3UAOTMM33EZZXJU" alt="image-20230805145739393"></p>
 <p>32位如下：</p>
@@ -789,10 +773,10 @@
 <p>对于hashcode值来说，存在两种情况：</p>
 <p><strong>（1）没有重写hashcode方法</strong></p>
 <p>没有重写过hashcode方法时调用System.identityHashCode(…)方法可以拿到由os:random生成的hashcode。</p>
-<p>os::random生成hashcode的规则为：next_rand &#x3D; (16807seed) mod (2^31 - 1)，因此可以在对象的markword中用31位空间存储它。</p>
+<p>os::random生成hashcode的规则为：<code>next_rand = (16807seed) mod (2^31 - 1)</code>，因此可以在对象的markword中用31位空间存储它。</p>
 <p><strong>（2）重写过hashcode方法</strong></p>
 <p>重写过的hashcode方法其计算结果不会存储在这里。</p>
-<h3 id="3-1-3、测试案例"><a href="#3-1-3、测试案例" class="headerlink" title="3.1.3、测试案例"></a>3.1.3、测试案例</h3><p>工具：JOL &#x3D; Java Object Layout</p>
+<h3 id="3-1-3、测试案例"><a href="#3-1-3、测试案例" class="headerlink" title="3.1.3、测试案例"></a>3.1.3、测试案例</h3><p>工具：JOL（Java Object Layout）</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependencies</span><span class="token punctuation">></span></span>
     <span class="token comment">&lt;!-- https://mvnrepository.com/artifact/org.openjdk.jol/jol-core --></span>
     <span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>dependency</span><span class="token punctuation">></span></span>
@@ -825,20 +809,20 @@
 <span class="token comment">//  unused:21 size:35 -->| cms_free:1 unused:7 ------------------>| (COOPs &amp;&amp; CMS free block)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <h2 id="3-2、Java数据类型"><a href="#3-2、Java数据类型" class="headerlink" title="3.2、Java数据类型"></a>3.2、Java数据类型</h2><h3 id="3-2-1、类型占用字节"><a href="#3-2-1、类型占用字节" class="headerlink" title="3.2.1、类型占用字节"></a>3.2.1、类型占用字节</h3><p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20200915220817535.png?token=AIGEF3LFVBZGJEJXP4OIP4LEZZXNK" alt="类型占用字节大小"></p>
-<h4 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h4><p>32位操作系统可以寻址到4G内存，因为 2^32 &#x3D; 4 * 1024 * 1024 &#x3D; 4G。64位近似无穷大（18EB）。</p>
+<h4 id="3-2-1-1、扩展"><a href="#3-2-1-1、扩展" class="headerlink" title="3.2.1.1、扩展"></a>3.2.1.1、扩展</h4><p>32位操作系统可以寻址到4G内存，因为 2^32 &#x3D; 4 * 1024 * 1024 &#x3D; 4G。64位近似无穷大（18EB）。</p>
 <p>使用64位会有新问题：<strong>64位过长，给我们寻址带宽和对象内引用造成了负担。故引出了指针压缩技术。</strong></p>
-<h3 id="3-2-2、指针压缩"><a href="#3-2-2、指针压缩" class="headerlink" title="3.2.2、指针压缩"></a>3.2.2、指针压缩</h3><h4 id="底层实现"><a href="#底层实现" class="headerlink" title="底层实现"></a>底层实现</h4><p><strong>JVM实现指针压缩的原理就是：不再保存所有引用，而是每隔8个字节保存一个引用。</strong>例如，原来保存每个引用0、1、2…，现在只保存0、8、16…。因此，指针压缩后，并不是所有引用都保存在堆中，而是以8个字节为间隔保存引用。</p>
+<h3 id="3-2-2、指针压缩"><a href="#3-2-2、指针压缩" class="headerlink" title="3.2.2、指针压缩"></a>3.2.2、指针压缩</h3><h4 id="3-2-2-1、底层实现"><a href="#3-2-2-1、底层实现" class="headerlink" title="3.2.2.1、底层实现"></a>3.2.2.1、底层实现</h4><p><strong>JVM实现指针压缩的原理就是：不再保存所有引用，而是每隔8个字节保存一个引用。</strong>例如，原来保存每个引用0、1、2…，现在只保存0、8、16…。因此，指针压缩后，并不是所有引用都保存在堆中，而是以8个字节为间隔保存引用。</p>
 <p>当引用被存入64位寄存器时，JVM会将其左移3位（相当于末尾添加3个0），例如0x0、0x1、0x2…分别被转换为0x0、0x8、0x10。当从寄存器中读出时，JVM又可以右移3位，丢弃末尾的0。（oop在堆中是32位，在寄存器中是35位，2的35次方&#x3D;32G。也就是说，使用32位，来达到35位oop所能引用的堆内存空间）。</p>
-<h4 id="指针压缩失效"><a href="#指针压缩失效" class="headerlink" title="指针压缩失效"></a>指针压缩失效</h4><p>32G指针压缩失效问题：<strong>因为寄存器中2的35次方只能寻址到32G左右(不一定是32G，可能31G就会发生指压缩失效)，所以当内存超过32G时，JVM就默认停用压缩指针，进而改用64位寻址来寻址所有内存。改用64位寻址会导致对象变大，测试发现40G内存可以存储的对象个数要比30G内存少。</strong></p>
-<h4 id="哪些信息会被压缩？"><a href="#哪些信息会被压缩？" class="headerlink" title="哪些信息会被压缩？"></a>哪些信息会被压缩？</h4><ol>
-<li><font color='orange'>对象的全局静态变量(即类属性)。</font></li>
-<li><font color='orange'>对象头信息：64位平台下，原生对象头大小为16字节，压缩后为12字节。</font></li>
-<li><font color='orange'>对象引用：64位平台下，引用本身大小为8字节，压缩后为4字节。</font></li>
-<li><font color='orange'>对象数组：64位平台下，数组本身大小为24字节，压缩后16字节。</font></li>
+<h4 id="3-2-2-2、指针压缩失效"><a href="#3-2-2-2、指针压缩失效" class="headerlink" title="3.2.2.2、指针压缩失效"></a>3.2.2.2、指针压缩失效</h4><p>32G指针压缩失效问题：<strong>因为寄存器中2的35次方只能寻址到32G左右(不一定是32G，可能31G就会发生指压缩失效)，所以当内存超过32G时，JVM就默认停用压缩指针，进而改用64位寻址来寻址所有内存。改用64位寻址会导致对象变大，测试发现40G内存可以存储的对象个数要比30G内存少。</strong></p>
+<h4 id="3-2-2-3、被压缩的数据"><a href="#3-2-2-3、被压缩的数据" class="headerlink" title="3.2.2.3、被压缩的数据"></a>3.2.2.3、被压缩的数据</h4><ol>
+<li>对象的全局静态变量(即类属性)。</li>
+<li>对象头信息：64位平台下，原生对象头大小为16字节，压缩后为12字节。</li>
+<li>对象引用：64位平台下，引用本身大小为8字节，压缩后为4字节。</li>
+<li>对象数组：64位平台下，数组本身大小为24字节，压缩后16字节。</li>
 </ol>
-<h4 id="哪些信息不会被压缩？"><a href="#哪些信息不会被压缩？" class="headerlink" title="哪些信息不会被压缩？"></a>哪些信息不会被压缩？</h4><ol>
-<li><font color='orange'>指向非Heap的对象指针。</font></li>
-<li><font color='orange'>局部变量、传参、返回值、NULL指针。</font></li>
+<h4 id="3-2-2-4、不会被压缩的数据"><a href="#3-2-2-4、不会被压缩的数据" class="headerlink" title="3.2.2.4、不会被压缩的数据"></a>3.2.2.4、不会被压缩的数据</h4><ol>
+<li>指向非Heap的对象指针。</li>
+<li>局部变量、传参、返回值、NULL指针。</li>
 </ol>
 <h2 id="3-3、Java集合容器"><a href="#3-3、Java集合容器" class="headerlink" title="3.3、Java集合容器"></a>3.3、Java集合容器</h2><h3 id="3-3-1、概述"><a href="#3-3-1、概述" class="headerlink" title="3.3.1、概述"></a>3.3.1、概述</h3><p>Java集合容器整体结构如下图：</p>
 <p>版本1：</p>
@@ -846,64 +830,63 @@
 <p>版本2：</p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/%E9%9B%86%E5%90%88%E7%BB%93%E6%9E%84%E5%9B%BE.jpg?token=AIGEF3POOXUNH77WTUNZZZTEZZXRS" alt="集合结构图"></p>
 <h3 id="3-3-2、Collection"><a href="#3-3-2、Collection" class="headerlink" title="3.3.2、Collection"></a>3.3.2、Collection</h3><h4 id="3-3-2-1、List"><a href="#3-3-2-1、List" class="headerlink" title="3.3.2.1、List"></a>3.3.2.1、List</h4><h5 id="ArrayList"><a href="#ArrayList" class="headerlink" title="ArrayList"></a>ArrayList</h5><ol>
-<li><font color='orange'>数据结构</font>：动态数组，需要连续内存。</li>
-<li><font color='orange'>元素特点</font>：<ul>
+<li>数据结构：动态数组，需要连续内存。</li>
+<li>元素特点：<ul>
 <li>数组定义：<code>transient Object[] elementData;</code> 序列化时不考虑其存储元素；</li>
 <li>允许为null值；</li>
 </ul>
 </li>
-<li><font color='orange'>增删改查</font>：<ul>
+<li>增删改查：<ul>
 <li>随机访问快；</li>
 <li>首部插入速度较linkedlist要慢40%左右，尾部插入较linkedlist要快10%左右，中间插入较linkedlist要快65%左右，其它部分插入删除都会移动数据，性能较低；</li>
 <li>可以利用CPU缓存，局部性原理。</li>
 </ul>
 </li>
-<li><font color='orange'>初始容量</font>：<ul>
+<li>初始容量：<ul>
 <li>JDK7：初始容量为10。</li>
 <li>JDK8：初始为0，当第一次执行添加操作后才会扩容，扩容后容量为10；</li>
 </ul>
 </li>
-<li><font color='orange'>扩容</font>：添加数据前已存在元素数量 等于 数组长度时，则扩大为原来的1.5倍，但底层并非是乘上1.5，而是根据公式：<code>原容量&gt;&gt;1+原容量</code>获得。</li>
-<li><font color='orange'>是否同步</font>：非同步，线程不安全；但可以通过<code>Collections.synchronizedList(list)</code>返回一个线程安全的ArrayList，也可以使用concurrent包下的<code>CopyOnWriteArrayList</code>；</li>
-<li><font color='orange'>复杂度</font>：添加n个元素需要O(n)时间；</li>
-<li><font color='orange'>使用场景</font>：快速访问数据；单线程环境；</li>
+<li>扩容：添加数据前已存在元素数量 等于 数组长度时，则扩大为原来的1.5倍，但底层并非是乘上1.5，而是根据公式：<code>原容量&gt;&gt;1+原容量</code>获得。</li>
+<li>是否同步：非同步，线程不安全；但可以通过<code>Collections.synchronizedList(list)</code>返回一个线程安全的ArrayList，也可以使用concurrent包下的<code>CopyOnWriteArrayList</code>；</li>
+<li>复杂度：添加n个元素需要O(n)时间；</li>
+<li>使用场景：快速访问数据；单线程环境；</li>
 </ol>
 <h5 id="LinkedList"><a href="#LinkedList" class="headerlink" title="LinkedList"></a>LinkedList</h5><ol>
-<li><font color='orange'>数据结构</font>：双向链表，不需要连续内存。</li>
-<li><font color='orange'>元素特点</font>：<ul>
-<li>链表每个节点定义为内部类Node，变量Node first、Node last；</li>
-<li>允许为null值；</li>
-<li>占用内存多；</li>
+<li>数据结构：双向链表，不需要连续内存。</li>
+<li>元素特点：<ul>
+<li>链表节点底层实现就是内部类Node，变量Node first、Node last；</li>
+<li>允许为null值；占用内存多；</li>
 </ul>
 </li>
-<li><font color='orange'>增删改查</font>：<ul>
+<li>增删改查：<ul>
 <li>随机访问慢，顺序访问性能还行；</li>
 <li>首尾插入删除快，中间插入删除慢；</li>
 </ul>
 </li>
-<li><font color='orange'>初始容量</font>：不需要指定容量；</li>
-<li><font color='orange'>扩容</font>：随插入数据数量扩大；</li>
-<li><font color='orange'>是否同步</font>：非同步，线程不安全；</li>
-<li><font color='orange'>复杂度</font>：</li>
-<li><font color='orange'>使用场景</font>：快速频繁增删数据场景；按顺序访问数据的场景；单线程环境；</li>
-<li><font color='orange'>扩展</font>：可以实现栈、队列和双向队列；</li>
+<li>初始容量：不需要指定容量；</li>
+<li>扩容：随插入数据数量扩大；</li>
+<li>是否同步：非同步，线程不安全；</li>
+<li>复杂度：</li>
+<li>使用场景：快速频繁增删数据场景；按顺序访问数据的场景；单线程环境；</li>
+<li>扩展：可以实现栈、队列和双向队列；</li>
 </ol>
 <h5 id="Vector"><a href="#Vector" class="headerlink" title="Vector"></a>Vector</h5><ol>
-<li><font color='orange'>底层数据结构</font>：动态数组；</li>
-<li><font color='orange'>元素特点</font>：数组定义如：<code>Object[] elementData</code>；允许有空值；不支持序列化；</li>
-<li><font color='orange'>增删改查</font>：插入删除效率低，查询效率高；</li>
-<li><font color='orange'>初始容量</font>：默认10；</li>
-<li><font color='orange'>扩容</font>：添加数据前先判断已存在元素数量 是否等于 数组长度，若等于则默认扩大为原来的2倍，如果显式设置了扩容量则按指定的扩容量来扩容，如果扩容后还是不够用，则直接根据要插入的元素数量长度来扩容；（默认容量为10，若首次发生扩容，则默认扩容后的容量为20。如果初始容量为10，然后直接一次性添加21个元素，那么扩容后的容量为21，而并非是40。容量21空闲为0的环境下，此时再添加1个元素，那么会再次扩容为原来的2倍，也即扩容为42）</li>
-<li><font color='orange'>是否同步</font>：同步，线程安全，因其基于synchronized实现线程安全，故效率较差；可以使用concurrent包下的CopyOnWriteArrayList 来代替 Vector；</li>
-<li><font color='orange'>复杂度</font>：</li>
-<li><font color='orange'>使用场景</font>：多线程环境；</li>
+<li>底层数据结构：动态数组；</li>
+<li>元素特点：数组定义如：<code>Object[] elementData</code>；允许有空值；不支持序列化；</li>
+<li>增删改查：插入删除效率低，查询效率高；</li>
+<li>初始容量：默认10；</li>
+<li>扩容：添加数据前先判断已存在元素数量 是否等于 数组长度，若等于则默认扩大为原来的2倍，如果显式设置了扩容量则按指定的扩容量来扩容，如果扩容后还是不够用，则直接根据要插入的元素数量长度来扩容；（默认容量为10，若首次发生扩容，则默认扩容后的容量为20。如果初始容量为10，然后直接一次性添加21个元素，那么扩容后的容量为21，而并非是40。容量21空闲为0的环境下，此时再添加1个元素，那么会再次扩容为原来的2倍，也即扩容为42）</li>
+<li>是否同步：同步，线程安全，因其基于synchronized实现线程安全，故效率较差；可以使用concurrent包下的CopyOnWriteArrayList 来代替 Vector；</li>
+<li>复杂度：</li>
+<li>使用场景：多线程环境；</li>
 </ol>
 <h6 id="Stack"><a href="#Stack" class="headerlink" title="Stack"></a>Stack</h6><ol>
-<li><p><font color='orange'>底层数据结构</font>：数组</p>
+<li><p>底层数据结构：数组</p>
 </li>
-<li><p><font color='orange'>元素特点</font>：先进后出；</p>
+<li><p>元素特点：先进后出；</p>
 </li>
-<li><p><font color='orange'>增删改查</font>：</p>
+<li><p>增删改查：</p>
 <ol>
 <li>push方法：将元素推入栈底，即数组末尾；</li>
 <li>pop方法：取出栈顶元素后并删除栈顶元素。</li>
@@ -913,95 +896,95 @@
 </ol>
 <p>注意：因其继承于Vector，所以其拥有Vector全部功能；</p>
 </li>
-<li><p><font color='orange'>初始容量</font>：空栈。</p>
+<li><p>初始容量：空栈。</p>
 </li>
-<li><p><font color='orange'>扩容</font>：继承于vector，与之相同；</p>
+<li><p>扩容：继承于vector，与之相同；</p>
 </li>
-<li><p><font color='orange'>是否同步</font>：线程安全；</p>
+<li><p>是否同步：线程安全；</p>
 </li>
-<li><p><font color='orange'>复杂度</font>：</p>
+<li><p>复杂度：</p>
 </li>
-<li><p><font color='orange'>使用场景</font>：</p>
+<li><p>使用场景：</p>
 </li>
 </ol>
 <h5 id="CopyOnWriteArrayList"><a href="#CopyOnWriteArrayList" class="headerlink" title="CopyOnWriteArrayList"></a>CopyOnWriteArrayList</h5><ol>
-<li><font color='orange'>简介</font>：写操作时（写操作加了锁，否则会拷贝多个副本），将原数组拷贝一份出来，然后在拷贝的新数组中执行写操作，操作完后再将原数组引用指向新数组；</li>
-<li><font color='orange'>底层数据结构</font>：动态数组；</li>
-<li><font color='orange'>元素特点</font>：</li>
-<li><font color='orange'>增删改查</font>：</li>
-<li><font color='orange'>初始容量</font>：</li>
-<li><font color='orange'>扩容</font>：</li>
-<li><font color='orange'>是否同步</font>：线程安全；</li>
-<li><font color='orange'>复杂度</font>：</li>
-<li><font color='orange'>使用场景</font>：读多写少，比如缓存；</li>
-<li><font color='orange'>注意事项</font>：<ol>
+<li>简介：写操作时（写操作加了锁，否则会拷贝多个副本），将原数组拷贝一份出来，然后在拷贝的新数组中执行写操作，操作完后再将原数组引用指向新数组；</li>
+<li>底层数据结构：动态数组；</li>
+<li>元素特点：</li>
+<li>增删改查：</li>
+<li>初始容量：</li>
+<li>扩容：</li>
+<li>是否同步：线程安全；</li>
+<li>复杂度：</li>
+<li>使用场景：读多写少，比如缓存；</li>
+<li>注意事项：<ol>
 <li>写操作需要拷贝数组，比较消耗内存，如果原数组容量比较大，则可能频繁发生YGC和FGC；</li>
 <li>不能保证实时一致性，只能保证最终一致性；</li>
 </ol>
 </li>
 </ol>
 <h4 id="3-3-2-2、Set"><a href="#3-3-2-2、Set" class="headerlink" title="3.3.2.2、Set"></a>3.3.2.2、Set</h4><h5 id="HashSet"><a href="#HashSet" class="headerlink" title="HashSet"></a>HashSet</h5><ol>
-<li><font color='orange'>底层数据结构</font>：基于HashMap和LinkedHashMap实现。具体实现方式：通过一个HashMap存储元素，元素存放在HashMap的key中，而value统一使用一个Object对象。</li>
-<li><font color='orange'>元素特点</font>：<ol>
+<li>底层数据结构：基于HashMap和LinkedHashMap实现。具体实现方式：通过一个HashMap存储元素，元素存放在HashMap的key中，而value统一使用一个Object对象。</li>
+<li>元素特点：<ol>
 <li>无序不重复；</li>
 <li>只允许1个null元素；</li>
 </ol>
 </li>
-<li><font color='orange'>增删改查</font>：</li>
-<li><font color='orange'>初始容量</font>：因基于HashMap实现，故规则参考HashMap实现规则；</li>
-<li><font color='orange'>扩容</font>：因基于HashMap实现，故规则参考HashMap实现规则；</li>
-<li><font color='orange'>是否同步</font>：线程不安全；</li>
-<li><font color='orange'>复杂度</font>：</li>
-<li><font color='orange'>使用场景</font>：去重，无需排序场景；</li>
+<li>增删改查：</li>
+<li>初始容量：因基于HashMap实现，故规则参考HashMap实现规则；</li>
+<li>扩容：因基于HashMap实现，故规则参考HashMap实现规则；</li>
+<li>是否同步：线程不安全；</li>
+<li>复杂度：</li>
+<li>使用场景：去重，无需排序场景；</li>
 </ol>
 <h5 id="LinkedHashSet"><a href="#LinkedHashSet" class="headerlink" title="LinkedHashSet"></a>LinkedHashSet</h5><ol>
-<li><font color='orange'>底层数据结构</font>：<ol>
+<li>底层数据结构：<ol>
 <li>数组+双向链表；</li>
 <li>基于LinkedHashMap和HashSet机制实现，所以可保证迭代顺序和元素的不重复；</li>
 </ol>
 </li>
-<li><font color='orange'>元素特点</font>：<ol>
+<li>元素特点：<ol>
 <li>Entry结构：before&#x2F;hash&#x2F;key&#x2F;value&#x2F;next&#x2F;after；before和after用于维护整个双向链表；</li>
 <li>元素不重复；</li>
 <li>可以保证插入顺序和访问顺序；</li>
 </ol>
 </li>
-<li><font color='orange'>增删改查</font>：</li>
-<li><font color='orange'>初始容量</font>：因基于LinkedHashMap实现，参考其实现规则；</li>
-<li><font color='orange'>扩容</font>：因基于LinkedHashMap实现，参考其实现规则；</li>
-<li><font color='orange'>是否同步</font>：线程不安全；</li>
-<li><font color='orange'>复杂度</font>：</li>
-<li><font color='orange'>使用场景</font>：去重，需要保证插入或访问顺序；</li>
+<li>增删改查：</li>
+<li>初始容量：因基于LinkedHashMap实现，参考其实现规则；</li>
+<li>扩容：因基于LinkedHashMap实现，参考其实现规则；</li>
+<li>是否同步：线程不安全；</li>
+<li>复杂度：</li>
+<li>使用场景：去重，需要保证插入或访问顺序；</li>
 </ol>
 <h5 id="SortedSet"><a href="#SortedSet" class="headerlink" title="SortedSet"></a>SortedSet</h5><ul>
 <li>TreeSet<ol>
-<li><font color='orange'>底层实现</font>：基于TreeMap实现。</li>
-<li><font color='orange'>元素特点</font>：元素有序。支持两种排序方式：自然排序和定制排序，默认是自然排序。使用 无参构造时 默认自然排序；当需要使用定制排序时，需要使用 有参构造 来显式指定。</li>
-<li><font color='orange'>存储</font>：通过compare和compareTo来判断是否相等。compare通过判断两个对象的id，相同id则认为是重复元素，不会加入到集合中。</li>
+<li>底层实现：基于TreeMap实现。</li>
+<li>元素特点：元素有序。支持两种排序方式：自然排序和定制排序，默认是自然排序。使用 无参构造时 默认自然排序；当需要使用定制排序时，需要使用 有参构造 来显式指定。</li>
+<li>存储：通过compare和compareTo来判断是否相等。compare通过判断两个对象的id，相同id则认为是重复元素，不会加入到集合中。</li>
 </ol>
 </li>
 </ul>
 <h5 id="EnumSet"><a href="#EnumSet" class="headerlink" title="EnumSet"></a>EnumSet</h5><h5 id="CopyOnWriteSet"><a href="#CopyOnWriteSet" class="headerlink" title="CopyOnWriteSet"></a>CopyOnWriteSet</h5><ol>
-<li><font color='orange'>简介</font>：写操作时（写操作加了锁，否则会拷贝多个副本），将原数组拷贝一份，然后在拷贝的那份数组中执行写操作，操作完后再将原数组引用指向新数组；</li>
-<li><font color='orange'>数组结构</font>：动态数组；</li>
-<li><font color='orange'>原理</font>：通过CopyOnWriteList机制实现；</li>
-<li><font color='orange'>是否同步</font>：线程安全；</li>
-<li><font color='orange'>使用场景</font>：读多写少，比如缓存；</li>
-<li><font color='orange'>注意事项</font>：<ol>
+<li>简介：写操作时（写操作加了锁，否则会拷贝多个副本），将原数组拷贝一份，然后在拷贝的那份数组中执行写操作，操作完后再将原数组引用指向新数组；</li>
+<li>数组结构：动态数组；</li>
+<li>原理：通过CopyOnWriteList机制实现；</li>
+<li>是否同步：线程安全；</li>
+<li>使用场景：读多写少，比如缓存；</li>
+<li>注意事项：<ol>
 <li>写操作需要拷贝数组，比较消耗内存，如果原数组容量比较大，则可能频繁发生YGC和FGC；</li>
 <li>不能保证实时一致性（读取到的数据可能是旧的），只能保证最终一致性；</li>
 </ol>
 </li>
 </ol>
 <h5 id="CopyOnWriteArraySet"><a href="#CopyOnWriteArraySet" class="headerlink" title="CopyOnWriteArraySet"></a>CopyOnWriteArraySet</h5><ol>
-<li><font color='orange'>底层数据结构</font>：动态数组；并非是散列表；</li>
-<li><font color='orange'>元素特点</font>：不能存储重复元素；</li>
-<li><font color='orange'>增删改查</font>：</li>
-<li><font color='orange'>初始容量</font>：</li>
-<li><font color='orange'>扩容</font>：</li>
-<li><font color='orange'>是否同步</font>：线程安全；</li>
-<li><font color='orange'>复杂度</font>：</li>
-<li><font color='orange'>使用场景</font>：读多写少，比如缓存；</li>
+<li>底层数据结构：动态数组；并非是散列表；</li>
+<li>元素特点：不能存储重复元素；</li>
+<li>增删改查&gt;：</li>
+<li>初始容量：</li>
+<li>扩容：</li>
+<li>是否同步：线程安全；</li>
+<li>复杂度：</li>
+<li>使用场景：读多写少，比如缓存；</li>
 </ol>
 <h5 id="ConcurrentSkipListSet"><a href="#ConcurrentSkipListSet" class="headerlink" title="ConcurrentSkipListSet"></a>ConcurrentSkipListSet</h5><h4 id="3-3-2-3、Queue"><a href="#3-3-2-3、Queue" class="headerlink" title="3.3.2.3、Queue"></a>3.3.2.3、Queue</h4><p>简介：offer()-添加数据后会返回一个布尔类型来表示是否添加成功；peek()-取数据；poll()-取数据后进行remove；</p>
 <h5 id="Deque"><a href="#Deque" class="headerlink" title="Deque"></a>Deque</h5><ul>
@@ -1035,28 +1018,23 @@
 <h5 id="PriorityQueue"><a href="#PriorityQueue" class="headerlink" title="PriorityQueue"></a>PriorityQueue</h5><p>简介：内部结构是一个二叉树，该二叉树可以认为是堆排序里面的小顶堆（最小值为根节点）。PriorityQueue的特点是向里面装数据时不是按顺序装的，而是在内部进行了一个排序，按照优先级，最小的优先。</p>
 <h5 id="ConcurrentLinkedQueue"><a href="#ConcurrentLinkedQueue" class="headerlink" title="ConcurrentLinkedQueue"></a>ConcurrentLinkedQueue</h5><h5 id="DelayQueue（双端队列）"><a href="#DelayQueue（双端队列）" class="headerlink" title="DelayQueue（双端队列）"></a>DelayQueue（双端队列）</h5><p>简介：DelayQueue可以基于时间排序。它是阻塞的队列的一种实现，这个阻塞队列在装数据时必须实现Delayed接口，也要实现Comparable接口并重写compareTo方法来实现任务排序的自定义逻辑；</p>
 <h3 id="3-3-3、Map"><a href="#3-3-3、Map" class="headerlink" title="3.3.3、Map"></a>3.3.3、Map</h3><h4 id="3-3-3-1、HashMap"><a href="#3-3-3-1、HashMap" class="headerlink" title="3.3.3.1、HashMap"></a>3.3.3.1、HashMap</h4><ol>
-<li><p><font color='orange'>底层数据结构</font>：</p>
-<p>JDK7：数组+链表；JDK8：数组+链表+红黑树；</p>
+<li><p>底层数据结构：JDK7是数组+单链表；JDK8是数组+单链表+红黑树；</p>
 </li>
-<li><p><font color='orange'>元素特点</font>：</p>
-<ol>
-<li>无序的key-value键值对；</li>
-<li>允许null key和null value；</li>
-</ol>
+<li><p>元素特点：无序的key-value键值对；允许null key和null value；</p>
 </li>
-<li><p><font color='orange'>增删改查</font>：插入、删除、查询效率较高；</p>
+<li><p>增删改：插入、删除、查询效率较高；</p>
 </li>
-<li><p><font color='orange'>初始容量</font>：默认16（2的N次方）；</p>
+<li><p>初始容量：默认16（2的N次方）；</p>
 </li>
-<li><p><font color='orange'>扩容</font>：put后判断是否需要扩容；负载因子0.75，当容量 &#x3D; (总容量*0.75)时触发扩容，扩大为原来的2倍；</p>
+<li><p>扩容：put后判断是否需要扩容；负载因子0.75，当容量 &#x3D; (总容量*0.75)时触发扩容，扩大为原来的2倍；</p>
 </li>
-<li><p><font color='orange'>是否同步</font>：线程不安全；</p>
+<li><p>是否同步：线程不安全；</p>
 </li>
-<li><p><font color='orange'>复杂度</font>：</p>
+<li><p>复杂度：</p>
 </li>
-<li><p><font color='orange'>使用场景</font>：快速增删改查；随机读取；缓存；</p>
+<li><p>使用场景：快速增删改查；随机读取；缓存；</p>
 </li>
-<li><p><font color='orange'>哈希冲突对策</font>：</p>
+<li><p>哈希冲突对策：</p>
 <ul>
 <li>开放定址法；</li>
 <li>再散列函数法；</li>
@@ -1065,23 +1043,23 @@
 </li>
 </ol>
 <h5 id="3-3-3-1-1、LinkedHashMap"><a href="#3-3-3-1-1、LinkedHashMap" class="headerlink" title="3.3.3.1.1、LinkedHashMap"></a>3.3.3.1.1、LinkedHashMap</h5><ol>
-<li><font color='orange'>底层数据结构</font>：数组+双向链表；</li>
-<li><font color='orange'>元素特点</font>：<ol>
+<li>底层数据结构：数组+双向链表；</li>
+<li>元素特点：<ol>
 <li>entry结构：before&#x2F;hash&#x2F;key&#x2F;value&#x2F;next&#x2F;after，before和after用于维护整个双向链表；</li>
 <li>允许一个null key（多个覆盖），允许多个null value；</li>
 </ol>
 </li>
-<li><font color='orange'>增删改查</font>：<ol>
+<li>增删改查：<ol>
 <li>在HashMap基础上添加before和after两个属性保证迭代顺序；</li>
 <li>迭代顺序可以是插入顺序，也可以是访问顺序；</li>
 <li>使用LRU算法实现访问顺序排序；</li>
 </ol>
 </li>
-<li><font color='orange'>初始容量</font>：</li>
-<li><font color='orange'>扩容</font>：</li>
-<li><font color='orange'>是否同步</font>：线程不安全；</li>
-<li><font color='orange'>复杂度</font>：</li>
-<li><font color='orange'>使用场景</font>：保证插入和访问顺序；</li>
+<li>初始容量：</li>
+<li>扩容：</li>
+<li>是否同步：线程不安全；</li>
+<li>复杂度：</li>
+<li>使用场景：保证插入和访问顺序；</li>
 </ol>
 <h4 id="3-3-3-2、IdentityHashMap"><a href="#3-3-3-2、IdentityHashMap" class="headerlink" title="3.3.3.2、IdentityHashMap"></a>3.3.3.2、IdentityHashMap</h4><h4 id="3-3-3-3、TreeMap"><a href="#3-3-3-3、TreeMap" class="headerlink" title="3.3.3.3、TreeMap"></a>3.3.3.3、TreeMap</h4><ol>
 <li><p><font color='orange'>底层数据结构</font>：红黑树（高效检索二叉树）；</p>
@@ -1126,7 +1104,7 @@
 <li><font color='orange'>扩容</font>：put前判断是否需要扩容；负载因子0.75，当容量 &gt;&#x3D; (总容量*0.75)时触发扩容，扩大为2倍+1；</li>
 <li><font color='orange'>是否同步</font>：线程安全；基于重入锁synchronized实现线程安全；</li>
 <li><font color='orange'>复杂度</font>：</li>
-<li><font color='orange'>使用场景</font>：无序、不重复的元素的存储。</li>
+<li><font color='orange'>使用场景</font>：无序、不重复元素的存储。</li>
 </ol>
 <h4 id="3-3-3-6、IdentityHashMap"><a href="#3-3-3-6、IdentityHashMap" class="headerlink" title="3.3.3.6、IdentityHashMap"></a>3.3.3.6、IdentityHashMap</h4><h4 id="3-3-3-7、ConcurrentHashMap（JDK8）"><a href="#3-3-3-7、ConcurrentHashMap（JDK8）" class="headerlink" title="3.3.3.7、ConcurrentHashMap（JDK8）"></a>3.3.3.7、ConcurrentHashMap（JDK8）</h4><ol>
 <li><font color='orange'>底层数据结构</font>：数组+单链表+红黑树；</li>
@@ -1142,14 +1120,14 @@
 <h4 id="3-3-3-8、ConcurrentKipListMap"><a href="#3-3-3-8、ConcurrentKipListMap" class="headerlink" title="3.3.3.8、ConcurrentKipListMap"></a>3.3.3.8、ConcurrentKipListMap</h4><h3 id="3-3-4、Iterator"><a href="#3-3-4、Iterator" class="headerlink" title="3.3.4、Iterator"></a>3.3.4、Iterator</h3><ul>
 <li><p>Iterator</p>
 <ol>
-<li><font color='orange'>简介</font>：是接口，是集合迭代器。</li>
-<li><font color='orange'>API</font>：<ol>
+<li>简介：是接口，是集合迭代器。</li>
+<li>API：<ol>
 <li>boolean hashNext()：判断集合中是否存在下一个元素，若存在，则返回true。</li>
 <li>Object next()：返回集合中下一个元素。</li>
 <li>void remove()：删除集合上一次next方法返回的元素。</li>
 </ol>
 </li>
-<li><font color='orange'>注意事项</font>：<ol>
+<li>注意事项：<ol>
 <li>iterator()只能单向移动。</li>
 <li>iterator.remove()可以唯一安全修改迭代过程中集合元素的方法；如果在迭代过程中以任何其它的方式修改了集合，那么将会产生未知行为。且每调用一次<code>next()</code>方法，<code>remove()</code>方法只能被调用一次，如果违反这个规则将抛出一个异常。</li>
 </ol>
@@ -1157,8 +1135,8 @@
 </ol>
 <ul>
 <li>ListIterator<ol>
-<li><font color='orange'>简介</font>：是一个 功能更强 的迭代器，继承于Iterator接口，只能适用于List。可以通过调用<code>listIterator()</code>方法产生一个指向List开始处的ListIterator，还可以调用<code>listIterator(n)</code>方法创建一个一开始就指向列表索引为n的元素的ListIterator。</li>
-<li><font color='orange'>特点</font>：<ol>
+<li>简介：是一个 功能更强 的迭代器，继承于Iterator接口，只能适用于List。可以通过调用<code>listIterator()</code>方法产生一个指向List开始处的ListIterator，还可以调用<code>listIterator(n)</code>方法创建一个一开始就指向列表索引为n的元素的ListIterator。</li>
+<li>特点：<ol>
 <li>双向移动（向前向后遍历）</li>
 <li>产生相对于迭代器在列表中指向的当前位置的前一个和后一个元素的索引。</li>
 <li>可以使用set方法替换它访问过的最后一个元素。</li>
@@ -1170,8 +1148,8 @@
 </ul>
 </li>
 </ul>
-<h3 id="3-3-5、Collection-Collections"><a href="#3-3-5、Collection-Collections" class="headerlink" title="3.3.5、Collection &#x2F; Collections"></a>3.3.5、Collection &#x2F; Collections</h3><h4 id="3-3-5-1、Collection"><a href="#3-3-5-1、Collection" class="headerlink" title="3.3.5.1、Collection"></a>3.3.5.1、Collection</h4><p><font color='orange'>Collection是集合类顶级接口。提供 操作集合的通用方法，其继承接口有List与Set。</font></p>
-<h4 id="3-3-5-2、Collections"><a href="#3-3-5-2、Collections" class="headerlink" title="3.3.5.2、Collections"></a>3.3.5.2、Collections</h4><p><font color='orange'>java.util.Collections 是 集合工具类。拥有多种操作集合的静态方法，可对集合中的元素执行排序、搜索以及线程安全等操作，服务于Java的Collection框架。</font></p>
+<h3 id="3-3-5、Collection-Collections"><a href="#3-3-5、Collection-Collections" class="headerlink" title="3.3.5、Collection &#x2F; Collections"></a>3.3.5、Collection &#x2F; Collections</h3><h4 id="3-3-5-1、Collection"><a href="#3-3-5-1、Collection" class="headerlink" title="3.3.5.1、Collection"></a>3.3.5.1、Collection</h4><p><strong>Collection是集合类顶级接口。提供操作集合的通用方法，其继承接口有List与Set</strong>。</p>
+<h4 id="3-3-5-2、Collections"><a href="#3-3-5-2、Collections" class="headerlink" title="3.3.5.2、Collections"></a>3.3.5.2、Collections</h4><p>java.util.Collections 是<strong>集合工具类</strong>。拥有多种操作集合的静态方法，可对集合中的元素执行排序、搜索以及线程安全等操作，服务于Java的Collection框架。</p>
 <h3 id="3-3-6、总结"><a href="#3-3-6、总结" class="headerlink" title="3.3.6、总结"></a>3.3.6、总结</h3><h4 id="3-3-6-1、HashMap原理"><a href="#3-3-6-1、HashMap原理" class="headerlink" title="3.3.6.1、HashMap原理"></a>3.3.6.1、HashMap原理</h4><h5 id="底层数据结构"><a href="#底层数据结构" class="headerlink" title="底层数据结构"></a>底层数据结构</h5><p>（1）JDK7</p>
 <p>JDK7底层基于数组 + 单链表实现。</p>
 <p>JDK7中底层使用HashMap的静态内部类Entry来存储数据：</p>
@@ -1197,7 +1175,7 @@
 <blockquote>
 <p>解决哈希冲突的常见方法：开放地址法、链地址法等。HashMap采用了链地址法。</p>
 </blockquote>
-<h5 id="元素特点"><a href="#元素特点" class="headerlink" title="元素特点"></a>元素特点</h5><p><font color='orange'>HashMap支持一个null key 和多个 null value</font>，原因如下：</p>
+<h5 id="元素特点"><a href="#元素特点" class="headerlink" title="元素特点"></a>元素特点</h5><p><strong>HashMap支持一个null key 和多个 null value</strong>，原因如下：</p>
 <ol>
 <li><p>对于 null key 来说，在求hash值时会直接返回0，故只能有一个 null key。</p>
 </li>
@@ -1239,15 +1217,15 @@
 <span class="token comment">/** HashMap当前存储的元素数量  */</span>
 <span class="token keyword">int</span> size<span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<p><font color='orange'>HashMap中哈希桶数组table的长度length大小必须为2的n次方（合数）。</font></p>
+<p><strong>HashMap中哈希桶数组table的长度length大小必须为2的n次方（合数）</strong>。</p>
 <h5 id="hash方法"><a href="#hash方法" class="headerlink" title="hash方法"></a>hash方法</h5><ul>
 <li><p>key为空，则hashcode为0，这也是HashMap只允许存在一个key为null的原因。</p>
 </li>
 <li><p>key不为空，则计算公式如下：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">int</span> hash <span class="token operator">=</span> <span class="token punctuation">(</span>h <span class="token operator">=</span> key<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token punctuation">(</span>h <span class="token operator">>>></span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span> <span class="token comment">// 求hash值</span>
-<span class="token keyword">int</span> index <span class="token operator">=</span> <span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> hash<span class="token punctuation">;</span> <span class="token comment">// 定位下标</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">int</span> hash <span class="token operator">=</span> <span class="token punctuation">(</span>h <span class="token operator">=</span> key<span class="token punctuation">.</span><span class="token function">hashCode</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span> <span class="token operator">^</span> <span class="token punctuation">(</span>h <span class="token operator">>>></span> <span class="token number">16</span><span class="token punctuation">)</span><span class="token punctuation">;</span> 	<span class="token comment">// 求hash值</span>
+<span class="token keyword">int</span> index <span class="token operator">=</span> <span class="token punctuation">(</span>n <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span> <span class="token operator">&amp;</span> hash<span class="token punctuation">;</span> 					<span class="token comment">// 定位下标</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre></li>
 </ul>
-<h5 id="put-操作"><a href="#put-操作" class="headerlink" title="put()操作"></a>put()操作</h5><p><font color='orange'>JDK1.7采用头插法，JDK1.8采用尾插法。</font></p>
+<h5 id="put-操作"><a href="#put-操作" class="headerlink" title="put()操作"></a>put()操作</h5><p><strong>JDK1.7采用头插法，JDK1.8采用尾插法</strong>。</p>
 <p>JDK8执行流程如下：</p>
 <ol>
 <li>计算待新增数据key的hash值；</li>
@@ -1261,7 +1239,7 @@
 <li>判断数组长度是否大于阈值，如果是则进入扩容阶段；</li>
 </ol>
 <h5 id="resize-操作"><a href="#resize-操作" class="headerlink" title="resize()操作"></a>resize()操作</h5><p><strong>当数组元素数量 &#x3D; 数组长度*0.75时触发扩容，扩容后数组长度是旧的2倍。</strong></p>
-<p>Java8与Java7的迁移算法不一样，Java8不需要每一个元素都重新计算hash值；JDK1.8只需根据原hash值新增的那个bit是1还是0来判断，是0的话索引没变，是1的话索引变成：(原索引+oldCap)。</p>
+<p>Java8与Java7的迁移算法不一样，Java8不需要每一个元素都重新计算hash值；JDK8只需根据原hash值新增的那个bit是1还是0来判断，是0的话索引没变，是1的话索引变成：(原索引+oldCap)。</p>
 <p><font color='red'>注意：JDK1.7中旧链表迁移至新链表时，如果与新表数组索引位置相同，则链表元素会倒置；而JDK1.8不会倒置。</font></p>
 <h5 id="get-key-操作"><a href="#get-key-操作" class="headerlink" title="get(key)操作"></a>get(key)操作</h5><ol>
 <li>根据put()方法中计算hash的方式得到一个数组下标index；</li>
@@ -1277,11 +1255,11 @@
 <p><font color='red'>注意：删除单个key时，返回的是键值对中的value；</font></p>
 <h5 id="iterator迭代器"><a href="#iterator迭代器" class="headerlink" title="iterator迭代器"></a>iterator迭代器</h5><p><code>Hashtable</code> 和 <code>HashMap</code> 有相同的迭代器 Iterator，<code>HashMap</code>和<code>Hashtable</code>  的 Iterator 都是快速失败 fail-fast。但<code>Hashtable</code> 还有另外一个迭代器 Enumeration，该迭代器是 安全失败 fail-safe，<code>HashTable</code> 中有一个 keys 方法可以返回 Enumeration 迭代器。</p>
 <blockquote>
-<p><font color='orange'>fail-safe 和 fail-fast 是一种思想，一种机制，属于系统设计范畴，并非 Java 集合所特有。</font></p>
+<p><strong>fail-safe 和 fail-fast 是一种思想，一种机制，属于系统设计范畴，并非 Java 集合所特有</strong>。</p>
 <p><strong>（1）快速失败 fail-fast</strong></p>
 <p>一种快速发现系统故障的机制。一旦发生异常，立即停止当前操作，并上报给上层的系统来处理这些故障。</p>
 <p>当 Iterator 这个迭代器被创建后，除了迭代器本身的方法 remove 可以改变集合的结构外，其他的因素若改变了集合的结构（改变只包含插入和删除），都将会抛出 <code>ConcurrentModificationException</code> 异常。</p>
-<p><font color='orange'>java.util 包下的集合类都是 fail-fast 的。</font></p>
+<p><strong>java.util 包下的集合类都是 fail-fast 的</strong>。</p>
 <p><strong>（2）安全失败 fail-safe</strong></p>
 <p>在故障发生之后会维持系统继续运行。 fail-safe 不会抛出异常的原因如下：</p>
 <ol>
@@ -1303,28 +1281,28 @@
 </ul>
 <h5 id="并发问题"><a href="#并发问题" class="headerlink" title="并发问题"></a>并发问题</h5><p>常见问题如下：</p>
 <ol>
-<li><font color='orange'>多线程扩容，引起死循环问题；</font></li>
-<li><font color='orange'>多线程put时可能导致元素丢失；</font></li>
-<li><font color='orange'>put非null元素后get出来的是null；</font></li>
+<li>多线程扩容，引起死循环问题；</li>
+<li>多线程put时可能导致元素丢失；</li>
+<li>put非null元素后get出来的是null；</li>
 </ol>
 <p>应对措施：使用HashTable 或者 ConcurrentHashMap。</p>
 <h5 id="Key取值问题"><a href="#Key取值问题" class="headerlink" title="Key取值问题"></a>Key取值问题</h5><ol>
-<li><p><font color='orange'>key只允许有一个null，value允许有多个null；</font>（key为null的hashcode总是0）</p>
+<li><p>key只允许有一个null，value允许有多个null；（key为null的hashcode总是0）</p>
 </li>
-<li><p><font color='orange'>key取值范围有哪些？</font></p>
+<li><p>key取值范围有哪些？</p>
 <p>一般使用String、Integer，且String最常用。原因如下：</p>
 <ol>
 <li>字符串是不可变的，它在被创建时其hashcode就缓存了，无需计算，且效率要比其它对象高。</li>
 <li>获取对象时需要用到equals方法和hashCode方法，而String已经规范的重写过了。</li>
 </ol>
 </li>
-<li><p><font color='orange'>可变类可以作为key使用吗？</font></p>
+<li><p>可变类可以作为key使用吗？</p>
 <p>不可以，因为hashcode可能会发生变化，导致put进去的值，无法get出来。</p>
 </li>
-<li><p><font color='orange'>如何自定义一个类，其可以作为HashMap的key？</font></p>
+<li><p>如何自定义一个类，其可以作为HashMap的key？</p>
 <p>该问题考察两个知识点：</p>
 <ol>
-<li><p><font color='orange'>如何重写equals方法和hashCode方法？</font></p>
+<li><p>如何重写equals方法和hashCode方法？</p>
 <p>根据如下4条规则来设计即可：</p>
 <ol>
 <li>两个对象相等，hashcode⼀定相等；</li>
@@ -1333,7 +1311,7 @@
 <li>hashcode不等，两个对象⼀定不等；</li>
 </ol>
 </li>
-<li><p><font color='orange'>如何设计一个不变类？</font></p>
+<li><p>如何设计一个不变类？</p>
 <ol>
 <li>使用final修饰类，保证类不能被继承。</li>
 <li>将所有成员变量访问权限设为私有，且加上final修饰，保证成员变量不可变；</li>
@@ -1351,32 +1329,24 @@
 <li><strong>可以解决取模运算的负数问题。</strong>比如：-15 % 10 &#x3D; -5；</li>
 </ol>
 <h5 id="JDK7和JDK8下HashMap的异同"><a href="#JDK7和JDK8下HashMap的异同" class="headerlink" title="JDK7和JDK8下HashMap的异同"></a>JDK7和JDK8下HashMap的异同</h5><ol>
-<li><font color='orange'>存放数据的节点名称不同；</font><ul>
-<li>JDK7：使用 Entry 命名；</li>
-<li>JDK8：使用 Node 命名；</li>
-</ul>
-</li>
-<li><font color='orange'>定位数组下标位置方法不同；</font><ul>
+<li>存放数据的节点名称不同；JDK7使用 Entry 命名；JDK8使用 Node 命名；</li>
+<li>定位数组下标位置方法不同；<ul>
 <li>JDK7：计算key的hash，然后进行四次扰动，再与数组长度取模得出；</li>
 <li>JDK8：计算key的hash，将hash值进行高低16位异或操作，再与数组长度取模得出；</li>
 </ul>
 </li>
-<li><font color='orange'>扩容时机不同；</font><ul>
-<li>JDK7：添加数据 前 先判断是否需要扩容；</li>
-<li>JDK8：添加数据 后 再判断是否需要扩容；</li>
-</ul>
-</li>
-<li><font color='orange'>扩容迁移定位方法不同；</font><ul>
+<li>扩容时机不同：JDK7添加数据前先判断是否需要扩容；JDK8添加数据后再判断是否需要扩容；</li>
+<li>扩容迁移定位方法不同；<ul>
 <li>JDK7：扩容后需要重新计算hash；</li>
 <li>JDK8：扩容后不需要重新计算hash；</li>
 </ul>
 </li>
-<li><font color='orange'>put方法插入链表位置不同：</font><ul>
+<li>put方法插入链表位置不同：<ul>
 <li>JDK7：头插法；</li>
 <li>JDK8：尾插法；</li>
 </ul>
 </li>
-<li><font color='orange'>红黑树升级和退化</font><ul>
+<li>红黑树升级和退化<ul>
 <li>链表升级为红黑树：<strong>JDK8引入红黑树，当链表长度 &gt;&#x3D; 8 且 数组长度 &gt;&#x3D; 64 时，链表转为红黑树；</strong></li>
 <li>红黑树退化为链表：有两个地方会判断并退化成链表：<ol>
 <li><strong>remove时退化；</strong></li>
@@ -1387,63 +1357,31 @@
 </li>
 </ol>
 <h5 id="HashMap-VS-HashTable"><a href="#HashMap-VS-HashTable" class="headerlink" title="HashMap VS HashTable"></a>HashMap VS HashTable</h5><ol>
-<li><font color='orange'>初始容量</font><ul>
-<li>HashMap：16；</li>
-<li>HashTable：11；</li>
-</ul>
-</li>
-<li><font color='orange'>定位数组下标位置</font><ul>
+<li>初始容：HashMap是16；HashTable是11；</li>
+<li>定位数组下标位置：<ul>
 <li>HashMap：key.hashcode()后 通过 位运算 定位下标；</li>
 <li>HashTable：key.hashcode()后 通过 取模运算 定位下标；</li>
 </ul>
 </li>
-<li><font color='orange'>判断扩容时机</font><ul>
-<li>HashMap：put之后判断；</li>
-<li>HashTable：put之前判断；</li>
-</ul>
-</li>
-<li><font color='orange'>扩容大小</font><ul>
-<li>HashMap：扩大为原容量的2倍；</li>
-<li>HashTable：扩大为原容量的2倍+1；</li>
-</ul>
-</li>
-<li><font color='orange'>null key 和 null value</font><ul>
+<li>判断扩容时机：HashMap在put后判断；HashTable在put前判断；</li>
+<li>扩容大小：HashMap扩大为原容量的2倍；HashTable扩大为原容量的2倍+1；</li>
+<li>null key 和 null value<ul>
 <li>HashMap：允许1个null key（多个覆盖）和 多个null value；</li>
 <li>HashTable：不允许null key 和 null value；</li>
 </ul>
 </li>
-<li><font color='orange'>线程安全</font><ul>
-<li>HashMap：线程不安全；</li>
-<li>HashTable：线程安全；</li>
-</ul>
-</li>
-<li><font color='orange'>接口实现</font><ul>
-<li>HashMap：实现Map接口，继承AbstractMap类；</li>
-<li>HashTable：实现Map接口，继承Dictionary类；</li>
-</ul>
-</li>
+<li>线程安全：HashMap线程不安全；HashTable线程安全；</li>
+<li>接口实现：HashMap实现Map接口且继承AbstractMap类；HashTable实现Map接口且继承Dictionary类；</li>
 </ol>
 <h5 id="HashMap-VS-TreeMap"><a href="#HashMap-VS-TreeMap" class="headerlink" title="HashMap VS TreeMap"></a>HashMap VS TreeMap</h5><ol>
-<li><font color='orange'>数据结构</font><ul>
-<li>HashMap：数组+链表+红黑树；</li>
-<li>TreeMap：红黑树；</li>
-</ul>
-</li>
-<li><font color='orange'>存储方式</font><ul>
-<li>HashMap：随机存储；</li>
-<li>TreeMap：按key的字典升序排序存储；</li>
-</ul>
-</li>
-<li><font color='orange'>null key 和 null value</font><ul>
+<li>数据结构：HashMap是数组+链表+红黑树；TreeMap是红黑树；</li>
+<li>存储方式：HashMap是随机存储；TreeMap是按key的字典升序排序存储；</li>
+<li>null key 和 null value<ul>
 <li>HashMap：允许1个null key（多个覆盖），允许多个null value；</li>
 <li>TreeMap：不允许null key，但允许多个null value；</li>
 </ul>
 </li>
-<li><font color='orange'>效率高低</font><ul>
-<li>HashMap：效率高；</li>
-<li>TreeMap：效率低；</li>
-</ul>
-</li>
+<li>效率高低：HashMap效率高；TreeMap效率低；</li>
 </ol>
 <h4 id="3-3-6-2、HashTable原理"><a href="#3-3-6-2、HashTable原理" class="headerlink" title="3.3.6.2、HashTable原理"></a>3.3.6.2、HashTable原理</h4><h5 id="底层数据结构-1"><a href="#底层数据结构-1" class="headerlink" title="底层数据结构"></a>底层数据结构</h5><p>使用哈希表来存储键值对，数据结构创建了一个继承<code>Map.Entry</code>的私有静态内部类<code>Entry</code>，每一个Entry对象表示存储在哈希表中的一个键值对。</p>
 <h5 id="元素特点-1"><a href="#元素特点-1" class="headerlink" title="元素特点"></a>元素特点</h5><p><strong>HashTable不支持 null key和null value</strong>，原因如下：</p>
@@ -1488,48 +1426,16 @@
 <li><strong>若扩容后数组长度大于 (Integer.MAX_VALUE - 8)，则抛出异常OutOfMemoryError。</strong></li>
 </ol>
 <h5 id="ArrayList-VS-Vector"><a href="#ArrayList-VS-Vector" class="headerlink" title="ArrayList VS Vector"></a>ArrayList VS Vector</h5><ol>
-<li><font color='orange'>线程安全</font><ul>
-<li>ArrayList：不安全；</li>
-<li>Vector：安全；</li>
-</ul>
-</li>
-<li><font color='orange'>扩容倍数</font><ul>
-<li>ArrayList：默认1.5倍；</li>
-<li>Vector：默认扩大为原容量的2倍；创建时也可显式设置扩容量；</li>
-</ul>
-</li>
-<li><font color='orange'>支持序列化</font><ul>
-<li>ArrayList：支持序列化；</li>
-<li>Vector：不支持；</li>
-</ul>
-</li>
-<li><font color='orange'>indexOf()接口支持</font><ul>
-<li>ArrayList：提供了indexOf(obj, start)接口；</li>
-<li>Vector：没有提供；</li>
-</ul>
-</li>
-<li><font color='orange'>指定扩容系数</font><ul>
-<li>ArrayList：不可以指定；</li>
-<li>Vector：可以指定；</li>
-</ul>
-</li>
+<li>线程安全：ArrayList不安全；Vector安全；</li>
+<li>扩容倍数：ArrayList默认1.5倍；Vector默认扩大为原容量的2倍，创建时也可显式设置扩容量；</li>
+<li>支持序列化：ArrayList支持序列化；Vector不支持；</li>
+<li>indexOf()接口支持：ArrayList提供了indexOf(obj, start)接口；Vector没有提供；</li>
+<li>指定扩容系数：ArrayList不可以指定；Vector可以指定；</li>
 </ol>
 <h5 id="ArrayList-VS-LinkedList"><a href="#ArrayList-VS-LinkedList" class="headerlink" title="ArrayList VS LinkedList"></a>ArrayList VS LinkedList</h5><ol>
-<li><font color='orange'>底层数据结构</font><ul>
-<li>ArrayList：动态数组；</li>
-<li>LinkedList：双向链表；</li>
-</ul>
-</li>
-<li><font color='orange'>增删改查特点</font><ul>
-<li>ArrayList：查询快，增删慢；</li>
-<li>LinkedList：随机查询慢，顺序查询快，增删快；</li>
-</ul>
-</li>
-<li><font color='orange'>空间浪费</font><ul>
-<li>ArrayList：空间浪费在数组末尾保留的一定空间；</li>
-<li>LinkedList：空间浪费在每一个节点都要消耗空间来存储prev、next信息；</li>
-</ul>
-</li>
+<li>底层数据结构：ArrayList是动态数组；LinkedList是双向链表；</li>
+<li>增删改查特点：ArrayList查询快增删慢；LinkedList随机查询慢，顺序查询快，增删快；</li>
+<li>空间浪费：ArrayList会在数组末尾保留一定空间；LinkedList会在每一个节点都要消耗空间来存储prev、next信息；</li>
 </ol>
 <h4 id="3-3-6-4、LinkedList原理"><a href="#3-3-6-4、LinkedList原理" class="headerlink" title="3.3.6.4、LinkedList原理"></a>3.3.6.4、LinkedList原理</h4><h5 id="add-操作"><a href="#add-操作" class="headerlink" title="add()操作"></a>add()操作</h5><ol>
 <li>创建一个新节点，节点元素为传入的参数，前继节点是 当前节点的last节点，后继节点next为null；</li>
@@ -1551,7 +1457,7 @@
 <li>根据hash值通过位运算计算出Node数组的下标，判断该数组第一个Node节点是否有数据，如果没有数据则通过CAS将新值插入；</li>
 <li>如果有数据则判断头节点的hashcode是否等于MOVED（即-1），即检查是否正在扩容，如果等于-1则帮助扩容；</li>
 <li>若有数据，则对头节点进行加锁，如果头节点的hashcode &gt;&#x3D; 0，则说明是链表，遍历链表。如果找到key和hahs同时相等，则进行覆盖；若没有找到，则将新值插入到链表的最后面；如果hashCode &lt; 0，说明红黑树，调用红黑树的 插值方法 插入新节点；</li>
-<li>插值完成后，判断链表元素是否 &gt;&#x3D; 8，如果 &gt;&#x3D;8 且 数组长度 &gt;- 64才转为红黑树。如果 &gt;&#x3D; 8 且数组长度 &lt; 64 则仅仅进行扩容；</li>
+<li>插值完成后，判断链表元素是否 &gt;&#x3D; 8，如果 &gt;&#x3D;8 且数组长度 &gt; 64则转为红黑树。如果 &gt;&#x3D; 8 且数组长度 &lt; 64 则仅仅进行扩容；</li>
 </ol>
 <h5 id="resize-操作-1"><a href="#resize-操作-1" class="headerlink" title="resize()操作"></a>resize()操作</h5><p>创建新数组，其长度为原数组长度的2倍；多线程环境下旧数组迁移至新数组时会发生线程安全问题；</p>
 <h5 id="get-操作"><a href="#get-操作" class="headerlink" title="get()操作"></a>get()操作</h5><ol>
@@ -1579,26 +1485,10 @@
 <li>JDK8：<strong>没有segment数组。 直接 entry数组 + 链表，锁粒度为entry数组中每个索引节点。</strong></li>
 </ul>
 </li>
-<li><font color='orange'>初始化</font><ul>
-<li>JDK7：直接初始化。</li>
-<li>JDK8：第一次put时才初始化。</li>
-</ul>
-</li>
-<li><font color='orange'>锁实现</font><ul>
-<li>JDK7：<strong>使用分段锁Segment；</strong></li>
-<li>JDK8：<strong>使用CAS+Synchronized；</strong></li>
-</ul>
-</li>
-<li><font color='orange'>查询遍历</font><ul>
-<li>JDK7：基于链表实现，遍历效率低；</li>
-<li>JDK8：基于红黑树实现，遍历效率高；</li>
-</ul>
-</li>
-<li><font color='orange'>数据存放命名</font><ul>
-<li>JDK7：使用名为HashEntry的容器来存储数据；</li>
-<li>JDK8：改名为Node的容器来存储数据；</li>
-</ul>
-</li>
+<li><font color='orange'>初始化</font>：JDK7直接初始化。JDK8会在第一次put时初始化。</li>
+<li><font color='orange'>锁实现</font>：JDK7<strong>使用分段锁Segment；</strong>JDK8<strong>使用CAS+Synchronized；</strong></li>
+<li><font color='orange'>查询遍历</font>：JDK7基于链表实现，遍历效率低；JDK8基于红黑树实现，遍历效率高；</li>
+<li><font color='orange'>数据存放命名</font>：JDK7使用HashEntry容器来存储数据；JDK8改名为Node容器来存储数据；</li>
 <li><font color='orange'>数据插入</font><ul>
 <li>JDK7：<strong>头插法</strong>；<ol>
 <li>segment下标位置：并发度为16，因 2^4 &#x3D; 16，故下标位置就是二次hash值的二进制位的 高4位 对应的 十进制数值。</li>
@@ -1679,7 +1569,7 @@ p <span class="token operator">=</span> <span class="token keyword">null</span><
 <h4 id="3-4-1-3、弱引用"><a href="#3-4-1-3、弱引用" class="headerlink" title="3.4.1.3、弱引用"></a>3.4.1.3、弱引用</h4><ul>
 <li><p>定义：被WeakReference类对象指向的引用。</p>
 </li>
-<li><p>回收时机：<strong>GC看到就回收（下次gc就回收）。</strong></p>
+<li><p>回收时机：<strong>GC看到就回收（下次gc时回收）。</strong></p>
 </li>
 <li><p>代码实现</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">WeakReference</span><span class="token generics"><span class="token punctuation">&lt;</span><span class="token class-name">Person</span><span class="token punctuation">></span></span> weakReference <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">WeakReference</span><span class="token punctuation">(</span><span class="token keyword">new</span> <span class="token class-name">Person</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -1701,7 +1591,7 @@ p <span class="token operator">=</span> <span class="token keyword">null</span><
 <li><p>应用场景：处理堆外内存。（参考NIO中的DirectByteBuffer，意为直接内存，直接内存不受JVM管理，而是被系统管理，故又叫堆外内存。堆外内存的回收可以使用虚引用来实现。）</p>
 </li>
 </ul>
-<h1 id="4、Java内存模型"><a href="#4、Java内存模型" class="headerlink" title="4、Java内存模型"></a>4、Java内存模型</h1><h2 id="4-1、简介"><a href="#4-1、简介" class="headerlink" title="4.1、简介"></a>4.1、简介</h2><h3 id="4-1-1、前言"><a href="#4-1-1、前言" class="headerlink" title="4.1.1、前言"></a>4.1.1、前言</h3><p>并发编程中，需要处理两个关键问题：<strong>线程之间 如何通信 及线程之间 如何同步。</strong></p>
+<h1 id="4、Java内存模型"><a href="#4、Java内存模型" class="headerlink" title="4、Java内存模型"></a>4、Java内存模型</h1><h2 id="4-1、简介"><a href="#4-1、简介" class="headerlink" title="4.1、简介"></a>4.1、简介</h2><h3 id="4-1-1、前言"><a href="#4-1-1、前言" class="headerlink" title="4.1.1、前言"></a>4.1.1、前言</h3><p>并发编程中，需要处理两个关键问题：<strong>线程之间如何通信及线程之间如何同步。</strong></p>
 <ul>
 <li><p>通信</p>
 <p>通信是指线程之间以何种机制来交换信息。在命令式编程中，线程之间的通信机制有两种：</p>
@@ -1710,7 +1600,7 @@ p <span class="token operator">=</span> <span class="token keyword">null</span><
 <p>在共享内存的并发模型里，线程之间共享程序的公共状态，通过写-读内存中的公共状态 进行隐式通信。</p>
 </li>
 <li><p>消息传递。</p>
-<p>在消息传递的并发模型里，线程之间没有公共状态，线程之间必须通过发送消 息来显式进行通信。</p>
+<p>在消息传递的并发模型里，线程之间没有公共状态，线程之间必须通过发送消息来显式进行通信。</p>
 </li>
 </ul>
 </li>
@@ -1719,10 +1609,10 @@ p <span class="token operator">=</span> <span class="token keyword">null</span><
 <p>在共享内存并发模型 里，同步显式进行。在消息传递的并发模型里，由于消息发送必须在消息接收前，因此同步是隐式进行的。</p>
 </li>
 </ul>
-<p><strong>Java并发采用的是 共享内存模型，Java线程间的通信是隐式进行，整个通信过程对程序员完全透明。</strong></p>
-<h3 id="4-1-2、认识JMM"><a href="#4-1-2、认识JMM" class="headerlink" title="4.1.2、认识JMM"></a>4.1.2、认识JMM</h3><p><strong>Java内存模型 是根据英文Java Memory Model（JMM）翻译过来。其实JMM并不像JVM内存结构一样真实存在。他只是一个抽象概念。</strong></p>
+<p><strong>Java并发采用的是共享内存模型，Java线程间的通信是隐式进行，整个通信过程对程序员完全透明。</strong></p>
+<h3 id="4-1-2、认识JMM"><a href="#4-1-2、认识JMM" class="headerlink" title="4.1.2、认识JMM"></a>4.1.2、认识JMM</h3><p><strong>Java内存模型是根据英文Java Memory Model（JMM）翻译过来。其实JMM并不像JVM内存结构一样真实存在。他只是一个抽象概念。</strong></p>
 <p>Java内存模型规定了所有的变量都存储在主内存中，每条线程还有自己的工作内存，线程的工作内存中保存了主内存变量的副本，线程对变量的所有操作都必须在工作内存中进行，而不能直接读写主内存。不同的线程之间无法直接访问对方工作内存中的变量，线程间的通信需要通过主内存来实现。</p>
-<p><strong>JMM就作用于工作内存和主存之间的数据同步过程。它规定了如何做数据同步以及什么时候做数据同步。</strong></p>
+<p><strong>JMM作用于工作内存和主存之间的数据同步过程。它规定了如何做数据同步以及什么时候做数据同步。</strong></p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20210424211138529.png?token=AIGEF3JZVGM2SSRA5JMZNGDEZZXWK" alt="image-20210424211138529"></p>
 <p>Java内存模型的相关知识在<code>JSR-133: Java Memory Model and Thread Specification</code>中有描述。JMM是和多线程相关，它描述了一组规则或规范，这个规范规定了一个线程对共享变量的写入对另一个线程是可见的。</p>
 <p><strong>Java内存模型（Java Memory Model，JMM）就是一种符合内存模型规范，屏蔽了各种硬件和操作系统访问差异，保证了Java程序在各种平台下对内存的访问都能得到一致效果的机制及规范。目的是解决多线程环境中基于共享内存进行通信时，存在的原子性、可见性（缓存一致性）以及有序性问题。</strong></p>
@@ -1735,13 +1625,13 @@ p <span class="token operator">=</span> <span class="token keyword">null</span><
 <p>由于写缓冲区仅对自己的处理器可见，它会导致处理器执行内存操作的 顺序可能会与内存实际的操作执行顺序不一致。由于现代的处理器都会使用写缓冲区，因此 现代的处理器都会允许对写-读操作进行重排序。</p>
 <p>为提高性能，编译器和处理器会对指令做重排序。重排序分3种类型：</p>
 <ol>
-<li><font color='orange'>编译器优化重排序。（编译器重排序）</font></li>
-<li><font color='orange'>指令级并行重排序。（处理器重排序）</font></li>
-<li><font color='orange'>内存系统重排序。（处理器重排序）</font></li>
+<li>编译器优化重排序。（编译器重排序）</li>
+<li>指令级并行重排序。（处理器重排序）</li>
+<li>内存系统重排序。（处理器重排序）</li>
 </ol>
 <p>从Java源代码到最终执行的指令序列，会经历下面3种重排序：</p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-1.1-%E6%8C%87%E4%BB%A4%E9%87%8D%E6%8E%92%E5%BA%8F-%E6%BA%90%E7%A0%81%E5%88%B0%E6%89%A7%E8%A1%8C%E6%8C%87%E4%BB%A4%E9%97%B4%E7%9A%84%E9%87%8D%E6%8E%92%E5%BA%8F%E8%BF%87%E7%A8%8B.png?token=AIGEF3PREC67A44L2UZB5ADEZZX4Q" alt="Java内存模型-1.1-指令重排序-源码到执行指令间的重排序过程"></p>
-<p><strong>重排序可能会导致多线程程序出现 内存可见性问题。</strong></p>
+<p><strong>重排序可能会导致多线程程序出现内存可见性问题。</strong></p>
 <h3 id="4-2-4、内存模型"><a href="#4-2-4、内存模型" class="headerlink" title="4.2.4、内存模型"></a>4.2.4、内存模型</h3><p><strong>CPU多级缓存导致的一致性问题、CPU时间片机制导致的原子性问题、以及处理器优化和指令重排导致的有序性问题等，都是由硬件不断升级导致。</strong></p>
 <p>为了保证并发编程中可以满足原子性、可见性及有序性，内存模型 就出现了。</p>
 <p>为了保证共享内存的正确性（可见性、有序性、原子性），内存模型定义了共享内存系统中多线程程序读写操作行为的规范。通过这些规则来规范对内存的读写操作，从而保证指令执行的正确性。它与处理器、缓存、并发、编译器有关。它解决了CPU多级缓存、处理器优化、指令重排等导致的内存访问问题，保证了并发场景下的一致性、原子性和有序性。</p>
@@ -1778,7 +1668,7 @@ p <span class="token operator">=</span> <span class="token keyword">null</span><
 <p>as-if-serial语义保证单线程内程序的执行结果不被改变，happens-before关系保证了正确同步的多线程程序执行结果的正确性。</p>
 <h3 id="4-3-3、volatile内存语义"><a href="#4-3-3、volatile内存语义" class="headerlink" title="4.3.3、volatile内存语义"></a>4.3.3、volatile内存语义</h3><h4 id="volatile写内存语义"><a href="#volatile写内存语义" class="headerlink" title="volatile写内存语义"></a>volatile写内存语义</h4><p><strong>当写一个volatile变量时，JMM会把该线程对应的本地内存中的共享变量值刷新到主内存。</strong></p>
 <h4 id="volatile读内存语义"><a href="#volatile读内存语义" class="headerlink" title="volatile读内存语义"></a>volatile读内存语义</h4><p><strong>当读一个volatile变量时，JMM会把该线程对应的本地内存置为无效，线程接下来将从主内存中读取共享变量。</strong></p>
-<h4 id="底层实现-1"><a href="#底层实现-1" class="headerlink" title="底层实现"></a>底层实现</h4><p><strong>为了实现volatile内存语义，JMM会限制 编译器重排序 和 处理器重排序。</strong></p>
+<h4 id="底层实现"><a href="#底层实现" class="headerlink" title="底层实现"></a>底层实现</h4><p><strong>为了实现volatile内存语义，JMM会限制 编译器重排序 和 处理器重排序。</strong></p>
 <p>JMM禁止 编译器重排序 的规则如下：</p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20230805235157835.png?token=AIGEF3KZOENBUAHU2SOPZ2DEZZYFW" alt="image-20230805235157835"></p>
 <blockquote>
@@ -1787,7 +1677,7 @@ p <span class="token operator">=</span> <span class="token keyword">null</span><
 <h3 id="4-3-4、锁内存语义"><a href="#4-3-4、锁内存语义" class="headerlink" title="4.3.4、锁内存语义"></a>4.3.4、锁内存语义</h3><h4 id="锁获取内存语义"><a href="#锁获取内存语义" class="headerlink" title="锁获取内存语义"></a>锁获取内存语义</h4><p><strong>当线程获取锁时，JMM会把该线程对应的本地内存置为无效。从而使得被监视器保护的 临界区代码必须从主内存中读取共享变量。</strong></p>
 <h4 id="锁释放内存语义"><a href="#锁释放内存语义" class="headerlink" title="锁释放内存语义"></a>锁释放内存语义</h4><p><strong>当线程释放锁时，JMM会把该线程对应的本地内存中的共享变量刷新到主内存中。</strong></p>
 <blockquote>
-<p>对比锁释放-获取的内存语义与volatile写-读的内存语义可以看出：锁释放与volatile写有 相同的内存语义；锁获取与volatile读有相同的内存语义。</p>
+<p>对比锁释放-获取的内存语义与volatile写-读的内存语义可以看出：锁释放与volatile写有相同的内存语义；锁获取与volatile读有相同的内存语义。</p>
 </blockquote>
 <h4 id="公平锁和非公平锁内存语义"><a href="#公平锁和非公平锁内存语义" class="headerlink" title="公平锁和非公平锁内存语义"></a>公平锁和非公平锁内存语义</h4><ul>
 <li>公平锁和非公平锁释放时，最后都要写一个volatile变量state。</li>
@@ -1799,9 +1689,9 @@ p <span class="token operator">=</span> <span class="token keyword">null</span><
 <li>在构造函数内对一个final域的写入，与随后把这个被构造对象的引用赋值给一个引用变量，这两者不能重排序。</li>
 <li>初次读一个包含final域的对象的引用，与随后初次读这个final域，这两个操作之间不能 重排序。</li>
 </ol>
-<h3 id="4-4-1、原子性"><a href="#4-4-1、原子性" class="headerlink" title="4.4.1、原子性"></a>4.4.1、原子性</h3><p><em><strong>Java为了保证原子性，提供了两个高级字节码指令<code>monitorenter</code>和<code>monitorexit</code>。在Java中对应的关键字就是synchronized。</strong></em></p>
+<h3 id="4-4-1、原子性"><a href="#4-4-1、原子性" class="headerlink" title="4.4.1、原子性"></a>4.4.1、原子性</h3><p><strong>Java为了保证原子性，提供了两个高级字节码指令<code>monitorenter</code>和<code>monitorexit</code>。在Java中对应的关键字就是synchronized。</strong></p>
 <p>Java中可以使用synchronized来保证方法和代码块内操作的原子性。</p>
-<h3 id="4-4-2、可见性"><a href="#4-4-2、可见性" class="headerlink" title="4.4.2、可见性"></a>4.4.2、可见性</h3><p>Java中的关键字volatile有一个功能：<em><strong>被其修饰的变量在被修改后必须立即同步到主内存，被其修饰的变量在每次使用时都必须从主内存获取。</strong></em>因此，可以使用volatile来保证多线程操作时变量的可见性。</p>
+<h3 id="4-4-2、可见性"><a href="#4-4-2、可见性" class="headerlink" title="4.4.2、可见性"></a>4.4.2、可见性</h3><p>Java中的关键字volatile有一个功能：<strong>被其修饰的变量在被修改后必须立即同步到主内存，被其修饰的变量在每次使用时都必须从主内存获取。</strong>因此，可以使用volatile来保证多线程操作时变量的可见性。</p>
 <p>除了volatile，Java中的synchronized和final关键字也可以实现可见性。只不过实现方式不同。 </p>
 <h3 id="4-4-3、有序性"><a href="#4-4-3、有序性" class="headerlink" title="4.4.3、有序性"></a>4.4.3、有序性</h3><p><strong>Java在生成指令序列的适当位置会插入内存屏障指令来禁止特定类型的处理器重排序。</strong>JMM把内存屏障指令分为4类：</p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/Java%E5%86%85%E5%AD%98%E6%A8%A1%E5%9E%8B-1.2-%E5%8F%AF%E8%A7%81%E6%80%A7-%E5%86%85%E5%AD%98%E5%B1%8F%E9%9A%9C%E7%B1%BB%E5%9E%8B.png?token=AIGEF3LKY332SGI2CDZSVN3EZZYI2" alt="Java内存模型-1.2-可见性-内存屏障类型"></p>
@@ -1856,10 +1746,10 @@ p <span class="token operator">=</span> <span class="token keyword">null</span><
 </ul>
 </li>
 </ul>
-<h3 id="5-1-3、锁优化"><a href="#5-1-3、锁优化" class="headerlink" title="5.1.3、锁优化"></a>5.1.3、锁优化</h3><h4 id="自旋锁与自适应自旋"><a href="#自旋锁与自适应自旋" class="headerlink" title="自旋锁与自适应自旋"></a>自旋锁与自适应自旋</h4><p><em><strong>JDK 1.4.2引入了自旋锁，默认关闭，可使用参数<code>-XX:+UseSpinning</code>开启，JDK 6中改为默认开启。</strong></em></p>
-<p>自旋等待不能代替阻塞，自旋等待虽然避免了线程切换的开销，但它要占用处理器时间，如果锁被占用的时间很短，自旋等待效果就会非常好，反之如果锁被占用时间很长，那么自旋线程只会白白消耗处理器资源，这会带来性能的浪费。因此自旋等待的时间必须有一定的限度，如果自旋超过了限定的次数仍没有获得锁，就应当使用传统方式挂起线程。<em><strong>自旋次数默认是十次，也可以使用参数<code>-XX:PreBlockSpin</code>来修改。</strong></em></p>
-<p><em><strong>JDK 6对自旋锁做了优化，引入了自适应自旋。</strong></em>自适应意味着自旋的时间不再是固定的了，而是由前一次在同一个锁上的自旋时间及锁拥有者的状态来决定。如果在同一个锁对象上，自旋等待刚刚成功获得过锁，且持有锁的线程正在运行中，那么虚拟机就会认为这次自旋也很有可能再次成功，进而允许自旋等待更长时间。另一方面，如果对于某个锁，自旋很少成功获得锁，那么后期再获取这个锁时可能直接省略自旋过程，以避免浪费处理器资源。</p>
-<p><em><strong>JDK7之后就不能控制是否开启自旋功能了。</strong></em></p>
+<h3 id="5-1-3、锁优化"><a href="#5-1-3、锁优化" class="headerlink" title="5.1.3、锁优化"></a>5.1.3、锁优化</h3><h4 id="自旋锁与自适应自旋"><a href="#自旋锁与自适应自旋" class="headerlink" title="自旋锁与自适应自旋"></a>自旋锁与自适应自旋</h4><p><strong>JDK 1.4.2引入了自旋锁，默认关闭，可使用参数<code>-XX:+UseSpinning</code>开启，JDK 6中改为默认开启。</strong></p>
+<p>自旋等待不能代替阻塞，自旋等待虽然避免了线程切换的开销，但它要占用处理器时间，如果锁被占用的时间很短，自旋等待效果就会非常好，反之如果锁被占用时间很长，那么自旋线程只会白白消耗处理器资源，这会带来性能的浪费。因此自旋等待的时间必须有一定的限度，如果自旋超过了限定的次数仍没有获得锁，就应当使用传统方式挂起线程。<strong>自旋次数默认是十次，也可以使用参数<code>-XX:PreBlockSpin</code>来修改。</strong></p>
+<p><strong>JDK 6对自旋锁做了优化，引入了自适应自旋。</strong>自适应意味着自旋的时间不再是固定的了，而是由前一次在同一个锁上的自旋时间及锁拥有者的状态来决定。如果在同一个锁对象上，自旋等待刚刚成功获得过锁，且持有锁的线程正在运行中，那么虚拟机就会认为这次自旋也很有可能再次成功，进而允许自旋等待更长时间。另一方面，如果对于某个锁，自旋很少成功获得锁，那么后期再获取这个锁时可能直接省略自旋过程，以避免浪费处理器资源。</p>
+<p><strong>JDK7之后就不能控制是否开启自旋功能了。</strong></p>
 <h4 id="锁消除"><a href="#锁消除" class="headerlink" title="锁消除"></a>锁消除</h4><p><strong>锁消除是指虚拟机即时编译器在运行时，对一些代码要求同步，但实际不会发生共享数据竞争的锁进行消除。锁消除的主要判定依据来源于逃逸分析的数据支持。</strong></p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">void</span> <span class="token function">add</span><span class="token punctuation">(</span><span class="token class-name">String</span> str1<span class="token punctuation">,</span><span class="token class-name">String</span> str2<span class="token punctuation">)</span><span class="token punctuation">&#123;</span>
     <span class="token class-name">StringBuffer</span> sb <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">StringBuffer</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -1883,19 +1773,19 @@ p <span class="token operator">=</span> <span class="token keyword">null</span><
     <span class="token keyword">return</span> sb<span class="token punctuation">.</span><span class="token function">toString</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token operator">:</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h4 id="偏向锁"><a href="#偏向锁" class="headerlink" title="偏向锁"></a>偏向锁</h4><h5 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h5><p><em><strong>JDK 6引入偏向锁，目的是消除数据在无竞争情况下的同步原语， 进一步提高程序运行性能。</strong></em>如果说轻量级锁是在无竞争情况下 使用CAS 来替换 使用互斥量，那偏向锁就是在无竞争情况下去掉同步和CAS。</p>
+<h4 id="偏向锁"><a href="#偏向锁" class="headerlink" title="偏向锁"></a>偏向锁</h4><h5 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h5><p><strong>JDK 6引入偏向锁，目的是消除数据在无竞争情况下的同步原语， 进一步提高程序运行性能。</strong>如果说轻量级锁是在无竞争情况下 使用CAS 来替换 使用互斥量，那偏向锁就是在无竞争情况下去掉同步和CAS。</p>
 <p>偏向锁中的“偏”，就是偏心的“偏”、偏袒的“偏”。它的意思是这个锁会偏向于第一个获得它的线程，如果在接下来的执行过程中，没有其它线程来获取这个锁，则持有偏向锁的线程将永远不需要再进行同步。</p>
 <h5 id="工作过程"><a href="#工作过程" class="headerlink" title="工作过程"></a>工作过程</h5><p><strong>当锁对象第一次被线程获取时，虚拟机会把对象头中的标志位设置为“01”、把偏向模式设置为“1”，表示进入偏向模式。同时使用CAS操作把获取到这个锁的线程ID记录在对象的Mark Word之中。如果CAS操作成功，持有偏向锁的线程以后再次进入同步块时，就不需要再进行任何同步操作（例如加锁、解锁及对Mark Word的更新操作 等）。</strong></p>
 <p>若有其它线程尝试获取锁，偏向模式会马上结束。根据锁对象目前是否处于被锁定的状态来决定是否撤销偏向（偏向模式设置为“0”），撤销后标志位恢复到未锁定（标志位 为“01”）或轻量级锁定（标志位为“00”）的状态，后续的同步操作就按照轻量级锁工作流程来执行。</p>
-<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>当对象进入偏向状态的时候，Mark Word大部分的空间（23个比特）都用于存储持有锁的线程ID了，这部分空间占用了原有存储对象哈希码的位置，那原来对象的哈希码怎么办呢？</p>
-<p>一个对象如果计算过哈希码，就应该一直保持该值不变（推荐但不强制，因为用户可以重载hashCode()方法），否则很多依赖对象哈希码的API都可能存在出错风险。而作为绝大多数对象哈希码来源的Object::hashCode()方法，返回的是对象的一致性哈希码（Identity Hash Code），这个值是能强制保证不变的，它通过在对象头中存储计算结果来保证第一 次计算之后，再次调用该方法取到的哈希码值永远不会再发生改变。因此，当一个对象已经计算过一 致性哈希码后，它就再也无法进入偏向锁状态了；而当一个对象当前正处于偏向锁状态，又收到需要计算其一致性哈希码请求时，它的偏向状态会被立即撤销，并且锁会膨胀为重量级锁。在重量级锁实现中，对象头指向了重量级锁的位置，代表重量级锁的ObjectMonitor类里有字段可以记录非加锁状态（标志位为“01”）下的Mark Word，其中自然可以存储原来的哈希码。 </p>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><p>当对象进入偏向状态时，Mark Word大部分的空间（23个比特）都用于存储持有锁的线程ID了，这部分空间占用了原有存储对象哈希码的位置，那原来对象的哈希码怎么办呢？</p>
+<p>一个对象如果计算过哈希码，就应该一直保持该值不变（推荐但不强制，因为用户可以重载hashCode()方法），否则很多依赖对象哈希码的API都可能存在出错风险。而作为绝大多数对象哈希码来源的Object::hashCode()方法，返回的是对象的一致性哈希码（Identity Hash Code），这个值是能强制保证不变的，它通过在对象头中存储计算结果来保证第一 次计算之后，再次调用该方法取到的哈希码值永远不会再发生改变。因此，<strong>当一个对象已经计算过一 致性哈希码后，它就再也无法进入偏向锁状态了</strong>；而<strong>当一个对象当前正处于偏向锁状态，又收到需要计算其一致性哈希码请求时，它的偏向状态会被立即撤销，并且锁会膨胀为重量级锁</strong>。在重量级锁实现中，对象头指向了重量级锁的位置，代表重量级锁的ObjectMonitor类里有字段可以记录非加锁状态（标志位为“01”）下的Mark Word，其中自然可以存储原来的哈希码。 </p>
 <blockquote>
 <p><font color='red'>注意：如果请求获取的hashcode值来源于对Object::hashCode()或者System::identityHashCode(Object)方法的调用，那么才会撤销偏向锁并升级为重量级锁；反之，如果重写了对象的hashCode()方法，计算哈希码时并不会触发偏向锁的撤销和重量级锁的升级。</font></p>
 </blockquote>
 <p>偏向锁可以提高带有同步但无竞争的程序性能，但它同样是一个带有效益权衡（Trade Off）性质的优化，也就是说它并非总是对程序运行有利。如果程序中大多数的锁都总是被多个不同的线程访问，那偏向模式就是多余的。在具体问题具体分析的前提下，有时候使用参数<code>-XX:-UseBiasedLocking</code>来禁止偏向锁优化反而可以提升性能。</p>
-<h4 id="轻量级锁"><a href="#轻量级锁" class="headerlink" title="轻量级锁"></a>轻量级锁</h4><h5 id="简介-2"><a href="#简介-2" class="headerlink" title="简介"></a>简介</h5><p><em><strong>JDK 6引入了轻量级锁。</strong></em>“轻量级”是相对于使用操作系统互斥量来实现锁而言，因此传统的锁机制被称为“重量级”锁。轻量级锁并不能代替重量级锁，它设计的初衷是在没有多线程竞争的前提下，减少重量级锁使用操作系统互斥量产生的性能消耗。</p>
-<h5 id="工作过程-1"><a href="#工作过程-1" class="headerlink" title="工作过程"></a>工作过程</h5><p><strong>在代码即将进入同步块时，如果此同步对象没有被锁定（锁标志位为“01”状态），虚拟机首先在当前线程的栈帧中建立一个名为锁记录（Lock Record）的空间，用于存储锁对象目前的Mark Word的拷贝（官方为 这份拷贝加了一个Displaced前缀，即Displaced Mark Word）。</strong></p>
-<p>然后，虚拟机将使用CAS操作尝试把锁对象的Mark Word更新为指向Lock Record的指针。</p>
+<h4 id="轻量级锁"><a href="#轻量级锁" class="headerlink" title="轻量级锁"></a>轻量级锁</h4><h5 id="简介-2"><a href="#简介-2" class="headerlink" title="简介"></a>简介</h5><p><strong>JDK 6引入了轻量级锁。</strong>“轻量级”是相对于使用操作系统互斥量来实现锁而言，因此传统锁机制被称为“重量级”锁。轻量级锁并不能代替重量级锁，它设计的初衷是在没有多线程竞争的前提下，减少重量级锁使用操作系统互斥量产生的性能消耗。</p>
+<h5 id="工作过程-1"><a href="#工作过程-1" class="headerlink" title="工作过程"></a>工作过程</h5><p><strong>在代码即将进入同步块时，如果此同步对象没有被锁定（锁标志位为“01”状态），虚拟机首先在当前线程的栈帧中建立一个名为锁记录（Lock Record）的空间，用于存储锁对象目前的Mark Word的拷贝（官方为这份拷贝加了一个Displaced前缀，即Displaced Mark Word）。</strong></p>
+<p>然后，虚拟机将<strong>使用CAS操作尝试把锁对象的Mark Word更新为指向Lock Record的指针</strong>。</p>
 <ul>
 <li>如果这个更新动作成功了，即代表该线程拥有了这个对象的锁，并且锁对象Mark Word的锁标志位（Mark Word的 最后两个比特）将转变为“00”，表示此对象处于轻量级锁定状态。</li>
 <li>如果这个更新操作失败了，那就意味着至少存在一条线程与当前线程竞争获取该对象的锁。虚拟机首先会检查对象的Mark Word是否指向当前线程的栈帧，如果是，说明当前线程已经拥有了这个对象的锁，那直接进入同步块继续执行就可以了，否则就说明这个锁对象已经被其他线程抢占了。如果出现两条以上的线程争用同一个锁的情况，那轻量级锁就不再有效，必须要膨胀为重量级锁，锁标志状态值变为“10”，此时锁对象Mark Word中存储的就是指向重量级锁（互斥量）的指针，后面等待锁的线程也必须进入阻塞状态。</li>
@@ -1904,9 +1794,9 @@ p <span class="token operator">=</span> <span class="token keyword">null</span><
 <h5 id="总结-1"><a href="#总结-1" class="headerlink" title="总结"></a>总结</h5><p>轻量级锁能提升程序同步性能的依据是”对于绝大部分的锁，在整个同步周期内都是不存在竞争的”这一经验法则。如果没有竞争，轻量级锁便通过CAS操作成功避免了使用互斥量的开销；但如果确实存在锁竞争，除了互斥量的本身开销外，还额外发生了CAS操作的开销。因此在有竞争的情况下， 轻量级锁反而会比传统的重量级锁更慢。</p>
 <p>偏向锁、轻量级锁的状态转化及对象Mark Word的关系如下图所示：</p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/%E5%81%8F%E5%90%91%E9%94%81%E3%80%81%E8%BD%BB%E9%87%8F%E7%BA%A7%E9%94%81%E4%B8%8EMarkWord%E7%9A%84%E5%85%B3%E7%B3%BB.png?token=AIGEF3IKANGCKSJOPH3WQ2LEZZYK6" alt="偏向锁、轻量级锁与MarkWord的关系"></p>
-<h3 id="5-1-4、锁升级"><a href="#5-1-4、锁升级" class="headerlink" title="5.1.4、锁升级"></a>5.1.4、锁升级</h3><h4 id="5-1-4-1、无锁状态"><a href="#5-1-4-1、无锁状态" class="headerlink" title="5.1.4.1、无锁状态"></a>5.1.4.1、无锁状态</h4><p><em><strong>new一个对象，默认就是无锁状态。</strong></em></p>
+<h3 id="5-1-4、锁升级"><a href="#5-1-4、锁升级" class="headerlink" title="5.1.4、锁升级"></a>5.1.4、锁升级</h3><h4 id="5-1-4-1、无锁状态"><a href="#5-1-4-1、无锁状态" class="headerlink" title="5.1.4.1、无锁状态"></a>5.1.4.1、无锁状态</h4><p><strong>new一个对象，默认就是无锁状态。</strong></p>
 <h4 id="5-1-4-2、偏向锁"><a href="#5-1-4-2、偏向锁" class="headerlink" title="5.1.4.2、偏向锁"></a>5.1.4.2、偏向锁</h4><h5 id="偏向锁来历"><a href="#偏向锁来历" class="headerlink" title="偏向锁来历"></a>偏向锁来历</h5><p>HotSpot作者研究发现，通常不存在锁竞争，而是一个线程经常多次获得同一个锁。所以每次都要竞争锁会消耗很多资源，为了降低获取锁的代价就引入了偏向锁。</p>
-<h5 id="偏向锁获取"><a href="#偏向锁获取" class="headerlink" title="偏向锁获取"></a>偏向锁获取</h5><p><em><strong>首次访问锁的线程，偏向锁会偏向于该线程。有其它线程争夺锁时会撤销偏向锁，然后升级为轻量级锁。</strong></em></p>
+<h5 id="偏向锁获取"><a href="#偏向锁获取" class="headerlink" title="偏向锁获取"></a>偏向锁获取</h5><p><strong>首次访问锁的线程，偏向锁会偏向于该线程。有其它线程争夺锁时会撤销偏向锁，然后升级为轻量级锁。</strong></p>
 <p>偏向锁 获取和撤销 过程描述如下：</p>
 <p>当锁对象首次被线程获取时，会将获取到该锁的线程ID记录在锁对象的Mark Word中，以后该线程在进入和退出 同步块时不需要执行CAS操作来加锁和解锁：</p>
 <ul>
@@ -1972,7 +1862,7 @@ p <span class="token operator">=</span> <span class="token keyword">null</span><
 <p>锁优缺点对比：</p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/Synachonized-1.1-%E9%94%81%E7%9A%84%E4%BC%98%E7%BC%BA%E7%82%B9.png?token=AIGEF3NTWUVMKCIFTZIAWITEZZYNA" alt="Synachonized-1.1-锁的优缺点"></p>
 <h3 id="5-1-5、锁降级"><a href="#5-1-5、锁降级" class="headerlink" title="5.1.5、锁降级"></a>5.1.5、锁降级</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/28505703">https://zhuanlan.zhihu.com/p/28505703</a></p>
-<p><font color='orange'>只被<code>VM Thread</code>访问，降级也就没啥意义了。所以可以认为锁降级不存在！</font></p>
+<p><strong>只被<code>VM Thread</code>访问，降级也就没啥意义了。所以可以认为锁降级不存在！</strong></p>
 <h4 id="降级目的和过程"><a href="#降级目的和过程" class="headerlink" title="降级目的和过程"></a>降级目的和过程</h4><p>因为BasicLocking的实现优先于重量级锁的使用，JVM会尝试在STW的停顿中对处于“空闲(idle)”状态的重量级锁进行降级(deflate)。我们知道在STW时，所有的Java线程都会暂停在“安全点(SafePoint)”，此时VM Thread通过对所有Monitor进行遍历，或者通过对所有依赖于<code>MonitorInUseLists</code>值的当前正在“使用”中的<code>Monitor</code>子序列进行遍历，从而得到那些未被使用的“Monitor”并将之作为降级对象。</p>
 <h4 id="降级对象"><a href="#降级对象" class="headerlink" title="降级对象"></a>降级对象</h4><p><strong>重量级锁的降级发生于STW阶段，降级对象就是那些仅仅能被 VM Thread 访问而没有被其它 Java Thread 访问的Monitor对象。</strong></p>
 <h4 id="HotSpot-VM实现"><a href="#HotSpot-VM实现" class="headerlink" title="HotSpot VM实现"></a>HotSpot VM实现</h4><p>HotSpot VM锁降级底层实现，可以参考：</p>
@@ -2084,19 +1974,19 @@ p <span class="token operator">=</span> <span class="token keyword">null</span><
 <li>线程数量少且执行时间短，选用CAS自旋会较好。</li>
 </ul>
 <h3 id="5-2-2、底层实现"><a href="#5-2-2、底层实现" class="headerlink" title="5.2.2、底层实现"></a>5.2.2、底层实现</h3><ol>
-<li><font color='orange'>底层指令实现</font>：<ul>
+<li>底层指令实现：<ul>
 <li>IA64、X86下：通过<code>lock、cmpxchg</code>指令实现。单纯的<code>cmpxchg</code>不能保证原子性。</li>
 <li>sparc-TSO下：通过<code>case</code>指令实现。</li>
 <li>ARM和PowerPC下：通过一对<code>Idrex/strex</code>指令实现。</li>
 </ul>
 </li>
-<li><font color='orange'>硬件情况下</font>：lock指令在执行后面指令的时候锁定一个北桥信号。</li>
-<li><font color='orange'>拓展知识</font>：处理器 使用【总线锁和缓存锁】来实现原子操作。</li>
+<li>硬件情况下：lock指令在执行后面指令的时候锁定一个北桥信号。</li>
+<li>拓展知识：处理器 使用总线锁和缓存锁来实现原子操作。</li>
 </ol>
 <h3 id="5-2-3、CAS缺点"><a href="#5-2-3、CAS缺点" class="headerlink" title="5.2.3、CAS缺点"></a>5.2.3、CAS缺点</h3><ol>
-<li><p><font color='orange'>ABA问题。</font>解决方法：加版本号。</p>
+<li><p>ABA问题。解决方法：加版本号。</p>
 </li>
-<li><p><font color='orange'>自旋时间长。</font>解决方法：如果JVM支持处理器提供的pause指令，那么效率会有一点提升。</p>
+<li><p>自旋时间长。解决方法：如果JVM支持处理器提供的pause指令，那么效率会有一点提升。</p>
 <ul>
 <li><p>PAUSE指令作用：</p>
 <ol>
@@ -2110,18 +2000,15 @@ p <span class="token operator">=</span> <span class="token keyword">null</span><
 </li>
 </ul>
 </li>
-<li><p><font color='orange'>只能保证一个共享变量的原子操作。</font>解决方法：加锁；AtomicReference类来保证引用对象之间的原子性，就可以把多个变量放在一个对象中执行CAS操作。</p>
+<li><p>只能保证一个共享变量的原子操作。解决方法：加锁；AtomicReference类来保证引用对象之间的原子性，就可以把多个变量放在一个对象中执行CAS操作。</p>
 </li>
 </ol>
 <h3 id="5-2-4、自增操作"><a href="#5-2-4、自增操作" class="headerlink" title="5.2.4、自增操作"></a>5.2.4、自增操作</h3><ul>
-<li><p>Synchronized操作。</p>
-<p>执行时间长，因为需要用户态与内核态的切换，从而降低了执行效率。</p>
+<li><p>Synchronized操作：执行时间长，因为需要用户态与内核态的切换，从而降低了执行效率。</p>
 </li>
-<li><p>AtomicXXX操作。</p>
-<p>执行时间较Synch要少，因为使用了CAS自旋&#x2F;无锁操作。</p>
+<li><p>AtomicXXX操作：执行时间较Synch要少，因为使用了CAS自旋&#x2F;无锁操作。</p>
 </li>
-<li><p>LongAdder操作。</p>
-<p>执行时间长，因为使用了分段锁。 适用于并发量大的情况。</p>
+<li><p>LongAdder操作：执行时间长，因为使用了分段锁。 适用于并发量大的情况。</p>
 </li>
 </ul>
 <h2 id="5-3、Volatile"><a href="#5-3、Volatile" class="headerlink" title="5.3、Volatile"></a>5.3、Volatile</h2><h3 id="5-3-1、简介"><a href="#5-3-1、简介" class="headerlink" title="5.3.1、简介"></a>5.3.1、简介</h3><p>volatile是轻量级的 synchronized，它在多处理器开发中保证了共享变量的“可见性”。<strong>可见性指的是 当一个线程修改了一个共享变量后，另外一个线程能读到这个共享变量被修改后的值。</strong></p>
@@ -2175,16 +2062,16 @@ p <span class="token operator">=</span> <span class="token keyword">null</span><
 <li>锁总线。</li>
 </ol>
 <h3 id="5-3-5、解决指令重排序"><a href="#5-3-5、解决指令重排序" class="headerlink" title="5.3.5、解决指令重排序"></a>5.3.5、解决指令重排序</h3><ol>
-<li><p><font color='orange'>代码级别</font>：volatile修饰变量。</p>
+<li><p>代码级别：volatile修饰变量。</p>
 </li>
-<li><p><font color='orange'>字节码级别</font>：加访问修饰符 ACC_VOLATILE。</p>
+<li><p>字节码级别：加访问修饰符 ACC_VOLATILE。</p>
 </li>
-<li><p><font color='orange'>JVM级别</font>：JVM内存屏障。（屏障两边的指令禁止重排）</p>
+<li><p>JVM级别：JVM内存屏障。（屏障两边的指令禁止重排）</p>
 </li>
-<li><p><font color='orange'>Hotspot实现</font>：lock addl指令。</p>
+<li><p>Hotspot实现：lock addl指令。</p>
 <p>为何lock指令可以解决重排序和可见性问题？因为：lock用于在多处理器中执行指令时会对共享内存进行独占使用，其能够将当前处理器对应的缓存的内容刷新到内存中，并使其它处理器相同缓存中的内容失效。此外还提供有序指令无法越过内存屏障的作用。</p>
 </li>
-<li><p><font color='orange'>系统级别</font>：load fence、store fence原语指令。</p>
+<li><p>系统级别：load fence、store fence原语指令。</p>
 </li>
 </ol>
 <blockquote>
@@ -2235,8 +2122,8 @@ if (cache-&gt;is_volatile()) &#123;
 <p>为解决这种问题，就可以把不足64字节的数据后面追加到64字节，也就是说让队列的头节点和尾节点各占一个缓存行，这样就避免了阻塞节点操作，大大提高效率。</p>
 <h4 id="注意事项-1"><a href="#注意事项-1" class="headerlink" title="注意事项"></a>注意事项</h4><p>使用volatile变量时一定要追加至64字节的说法并非一定成立。在以下两种场景中不适合：</p>
 <ol>
-<li><font color='orange'>缓存行非64字节宽的处理器。</font>如P6系列和奔腾处理器，它们的L1和L2高速缓存行是32个 字节宽。 </li>
-<li><font color='orange'>共享变量不会被频繁地写。</font>因为使用追加字节的方式需要处理器读取更多的字节到高速缓冲区，这本身就会带来一定的性能消耗，如果共享变量不被频繁写的话，锁的几率也非常小，就没必要通过追加字节的方式来避免相互锁定。</li>
+<li><strong>缓存行非64字节宽的处理器</strong>。如P6系列和奔腾处理器，它们的L1和L2高速缓存行是32个 字节宽。 </li>
+<li><strong>共享变量不会被频繁地写</strong>。因为使用追加字节的方式需要处理器读取更多的字节到高速缓冲区，这本身就会带来一定的性能消耗，如果共享变量不被频繁写的话，锁的几率也非常小，就没必要通过追加字节的方式来避免相互锁定。</li>
 </ol>
 <blockquote>
 <p><font color='red'>注意：追加字节的方式在Java 7下可能不生效，因为Java 7更加智慧，它会淘汰或重新排列无用字段，所以，需要使用其它追加字节的方式。除了volatile，Java并发编程中应用较多的是synchronized。</font></p>
@@ -2260,16 +2147,16 @@ c <span class="token operator">=</span> a<span class="token punctuation">;</span
 <h2 id="5-4、Lock（锁）"><a href="#5-4、Lock（锁）" class="headerlink" title="5.4、Lock（锁）"></a>5.4、Lock（锁）</h2><h3 id="5-4-1、简介"><a href="#5-4-1、简介" class="headerlink" title="5.4.1、简介"></a>5.4.1、简介</h3><h4 id="锁类架构图"><a href="#锁类架构图" class="headerlink" title="锁类架构图"></a>锁类架构图</h4><p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/Java%E4%B8%AD%E7%9A%84%E9%94%81%E5%92%8CAQS%E7%B1%BB%E7%BB%93%E6%9E%84%E5%9B%BE01.png?token=AIGEF3KXLEK2VZACCYGNWBDEZZYRQ" alt="Java中的锁和AQS类结构图01"></p>
 <h4 id="Lock接口特性"><a href="#Lock接口特性" class="headerlink" title="Lock接口特性"></a>Lock接口特性</h4><p>Lock接口提供了synchronized不具备的特性，详情如下：</p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/%E9%94%81-1.1-Lock%E6%8E%A5%E5%8F%A3%E6%8F%90%E4%BE%9B%E4%BA%86synchronized%E4%B8%8D%E5%85%B7%E5%A4%87%E7%9A%84%E7%89%B9%E6%80%A7.png?token=AIGEF3PVCAV2TJT2GI66CC3EZZYTA" alt="锁-1.1-Lock接口提供了synchronized不具备的特性"></p>
-<h3 id="5-4-2、乐观锁"><a href="#5-4-2、乐观锁" class="headerlink" title="5.4.2、乐观锁"></a>5.4.2、乐观锁</h3><h4 id="5-4-2-1、简介"><a href="#5-4-2-1、简介" class="headerlink" title="5.4.2.1、简介"></a>5.4.2.1、简介</h4><p><strong>乐观锁 代表是 AtomicInteger，使用 CAS 保证原子性。</strong></p>
+<h3 id="5-4-2、乐观锁"><a href="#5-4-2、乐观锁" class="headerlink" title="5.4.2、乐观锁"></a>5.4.2、乐观锁</h3><h4 id="5-4-2-1、简介"><a href="#5-4-2-1、简介" class="headerlink" title="5.4.2.1、简介"></a>5.4.2.1、简介</h4><p><strong>乐观锁代表是 AtomicInteger，使用 CAS 保证原子性。</strong></p>
 <p>乐观锁 核心思想：无需加锁，每次只有一个线程能 成功修改 共享变量，其它线程会不断重试直到成功。</p>
 <blockquote>
 <p>乐观锁常见实现就是CAS算法，java java.util.concurrent包下原子类(例如<code>AtomicBoolean</code>，<code>AtomicInteger</code>，<code>AtomicLong</code>)中的递增操作就是通过CAS自旋来实现。</p>
 </blockquote>
 <h4 id="5-4-2-2、特点"><a href="#5-4-2-2、特点" class="headerlink" title="5.4.2.2、特点"></a>5.4.2.2、特点</h4><ul>
-<li>线程一直运行，不会阻塞，故 不存在 线程上下文切换。</li>
-<li>需要多核CPU支持，线程数 不应该 超过 CPU核心数量。</li>
+<li>线程一直运行，不会阻塞，故不存在线程上下文切换。</li>
+<li>需要多核CPU支持，线程数不应该超过 CPU核心数量。</li>
 </ul>
-<h4 id="5-4-2-3、适用场景"><a href="#5-4-2-3、适用场景" class="headerlink" title="5.4.2.3、适用场景"></a>5.4.2.3、适用场景</h4><p><strong>乐观锁适用于 多读 场景，不加锁可以 提高 读操作性能。</strong></p>
+<h4 id="5-4-2-3、适用场景"><a href="#5-4-2-3、适用场景" class="headerlink" title="5.4.2.3、适用场景"></a>5.4.2.3、适用场景</h4><p><strong>乐观锁适用于多读场景，不加锁可以提高读操作性能。</strong></p>
 <h3 id="5-4-3、悲观锁"><a href="#5-4-3、悲观锁" class="headerlink" title="5.4.3、悲观锁"></a>5.4.3、悲观锁</h3><h4 id="5-4-3-1、简介"><a href="#5-4-3-1、简介" class="headerlink" title="5.4.3.1、简介"></a>5.4.3.1、简介</h4><p><strong>悲观锁代表是 synchronized 和 Lock 锁。</strong></p>
 <p>悲观锁核心思想：线程占有了锁，才能操作共享变量，每次只能有一个线程占有锁，其它获线程都要等待。</p>
 <h4 id="5-4-3-2、特点"><a href="#5-4-3-2、特点" class="headerlink" title="5.4.3.2、特点"></a>5.4.3.2、特点</h4><ul>
@@ -2292,10 +2179,7 @@ c <span class="token operator">=</span> a<span class="token punctuation">;</span
 <h3 id="5-4-5、ReentrantLock"><a href="#5-4-5、ReentrantLock" class="headerlink" title="5.4.5、ReentrantLock"></a>5.4.5、ReentrantLock</h3><h4 id="5-4-5-1、简介"><a href="#5-4-5-1、简介" class="headerlink" title="5.4.5.1、简介"></a>5.4.5.1、简介</h4><p><strong>ReentrantLock是一个可重入锁、独占式锁，与synchronized关键字相比，它更灵活、更强大，增加了轮询、超时、中断等高级功能。除此外，还提供了对公平锁与非公平锁的选择。</strong></p>
 <p>ReentrantLock的内部类Sync继承了AQS，分为公平锁FairSync和非公平锁NonfairSync。ReentrantLock使用公平锁还是非公平锁，可以通过它的构造函数来决定。</p>
 <blockquote>
-<ul>
-<li>公平锁：按照请求的顺序来获取锁；</li>
-<li>非公平锁：不管请求顺序的先后，谁抢到锁，这把锁就是谁的。</li>
-</ul>
+<p>公平锁：按照请求的顺序来获取锁；非公平锁：不管请求顺序的先后，谁抢到锁，这把锁就是谁的。</p>
 </blockquote>
 <p>事实上，公平锁往往没有非公平锁的效率高，但是，并不是任何场景都是以TPS作为唯一指标，公平锁能够减少“饥饿”发生的概率，等待越久的请求越能够得到优先满足。</p>
 <h4 id="5-4-5-2、原理"><a href="#5-4-5-2、原理" class="headerlink" title="5.4.5.2、原理"></a>5.4.5.2、原理</h4><p><strong>ReentrantLock 主要通过unsafe的 CAS 和 park 两个功能实现锁机制。</strong></p>
@@ -2304,12 +2188,12 @@ c <span class="token operator">=</span> a<span class="token punctuation">;</span
 <p>ReadWriteLock仅定义了获取读锁和写锁的两个方法，其实现ReentrantReadWriteLock，除了接口方法之外，还提供了一些便于外界监控内部工作状态的方法。</p>
 <h4 id="5-4-6-2、特点"><a href="#5-4-6-2、特点" class="headerlink" title="5.4.6.2、特点"></a>5.4.6.2、特点</h4><p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/%E9%94%81-1.2-%E8%AF%BB%E5%86%99%E9%94%81%E7%89%B9%E6%80%A7.png?token=AIGEF3MBYW4434TSKNMP7ULEZZYVI" alt="锁-1.2-读写锁特性"></p>
 <h4 id="5-4-6-3、底层实现"><a href="#5-4-6-3、底层实现" class="headerlink" title="5.4.6.3、底层实现"></a>5.4.6.3、底层实现</h4><h5 id="读写状态"><a href="#读写状态" class="headerlink" title="读写状态"></a>读写状态</h5><p>读写锁 同样依赖 自定义同步器来实现同步功能，而读写状态就是其同步器的同步状态。ReentrantLock中自定义同步器的同步状态表示锁被一个线程重复获取的次数，而读写锁的自定义同步器需要在同步状态（一个整型变量）上维护多个读线程和一个写线程的状 态，使得该状态的设计成为读写锁实现的关键。</p>
-<p>如果在一个整型变量上维护多种状态，就一定需要“按位切割使用”这个变量，读写锁将 变量切分成了两个部分，高16位表示读，低16位表示写，划分方式如下图：</p>
+<p><strong>如果在一个整型变量上维护多种状态，就一定需要“按位切割使用”这个变量，读写锁将 变量切分成了两个部分，高16位表示读，低16位表示写</strong>，划分方式如下图：</p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/%E9%94%81-1.3-%E8%AF%BB%E5%86%99%E9%94%81%E7%8A%B6%E6%80%81%E5%88%92%E5%88%86%E8%AE%BE%E8%AE%A1%E5%9B%BE.png?token=AIGEF3KMLEL744A7NPZTJKLEZZYXY" alt="锁-1.3-读写锁状态划分设计图"></p>
 <p>读写锁是如何迅速确定读和写各自的状态呢？答案是通过位运算。假设当前同步状态 值为S，写状态等于S&amp;0x0000FFFF（将高16位全部抹去），读状态等于S&gt;&gt;&gt;16（无符号补0右移 16位）。当写状态增加1时，等于S+1，当读状态增加1时，等于S+(1&lt;&lt;16)，也就是 S+0x00010000。</p>
 <h5 id="写锁获取与释放"><a href="#写锁获取与释放" class="headerlink" title="写锁获取与释放"></a>写锁获取与释放</h5><p>写锁是一个支持重进入的排它锁。如果当前线程已经获取了写锁，则增加写状态。如果当前线程在获取写锁时，读锁已经被获取（读状态不为0）或者该线程不是已经获取写锁的线程， 则当前线程进入等待状态。</p>
 <blockquote>
-<p>如果存在读锁，则写锁不能被获取，原因在于：读写锁要确保写锁的操作对读锁可见，如果 允许读锁在已被获取的情况下对写锁的获取，那么正在运行的其他读线程就无法感知到当 前写线程的操作。因此，只有等待其他读线程都释放了读锁，写锁才能被当前线程获取，而写 锁一旦被获取，则其他读写线程的后续访问均被阻塞。</p>
+<p>如果存在读锁，则写锁不能被获取，原因在于：读写锁要确保写锁的操作对读锁可见，如果 允许读锁在已被获取的情况下对写锁的获取，那么正在运行的其他读线程就无法感知到当前写线程的操作。因此，只有等待其他读线程都释放了读锁，写锁才能被当前线程获取，而写锁一旦被获取，则其他读写线程的后续访问均被阻塞。</p>
 </blockquote>
 <p>写锁的释放与ReentrantLock的释放过程基本类似，每次释放均减少写状态，当写状态为0 时表示写锁已被释放，从而等待的读写线程能够继续访问读写锁，同时前次写线程的修改对 后续读写线程可见。</p>
 <h5 id="读锁获取与释放"><a href="#读锁获取与释放" class="headerlink" title="读锁获取与释放"></a>读锁获取与释放</h5><p>读锁是一个支持重进入的共享锁，它能够被多个线程同时获取，在没有其他写线程访问 （或者写状态为0）时，读锁总会被成功地获取，而所做的也只是（线程安全的）增加读状态。如果当前线程已经获取了读锁，则增加读状态。如果当前线程在获取读锁时，写锁已被其他线程 获取，则进入等待状态。</p>
@@ -2418,17 +2302,17 @@ c <span class="token operator">=</span> a<span class="token punctuation">;</span
 <td align="center">适用于并发度高的情况。</td>
 </tr>
 </tbody></table>
-<h4 id="5-4-10-2、Lock-VS-Synchronized"><a href="#5-4-10-2、Lock-VS-Synchronized" class="headerlink" title="5.4.10.2、Lock VS Synchronized"></a>5.4.10.2、Lock VS Synchronized</h4><p>Lock可以非阻塞获取锁；被中断地获取锁；超时获取锁。</p>
-<h2 id="5-5、原子操作"><a href="#5-5、原子操作" class="headerlink" title="5.5、原子操作"></a>5.5、原子操作</h2><h3 id="5-5-1、简介"><a href="#5-5-1、简介" class="headerlink" title="5.5.1、简介"></a>5.5.1、简介</h3><p><strong>原子操作（atomic operation）意 为“不可被中断的一个或一系列操作”。</strong></p>
+<h4 id="5-4-10-2、Lock-VS-Synchronized"><a href="#5-4-10-2、Lock-VS-Synchronized" class="headerlink" title="5.4.10.2、Lock VS Synchronized"></a>5.4.10.2、Lock VS Synchronized</h4><p><strong>Lock可以非阻塞获取锁、被中断地获取锁、超时获取锁。</strong></p>
+<h2 id="5-5、原子操作"><a href="#5-5、原子操作" class="headerlink" title="5.5、原子操作"></a>5.5、原子操作</h2><h3 id="5-5-1、简介"><a href="#5-5-1、简介" class="headerlink" title="5.5.1、简介"></a>5.5.1、简介</h3><p><strong>原子操作（atomic operation）意为“不可被中断的一个或一系列操作”。</strong></p>
 <p>原子操作相关术语如下：</p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/%E5%8E%9F%E5%AD%90%E6%93%8D%E4%BD%9C-1.1-%E7%9B%B8%E5%85%B3%E6%9C%AF%E8%AF%AD.png?token=AIGEF3KT2PLCG34WR36C2ZLEZZYZ2" alt="原子操作-1.1-相关术语"></p>
-<h3 id="5-5-2、处理器原子操作"><a href="#5-5-2、处理器原子操作" class="headerlink" title="5.5.2、处理器原子操作"></a>5.5.2、处理器原子操作</h3><p>首先处理器会自动保证基本的内存操作的原子性。处理器保证从系统内存中读取或者写 入一个字节是原子的，意思是当一个处理器读取一个字节时，其他处理器不能访问这个字节 的内存地址。</p>
+<h3 id="5-5-2、处理器原子操作"><a href="#5-5-2、处理器原子操作" class="headerlink" title="5.5.2、处理器原子操作"></a>5.5.2、处理器原子操作</h3><p>首先处理器会自动保证基本的内存操作的原子性。处理器保证从系统内存中读取或者写入一个字节是原子的，意思是当一个处理器读取一个字节时，其他处理器不能访问这个字节的内存地址。</p>
 <p>为保证复杂内存操作的原子性，处理器提供了两种机制：</p>
 <ul>
-<li><p><font color='orange'>总线锁</font></p>
+<li><p>总线锁</p>
 <p>所谓总线锁就是使用处理器提供的一个 LOCK＃信号，当一个处理器在总线上输出此信号时，其他处理器的请求将被阻塞住，那么该 处理器可以独占共享内存。</p>
 </li>
-<li><p><font color='orange'>缓存锁</font></p>
+<li><p>缓存锁</p>
 <p>总线锁定把CPU和内存之间的通信锁住了，开销较大，所以使用缓存锁定代替总线锁定来进行优化。</p>
 <p>有两种情况下处理器不会使用缓存锁定：</p>
 <ol>
@@ -2438,7 +2322,7 @@ c <span class="token operator">=</span> a<span class="token punctuation">;</span
 </li>
 </ul>
 <h3 id="5-5-3、Java原子操作"><a href="#5-5-3、Java原子操作" class="headerlink" title="5.5.3、Java原子操作"></a>5.5.3、Java原子操作</h3><p><strong>Java中可以通过 锁、循环CAS 方式来实现原子操作。</strong></p>
-<h4 id="CAS实现原子操作"><a href="#CAS实现原子操作" class="headerlink" title="CAS实现原子操作"></a>CAS实现原子操作</h4><p>JVM中的CAS操作正是利用了处理器提供的CMPXCHG指令实现的。自旋CAS实现的基本思路就是循环进行CAS操作直到成功为止。从Java 1.5开始，JDK的并发包里提供了一些原子操作类来支持原子操作。</p>
+<h4 id="CAS实现原子操作"><a href="#CAS实现原子操作" class="headerlink" title="CAS实现原子操作"></a>CAS实现原子操作</h4><p><strong>JVM中的CAS操作正是利用了处理器提供的CMPXCHG指令实现的</strong>。自旋CAS实现的基本思路就是循环进行CAS操作直到成功为止。从Java 1.5开始，JDK的并发包里提供了一些原子操作类来支持原子操作。</p>
 <p>CAS实现原子操作的三大问题：</p>
 <ol>
 <li>ABA问题。</li>
@@ -2481,34 +2365,34 @@ c <span class="token operator">=</span> a<span class="token punctuation">;</span
 <h3 id="5-6-3、Semaphore"><a href="#5-6-3、Semaphore" class="headerlink" title="5.6.3、Semaphore"></a>5.6.3、Semaphore</h3><p><strong>Semaphore（信号量）是用来控制同时访问特定资源的线程数量，它通过协调各个线程，以保证合理的使用公共资源。</strong></p>
 <p>Semaphore的构造方法Semaphore(int permits) 接受一个整型的数字，表示可用的许可证数量。Semaphore(10) 表示允许10个线程获取许可证，也就是最大并发数是10。Semaphore的用法也很简单，首先线程使用 Semaphore的acquire()方法获取一个许可证，使用完之后调用release()方法归还许可证。还可以用tryAcquire()方法尝试获取许可证。</p>
 <h3 id="5-6-4、Exchanger"><a href="#5-6-4、Exchanger" class="headerlink" title="5.6.4、Exchanger"></a>5.6.4、Exchanger</h3><h4 id="简介-4"><a href="#简介-4" class="headerlink" title="简介"></a>简介</h4><p><strong>Exchanger（交换者）是一个用于线程间协作的工具类。Exchanger用于线程间的数据交换。</strong>它提供一个同步点，在这个同步点，两个线程可以交换彼此的数据。<strong>两个线程通过 exchange方法交换数据，如果第一个线程先执行exchange()方法，它会一直等待第二个线程也执行exchange方法，当两个线程都到达同步点时，这两个线程就可以交换数据，将本线程生产出来的数据传递给对方。</strong></p>
-<p><font color='red'>注意：如果两个线程有一个没有执行exchange()方法，则会一直等待，如果担心有特殊情况发生，避免一直等待，可以使用exchange(V x, longtimeout, TimeUnit unit)设置最大等待时长。</font></p>
+<p><font color='red'>注意：如果两个线程有一个没有执行exchange()方法则会一直等待，如果担心有特殊情况发生，避免一直等待，可以使用exchange(V x, longtimeout, TimeUnit unit)设置最大等待时长。</font></p>
 <h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><ol>
 <li>Exchanger可以用于遗传算法，遗传算法中需要选出两个人作为交换对象，这时候会交换两人的数据，并使用交叉规则得出2个结果。</li>
 <li>Exchanger也可以用于校对工作。</li>
 </ol>
 <h2 id="5-7、并发容器及框架"><a href="#5-7、并发容器及框架" class="headerlink" title="5.7、并发容器及框架"></a>5.7、并发容器及框架</h2><h3 id="5-7-1、阻塞队列"><a href="#5-7-1、阻塞队列" class="headerlink" title="5.7.1、阻塞队列"></a>5.7.1、阻塞队列</h3><h4 id="简介-5"><a href="#简介-5" class="headerlink" title="简介"></a>简介</h4><p>JDK 7提供了7个阻塞队列，如下。 </p>
 <ul>
-<li>ArrayBlockingQueue：一个由数组结构组成的有界阻塞队列。 </li>
-<li>LinkedBlockingQueue：一个由链表结构组成的有界阻塞队列。 </li>
-<li>PriorityBlockingQueue：一个支持优先级排序的无界阻塞队列。 </li>
-<li>DelayQueue：一个使用优先级队列实现的无界阻塞队列。 </li>
-<li>SynchronousQueue：一个不存储元素的阻塞队列。 </li>
-<li>LinkedTransferQueue：一个由链表结构组成的无界阻塞队列。 </li>
-<li>LinkedBlockingDeque：一个由链表结构组成的双向阻塞队列。</li>
+<li>ArrayBlockingQueue：一个由<strong>数组结构</strong>组成的<strong>有界阻塞</strong>队列。 </li>
+<li>LinkedBlockingQueue：一个由<strong>链表结构</strong>组成的<strong>有界阻塞</strong>队列。 </li>
+<li>PriorityBlockingQueue：一个<strong>支持优先级排序的无界阻塞</strong>队列。 </li>
+<li>DelayQueue：一个使用<strong>优先级队列</strong>实现的<strong>无界阻塞</strong>队列。 </li>
+<li>SynchronousQueue：一个<strong>不存储元素的阻塞队列</strong>。 </li>
+<li>LinkedTransferQueue：一个由<strong>链表结构</strong>组成的<strong>无界阻塞</strong>队列。 </li>
+<li>LinkedBlockingDeque：一个由<strong>链表结构</strong>组成的<strong>双向阻塞</strong>队列。</li>
 </ul>
-<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><h5 id="ArrayBlockingQueue"><a href="#ArrayBlockingQueue" class="headerlink" title="ArrayBlockingQueue"></a>ArrayBlockingQueue</h5><p>此队列按照先进先出（FIFO）的原 则对元素进行排序，默认情况下不保证线程访问队列的公平性。</p>
+<h4 id="分析"><a href="#分析" class="headerlink" title="分析"></a>分析</h4><h5 id="ArrayBlockingQueue"><a href="#ArrayBlockingQueue" class="headerlink" title="ArrayBlockingQueue"></a>ArrayBlockingQueue</h5><p><strong>此队列按照先进先出（FIFO）的原则对元素进行排序，默认情况下不保证线程访问队列的公平性。</strong></p>
 <p>为了保证公平性，通常会降低吞吐量。可以使用以下代码创建一个公平的阻塞队列：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">ArrayBlockingQueue</span> fairQueue <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">ArrayBlockingQueue</span><span class="token punctuation">(</span><span class="token number">1000</span><span class="token punctuation">,</span><span class="token boolean">true</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h5 id="LinkedBlockingQueue"><a href="#LinkedBlockingQueue" class="headerlink" title="LinkedBlockingQueue"></a>LinkedBlockingQueue</h5><p>此队列的默认和最大长度为 Integer.MAX_VALUE。此队列按照先进先出的原则对元素进行排序。</p>
-<h5 id="PriorityBlockingQueue"><a href="#PriorityBlockingQueue" class="headerlink" title="PriorityBlockingQueue"></a>PriorityBlockingQueue</h5><p>默认情况下元素采取自然顺序 升序排列。也可以自定义类实现compareTo()方法来指定元素排序规则，或者初始化 PriorityBlockingQueue时，指定构造参数Comparator来对元素进行排序。需要注意的是不能保证 同优先级元素的顺序。</p>
-<h5 id="DelayQueue"><a href="#DelayQueue" class="headerlink" title="DelayQueue"></a>DelayQueue</h5><p>DelayQueue是一个支持延时获取元素的无界阻塞队列。队列使用PriorityQueue来实现。队 列中的元素必须实现Delayed接口，在创建元素时可以指定多久才能从队列中获取当前元素。 只有在延迟期满时才能从队列中提取元素。</p>
+<h5 id="LinkedBlockingQueue"><a href="#LinkedBlockingQueue" class="headerlink" title="LinkedBlockingQueue"></a>LinkedBlockingQueue</h5><p><strong>此队列的默认和最大长度为 Integer.MAX_VALUE。此队列按照先进先出的原则对元素进行排序。</strong></p>
+<h5 id="PriorityBlockingQueue"><a href="#PriorityBlockingQueue" class="headerlink" title="PriorityBlockingQueue"></a>PriorityBlockingQueue</h5><p><strong>默认情况下元素采取自然顺序 升序排列。也可以自定义类实现compareTo()方法来指定元素排序规则</strong>，或者初始化 PriorityBlockingQueue时，指定构造参数Comparator来对元素进行排序。需要注意的是不能保证同优先级元素的顺序。</p>
+<h5 id="DelayQueue"><a href="#DelayQueue" class="headerlink" title="DelayQueue"></a>DelayQueue</h5><p>DelayQueue是一个<strong>支持延时获取元素的无界阻塞队列。队列使用PriorityQueue来实现</strong>。队列中的元素必须实现Delayed接口，在创建元素时可以指定多久才能从队列中获取当前元素。 只有在延迟期满时才能从队列中提取元素。</p>
 <p>应用场景：</p>
 <ul>
 <li>缓存系统的设计</li>
 <li>定时任务调度</li>
 </ul>
-<h5 id="SynchronousQueue"><a href="#SynchronousQueue" class="headerlink" title="SynchronousQueue"></a>SynchronousQueue</h5><p>每一个put操作必须等待一个take操作， 否则不能继续添加元素。</p>
+<h5 id="SynchronousQueue"><a href="#SynchronousQueue" class="headerlink" title="SynchronousQueue"></a>SynchronousQueue</h5><p><strong>每一个put操作必须等待一个take操作， 否则不能继续添加元素。</strong></p>
 <p>它支持公平访问队列，默认情况下线程采用非公平性策略访问队列。</p>
 <p>SynchronousQueue的吞吐量高于 LinkedBlockingQueue和ArrayBlockingQueue。</p>
 <h5 id="LinkedTransferQueue"><a href="#LinkedTransferQueue" class="headerlink" title="LinkedTransferQueue"></a>LinkedTransferQueue</h5><p>相对于其它 阻塞队列，LinkedTransferQueue多了tryTransfer和transfer方法。</p>
@@ -2520,9 +2404,9 @@ c <span class="token operator">=</span> a<span class="token punctuation">;</span
 <p>tryTransfer方法是用来试探生产者传入的元素是否能直接传给消费者。如果没有消费者等 待接收元素，则返回false。和transfer方法的区别是tryTransfer方法无论消费者是否接收，方法 立即返回，而transfer方法是必须等到消费者消费了才返回。</p>
 </li>
 </ul>
-<h5 id="LinkedBlockingDeque"><a href="#LinkedBlockingDeque" class="headerlink" title="LinkedBlockingDeque"></a>LinkedBlockingDeque</h5><p>是一个由链表结构组成的双向阻塞队列。所谓双向队列指的是可以 从队列的两端插入和移出元素。双向队列因为多了一个操作队列的入口，在多线程同时入队 时，也就减少了一半的竞争。</p>
-<p>初始化LinkedBlockingDeque时可以设置容量防止其过度膨胀。另外，双向阻塞队列可以 运用在“工作窃取”模式中</p>
-<h4 id="底层实现-2"><a href="#底层实现-2" class="headerlink" title="底层实现"></a>底层实现</h4><p><strong>阻塞队列底层主要使用 通知模式 来实现生产者与消费者间的通信。</strong></p>
+<h5 id="LinkedBlockingDeque"><a href="#LinkedBlockingDeque" class="headerlink" title="LinkedBlockingDeque"></a>LinkedBlockingDeque</h5><p>是一个由链表结构组成的双向阻塞队列。所谓双向队列指的是可以 从队列的两端插入和移出元素。双向队列因为多了一个操作队列的入口，在多线程同时入队时，也就减少了一半的竞争。</p>
+<p>初始化LinkedBlockingDeque时可以设置容量防止其过度膨胀。另外，双向阻塞队列可以运用在“工作窃取”模式中</p>
+<h4 id="底层实现-1"><a href="#底层实现-1" class="headerlink" title="底层实现"></a>底层实现</h4><p><strong>阻塞队列底层主要使用 通知模式 来实现生产者与消费者间的通信。</strong></p>
 <p>ArrayBlockingQueue使用了Condition来实现，当往队列里插入一个元素时，如果队列不可用，那么阻塞生产者主要通过 LockSupport.park（this）来实现。</p>
 <p>park这个方法会阻塞当前线程，但以下4种情况中的任何一种发生时，该方法就会返回：</p>
 <ul>
@@ -2535,11 +2419,9 @@ c <span class="token operator">=</span> a<span class="token punctuation">;</span
 <h4 id="工作窃取算法"><a href="#工作窃取算法" class="headerlink" title="工作窃取算法"></a>工作窃取算法</h4><p><strong>工作窃取（work-stealing）算法是指某个线程从其他队列里窃取任务来执行。</strong></p>
 <p>工作窃取算法的优缺点如下：</p>
 <ul>
-<li><p>优点</p>
-<p>充分利用线程进行并行计算，减少了线程间的竞争</p>
+<li><p>优点：充分利用线程进行并行计算，减少了线程间的竞争</p>
 </li>
-<li><p>缺点</p>
-<p>某些情况下还是存在竞争，比如双端队列里只有一个任务时。并 且该算法会消耗了更多的系统资源，比如创建多个线程和多个双端队列。</p>
+<li><p>缺点：某些情况下还是存在竞争，比如双端队列里只有一个任务时。并 且该算法会消耗了更多的系统资源，比如创建多个线程和多个双端队列。</p>
 </li>
 </ul>
 <h4 id="异常处理"><a href="#异常处理" class="headerlink" title="异常处理"></a>异常处理</h4><p>ForkJoinTask提供了isCompletedAbnormally()方法来检查任务是否已经抛出异常或已经被取消，且可以通过ForkJoinTask的getException方法获取异常。</p>
@@ -2578,19 +2460,16 @@ c <span class="token operator">=</span> a<span class="token punctuation">;</span
 <p>Condition使用方式比较简单。当前线程调用await()方法后会释放锁并在此等待，其它线程调用Condition对象的signal()方法会导致当前线程获取锁并从await()方法返回。</p>
 <h4 id="实现分析"><a href="#实现分析" class="headerlink" title="实现分析"></a>实现分析</h4><p>ConditionObject是同步器AbstractQueuedSynchronizer的内部类，每个Condition对象都包含一个等待队列，该队列是Condition对象实现等待&#x2F;通知功能的关键。</p>
 <p><strong>Condition的实现主要包括：等待队列、等待和通知，下面提到的Condition，如果不加说明均指的是ConditionObject。</strong></p>
-<ul>
-<li><p><font color='orange'>等待队列</font></p>
-<p>等待队列是一个FIFO单向队列，队列中的每个节点都包含一个线程引用，该线程就是 在Condition对象上等待的线程，<font color='orange'>一个线程调用Condition.await()方法后会释放锁并被构造成节点放入到等待队列，然后进入等待状态。</font>事实上，节点的定义复用了同步器中节点的定义，也就是说，同步队列和等待队列中的节点类型都是同步器的静态内部类 AbstractQueuedSynchronizer.Node。</p>
+<p><strong>（1）等待队列</strong></p>
+<p>等待队列是一个FIFO单向队列，队列中的每个节点都包含一个线程引用，该线程就是 在Condition对象上等待的线程，<strong>一个线程调用Condition.await()方法后会释放锁并被构造成节点放入到等待队列，然后进入等待状态</strong>。事实上，节点的定义复用了同步器中节点的定义，也就是说，同步队列和等待队列中的节点类型都是同步器的静态内部类 AbstractQueuedSynchronizer.Node。</p>
 <p><strong>一个Condition包含一个等待队列，Condition拥有首节点（firstWaiter）和尾节点 （lastWaiter）。</strong></p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20210221163426067.png?token=AIGEF3OTFQWKT5ZQHHM4UODEZZY6G" alt="image-20210221163426067"></p>
 <p><strong>Object监视器模型中，一个对象拥有一个同步队列和等待队列，而并发包中的 Lock（更确切地说是同步器）拥有一个同步队列和多个等待队列。</strong></p>
 <p>Condition是同步器的内部类，因此每个Condition实例都能够访问 同步器提供的方法，相当于每个Condition都拥有所属同步器的引用。</p>
-</li>
-<li><p><font color='orange'>等待</font></p>
+<p><strong>（2）等待</strong></p>
 <p>调用Condition的await()方法（或者以await开头的方法），会使当前线程进入等待队列并释放锁，同时线程状态变为等待状态。当从await()方法返回时，当前线程一定获取了Condition相关联的锁。</p>
 <p>如果从队列（同步队列和等待队列）的角度看await()方法，当调用await()方法时，相当于同 步队列的首节点（获取了锁的节点）移动到Condition的等待队列中。</p>
-</li>
-<li><p><font color='orange'>通知</font></p>
+<p><strong>（3）通知</strong></p>
 <p>调用Condition的signal()方法会导致：将等待队列的首节点移至同步队列中，然后唤醒该节点中的线程，被唤醒的线程会通过调用同步器的acquireQueued()方法来尝试获取同步状态。成功获取同步状态（锁）后，被唤醒的线程将从先前调用的await()方法返回，此时该线程已经成功获取了锁。</p>
 <blockquote>
 <p><font color='red'>注意事项：</font></p>
@@ -2600,18 +2479,16 @@ c <span class="token operator">=</span> a<span class="token punctuation">;</span
 <li>如果节点不是通过Condition.signal()方法被唤醒，而是通过中断被唤醒的话，会抛出异常 InterruptedException。</li>
 </ol>
 </blockquote>
-</li>
-</ul>
 <p>Condition的signalAll()方法，相当于对等待队列中的每个节点均执行一次signal()方法，效果就是将等待队列中所有节点全部移动到同步队列中，并唤醒每个节点中的线程。</p>
-<h4 id="知识扩展"><a href="#知识扩展" class="headerlink" title="知识扩展"></a>知识扩展</h4><p><font color='orange'>为什么wait()、notyfy()、notifyAll()要放在同步块中？</font></p>
+<h4 id="知识扩展"><a href="#知识扩展" class="headerlink" title="知识扩展"></a>知识扩展</h4><p><strong>为什么wait()、notyfy()、notifyAll()要放在同步块中？</strong></p>
 <ol>
 <li>调用wait()就是释放锁，释放锁的前提必须要先获得锁，先获得锁才能释放锁。</li>
 <li>notify()、notifyAll()是将锁交给调用wait()方法的线程，让其继续执行下去，如果自身没有锁，怎么叫把锁交给其他线程呢；（本质是让处于入口队列的线程竞争锁）。</li>
 </ol>
 <h3 id="5-8-3、AQS（CLH）"><a href="#5-8-3、AQS（CLH）" class="headerlink" title="5.8.3、AQS（CLH）"></a>5.8.3、AQS（CLH）</h3><h4 id="简介-8"><a href="#简介-8" class="headerlink" title="简介"></a>简介</h4><p><strong>AQS（Abstract Queued Synchronizer）：简称抽象队列同步器。</strong></p>
 <p>CLH（Craig Landin and Hagersten locks）：是一种基于链表的可扩展、高性能、公平的自旋锁，能确保无饥饿性、公平性。申请线程只在本地变量上自旋，它不断轮询前驱的状态，如果发现前驱释放了锁就结束自旋。</p>
-<h4 id="底层实现-3"><a href="#底层实现-3" class="headerlink" title="底层实现"></a>底层实现</h4><p><strong>基于volatile + CAS + 队列来实现。</strong></p>
-<h5 id="同步队列"><a href="#同步队列" class="headerlink" title="同步队列"></a>同步队列</h5><p><strong>同步器 依赖内部的 同步队列（FIFO双向队列）来完成同步状态管理，当前线程获取同步状态失败时，同步器会将当前线程以及等待状态等信息构造成为一个节点（Node），然后基于CAS的方式放入到同步队列尾部，同时会阻塞当前线程，当同步队列首节点释放同步状态时，会唤醒后继节点来获取同步状态，后继节点获取同步状态成功后会将自己设置为首节点。</strong></p>
+<h4 id="底层实现-2"><a href="#底层实现-2" class="headerlink" title="底层实现"></a>底层实现</h4><p><strong>基于volatile + CAS + 队列来实现。</strong></p>
+<h5 id="同步队列"><a href="#同步队列" class="headerlink" title="同步队列"></a>同步队列</h5><p><strong>同步器依赖内部的 同步队列（FIFO双向队列）来完成同步状态管理，当前线程获取同步状态失败时，同步器会将当前线程以及等待状态等信息构造成为一个节点（Node），然后基于CAS的方式放入到同步队列尾部，同时会阻塞当前线程，当同步队列首节点释放同步状态时，会唤醒后继节点来获取同步状态，后继节点获取同步状态成功后会将自己设置为首节点。</strong></p>
 <p>同步队列中的节点（Node）保存的内容：<strong>获取同步状态失败的线程引用、等待状态以及前驱和后继节点。</strong></p>
 <p>同步队列的基本结构如下图所示：</p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20200721002028762.png?token=AIGEF3K7UBTFCK3VU76IGCTEZZY7U" alt="image-20200721002028762"></p>
@@ -2742,21 +2619,19 @@ UNSAFE_END<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
 </ol>
 <h3 id="6-1-3、执行任务"><a href="#6-1-3、执行任务" class="headerlink" title="6.1.3、执行任务"></a>6.1.3、执行任务</h3><p>当提交一个新任务到线程池时，线程池的处理流程如下。</p>
 <ol>
-<li>线程池判断核心线程池里的线程是否都在执行任务。如果不是，则创建一个新的工作 线程来执行任务。如果核心线程池里的线程都在执行任务，则进入下个流程。</li>
-<li>线程池判断工作队列是否已经满。如果工作队列没有满，则将新提交的任务存储在这 个工作队列里。如果工作队列满了，则进入下个流程。</li>
-<li>线程池判断线程池的线程是否都处于工作状态。如果没有，则创建一个新的工作线程 来执行任务。如果已经满了，则交给饱和策略来处理这个任务。</li>
+<li>线程池判断核心线程池里的线程是否都在执行任务。如果不是，则创建一个新的工作线程来执行任务。如果核心线程池里的线程都在执行任务，则进入下个流程。</li>
+<li>线程池判断工作队列是否已经满。如果工作队列没有满，则将新提交的任务存储在这个工作队列里。如果工作队列满了，则进入下个流程。</li>
+<li>线程池判断线程池的线程是否都处于工作状态。如果没有，则创建一个新的工作线程来执行任务。如果已经满了，则交给饱和策略来处理这个任务。</li>
 </ol>
 <h3 id="6-1-4、关闭线程池"><a href="#6-1-4、关闭线程池" class="headerlink" title="6.1.4、关闭线程池"></a>6.1.4、关闭线程池</h3><p>调用线程池的shutdown或shutdownNow方法可以关闭线程池。它们的原理是遍历线程池中的工作线程，然后逐个调用线程的interrupt方法来中断线程，所以无法响应中断的任务 可能 永远无法终止。</p>
 <p>shutdown和shutdownNow两者有区别：</p>
 <ul>
-<li><p><strong>shutdown</strong></p>
-<p>shutdown只是将线程池的状态设置成SHUTDOWN状态，然后中断所有空闲线程。</p>
+<li><p><strong>shutdown</strong>：将线程池状态设置成SHUTDOWN状态，然后中断所有空闲线程。</p>
 </li>
-<li><p><strong>shutdownNow</strong></p>
-<p>shutdownNow首先将线程池的状态设置成 STOP，然后尝试停止所有的正在执行或暂停任务的线程，并返回等待执行任务的列表。</p>
+<li><p><strong>shutdownNow</strong>：先将线程池状态设置成STOP，然后尝试停止所有正在执行或暂停任务的线程，并返回等待执行任务的列表。</p>
 </li>
 </ul>
-<p>只要调用了这两个关闭方法中的任意一个，isShutdown方法就会返回true。当所有的任务 都已关闭后，才表示线程池关闭成功，这时调用isTerminaed方法会返回true。</p>
+<p>只要调用了这两个关闭方法中的任意一个，isShutdown方法就会返回true。当所有的任务都已关闭后才表示线程池关闭成功，这时调用isTerminaed方法会返回true。</p>
 <h2 id="6-2、线程池实现"><a href="#6-2、线程池实现" class="headerlink" title="6.2、线程池实现"></a>6.2、线程池实现</h2><h3 id="6-2-1、WorkStealingPool"><a href="#6-2-1、WorkStealingPool" class="headerlink" title="6.2.1、WorkStealingPool"></a>6.2.1、WorkStealingPool</h3><h4 id="简介-10"><a href="#简介-10" class="headerlink" title="简介"></a>简介</h4><p><strong>WorkStealingPool是一种特殊线程池，核心很简单，和其它线程池的区别是：每一个线程都有自己单独的队列，任务会不断的插入到每一个线程对应的队列中，某个线程执行完自己队列中的任务后，会尝试从其它线程的队列中取出任务来执行，这个就是WorkStealingPool。</strong></p>
 <h4 id="实现"><a href="#实现" class="headerlink" title="实现"></a>实现</h4><p>本质上是一个ForkJoinPool。</p>
 <h4 id="优缺点-1"><a href="#优缺点-1" class="headerlink" title="优缺点"></a>优缺点</h4><p>针对通常意义上的线程池来说，如果某一个线程任务量非常庞大，一直占据着CPU，与此同时其它线程就算是闲着也不能去帮忙——无能为力；而WorkStealingPool就灵活了许多，遇到任务量庞大的线程，其它线程如果执行完了自己的任务后，可以帮忙执行这个任务量庞大的线程，提高了执行效率。</p>
@@ -2764,16 +2639,16 @@ UNSAFE_END<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
 <p>Fork&#x2F;Join默认会创建与CPU核数数量相同的线程池。</p>
 <h4 id="注意事项-2"><a href="#注意事项-2" class="headerlink" title="注意事项"></a>注意事项</h4><p>一般实现ForkJoinPool的时候需要定义为特定的类型——能进行切分的任务，故出现了该种类型的任务——ForkJoinTask。但ForkJoinTask太过于原始，我们可以使用RecursiveAction，其有两种形式：</p>
 <ol>
-<li><font color='orange'>RecursiveAction递归</font>：大任务可以切分成小任务，小任务还可以再切分成更小的任务，其隐含了一个递归的过程，因此叫RecursiveAction递归，是不带返回值的。</li>
-<li><font color='orange'>从RecursiveTask继承，有返回值。</font></li>
+<li>RecursiveAction递归：大任务可以切分成小任务，小任务还可以再切分成更小的任务，其隐含了一个递归过程，因此叫RecursiveAction递归，不带返回值。</li>
+<li>从RecursiveTask继承，有返回值。</li>
 </ol>
 <h2 id="6-3、默认线程池"><a href="#6-3、默认线程池" class="headerlink" title="6.3、默认线程池"></a>6.3、默认线程池</h2><p>Class Executors中提供了默认线程池创建API，不过最终还是会通过ThreadPoolExecutor去实现。</p>
 <p>Executors常用线程池实现有：</p>
 <ol>
-<li><font color='orange'>SingleThreadExecutor</font></li>
-<li><font color='orange'>CachedThreadPool</font></li>
-<li><font color='orange'>FixedThreadPool</font></li>
-<li><font color='orange'>ScheduledThreadPool</font></li>
+<li>SingleThreadExecutor</li>
+<li>CachedThreadPool</li>
+<li>FixedThreadPool</li>
+<li>ScheduledThreadPool</li>
 </ol>
 <h3 id="6-3-1、SingleThreadExecutor"><a href="#6-3-1、SingleThreadExecutor" class="headerlink" title="6.3.1、SingleThreadExecutor"></a>6.3.1、SingleThreadExecutor</h3><ul>
 <li><p>简介：线程池中只有一个线程，一个线程的线程池可以保证扔进去的任务是顺序执行的。</p>
@@ -2934,8 +2809,8 @@ UNSAFE_END<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
 <p>线程数量 &#x3D; 4 * 100% * 100% &#x2F; 50% &#x3D; 8个。</p>
 <p>例如：4核 CPU计算时间10%，其它等待时间是90%，期望CPU被100%利用，则</p>
 <p>线程数量 &#x3D; 4 * 100% * 100% &#x2F; 10% &#x3D; 40个。</p>
-<h2 id="6-5、线程池监控"><a href="#6-5、线程池监控" class="headerlink" title="6.5、线程池监控"></a>6.5、线程池监控</h2><h3 id="6-5-1、简介"><a href="#6-5-1、简介" class="headerlink" title="6.5.1、简介"></a>6.5.1、简介</h3><p>如果在系统中大量使用线程池，则有必要对线程池进行监控，方便在出现问题时，可以根据线程池的使用状况快速定位问题。</p>
-<h3 id="6-5-2、监控方式"><a href="#6-5-2、监控方式" class="headerlink" title="6.5.2、监控方式"></a>6.5.2、监控方式</h3><h4 id="参数监控"><a href="#参数监控" class="headerlink" title="参数监控"></a>参数监控</h4><p>可以通过线程池提供的参数进行监控，监控线程池时可以使用以下属性。</p>
+<h2 id="6-5、线程池监控"><a href="#6-5、线程池监控" class="headerlink" title="6.5、线程池监控"></a>6.5、线程池监控</h2><h3 id="6-5-1、简介"><a href="#6-5-1、简介" class="headerlink" title="6.5.1、简介"></a>6.5.1、简介</h3><p><strong>如果在系统中大量使用线程池，则有必要对线程池进行监控</strong>，方便在出现问题时，可以根据线程池的使用状况快速定位问题。</p>
+<h3 id="6-5-2、监控方式"><a href="#6-5-2、监控方式" class="headerlink" title="6.5.2、监控方式"></a>6.5.2、监控方式</h3><h4 id="参数监控"><a href="#参数监控" class="headerlink" title="参数监控"></a>参数监控</h4><p><strong>可以通过线程池提供的参数进行监控</strong>，监控线程池时可以使用以下属性。</p>
 <ul>
 <li>taskCount：线程池需要执行的任务数量。 </li>
 <li>completedTaskCount：线程池在运行过程中已完成的任务数量，小于或等于taskCount。 </li>
@@ -2948,12 +2823,12 @@ UNSAFE_END<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
 <h2 id="6-6、Executor框架"><a href="#6-6、Executor框架" class="headerlink" title="6.6、Executor框架"></a>6.6、Executor框架</h2><h3 id="6-6-1、Executor类结构图"><a href="#6-6-1、Executor类结构图" class="headerlink" title="6.6.1、Executor类结构图"></a>6.6.1、Executor类结构图</h3><p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/06/Executor%E7%B1%BB%E7%BB%93%E6%9E%84%E5%9B%BE01.png?token=AIGEF3NWRCARP7IVE37JHV3EZZZKE" alt="Executor类结构图01"></p>
 <h3 id="6-6-2、ThreadPoolExecutor源码解析（JDK8）"><a href="#6-6-2、ThreadPoolExecutor源码解析（JDK8）" class="headerlink" title="6.6.2、ThreadPoolExecutor源码解析（JDK8）"></a>6.6.2、ThreadPoolExecutor源码解析（JDK8）</h3><h4 id="addWorker"><a href="#addWorker" class="headerlink" title="addWorker"></a>addWorker</h4><p>addWorker的源码分两部分：</p>
 <ol>
-<li><font color='orange'>上面的嵌套for死循环，目的就是把worker数量加1。</font><ol>
+<li>上面的嵌套for死循环，目的就是把worker数量加1。<ol>
 <li>外层for循环：遍历检测状态值是否符合条件，如果状态值 &gt;&#x3D; shutdown，说明不符合条件，执行return false退出。</li>
 <li>内层for循环：添加线程。先判断当前WC线程数量是否超过上限（数量 &gt; 536870911或者 &gt;&#x3D; (corePoolSize &#x2F;maximumPoolSize)），如果超过就不再添加，否则通过CAS方式进行添加。如果添加成功了，则执行break retr跳出双层循环，这说明第一步算是完成了；如果没有添加成功就继续AtomicInteger的get方法，然后跳到最外层循环处进行重新处理；</li>
 </ol>
 </li>
-<li><font color='orange'>创建一个Worker，并执行这个Worker。</font></li>
+<li>创建一个Worker并执行这个Worker。</li>
 </ol>
 <h4 id="execute"><a href="#execute" class="headerlink" title="execute"></a>execute</h4><ol>
 <li><p>如果任务为null，则抛出异常。</p>
@@ -2969,7 +2844,7 @@ UNSAFE_END<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
 <li>addWorker的第二个参数表示是否创建核心线程。</li>
 <li>addWorker返回false，说明任务执行失败，需要进行reject操作。</li>
 </ol>
-<h4 id="runWorker"><a href="#runWorker" class="headerlink" title="runWorker"></a>runWorker</h4><p>启动线程后会通过该方法去执行任务，期间需要加锁。</p>
+<h4 id="runWorker"><a href="#runWorker" class="headerlink" title="runWorker"></a>runWorker</h4><p><strong>启动线程后会通过该方法去执行任务，期间需要加锁</strong>。</p>
 <ol>
 <li><p>先执行Worker.unlock()方法来允许中断操作；变量boolean completedAbruptly 用于表示是否自旋。</p>
 </li>
@@ -2989,11 +2864,11 @@ UNSAFE_END<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
 <li>当调用ScheduledThreadPoolExecutor的scheduleAtFixedRate()方法或者scheduleWithFixedDelay()方法时，会向ScheduledThreadPoolExecutor的DelayQueue添加一个实现了 RunnableScheduledFutur接口的ScheduledFutureTask。</li>
 <li>线程池中的线程从DelayQueue中获取ScheduledFutureTask，然后执行任务。</li>
 </ol>
-<h4 id="底层实现-4"><a href="#底层实现-4" class="headerlink" title="底层实现"></a>底层实现</h4><p>ScheduledThreadPoolExecutor会把待调度的任务（ScheduledFutureTask） 放到一个DelayQueue中。</p>
+<h4 id="底层实现-3"><a href="#底层实现-3" class="headerlink" title="底层实现"></a>底层实现</h4><p>ScheduledThreadPoolExecutor会把待调度的任务（ScheduledFutureTask） 放到一个DelayQueue中。</p>
 <p>ScheduledFutureTask主要包含3个成员变量：</p>
 <ul>
 <li>long型成员变量time，表示这个任务将要被执行的具体时间。 </li>
-<li>long型成员变量sequenceNumber，表示这个任务被添加到ScheduledThreadPoolExecutor中 的序号。 </li>
+<li>long型成员变量sequenceNumber，表示这个任务被添加到ScheduledThreadPoolExecutor中的序号。 </li>
 <li>long型成员变量period，表示任务执行的间隔周期。</li>
 </ul>
 <h3 id="6-6-4、FutureTask"><a href="#6-6-4、FutureTask" class="headerlink" title="6.6.4、FutureTask"></a>6.6.4、FutureTask</h3><p>Future接口和实现Future接口的FutureTask类，代表异步计算的结果。</p>
@@ -3017,7 +2892,7 @@ UNSAFE_END<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
 </ol>
 </li>
 </ul>
-<h4 id="底层实现-5"><a href="#底层实现-5" class="headerlink" title="底层实现"></a>底层实现</h4><p>FutureTask的实现基于AbstractQueuedSynchronizer。</p>
+<h4 id="底层实现-4"><a href="#底层实现-4" class="headerlink" title="底层实现"></a>底层实现</h4><p>FutureTask的实现基于AbstractQueuedSynchronizer。</p>
 <p>AQS被作为“模板方法模式”的基础类提供给FutureTask的内部子类Sync，这个内部子类只需要实现状态检查和状态更新的方法即可，这些方法将控制FutureTask的获取和释放操作。具体来说，Sync实现了AQS的tryAcquireShared(int) 方法和 tryReleaseShared(int) 方法，Sync通过这两个方法来检查和更新同步状态。</p>
 <h2 id="6-7、总结"><a href="#6-7、总结" class="headerlink" title="6.7、总结"></a>6.7、总结</h2><h3 id="6-7-1、建议使用ThreadPoolExecutor创建线程池？"><a href="#6-7-1、建议使用ThreadPoolExecutor创建线程池？" class="headerlink" title="6.7.1、建议使用ThreadPoolExecutor创建线程池？"></a>6.7.1、建议使用ThreadPoolExecutor创建线程池？</h3><ol>
 <li><p>Executors提供的线程池使用场景有限。</p>
@@ -3150,28 +3025,28 @@ UNSAFE_END<span aria-hidden="true" class="line-numbers-rows"><span></span><span>
 
 <h3 id="7-1-6、总结"><a href="#7-1-6、总结" class="headerlink" title="7.1.6、总结"></a>7.1.6、总结</h3><h4 id="ProducerType（生产者线程模式）"><a href="#ProducerType（生产者线程模式）" class="headerlink" title="ProducerType（生产者线程模式）"></a>ProducerType（生产者线程模式）</h4><p><strong>ProducerType有两种模式：Producer.MULTI 和 Producer.SINGLE。默认为MULTI，表示在多线程模式下产生sequence。如果确定是单线程生产者，可以指定SINGLE，效率会有提升。</strong></p>
 <h4 id="等待策略（8种）"><a href="#等待策略（8种）" class="headerlink" title="等待策略（8种）"></a>等待策略（8种）</h4><ol>
-<li><font color='orange'>BlockingWaitStrategy（常用）</font>：通过线程阻塞的方式，等待生产者被唤醒，唤醒后再次检查依赖的sequence是否已经消费。</li>
-<li><font color='orange'>BusySpinWaitStrategy</font>：线程一直自旋等待，可能比较消耗CPU。</li>
-<li><font color='orange'>LiteBlockingWaitStrategy</font>：线程阻塞等待生产者被唤醒。与第1个的区别是——如果两个线程同时访问一个waitfor，一个访问signalAll时，可以减少lock加锁次数。</li>
-<li><font color='orange'>LiteTimeoutBlockingWaitStrategy</font>：与第3个相比，该策略设置了阻塞时间，超过时间后抛出异常。</li>
-<li><font color='orange'>PhasedBackoffWaitStrategy</font>：根据时间参数和等待的策略来决定使用哪种等待策略。</li>
-<li><font color='orange'>TimeoutBlockingWaitStrategy</font>：相对于第1个来说，该策略设置了等待时间，超过后抛出异常。</li>
-<li><font color='orange'>YieldingWatitStrategy（常用）</font>：尝试100次，然后Thread.yield()让出CPU。</li>
-<li><font color='orange'>SleepingWaitStrategy（常用）</font>：sleep。</li>
+<li>BlockingWaitStrategy（常用）：通过线程阻塞的方式，等待生产者被唤醒，唤醒后再次检查依赖的sequence是否已经消费。</li>
+<li>BusySpinWaitStrategy：线程一直自旋等待，可能比较消耗CPU。</li>
+<li>LiteBlockingWaitStrategy：线程阻塞等待生产者被唤醒。与第1个的区别是——如果两个线程同时访问一个waitfor，一个访问signalAll时，可以减少lock加锁次数。</li>
+<li>LiteTimeoutBlockingWaitStrategy：与第3个相比，该策略设置了阻塞时间，超过时间后抛出异常。</li>
+<li>PhasedBackoffWaitStrategy：根据时间参数和等待的策略来决定使用哪种等待策略。</li>
+<li>TimeoutBlockingWaitStrategy：相对于第1个来说，该策略设置了等待时间，超过后抛出异常。</li>
+<li>YieldingWatitStrategy（常用）：尝试100次，然后Thread.yield()让出CPU。</li>
+<li>SleepingWaitStrategy（常用）：sleep。</li>
 </ol>
 <h4 id="消费者异常处理"><a href="#消费者异常处理" class="headerlink" title="消费者异常处理"></a>消费者异常处理</h4><ol>
 <li>默认：disruptor.setDefaultExceptionHandler()；</li>
 <li>覆盖：disruptor.handleExceptionFor().wait()；</li>
 </ol>
-<h1 id="8、高效测试工具"><a href="#8、高效测试工具" class="headerlink" title="8、高效测试工具"></a>8、高效测试工具</h1><h2 id="8-1、JMH"><a href="#8-1、JMH" class="headerlink" title="8.1、JMH"></a>8.1、JMH</h2><h4 id="8-1-1、简介"><a href="#8-1-1、简介" class="headerlink" title="8.1.1、简介"></a>8.1.1、简介</h4><p><strong>JMH全程为 java Microbenchmark Harness，意为Java微基准测试。它测试的是一个方法的性能到底是否好，换了一种实现后再次观察其性能好坏。</strong></p>
+<h1 id="8、高效测试工具"><a href="#8、高效测试工具" class="headerlink" title="8、高效测试工具"></a>8、高效测试工具</h1><h2 id="8-1、JMH"><a href="#8-1、JMH" class="headerlink" title="8.1、JMH"></a>8.1、JMH</h2><h4 id="8-1-1、简介"><a href="#8-1-1、简介" class="headerlink" title="8.1.1、简介"></a>8.1.1、简介</h4><p><strong>JMH全程为 java Microbenchmark Harness，意为Java微基准测试。它测试的是一个方法的性能，换了一种实现后再次观察其性能好坏。</strong></p>
 <p><font color='red'>注意：该测试框架于2013年由JLT人员开发而成，后来归到了OpenJDK下面。</font></p>
 <h4 id="8-1-2、JMH相关概念"><a href="#8-1-2、JMH相关概念" class="headerlink" title="8.1.2、JMH相关概念"></a>8.1.2、JMH相关概念</h4><ol>
-<li><font color='orange'>Benchmark mode</font>：基准测试的模式。</li>
-<li><font color='orange'>Warmup</font>：预热，由于JVM会对特定代码进行优化，预热对于测试很重要。</li>
-<li><font color='orange'>Measurement</font>：共执行多少次测试。</li>
-<li><font color='orange'>Timeout</font>：超时时间。</li>
-<li><font color='orange'>Threads</font>：线程数，由fork指定。</li>
-<li><font color='orange'>Benchmark</font>：测试哪一段代码。</li>
+<li>Benchmark mode：基准测试的模式。</li>
+<li>Warmup：预热，由于JVM会对特定代码进行优化，预热对于测试很重要。</li>
+<li>Measurement：共执行多少次测试。</li>
+<li>Timeout：超时时间。</li>
+<li>Threads：线程数，由fork指定。</li>
+<li>Benchmark：测试哪一段代码。</li>
 </ol>
 <h3 id="8-1-3、使用示例"><a href="#8-1-3、使用示例" class="headerlink" title="8.1.3、使用示例"></a>8.1.3、使用示例</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>openjdk<span class="token punctuation">.</span>jmh<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span></span><span class="token class-name">Benchmark</span></span><span class="token punctuation">;</span>
 <span class="token keyword">import</span> <span class="token import"><span class="token namespace">org<span class="token punctuation">.</span>openjdk<span class="token punctuation">.</span>jmh<span class="token punctuation">.</span>annotations<span class="token punctuation">.</span></span><span class="token class-name">BenchmarkMode</span></span><span class="token punctuation">;</span>

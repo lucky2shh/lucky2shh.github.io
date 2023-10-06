@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-05
+                    2023-10-06
                 </div>
                 
 
@@ -431,20 +431,20 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h1><p><font color='orange'>计算机的第二个主要部件就是存储器。</font></p>
-<p>理想情形下，存储器应该快、大 且 便宜。但目前 无法同时满足 这三项，于是存储器系统采用一种分层结构，如下图所示。</p>
+                <h1 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h1><p><strong>计算机的第二个主要部件就是存储器。</strong></p>
+<p>理想情形下，存储器应该快、大 且便宜。但无法同时满足这三项，于是存储器系统采用一种分层结构，如下图所示。</p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86-%E5%AD%98%E5%82%A8%E5%99%A8%E5%88%86%E5%B1%82%E7%BB%93%E6%9E%84%E5%9B%BE%E7%A4%BA.jpg?token=AIGEF3MKCMMKF6RE7JQNMQDEZZM4O" alt="存储管理-存储器分层结构图示"></p>
-<h1 id="2、存储分类"><a href="#2、存储分类" class="headerlink" title="2、存储分类"></a>2、存储分类</h1><h2 id="2-1、寄存器"><a href="#2-1、寄存器" class="headerlink" title="2.1、寄存器"></a>2.1、寄存器</h2><p><font color='orange'>存储器系统顶层一般说的是CPU中的寄存器。</font></p>
-<p>寄存器使用与CPU相同的材料制成，故与CPU一样快。</p>
-<p>寄存器 存储容量 在32位CPU中为32×32位，在64位CPU中为64×64位。在两种情形下，其存储容量都小于1 KB。程序必须在软件中自行管理这些寄存器（即决定如何使用它们）。</p>
-<h2 id="2-2、高速缓存"><a href="#2-2、高速缓存" class="headerlink" title="2.2、高速缓存"></a>2.2、高速缓存</h2><h3 id="2-2-1、简介"><a href="#2-2-1、简介" class="headerlink" title="2.2.1、简介"></a>2.2.1、简介</h3><p><font color='orange'>高速缓存由 硬件 控制。高速缓存行大小通常为64个字节，地址0至63 对应 高速缓存行0，地址64至127对应高速缓存行1，以此类推。</font></p>
-<p>高速缓存行通常 会放在 CPU内部 或 接近CPU的高速缓存中。</p>
-<h3 id="2-2-2、缓存命中"><a href="#2-2-2、缓存命中" class="headerlink" title="2.2.2、缓存命中"></a>2.2.2、缓存命中</h3><p><font color='orange'>当程序需要读一个存储字时，高速缓存会检查自己的内存中是否存在需要的 高速缓存行。如果存在，则称之为高速缓存命中。</font></p>
+<h1 id="2、存储分类"><a href="#2、存储分类" class="headerlink" title="2、存储分类"></a>2、存储分类</h1><h2 id="2-1、寄存器"><a href="#2-1、寄存器" class="headerlink" title="2.1、寄存器"></a>2.1、寄存器</h2><p><strong>存储器系统顶层一般说的是CPU中的寄存器。</strong></p>
+<p>寄存器使用与CPU相同的材料制成，与CPU一样快。</p>
+<p>寄存器存储容量在32位CPU中为32×32位，在64位CPU中为64×64位。在两种情形下，其存储容量都小于1 KB。程序必须在软件中自行管理这些寄存器（即决定如何使用它们）。</p>
+<h2 id="2-2、高速缓存"><a href="#2-2、高速缓存" class="headerlink" title="2.2、高速缓存"></a>2.2、高速缓存</h2><h3 id="2-2-1、简介"><a href="#2-2-1、简介" class="headerlink" title="2.2.1、简介"></a>2.2.1、简介</h3><p><strong>高速缓存由硬件控制。高速缓存行大小通常为64个字节，地址0至63对应高速缓存行0，地址64至127对应高速缓存行1，以此类推。</strong></p>
+<p>高速缓存行通常会放在CPU内部或接近CPU的高速缓存中。</p>
+<h3 id="2-2-2、缓存命中"><a href="#2-2-2、缓存命中" class="headerlink" title="2.2.2、缓存命中"></a>2.2.2、缓存命中</h3><p><strong>当程序需要读一个存储字时，高速缓存会检查自己的内存中是否存在需要的高速缓存行。如果存在，则称之为高速缓存命中。</strong></p>
 <blockquote>
 <p>高速缓存命中 通常需要两个时钟周期。</p>
 <p>缓存满足了请求，就不需要通过总线把访问请求送往主存。高速缓存未命中就必须访问内存，这要消耗大量时间。</p>
 </blockquote>
-<h3 id="2-2-3、缓存功能"><a href="#2-2-3、缓存功能" class="headerlink" title="2.2.3、缓存功能"></a>2.2.3、缓存功能</h3><p><font color='orange'>缓存 通常可以 提高性能。</font></p>
+<h3 id="2-2-3、缓存功能"><a href="#2-2-3、缓存功能" class="headerlink" title="2.2.3、缓存功能"></a>2.2.3、缓存功能</h3><p><strong>缓存通常可以提高性能。</strong></p>
 <ol>
 <li>在内存中保存频繁使用的文件，以避免从磁盘中重复调取这些文件。</li>
 <li>长路径名转换成文件所在磁盘地址的结果，也可以放入缓存，以避免重复寻找地址。</li>
@@ -461,33 +461,33 @@
 <h4 id="2-2-4-2、所属位置"><a href="#2-2-4-2、所属位置" class="headerlink" title="2.2.4.2、所属位置"></a>2.2.4.2、所属位置</h4><p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/%E5%AD%98%E5%82%A8%E7%AE%A1%E7%90%86-CPU%E4%B8%ADL1L2L3%E7%BC%93%E5%AD%98%E7%9A%84%E4%BD%8D%E7%BD%AE.jpg?token=AIGEF3JOEGZ6PAAZUO2QDT3EZZM66" alt="存储管理-CPU中L1L2L3缓存的位置"></p>
 <p>L1缓存通常位于内核中。L2缓存所属位置通常有2种类型：</p>
 <ul>
-<li><p><font color='orange'>所有核 共享L2缓存</font></p>
+<li><p>所有核 共享L2缓存</p>
 <p>应用案例：Intel多核芯片采用了这个方法。</p>
 <p>缺点：共享L2缓存 依赖于复杂的缓存控制器。</p>
 </li>
-<li><p><font color='orange'>所有核中 都存在L2缓存</font></p>
+<li><p>所有核中 都存在L2缓存</p>
 <p>应用案例：AMD采用这个方法。</p>
 <p>缺点：很难设法保持L2缓存的一致性。</p>
 </li>
 </ul>
-<p><font color='orange'>L3缓存的位置 通常在 CPU外，L3缓存作为共享内存为所有CPU提供服务。</font></p>
-<h2 id="2-3、主存"><a href="#2-3、主存" class="headerlink" title="2.3、主存"></a>2.3、主存</h2><h3 id="2-3-1、简介"><a href="#2-3-1、简介" class="headerlink" title="2.3.1、简介"></a>2.3.1、简介</h3><p><font color='orange'>主存位于第五层，是存储系统的主力。主存通常称为随机访问存储器（Random Access Memory，RAM）。</font></p>
+<p><strong>L3缓存位置通常在CPU外，L3缓存作为共享内存为所有CPU提供服务。</strong></p>
+<h2 id="2-3、主存"><a href="#2-3、主存" class="headerlink" title="2.3、主存"></a>2.3、主存</h2><h3 id="2-3-1、简介"><a href="#2-3-1、简介" class="headerlink" title="2.3.1、简介"></a>2.3.1、简介</h3><p><strong>主存位于第五层，是存储系统的主力。主存通常称为随机访问存储器（Random Access Memory，RAM）。</strong></p>
 <blockquote>
-<p>过去有时称之为 磁芯存储器，因为 在20世纪 50年代 和 60年代，通常使用很小的可磁化的铁磁体制作主存。</p>
+<p>过去有时称磁芯存储器，因为在20世纪50年代和60年代，通常使用很小的可磁化的铁磁体制作主存。</p>
 </blockquote>
-<h3 id="2-3-2、非易失性存储器"><a href="#2-3-2、非易失性存储器" class="headerlink" title="2.3.2、非易失性存储器"></a>2.3.2、非易失性存储器</h3><p><font color='orange'>除了主存之外，许多计算机已经在使用少量的非易失性随机访问存储器。它们与RAM不同，在电源切断之后，非易失性随机访问存储器并不丢失其内容。</font></p>
+<h3 id="2-3-2、非易失性存储器"><a href="#2-3-2、非易失性存储器" class="headerlink" title="2.3.2、非易失性存储器"></a>2.3.2、非易失性存储器</h3><p>除了主存之外，许多计算机已经在使用少量的非易失性随机访问存储器。它们与RAM不同，在电源切断之后，非易失性随机访问存储器并不丢失其内容。</p>
 <p>只读存储器（Read Only Memory，ROM）在工厂中就被编程完毕，然后再也不能被修改。ROM速度快且便宜。</p>
 <blockquote>
 <p>个别计算机中，启动计算机 的引导加载模块 就存放在ROM中。另外，一些I&#x2F;O卡也采用ROM处理底层设备控制。</p>
 </blockquote>
 <p>EEPROM（Electrically Erasable PROM，电可擦除可编程ROM）和闪存（flash memory）也是非易失性的，但与ROM相反的是它们可以擦除和重写。重写它们比写入RAM需要更多时间，所以其使用方式与ROM相同，而其与众不同的特点使它们有可能通过字段重写方式纠正所保存程序中的错误。</p>
-<h3 id="2-3-3、易失性存储器"><a href="#2-3-3、易失性存储器" class="headerlink" title="2.3.3、易失性存储器"></a>2.3.3、易失性存储器</h3><h4 id="2-3-3-1、简介"><a href="#2-3-3-1、简介" class="headerlink" title="2.3.3.1、简介"></a>2.3.3.1、简介</h4><p><font color='orange'>CMOS是易失性存储器。</font></p>
-<p><font color='orange'>CMOS存储器可以保存 当前时间和日期。CMOS存储器和递增时间的时钟电路由一块小电池驱动，所以，即使计算机没有上电，时间也仍然可以正确地更新。</font></p>
+<h3 id="2-3-3、易失性存储器"><a href="#2-3-3、易失性存储器" class="headerlink" title="2.3.3、易失性存储器"></a>2.3.3、易失性存储器</h3><h4 id="2-3-3-1、简介"><a href="#2-3-3-1、简介" class="headerlink" title="2.3.3.1、简介"></a>2.3.3.1、简介</h4><p><strong>CMOS是易失性存储器。</strong></p>
+<p>CMOS存储器可以保存 当前时间和日期。CMOS存储器和递增时间的时钟电路由一块小电池驱动，所以，即使计算机没有上电，时间也仍然可以正确地更新。</p>
 <p>CMOS存储器还可以保存配置参数，诸如，哪一个是启动磁盘等。</p>
-<h4 id="2-3-3-2、CMOS优缺点"><a href="#2-3-3-2、CMOS优缺点" class="headerlink" title="2.3.3.2、CMOS优缺点"></a>2.3.3.2、CMOS优缺点</h4><p>CMOS耗电量 非常少，一块工厂原装电池能使用若干年。但是，当电池失效时，计算机就会出现“Alzheimer病症”。</p>
+<h4 id="2-3-3-2、CMOS优缺点"><a href="#2-3-3-2、CMOS优缺点" class="headerlink" title="2.3.3.2、CMOS优缺点"></a>2.3.3.2、CMOS优缺点</h4><p>CMOS耗电量非常少，一块工厂原装电池能使用若干年。但当电池失效时计算机就会出现“Alzheimer病症”。</p>
 <h2 id="2-4、磁盘"><a href="#2-4、磁盘" class="headerlink" title="2.4、磁盘"></a>2.4、磁盘</h2><p><font color='red'>详情内容请参考 【磁盘管理知识总结.md】文档。</font></p>
-<h2 id="2-5、磁带"><a href="#2-5、磁带" class="headerlink" title="2.5、磁带"></a>2.5、磁带</h2><h3 id="2-5-1、简介"><a href="#2-5-1、简介" class="headerlink" title="2.5.1、简介"></a>2.5.1、简介</h3><p><font color='orange'>存储器体系最后一层是磁带。该种介质通常用于磁盘备份，且可保存大量数据集。</font></p>
-<p>访问磁带前 要把磁带装到磁带机上，可人工安装也可机器人安装（在大型数据库中通常安装有自动磁带处理设备）。然后，磁带可能还需要向前绕转以便读取所请求的数据块。</p>
+<h2 id="2-5、磁带"><a href="#2-5、磁带" class="headerlink" title="2.5、磁带"></a>2.5、磁带</h2><h3 id="2-5-1、简介"><a href="#2-5-1、简介" class="headerlink" title="2.5.1、简介"></a>2.5.1、简介</h3><p><strong>存储器体系最后一层是磁带。该种介质通常用于磁盘备份，且可保存大量数据集。</strong></p>
+<p>访问磁带前要把磁带装到磁带机上，可人工安装也可机器安装（在大型数据库中通常安装有自动磁带处理设备）。磁带可能还需要向前绕转以便读取所请求的数据块。</p>
 <h3 id="2-5-2、特点"><a href="#2-5-2、特点" class="headerlink" title="2.5.2、特点"></a>2.5.2、特点</h3><p>磁带的每个二进制位成本极其便宜、可移动，为了在火灾、洪水、地震等灾害中能存活下来，离线存储的备份磁带非常重要。</p>
 <h3 id="2-5-3、总结"><a href="#2-5-3、总结" class="headerlink" title="2.5.3、总结"></a>2.5.3、总结</h3><p>上面说过存储器体系结构是典型的，但有的安装系统并不具备所有层次，或者有所差别（诸如光盘）。不过，在所有的系统中，当层次下降时，其随机访问时间 会 明显增加，容量也增加，而每个二进制位的成本则大幅度下降。</p>
 

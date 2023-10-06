@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-06
+                    2023-10-04
                 </div>
                 
 
@@ -440,13 +440,12 @@
 <li>IOC容器中bean的名字取值优先级为：<strong>id属性值 &gt; name属性值 &gt; class类路径全名</strong>。</li>
 </ul>
 <blockquote>
-<p>Spring发布时就支持XML配置，Spring 2.5支持注解配置，Spring 3.0开始支持Java类配置。</p>
-<p>注解注入先于XML执行，故XML配置将覆盖注解注入。</p>
+<p>Spring发布时就可以支持XML配置，Spring 2.5支持注解配置，Spring 3.0开始支持Java类配置。</p>
+<p>注解注入先于XML执行，故XML配置会覆盖注解注入。</p>
 </blockquote>
 <h2 id="1-2、BeanFactory"><a href="#1-2、BeanFactory" class="headerlink" title="1.2、BeanFactory"></a>1.2、BeanFactory</h2><p><strong>BeanFactory是Spring IOC的基础</strong>。</p>
-<p>通过<code>BeanFactory</code>和<code>BeanFactoryAware</code>、<code>InitializingBean</code>、<code>DisposableBean</code>等接口可实现容器和组件间的有效交互。</p>
-<p><code>BeanFactory</code>会缓存单例Bean实例，从第二次获取 Bean 时将直接从缓存中获取。其原理是在<code>DefaultSingletonBeanRegistry</code>类中设计了一个单实例 Bean 缓存，该缓存基于<code>HashMap</code>实现，键就是单实例Bean的<code>beanName</code>。</p>
-<p><font color='red'>注意：初始化 BeanFactory 时必须为其提供一种日志框架，比如Log4J， 否则启动Spring容器就会报错。</font></p>
+<p>通过<code>BeanFactory</code>和<code>BeanFactoryAware</code>、<code>InitializingBean</code>、<code>DisposableBean</code>等接口可<strong>实现容器和组件间的有效交互</strong>。</p>
+<p><code>BeanFactory</code>会缓存单例Bean实例，第二次获取 Bean 时将直接从缓存中获取。其原理是在<code>DefaultSingletonBeanRegistry</code>类中设计了一个单实例 Bean 缓存，该缓存基于<code>HashMap</code>实现，键就是单实例Bean的<code>beanName</code>。</p>
 <h2 id="1-3、ApplicationContext"><a href="#1-3、ApplicationContext" class="headerlink" title="1.3、ApplicationContext"></a>1.3、ApplicationContext</h2><h3 id="1-3-1、简介"><a href="#1-3-1、简介" class="headerlink" title="1.3.1、简介"></a>1.3.1、简介</h3><p><strong>org.springframework.context.ApplicationContext 接口代表Spring IOC容器，负责配置、组装、实例化 Bean</strong>。</p>
 <p><code>BeanFactory</code>大多功能需要通过编程方式实现，能管理任何类型对象。<code>ApplicationContext</code>继承了<code>BeanFactory</code>并扩展了很多功能：</p>
 <ul>
@@ -457,9 +456,9 @@
 </ul>
 <p><code>ApplicationContext</code>常见实现有：<code>ClassPathXmlApplicationContext</code> 和<code>FileSystemXmlApplicationContext</code>等。</p>
 <h3 id="1-3-2、BeanFactory-VS-ApplicationContext"><a href="#1-3-2、BeanFactory-VS-ApplicationContext" class="headerlink" title="1.3.2、BeanFactory VS ApplicationContext"></a>1.3.2、BeanFactory VS ApplicationContext</h3><ol>
-<li>BeanFactory 是Spring的早期接口，称为Spring工厂。ApplicationContext是后期的高级接口，称为Sprng容器。</li>
-<li>ApplicationContext 在 BeanFactory 基础上对功能进行了扩展，例如：监听、资源访问、国际化等。BeanFactory的API更底层，ApplicatinContext的API大多是对底层API的封装。</li>
-<li>ApplicatinContext 继承了 BeanFactory，且内部维护了其引用。故 ApplicationContext 与 BeanFactory 既有继承关系，又有融合关系。</li>
+<li>BeanFactory 是Spring的早期接口，称为Spring Bean工厂。ApplicationContext是后期的高级接口，称为Sprng容器。</li>
+<li>ApplicationContext 在 BeanFactory 基础上对功能进行了扩展，例如：<strong>监听、资源访问、国际化</strong>等。BeanFactory的API更底层，ApplicatinContext的API大多是对底层API的封装。</li>
+<li><strong>ApplicatinContext 继承了 BeanFactory，且内部维护了其引用</strong>。故 ApplicationContext 与 BeanFactory 既有继承关系，又有融合关系。</li>
 <li>BeanFactory 对于Bean的实例化采用的是懒加载方式，而 ApplicationContext 采用的是立即加载。</li>
 </ol>
 <h2 id="1-4、WebApplicationContext"><a href="#1-4、WebApplicationContext" class="headerlink" title="1.4、WebApplicationContext"></a>1.4、WebApplicationContext</h2><h3 id="1-4-1、简介"><a href="#1-4-1、简介" class="headerlink" title="1.4.1、简介"></a>1.4.1、简介</h3><p><strong>WebApplicationContext 专门为Web应用服务，它允许从 相对于Web根目录的路径中 装载配置文件 并完成初始化工作</strong>。从<code>WebApplicationContext</code>中可获得<code>ServletContext</code>引用，整个Web应用上下文对象将作为属性放置到<code>ServletContext</code>中，以便 Web应用环境可以访问Spring应用上下文。 <code>WebApplicationContext</code>定义了一个常量：<code>ROOT_WEB_APPLICATION_CONTEXT_ATTRIBUTE（= WebApplicationContext.class.getName() + &quot;.ROOT&quot;;）</code>，在上下文启动时，<code>WebApplicationContext</code>实例会以此为键放置在<code>ServletContext</code>属性列表中。</p>
@@ -469,7 +468,7 @@
 <li><code>org.springframework.web.context.ContextLoaderServlet</code></li>
 <li><code>org.springframework.web.context.ContextLoaderListener</code></li>
 </ol>
-<h2 id="1-5、Bean"><a href="#1-5、Bean" class="headerlink" title="1.5、Bean"></a>1.5、Bean</h2><h3 id="1-5-1、Bean生命周期"><a href="#1-5-1、Bean生命周期" class="headerlink" title="1.5.1、Bean生命周期"></a>1.5.1、Bean生命周期</h3><p>Spring Bean的生命周期指的是<em><strong>从Bean的实例化到最终存储到单例池中的一个过程</strong></em>。</p>
+<h2 id="1-5、Bean"><a href="#1-5、Bean" class="headerlink" title="1.5、Bean"></a>1.5、Bean</h2><h3 id="1-5-1、Bean生命周期"><a href="#1-5-1、Bean生命周期" class="headerlink" title="1.5.1、Bean生命周期"></a>1.5.1、Bean生命周期</h3><p>Spring Bean的生命周期指的是<strong>从Bean的实例化到最终存储到单例池中的一个过程</strong>。</p>
 <p>Spring生命周期体现在三个阶段：</p>
 <ul>
 <li><strong>Beean实例化阶段</strong></li>
@@ -488,7 +487,7 @@
 </li>
 <li><p><strong>填充Bean属性值</strong></p>
 <ol>
-<li>先调用 <code>InstantiationAwareBeanPostProcessor</code> 接口的 <code>postProcessPropertyValues()</code> 方法（5.1版本后，推荐使用 <code>postProcessProperties</code> 方法代替之）；</li>
+<li>先调用 <code>InstantiationAwareBeanPostProcessor</code> 接口的 <code>postProcessPropertyValues()</code> 方法（5.1版本后，推荐使用 <code>postProcessProperties</code> 方法代替）；</li>
 <li>填充 Bean属性值；</li>
 </ol>
 </li>
@@ -537,8 +536,8 @@
 <ul>
 <li><code>&lt;list&gt;</code>：注入一列值，允许有相同的值。</li>
 <li><code>&lt;set&gt; </code>：注入一组值，不允许有相同的值。</li>
-<li><code>&lt;map&gt;</code>：注入一组键值对，键和值都可以为任意类型。</li>
-<li><code>&lt;props&gt;</code>：注入一组键值对，键和值都只能为String类型。</li>
+<li><code>&lt;map&gt;</code>：注入一组键值对，键和值都<strong>可以为任意类型</strong>。</li>
+<li><code>&lt;props&gt;</code>：注入一组键值对，键和值都<strong>只能为String类型</strong>。</li>
 </ul>
 <h2 id="1-7、增强器"><a href="#1-7、增强器" class="headerlink" title="1.7、增强器"></a>1.7、增强器</h2><p>Spring中的增强器分为两种：</p>
 <ul>
@@ -567,11 +566,11 @@
 <p>在Web应用中，当一个http请求（request）结束时触发该事件。</p>
 </li>
 </ol>
-<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><em><strong>Spring IOC容器主要有BeanFactory、ApplicationContext、WebApplicationContext</strong></em>。</p>
+<h1 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h1><p><strong>Spring IOC容器主要有BeanFactory、ApplicationContext、WebApplicationContext</strong>。</p>
 <h2 id="容器启动原理"><a href="#容器启动原理" class="headerlink" title="容器启动原理"></a>容器启动原理</h2><p>Spring IOC容器通过tomcat的Servlet或Listener监听来启动加载：</p>
 <ul>
-<li><em><strong>Spring MVC的容器由DispatchServlet作为入口加载；</strong></em></li>
-<li><em><strong>Spring容器是Spring MVC容器的父容器；</strong></em></li>
+<li><strong>Spring MVC的容器由DispatchServlet作为入口加载；</strong></li>
+<li><strong>Spring容器是Spring MVC容器的父容器；</strong></li>
 </ul>
 <h2 id="容器加载Bean原理"><a href="#容器加载Bean原理" class="headerlink" title="容器加载Bean原理"></a>容器加载Bean原理</h2><ol>
 <li>BeanDefinitionReader 读取 Resource 所指向的配置文件资源，然后解析配置文件。配置文件中的每一个Bean定义会被解析成一个BeanDefinition对象，并保存到 BeanDefinitionRegistry 中；</li>
@@ -582,25 +581,25 @@
 <li><p>BeanFactory：是Spring中的底层接口，包含各种Bean定义，读取bean配置文档，管理bean的加载、实例化，控制bean的生命周期，维护bean之间的依赖关系。</p>
 <p>ApplicationContext接口除了提供BeanFactory所具有的功能外，还提供了其它功能：</p>
 <ul>
-<li><p><em><strong>默认立即初始化所有Singleton bean，也可通过配置 取消 预初始化</strong></em>。</p>
+<li><p><strong>默认立即初始化所有Singleton bean，也可通过配置 取消 预初始化</strong>。</p>
 </li>
-<li><p><em><strong>继承MessageSource，支持国际化</strong></em>。</p>
+<li><p><strong>继承MessageSource，支持国际化</strong>。</p>
 </li>
 <li><p><em><strong>资源访问</strong></em>，比如访问URL和文件。</p>
 </li>
 <li><p><em><strong>事件机制</strong></em>（在监听器中注册bean事件）。</p>
 </li>
-<li><p><em><strong>同时加载多个配置文件</strong></em>。</p>
+<li><p><strong>同时加载多个配置文件</strong>。</p>
 </li>
-<li><p><em><strong>以声明式方式启动并创建Spring容器</strong></em>。</p>
+<li><p><strong>以声明式方式启动并创建Spring容器</strong>。</p>
 </li>
 </ul>
 </li>
-<li><p>ApplicationContext会<em><strong>利用Java反射机制自动识别</strong></em> 出配置文件中定义的<em><strong>BeanPostProcessor、 InstantiationAwareBeanPostProcessor和 BeanFactoryPostProcessor，并自动将它们注册到应用上下文中</strong></em>；而 <em><strong>BeanFactory需要在代码中通过显式调用 addBeanPostProcessor() 方法进行注册</strong></em>。这也是普遍使用 ApplicationContext 而很少使用 BeanFactory 的原因之一。</p>
+<li><p>ApplicationContext会<strong>利用Java反射机制自动识别</strong> 出配置文件中定义的<strong>BeanPostProcessor、 InstantiationAwareBeanPostProcessor和 BeanFactoryPostProcessor，并自动将它们注册到应用上下文中</strong>；而 <strong>BeanFactory需要在代码中通过显式调用 addBeanPostProcessor() 方法进行注册</strong>。这也是普遍使用 ApplicationContext 而很少使用 BeanFactory 的原因之一。</p>
 </li>
-<li><p>ApplicationContext <em><strong>初始化上下文时会立即实例化所有单例Bean</strong></em>，可通过参数<code>lazy-init=true</code>来延迟Bean实例化；BeanFactory初始化容器时 不会实例化Bean，<em><strong>只有在第一次从容器中拿Bean时才会实例化</strong></em>。 </p>
+<li><p>ApplicationContext <strong>初始化上下文时会立即实例化所有单例Bean</strong>，可通过参数<code>lazy-init=true</code>来延迟Bean实例化；BeanFactory初始化容器时 不会实例化Bean，<strong>只有在第一次从容器中拿Bean时才会实例化</strong>。 </p>
 </li>
-<li><p><em><strong>BeanFactory一般通过编程方式来创建，ApplicationContext还能以声明方式创建</strong></em>，比如 使用ContextLoader。</p>
+<li><p><strong>BeanFactory一般通过编程方式来创建，ApplicationContext还能以声明方式创建</strong>，比如 使用ContextLoader。</p>
 </li>
 </ol>
 

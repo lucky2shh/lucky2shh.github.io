@@ -400,7 +400,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-07
+                    2023-10-02
                 </div>
                 
 
@@ -431,9 +431,9 @@
 <ul>
 <li>应用维度：缓存使用、集群运用、数据结构的巧妙使用；</li>
 <li>系统维度：可以归类为三高：<ol>
-<li>高性能：线程模型、网络 IO 模型、数据结构、持久化机制；</li>
-<li>高可用：主从复制、哨兵集群、Cluster 分片集群；</li>
-<li>高拓展：负载均衡；</li>
+<li><strong>高性能</strong>：线程模型、网络 IO 模型、数据结构、持久化机制；</li>
+<li><strong>高可用</strong>：主从复制、哨兵集群、Cluster 分片集群；</li>
+<li><strong>高拓展</strong>：负载均衡；</li>
 </ol>
 </li>
 </ul>
@@ -471,14 +471,14 @@
 </ol>
 <p>单线程好处：</p>
 <ol>
-<li>避免了 频繁创建线程 导致的 性能消耗。</li>
+<li>避免了 频繁创建线程 导致的性能消耗。</li>
 <li>避免了 上下文切换引起的 CPU 消耗，无线程切换开销。</li>
 <li>避免了 线程间竞争，比如添加锁、释放锁、死锁等，不需要考虑各种锁问题。</li>
 <li>代码更清晰，逻辑更简单。</li>
 </ol>
 <blockquote>
 <p>官方对此也做了解释：</p>
-<p>Redis 通过内存来执行指令，故CPU 不是瓶颈，Redis瓶颈最有可能是内存大小或网络带宽。既然单线程容易实现，且 CPU 不会成为瓶颈，所以采用单线程。</p>
+<p>Redis 通过内存来执行指令，故CPU不是瓶颈，Redis瓶颈最有可能是内存大小或网络带宽。既然单线程容易实现，且CPU不会成为瓶颈，所以采用单线程。</p>
 </blockquote>
 <h3 id="1-2-4、高效数据结构"><a href="#1-2-4、高效数据结构" class="headerlink" title="1.2.4、高效数据结构"></a>1.2.4、高效数据结构</h3><p>Redis 常用 5 种数据类型 和 应用场景 如下：</p>
 <ul>
@@ -500,7 +500,7 @@
 </ol>
 <p>Redis数据类型和底层数据结构的对应关系参考下图：</p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/07/%E5%94%AF%E5%BF%AB%E4%B8%8D%E7%A0%B4-image-20210426103940774.png" alt="image-20210426103940774"></p>
-<h3 id="1-2-5、动态编码"><a href="#1-2-5、动态编码" class="headerlink" title="1.2.5、动态编码"></a>1.2.5、动态编码</h3><p><strong>Redis 使用对象（redisObject）来表示数据库中的键值，当我们在 Redis 中创建一个键值对时，至少创建两个对象，一个是键对象，另一个是值对象</strong>。</p>
+<h3 id="1-2-5、动态编码"><a href="#1-2-5、动态编码" class="headerlink" title="1.2.5、动态编码"></a>1.2.5、动态编码</h3><p><strong>Redis 使用对象（redisObject）来表示数据库中的键值，当创建一个键值对时，至少创建两个对象，一个是键对象，另一个是值对象</strong>。</p>
 <ul>
 <li><p><strong>String</strong></p>
 <p>数字类型采用 int 类型编码，非数字采用 raw 编码。</p>

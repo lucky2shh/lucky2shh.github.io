@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-07-30
+                    2023-10-03
                 </div>
                 
 
@@ -437,7 +437,7 @@
 <ol>
 <li><p><strong>创建 配置构建器对象</strong>：parser &#x3D; new XMLConfigBuilder(inputStream, environment, properties);</p>
 </li>
-<li><p><strong>创建 配置 对象</strong>：解析核心配置文件（各个标签信息）并【封装成Configuration对象】：config &#x3D; parser.parse();</p>
+<li><p><strong>创建 配置 对象</strong>：解析核心配置文件（各个标签信息）并封装成Configuration对象：config &#x3D; parser.parse();</p>
 <p>配置文件中的增删改查标签会被封装成一个MapperStatement。</p>
 </li>
 <li><p>通过上一步解析拿到的配置来<strong>创建DefaultSqlSessionFactory对象</strong>：new DefaultSqlSessionFactory(config);</p>
@@ -451,7 +451,7 @@
 <ol>
 <li><p>调用DefaultSqlSessionFactory.openSession()方法 <strong>获取SqlSession</strong>。</p>
 <ol>
-<li><p><strong>获取 执行器类型</strong>：configuration.getDefaultExecutorType()，若显式指定则以指定为准。</p>
+<li><p><strong>获取执行器类型</strong>：configuration.getDefaultExecutorType()，若显式指定则以指定为准。</p>
 <p>执行器类型<em><strong>共有三种：SIMPLE（简单） &#x2F; REUSE（可复用） &#x2F; BATCH（批量操作），默认为SIMPLE</strong></em>。</p>
 </li>
 <li><p>调用openSessionFromDataSource(executorType…)方法</p>
@@ -526,7 +526,7 @@
 <li><strong>执行查询方法</strong>：doQuery(ms, parameter, rowBounds, resultHandler, boundSql);<ol>
 <li><strong>获取配置信息</strong>：ms.getConfiguration();</li>
 <li><strong>创建StatementHandler对象</strong>：configuration.newStatementHandler(…)。<ol>
-<li>根据<code>statementType</code>来创建StatementHandler（BaseStatementHandler）对象。且同时会创建<font color='orange'>ParemeterHandler 和 ResultHandler，其也在创建后会被拦截器链包装（创建代理）：interceptorChain.pluginAll(parameterHandler &#x2F; resultSetHandler);</font>。（statementType有三种类型：STATEMENT:SimpleStatementHandler &#x2F; PREPARED:PreparedStatementHandler &#x2F; CALLABLE:CallableStatementHandler &#x2F; 其它抛异常），</li>
+<li>根据<code>statementType</code>来创建StatementHandler（BaseStatementHandler）对象。且同时会**创建ParemeterHandler 和 ResultHandler，其也在创建后会被拦截器链包装（创建代理）：interceptorChain.pluginAll(parameterHandler &#x2F; resultSetHandler);**。（statementType有三种类型：STATEMENT:SimpleStatementHandler &#x2F; PREPARED:PreparedStatementHandler &#x2F; CALLABLE:CallableStatementHandler &#x2F; 其它抛异常），</li>
 <li>拦截器链会封装创建好的StatementHandler对象，然后返回：<code>return interceptorChain.pluginAll(statementHandler);</code></li>
 </ol>
 </li>

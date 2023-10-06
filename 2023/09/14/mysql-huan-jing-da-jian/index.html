@@ -404,14 +404,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-06
+                    2023-10-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    738
+                    732
                 </div>
                 
 
@@ -468,7 +468,7 @@ MASTER_PORT&#x3D;3306;<span aria-hidden="true" class="line-numbers-rows"><span><
 
 <p>如果打印信息中的字段<code>Slave_IO_Running</code>，<code>Slave_SQL_Running</code>的值都是 YES，那么表示同步环境搭建成功。</p>
 <h2 id="1-3、问题篇"><a href="#1-3、问题篇" class="headerlink" title="1.3、问题篇"></a>1.3、问题篇</h2><p><strong>1）报错：Authentication plugin ‘caching_sha2_password’ reported error:Authentication require secure connection。</strong></p>
-<p>错误原因：在MySQL8.0之前，身份验证的插件是mysql_native_password，在MySQL 8.0中，caching_sha2_password 是默认的身份验证插件，安全性更高。在从库连接主库的时候使用的是不被 caching_sha2_password认可的RSA公钥，所以主库MySQL拒绝了数据库连接的请求</p>
+<p>错误原因：MySQL8.0之前，身份验证的插件是mysql_native_password，MySQL 8.0中，默认的身份验证插件为caching_sha2_password，安全性更高。从库连接主库时使用的是不被 caching_sha2_password认可的RSA公钥，所以主库MySQL拒绝了数据库连接请求。</p>
 <p>解决方法一：</p>
 <pre class="line-numbers language-mysql" data-language="mysql"><code class="language-mysql"># 使用同步用户来请求服务器公钥
 mysql -u backup -pbackup -h 192.168.2.6 -P3306 --get-server-public-key

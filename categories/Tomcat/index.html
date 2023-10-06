@@ -719,9 +719,9 @@ JAVA_OPTS='-Xms
                     <div class="card-content article-content">
                         <div class="summary block-with-text">
                             
-                                1、启动初始化入口从Connector.start()方法开始，但其实调用的是父类 LifecycleBase.start() 方法。
+                                1、启动初始化入口是Connector.start()方法，但实际调用的是父类 LifecycleBase.start() 方法。
 （1）LifecycleBase.start()
-调用Connector.startInternal()
+调用Connector.startInternal()方法
                             
                         </div>
                         <div class="publish-info">

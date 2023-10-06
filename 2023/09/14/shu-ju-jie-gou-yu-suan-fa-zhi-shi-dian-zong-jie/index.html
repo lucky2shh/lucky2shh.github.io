@@ -404,14 +404,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-05
+                    2023-10-06
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    5.5k
+                    6k
                 </div>
                 
 
@@ -431,26 +431,18 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1、算法"><a href="#1、算法" class="headerlink" title="1、算法"></a>1、算法</h1><p>算法 指 同一问题的不同解决方法。算法 通常针对 特定数据结构。</p>
-<h2 id="1-1、排序算法"><a href="#1-1、排序算法" class="headerlink" title="1.1、排序算法"></a>1.1、排序算法</h2><h3 id="1-1-1、内部排序（使用内存）"><a href="#1-1-1、内部排序（使用内存）" class="headerlink" title="1.1.1、内部排序（使用内存）"></a>1.1.1、内部排序（使用内存）</h3><h4 id="1-1-1-1、插入排序"><a href="#1-1-1-1、插入排序" class="headerlink" title="1.1.1.1、插入排序"></a>1.1.1.1、插入排序</h4><ol>
-<li><p><font color='orange'>直接插入排序</font></p>
-<p>将n个待排序元素看成一个有序表和一个无序表，第一次排序时，有序表中只有一个元素，无序表中有n-1个元素，接下来每次从无序表中拿出第一个元素，将它放入有序表的适当位置，使之依然序表。然后继续，直到排序完毕；</p>
-</li>
-<li><p><font color='orange'>折半插入排序</font></p>
-<p>折半插入排序（binary insertion sort）是对直接插入排序算法的一种改进。与直接插入排序的区别是：在有序表中寻找待排序数据的正确位置时，使用了折半查找&#x2F;二分查找。</p>
-</li>
-<li><p><font color='orange'>希尔排序</font></p>
-<p>希尔排序是将记录按下标的一定增量分组，对每组使用直接插入排序算法排序；随着增量逐渐减少，每组包含的关键词越来越多，当增量减至1时，整个文件恰被分成一组，算法便终止。</p>
-</li>
-</ol>
-<h4 id="1-1-1-2、选择排序"><a href="#1-1-1-2、选择排序" class="headerlink" title="1.1.1.2、选择排序"></a>1.1.1.2、选择排序</h4><ol>
-<li><p><font color='orange'>简单选择排序</font></p>
+                <h1 id="1、算法"><a href="#1、算法" class="headerlink" title="1、算法"></a>1、算法</h1><p>算法指同一问题的不同解决方法。算法通常针对特定数据结构。</p>
+<h2 id="1-1、排序算法"><a href="#1-1、排序算法" class="headerlink" title="1.1、排序算法"></a>1.1、排序算法</h2><h3 id="1-1-1、内部排序（使用内存）"><a href="#1-1-1、内部排序（使用内存）" class="headerlink" title="1.1.1、内部排序（使用内存）"></a>1.1.1、内部排序（使用内存）</h3><h4 id="1-1-1-1、插入排序"><a href="#1-1-1-1、插入排序" class="headerlink" title="1.1.1.1、插入排序"></a>1.1.1.1、插入排序</h4><ul>
+<li>直接插入排序：将n个待排序元素看成一个有序表和一个无序表，第一次排序时，有序表中只有一个元素，无序表中有n-1个元素，接下来每次从无序表中拿出第一个元素，将它放入有序表的适当位置，使之依然序表。然后继续，直到排序完毕；</li>
+<li>折半插入排序：是对直接插入排序算法的一种改进。与直接插入排序的区别是：在有序表中寻找待排序数据的正确位置时，使用了折半查找&#x2F;二分查找。</li>
+<li>希尔排序：希尔排序是将记录按下标的一定增量分组，对每组使用直接插入排序算法排序；随着增量逐渐减少，每组包含的关键词越来越多，当增量减至1时，整个文件恰被分成一组，算法便终止。</li>
+</ul>
+<h4 id="1-1-1-2、选择排序"><a href="#1-1-1-2、选择排序" class="headerlink" title="1.1.1.2、选择排序"></a>1.1.1.2、选择排序</h4><p><strong>（1）简单选择排序</strong></p>
 <p>每一轮只找最小值且放在最前面，下一轮在剩下的元素中再次寻找最小值并放于上一次找到的最小值右边，以此类推，直到全部比较完毕。</p>
-</li>
-<li><p><font color='orange'>堆排序</font></p>
+<p><strong>（2）堆排序</strong></p>
 <p>堆排序是一种选择排序，最坏，最好的平均时间复杂度均为O(nlogn)，它是不稳定排序。</p>
-<p>堆是一个完全二叉树，有如下特点：每个结点的值都大于或等于其左右孩子结点的值，称为大顶堆；或者每个结点的值都小于或等于其左右孩子结点的值，称为小顶堆。</p>
-<p>推排序逻辑如下：</p>
+<p>堆是一个完全二叉树，特点是<strong>每个节点的值都大于或等于其左右孩子节点的值，称为大顶堆；或者每个节点的值都小于或等于其左右孩子节点的值，称为小顶堆</strong>。</p>
+<p>堆排序逻辑如下：</p>
 <ol>
 <li>将无序序列构建成一个堆，根据 升序&#x2F;降序 需求 选择 小顶堆或大顶堆；</li>
 <li>将堆顶元素与末尾元素交换，将最大元素”沉”到数组末端；</li>
@@ -464,25 +456,19 @@
 <li>空间复杂度：O(1)</li>
 <li>稳定性：不稳定</li>
 </ul>
-</li>
-</ol>
-<h4 id="1-1-1-3、交换排序"><a href="#1-1-1-3、交换排序" class="headerlink" title="1.1.1.3、交换排序"></a>1.1.1.3、交换排序</h4><ol>
-<li><p><font color='orange'>冒泡排序</font></p>
-<p>其逻辑是 比较相邻的元素。如果第一个比第二个大，就交换他们两个。</p>
-</li>
-<li><p><font color='orange'>快速排序</font></p>
-<p>快速排序是一种 排序执行效率很高的 排序算法，它利用 分治法 来对 待排序序列 进行分治排序。</p>
+<h4 id="1-1-1-3、交换排序"><a href="#1-1-1-3、交换排序" class="headerlink" title="1.1.1.3、交换排序"></a>1.1.1.3、交换排序</h4><p><strong>（1）冒泡排序</strong></p>
+<p>其逻辑是比较相邻的元素。如果第一个比第二个大，就交换他们两个。</p>
+<p><strong>（2）快速排序</strong></p>
+<p>快速排序是一种 排序执行效率很高的 排序算法，它利用分治法来对待排序序列进行分治排序。</p>
 <p>它的思想是：以最后一位数字为关键字，拿待排序数组中的每个元素对比关键字进行一趟排序将待排记录分隔成独立的两部分，其中的一部分比关键字小，后面一部分比关键字大，然后再对这前后的两部分分别采用这种方式进行排序，通过递归的运算最终达到整个序列有序。</p>
 <blockquote>
 <p>快排之所以被称为“快”排，是因为它的平均时间是最短的，主要原因是硬件方面的，每趟快排需要指定一个“支点”（也就是作为分界点的值），一趟中涉及的所有比较都是与这个“支点”来进行比较的，那么我们可以把这个“支点”放在寄存器里，如此这般，效率自然大大提高。除此之外，快排的高效率与分治思想也是分不开的。</p>
 </blockquote>
-</li>
-</ol>
-<h4 id="1-1-1-4、归并排序"><a href="#1-1-1-4、归并排序" class="headerlink" title="1.1.1.4、归并排序"></a>1.1.1.4、归并排序</h4><p>归并排序 基于 分治法，其思想是将待排序的元素序列分成两个相等的子序列，然后再对子序列再次分割两个子序列，一直分割到一个序列只有一个元素为止。然后比较相邻两个子序列中数据大小，将小的放左边，大的放右边，并将之合并为一个序列，以此类推，直到合并完成为止。</p>
+<h4 id="1-1-1-4、归并排序"><a href="#1-1-1-4、归并排序" class="headerlink" title="1.1.1.4、归并排序"></a>1.1.1.4、归并排序</h4><p><strong>归并排序基于分治法</strong>，其思想是将待排序的元素序列分成两个相等的子序列，然后将子序列再次分割为两个子序列，一直分割到一个序列只有一个元素为止。然后比较相邻两个子序列中数据大小，将小的放左边，大的放右边，并将之合并为一个序列，以此类推，直到合并完成为止。</p>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20200921145201640.png?token=AIGEF3L2CI465XXEYEKL7IDEZZWVM" alt="image-20200921145201640"></p>
 <h4 id="1-1-1-5、基数排序"><a href="#1-1-1-5、基数排序" class="headerlink" title="1.1.1.5、基数排序"></a>1.1.1.5、基数排序</h4><p>基数排序（radix sort）属于“分配式排序”（distribution sort），又称“桶子法”（bucket sort）或bin sort，顾名思义，它是通过键值的各个位的值，将要排序的元素分配至某些“桶”中，从而达到排序的作用，基数排序法是属于稳定性的排序。</p>
 <h3 id="1-1-2、外部排序"><a href="#1-1-2、外部排序" class="headerlink" title="1.1.2、外部排序"></a>1.1.2、外部排序</h3><h2 id="1-2、查找算法"><a href="#1-2、查找算法" class="headerlink" title="1.2、查找算法"></a>1.2、查找算法</h2><p>Java中常用的查找算法有四种。</p>
-<h3 id="1-2-1、顺序（线性）查找"><a href="#1-2-1、顺序（线性）查找" class="headerlink" title="1.2.1、顺序（线性）查找"></a>1.2.1、顺序（线性）查找</h3><h3 id="1-2-2、二分查找"><a href="#1-2-2、二分查找" class="headerlink" title="1.2.2、二分查找"></a>1.2.2、二分查找</h3><p>每次拿到 待查找元素数组 中间元素值 且将数组分成两半（左半和右半），然后拿查找值与中间元素值比较，大了就以右半数组为基础做相同操作，小了就以左半数组为基础做相同操作，以此类推，直到找到为止。</p>
+<h3 id="1-2-1、顺序（线性）查找"><a href="#1-2-1、顺序（线性）查找" class="headerlink" title="1.2.1、顺序（线性）查找"></a>1.2.1、顺序（线性）查找</h3><h3 id="1-2-2、二分查找"><a href="#1-2-2、二分查找" class="headerlink" title="1.2.2、二分查找"></a>1.2.2、二分查找</h3><p>每次拿到待查找元素数组的中间元素值且将数组分成两半（左半和右半），然后拿查找值与中间元素值比较，大了就以右半数组为基础做相同操作，小了就以左半数组为基础做相同操作，以此类推，直到找到为止。</p>
 <h3 id="1-2-3、插值查找"><a href="#1-2-3、插值查找" class="headerlink" title="1.2.3、插值查找"></a>1.2.3、插值查找</h3><p>二分查找的升级版，升级地方为求中间元素值的公式。</p>
 <ul>
 <li><p>二分查找 获取中间元素值的公式为：int mid &#x3D; (left + right) &#x2F; 2;</p>
@@ -490,13 +476,13 @@
 <li><p>插值查找 获取中间元素值的公式为：int mid &#x3D; left + (right - left)*(findVal - arr[left]) &#x2F; (arr[right] - arr[left]);</p>
 </li>
 </ul>
-<h3 id="1-2-4、斐波那契查找（黄金分割点查找）"><a href="#1-2-4、斐波那契查找（黄金分割点查找）" class="headerlink" title="1.2.4、斐波那契查找（黄金分割点查找）"></a>1.2.4、斐波那契查找（黄金分割点查找）</h3><p>其原理与前两种类似，仅仅改变了中间元素（mid）的位置，mid不再是中间或插值得到，而是位于黄金分割点附近，即：mid &#x3D; low + F(k - 1) - 1; F代表斐波那契数列。</p>
+<h3 id="1-2-4、斐波那契查找（黄金分割点查找）"><a href="#1-2-4、斐波那契查找（黄金分割点查找）" class="headerlink" title="1.2.4、斐波那契查找（黄金分割点查找）"></a>1.2.4、斐波那契查找（黄金分割点查找）</h3><p>其原理与前两种类似，仅仅<strong>改变了中间元素（mid）的位置</strong>，mid不再是中间或插值得到，而是位于黄金分割点附近，即：mid &#x3D; low + F(k - 1) - 1; F代表斐波那契数列。</p>
 <blockquote>
 <p>斐波那契数列：{1,1,2,3,5,8,13,21,34,55}，发现数列的两个相邻数的比例无限接近0.618。</p>
 </blockquote>
-<h2 id="1-3、常用算法"><a href="#1-3、常用算法" class="headerlink" title="1.3、常用算法"></a>1.3、常用算法</h2><h3 id="1-3-1、二分查找算法（非递归，关键字匹配）"><a href="#1-3-1、二分查找算法（非递归，关键字匹配）" class="headerlink" title="1.3.1、二分查找算法（非递归，关键字匹配）"></a>1.3.1、二分查找算法（非递归，关键字匹配）</h3><h4 id="简介"><a href="#简介" class="headerlink" title="简介"></a>简介</h4><p>二分查找也称 折半查找（Binary Search），它是一种效率较高的查找方法。折半查找要求线性表必须采用顺序存储结构，而且表中元素按关键字有序排列。该算法时间复杂度可以表示O(h)&#x3D;O(log2n)。</p>
+<h2 id="1-3、常用算法"><a href="#1-3、常用算法" class="headerlink" title="1.3、常用算法"></a>1.3、常用算法</h2><h3 id="1-3-1、二分查找算法（非递归，关键字匹配）"><a href="#1-3-1、二分查找算法（非递归，关键字匹配）" class="headerlink" title="1.3.1、二分查找算法（非递归，关键字匹配）"></a>1.3.1、二分查找算法（非递归，关键字匹配）</h3><h4 id="1-3-1-1、简介"><a href="#1-3-1-1、简介" class="headerlink" title="1.3.1.1、简介"></a>1.3.1.1、简介</h4><p><strong>二分查找也称 折半查找（Binary Search），是一种效率较高的查找方法</strong>。折半查找要求线性表必须采用顺序存储结构，而且表中元素按关键字有序排列。该算法时间复杂度可以表示O(h)&#x3D;O(log2n)。</p>
 <p>首先，假设表中元素是按升序排列，将表中间位置记录的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%85%B3%E9%94%AE%E5%AD%97">关键字</a>与查找关键字比较，如果两者相等，则查找成功；否则利用中间位置记录将表分成前、后两个子表，如果中间位置记录的关键字大于查找关键字，则进一步查找前一子表，否则进一步查找后一子表。重复以上过程，直到找到满足条件的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%AE%B0%E5%BD%95/1837758">记录</a>，使查找成功，或直到子表不存在为止，此时查找不成功。</p>
-<h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">binarySearch</span><span class="token punctuation">(</span><span class="token class-name">Integer</span><span class="token punctuation">[</span><span class="token punctuation">]</span> srcArray<span class="token punctuation">,</span> <span class="token keyword">int</span> des<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
+<h4 id="1-3-1-2、代码实现"><a href="#1-3-1-2、代码实现" class="headerlink" title="1.3.1.2、代码实现"></a>1.3.1.2、代码实现</h4><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token keyword">public</span> <span class="token keyword">static</span> <span class="token keyword">int</span> <span class="token function">binarySearch</span><span class="token punctuation">(</span><span class="token class-name">Integer</span><span class="token punctuation">[</span><span class="token punctuation">]</span> srcArray<span class="token punctuation">,</span> <span class="token keyword">int</span> des<span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token comment">//定义初始最小、最大索引</span>
     <span class="token keyword">int</span> start <span class="token operator">=</span> <span class="token number">0</span><span class="token punctuation">;</span>
     <span class="token keyword">int</span> end <span class="token operator">=</span> srcArray<span class="token punctuation">.</span>length <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
@@ -518,14 +504,14 @@
     <span class="token keyword">return</span> <span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
-<h3 id="1-3-2、分治算法"><a href="#1-3-2、分治算法" class="headerlink" title="1.3.2、分治算法"></a>1.3.2、分治算法</h3><h4 id="简介-1"><a href="#简介-1" class="headerlink" title="简介"></a>简介</h4><p>分治算法的基本思想是将一个规模为N的问题分解为K个规模较小的子问题，这些子问题相互独立且与原问题性质相同。求出子问题的解就可得到原问题的解。即一种分割目标完成计算的算法，简单问题可用二分法完成。</p>
-<h4 id="解题步骤"><a href="#解题步骤" class="headerlink" title="解题步骤"></a>解题步骤</h4><p>分治法解题的一般步骤：</p>
+<h3 id="1-3-2、分治算法"><a href="#1-3-2、分治算法" class="headerlink" title="1.3.2、分治算法"></a>1.3.2、分治算法</h3><h4 id="1-3-2-1、简介"><a href="#1-3-2-1、简介" class="headerlink" title="1.3.2.1、简介"></a>1.3.2.1、简介</h4><p>分治算法的基本思想是将一个规模为N的问题分解为K个规模较小的子问题，这些子问题相互独立且与原问题性质相同。求出子问题的解就可得到原问题的解。即一种分割目标完成计算的算法，简单问题可用二分法完成。</p>
+<h4 id="1-3-2-2、解题步骤"><a href="#1-3-2-2、解题步骤" class="headerlink" title="1.3.2.2、解题步骤"></a>1.3.2.2、解题步骤</h4><p>分治法解题的一般步骤：</p>
 <ol>
 <li>分解，将要解决的问题划分成若干规模较小的同类问题；</li>
 <li>求解，当子问题划分得足够小时，用较简单的方法解决；</li>
 <li>合并，按原问题的要求，将子问题的解逐层合并构成原问题的解。</li>
 </ol>
-<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><p>运用分治策略解决的问题一般来说具有以下特点：</p>
+<h4 id="1-3-2-3、应用场景"><a href="#1-3-2-3、应用场景" class="headerlink" title="1.3.2.3、应用场景"></a>1.3.2.3、应用场景</h4><p>运用分治策略解决的问题一般来说具有以下特点：</p>
 <ol>
 <li><p>原问题可以分解为多个子问题：</p>
 <p>这些子问题与原问题相比，只是问题的规模有所降低，其结构和求解方法与原问题相同或相似。</p>
@@ -537,27 +523,26 @@
 <p>应能够采用某种方式、方法合并或构造出原问题的解。</p>
 </li>
 </ol>
-<p>不难发现，在分治策略中，由于子问题与原问题在结构和解法上的相似性，用分治方法解决的问题，大都采用了递归的形式。在各种排序方法中，如归并排序、堆排序、快速排序等，都存在有分治的思想。</p>
-<h3 id="1-3-3、动态规划算法（求最优决策）"><a href="#1-3-3、动态规划算法（求最优决策）" class="headerlink" title="1.3.3、动态规划算法（求最优决策）"></a>1.3.3、动态规划算法（求最优决策）</h3><h4 id="简介-2"><a href="#简介-2" class="headerlink" title="简介"></a>简介</h4><p>动态规划（Dynamic Programming，DP）是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%BF%90%E7%AD%B9%E5%AD%A6/1559">运筹学</a>的一个分支，是求解<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/6714639">决策过程</a>最优化的过程。20世纪50年代初，美国数学家<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%B4%9D%E5%B0%94%E6%9B%BC/9239579">贝尔曼</a>（R.Bellman）等人在研究多阶段决策过程的优化问题时，提出了著名的 最优化原理，从而创立了动态规划。动态规划的应用极其广泛，包括工程技术、经济、工业生产、军事以及自动化控制等领域，并在背包问题、生产经营问题、资金管理问题、资源分配问题、最短路径问题和复杂系统可靠性问题等中取得了显著的效果。</p>
-<p><font color='orange'>动态规划算法通常用于求解具有某种最优性质的问题。</font>动态规划算法与<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%88%86%E6%B2%BB%E6%B3%95">分治法</a>类似，基本思想是 将待求解问题分解成若干个子问题，先求解子问题，然后根据 子问题的解 得到 原问题的解。与分治法不同的是，适合于用动态规划求解的问题，经分解得到子问题往往不是互相独立的。</p>
-<h4 id="局限性"><a href="#局限性" class="headerlink" title="局限性"></a>局限性</h4><p>动态规划对于解决多阶段决策问题的效果很明显，但是动态规划也有一定的局限性。首先，它没有统一的处理方法，必须根据问题的各种性质并结合一定的技巧来处理；另外当变量的维数增大时，总的计算量及存贮量急剧增大。因而，受计算机的存贮量及计算速度的限制，当今的计算机仍不能用动态规划方法来解决较大规模的问题，这就是“维数障碍”。</p>
-<h3 id="1-3-4、暴力匹配算法（字符串匹配）"><a href="#1-3-4、暴力匹配算法（字符串匹配）" class="headerlink" title="1.3.4、暴力匹配算法（字符串匹配）"></a>1.3.4、暴力匹配算法（字符串匹配）</h3><h4 id="简介-3"><a href="#简介-3" class="headerlink" title="简介"></a>简介</h4><p>暴力匹配的思想：假设下标<code>i</code>指向字符串<code>str1</code>，下标<code>j</code>指向字符串<code>str2</code>，则有如下规律：</p>
+<p>在分治策略中，由于子问题与原问题在结构和解法上的相似性，用分治方法解决的问题，大都采用了递归的形式。在各种排序方法中，如归并排序、堆排序、快速排序等，都存在有分治的思想。</p>
+<h3 id="1-3-3、动态规划算法（求最优决策）"><a href="#1-3-3、动态规划算法（求最优决策）" class="headerlink" title="1.3.3、动态规划算法（求最优决策）"></a>1.3.3、动态规划算法（求最优决策）</h3><h4 id="13-3-1、简介"><a href="#13-3-1、简介" class="headerlink" title="13.3.1、简介"></a>13.3.1、简介</h4><p>动态规划（Dynamic Programming，DP）是<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%BF%90%E7%AD%B9%E5%AD%A6/1559">运筹学</a>的一个分支，是求解<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%86%B3%E7%AD%96%E8%BF%87%E7%A8%8B/6714639">决策过程</a>最优化的过程。20世纪50年代初，美国数学家<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%B4%9D%E5%B0%94%E6%9B%BC/9239579">贝尔曼</a>（R.Bellman）等人在研究多阶段决策过程的优化问题时，提出了著名的 最优化原理，从而创立了动态规划。动态规划的应用极其广泛，包括工程技术、经济、工业生产、军事以及自动化控制等领域，并在背包问题、生产经营问题、资金管理问题、资源分配问题、最短路径问题和复杂系统可靠性问题等中取得了显著的效果。</p>
+<p><strong>动态规划算法通常用于求解具有某种最优性质的问题</strong>。动态规划算法与<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%88%86%E6%B2%BB%E6%B3%95">分治法</a>类似，基本思想是 将待求解问题分解成若干个子问题，先求解子问题，然后根据 子问题的解 得到 原问题的解。与分治法不同的是，适合于用动态规划求解的问题，经分解得到子问题往往不是互相独立的。</p>
+<h4 id="1-3-3-2、局限性"><a href="#1-3-3-2、局限性" class="headerlink" title="1.3.3.2、局限性"></a>1.3.3.2、局限性</h4><p>动态规划对于解决多阶段决策问题的效果很明显，但是动态规划也有一定的局限性。首先，它没有统一的处理方法，必须根据问题的各种性质并结合一定的技巧来处理；另外当变量的维数增大时，总的计算量及存贮量急剧增大。因而，受计算机的存贮量及计算速度的限制，当今的计算机仍不能用动态规划方法来解决较大规模的问题，这就是“维数障碍”。</p>
+<h3 id="1-3-4、暴力匹配算法（字符串匹配）"><a href="#1-3-4、暴力匹配算法（字符串匹配）" class="headerlink" title="1.3.4、暴力匹配算法（字符串匹配）"></a>1.3.4、暴力匹配算法（字符串匹配）</h3><h4 id="1-3-4-1、简介"><a href="#1-3-4-1、简介" class="headerlink" title="1.3.4.1、简介"></a>1.3.4.1、简介</h4><p>暴力匹配的思想：假设下标<code>i</code>指向字符串<code>str1</code>，下标<code>j</code>指向字符串<code>str2</code>，则有如下规律：</p>
 <ol>
 <li>如果str1[i] &#x3D; str2[j]，则i++，j++。</li>
 <li>如果str1[i] !&#x3D; str2[j]，则令i &#x3D; i - (j - 1)，j &#x3D; 0。</li>
 </ol>
-<h4 id="缺点"><a href="#缺点" class="headerlink" title="缺点"></a>缺点</h4><p><strong>暴力破解会有大量的回溯</strong>，每次只移动一位，若不匹配，则移动到下一位接着判断，浪费了大量时间。</p>
-<p>为了优化之，就诞生了KMP算法。</p>
-<h3 id="1-3-5、KMP算法（字符串匹配）"><a href="#1-3-5、KMP算法（字符串匹配）" class="headerlink" title="1.3.5、KMP算法（字符串匹配）"></a>1.3.5、KMP算法（字符串匹配）</h3><h4 id="简介-4"><a href="#简介-4" class="headerlink" title="简介"></a>简介</h4><p><strong>KMP算法是一种改进的字符串匹配算法</strong>，由D.E.Knuth，J.H.Morris和V.R.Pratt提出的，因此人们称它为克努特—莫里斯—普拉特操作（简称KMP算法）。KMP算法的核心是利用匹配失败后的信息，尽量减少模式串与主串的匹配次数以达到快速匹配的目的。具体实现就是通过一个next()函数实现，函数本身包含了模式串的局部匹配信息。KMP算法的 时间复杂度为 <code>O(m+n) [1]</code> 。</p>
-<h4 id="模式匹配类型"><a href="#模式匹配类型" class="headerlink" title="模式匹配类型"></a>模式匹配类型</h4><ol>
+<h4 id="1-3-4-2、缺点"><a href="#1-3-4-2、缺点" class="headerlink" title="1.3.4.2、缺点"></a>1.3.4.2、缺点</h4><p><strong>暴力破解会有大量的回溯</strong>，每次只移动一位，若不匹配则移动到下一位接着判断，浪费了大量时间。为了优化就诞生了KMP算法。</p>
+<h3 id="1-3-5、KMP算法（字符串匹配）"><a href="#1-3-5、KMP算法（字符串匹配）" class="headerlink" title="1.3.5、KMP算法（字符串匹配）"></a>1.3.5、KMP算法（字符串匹配）</h3><h4 id="1-3-5-1、简介"><a href="#1-3-5-1、简介" class="headerlink" title="1.3.5.1、简介"></a>1.3.5.1、简介</h4><p><strong>KMP算法是一种改进的字符串匹配算法</strong>，由D.E.Knuth，J.H.Morris和V.R.Pratt提出的，因此人们称它为克努特—莫里斯—普拉特操作（简称KMP算法）。KMP算法的核心是利用匹配失败后的信息，尽量减少模式串与主串的匹配次数以达到快速匹配的目的。具体实现就是通过一个next()函数实现，函数本身包含了模式串的局部匹配信息。KMP算法的 时间复杂度为 <code>O(m+n) [1]</code> 。</p>
+<h4 id="1-3-5-2、模式匹配类型"><a href="#1-3-5-2、模式匹配类型" class="headerlink" title="1.3.5.2、模式匹配类型"></a>1.3.5.2、模式匹配类型</h4><ol>
 <li>精确匹配</li>
 <li>近似匹配</li>
 </ol>
-<h4 id="部分匹配表"><a href="#部分匹配表" class="headerlink" title="部分匹配表"></a>部分匹配表</h4><p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20200919141327620.png?token=AIGEF3JMQBUJFREE6ZNIL5DEZZWXE" alt="image-20200919141327620"></p>
+<h4 id="1-3-5-3、部分匹配表"><a href="#1-3-5-3、部分匹配表" class="headerlink" title="1.3.5.3、部分匹配表"></a>1.3.5.3、部分匹配表</h4><p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20200919141327620.png?token=AIGEF3JMQBUJFREE6ZNIL5DEZZWXE" alt="image-20200919141327620"></p>
 <p>由表可得：移动位数 &#x3D; 已匹配的字符数 + 对应的部分匹配值。</p>
-<h3 id="1-3-6、贪心算法（局部最优解）"><a href="#1-3-6、贪心算法（局部最优解）" class="headerlink" title="1.3.6、贪心算法（局部最优解）"></a>1.3.6、贪心算法（局部最优解）</h3><h4 id="简介-5"><a href="#简介-5" class="headerlink" title="简介"></a>简介</h4><p><strong>贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，算法得到的是在某种意义上的局部最优解</strong>。</p>
+<h3 id="1-3-6、贪心算法（局部最优解）"><a href="#1-3-6、贪心算法（局部最优解）" class="headerlink" title="1.3.6、贪心算法（局部最优解）"></a>1.3.6、贪心算法（局部最优解）</h3><h4 id="1-3-6-1、简介"><a href="#1-3-6-1、简介" class="headerlink" title="1.3.6.1、简介"></a>1.3.6.1、简介</h4><p><strong>贪心算法（又称贪婪算法）是指，在对问题求解时，总是做出在当前看来是最好的选择。也就是说，不从整体最优上加以考虑，算法得到的是在某种意义上的局部最优解</strong>。</p>
 <p>贪心算法不是对所有问题都能得到整体最优解，关键是贪心策略的选择。也就是说，不从整体最优上加以考虑，做出的只是在某种意义上的局部最优解。</p>
-<h3 id="1-3-7、普利姆算法（Prim，稠密图最小生成树）"><a href="#1-3-7、普利姆算法（Prim，稠密图最小生成树）" class="headerlink" title="1.3.7、普利姆算法（Prim，稠密图最小生成树）"></a>1.3.7、普利姆算法（Prim，稠密图最小生成树）</h3><h4 id="简介-6"><a href="#简介-6" class="headerlink" title="简介"></a>简介</h4><p>普利姆(Prim)算法求最小生成树，也就是在包含n个顶点的连通图中，找出只有(n-1)条边包含所有n个顶点的连通子图，也就是所谓的极小连通子图。</p>
+<h3 id="1-3-7、普利姆算法（Prim，稠密图最小生成树）"><a href="#1-3-7、普利姆算法（Prim，稠密图最小生成树）" class="headerlink" title="1.3.7、普利姆算法（Prim，稠密图最小生成树）"></a>1.3.7、普利姆算法（Prim，稠密图最小生成树）</h3><h4 id="1-3-7-1、简介"><a href="#1-3-7-1、简介" class="headerlink" title="1.3.7.1、简介"></a>1.3.7.1、简介</h4><p>普利姆(Prim)算法求最小生成树，也就是在包含n个顶点的连通图中，找出只有(n-1)条边包含所有n个顶点的连通子图，也就是所谓的极小连通子图。</p>
 <p>例如，通过普里姆算法查找下图的最小生成树的步骤为：</p>
 <ol>
 <li><p>假如从顶点A出发，顶点 B、C、D 到顶点 A 的权值分别为 2、4、2，所以，对于顶点 A 来说，顶点 B 和顶点 D 到 A 的权值最小，假设先找到的顶点 B：</p>
@@ -570,106 +555,92 @@
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/image-20200920084435924.png?token=AIGEF3OD2D3UJQXOLJPN4MDEZZW3O" alt="image-20200920084435924"></p>
 </li>
 </ol>
-<h4 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h4><p>普利姆算法求最小生成树，是从顶点方面考虑，存在两重遍历(已访问顶点集和未访问顶点集)，对应的还有一个克鲁斯卡尔算法求最小生成树，是从边的角度出发考虑的。根据各自算法特性，可以粗略的判断出，把稠密图看作边集相对于点集数量级比较大，稀疏图看作点集相对于边集较大，则普利姆算法适合于计算稠密图，克鲁斯卡尔算法适合于计算稀疏图。</p>
-<h3 id="1-3-8、克鲁斯卡尔算法（Kruskal，稀疏图最小生成树）"><a href="#1-3-8、克鲁斯卡尔算法（Kruskal，稀疏图最小生成树）" class="headerlink" title="1.3.8、克鲁斯卡尔算法（Kruskal，稀疏图最小生成树）"></a>1.3.8、克鲁斯卡尔算法（Kruskal，稀疏图最小生成树）</h3><h4 id="简介-7"><a href="#简介-7" class="headerlink" title="简介"></a>简介</h4><p>克鲁斯卡尔算法是求连通网的最小生成树的另一种方法。与普里姆算法不同，它的时间复杂度为O（e loge）（e为网中的边数），所以，适合于求边稀疏的网的最小生成树 [1] 。</p>
-<h4 id="基本思想"><a href="#基本思想" class="headerlink" title="基本思想"></a>基本思想</h4><p>克鲁斯卡尔（Kruskal）算法从另一途径求网的最小生成树。其基本思想是：假设连通网G&#x3D;（V，E），令最小生成树的初始状态为只有n个顶点而无边的非连通图T&#x3D;（V，{}），图中每个顶点自成一个连通分量。在E中选择代价最小的边，若该边依附的顶点分别在T中不同的连通分量上，则将此边加入到T中；否则，舍去此边而选择下一条代价最小的边。依此类推，直至T中所有顶点构成一个连通分量为止 [2] 。</p>
-<h3 id="1-3-9、迪杰斯特拉算法（Dijkstra，最短路径）"><a href="#1-3-9、迪杰斯特拉算法（Dijkstra，最短路径）" class="headerlink" title="1.3.9、迪杰斯特拉算法（Dijkstra，最短路径）"></a>1.3.9、迪杰斯特拉算法（Dijkstra，最短路径）</h3><h4 id="简介-8"><a href="#简介-8" class="headerlink" title="简介"></a>简介</h4><p>迪杰斯特拉算法(Dijkstra)是由荷兰计算机科学家<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%8B%84%E5%85%8B%E6%96%AF%E7%89%B9%E6%8B%89/2828872">狄克斯特拉</a>于1959 年提出，因此又叫<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%8B%84%E5%85%8B%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95/6764865">狄克斯特拉算法</a>。是从一个顶点到其余各顶点的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84">最短路径</a>算法，解决的是有权图中最短路径问题。迪杰斯特拉算法主要特点是从起始点开始，采用<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/5411800">贪心算法</a>的策略，每次遍历到始点距离最近且未访问过的顶点的邻接节点，直到扩展到终点为止。</p>
-<p>Dijkstra算法一般的表述通常有两种方式，一种用永久和临时标号方式，一种是用OPEN、CLOSE表的方式，这里均采用永久和临时标号的方式。注意该算法要求图中不存在负权边。</p>
-<h3 id="1-3-10、弗洛伊德算法（Floyd，最短路径）"><a href="#1-3-10、弗洛伊德算法（Floyd，最短路径）" class="headerlink" title="1.3.10、弗洛伊德算法（Floyd，最短路径）"></a>1.3.10、弗洛伊德算法（Floyd，最短路径）</h3><h4 id="简介-9"><a href="#简介-9" class="headerlink" title="简介"></a>简介</h4><p>Floyd算法又称为插点法，是一种利用<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/529408">动态规划</a>思想寻找给定<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8A%A0%E6%9D%83%E5%9B%BE/10579361">加权图</a>中多源点之间<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/6334920">最短路径</a>的算法，与Dijkstra算法类似。该算法名称以创始人之一、1978年<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9B%BE%E7%81%B5%E5%A5%96/324645">图灵奖</a>获得者、斯坦福大学计算机科学系教授<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BD%97%E4%BC%AF%E7%89%B9%C2%B7%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B7/4903135">罗伯特·弗洛伊德</a>命名。</p>
+<h4 id="1-3-7-2、总结"><a href="#1-3-7-2、总结" class="headerlink" title="1.3.7.2、总结"></a>1.3.7.2、总结</h4><p>普利姆算法求最小生成树，是从顶点方面考虑，存在两重遍历(已访问顶点集和未访问顶点集)，对应的还有一个克鲁斯卡尔算法求最小生成树，是从边的角度出发考虑的。根据各自算法特性，可以粗略的判断出，把稠密图看作边集相对于点集数量级比较大，稀疏图看作点集相对于边集较大，则普利姆算法适合于计算稠密图，克鲁斯卡尔算法适合于计算稀疏图。</p>
+<h3 id="1-3-8、克鲁斯卡尔算法（Kruskal，稀疏图最小生成树）"><a href="#1-3-8、克鲁斯卡尔算法（Kruskal，稀疏图最小生成树）" class="headerlink" title="1.3.8、克鲁斯卡尔算法（Kruskal，稀疏图最小生成树）"></a>1.3.8、克鲁斯卡尔算法（Kruskal，稀疏图最小生成树）</h3><h4 id="1-3-8-1、简介"><a href="#1-3-8-1、简介" class="headerlink" title="1.3.8.1、简介"></a>1.3.8.1、简介</h4><p><strong>克鲁斯卡尔算法是求连通网的最小生成树的另一种方法</strong>。与普里姆算法不同，它的时间复杂度为O（e loge）（e为网中的边数），所以，适合于求边稀疏的网的最小生成树 [1] 。</p>
+<h4 id="1-3-8-2、基本思想"><a href="#1-3-8-2、基本思想" class="headerlink" title="1.3.8.2、基本思想"></a>1.3.8.2、基本思想</h4><p>克鲁斯卡尔（Kruskal）算法从另一途径求网的最小生成树。其基本思想是：假设连通网G&#x3D;（V，E），令最小生成树的初始状态为只有n个顶点而无边的非连通图T&#x3D;（V，{}），图中每个顶点自成一个连通分量。在E中选择代价最小的边，若该边依附的顶点分别在T中不同的连通分量上，则将此边加入到T中；否则，舍去此边而选择下一条代价最小的边。依此类推，直至T中所有顶点构成一个连通分量为止 [2] 。</p>
+<h3 id="1-3-9、迪杰斯特拉算法（Dijkstra，最短路径）"><a href="#1-3-9、迪杰斯特拉算法（Dijkstra，最短路径）" class="headerlink" title="1.3.9、迪杰斯特拉算法（Dijkstra，最短路径）"></a>1.3.9、迪杰斯特拉算法（Dijkstra，最短路径）</h3><h4 id="1-3-9-1、简介"><a href="#1-3-9-1、简介" class="headerlink" title="1.3.9.1、简介"></a>1.3.9.1、简介</h4><p>迪杰斯特拉算法(Dijkstra)是由荷兰计算机科学家<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%8B%84%E5%85%8B%E6%96%AF%E7%89%B9%E6%8B%89/2828872">狄克斯特拉</a>于1959 年提出，因此又叫<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%8B%84%E5%85%8B%E6%96%AF%E7%89%B9%E6%8B%89%E7%AE%97%E6%B3%95/6764865">狄克斯特拉算法</a>。是从一个顶点到其余各顶点的<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84">最短路径</a>算法，解决的是有权图中最短路径问题。迪杰斯特拉算法主要特点是从起始点开始，采用<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E8%B4%AA%E5%BF%83%E7%AE%97%E6%B3%95/5411800">贪心算法</a>的策略，每次遍历到始点距离最近且未访问过的顶点的邻接节点，直到扩展到终点为止。</p>
+<p>Dijkstra算法通常有两种方式，一种用永久和临时标号方式，一种是用OPEN、CLOSE表的方式，这里均采用永久和临时标号方式。注意该算法要求图中不存在负权边。</p>
+<h3 id="1-3-10、弗洛伊德算法（Floyd，最短路径）"><a href="#1-3-10、弗洛伊德算法（Floyd，最短路径）" class="headerlink" title="1.3.10、弗洛伊德算法（Floyd，最短路径）"></a>1.3.10、弗洛伊德算法（Floyd，最短路径）</h3><h4 id="1-3-10-1、简介"><a href="#1-3-10-1、简介" class="headerlink" title="1.3.10.1、简介"></a>1.3.10.1、简介</h4><p><strong>Floyd算法又称为插点法</strong>，是一种利用<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8A%A8%E6%80%81%E8%A7%84%E5%88%92/529408">动态规划</a>思想寻找给定<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%8A%A0%E6%9D%83%E5%9B%BE/10579361">加权图</a>中多源点之间<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E6%9C%80%E7%9F%AD%E8%B7%AF%E5%BE%84/6334920">最短路径</a>的算法，与Dijkstra算法类似。该算法名称以创始人之一、1978年<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E5%9B%BE%E7%81%B5%E5%A5%96/324645">图灵奖</a>获得者、斯坦福大学计算机科学系教授<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/%E7%BD%97%E4%BC%AF%E7%89%B9%C2%B7%E5%BC%97%E6%B4%9B%E4%BC%8A%E5%BE%B7/4903135">罗伯特·弗洛伊德</a>命名。</p>
 <p>该算法也称为Floyd算法，Roy-Warshall算法，Roy-Floyd算法或WFI算法。</p>
-<h4 id="算法过程"><a href="#算法过程" class="headerlink" title="算法过程"></a>算法过程</h4><ol>
+<h4 id="1-3-10-2、算法过程"><a href="#1-3-10-2、算法过程" class="headerlink" title="1.3.10.2、算法过程"></a>1.3.10.2、算法过程</h4><ol>
 <li>从任意一条单边路径开始。所有两点之间的距离是边的权，如果两点之间没有边相连，则权为无穷大。</li>
 <li>对于每一对顶点 u 和 v，看看是否存在一个顶点 w 使得从 u 到 w 再到 v 比已知的路径更短。如果是更新它。</li>
 </ol>
-<h4 id="时间-空间复杂度"><a href="#时间-空间复杂度" class="headerlink" title="时间&#x2F;空间复杂度"></a>时间&#x2F;空间复杂度</h4><ul>
+<h4 id="1-3-10-3、时间-空间复杂度"><a href="#1-3-10-3、时间-空间复杂度" class="headerlink" title="1.3.10.3、时间&#x2F;空间复杂度"></a>1.3.10.3、时间&#x2F;空间复杂度</h4><ul>
 <li>时间复杂度：O(n^3)；</li>
 <li>空间复杂度：O(n^2)；</li>
 </ul>
-<h4 id="优缺点"><a href="#优缺点" class="headerlink" title="优缺点"></a>优缺点</h4><p>Floyd算法适用于APSP(All Pairs Shortest Paths，多源最短路径)，是一种动态规划算法，稠密图效果最佳，边权可正可负。此算法简单有效，由于三重循环结构紧凑，对于稠密图，效率要高于执行|V|次<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Dijkstra%E7%AE%97%E6%B3%95">Dijkstra算法</a>，也要高于执行|V|次<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/SPFA%E7%AE%97%E6%B3%95">SPFA算法</a>。</p>
+<h4 id="1-3-10-4、优缺点"><a href="#1-3-10-4、优缺点" class="headerlink" title="1.3.10.4、优缺点"></a>1.3.10.4、优缺点</h4><p>Floyd算法适用于APSP(All Pairs Shortest Paths，多源最短路径)，是一种动态规划算法，稠密图效果最佳，边权可正可负。此算法简单有效，由于三重循环结构紧凑，对于稠密图，效率要高于执行|V|次<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/Dijkstra%E7%AE%97%E6%B3%95">Dijkstra算法</a>，也要高于执行|V|次<a target="_blank" rel="noopener" href="https://baike.baidu.com/item/SPFA%E7%AE%97%E6%B3%95">SPFA算法</a>。</p>
 <ul>
 <li>优点：容易理解，可以算出任意两个节点之间的最短距离，代码编写简单。</li>
 <li>缺点：时间复杂度比较高，不适合计算大量数据。</li>
 </ul>
-<h3 id="1-3-11、骑士周游回溯算法"><a href="#1-3-11、骑士周游回溯算法" class="headerlink" title="1.3.11、骑士周游回溯算法"></a>1.3.11、骑士周游回溯算法</h3><h4 id="简介-10"><a href="#简介-10" class="headerlink" title="简介"></a>简介</h4><p>深度优先遍历+回溯+贪心。从初始位置startPoint开始，获取下一步能到达的所有位置，将它们添加到集合ArrayList&lt; Point &gt;中，根据它们下一步所能到达的位置的个数k对ArrayList&lt; Point &gt;中所有位置进行非递减排序，优先对k较小的位置进行遍历，若此路不通，则回溯。</p>
+<h3 id="1-3-11、骑士周游回溯算法"><a href="#1-3-11、骑士周游回溯算法" class="headerlink" title="1.3.11、骑士周游回溯算法"></a>1.3.11、骑士周游回溯算法</h3><h4 id="1-3-11-1、简介"><a href="#1-3-11-1、简介" class="headerlink" title="1.3.11.1、简介"></a>1.3.11.1、简介</h4><p>深度优先遍历+回溯+贪心。从初始位置startPoint开始，获取下一步能到达的所有位置，将它们添加到集合ArrayList&lt; Point &gt;中，根据它们下一步所能到达的位置的个数k对ArrayList&lt; Point &gt;中所有位置进行非递减排序，优先对k较小的位置进行遍历，若此路不通，则回溯。</p>
 <h2 id="1-4、算法复杂度"><a href="#1-4、算法复杂度" class="headerlink" title="1.4、算法复杂度"></a>1.4、算法复杂度</h2><h3 id="1-4-1、时间复杂度"><a href="#1-4-1、时间复杂度" class="headerlink" title="1.4.1、时间复杂度"></a>1.4.1、时间复杂度</h3><p>度量一个程序执行时间的方法有两种：</p>
 <ol>
 <li>事前估算法</li>
 <li>事后统计法</li>
 </ol>
-<h4 id="时间频度"><a href="#时间频度" class="headerlink" title="时间频度"></a>时间频度</h4><p>一个算法中语句执行次数称为 语句频度 或 时间频度，记为T(n)。</p>
-<h4 id="时间复杂度表示"><a href="#时间复杂度表示" class="headerlink" title="时间复杂度表示"></a>时间复杂度表示</h4><ol>
-<li>常数阶O(1)</li>
-<li>对数阶O(log n)</li>
-<li>线性阶O(n)</li>
-<li>线性对数阶O(n*log n)</li>
-<li>平方阶O(n^2)</li>
-<li>立方阶O(n^3)</li>
-<li>k次方阶O(n^k)</li>
-<li>指数阶O(2^n)</li>
+<h4 id="1-4-1-1、时间频度"><a href="#1-4-1-1、时间频度" class="headerlink" title="1.4.1.1、时间频度"></a>1.4.1.1、时间频度</h4><p>**一个算法中语句执行次数称为 语句频度 或 时间频度，记为T(n)**。</p>
+<h4 id="1-4-1-2、时间复杂度表示"><a href="#1-4-1-2、时间复杂度表示" class="headerlink" title="1.4.1.2、时间复杂度表示"></a>1.4.1.2、时间复杂度表示</h4><ol>
+<li>O(1)：常数时间，不论输入的数据规模有多大，算法都具有恒定的执行时间。</li>
+<li>O(log n)：对数阶，二分搜索是一个该复杂度的一个经典例子。</li>
+<li>O(n)：线性阶：数据的输入与算法的执行时间成正比。</li>
+<li>O(n*log n)：线性对数阶，常见排序算法（归并、快排）都在该复杂度内。</li>
+<li>O(n^2)：平方阶，嵌套循环通常会导致该复杂度。</li>
+<li>O(n^3)：立方阶。</li>
+<li>O(n^k)：k次方阶。</li>
+<li>O(2^n)：指数时间。</li>
+<li>O(n!)：阶乘时间。</li>
 </ol>
 <p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/%E7%AE%97%E6%B3%95%E6%97%B6%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A601.jpg?token=AIGEF3PJUNGHWIOJSSI2YZ3EZZW5K" alt="算法时间复杂度01"></p>
-<h3 id="1-4-2、空间复杂度"><a href="#1-4-2、空间复杂度" class="headerlink" title="1.4.2、空间复杂度"></a>1.4.2、空间复杂度</h3><h4 id="简介-11"><a href="#简介-11" class="headerlink" title="简介"></a>简介</h4><p>类似于时间复杂度，一个算法的空间复杂度 定义为 该算法所消耗的存储空间。</p>
-<h4 id="Big-O"><a href="#Big-O" class="headerlink" title="Big O"></a>Big O</h4><ul>
-<li>时间问题（数据）规模<ol>
-<li>不考虑 必要操作。</li>
-<li>不考虑 常数项。</li>
-<li>不考虑 低次项。</li>
-</ol>
-</li>
-<li>O(1) 和 O(n)的使用<ol>
-<li>O(1)：称为常数时间。随着规模扩大，时间消耗没有变化或者变化不大，则用(O1)来表示。</li>
-<li>O(n)：称为线性时间。随着规模扩大，时间也相应的扩大，则用O(n)来表示。</li>
-</ol>
-</li>
+<h3 id="1-4-2、空间复杂度"><a href="#1-4-2、空间复杂度" class="headerlink" title="1.4.2、空间复杂度"></a>1.4.2、空间复杂度</h3><h4 id="1-4-2-1、简介"><a href="#1-4-2-1、简介" class="headerlink" title="1.4.2.1、简介"></a>1.4.2.1、简介</h4><p>空间复杂度描述了算法在执行过程中额外使用的内存空间与输入数据量之间的关系。</p>
+<p>1.4.2.2、空间复杂度类型</p>
+<ul>
+<li>O(1)：常量空间。算法使用固定规模的额外空间。</li>
+<li>O(log n)：递归二分搜索中，堆栈调用深度是log n。</li>
+<li>O(n)：线性空间。</li>
 </ul>
-<h3 id="1-4-3、总结"><a href="#1-4-3、总结" class="headerlink" title="1.4.3、总结"></a>1.4.3、总结</h3><h4 id="排序算法-时间-空间复杂度-对比"><a href="#排序算法-时间-空间复杂度-对比" class="headerlink" title="排序算法 时间&#x2F;空间复杂度 对比"></a>排序算法 时间&#x2F;空间复杂度 对比</h4><p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%97%B6%E9%97%B4%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A601.jpg?token=AIGEF3PCPFPUYKDIWGS3GKLEZZW7E" alt="排序算法时间空间复杂度01"></p>
+<h3 id="1-4-3、Big-O"><a href="#1-4-3、Big-O" class="headerlink" title="1.4.3、Big O"></a>1.4.3、Big O</h3><p><strong>Big O是描述算法复杂度的标号，通常使用Big O描述最坏情况下的运行时间或所需空间</strong>。</p>
+<p><strong>Big O表示法的核心思想是关注主要部分，忽略常数、低次项等</strong>。比如，如果一个算法执行时间为 3n^2+4n+15，我们通常会说它的运行时间为O(n^2)，因为当n足够大时，低此项和常数的影响将变得微不足道。</p>
+<p>Big O表示法为我们提供了一种评估算法效率的高级视角，使得我们能够快速比较不同算法在处理大数据量时的性能。</p>
+<h3 id="1-4-4、总结"><a href="#1-4-4、总结" class="headerlink" title="1.4.4、总结"></a>1.4.4、总结</h3><h4 id="排序算法-时间-空间复杂度-对比"><a href="#排序算法-时间-空间复杂度-对比" class="headerlink" title="排序算法 时间&#x2F;空间复杂度 对比"></a>排序算法 时间&#x2F;空间复杂度 对比</h4><p><img src="https://raw.githubusercontent.com/lucky2shh/blog-haogeblogs-image/master/2023/08/05/%E6%8E%92%E5%BA%8F%E7%AE%97%E6%B3%95%E6%97%B6%E9%97%B4%E7%A9%BA%E9%97%B4%E5%A4%8D%E6%9D%82%E5%BA%A601.jpg?token=AIGEF3PCPFPUYKDIWGS3GKLEZZW7E" alt="排序算法时间空间复杂度01"></p>
 <h1 id="2、数据结构"><a href="#2、数据结构" class="headerlink" title="2、数据结构"></a>2、数据结构</h1><h2 id="2-1、简介"><a href="#2-1、简介" class="headerlink" title="2.1、简介"></a>2.1、简介</h2><p>其英文称为：Data Structure，其表示存储数据的不同方式。 </p>
 <h2 id="2-2、分类"><a href="#2-2、分类" class="headerlink" title="2.2、分类"></a>2.2、分类</h2><p>数据结构分为 <strong>线性结构 和 非线性结构</strong> 两大类。</p>
-<h3 id="2-2-1、线性结构"><a href="#2-2-1、线性结构" class="headerlink" title="2.2.1、线性结构"></a>2.2.1、线性结构</h3><p>线性结构是常用的数据结构，其特点是数据元素之间存在一对一的线性关系。</p>
+<h3 id="2-2-1、线性结构"><a href="#2-2-1、线性结构" class="headerlink" title="2.2.1、线性结构"></a>2.2.1、线性结构</h3><p><strong>线性结构的特点是数据元素之间存在一对一的线性关系</strong>。即除了第一个和最后一个元素外，每个元素都有一个前驱和后继。</p>
 <p>线性结构有两种存储结构：</p>
 <ol>
-<li><p><font color='orange'>顺序存储结构</font></p>
-<p>顺序存储的线性表称为顺序表，其中的元素是连续的：</p>
+<li><p>顺序存储结构：顺序存储的线性表称为顺序表，其中的元素是连续的：</p>
 </li>
-<li><p><font color='orange'>链式存储结构</font></p>
-<p>链式存储的线性表称为链表，其中的元素不一定是连续的，元素节点存放数据及相邻节点的地址信息：</p>
+<li><p>链式存储结构：链式存储的线性表称为链表，其中的元素不一定是连续的，元素节点存放数据及相邻节点的地址信息：</p>
 </li>
 </ol>
 <p>线性结构常见实现有：</p>
-<ol>
+<ul>
 <li><p><font color='orange'>数组</font></p>
 </li>
-<li><p><font color='orange'>队列</font></p>
-<p>队列是一个有序列表，遵循FIFO规则，可以用数组或链表来实现。</p>
-<ul>
-<li>队列是一种特殊操作受限的线性表，它只允许在表的前端（front，队头）执行删除操作，而在表的后端（rear，队尾）执行插入操作。</li>
-<li>队列中没有元素时，称为空队列。</li>
-<li>创建顺序队列结构必须为其静态分配或动态申请一片连续的存储空间，并设置两个指针进行管理。一个是队头指针front，它指向队头元素；另一个是队尾指针rear，它指向下一个入队元素的存储位置。</li>
-<li>队列采用FIFO(first in first out——先进先出)，数据插入到链表尾部，从头部开始读取数据。每次读取一个元素，释放一个元素。所谓的动态创建，动态释放。因而也不存在溢出等问题。由于链表由结构体间接而成，遍历也方便。（先进先出）。</li>
-</ul>
+<li><p><font color='orange'>队列</font>：队列是一个有序列表，遵循FIFO规则，可以用数组或链表来实现。</p>
+<p>队列是一种特殊操作受限的线性表，它只允许在表的前端（front，队头）执行删除操作，而在表的后端（rear，队尾）执行插入操作。</p>
+<p>队列中没有元素时，称为空队列。</p>
+<p>创建顺序队列结构必须为其静态分配或动态申请一片连续的存储空间，并设置两个指针进行管理。一个是队头指针front，它指向队头元素；另一个是队尾指针rear，它指向下一个入队元素的存储位置。</p>
+<p>队列采用FIFO(first in first out——先进先出)，数据插入到链表尾部，从头部开始读取数据。每次读取一个元素，释放一个元素。所谓的动态创建，动态释放。因而也不存在溢出等问题。由于链表由结构体间接而成，遍历也方便。（先进先出）。</p>
 </li>
 <li><p><font color='orange'>链表</font></p>
 </li>
 <li><p><font color='orange'>栈</font></p>
 </li>
-</ol>
-<h3 id="2-2-2、非线性结构"><a href="#2-2-2、非线性结构" class="headerlink" title="2.2.2、非线性结构"></a>2.2.2、非线性结构</h3><p>非线性结构常见实现有：</p>
+</ul>
+<h3 id="2-2-2、非线性结构"><a href="#2-2-2、非线性结构" class="headerlink" title="2.2.2、非线性结构"></a>2.2.2、非线性结构</h3><p><strong>非线性结构的特点是每个元素可能与多个其它元素连接，不仅仅是线性结构中的前驱和后继</strong>。</p>
+<p>非线性结构通常使用指针或链接来表示元素之间的关系。</p>
+<p>非线性结构常见实现有：</p>
 <ol>
-<li><p><font color='orange'>二维数组</font></p>
-</li>
-<li><p><font color='orange'>多维数组</font></p>
-</li>
-<li><p><font color='orange'>广义表</font></p>
-</li>
 <li><p><font color='orange'>树结构</font></p>
 <ol>
 <li><p>二叉树</p>
 <ol>
-<li><p>满二叉树</p>
-<p>所有叶子节点都在同一层的二叉树称为：满二叉树。</p>
+<li><p>满二叉树：所有叶子节点都在同一层的二叉树称为：满二叉树。</p>
 </li>
-<li><p>完全二叉树</p>
-<p>所有叶子节点在最后一层或者倒数第二层，且最后一层的叶子节点在左边连续，倒数第二层的叶子节点在右边连续，则我们称这样的二叉树为：完全二叉树。</p>
+<li><p>完全二叉树：所有叶子节点在最后一层或者倒数第二层，且最后一层的叶子节点在左边连续，倒数第二层的叶子节点在右边连续，则我们称这样的二叉树为：完全二叉树。</p>
 </li>
 </ol>
 </li>
@@ -682,8 +653,14 @@
 </ol>
 <h1 id="3、常见问题及应对"><a href="#3、常见问题及应对" class="headerlink" title="3、常见问题及应对"></a>3、常见问题及应对</h1><h2 id="3-1、修路问题"><a href="#3-1、修路问题" class="headerlink" title="3.1、修路问题"></a>3.1、修路问题</h2><p>最小生成树 + 普利姆算法</p>
 <h2 id="3-2、最短路径问题"><a href="#3-2、最短路径问题" class="headerlink" title="3.2、最短路径问题"></a>3.2、最短路径问题</h2><p>图 + 弗洛伊德算法</p>
-<h2 id="3-3、汉诺塔问题"><a href="#3-3、汉诺塔问题" class="headerlink" title="3.3、汉诺塔问题"></a>3.3、汉诺塔问题</h2><p>分支算法</p>
-<h2 id="3-4、八皇后问题"><a href="#3-4、八皇后问题" class="headerlink" title="3.4、八皇后问题"></a>3.4、八皇后问题</h2><p>回溯法</p>
+<h2 id="3-3、汉诺塔问题"><a href="#3-3、汉诺塔问题" class="headerlink" title="3.3、汉诺塔问题"></a>3.3、汉诺塔问题</h2><p>使用<strong>递归法</strong>可解决该问题。</p>
+<p>汉诺塔问题是一个益智游戏，通常由3个柱子和一系列递减大小的盘子组成。初始时，所有盘子都在一个柱子上，目标是将它们移动到另一个柱子上，移动过程需要遵循两个规则：</p>
+<ol>
+<li>每次只能移动一个盘子。</li>
+<li>大盘子不能放在小盘子上面。</li>
+</ol>
+<h2 id="3-4、八皇后问题"><a href="#3-4、八皇后问题" class="headerlink" title="3.4、八皇后问题"></a>3.4、八皇后问题</h2><p>使用<strong>回溯法</strong>可解决该问题。</p>
+<p>八皇后问题是一个经典问题，要求在8x8的棋盘上放置8个皇后，规则就是任何两个皇后都不能存在于同一行、同一列、同一对角线上。可以使用回溯法来解决这种问题。</p>
 
                 
             </div>

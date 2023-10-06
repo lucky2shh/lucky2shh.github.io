@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-06
+                    2023-10-03
                 </div>
                 
 
@@ -431,7 +431,7 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1、启动初始化"><a href="#1、启动初始化" class="headerlink" title="1、启动初始化"></a>1、启动初始化</h1><p><strong>入口从Connector.start()方法开始，但其实调用的是父类 LifecycleBase.start() 方法</strong>。</p>
+                <h1 id="1、启动初始化"><a href="#1、启动初始化" class="headerlink" title="1、启动初始化"></a>1、启动初始化</h1><p><strong>入口是Connector.start()方法，但实际调用的是父类 LifecycleBase.start() 方法</strong>。</p>
 <p><strong>（1）LifecycleBase.start()</strong></p>
 <p>调用Connector.startInternal()方法来处理。</p>
 <p><strong>（2）Connector.startInternal()</strong></p>
@@ -440,8 +440,7 @@
 <p>调用AbstractEndpoint.start()方法来处理。</p>
 <p>使用ScheduledExecutorService开启一个延迟60秒调用一次AbstractProtocol.startAsyncTimeout()方法的线程。startAsyncTimeout()方法会判断当前Socket对应的web应用是否不再使用，如果不再使用那么进行超时处理。该方法会开启一个固定速率为1s执行一次的线程，该线程会遍历所有Processor，并对那些不再使用的web应用进行超时处理。</p>
 <p><strong>（4）AbstractEndpoint.start()</strong></p>
-<p>如果还没有绑定ip和端口，那么执行AbstractEndpoint.bindWithCleanup()方法，在该方法中一般会调用NioEndpoint.bind()方法进行绑定处理。</p>
-<p>调用NioEndpoint.startInternal()方法来初始化开启Acceptor、Poller线程等操作。</p>
+<p>如果还没有绑定ip和端口，那么执行AbstractEndpoint.bindWithCleanup()方法，在该方法中一般会调用NioEndpoint.bind()方法进行绑定处理。调用NioEndpoint.startInternal()方法来初始化开启Acceptor、Poller线程等操作。</p>
 <p><strong>（5）NioEndpoint.bind()</strong></p>
 <p>调用NioEndpoint.initServerSocket()方法来初始化ServerSocket，设置该ServerSocket是阻塞式的。</p>
 <p>为NioEndpoint创建一个CountDownLatch(2)。</p>
@@ -456,9 +455,9 @@
 <li>线程工厂：实现Tomcat重写的<code>TaskThreadFactory</code>。线程名字前缀是<code>http-nio-9001-exec-</code>，线程工厂生产的线程是守护线程，线程优先级是5。</li>
 </ul>
 <p><strong>第二步：初始化 LimitLatch 实例，设置其最大连接数量为 8192</strong>。</p>
-<p><strong>第三步：创建 Poller 线程</strong>，线程名字是 http-nio-9001-Poller，线程优先级为5，是守护线程，然后启动该线程。</p>
-<p><strong>第四步：调用 AbstractEndpoint.startAcceptorThread() 方法开启 Acceptor 线程</strong>。创建Acceptor线程，线程名字是http-nio-9001-Acceptor，线程优先级为5，是守护线程，然后启动该线程。</p>
-<h1 id="2、HTTP请求处理"><a href="#2、HTTP请求处理" class="headerlink" title="2、HTTP请求处理"></a>2、HTTP请求处理</h1><p>入口从<code>NioEndPoint.Poller.run()</code>方法开始。</p>
+<p><strong>第三步：创建 Poller 线程</strong>，线程名字是 <code>http-nio-9001-Poller</code>，线程优先级为5，是守护线程，然后启动该线程。</p>
+<p><strong>第四步：调用 AbstractEndpoint.startAcceptorThread() 方法开启 Acceptor 线程</strong>。创建Acceptor线程，线程名字是<code>http-nio-9001-Acceptor</code>，线程优先级为5，是守护线程，然后启动该线程。</p>
+<h1 id="2、HTTP请求处理"><a href="#2、HTTP请求处理" class="headerlink" title="2、HTTP请求处理"></a>2、HTTP请求处理</h1><p>入口是<code>NioEndPoint.Poller.run()</code>方法。</p>
 <p><strong>（1）NioEndPoint.Poller.events()</strong></p>
 <p>从<code>Poller</code>的阻塞队列<code>SynchronizedQueue&lt;PollerEvent&gt;</code>中不断获取<code>PollerEvent</code>，拿到<code>PollerEvent</code>中的<code>NioSocketWrapper</code>，将该<code>NioSocketWrapper</code>作为附件注册到<code>Poller</code>的<code>Selector</code>上，并设置要关注【读事件】。</p>
 <p>调用selec()方法获取准备就绪的Socket，然后获取其selectedKey，并拿到该selectedKey上的附件NioSocketWrapper。将key和wrapper作为参数调用Poller的processKey方法来处理。</p>
@@ -467,7 +466,7 @@
 <p><strong>（3）AbstractEndpint.processSocket()</strong></p>
 <p>processSocket方法会将wrapper、事件类型包装成实现了Runnable接口的SocketProcessorBase，然后调用线程池Executor的execute方法来执行该封装好的SocketProcessorBase，其实就是执行SocketProcessorBase的run()方法。</p>
 <p><strong>（4）SocketProcessorBase.run()</strong></p>
-<p><em><strong>run()方法中会先调用 ReentrantLock 的 lock 方法加锁，然后调用 NioEndpoint.SocketProcessor.doRun() 方法，最后再调用 unlock 方法解锁</strong></em>。</p>
+<p><strong>run()方法中会先调用 ReentrantLock 的 lock 方法加锁，然后调用 NioEndpoint.SocketProcessor.doRun() 方法，最后再调用 unlock 方法解锁</strong>。</p>
 <p><strong>（5）NioEndpoint.SocketProcessor.doRun()</strong></p>
 <p>先处理三次握手，然后将Socket事件改为OPEN_READ。接下来调用AbstractProtoccol.ConnectionHandler.Process()方法来处理。</p>
 <p><strong>（6）AbstractProtoccol.ConnectionHandler.process()</strong></p>

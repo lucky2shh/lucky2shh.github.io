@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-07
+                    2023-10-02
                 </div>
                 
 
@@ -431,19 +431,19 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h1><h2 id="1-1、何为Zookeeper"><a href="#1-1、何为Zookeeper" class="headerlink" title="1.1、何为Zookeeper"></a>1.1、何为Zookeeper</h2><p>官方文档解释：<strong>Zookeeper是一个分布式服务框架，是Apache Hadoop 的一个子项目，它主要是用来解决分布式应用中经常遇到的一些数据管理问题，如：统一命名服务、状态同步服务、集群管理、分布式应用配置项管理等。</strong></p>
+                <h1 id="1、概述"><a href="#1、概述" class="headerlink" title="1、概述"></a>1、概述</h1><h2 id="1-1、何为Zookeeper"><a href="#1-1、何为Zookeeper" class="headerlink" title="1.1、何为Zookeeper"></a>1.1、何为Zookeeper</h2><p>官方文档解释：<strong>Zookeeper是一个分布式服务框架，是Apache Hadoop 的一个子项目，主要用来解决分布式应用中经常遇到的一些数据管理问题，如：统一命名服务、状态同步服务、集群管理、分布式应用配置项管理等。</strong></p>
 <p>简单来说，zookeeper &#x3D; 文件系统 + 监听通知机制。</p>
 <h2 id="1-2、使用场景"><a href="#1-2、使用场景" class="headerlink" title="1.2、使用场景"></a>1.2、使用场景</h2><p><strong>zookeeper可实现 分布式应用配置管理、统一命名服务、状态同步服务、集群管理等功能。</strong></p>
 <p>分布式系统中配置信息放入zookeeper中，所有系统都从zookeeper中读取配置信息。当配置信息修改后，<strong>通过 监听触发机制 通知每一个系统 重新读取最新配置。</strong></p>
-<h2 id="1-3、文件系统架构"><a href="#1-3、文件系统架构" class="headerlink" title="1.3、文件系统架构"></a>1.3、文件系统架构</h2><p>一个Zookeeper的内部有一个根目录和多个子目录组成。每个子目录项都被称为 znode，和文件系统一样，我们能够自由的增加、删除znode，且可以在znode中存储数据。</p>
+<h2 id="1-3、文件系统架构"><a href="#1-3、文件系统架构" class="headerlink" title="1.3、文件系统架构"></a>1.3、文件系统架构</h2><p>一个Zookeeper内部由一个根目录和多个子目录组成。每个子目录称为 znode，可以自由增加、删除znode，也可在znode中存储数据。</p>
 <p>znode有四种类型：</p>
 <ol>
-<li><p><font color='orange'>PERSISTENT - 持久化目录节点</font></p>
+<li><p><strong>PERSISTENT - 持久化目录节点</strong></p>
 <p>客户端与zookeeper断开连接后，该节点依旧存在。</p>
 <p>创建 持久目录节点 命令：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">create /tmp_zk01 data01<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 </li>
-<li><p><font color='orange'>PERSISTENT_SEQUENTIAL - 持久化 顺序编号 目录节点</font></p>
+<li><p><strong>PERSISTENT_SEQUENTIAL - 持久化 顺序编号 目录节点</strong></p>
 <p>客户端与zookeeper断开连接后，该节点依旧存在，只是Zookeeper给该节点名称进行顺序编号。</p>
 <p>创建 持久顺序目录节点 命令：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">create <span class="token parameter variable">-s</span> /tmp_zk01 data01 <span class="token number">1</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -452,7 +452,7 @@
 <li>-s：SEQUENTIAL的简写，代表顺序节点。</li>
 </ul>
 </li>
-<li><p><font color='orange'>EPHEMERAL-临时目录节点</font></p>
+<li><p><strong>EPHEMERAL-临时目录节点</strong></p>
 <p>客户端与zookeeper断开连接后，该节点被删除。</p>
 <p>创建 临时目录节点 命令：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">create <span class="token parameter variable">-e</span> /tmp_zk01 data01<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -461,7 +461,7 @@
 <li>-e：EPHEMERAL的简写，代表临时节点。</li>
 </ul>
 </li>
-<li><p><font color='orange'>EPHEMERAL_SEQUENTIAL-临时 顺序编号 目录节点</font></p>
+<li><p><strong>EPHEMERAL_SEQUENTIAL-临时 顺序编号 目录节点</strong></p>
 <p>客户端与zookeeper断开连接后，该节点被删除，只是Zookeeper给该节点名称进行顺序编号。</p>
 <p>创建 临时顺序目录节点 命令：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">create <span class="token parameter variable">-e</span> <span class="token parameter variable">-s</span> /tmp_zk01 data01<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
@@ -469,7 +469,7 @@
 <blockquote>
 <p>顺序节点：创建znode时设置顺序标识，znode名称后会附加一个顺序号，顺序号是一个单调递增的计数器，由父节点维护。</p>
 </blockquote>
-<h2 id="1-4、监听通知机制"><a href="#1-4、监听通知机制" class="headerlink" title="1.4、监听通知机制"></a>1.4、监听通知机制</h2><h3 id="1-4-1、监听机制简介"><a href="#1-4-1、监听机制简介" class="headerlink" title="1.4.1、监听机制简介"></a>1.4.1、监听机制简介</h3><p>Watcher 监听机制是 Zookeeper 中非常重要的特性，节点可以绑定监听事件，比如可以监听节点数据变更、节点删除、子节点状态变更等事件，<strong>通过事件机制可以实现分布式锁、集群管理等功能。</strong></p>
+<h2 id="1-4、监听通知机制"><a href="#1-4、监听通知机制" class="headerlink" title="1.4、监听通知机制"></a>1.4、监听通知机制</h2><h3 id="1-4-1、监听机制简介"><a href="#1-4-1、监听机制简介" class="headerlink" title="1.4.1、监听机制简介"></a>1.4.1、监听机制简介</h3><p>Watcher 监听机制是 Zookeeper 中非常重要的特性，节点可以绑定监听事件，比如可以监听<strong>节点数据变更、节点删除、子节点状态变更</strong>等事件，<strong>通过事件机制可以实现分布式锁、集群管理等功能。</strong></p>
 <h3 id="1-4-2、watcher特性"><a href="#1-4-2、watcher特性" class="headerlink" title="1.4.2、watcher特性"></a>1.4.2、watcher特性</h3><p><strong>当数据发生变化时会触发一个 watcher 事件 并通知客户端。但客户端只会收到一次通知，后续同一节点再次发生变化时客户端将不会再收到消息。不过可以通过循环监听 来达到 永久监听效果。</strong></p>
 <h3 id="1-4-3、注册事件机制"><a href="#1-4-3、注册事件机制" class="headerlink" title="1.4.3、注册事件机制"></a>1.4.3、注册事件机制</h3><p>ZooKeeper 的 Watcher 机制可分为三个过程：</p>
 <ol>
@@ -479,9 +479,9 @@
 </ol>
 <p>注册 watcher 有 3 种方式：</p>
 <ol>
-<li>getData</li>
-<li>exists</li>
-<li>getChildren</li>
+<li><strong>getData</strong></li>
+<li><strong>exists</strong></li>
+<li><strong>getChildren</strong></li>
 </ol>
 <h3 id="1-4-4、watcher事件类型"><a href="#1-4-4、watcher事件类型" class="headerlink" title="1.4.4、watcher事件类型"></a>1.4.4、watcher事件类型</h3><pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">None</span> <span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 				  <span class="token comment">// 客户端连接状态发生变化的时候 会收到none事件</span>
 <span class="token class-name">NodeCreated</span> <span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">)</span><span class="token punctuation">,</span> 		  <span class="token comment">// 节点创建事件</span>
@@ -633,8 +633,7 @@ get /runoob/child<span aria-hidden="true" class="line-numbers-rows"><span></span
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">set</span> /test demo02<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <p>修改完成后，我们看见两个程序后台都及时收到了他们监听的目录节点数据变更后的值。</p>
-<h1 id="4、数据类型"><a href="#4、数据类型" class="headerlink" title="4、数据类型"></a>4、数据类型</h1><h2 id="4-1、数据结构"><a href="#4-1、数据结构" class="headerlink" title="4.1、数据结构"></a>4.1、数据结构</h2><p><strong>zookeeper中存储的所有数据由znode组成，节点也被称为znode，并以 key&#x2F;value 形式存储数据。</strong></p>
-<p>整体结构类似于linux文件系统的模式以树形结构存储。其中根路径以<code>/</code>开头。</p>
+<h1 id="4、数据类型"><a href="#4、数据类型" class="headerlink" title="4、数据类型"></a>4、数据类型</h1><h2 id="4-1、数据结构"><a href="#4-1、数据结构" class="headerlink" title="4.1、数据结构"></a>4.1、数据结构</h2><p><strong>zookeeper以 key&#x2F;value 形式存储数据。</strong>整体结构类似于linux文件系统的模式以树形结构存储。其中根路径以<code>/</code>开头。</p>
 <h2 id="4-2、znode状态属性"><a href="#4-2、znode状态属性" class="headerlink" title="4.2、znode状态属性"></a>4.2、znode状态属性</h2><ol>
 <li><font color='orange'>ctime</font>：创建节点的时间。</li>
 <li><font color='orange'>mZxid</font>：最后修改节点时的事务ID。</li>
@@ -649,27 +648,27 @@ get /runoob/child<span aria-hidden="true" class="line-numbers-rows"><span></span
 </ol>
 <h1 id="5、zookeeper-session"><a href="#5、zookeeper-session" class="headerlink" title="5、zookeeper session"></a>5、zookeeper session</h1><p><strong>客户端与服务端之间的连接是基于 TCP长连接，默认端口2181。第一次连接建立后，每个会话都可设置超时时间。</strong></p>
 <h2 id="5-1、Session创建"><a href="#5-1、Session创建" class="headerlink" title="5.1、Session创建"></a>5.1、Session创建</h2><ul>
-<li><p><font color='orange'>sessionID</font></p>
+<li><p>sessionID</p>
 <p>会话ID，用来唯一标识一个会话，每次客户端创建会话时，zookeeper都会为其分配一个全局唯一的sessionID。zookeeper创建sessionID类SessionTrackerImpl中的源码。</p>
 </li>
-<li><p><font color='orange'>Timeout</font></p>
+<li><p>Timeout</p>
 <p>会话超时时间。客户端在构造Zookeeper实例时，向服务端发送配置的超时时间，server端会根据自己的超时时间限制最终确认会话的超时时间。</p>
 </li>
-<li><p><font color='orange'>TickTime</font></p>
+<li><p>TickTime</p>
 <p>下次会话超时时间点，默认2000毫秒。可在zoo.cfg配置文件中进行配置，便于server端对session会话实行分桶策略管理。</p>
 </li>
-<li><p><font color='orange'>isClosing</font></p>
+<li><p>isClosing</p>
 <p>该属性标记一个会话是否已经被关闭，当server端检测到会话已经超时失效，该会话标记为“已关闭”，不再处理该会话的新请求。</p>
 </li>
 </ul>
 <h2 id="5-2、Session状态"><a href="#5-2、Session状态" class="headerlink" title="5.2、Session状态"></a>5.2、Session状态</h2><ul>
-<li><p><font color='orange'>connecting</font></p>
+<li><p>connecting</p>
 <p>连接中，session一旦建立，状态就是connecting状态，时间短。</p>
 </li>
-<li><p><font color='orange'>connected</font></p>
+<li><p>connected</p>
 <p>已连接，连接成功之后的状态。</p>
 </li>
-<li><p><font color='orange'>closed</font></p>
+<li><p>closed</p>
 <p>已关闭，session过期，因 网络故障 客户端重连失败，服务器宕机 或 客户端主动断开。</p>
 </li>
 </ul>
@@ -678,7 +677,7 @@ get /runoob/child<span aria-hidden="true" class="line-numbers-rows"><span></span
 <pre class="line-numbers language-properties" data-language="properties"><code class="language-properties"><span class="token key attr-name">ExpirationTime</span> <span class="token punctuation">=</span> <span class="token value attr-value">CurrentTime + SessionTimeout;</span>
 <span class="token key attr-name">ExpirationTime</span> <span class="token punctuation">=</span> <span class="token value attr-value">(ExpirationTime / ExpirationInterval + 1) * ExpirationInterval;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<p>客户端 在会话超时前 向服务器发送请求 来完成 会话激活，进而保持会话有效性。</p>
+<p>客户端在会话超时前向服务器发送请求来完成 会话激活，进而保持会话有效性。</p>
 <h1 id="6、Zookeeper四字命令"><a href="#6、Zookeeper四字命令" class="headerlink" title="6、Zookeeper四字命令"></a>6、Zookeeper四字命令</h1><h2 id="6-1、简介"><a href="#6-1、简介" class="headerlink" title="6.1、简介"></a>6.1、简介</h2><p><strong>在客户端可以通过<code>telnet</code>或<code>nc（netcat）</code>向 zookeeper 提交命令。</strong></p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token comment"># centos</span>
 yum <span class="token function">install</span> <span class="token function">nc</span>
@@ -723,7 +722,7 @@ yum <span class="token function">install</span> <span class="token function">nc<
 <h3 id="6-2-6、envi命令"><a href="#6-2-6、envi命令" class="headerlink" title="6.2.6、envi命令"></a>6.2.6、envi命令</h3><p>查看环境变量。</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token builtin class-name">echo</span> envi <span class="token operator">|</span> <span class="token function">nc</span> <span class="token number">192.168</span>.3.38 <span class="token number">2181</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h1 id="7、Zookeeper安全管理"><a href="#7、Zookeeper安全管理" class="headerlink" title="7、Zookeeper安全管理"></a>7、Zookeeper安全管理</h1><h2 id="7-1、安全简介"><a href="#7-1、安全简介" class="headerlink" title="7.1、安全简介"></a>7.1、安全简介</h2><p><strong>ZooKeeper节点有5种操作权限：CREATE(增)、READ(查)、WRITE(改)、DELETE(删)、ADMIN(管理)等权限，这5种权限集合可以简写为crwda，每个单词的首字符拼接而成。</strong></p>
+<h1 id="7、Zookeeper安全管理"><a href="#7、Zookeeper安全管理" class="headerlink" title="7、Zookeeper安全管理"></a>7、Zookeeper安全管理</h1><h2 id="7-1、安全简介"><a href="#7-1、安全简介" class="headerlink" title="7.1、安全简介"></a>7.1、安全简介</h2><p><strong>ZooKeeper节点有5种操作权限：CREATE(增)、READ(查)、WRITE(改)、DELETE(删)、ADMIN(管理)等权限，这5种权限可以简写为crwda，每个单词的首字符拼接而成。</strong></p>
 <h2 id="7-2、权限"><a href="#7-2、权限" class="headerlink" title="7.2、权限"></a>7.2、权限</h2><p><strong>Zookeeper 权限由 scheme : id : permissions 三部分组成。</strong></p>
 <p>Scheme可选项：</p>
 <ul>
@@ -755,7 +754,7 @@ yum <span class="token function">install</span> <span class="token function">nc<
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">getAcl /cicada<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 
-<h1 id="8、Zookeeper事件监听"><a href="#8、Zookeeper事件监听" class="headerlink" title="8、Zookeeper事件监听"></a>8、Zookeeper事件监听</h1><h2 id="8-1、简介"><a href="#8-1、简介" class="headerlink" title="8.1、简介"></a>8.1、简介</h2><p><strong>接口类<code>Watcher</code>表示一个事件处理器，定义了事件通知相关逻辑，包含<code>KeeperState</code>和<code>EventType</code>两个枚举类，分别代表了 通知状态 和 事件类型。</strong></p>
+<h1 id="8、Zookeeper事件监听"><a href="#8、Zookeeper事件监听" class="headerlink" title="8、Zookeeper事件监听"></a>8、Zookeeper事件监听</h1><h2 id="8-1、简介"><a href="#8-1、简介" class="headerlink" title="8.1、简介"></a>8.1、简介</h2><p><strong>接口类<code>Watcher</code>表示一个事件处理器，定义了事件通知相关逻辑，包含<code>KeeperState</code>和<code>EventType</code>两个枚举类。</strong></p>
 <p>Watcher接口定义了事件回调方法 <code>process(WatchedEvent event)</code>。定义一个Watcher实例很简单，代码如下：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token class-name">Watcher</span> w <span class="token operator">=</span> <span class="token keyword">new</span> <span class="token class-name">Watcher</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>
     <span class="token annotation punctuation">@Override</span>
@@ -791,28 +790,27 @@ get <span class="token parameter variable">-w</span> /test<span aria-hidden="tru
 
 <h3 id="8-2-2、watcher机制"><a href="#8-2-2、watcher机制" class="headerlink" title="8.2.2、watcher机制"></a>8.2.2、watcher机制</h3><p>zookeeper 的 watcher 机制，可分为四个过程：</p>
 <ol>
-<li><p><font color='orange'>客户端注册 watcher；</font></p>
-<p>客户端注册watcher有3种方式：getData、exists、getCildren。</p>
+<li><p>客户端注册 watcher；客户端注册watcher有3种方式：getData、exists、getCildren。</p>
 </li>
-<li><p><font color='orange'>服务端处理 watcher；</font></p>
+<li><p>服务端处理 watcher；</p>
 </li>
-<li><p><font color='orange'>服务端触发 watcher 事件；</font></p>
+<li><p>服务端触发 watcher 事件；</p>
 </li>
-<li><p><font color='orange'>客户端回调 watcher；</font></p>
+<li><p>客户端回调 watcher；</p>
 </li>
 </ol>
 <p>以exists注册方式为例，客户端注册事件并触发事件通知的流程分析如下：</p>
 <ol>
-<li><p><font color='orange'>客户端 发送 事件通知请求；</font></p>
+<li><p>客户端 发送 事件通知请求；</p>
 <p>调用 exists 方法会把事件监听封装到 request 对象中，watch 属性设置为 true，待服务端返回 response 后把监听事件封装到客户端类<code>ZKWatchManager</code>中。</p>
 </li>
-<li><p><font color='orange'>服务端 处理 watcher事件请求；</font></p>
+<li><p>服务端 处理 watcher事件请求；</p>
 <ol>
 <li>服务端<code>NIOServerCnxn</code>类用来处理客户端请求，最终调用<code>FinalRequestProcessor</code>。</li>
 <li>在类<code>DataTree</code>方法中添加 watcher 事件，并保存至<code>WatchManager</code>的<code>watchTable</code>与<code>watchTable</code>中。</li>
 </ol>
 </li>
-<li><p><font color='orange'>服务端 触发 watcher事件；</font></p>
+<li><p>服务端 触发 watcher事件；</p>
 <ol>
 <li>若服务端某个被监听的节点发生事务请求，服务端处理请求时调用<code>FinalRequestProcessor</code>类<code>processRequest</code>方法。</li>
 <li>删除调用链最终到 DataTree 类中删除节点分支的触发代码段。</li>
@@ -820,7 +818,7 @@ get <span class="token parameter variable">-w</span> /test<span aria-hidden="tru
 <li>构建了一个 xid 为 -1，zxid 为 -1 的 ReplyHeader 对象，然后再调用 sendResponse 方法。</li>
 </ol>
 </li>
-<li><p><font color='orange'>客户端 回调 watcher事件；</font></p>
+<li><p>客户端 回调 watcher事件；</p>
 <p>客户端类<code>SendThread</code>的<code>readResponse</code>方法接收服务端触发的事件通知，进入 xid 为 -1 流程，处理 Event 事件。</p>
 </li>
 </ol>

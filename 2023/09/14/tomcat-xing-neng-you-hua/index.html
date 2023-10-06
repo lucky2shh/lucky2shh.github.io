@@ -404,14 +404,14 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-06
+                    2023-10-03
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    3.8k
+                    3.7k
                 </div>
                 
 
@@ -433,7 +433,7 @@
             <div id="articleContent">
                 <h1 id="Tomcat优化"><a href="#Tomcat优化" class="headerlink" title="Tomcat优化"></a>Tomcat优化</h1><h2 id="1、内存优化"><a href="#1、内存优化" class="headerlink" title="1、内存优化"></a>1、内存优化</h2><p><strong>启动时告诉JVM需要一块大内存（调优内存是最直接的方式）</strong>。</p>
 <p>修改配置文件catalina.sh（Windows下为catalina.bat，Linux下为catalina.sh）：</p>
-<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">JAVA_OPTS</span><span class="token operator">=</span><span class="token string">'-Xms256m -Xmx512m'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token assign-left variable">JAVA_OPTS</span><span class="token operator">=</span><span class="token string">'-Xms512m -Xmx1024m'</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
 <ul>
 <li><code>-Xms&lt;size&gt;</code> ：JVM 初始化堆的大小；</li>
@@ -516,15 +516,15 @@
            <span class="token attr-name">redirectPort</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>8443<span class="token punctuation">"</span></span> <span class="token punctuation">/></span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>Connector使用哪种protocol，可以通过<code>&lt;connector&gt;</code>元素中的protocol属性进行指定，也可以使用默认值。</p>
-<p>指定的protocol取值及对应的协议如下：</p>
+<p>protocol取值及对应协议如下：</p>
 <ul>
-<li>HTTP&#x2F;1.1：默认值，使用的协议与Tomcat版本有关</li>
+<li>HTTP&#x2F;1.1：<strong>默认值，使用的协议与Tomcat版本有关</strong></li>
 <li>org.apache.coyote.http11.Http11Protocol：BIO</li>
 <li>org.apache.coyote.http11.Http11NioProtocol：NIO</li>
 <li>org.apache.coyote.http11.Http11Nio2Protocol：NIO2</li>
 <li>org.apache.coyote.http11.Http11AprProtocol：APR</li>
 </ul>
-<p>如果没有指定protocol，则使用默认值HTTP&#x2F;1.1，其含义如下：在Tomcat7中，自动选取使用BIO或APR（如果找到APR需要的本地库，则使用APR，否则使用BIO）；在Tomcat8中，自动选取使用NIO或APR（如果找到APR需要的本地库，则使用APR，否则使用NIO）</p>
+<p>如果没有指定protocol，则默认HTTP&#x2F;1.1，其含义如下：在Tomcat7中，自动选取使用BIO或APR（如果找到APR需要的本地库，则使用APR，否则使用BIO）；在Tomcat8中，自动选取使用NIO或APR（如果找到APR需要的本地库，则使用APR，否则使用NIO）</p>
 <h2 id="4、缓存压缩优化"><a href="#4、缓存压缩优化" class="headerlink" title="4、缓存压缩优化"></a>4、缓存压缩优化</h2><h3 id="4-1、压缩优化定义"><a href="#4-1、压缩优化定义" class="headerlink" title="4.1、压缩优化定义"></a>4.1、压缩优化定义</h3><p>压缩优化是指：<strong>将返回的 html 页面等内容压缩成 gzip 格式后发送给浏览器，浏览器在本地解压缩的过程</strong>。</p>
 <h3 id="4-2、开启压缩优化"><a href="#4-2、开启压缩优化" class="headerlink" title="4.2、开启压缩优化"></a>4.2、开启压缩优化</h3><p>可以根据自己的业务场景在 server.xml 中进行如下相关配置：</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Connector</span> <span class="token attr-name">port</span><span class="token attr-value"><span class="token punctuation attr-equals">=</span><span class="token punctuation">"</span>9027<span class="token punctuation">"</span></span>
@@ -599,7 +599,7 @@
 <p>在程序中定义：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java">session<span class="token punctuation">.</span><span class="token function">setMaxInactiveInterval</span><span class="token punctuation">(</span><span class="token number">30</span><span class="token operator">*</span><span class="token number">60</span><span class="token punctuation">)</span><span class="token punctuation">;</span>   <span class="token comment">// 单位：秒，设为-1表示永不过期。</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h2 id="6、APR（大杀器）"><a href="#6、APR（大杀器）" class="headerlink" title="6、APR（大杀器）"></a>6、APR（大杀器）</h2><h2 id="6-1、概述"><a href="#6-1、概述" class="headerlink" title="6.1、概述"></a>6.1、概述</h2><p>APR（Apache Portable Runtime）是Apache的一个库，它提供了跨平台的API，用于支持Apache HTTP Server 及其它Apache项目。APR通过对操作系统底层功能的封装，提供了一种高效、可移植和可靠的编程接口。</p>
+<h2 id="6、APR（大杀器）"><a href="#6、APR（大杀器）" class="headerlink" title="6、APR（大杀器）"></a>6、APR（大杀器）</h2><h2 id="6-1、概述"><a href="#6-1、概述" class="headerlink" title="6.1、概述"></a>6.1、概述</h2><p><strong>APR（Apache Portable Runtime）是Apache的一个库，它提供了跨平台的API，用于支持Apache HTTP Server 及其它Apache项目。</strong>APR通过对操作系统底层功能的封装，提供了一种高效、可移植和可靠的编程接口。</p>
 <p><strong>Tomcat 中 APR 通常指的是 APR&#x2F;native 组件，它是一个与操作系统级别的库进行交互的接口</strong>。APR&#x2F;native 组件可以与Tomcat一起使用，以提高性能和可扩展性。</p>
 <p>APR&#x2F;native 组件的主要功能包括：</p>
 <ul>
@@ -634,21 +634,21 @@
 
 <p>参数解析：</p>
 <ul>
-<li><font color='orange'>-Xms2G</font>：初始堆内存；</li>
-<li><font color='orange'>-Xmx2G</font>：最大堆内存；</li>
-<li><font color='orange'>-Xmn512m</font>：年轻代大小；</li>
-<li><font color='orange'>-XX:MetaspaceSize&#x3D;512M</font>：初始元空间大小，达到该值会触发垃圾回收并进行类型卸载，同时GC会对该值进行动态调整：<font color='orange'>如果垃圾回收后释放了大量空间就降低该值；如果释放了少量空间，那么就在不超过 MaxMetaspaceSize设定值的前提下适当提高该值。</font></li>
-<li><font color='orange'>-XX:+UseConcMarkSweepGC</font>：使用 并发标记清除类型的 CMS垃圾回收器；</li>
-<li><font color='orange'>-XX:+CMSClassUnloadingEnabled</font>：  表示 是否启用类卸载；（+表示启用，-表示关闭，默认关闭。该功能只有在使用CM回收器时才有效。）</li>
-<li><font color='orange'>-XX:+HeapDumpOnOutOfMemoryError</font>：表示 发生OOM时会自动生成DUMP文件；</li>
-<li><font color='orange'>-XX:HeapDumpPath&#x3D;${目录}</font>：表示生成DUMP文件的路径，也可以指定文件名称，例如：<code>-XX:HeapDumpPath=$&#123;目录&#125;/java_heapdump.hprof</code>。如果不指定文件名，默认为：<code>java_&lt;pid&gt;_&lt;date&gt;_&lt;time&gt;_heapDump.hprof</code>；</li>
-<li><font color='orange'>-verbose:gc</font>：输出GC日志 ，  -XX:+PrintGC 与 -verbose:gc 是一样的，可以认为-verbose:gc 是 -XX:+PrintGC的别名；</li>
-<li><font color='orange'>-XX:+PrintGCDetails</font>：打印GC详细信息；</li>
-<li><font color='orange'>-XX:+PrintGCTimeStamps</font>：输出GC时间戳；（以JVM启动到当期的总时长的时间戳形式）</li>
-<li><font color='orange'>-XX:+PrintGCDateStamps</font>：输出GC的时间戳；（以日期的形式，如 2013-05-04T21:53:59.234+0800）</li>
-<li><font color='orange'>-Xloggc:&#x2F;appl&#x2F;gc.log</font>：定义gc日志目录；</li>
-<li><font color='orange'>-XX:CMSInitiatingOccupancyFraction&#x3D;75</font>：内存占用率达到75%时开启CMS GC；</li>
-<li><font color='orange'>-XX:+UseCMSInitiatingOccupancyOnly</font>：设定该选项 表示 CMS始终使用参数<code>&lt;font color=&#39;orange&#39;&gt;-XX:CMSInitiatingOccupancyFraction</code>指定的垃圾回收阈值，如果不设定该选项，则表示只有在最开始阶段使用上面参数指定的垃圾回收阈值，后期会根据实际情况动态调整垃圾回收阈值；</li>
+<li>-Xms2G：初始堆内存；</li>
+<li>-Xmx2G：最大堆内存；</li>
+<li>-Xmn512m：年轻代大小；</li>
+<li>-XX:MetaspaceSize&#x3D;512M：初始元空间大小，达到该值会触发垃圾回收并进行类型卸载，同时GC会对该值进行动态调整：如果垃圾回收后释放了大量空间就降低该值；如果释放了少量空间，那么就在不超过 MaxMetaspaceSize设定值的前提下适当提高该值。</li>
+<li>-XX:+UseConcMarkSweepGC：使用 并发标记清除类型的 CMS垃圾回收器；</li>
+<li>-XX:+CMSClassUnloadingEnabled：  表示 是否启用类卸载；（+表示启用，-表示关闭，默认关闭。该功能只有在使用CM回收器时才有效。）</li>
+<li>-XX:+HeapDumpOnOutOfMemoryError：表示 发生OOM时会自动生成DUMP文件；</li>
+<li>-XX:HeapDumpPath&#x3D;${目录}：表示生成DUMP文件的路径，也可以指定文件名称，例如：<code>-XX:HeapDumpPath=$&#123;目录&#125;/java_heapdump.hprof</code>。如果不指定文件名，默认为：<code>java_&lt;pid&gt;_&lt;date&gt;_&lt;time&gt;_heapDump.hprof</code>；</li>
+<li>-verbose:gc：输出GC日志 ，  -XX:+PrintGC 与 -verbose:gc 是一样的，可以认为-verbose:gc 是 -XX:+PrintGC的别名；</li>
+<li>-XX:+PrintGCDetails：打印GC详细信息；</li>
+<li>-XX:+PrintGCTimeStamps：输出GC时间戳；（以JVM启动到当期的总时长的时间戳形式）</li>
+<li>-XX:+PrintGCDateStamps：输出GC的时间戳；（以日期的形式，如 2013-05-04T21:53:59.234+0800）</li>
+<li>-Xloggc:&#x2F;appl&#x2F;gc.log：定义gc日志目录；</li>
+<li>-XX:CMSInitiatingOccupancyFraction&#x3D;75：内存占用率达到75%时开启CMS GC；</li>
+<li>-XX:+UseCMSInitiatingOccupancyOnly：设定该选项 表示 CMS始终使用参数<code>&lt;font color=&#39;orange&#39;&gt;-XX:CMSInitiatingOccupancyFraction</code>指定的垃圾回收阈值，如果不设定该选项，则表示只有在最开始阶段使用上面参数指定的垃圾回收阈值，后期会根据实际情况动态调整垃圾回收阈值；</li>
 </ul>
 <h1 id="操作系统优化（Linux）"><a href="#操作系统优化（Linux）" class="headerlink" title="操作系统优化（Linux）"></a>操作系统优化（Linux）</h1><h2 id="1、最大打开文件数"><a href="#1、最大打开文件数" class="headerlink" title="1、最大打开文件数"></a>1、最大打开文件数</h2><h3 id="1-1、系统级句柄数量"><a href="#1-1、系统级句柄数量" class="headerlink" title="1.1、系统级句柄数量"></a>1.1、系统级句柄数量</h3><p>（1）查看</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash"><span class="token function">cat</span> /proc/sys/fs/file-max<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
@@ -738,7 +738,6 @@ net.ipv4.tcp_orphan_retries <span class="token operator">=</span> <span class="t
 
 <span class="token comment"># 网络设备的收发包的队列大小</span>
 net.core.netdev_max_backlog <span class="token operator">=</span> <span class="token number">2048</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
 
 
                 

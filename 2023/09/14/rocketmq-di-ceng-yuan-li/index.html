@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-07
+                    2023-10-02
                 </div>
                 
 
@@ -601,7 +601,7 @@
 <p>RocketMQ主要支持如下2种消息过滤方式：</p>
 <ul>
 <li><p><font color='orange'>Tag过滤</font></p>
-<p><font color='orange'>Consumer端订阅消息时 既可指定Topic 也可指定TAG，如果一个消息有多个TAG，可以用 || 分隔。</font></p>
+<p>Consumer端订阅消息时 既可指定Topic 也可指定TAG，如果一个消息有多个TAG，可以用 || 分隔。</p>
 <p>Consumer端会将订阅请求构建成一个 SubscriptionData，发送一个Pull消息请求给Broker端。Broker端从RocketMQ的文件存储层—Store读取数据之前，会用这些数据先构建一个MessageFilter，然后传给Store。Store从 ConsumeQueue读取到一条记录后，会用它记录的消息tag hash值去做过滤，由于在服务端只是根据hashcode进行判断，无法精确对tag原始字符串进行过滤，故在消息消费端拉取到消息后，还需要对消息的原始tag字符串进行比对，如果不同，则丢弃该消息，不进行消息消费。</p>
 </li>
 <li><p><font color='orange'>SQL92过滤</font></p>

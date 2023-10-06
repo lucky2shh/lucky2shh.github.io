@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-07
+                    2023-10-02
                 </div>
                 
 
@@ -482,8 +482,8 @@
 <li>粒度太细导致服务太多，维护成本高。</li>
 <li>分布式系统开发的技术成本高，对团队的挑战大。</li>
 </ol>
-<h1 id="2、Apache-Dubbo概述"><a href="#2、Apache-Dubbo概述" class="headerlink" title="2、Apache Dubbo概述"></a>2、Apache Dubbo概述</h1><h2 id="2-1、Dubbo简介"><a href="#2-1、Dubbo简介" class="headerlink" title="2.1、Dubbo简介"></a>2.1、Dubbo简介</h2><p>Apache Dubbo是一款高性能的 <font color='orange'>Java RPC框架</font>。其前身是阿里巴巴公司开源的一个高性能、轻量级的开源Java RPC框架，可以和Spring框架无缝集成。</p>
-<p>RPC全称为 <code>remote procedure call</code>，即 <font color='orange'>远程过程调用</font>。比如两台服务器A和B，A服务器上部署一个应用，B服务器上部署一个应用，A服务器上的应用想调用B服务器上的应用提供的方法，由于两个应用不在一个内存空间，不能直接调用，所以需要通过网络来表达调用的语义和传达调用数据。</p>
+<h1 id="2、Apache-Dubbo概述"><a href="#2、Apache-Dubbo概述" class="headerlink" title="2、Apache Dubbo概述"></a>2、Apache Dubbo概述</h1><h2 id="2-1、Dubbo简介"><a href="#2-1、Dubbo简介" class="headerlink" title="2.1、Dubbo简介"></a>2.1、Dubbo简介</h2><p>Apache Dubbo是一款高性能的<em><strong>Java RPC框架</strong></em>。其前身是阿里巴巴公司开源的一个高性能、轻量级的开源Java RPC框架，可以和Spring框架无缝集成。</p>
+<p>RPC全称为 <code>remote procedure call</code>，即<em><strong>远程过程调用</strong></em>。比如两台服务器A和B，A服务器上部署一个应用，B服务器上部署一个应用，A服务器上的应用想调用B服务器上的应用提供的方法，由于两个应用不在一个内存空间，不能直接调用，所以需要通过网络来表达调用的语义和传达调用数据。</p>
 <blockquote>
 <p>注意：RPC并不是一个具体的技术，而是指整个网络远程调用过程。</p>
 </blockquote>
@@ -572,7 +572,7 @@
 <h3 id="3-3-3、查看状态"><a href="#3-3-3、查看状态" class="headerlink" title="3.3.3、查看状态"></a>3.3.3、查看状态</h3><p>查看服务状态：</p>
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">./zkServer.sh status<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 
-<h1 id="4、Dubbo快速入门"><a href="#4、Dubbo快速入门" class="headerlink" title="4、Dubbo快速入门"></a>4、Dubbo快速入门</h1><p>Dubbo作为一个RPC框架，其最核心的功能就是要实现跨网络的远程调用。这里要创建两个应用，一个服务提供方，一个服务消费方。通过Dubbo来实现服务消费方远程调用服务提供方的方法。</p>
+<h1 id="4、Dubbo快速入门"><a href="#4、Dubbo快速入门" class="headerlink" title="4、Dubbo快速入门"></a>4、Dubbo快速入门</h1><p>Dubbo最核心的功能就是实现跨网络远程调用。通过Dubbo来实现服务消费方远程调用服务提供方的方法。</p>
 <h2 id="4-1、服务提供方开发"><a href="#4-1、服务提供方开发" class="headerlink" title="4.1、服务提供方开发"></a>4.1、服务提供方开发</h2><p>开发步骤：</p>
 <p>1、创建maven工程（打包方式为war）dubbodemo_provider，在pom.xml文件中导入如下坐标</p>
 <pre class="line-numbers language-markup" data-language="markup"><code class="language-markup"><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>properties</span><span class="token punctuation">></span></span>
@@ -868,7 +868,7 @@
 
 <p>上面这个配置需要配置在服务消费者一方，如果不配置默认check值为true。Dubbo 缺省会在启动时检查依赖的服务是否可用，不可用时会抛出异常，阻止 Spring 初始化完成，以便上线时，能及早发现问题。可以通过将check值改为false来关闭检查。</p>
 <p>建议在开发阶段将check值设置为false，在生产环境下改为true。</p>
-<h2 id="6-4、负载均衡"><a href="#6-4、负载均衡" class="headerlink" title="6.4、负载均衡"></a>6.4、负载均衡</h2><p>负载均衡（Load Balance）就是将请求分摊到多个操作单元上进行执行，从而共同完成工作任务。</p>
+<h2 id="6-4、负载均衡"><a href="#6-4、负载均衡" class="headerlink" title="6.4、负载均衡"></a>6.4、负载均衡</h2><p>负载均衡（Load Balance）就是<strong>将请求分摊到多个操作单元上进行执行，从而共同完成工作任务</strong>。</p>
 <p>Dubbo 提供了多种均衡策略（随机、轮询、最少活跃调用数、一致性Hash等），缺省为random随机调用。</p>
 <p>配置负载均衡策略，既可以在服务提供者一方配置，也可以在服务消费者一方配置，如下：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token annotation punctuation">@Controller</span>

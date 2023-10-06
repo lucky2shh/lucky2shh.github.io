@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-07
+                    2023-10-02
                 </div>
                 
 
@@ -494,14 +494,14 @@
 </ul>
 <p>如何给队列绑定死信交换机呢？可以通过给队列设置参数<code>x-dead-letter-exchange</code>和<code>x-dead-letter-touting-key</code>来实现。</p>
 <h2 id="2-3、延迟队列"><a href="#2-3、延迟队列" class="headerlink" title="2.3、延迟队列"></a>2.3、延迟队列</h2><p>延迟队列指的是 <strong>消息进入队列后不会被立即消费，只有到达设定的时间后才会被消费</strong>。</p>
-<p><font color='red'>注意：RabbitMQ中没有提供 延迟队列 的功能，但可以通过 TTL+死信队列 来实现相同的功能和效果，但要注意的是TTL+死信队列实现的延迟的延迟队列有一个BUG，就是任务优先级与执行顺序不匹配的问题。</font></p>
+<p><font color='red'>注意：RabbitMQ中没有提供 延迟队列 的功能，但可以通过 TTL+死信队列 来实现相同的功能和效果，但要注意的是TTL+死信队列实现的延迟队列有一个BUG，就是任务优先级与执行顺序不匹配的问题。</font></p>
 <p>通过死信队列+TTL来实现的延迟队列功能存在一个 超时优先级错误问题，也就是消息被消费的顺序是由消息在队列中的排列顺序来决定的，而这个排列顺序是由消息被发往死信队列时的时间顺序来决定的。这样一来就会存在一种现象，那就是超时时间短的消息如果排在超时时间长的消息的后边，那么这个超时时间短的消息何时会被消费取决于其前面的超时时间长的消息何时被消费。</p>
 <p><strong>要解决这个超时优先级错误问题，需要使用 RabbitMQ 提供的插件方式的延迟队列来解决</strong>。</p>
-<p>要使用插件方式的延迟队列，首先要<strong>通过命令<code>rabbitmq-plugins enable x_delayed_message_exchange</code>开启该插件</strong>功能，然后在**创建交换机时设置其类型为<code>x-delayed-message</code>**既可以实现延迟功能，同时也可以解决之前存在的超时优先级错误问题。</p>
-<h2 id="2-4、惰性队列"><a href="#2-4、惰性队列" class="headerlink" title="2.4、惰性队列"></a>2.4、惰性队列</h2><p>RabbitMQ 3.6.0开始支持惰性队列。</p>
+<p>要使用插件方式的延迟队列，首先要<strong>通过命令<code>rabbitmq-plugins enable x_delayed_message_exchange</code>开启该插件</strong>功能，然后在**创建交换机时设置其类型为<code>x-delayed-message</code>**即可实现延迟功能，同时也可以解决之前存在的超时优先级错误问题。</p>
+<h2 id="2-4、惰性队列"><a href="#2-4、惰性队列" class="headerlink" title="2.4、惰性队列"></a>2.4、惰性队列</h2><p><strong>RabbitMQ 3.6.0开始支持惰性队列</strong>。</p>
 <p>惰性队列的特点如下：</p>
 <ul>
-<li>接收到消息后直接存入磁盘而非内存。</li>
+<li><strong>接收到消息后直接存入磁盘而非内存</strong>。</li>
 <li>消费者消费消息时会从磁盘读取消息加载到内存中。</li>
 <li>支持数百万条消息的存储。</li>
 </ul>
@@ -520,12 +520,12 @@
 <pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">rabbitmqctl set_policy Lazy <span class="token string">"^lazy-queue$"</span> <span class="token string">'&#123;"queue-mode":"lazy"&#125;'</span> --apply-to queues<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre></li>
 </ul>
 <h2 id="2-5、仲裁队列"><a href="#2-5、仲裁队列" class="headerlink" title="2.5、仲裁队列"></a>2.5、仲裁队列</h2><p><strong>镜像集群虽然支持主从，但主从同步并非强一致。为解决该问题，可以采用 仲裁队列 技术</strong>。</p>
-<p>RabbitMQ 3.8开始推出了仲裁队列，用来替代镜像集群，该队列底层采用Raft协议保证主从同步的一致性。</p>
+<p>RabbitMQ 3.8开始推出了仲裁队列，用来替代镜像集群，该队列底层<strong>采用Raft协议</strong>保证主从同步的一致性。</p>
 <p>创建仲裁队列的方法很简单，如下：</p>
 <pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 通过调用quorum()方法即可</span>
 <span class="token keyword">return</span> <span class="token class-name">QueueBuilder</span><span class="token punctuation">.</span><span class="token function">durable</span><span class="token punctuation">(</span><span class="token string">"quorum.queue"</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">quorum</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">build</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h2 id="2-6、备份交换机"><a href="#2-6、备份交换机" class="headerlink" title="2.6、备份交换机"></a>2.6、备份交换机</h2><p>备份交换机指的是<strong>一个交换机无法将消息发送到队列时可以将该消息转发到 备份交换机</strong>。</p>
+<h2 id="2-6、备份交换机"><a href="#2-6、备份交换机" class="headerlink" title="2.6、备份交换机"></a>2.6、备份交换机</h2><p>备份交换机指的是<strong>一个交换机无法将消息发送到队列时可以将该消息转发到备份交换机</strong>。</p>
 <p>如何将消息转发至备份交换机呢？只需在创建交换机时为该交换机设置参数<code>alternae-exchange</code>，参数值就是备份交换机的名字。这样就可以实现该交换机无法转发消息到队列时选择将消息转发至备份交换机。</p>
 <h2 id="2-7、日志与监控"><a href="#2-7、日志与监控" class="headerlink" title="2.7、日志与监控"></a>2.7、日志与监控</h2><p>RabbitMQ日志存放路径默认在 <code>var/log/rabbitmq/rabbit@xxx.log</code>。</p>
 <h2 id="2-8、消息追踪"><a href="#2-8、消息追踪" class="headerlink" title="2.8、消息追踪"></a>2.8、消息追踪</h2><p>RabbitMQ中可以使用Firehose和rabbitmq_tracing插件功能来实现消息追踪。</p>
@@ -542,7 +542,7 @@
 </li>
 </ul>
 <h3 id="3-1-1、数据持久化"><a href="#3-1-1、数据持久化" class="headerlink" title="3.1.1、数据持久化"></a>3.1.1、数据持久化</h3><p>交换机持久化实现方式：</p>
-<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 第二个参数意为是否持久化；第三个参数意为没有queue与之绑定时是否删除；</span>
+<pre class="line-numbers language-java" data-language="java"><code class="language-java"><span class="token comment">// 第二个参数表示是否持久化；第三个参数表示没有queue与之绑定时是否删除；</span>
 <span class="token keyword">new</span> <span class="token class-name">DirectExchange</span><span class="token punctuation">(</span><span class="token string">"exchange_name"</span><span class="token punctuation">,</span> <span class="token boolean">true</span><span class="token punctuation">,</span> <span class="token boolean">false</span><span class="token punctuation">)</span><span class="token punctuation">;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
 <p>队列持久化实现方式：</p>

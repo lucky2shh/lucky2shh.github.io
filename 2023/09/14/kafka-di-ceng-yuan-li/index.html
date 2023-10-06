@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-07
+                    2023-09-23
                 </div>
                 
 
@@ -488,17 +488,17 @@
 <li>手动分配。</li>
 <li>leader partition 负载均衡 10%。</li>
 </ol>
-<h2 id="2-3、删除数据"><a href="#2-3、删除数据" class="headerlink" title="2.3、删除数据"></a>2.3、删除数据</h2><p>数据默认保存7天，超过就会被删除。</p>
+<h2 id="2-3、删除数据"><a href="#2-3、删除数据" class="headerlink" title="2.3、删除数据"></a>2.3、删除数据</h2><p><strong>数据默认保存7天，超过就会被删除</strong>。</p>
 <p>删除策略有两种：</p>
 <ul>
 <li><strong>删除</strong>：所有都过期再删除。</li>
 <li><strong>压缩</strong>：以最新val的key为准保存。</li>
 </ul>
 <h2 id="2-4、高效读写"><a href="#2-4、高效读写" class="headerlink" title="2.4、高效读写"></a>2.4、高效读写</h2><ol>
-<li>集群分区</li>
-<li>稀疏索引</li>
-<li>顺序读写 </li>
-<li>零拷贝 &#x2F; 页缓存（内核）</li>
+<li><strong>集群分区</strong></li>
+<li><strong>稀疏索引</strong></li>
+<li><strong>顺序读写</strong> </li>
+<li><strong>零拷贝 &#x2F; 页缓存（内核）</strong></li>
 </ol>
 <h2 id="2-5、手动调整分区副本"><a href="#2-5、手动调整分区副本" class="headerlink" title="2.5、手动调整分区副本"></a>2.5、手动调整分区副本</h2><ol>
 <li><p>编写一个json文件(文件名为increase-replication-factor.json)，内容格式如下：</p>
@@ -590,7 +590,7 @@ bin/kafka-reassign-partitions.sh --bootstrap-server node1:9092 --reassignment-js
 <h2 id="5-3、硬盘选择"><a href="#5-3、硬盘选择" class="headerlink" title="5.3、硬盘选择"></a>5.3、硬盘选择</h2><ul>
 <li>1亿条数据 * 1K &#x3D; 100G。</li>
 <li>100G * 2副本 * 3天 &#x2F; 0.7 &#x3D; 1T硬盘容量。</li>
-<li>三台服务器，磁盘总大小要大于1T。</li>
+<li><strong>三台服务器，磁盘总大小要大于1T</strong>。</li>
 </ul>
 <h2 id="5-4、内存选择"><a href="#5-4、内存选择" class="headerlink" title="5.4、内存选择"></a>5.4、内存选择</h2><p>kafka内存 &#x3D; 堆内存 + 页缓存（服务器内存）</p>
 <ol>
@@ -600,10 +600,10 @@ jmap -heap kafka进程号<span aria-hidden="true" class="line-numbers-rows"><spa
 </li>
 <li><p>页缓存segment（1G）  (分区数 * 1G * 25%) &#x2F; 3 &#x3D; 1G。</p>
 </li>
-<li><p>一台服务器为 10G + 1G &#x3D; 11G     大于11G即可。</p>
+<li><p>一台服务器为 10G + 1G &#x3D; 11G，<strong>大于11G即可</strong>。</p>
 </li>
 </ol>
-<h2 id="5-5、CPU"><a href="#5-5、CPU" class="headerlink" title="5.5、CPU"></a>5.5、CPU</h2><p>32核 最优。</p>
+<h2 id="5-5、CPU"><a href="#5-5、CPU" class="headerlink" title="5.5、CPU"></a>5.5、CPU</h2><p><strong>32核 最优</strong>。</p>
 <ul>
 <li>num.io.threads：写磁盘线程数，占总核数的50%，即12个</li>
 <li>num.replica.fetchers：副本拉取线程数，占总核数50%的三分之一，即4个</li>
@@ -611,7 +611,7 @@ jmap -heap kafka进程号<span aria-hidden="true" class="line-numbers-rows"><spa
 <li>执行其它任务线程 8个</li>
 </ul>
 <h2 id="5-6、网络"><a href="#5-6、网络" class="headerlink" title="5.6、网络"></a>5.6、网络</h2><p>网络带宽 &#x3D; 峰值吞吐量 &#x3D; 20M&#x2F;S </p>
-<p>选择 千兆网卡（125M&#x2F;s）即可。</p>
+<p><strong>选择 千兆网卡（125M&#x2F;s）即可</strong>。</p>
 <h1 id="6、调优"><a href="#6、调优" class="headerlink" title="6、调优"></a>6、调优</h1><h2 id="6-1、生产者优化"><a href="#6-1、生产者优化" class="headerlink" title="6.1、生产者优化"></a>6.1、生产者优化</h2><h3 id="6-1-1、提升生产者吞吐量"><a href="#6-1-1、提升生产者吞吐量" class="headerlink" title="6.1.1、提升生产者吞吐量"></a>6.1.1、提升生产者吞吐量</h3><ol>
 <li>buffer.memory：发送缓冲区大小，默认32M，可提升到64M。</li>
 <li>batch.size：默认16KB。</li>
@@ -715,6 +715,7 @@ jmap -heap kafka进程号<span aria-hidden="true" class="line-numbers-rows"><spa
 <li>其他方式压测</li>
 </ol>
 <h1 id="7、查看日志分段"><a href="#7、查看日志分段" class="headerlink" title="7、查看日志分段"></a>7、查看日志分段</h1><pre class="line-numbers language-bash" data-language="bash"><code class="language-bash">kafka-run-class.sh kafka.tools.DumpLogSegments <span class="token parameter variable">--files</span> 000000000000000.index/.log<span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+
 
 
 

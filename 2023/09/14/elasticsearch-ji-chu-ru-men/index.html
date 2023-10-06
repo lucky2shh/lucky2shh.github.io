@@ -404,7 +404,7 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-08-07
+                    2023-10-02
                 </div>
                 
 
@@ -446,13 +446,13 @@
 <li>Solr 官方提供的功能更多，而 Elasticsearch 本身更注重于核心功能，高级功能多有第三方插件提供； </li>
 <li>Solr 在传统的搜索应用中表现好于 Elasticsearch，但在处理实时搜索应用时效率明显低于 Elasticsearch。</li>
 </ol>
-<h2 id="1-4、重要概念"><a href="#1-4、重要概念" class="headerlink" title="1.4、重要概念"></a>1.4、重要概念</h2><p>Elasticsearch是面向文档(document oriented)的，这意味着它可以存储整个对象或文档(document)。然而它不仅仅是存储，还会索引(index)每个文档的内容使之可以被搜索。在Elasticsearch中，你可以对文档（而非成行成列的 数据）进行索引、搜索、排序、过滤。</p>
+<h2 id="1-4、重要概念"><a href="#1-4、重要概念" class="headerlink" title="1.4、重要概念"></a>1.4、重要概念</h2><p><strong>Elasticsearch是面向文档(document oriented)的</strong>，这意味着它可以存储整个对象或文档(document)。然而它不仅仅是存储，还会索引(index)每个文档的内容使之可以被搜索。在Elasticsearch中，你可以对文档（而非成行成列的 数据）进行索引、搜索、排序、过滤。</p>
 <p>Elasticsearch比传统关系型数据库如下： </p>
 <pre class="line-numbers language-tcl" data-language="tcl"><code class="language-tcl">Relational DB ‐<span class="token operator">></span> Databases ‐<span class="token operator">></span> Tables ‐<span class="token operator">></span> Rows ‐<span class="token operator">></span> Columns
 Elasticsearch ‐<span class="token operator">></span> Indices ‐<span class="token operator">></span> Types ‐<span class="token operator">></span> Documents ‐<span class="token operator">></span> Fields<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span></span></code></pre>
 
-<h3 id="1-4-1、索引Index"><a href="#1-4-1、索引Index" class="headerlink" title="1.4.1、索引Index"></a>1.4.1、索引Index</h3><p>一个索引就是一个拥有几分相似特征的文档的集合。比如说，你可以有一个客户数据的索引，另一个产品目录的索 引，还有一个订单数据的索引。一个索引由一个名字来标识（必须全部是小写字母的），并且当我们要对对应于这 个索引中的文档进行索引、搜索、更新和删除的时候，都要使用到这个名字。在一个集群中，可以定义任意多的索引。</p>
-<h3 id="1-4-2、类型Type"><a href="#1-4-2、类型Type" class="headerlink" title="1.4.2、类型Type"></a>1.4.2、类型Type</h3><p>在一个索引中，你可以定义一种或多种类型。一个类型是你的索引的一个逻辑上的分类&#x2F;分区，其语义完全由你来定。通常，会为具有一组共同字段的文档定义一个类型。比如说，我们假设你运营一个博客平台并且将你所有的数 据存储到一个索引中。在这个索引中，你可以为用户数据定义一个类型，为博客数据定义另一个类型，当然，也可以为评论数据定义另一个类型。 </p>
+<h3 id="1-4-1、索引Index"><a href="#1-4-1、索引Index" class="headerlink" title="1.4.1、索引Index"></a>1.4.1、索引Index</h3><p><strong>一个索引就是一个拥有几分相似特征的文档的集合</strong>。比如说，你可以有一个客户数据的索引，另一个产品目录的索 引，还有一个订单数据的索引。一个索引由一个名字来标识（必须全部是小写字母的），并且当我们要对对应于这 个索引中的文档进行索引、搜索、更新和删除的时候，都要使用到这个名字。在一个集群中，可以定义任意多的索引。</p>
+<h3 id="1-4-2、类型Type"><a href="#1-4-2、类型Type" class="headerlink" title="1.4.2、类型Type"></a>1.4.2、类型Type</h3><p>在一个索引中，你可以定义一种或多种类型。一个类型是你的索引的一个逻辑上的分类&#x2F;分区，其语义完全由你来定。通常，会为具有一组共同字段的文档定义一个类型。比如说，我们假设你运营一个博客平台并且将你所有的数据存储到一个索引中。在这个索引中，你可以为用户数据定义一个类型，为博客数据定义另一个类型，当然，也可以为评论数据定义另一个类型。 </p>
 <h3 id="1-4-3、字段Field"><a href="#1-4-3、字段Field" class="headerlink" title="1.4.3、字段Field"></a>1.4.3、字段Field</h3><p>相当于是数据表的字段，对文档数据根据不同属性进行的分类标识。</p>
 <h3 id="1-4-4、映射Mapping"><a href="#1-4-4、映射Mapping" class="headerlink" title="1.4.4、映射Mapping"></a>1.4.4、映射Mapping</h3><p>mapping是处理数据的方式和规则方面做一些限制，如某个字段的数据类型、默认值、分析器、是否被索引等等， 这些都是映射里面可以设置的，其它就是处理es里面数据的一些使用规则设置也叫做映射，按着最优规则处理数据对性能提高很大，因此才需要建立映射，并且需要思考如何建立映射才能对性能更好。 </p>
 <h3 id="1-4-5、文档document"><a href="#1-4-5、文档document" class="headerlink" title="1.4.5、文档document"></a>1.4.5、文档document</h3><p>一个文档是一个可被索引的基础信息单元。比如，你可以拥有某一个客户的文档，某一个产品的一个文档，当然， 也可以拥有某个订单的一个文档。文档以JSON（Javascript Object Notation）格式来表示，而JSON是一个到处存 在的互联网数据交互格式。 在一个index&#x2F;type里面，你可以存储任意多的文档。注意，尽管一个文档，物理上存在于一个索引之中，文档必须被索引&#x2F;赋予一个索引的type。 </p>
@@ -474,7 +474,7 @@ Elasticsearch ‐<span class="token operator">></span> Indices ‐<span class="t
 <li>地理：根据经纬度来查询。包括：geo_distance、geo_bounding_box。</li>
 <li>复合：可以将上述几个条件进行组合，合并查询条件。包括：bool、function_score。</li>
 </ul>
-<h3 id="2-1-2、复合检索"><a href="#2-1-2、复合检索" class="headerlink" title="2.1.2、复合检索"></a>2.1.2、复合检索</h3><h4 id="2-1-2-1、bool-query"><a href="#2-1-2-1、bool-query" class="headerlink" title="2.1.2.1、bool query"></a>2.1.2.1、bool query</h4><p>bool query是一个或多个查询子句的组合，子查询组合方式有：</p>
+<h3 id="2-1-2、复合检索"><a href="#2-1-2、复合检索" class="headerlink" title="2.1.2、复合检索"></a>2.1.2、复合检索</h3><h4 id="2-1-2-1、bool-query"><a href="#2-1-2-1、bool-query" class="headerlink" title="2.1.2.1、bool query"></a>2.1.2.1、bool query</h4><p><strong>bool query是一个或多个查询子句的组合</strong>，子查询组合方式有：</p>
 <ul>
 <li>must：必须匹配每个子查询。</li>
 <li>must_not：必须不匹配，不参与算分。</li>
@@ -2919,12 +2919,6 @@ GET _search
 
 
 
-
-
-
-
-
-
 #====================================mapping
 # 查询所有已存在的index信息
 GET /_cat/indices
@@ -2934,7 +2928,6 @@ HEAD /hotel
 
 # 查询某个index的mapping信息
 GET /hotel
-
 
 # 创建一个mapping
 PUT /my-index<span class="token number">-000001</span>
@@ -2965,8 +2958,7 @@ GET /my-index<span class="token number">-000001</span>/_mapping
 # 查询mapping中某个字段的信息
 GET /my-index<span class="token number">-000001</span>/_mapping/field/employee-id
 
-
-# 基于bulk api 一次添加多条数据
+# 创建mapping并基于bulk api 一次添加多条数据
 PUT /my-index<span class="token number">-000002</span>/
 <span class="token punctuation">&#123;</span>
   <span class="token property">"mappings"</span><span class="token operator">:</span> <span class="token punctuation">&#123;</span>
@@ -2981,7 +2973,7 @@ PUT /my-index<span class="token number">-000002</span>/
     <span class="token punctuation">&#125;</span>
   <span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#125;</span>
-#---
+# 为mapping一次添加多条数据
 POST /my-index<span class="token number">-000002</span>/_bulk?refresh
 <span class="token punctuation">&#123;</span><span class="token property">"index"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#123;</span><span class="token property">"timestamp"</span><span class="token operator">:</span><span class="token string">"2020-04-30T14:30:17-05:00"</span><span class="token punctuation">,</span><span class="token property">"message"</span><span class="token operator">:</span><span class="token string">"40.135.0.0 - - [30/Apr/2020:14:30:17 -0500] \"GET /images/hm_bg.jpg HTTP/1.0\" 200 24736"</span><span class="token punctuation">&#125;</span>
@@ -2997,9 +2989,6 @@ POST /my-index<span class="token number">-000002</span>/_bulk?refresh
 <span class="token punctuation">&#123;</span><span class="token property">"timestamp"</span><span class="token operator">:</span><span class="token string">"2020-04-30T14:31:27-05:00"</span><span class="token punctuation">,</span><span class="token property">"message"</span><span class="token operator">:</span><span class="token string">"252.0.0.0 - - [30/Apr/2020:14:31:27 -0500] \"GET /images/hm_bg.jpg HTTP/1.0\" 200 24736"</span><span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#123;</span><span class="token property">"index"</span><span class="token operator">:</span><span class="token punctuation">&#123;</span><span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span>
 <span class="token punctuation">&#123;</span><span class="token property">"timestamp"</span><span class="token operator">:</span><span class="token string">"2020-04-30T14:31:28-05:00"</span><span class="token punctuation">,</span><span class="token property">"message"</span><span class="token operator">:</span><span class="token string">"not a valid apache log"</span><span class="token punctuation">&#125;</span>
-
-
-
 
 
 
@@ -3035,7 +3024,6 @@ PUT /my-index<span class="token number">-000001</span>?master_timeout=30s&amp;ti
 # PUT &lt;target>/_alias/&lt;alias>
 # PUT &lt;target>/_aliases/&lt;alias>
 PUT my-data-stream/_alias/my-alias
-
 
 # 创建或更新组件模板
 # PUT /_component_template/&lt;component-template>
@@ -3373,10 +3361,7 @@ GET /hotel/_search
       <span class="token punctuation">&#125;</span>
     <span class="token punctuation">&#125;</span>
   <span class="token punctuation">&#125;</span>
-<span class="token punctuation">&#125;</span>
-
-<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-
+<span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 
                 
